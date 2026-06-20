@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Zevra Tracker</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white min-h-screen flex items-center justify-center p-4">
+
+<div class="w-full max-w-4xl" id="app"></div>
+
+<script>
+// Generar ID de sesión único
+function generarSessionId() {
+  const params = new URLSearchParams(window.location.search);
+  let sid = params.get("s");
+  if (!sid) {
+    sid = "zevra_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
+    window.history.replaceState({}, "", `?s=${sid}`);
+  }
+  return sid;
+}
+
+const SESSION_ID = generarSessionId();
+
+let data = {
+  people: {
+    Joan: { cubatas: 0, shishas: 0, dinero: 0 },
+    Cantillo: { cubatas: 0, shishas: 0, dinero: 0 }
+  }
+};
+
+// Guardar en localStorage
+function guardarDatos() {
+  localStorage.setItem("zevra_" + SESSION_ID, JSON.stringify(data));
+}
+
+// Cargar de localStorage
+function cargarDatos() {
+  const stored = localStorage.getItem("zevra_" + SESSION_ID);
+  if (stored) {
+    data = JSON.parse(stored);
+  }
+}
+
+// Simular sincronización cada segundo
+setInterval(() => {
+  cargarDatos();
+  render();
+}, 1000);
+
+function calcularDeuda() {
+  const joanDinero = data.people.Joan.dinero || 0;
+  const cantilloDinero = data.people.Cantillo.dinero || 0;
+  const promedio = (joanDinero + cantilloDinero) / 2;
+  
+  if (joanDinero > promedio) {
+    const deuda = (joanDinero - promedio).toFixed(2);
+    return `Cantillo debe ${deuda}€ a Joan 💰`;
+  } else if (cantilloDinero > promedio) {
+    const deuda = (cantilloDinero - promedio).toFixed(2);
+    return `Joan debe ${deuda}€ a Cantillo 💰`;
+  }
+  return null;
+}
+
+function render() {
+  const shareLink = `${window.location.href.split('?')[0]}?s=${SESSION_ID}`;
+  
+  // Totales de cada uno
+  const joanCubatas = data.people.Joan.cubatas;
+  const joanShishas = data.people.Joan.shishas;
+  const joanDinero = data.people.Joan.dinero;
+  const joanTotal = joanCubatas + joanShishas;
+  
+  const cantilloCubatas = data.people.Cantillo.cubatas;
+  const cantilloShishas = data.people.Cantillo.shishas;
+  const cantilloDinero = data.people.Cantillo.dinero;
+  const cantilloTotal = cantilloCubatas + cantilloShishas;
+  
+  // Totales generales
+  const totalCubatas = joanCubatas + cantilloCubatas;
+  const totalShishas = joanShishas + cantilloShishas;
+  const totalDinero = joanDinero + cantilloDinero;
+  const totalGeneral = totalCubatas + totalShishas;
+
+  document.getElementById("app").innerHTML = `
+    <div class="mb-4 p-3 bg-blue-900 rounded-lg text-center border-2 border-blue-600">
+      <p class="text-sm mb-2 font-bold">📱 Comparte este link:</p>
+      <div class="flex gap-2 flex-wrap">
+        <input type="text" value="${shareLink}" readonly 
+          class="flex-1 min-w-[200px] bg-gray-800 p-2 rounded text-xs text-gray-300 font-mono" />
+        <button onclick="copiarLink('${shareLink}')"
+          class="bg-green-600 hover:bg-green-700 px-4 rounded text-sm font-bold">📋 Copiar</button>
+      </div>
+    </div>
+
+    <h1 class="text-3xl text-center text-yellow-400 mb-2 font-bold">
+      🎪 ZEVRA
+    </h1>
+    <p class="text-center text-gray-400 mb-6 text-sm">Tracker del día</p>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      ${["Joan", "Cantillo"].map(p => {
+        const cubatas = data.people[p].cubatas;
+        const shishas = data.people[p].shishas;
+        const dinero = data.people[p].dinero;
+        const subTotal = cubatas + shishas;
+        
+        return `
+        <div class="bg-gray-900 p-4 rounded-xl border-2 border-gray-700">
+          <h2 class="text-2xl text-center mb-4 text-purple-300 font-bold">${p}</h2>
+
+          <!-- CUBATAS -->
+          <div class="mb-4">
+            <div class="text-center mb-2 bg-gray-800 p-2 rounded">
+              <div class="text-sm text-gray-400">🍹 Cubatas</div>
+              <div class="text-2xl font-bold text-green-400">${cubatas}</div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="addCubata('${p}')" class="flex-1 bg-green-600 hover:bg-green-700 p-2 rounded font-bold">➕</button>
+              <button onclick="restarCubata('${p}')" class="flex-1 bg-red-600 hover:bg-red-700 p-2 rounded font-bold">➖</button>
+              <button onclick="borrarCubatas('${p}')" class="flex-1 bg-gray-600 hover:bg-gray-700 p-2 rounded font-bold text-xs">🗑️</button>
+            </div>
+          </div>
+
+          <!-- SHISHAS -->
+          <div class="mb-4">
+            <div class="text-center mb-2 bg-gray-800 p-2 rounded">
+              <div class="text-sm text-gray-400">🔥 Shishas</div>
+              <div class="text-2xl font-bold text-cyan-400">${shishas}</div>
+            </div>
+            <div class="flex gap-2">
+              <button onclick="addShisha('${p}')" class="flex-1 bg-cyan-600 hover:bg-cyan-700 p-2 rounded font-bold">➕</button>
+              <button onclick="restarShisha('${p}')" class="flex-1 bg-red-600 hover:bg-red-700 p-2 rounded font-bold">➖</button>
+              <button onclick="borrarShishas('${p}')" class="flex-1 bg-gray-600 hover:bg-gray-700 p-2 rounded font-bold text-xs">🗑️</button>
+            </div>
+          </div>
+
+          <!-- DINERO -->
+          <div class="mb-4">
+            <div class="text-center mb-2 bg-gray-800 p-2 rounded">
+              <div class="text-sm text-gray-400">💸 Gastado</div>
+              <div class="text-2xl font-bold text-red-400">${dinero.toFixed(2)}€</div>
+            </div>
+            <div class="grid grid-cols-2 gap-2">
+              <button onclick="addDinero('${p}', 1)" class="bg-orange-600 hover:bg-orange-700 p-2 rounded font-bold text-sm">+1€</button>
+              <button onclick="addDinero('${p}', 2)" class="bg-orange-600 hover:bg-orange-700 p-2 rounded font-bold text-sm">+2€</button>
+              <button onclick="restarDinero('${p}', 1)" class="bg-red-600 hover:bg-red-700 p-2 rounded font-bold text-sm">-1€</button>
+              <button onclick="restarDinero('${p}', 2)" class="bg-red-600 hover:bg-red-700 p-2 rounded font-bold text-sm">-2€</button>
+            </div>
+            <button onclick="borrarDinero('${p}')" class="w-full mt-2 bg-gray-600 hover:bg-gray-700 p-2 rounded font-bold text-xs">🗑️ Borrar dinero</button>
+          </div>
+
+          <!-- TOTALES INDIVIDUALES -->
+          <hr class="my-3 border-gray-700"/>
+          <div class="bg-gray-800 p-3 rounded text-center text-sm">
+            <div class="mb-2">🍹 Cubatas: <span class="font-bold text-green-400">${cubatas}</span></div>
+            <div class="mb-2">🔥 Shishas: <span class="font-bold text-cyan-400">${shishas}</span></div>
+            <div class="mb-2">💸 Dinero: <span class="font-bold text-red-400">${dinero.toFixed(2)}€</span></div>
+            <div class="border-t border-gray-700 pt-2 mt-2">
+              📊 SUBTOTAL: <span class="font-bold text-yellow-400">${subTotal}</span>
+            </div>
+          </div>
+        </div>
+        `;
+      }).join("")}
+    </div>
+
+    <hr class="my-6 border-gray-700"/>
+
+    <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-6 rounded-xl mb-6">
+      <h2 class="text-center text-2xl mb-6 text-yellow-300 font-bold">📊 TOTALES GENERALES</h2>
+
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <div class="bg-gray-800 p-4 rounded-lg text-center">
+          <div class="text-sm text-gray-400 mb-2">🍹 CUBATAS</div>
+          <div class="text-4xl font-bold text-green-400">${totalCubatas}</div>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg text-center">
+          <div class="text-sm text-gray-400 mb-2">🔥 SHISHAS</div>
+          <div class="text-4xl font-bold text-cyan-400">${totalShishas}</div>
+        </div>
+        <div class="bg-gray-800 p-4 rounded-lg text-center">
+          <div class="text-sm text-gray-400 mb-2">💸 DINERO</div>
+          <div class="text-4xl font-bold text-red-400">${totalDinero.toFixed(2)}€</div>
+        </div>
+      </div>
+
+      <div class="bg-gray-800 p-4 rounded-lg text-center mb-4">
+        <div class="text-lg text-gray-400 mb-2">🎯 TOTAL GENERAL (Cubatas + Shishas)</div>
+        <div class="text-5xl font-bold text-orange-400">${totalGeneral}</div>
+      </div>
+
+      ${calcularDeuda() ? `
+        <hr class="my-4 border-gray-700"/>
+        <p class="text-center text-lg font-bold text-orange-300">${calcularDeuda()}</p>
+      ` : ""}
+    </div>
+
+    <div class="text-center mb-6">
+      <button onclick="clearAll()" class="bg-red-700 hover:bg-red-800 px-6 py-2 rounded font-bold text-sm">
+        🗑️ Borrar todo
+      </button>
+    </div>
+
+    <div class="text-center text-xs text-gray-500">
+      ↻ Se sincroniza automáticamente
+    </div>
+  `;
+}
+
+function copiarLink(link) {
+  navigator.clipboard.writeText(link).then(() => alert("¡Copiado!"));
+}
+
+function addCubata(name) {
+  data.people[name].cubatas++;
+  guardarDatos();
+  render();
+}
+
+function restarCubata(name) {
+  if (data.people[name].cubatas > 0) {
+    data.people[name].cubatas--;
+    guardarDatos();
+    render();
+  }
+}
+
+function borrarCubatas(name) {
+  if (confirm(`¿Borrar cubatas de ${name}?`)) {
+    data.people[name].cubatas = 0;
+    guardarDatos();
+    render();
+  }
+}
+
+function addShisha(name) {
+  data.people[name].shishas++;
+  guardarDatos();
+  render();
+}
+
+function restarShisha(name) {
+  if (data.people[name].shishas > 0) {
+    data.people[name].shishas--;
+    guardarDatos();
+    render();
+  }
+}
+
+function borrarShishas(name) {
+  if (confirm(`¿Borrar shishas de ${name}?`)) {
+    data.people[name].shishas = 0;
+    guardarDatos();
+    render();
+  }
+}
+
+function addDinero(name, amount) {
+  data.people[name].dinero += amount;
+  guardarDatos();
+  render();
+}
+
+function restarDinero(name, amount) {
+  if (data.people[name].dinero >= amount) {
+    data.people[name].dinero -= amount;
+    guardarDatos();
+    render();
+  }
+}
+
+function borrarDinero(name) {
+  if (confirm(`¿Borrar dinero de ${name}?`)) {
+    data.people[name].dinero = 0;
+    guardarDatos();
+    render();
+  }
+}
+
+function clearAll() {
+  if (confirm("¿Seguro que quieres borrar TODO?")) {
+    data = {
+      people: {
+        Joan: { cubatas: 0, shishas: 0, dinero: 0 },
+        Cantillo: { cubatas: 0, shishas: 0, dinero: 0 }
+      }
+    };
+    guardarDatos();
+    render();
+  }
+}
+
+cargarDatos();
+render();
+</script>
+
+</body>
+</html>
