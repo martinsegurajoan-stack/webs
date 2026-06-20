@@ -12,8 +12,21 @@
 <div class="w-full max-w-2xl" id="app"></div>
 
 <script>
-const LS_KEY = "festival_tracker_v1";
-const SESSION_ID = new URLSearchParams(window.location.search).get("s") || Math.random().toString(36).substr(2, 9);
+// Generar ID de sesión único
+function generarSessionId() {
+  const params = new URLSearchParams(window.location.search);
+  let sid = params.get("s");
+  if (!sid) {
+    sid = "festival_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
+    window.history.replaceState({}, "", `?s=${sid}`);
+  }
+  return sid;
+}
+
+const SESSION_ID = generarSessionId();
+const API_URL = `https://jsonbin.io/api/v3/b`;
+const BIN_ID_KEY = "festival_bin_" + SESSION_ID;
+let BIN_ID = localStorage.getItem(BIN_ID_KEY);
 
 let data = {
   people: {
@@ -22,15 +35,59 @@ let data = {
   }
 };
 
-function loadData() {
-  const stored = localStorage.getItem(LS_KEY);
-  if (stored) data = JSON.parse(stored);
+async function crearBin() {
+  try {
+    const response = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    BIN_ID = result.metadata.id;
+    localStorage.setItem(BIN_ID_KEY, BIN_ID);
+    return BIN_ID;
+  } catch (e) {
+    console.error("Error creando bin:", e);
+  }
 }
 
-function save() {
-  localStorage.setItem(LS_KEY, JSON.stringify(data));
-  render();
+async function cargarDatos() {
+  if (!BIN_ID) return;
+  try {
+    const response = await fetch(`${API_URL}/${BIN_ID}`, {
+      headers: { "X-Master-Key": "$2b$10$eFIF5Q7DlUXixzVMoon4O.yy3Ey3d5nxPm47dHyG4V/VOMxon0S5K" }
+    });
+    const result = await response.json();
+    data = result.record;
+  } catch (e) {
+    console.error("Error cargando datos:", e);
+  }
 }
+
+async function guardarDatos() {
+  if (!BIN_ID) {
+    await crearBin();
+    return;
+  }
+  try {
+    await fetch(`${API_URL}/${BIN_ID}`, {
+      method: "PUT",
+      headers: { 
+        "Content-Type": "application/json",
+        "X-Master-Key": "$2b$10$eFIF5Q7DlUXixzVMoon4O.yy3Ey3d5nxPm47dHyG4V/VOMxon0S5K"
+      },
+      body: JSON.stringify(data)
+    });
+  } catch (e) {
+    console.error("Error guardando datos:", e);
+  }
+}
+
+// Sincronizar cada 2 segundos
+setInterval(async () => {
+  await cargarDatos();
+  render();
+}, 2000);
 
 function totalDrinks(name) {
   return data.people[name]?.drinks || 0;
@@ -64,7 +121,7 @@ function render() {
       <div class="flex gap-2 flex-wrap">
         <input type="text" value="${shareLink}" readonly 
           class="flex-1 min-w-[200px] bg-gray-800 p-2 rounded text-xs text-gray-300 font-mono" />
-        <button onclick="navigator.clipboard.writeText('${shareLink}').then(()=>alert('¡Copiado!'))"
+        <button onclick="copiarLink()"
           class="bg-green-600 hover:bg-green-700 px-4 rounded text-sm font-bold">📋 Copiar</button>
       </div>
     </div>
@@ -127,17 +184,23 @@ function render() {
     </div>
 
     <div class="mt-4 text-center text-xs text-gray-500">
-      💾 Se guarda automáticamente
+      ↻ Se sincroniza automáticamente
     </div>
   `;
 }
 
-function addDrink(name) {
-  data.people[name].drinks++;
-  save();
+function copiarLink() {
+  const shareLink = `${window.location.origin}${window.location.pathname}?s=${SESSION_ID}`;
+  navigator.clipboard.writeText(shareLink).then(() => alert("¡Copiado!"));
 }
 
-function addExpense(name) {
+async function addDrink(name) {
+  data.people[name].drinks++;
+  await guardarDatos();
+  render();
+}
+
+async function addExpense(name) {
   const item = prompt("¿En qué has gastado?");
   if (!item) return;
   
@@ -148,10 +211,11 @@ function addExpense(name) {
   }
 
   data.people[name].expenses.push({ item, amount, time: new Date().toLocaleTimeString() });
-  save();
+  await guardarDatos();
+  render();
 }
 
-function clearAll() {
+async function clearAll() {
   if (confirm("¿Seguro que quieres borrar TODO?")) {
     data = {
       people: {
@@ -159,12 +223,20 @@ function clearAll() {
         Cantillo: { drinks: 0, expenses: [] }
       }
     };
-    save();
+    await guardarDatos();
+    render();
   }
 }
 
-loadData();
-render();
+async function init() {
+  if (!BIN_ID) {
+    await crearBin();
+  }
+  await cargarDatos();
+  render();
+}
+
+init();
 </script>
 
 </body>
