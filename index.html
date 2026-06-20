@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Festival Tracker Valencia</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white min-h-screen flex items-center justify-center p-4">
+
+<div class="w-full max-w-2xl" id="app"></div>
+
+<script>
+// Generar ID de sesión único
+function generarSessionId() {
+  const params = new URLSearchParams(window.location.search);
+  let sid = params.get("s");
+  if (!sid) {
+    sid = "festival_" + Date.now() + "_" + Math.random().toString(36).substr(2, 9);
+    window.history.replaceState({}, "", `?s=${sid}`);
+  }
+  return sid;
+}
+
+const SESSION_ID = generarSessionId();
+
+let data = {
+  people: {
+    Joan: { drinks: 0, expenses: [] },
+    Cantillo: { drinks: 0, expenses: [] }
+  }
+};
+
+// Guardar en localStorage
+function guardarDatos() {
+  localStorage.setItem("festival_" + SESSION_ID, JSON.stringify(data));
+}
+
+// Cargar de localStorage
+function cargarDatos() {
+  const stored = localStorage.getItem("festival_" + SESSION_ID);
+  if (stored) {
+    data = JSON.parse(stored);
+  }
+}
+
+// Simular sincronización cada segundo
+setInterval(() => {
+  cargarDatos();
+  render();
+}, 1000);
+
+function totalDrinks(name) {
+  return data.people[name]?.drinks || 0;
+}
+
+function totalMoney(name) {
+  return data.people[name]?.expenses.reduce((a,b) => a + b.amount, 0) || 0;
+}
+
+function calcularDeuda() {
+  const joanGasto = totalMoney("Joan");
+  const cantilloGasto = totalMoney("Cantillo");
+  const promedio = (joanGasto + cantilloGasto) / 2;
+  
+  if (joanGasto > promedio) {
+    const deuda = (joanGasto - promedio).toFixed(2);
+    return `Cantillo debe ${deuda}€ a Joan 💰`;
+  } else if (cantilloGasto > promedio) {
+    const deuda = (cantilloGasto - promedio).toFixed(2);
+    return `Joan debe ${deuda}€ a Cantillo 💰`;
+  }
+  return null;
+}
+
+function render() {
+  const shareLink = `${window.location.href.split('?')[0]}?s=${SESSION_ID}`;
+
+  document.getElementById("app").innerHTML = `
+    <div class="mb-4 p-3 bg-blue-900 rounded-lg text-center border-2 border-blue-600">
+      <p class="text-sm mb-2 font-bold">📱 Comparte este link:</p>
+      <div class="flex gap-2 flex-wrap">
+        <input type="text" value="${shareLink}" readonly 
+          class="flex-1 min-w-[200px] bg-gray-800 p-2 rounded text-xs text-gray-300 font-mono" />
+        <button onclick="copiarLink('${shareLink}')"
+          class="bg-green-600 hover:bg-green-700 px-4 rounded text-sm font-bold">📋 Copiar</button>
+      </div>
+    </div>
+
+    <h1 class="text-3xl text-center text-yellow-400 mb-2 font-bold">
+      🎪 Festival Valencia
+    </h1>
+    <p class="text-center text-gray-400 mb-6 text-sm">24-27 Julio</p>
+
+    <div class="grid grid-cols-2 gap-4 mb-6">
+      ${["Joan", "Cantillo"].map(p => `
+        <div class="bg-gray-900 p-4 rounded-xl border-2 border-gray-700">
+          <h2 class="text-2xl text-center mb-4 text-purple-300 font-bold">${p}</h2>
+
+          <div class="text-center mb-4 bg-gray-800 p-3 rounded">
+            <div class="mb-2">
+              🍹 Cubatas: <span class="text-2xl font-bold text-green-400">${totalDrinks(p)}</span>
+            </div>
+            <div>
+              💸 Gastado: <span class="text-2xl font-bold text-red-400">${totalMoney(p).toFixed(2)}€</span>
+            </div>
+          </div>
+
+          <button onclick="addDrink('${p}')"
+            class="w-full bg-green-600 hover:bg-green-700 p-3 rounded mb-2 font-bold text-lg">
+            ➕ CUBATA
+          </button>
+
+          <button onclick="addExpense('${p}')"
+            class="w-full bg-blue-600 hover:bg-blue-700 p-3 rounded font-bold text-lg">
+            ➕ GASTO
+          </button>
+        </div>
+      `).join("")}
+    </div>
+
+    <hr class="my-6 border-gray-700"/>
+
+    <div class="bg-gradient-to-r from-purple-900 to-blue-900 p-6 rounded-xl">
+      <h2 class="text-center text-2xl mb-4 text-yellow-300 font-bold">📊 TOTALES</h2>
+
+      <p class="text-center text-lg mb-3">
+        🍹 Total cubatas: <span class="text-3xl font-bold text-green-400">${totalDrinks("Joan") + totalDrinks("Cantillo")}</span>
+      </p>
+
+      <p class="text-center text-lg mb-3">
+        💸 Total gastado: <span class="text-3xl font-bold text-red-400">${(totalMoney("Joan") + totalMoney("Cantillo")).toFixed(2)}€</span>
+      </p>
+
+      ${calcularDeuda() ? `
+        <hr class="my-4 border-gray-700"/>
+        <p class="text-center text-lg font-bold text-orange-300">${calcularDeuda()}</p>
+      ` : ""}
+    </div>
+
+    <div class="mt-6 text-center">
+      <button onclick="clearAll()" class="bg-red-700 hover:bg-red-800 px-6 py-2 rounded font-bold text-sm">
+        🗑️ Borrar todo
+      </button>
+    </div>
+
+    <div class="mt-4 text-center text-xs text-gray-500">
+      ↻ Se sincroniza automáticamente
+    </div>
+  `;
+}
+
+function copiarLink(link) {
+  navigator.clipboard.writeText(link).then(() => alert("¡Copiado!"));
+}
+
+function addDrink(name) {
+  data.people[name].drinks++;
+  guardarDatos();
+  render();
+}
+
+function addExpense(name) {
+  const item = prompt("¿En qué has gastado?");
+  if (!item) return;
+  
+  const amount = parseFloat(prompt("¿Cuánto (€)?"));
+  if (isNaN(amount) || amount <= 0) {
+    alert("Cantidad no válida");
+    return;
+  }
+
+  data.people[name].expenses.push({ item, amount, time: new Date().toLocaleTimeString() });
+  guardarDatos();
+  render();
+}
+
+function clearAll() {
+  if (confirm("¿Seguro que quieres borrar TODO?")) {
+    data = {
+      people: {
+        Joan: { drinks: 0, expenses: [] },
+        Cantillo: { drinks: 0, expenses: [] }
+      }
+    };
+    guardarDatos();
+    render();
+  }
+}
+
+cargarDatos();
+render();
+</script>
+
+</body>
+</html>
