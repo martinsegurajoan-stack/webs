@@ -1,0 +1,40 @@
+GUION — ¿Qué tipo de persona eres realmente?
+
+[GANCHO] Vamos a descubrir cómo eres realmente. Elige una respuesta en cada pregunta y no hagas trampas. ¡Tu resultado puede dejarte en evidencia!
+
+[PREGUNTA 1] Un amigo te cancela un plan a última hora. ¿Qué haces?
+[OPCIONES 1] La A: aprovecho para descansar. La B: me enfado, pero no digo nada. La C: busco otro plan inmediatamente. O la D: le digo que ya no cuente conmigo.
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 2] Te toca la lotería. ¿A quién se lo cuentas primero?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 3] Descubres que un amigo habla mal de ti. ¿Qué haces?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 4] ¿Qué te dolería más?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 5] Tu mejor amigo empieza a salir con tu ex. ¿Cómo reaccionas?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 6] Le prestas dinero a un amigo y no te lo devuelve. ¿Qué haces?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 7] Ves a tu pareja muy simpática con otra persona. ¿Qué haces?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 8] Te equivocas delante de todo el mundo. ¿Qué haces?
+(cuenta atrás de 5 segundos)
+
+[PREGUNTA 9] Te ofrecen el trabajo de tus sueños en otro país. ¿Qué haces?
+(cuenta atrás de 5 segundos)
+
+[RESULTADO] ¡Descubre qué tipo de persona eres! Cuenta qué letra has elegido más veces. El resultado es orientativo, ¿eh?
+[A] Mayoría de A: tranquilo y práctico. Piensas las cosas con calma y prefieres evitar dramas innecesarios.
+[B] Mayoría de B: emocional y leal. Te importan mucho las personas que quieres y las cosas te llegan más de lo que aparentas.
+[C] Mayoría de C: independiente y resolutivo. Te adaptas rápido, buscas soluciones y no te gusta depender de nadie.
+[D] Mayoría de D: carácter y orgullo. Tienes personalidad, defiendes tus límites y no soportas que te tomen por tonto.
+[EMPATE Y AVISO] ¿Te han empatado varias letras? Entonces eres una mezcla de personalidades. Y recuerda: esto es un test para divertirse, no una evaluación psicológica.
+
+[CIERRE] ¡Ahora confiesa! Escribe en comentarios la letra que más has elegido y etiqueta a ese amigo que necesita hacer este test. Síguenos en Hora del Quiz para más retos.
