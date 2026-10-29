@@ -163,3 +163,23 @@ def paleta_desde_tono(h, formas=None):
         th["formas"] = formas
         th["rayos"] = 0.7
     return th
+
+
+def paleta_romantica(h):
+    """Paleta romántica (rosas, rojos, morados y dorado) con un tono base que no se repite."""
+    th = paleta_desde_tono(h, "corazones")
+    rosa = 345 if _dist(h, 345) > 20 else 318
+    th.update({
+        "bg_top": _hsv(h, 0.75, 0.97),
+        "bg_bottom": _hsv(h + 8, 0.9, 0.5),
+        "bg_mid": _hsv(h - 15, 0.5, 1.0),
+        "bg_alt": _hsv(h + 25, 0.75, 0.85),
+        "blob": _hsv(h, 0.25, 1.0),
+        "accent": (255, 214, 110),                 # dorado suave
+        "accent2": _hsv(rosa, 0.85, 0.88),         # rosa/frambuesa intenso
+        "text_dark": _hsv(h, 0.85, 0.25),
+        "correct": _hsv(rosa, 0.8, 0.9),
+        "wrong": (150, 120, 135),
+        "options": [(255, 64, 129), (171, 71, 188), (255, 112, 90), (229, 40, 70)],
+    })
+    return th

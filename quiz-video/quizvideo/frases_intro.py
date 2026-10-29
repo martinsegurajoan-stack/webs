@@ -37,30 +37,57 @@ FRASES_INTRO = [
     "Hoy se mide el cerebro, no el ego. ¡Vamos a ver de qué estás hecho!",
 ]
 
-REGISTRO = os.path.join(os.path.dirname(__file__), "..", "assets", "frases_usadas.json")
+# Frases para el QUIZ DE PAREJAS: picantes, románticas y bromistas.
+FRASES_PAREJA = [
+    "Si fallas más de tres, esta noche duermes en el sofá. ¡Vamos a comprobarlo!",
+    "Dicen que os conocéis de memoria… Eso ya lo veremos. ¡Empieza el quiz!",
+    "Hoy se descubre quién presta atención y quién solo dice «sí, cariño». ¡Vamos allá!",
+    "Ojo, que alguna pregunta puede acabar en discusión. ¡Jugad con cuidado!",
+    "Si aciertas todas, tu pareja te debe una cena. Si no… la pagas tú. ¡Empezamos!",
+    "Mira a tu pareja a los ojos y prepárate, que hoy no se miente. ¡Vamos!",
+    "El que menos acierte friega los platos una semana. ¡Que empiece el juego!",
+    "Esto no es un test de amor… pero casi. ¡A ver cuánto os conocéis!",
+    "Hoy vamos a ver si sois pareja de verdad o solo compartís la contraseña del wifi. ¡Vamos!",
+    "Respuestas sinceras, nada de quedar bien. ¡Que os estoy viendo! ¡Empezamos!",
+    "Si te equivocas en la primera, mejor ve preparando las disculpas. ¡Vamos allá!",
+    "Años juntos y aún no sabes esto… A ver si me equivoco. ¡Empieza el quiz!",
+    "Ponte cómodo, coge la mano de tu pareja… y que gane el que más se fije. ¡Vamos!",
+    "Aquí se mide el amor en aciertos. ¿Aprobaréis o habrá drama? ¡Empezamos!",
+    "Etiqueta a tu pareja antes de empezar, que luego no vale poner excusas. ¡Vamos!",
+    "Hoy toca demostrar que escuchas cuando te hablan. ¡Suerte, la vas a necesitar!",
+    "Si sacáis un pleno, ya podéis casaros. Si no… seguid practicando. ¡Vamos allá!",
+    "Prohibido mirar a tu pareja para copiar. ¡Cada uno con su respuesta!",
+    "Las parejas que aciertan todo no existen… demostradme que me equivoco. ¡Empezamos!",
+    "Advertencia: este quiz puede provocar risas, celos y alguna que otra mirada asesina. ¡Vamos!",
+]
+
+LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA}
+REGISTROS = {
+    "trivial": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_usadas.json"),
+    "pareja": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_pareja_usadas.json"),
+}
 
 
-def _leer():
+def _leer(modo):
     try:
-        with open(REGISTRO, encoding="utf-8") as f:
+        with open(REGISTROS[modo], encoding="utf-8") as f:
             return json.load(f)
     except (OSError, ValueError):
         return {}
 
 
-def elegir_frase(video):
+def elegir_frase(video, modo="trivial"):
     """Frase para `video`: la que ya tenía, o la primera que no se ha usado en ningún vídeo."""
-    reg = _leer()
+    lista, reg = LISTAS[modo], _leer(modo)
     if video in reg:
-        return FRASES_INTRO[reg[video] % len(FRASES_INTRO)]
+        return lista[reg[video] % len(lista)]
     usadas = set(reg.values())
-    libres = [i for i in range(len(FRASES_INTRO)) if i not in usadas]
-    i = libres[0] if libres else len(reg) % len(FRASES_INTRO)
-    return FRASES_INTRO[i]
+    libres = [i for i in range(len(lista)) if i not in usadas]
+    return lista[libres[0] if libres else len(reg) % len(lista)]
 
 
-def registrar_frase(video, frase):
-    reg = _leer()
-    reg[video] = FRASES_INTRO.index(frase)
-    with open(REGISTRO, "w", encoding="utf-8") as f:
+def registrar_frase(video, frase, modo="trivial"):
+    reg = _leer(modo)
+    reg[video] = LISTAS[modo].index(frase)
+    with open(REGISTROS[modo], "w", encoding="utf-8") as f:
         json.dump(reg, f, ensure_ascii=False, indent=2, sort_keys=True)

@@ -191,11 +191,12 @@ def build_timeline(quiz, voice, countdown=5):
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
     salsa = quiz.get("frase_intro")
-    sig, d = say(f"¡Es hora del quiz! {salsa}" if (salsa and modo["fin"] is None) else modo["intro_voz"])
+    saludo = "¡Es hora del quiz de parejas!" if modo["fin"] is not None else "¡Es hora del quiz!"
+    sig, d = say(f"{saludo} {salsa}" if salsa else modo["intro_voz"])
     dur = max(2.8, 0.3 + d + 0.2)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text,
-                   "salsa": salsa if modo["fin"] is None else None})
+                   "salsa": salsa})
     t += dur
 
     n_reg = sum(1 for q in quiz["preguntas"] if not q.get("sin_respuesta"))
@@ -456,7 +457,7 @@ def _draw_intro(layer, sc, lt):
               th["accent2"], th["text_light"])
         n = len(quiz["preguntas"])
         n_reg = sum(1 for q in quiz["preguntas"] if not q.get("sin_respuesta"))
-        txt_n = f"{n_reg} PREGUNTAS + EXTRA" if (n_reg < n and modo["fin"] is None) else f"{n} PREGUNTAS"
+        txt_n = f"{n_reg} PREGUNTAS + EXTRA" if n_reg < n else f"{n} PREGUNTAS"
         _pill(d, 540 + (1 - b) * 1200, 1360, f"{txt_n} · {_STATE['countdown']} S", 44, th["accent"], th["text_dark"])
 
 

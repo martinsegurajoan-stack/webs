@@ -41,16 +41,22 @@ diseño ni la voz salvo que lo pida.
 - Cierre: "¿Cuántas has acertado?" y "¡Sígueme para más!" gritado con aplausos.
 - Las frases fijas ya están en `assets/voz_eleven/cache/` y se reutilizan (no se regeneran).
 
-## Modo "pareja" (¿Cuánto conoces a tu pareja?)
-Si el usuario pide un quiz de pareja / "cuánto conoces a tu pareja" o preguntas sin respuesta correcta
-sobre la pareja, usa `"modo": "pareja"` en el JSON (ver `quizzes/pareja_01.json`): paleta `romantico`
-(rosas/morados, corazones), música suave, voz QUIZ con etiqueta "[warm, playful and a little flirty]"
-(contenta pero no eufórica, romántica y bromista), tempo x1.08. No hay respuesta correcta: tras la
-cuenta atrás sale una frase pícara rotatoria ("¿Habéis coincidido?", ...). La pregunta que el usuario
-marque para comentarios lleva `"sin_respuesta": true`. Cierre: "¿Cuántas habéis acertado?" +
-"¡Etiqueta a tu pareja y sígueme para más!". No hace falta `correcta`. Sin límite de 60 s.
-Las frases fijas de este modo ya están en caché; por vídeo solo se generan las preguntas.
-Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
+## Modo "pareja" (QUIZ DE PAREJAS / ¿Cuánto conoces a tu pareja?)
+MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo cambia el estilo:
+- `"modo": "pareja"` en el JSON (ver `quizzes/pareja_01.json`). 7 preguntas = 6 + 1 EXTRA de
+  comentarios al final (`"sin_respuesta": true`, cabecera "PREGUNTA EXTRA").
+- Intro: "¡Es hora del quiz de parejas!" + frase salseante romántica/pícara distinta en cada vídeo
+  (lista `FRASES_PAREJA` en `quizvideo/frases_intro.py`, registro `assets/frases_pareja_usadas.json`).
+- Imagen 3D en cada pregunta (igual que el trivial; elige algo romántico/relacionado: corazón 2764-fe0f,
+  rosa 1f339, anillo 1f48d, besos 1f48b, pareja 1f491, sofá 1f6cb-fe0f, avión 2708-fe0f, dinero 1f4b0...).
+- Color: tono nuevo cada vídeo dentro de rosas/rojos/morados (`paleta_romantica`, automático),
+  corazones flotando, música romántica suave, mismas tipografías, cronómetro con tensión, barra de
+  progreso, relieve, etc.
+- Voz QUIZ con etiqueta "[warm, playful and a little flirty]" (contenta pero no eufórica, romántica y
+  bromista), tempo x1.08. No hay respuesta correcta: tras la cuenta atrás sale una frase pícara
+  rotatoria ("¿Habéis coincidido?", ...) con lluvia de corazones. No hace falta `correcta`.
+- Cierre: "¿Cuántas habéis acertado?" + "¡Etiqueta a tu pareja y sígueme para más!" + logo.
+- Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
 
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` (siguiente número libre; formato en README) con el texto del

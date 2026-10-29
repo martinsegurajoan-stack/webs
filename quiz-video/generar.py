@@ -40,17 +40,18 @@ def main():
         quiz["preguntas"] = quiz["preguntas"][: args.preguntas]
     base = os.path.splitext(os.path.basename(args.quiz))[0]
     frase = None
-    if quiz.get("modo", "trivial") != "pareja" and not quiz.get("frase_intro"):
+    modo_q = "pareja" if quiz.get("modo") == "pareja" else "trivial"
+    if not quiz.get("frase_intro"):
         from quizvideo.frases_intro import elegir_frase
 
-        frase = quiz["frase_intro"] = elegir_frase(base)
+        frase = quiz["frase_intro"] = elegir_frase(base, modo_q)
     tono = None
     args.tema_color = args.tema_color or quiz.get("paleta") or "auto"
     if args.tema_color == "auto":
         # color nuevo, nunca usado en otro vídeo (se reutiliza si se regenera este mismo vídeo)
         pareja = quiz.get("modo") == "pareja"
         tono = themes.elegir_tono(base, (285, 20) if pareja else None)
-        theme = themes.paleta_desde_tono(tono, "corazones" if pareja else None)
+        theme = themes.paleta_romantica(tono) if pareja else themes.paleta_desde_tono(tono)
         args.tema_color = f"auto (tono {tono}°)"
     else:
         theme = themes.get_theme(args.tema_color)
@@ -104,7 +105,7 @@ def main():
     if frase is not None:
         from quizvideo.frases_intro import registrar_frase
 
-        registrar_frase(base, frase)
+        registrar_frase(base, frase, modo_q)
 
 
 if __name__ == "__main__":
