@@ -24,7 +24,7 @@
         "El delfín"
       ],
       "correcta": "B",
-      "imagen": "pulpo_3d.png",
+      "imagen": "cerebro_3d.png",
       "fuente": "El pulpo tiene un corazón sistémico y dos branquiales."
     },
     {
@@ -66,7 +66,7 @@
         "Depende del día"
       ],
       "correcta": "C",
-      "imagen": "balanza_3d.png",
+      "imagen": "pensativo_3d.png",
       "opcion_voz": [
         "La paja",
         "El hierro",
