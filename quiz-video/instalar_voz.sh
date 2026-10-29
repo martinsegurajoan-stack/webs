@@ -2,7 +2,7 @@
 # Instala la voz Kokoro (gratuita, Apache-2.0) en este entorno. Solo usa PyPI y npm.
 set -euo pipefail
 cd "$(dirname "$0")"
-pip install -q kokoro-onnx espeakng-loader
+pip install -q kokoro-onnx espeakng-loader pyworld
 mkdir -p modelos && TMP=$(mktemp -d)
 (cd "$TMP" && npm pack kokoro-q8-shards@1.0.0 kokoro-js@1.2.1 --silent >/dev/null \
   && mkdir kq kj && tar xzf kokoro-q8-shards-1.0.0.tgz -C kq && tar xzf kokoro-js-1.2.1.tgz -C kj)

@@ -89,6 +89,20 @@ def sfx_buzz_end():
     return 0.35 * w * _env(len(t), 0.003, 0.18)
 
 
+def sfx_applause(dur=2.5, seed=5):
+    """Aplausos y vítores sintetizados (muchas palmadas aleatorias)."""
+    rng = np.random.default_rng(seed)
+    n = int(dur * SR)
+    out = np.zeros(n)
+    clap = rng.standard_normal(int(0.03 * SR))
+    clap = (clap - _lowpass(clap, 0.2)) * _env(len(clap), 0.0005, 0.008)
+    for _ in range(int(dur * 90)):
+        s = int(rng.uniform(0, n - len(clap)))
+        out[s:s + len(clap)] += clap * rng.uniform(0.3, 1.0)
+    shape = np.minimum(1, np.linspace(0, 6, n)) * np.minimum(1, np.linspace(3, 0, n))
+    return 0.35 * out * shape
+
+
 # ---------------------------------------------------------------- música
 
 def music(duration, bpm=118, seed=7):
@@ -209,12 +223,12 @@ def resample(sig, sr_from):
     return np.interp(x_new, x_old, sig)
 
 
-def presenter_fx(sig):
+def presenter_fx(sig, drive=2.2):
     """Voz de concurso: realce de presencia, compresión suave y normalización."""
     low = _lowpass_fast(sig, 0.08)
     bright = sig + 0.35 * (sig - low)  # más brillo y presencia
     # compresión suave
-    comp = np.tanh(bright * 2.2) / np.tanh(2.2)
+    comp = np.tanh(bright * drive) / np.tanh(drive)
     peak = np.max(np.abs(comp)) or 1.0
     return 0.85 * comp / peak
 

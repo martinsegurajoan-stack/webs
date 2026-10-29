@@ -17,8 +17,8 @@ python3 generar.py quizzes/geografia_espana.json --preview 16.8   # un fotograma
 
 Primera vez en un entorno nuevo: `./instalar_voz.sh` (voz Kokoro, gratuita y local).
 
-Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz` (por defecto `kokoro:em_santa`, con tono subido;
-también `kokoro:em_alex`, `kokoro:ef_dora`, o `ninguna`), `--velocidad-voz` (1.2),
+Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz` (por defecto `kokoro:ef_dora`, femenina y animada;
+también `kokoro:em_santa`, `kokoro:em_alex`, o `ninguna`), `--velocidad-voz` (1.15),
 `--preguntas`, `--duracion-max`, `--cuenta-atras`, `--sin-musica`.
 
 ## Formato del quiz (JSON)
@@ -44,4 +44,4 @@ cómo se pronuncia algo sin cambiar el texto en pantalla.
 ## Plantilla de @hora.delquiz
 
 Intro "¡ES HORA DEL QUIZ!", usuario `@hora.delquiz` fijo abajo, logo (`assets/logo.png`)
-en el cierre bajo "¡SÍGUEME PARA MÁS!", voz de concurso, paleta verde.
+en el cierre bajo "¡SÍGUEME PARA MÁS!", voz femenina divertida, grito final "¡Sígueme para más!" con aplausos, paleta verde.

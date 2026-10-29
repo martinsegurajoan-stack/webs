@@ -169,10 +169,13 @@ def build_timeline(quiz, voice, countdown=5):
                        "reveal": rv, "correct": ci})
         t += dur
 
-    sig, d = say("¿Cuántas has acertado? ¡Comenta y sígueme para más!")
-    dur = max(3.2, 0.4 + d + 0.8)
-    events += [("fx", "whoosh", t), ("voice", sig, t + 0.4)]
-    scenes.append({"kind": "outro", "start": t, "dur": dur})
+    sig, d = say("¿Cuántas has acertado? ¡Déjamelo en comentarios!")
+    shout_at = 0.4 + d + 0.1
+    sig2, d2 = voice.say("¡Sígueme para más!", shout=True)
+    dur = max(3.5, shout_at + d2 + 1.2)
+    events += [("fx", "whoosh", t), ("voice", sig, t + 0.4), ("voice", sig2, t + shout_at),
+               ("fx", "applause", t + shout_at)]
+    scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at})
     t += dur
     return scenes, events, t
 
@@ -181,9 +184,9 @@ def build_audio(events, total, path, music_on=True):
     mix = audio.Mixer(total)
     fx = {
         "whoosh": audio.sfx_whoosh(), "pop": audio.sfx_pop(), "tick": audio.sfx_tick(),
-        "tick_high": audio.sfx_tick(True), "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(),
+        "tick_high": audio.sfx_tick(True), "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(), "applause": audio.sfx_applause(),
     }
-    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9}
+    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8}
     boosts = [(a, b) for kind, a, b in events if kind == "music_boost"]
     for kind, what, at in events:
         if kind == "music_boost":
@@ -290,11 +293,11 @@ def _draw_outro(layer, sc, lt):
     f, lines, lh = fit(d, "¿Cuántas has acertado?", 820, 300, 110)
     draw_lines(d, lines, f, lh, 540, y + 200, th["text_dark"])
     d.text((540, y + 420), "¡Escríbelo en comentarios!", font=font(54), fill=th["accent2"], anchor="mm")
-    b = ease_out_back((lt - 0.5) / 0.5)
+    b = ease_out_back((lt - sc.get("shout_at", 0.5) + 0.15) / 0.4)
     if b > 0:
-        pulse = 1 + 0.05 * math.sin(lt * 7)
+        pulse = 1 + 0.07 * math.sin(lt * 9)
         _pill(d, 540, 900 + (1 - b) * 900, "¡SÍGUEME PARA MÁS!", int(64 * pulse), th["accent"], th["text_dark"])
-    c = ease_out_back((lt - 0.8) / 0.6)
+    c = ease_out_back((lt - sc.get("shout_at", 0.5) - 0.2) / 0.6)
     if c > 0 and _STATE.get("logo") is not None:
         size = int(400 * c * (1 + 0.025 * math.sin(lt * 4)))
         if size > 4:
