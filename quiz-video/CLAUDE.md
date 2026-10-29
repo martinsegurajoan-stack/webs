@@ -42,6 +42,7 @@ Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo 
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
 
 Plantillas y piezas reutilizables:
+- PLANTILLAS LISTAS PARA COPIAR (una por tipo de vídeo) + índice: `plantillas-quiz/` (`LEEME.md`).
 - Contenido de ejemplo (copiar para vídeos nuevos): `quizzes/hora_del_quiz_02.json` (trivial) y
   `quizzes/pareja_01.json` (pareja).
 - Generador: `generar.py` (CLI) + `quizvideo/` (`render.py` diseño/animación/modos, `themes.py` paletas,

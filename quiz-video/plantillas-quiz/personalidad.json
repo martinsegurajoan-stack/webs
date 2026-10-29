@@ -1,0 +1,179 @@
+{
+  "_plantilla": "personalidad",
+  "_uso": "Test de personalidad (letras A-D, resultados por mayoría). Cambia 'video' por un nombre nuevo, copia a quiz_personalidad/<nombre>.json y ejecuta: python3 generar_personalidad.py quiz_personalidad/<nombre>.json --frases-pendientes  →  voces  →  python3 generar_personalidad.py quiz_personalidad/<nombre>.json  →  python3 portada.py quiz_personalidad/<nombre>.json",
+  "modo": "personalidad",
+  "tema": "personalidad",
+  "video": "hora_del_quiz_personalidad",
+  "titulo": "¿Qué tipo de persona eres realmente?",
+  "intro": {
+    "titulo": [
+      [
+        "¿QUÉ TIPO DE",
+        "w"
+      ],
+      [
+        "PERSONA",
+        "y"
+      ],
+      [
+        "ERES",
+        "w"
+      ],
+      [
+        "REALMENTE?",
+        "t"
+      ]
+    ],
+    "voz": "¿Qué tipo de persona eres realmente? Elige una letra en cada pregunta… ¡y sin trampas!"
+  },
+  "preguntas": [
+    {
+      "pregunta": "Un amigo te cancela un plan a última hora. ¿Qué haces?",
+      "opciones": [
+        "¡A descansar!",
+        "Me enfado en silencio",
+        "Busco otro plan",
+        "Que no cuente conmigo"
+      ],
+      "imagen": "movil.png",
+      "reaccion": "¡Uy, uy, uy!",
+      "reaccion_emoji": "grito"
+    },
+    {
+      "pregunta": "Te toca la lotería. ¿A quién se lo cuentas primero?",
+      "opciones": [
+        "A mi pareja",
+        "A mi familia",
+        "A mi mejor amigo",
+        "A nadie, ni loco"
+      ],
+      "imagen": "dinero.png",
+      "reaccion": "¡Interesante…!",
+      "reaccion_emoji": "ojos"
+    },
+    {
+      "pregunta": "Descubres que un amigo habla mal de ti. ¿Qué haces?",
+      "opciones": [
+        "Se lo pregunto",
+        "Disimulo",
+        "Me alejo",
+        "Lo cuento a todos"
+      ],
+      "imagen": "hablar.png",
+      "reaccion": "¡Polémica!",
+      "reaccion_emoji": "fuego"
+    },
+    {
+      "pregunta": "¿Qué te dolería más?",
+      "opciones": [
+        "Una mentira",
+        "Una traición",
+        "Que me ignoren",
+        "Que me sustituyan"
+      ],
+      "imagen": "corazon_roto.png",
+      "reaccion": "¡Auch!",
+      "reaccion_emoji": "mueca"
+    },
+    {
+      "pregunta": "Tu mejor amigo empieza a salir con tu ex. ¿Cómo reaccionas?",
+      "opciones": [
+        "Me da igual",
+        "Me duele, pero lo acepto",
+        "Hablo con los dos",
+        "Adiós amistad"
+      ],
+      "imagen": "secreto.png",
+      "reaccion": "¡Madre mía!",
+      "reaccion_emoji": "mente_explota"
+    },
+    {
+      "pregunta": "Ves a tu pareja muy simpática con otra persona. ¿Qué haces?",
+      "opciones": [
+        "Ni me inmuto",
+        "Celos por dentro",
+        "Me uno a la charla",
+        "Le monto una escena"
+      ],
+      "imagen": "celos.png",
+      "reaccion": "¡Te he pillado!",
+      "reaccion_emoji": "risa"
+    }
+  ],
+  "resultado": {
+    "titulo": [
+      [
+        "TU",
+        "w"
+      ],
+      [
+        "RESULTADO",
+        "y"
+      ]
+    ],
+    "perfiles": [
+      {
+        "letra": "A",
+        "nombre": "TRANQUI Y PRÁCTICO",
+        "imagen": "tranquilo.png",
+        "voz": "¿Mayoría de A? Tranquilo y práctico: cero dramas."
+      },
+      {
+        "letra": "B",
+        "nombre": "EMOCIONAL Y LEAL",
+        "imagen": "emocional.png",
+        "voz": "¿Mayoría de B? Emocional y leal: lo sientes todo."
+      },
+      {
+        "letra": "C",
+        "nombre": "INDEPENDIENTE Y RESOLUTIVO",
+        "imagen": "cohete.png",
+        "voz": "¿Mayoría de C? Independiente y resolutivo: tú solo te apañas."
+      },
+      {
+        "letra": "D",
+        "nombre": "CARÁCTER Y ORGULLO",
+        "imagen": "orgullo.png",
+        "voz": "¿Mayoría de D? Carácter y orgullo: a ti no te toma el pelo nadie."
+      }
+    ],
+    "empate": "¿EMPATE? ¡ERES UNA MEZCLA!",
+    "aviso": "Resultado orientativo · Test de entretenimiento, no es una evaluación psicológica"
+  },
+  "cierre": {
+    "titulo": [
+      [
+        "¿QUÉ LETRA",
+        "w"
+      ],
+      [
+        "TE HA SALIDO?",
+        "y"
+      ]
+    ],
+    "voz": "¡Confiesa! ¿Qué letra te ha salido? Escríbela en comentarios y etiqueta a ese amigo que necesita este test. ¡Síguenos para más!"
+  },
+  "portada": {
+    "arriba": "TEST DE PERSONALIDAD",
+    "titulo": [
+      [
+        "¿QUÉ TIPO DE",
+        "w"
+      ],
+      [
+        "PERSONA ERES",
+        "a"
+      ],
+      [
+        "REALMENTE?",
+        "w"
+      ]
+    ],
+    "pregunta": 3,
+    "emoji": "ojos",
+    "emoji2": "mascaras",
+    "estilo": "clasica",
+    "pegatina": "¿QUÉ LETRA ERES?",
+    "sub": "Elige A, B, C o D… y descúbrelo"
+  }
+}
