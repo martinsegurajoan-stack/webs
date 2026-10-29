@@ -23,13 +23,15 @@ def main():
     ap.add_argument("quiz", help="Archivo JSON con el quiz")
     ap.add_argument("-o", "--salida", help="Ruta del MP4 (por defecto salida/<nombre>.mp4)")
     ap.add_argument("--tema-color", default="verde", help=f"Paleta: {', '.join(themes.THEMES)}")
-    ap.add_argument("--voz", default="kokoro:ef_dora", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
+    ap.add_argument("--voz", default="eleven", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
     ap.add_argument("--velocidad-voz", type=float, default=1.22)
     ap.add_argument("--preguntas", type=int, help="Usar solo las N primeras preguntas")
     ap.add_argument("--duracion-max", type=float, default=None,
                     help="Segundos máximos: si se pasa, se quitan preguntas del final")
     ap.add_argument("--cuenta-atras", type=int, default=5, help="Segundos por pregunta")
     ap.add_argument("--sin-musica", action="store_true")
+    ap.add_argument("--frases-pendientes", action="store_true",
+                    help="Con la voz de ElevenLabs: lista las frases que faltan por generar y sale")
     ap.add_argument("--preview", type=float, help="Guardar solo el fotograma de este segundo como PNG")
     args = ap.parse_args()
 
@@ -50,6 +52,13 @@ def main():
             break
         quiz["preguntas"] = quiz["preguntas"][:-1]
         print(f"Duración {total:.1f}s > {args.duracion_max}s: uso {len(quiz['preguntas'])} preguntas.")
+
+    if hasattr(voice, "missing"):
+        if args.frases_pendientes:
+            print(voice.pending_json())
+            return
+        if voice.missing:
+            raise SystemExit("Faltan audios de ElevenLabs. Ejecuta con --frases-pendientes:\n" + voice.pending_json())
 
     base = os.path.splitext(os.path.basename(args.quiz))[0]
     out = args.salida or os.path.join(os.path.dirname(os.path.abspath(__file__)), "salida",

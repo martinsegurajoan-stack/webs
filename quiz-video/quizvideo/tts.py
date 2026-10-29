@@ -17,12 +17,16 @@ class SilentVoice:
 def get_voice(name: str, speed: float = 1.0):
     if name in ("ninguna", "none", ""):
         return SilentVoice()
+    if name in ("eleven", "elevenlabs", "elevenlabs:QUIZ"):
+        from .tts_eleven import ElevenVoice
+
+        return ElevenVoice()
     if name.startswith("kokoro"):
         from .tts_kokoro import KokoroVoice
 
         voice_id = name.split(":", 1)[1] if ":" in name else "ef_dora"
         return KokoroVoice(voice_id, speed)
-    raise SystemExit(f"Voz '{name}' desconocida. Usa 'ninguna' o 'kokoro:<voz>' (ef_dora, em_santa, em_alex).")
+    raise SystemExit(f"Voz '{name}' desconocida. Usa 'eleven', 'ninguna' o 'kokoro:<voz>'.")
 
 
 def trim_silence(sig, thr=0.01):

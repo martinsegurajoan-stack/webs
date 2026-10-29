@@ -141,7 +141,7 @@ def build_timeline(quiz, voice, countdown=5):
 
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
-    sig, d = say(f"¡Es hora del quiz! {intro_text} ¡Vamos!")
+    sig, d = say("¡Es hora del quiz! ¿Estás preparado? ¡Vamos!")
     dur = max(2.8, 0.35 + d + 0.35)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text})
@@ -174,7 +174,7 @@ def build_timeline(quiz, voice, countdown=5):
         else:
             # se narra solo la opción correcta
             texto = FRASES_CORRECTA[qi % len(FRASES_CORRECTA)].format(
-                L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci])
+                L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci].rstrip("."))
             sig, dv = say(texto)
             events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.5)]
             rdur = max(2.0, 0.5 + dv + 0.25)
