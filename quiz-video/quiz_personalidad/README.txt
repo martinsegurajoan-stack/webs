@@ -4,8 +4,6 @@ HORA DEL QUIZ ⚡ — TEST DE PERSONALIDAD
 Archivos de esta carpeta
 - hora_del_quiz_personalidad.mp4  Vídeo final (1080x1920, H.264 + AAC, 30 fps).
 - contenido.json                  Todo el contenido: gancho, 9 preguntas, resultados, cierre y portada.
-- guion.txt                       Narración completa (se regenera al montar el vídeo).
-- preguntas.txt                   Preguntas, respuestas y resultados (se regenera al montar el vídeo).
 
 Piezas que usa (en la carpeta quiz-video/)
 - generar_personalidad.py         Programa que monta el vídeo.
@@ -27,11 +25,9 @@ Cómo volver a generarlo (desde quiz-video/)
 3. Montar el vídeo (unos minutos):
      python3 generar_personalidad.py quiz_personalidad/contenido.json
    No sobrescribe un MP4 existente: bórralo o usa -o otra_ruta.mp4.
-   Al terminar verifica resolución, audio y duración con ffprobe y escribe guion.txt y preguntas.txt.
+   Al terminar verifica resolución, audio y duración con ffprobe.
 4. Portadas: python3 portada.py quiz_personalidad/contenido.json  → portadas/hora_del_quiz_personalidad_*.png
 
 Notas
-- La voz NO se acelera (tempo 1,0): la duración se ajusta al audio real.
-- Solo en la pregunta 1 se leen las opciones en voz alta (enseña la dinámica); en el resto se leen
-  las preguntas y las opciones aparecen en pantalla, para no alargar el vídeo más de 3 minutos.
-- Subtítulos: fragmentos de cada frase repartidos según la duración real de su audio.
+- La voz NO se acelera (tempo 1,0). Duración objetivo 1:30-1:45.
+- Subtítulos estilo TikTok sincronizados con las pausas reales del audio.

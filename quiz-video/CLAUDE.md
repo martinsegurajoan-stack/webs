@@ -35,7 +35,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
-| `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 170 s | TEST DE PERSONALIDAD (9 preguntas, resultados por letra) = PLANTILLA DE TEST DE PERSONALIDAD |
+| `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
 
@@ -136,24 +136,23 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   decorado, música, frases) y pregúntale al usuario solo si no está claro el estilo.
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
-Carpeta `quiz_personalidad/` (contenido.json, MP4, guion.txt, preguntas.txt, README.txt). Programa
-`generar_personalidad.py` + `quizvideo/personalidad.py` (reutiliza voz, efectos, música y exportación).
-- Colores de marca: amarillo, turquesa, morado y negro (tarjetas A amarilla, B turquesa, C morada,
-  D negra con borde amarillo). Logo "HORA DEL QUIZ ⚡" discreto arriba a la izquierda todo el vídeo.
-- Estructura: gancho (rayo + titular que cae palabra a palabra + emojis 3D) → 9 preguntas (entradas
-  variadas: deslizar, zoom, caída, giro; opciones que entran por los lados con rebote; dibujo 3D a la
-  izquierda y emoji de pensar a la derecha del cronómetro; cuenta atrás de 5 s con anillo que se
-  vacía, tic-tac, latido y riser; sello «¡APÚNTALA!») → resultados (redoble con letras girando,
-  confeti, tarjeta por letra que se resalta mientras se narra, panel de empate + aviso "test de
-  entretenimiento") → cierre «¿QUÉ LETRA TE HA SALIDO?» (mano 👇, fichas A-D botando, comentarios que
-  se escriben solos, logo + "SÍGUENOS").
-- Subtítulos sincronizados abajo (fragmentos repartidos según la duración real de cada audio).
-- Voz QUIZ con etiqueta "[playful and a little cheeky]" y SIN acelerar (tempo 1,0, petición del
-  usuario: la duración se ajusta al audio real). Solo la pregunta 1 lee las opciones (campo
-  `leer_opciones`); las demás solo la pregunta. Coste: ~2.200 créditos el primero (18 frases).
-- Con 9 preguntas dura ~170 s (por debajo de los 3 min de Shorts/Reels). Para acercarse a 90 s hay que
-  quitar preguntas o acortar la narración de los resultados.
-- Portada: clave "portada" en contenido.json (modo personalidad → paleta de marca en portada.py).
+`quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`
+(reutiliza voz, efectos, música y exportación). Al usuario SOLO se le envía MP4 + 2 portadas + textos.
+REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
+- 6 preguntas, opciones MUY cortas (2-4 palabras). La pregunta se ilumina palabra a palabra al
+  decirse (sin subtítulo duplicado). Cuenta atrás de 5 s con anillo, tic-tac, latido y riser.
+- Tras cada cuenta atrás: REACCIÓN graciosa de la voz (campo `reaccion`, etiqueta
+  "[playful, laughing a little]") + pegatina rosa con emoji 3D (`reaccion_emoji`) + "boing".
+- Resultados: redoble con letras girando → "TU RESULTADO" + 4 fichas 2x2 (letra, emoji, nombre corto)
+  que se iluminan al narrarse ("¿Mayoría de A? Tranquilo y práctico: cero dramas.") → pastilla
+  "¿EMPATE? ¡ERES UNA MEZCLA!" + aviso "Resultado orientativo · test de entretenimiento".
+- Cierre: «¿QUÉ LETRA TE HA SALIDO?», mano 👇, fichas A-D botando, comentarios que se escriben solos,
+  logo + "SÍGUENOS".
+- SUBTÍTULOS estilo TikTok (distintos de la etiqueta @hora.delquiz): 1-3 palabras en MAYÚSCULAS,
+  Lilita gorda con contorno negro y sombra, la palabra que suena salta en amarillo/turquesa.
+  Sincronía: pausas reales del audio + reparto por longitud (`align_words`).
+- Colores de marca: amarillo, turquesa, morado y negro. Logo "HORA DEL QUIZ ⚡" arriba a la izquierda.
+- Voz QUIZ "[playful and a little cheeky]" SIN acelerar (tempo 1,0). v2: 103 s, ~940 créditos nuevos.
 
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` o `quizzes/pareja_NN.json` (siguiente número libre; copia la

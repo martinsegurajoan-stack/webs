@@ -39,45 +39,98 @@ COUNTDOWN = 5
 BPM = 118
 TONO = 270  # tono registrado en paletas_usadas.json (morado de marca)
 
-STAMPS = ["¡APÚNTALA!", "¡APUNTA TU LETRA!", "¡APÚNTALA!", "¿LA TIENES?", "¡APÚNTALA!",
-          "¡SIN TRAMPAS!", "¡APÚNTALA!", "¡APUNTA TU LETRA!", "¡ÚLTIMA!"]
 SIDE_EMOJI = ["pensativo", "ojos", "mente_explota"]
 
 
-# ---------------------------------------------------------------- subtítulos
+# ---------------------------------------------------------------- subtítulos palabra a palabra
 
-def chunks(text, maxlen=30):
-    """Trocea una frase en fragmentos cortos para subtítulos (corta en signos de puntuación)."""
-    words, out, cur = text.split(), [], ""
-    for w in words:
-        test = (cur + " " + w).strip()
-        if len(test) > maxlen and cur:
-            out.append(cur)
-            cur = w
-        else:
-            cur = test
-        if re.search(r"[.!?:]$", cur) and len(cur) >= 12:
-            out.append(cur)
-            cur = ""
+PUNCT = re.compile(r"[,.!?:;…]$")
+
+
+def align_words(text, sig, dur):
+    """Tiempo (inicio, fin) de cada palabra. Usa las pausas reales del audio para colocar los signos
+    de puntuación y reparte las palabras de cada tramo según su longitud."""
+    words = text.split()
+    wts = [len(w) + 1 for w in words]
+    bounds = [i for i, w in enumerate(words[:-1]) if PUNCT.search(w)]
+    gaps = []
+    if sig is not None and len(sig) > 0:
+        fr = int(0.01 * audio.SR)
+        n = len(sig) // fr
+        e = np.sqrt(np.mean(sig[: n * fr].reshape(n, fr) ** 2, axis=1))
+        silent = e < max(e) * 0.07
+        k = 0
+        while k < n:
+            if silent[k]:
+                j = k
+                while j < n and silent[j]:
+                    j += 1
+                if j - k >= 7 and k > 5 and j < n - 5:
+                    gaps.append((k * 0.01, j * 0.01))
+                k = j
+            else:
+                k += 1
+    tot = sum(wts)
+    cum = np.cumsum(wts)
+    cuts = []  # (índice de palabra, inicio de pausa, fin de pausa)
+    used = set()
+    for b in bounds:
+        exp = dur * cum[b] / tot
+        best = None
+        for gi, (ga, gb) in enumerate(gaps):
+            if gi in used:
+                continue
+            dist = abs((ga + gb) / 2 - exp)
+            if dist < max(0.6, dur * 0.2) and (best is None or dist < best[0]):
+                best = (dist, gi)
+        if best:
+            used.add(best[1])
+            cuts.append((b, gaps[best[1]][0], gaps[best[1]][1]))
+    cuts.sort(key=lambda c: c[1])
+    # quita cortes desordenados
+    clean, last_b = [], -1
+    for c_ in cuts:
+        if c_[0] > last_b:
+            clean.append(c_)
+            last_b = c_[0]
+    out = [None] * len(words)
+    seg_start_w, seg_t = 0, 0.0
+    for b, ga, gb in clean + [(len(words) - 1, dur, dur)]:
+        ws = list(range(seg_start_w, b + 1))
+        span = max(0.05, ga - seg_t)
+        sw = sum(wts[i] for i in ws)
+        t = seg_t
+        for i in ws:
+            d = span * wts[i] / sw
+            out[i] = (t, t + d)
+            t += d
+        seg_start_w, seg_t = b + 1, gb
+    return words, out
+
+
+def caption_chunks(words, times, at, maxw=3, maxc=17):
+    """Agrupa palabras en golpes de 1-3 palabras (corta en signos de puntuación)."""
+    res, cur = [], []
+    for w, (a, b) in zip(words, times):
+        cur.append((w, at + a, at + b))
+        txt = " ".join(x[0] for x in cur)
+        if len(cur) >= maxw or len(txt) >= maxc or PUNCT.search(w):
+            res.append(cur)
+            cur = []
     if cur:
-        out.append(cur)
-    return out
-
-
-def timed_chunks(text, start, dur):
-    """Reparte la duración real del audio entre los fragmentos según su longitud."""
-    parts = chunks(text)
-    weights = [len(p) + 6 for p in parts]  # +6: pausas entre fragmentos
-    tot = sum(weights)
-    out, t = [], start
-    for p, w in zip(parts, weights):
-        d = dur * w / tot
-        out.append((t, t + d, p))
-        t += d
+        res.append(cur)
+    out = []
+    for k, ch in enumerate(res):
+        start = ch[0][1]
+        end = res[k + 1][0][1] if k + 1 < len(res) else ch[-1][2] + 0.25
+        out.append({"start": start, "end": end, "words": ch})
     return out
 
 
 # ---------------------------------------------------------------- línea de tiempo
+
+REACT_STYLE = "[playful, laughing a little]"
+
 
 def build_timeline(c, voice):
     events, subs, scenes = [], [], []
@@ -85,50 +138,49 @@ def build_timeline(c, voice):
     def fx(name, at, gain=1.0):
         events.append(("fx", name, at, gain))
 
-    def speak(text, at):
+    def speak(text, at, show_subs=True, style=None):
+        old = voice.style
+        if style:
+            voice.style = style
         sig, dur = voice.say(text)
+        voice.style = old
         events.append(("voice", sig, at, 1.0))
-        subs.extend(timed_chunks(text, at, dur))
-        return dur
+        words, times = align_words(text, sig, dur)
+        if show_subs:
+            subs.extend(caption_chunks(words, times, at))
+        return dur, [(w, at + a, at + b) for w, (a, b) in zip(words, times)]
 
     t = 0.0
-    # ---- gancho
-    v0 = 0.85
-    dv = speak(c["intro"]["voz"], v0)
-    fx("impact", 0.05, 1.0)
-    fx("whoosh", 0.0, 0.6)
-    for k in range(4):
-        fx("pop", 0.25 + 0.16 * k, 0.55)
-    fx("chime", 1.05, 0.35)
-    dur = v0 + dv + 0.4
-    scenes.append({"kind": "intro", "start": t, "dur": dur, "vstart": v0, "vdur": dv})
+    # ---- gancho: el titular cae al ritmo de las palabras
+    v0 = 0.45
+    fx("impact", 0.0, 1.0)
+    fx("whoosh", 0.0, 0.5)
+    dv, wt = speak(c["intro"]["voz"], v0)
+    nt = sum(len(l[0].split()) for l in c["intro"]["titulo"])
+    title_times, k = [], 0
+    for l in c["intro"]["titulo"]:
+        n = len(l[0].split())
+        title_times.append(wt[min(k, len(wt) - 1)][1])
+        k += n
+    for tt in title_times:
+        fx("pop", tt, 0.6)
+    del nt
+    dur = v0 + dv + 0.35
+    scenes.append({"kind": "intro", "start": t, "dur": dur, "title_times": [x - t for x in title_times],
+                   "pill_t": title_times[-1] + 0.5})
     t += dur
 
     # ---- preguntas
     nq = len(c["preguntas"])
     for i, q in enumerate(c["preguntas"]):
         sc = {"kind": "q", "i": i, "n": nq, "q": q, "start": t}
-        fx("whoosh", t, 0.55)
+        fx("whoosh", t, 0.5)
         for k in range(4):
-            fx("pop", t + 0.55 + 0.09 * k, 0.32)
+            fx("pop", t + 0.5 + 0.08 * k, 0.3)
         vq = 0.3
-        dq = speak(q["pregunta"], t + vq)
-        vend = vq + dq
-        sc["opt_read"] = None
-        if q.get("leer_opciones"):
-            vo = vend + 0.15
-            do = speak(q["leer_opciones"], t + vo)
-            # cuándo se lee cada opción (proporcional a su texto) para resaltarla
-            segs = [s for s in re.split(r"(?<=\.)\s+", q["leer_opciones"]) if s]
-            tot = sum(len(s) for s in segs)
-            acc, rd = vo, []
-            for s in segs:
-                d = do * len(s) / tot
-                rd.append((acc, acc + d))
-                acc += d
-            sc["opt_read"] = rd
-            vend = vo + do
-        cd = vend + 0.2
+        dq, qwords = speak(q["pregunta"], t + vq, show_subs=False)  # la propia tarjeta hace de subtítulo
+        sc["qwords"] = [(w, a - t, b - t) for w, a, b in qwords]
+        cd = vq + dq + 0.2
         sc["cd_start"] = cd
         fx("riser", t + cd, 0.5)
         events.append(("boost", t + cd, t + cd + COUNTDOWN, 0))
@@ -139,37 +191,39 @@ def build_timeline(c, voice):
             if k >= COUNTDOWN - 2:
                 fx("tock", tk + 0.5, 0.9)
         cend = cd + COUNTDOWN
-        fx("buzz", t + cend, 0.55)
-        fx("stamp", t + cend + 0.05, 0.9)
         sc["cd_end"] = cend
-        sc["dur"] = cend + 0.65 + 0.35
+        fx("buzz", t + cend, 0.45)
+        fx("boing", t + cend + 0.02, 0.8)
+        dr, _ = speak(q["reaccion"], t + cend + 0.12, show_subs=True, style=REACT_STYLE)
+        sc["react_end"] = cend + 0.12 + dr
+        sc["dur"] = cend + max(1.0, 0.12 + dr + 0.05)
         scenes.append(sc)
         t += sc["dur"]
 
     # ---- resultados
     r = c["resultado"]
     sc = {"kind": "res", "start": t, "r": r}
-    fx("riser_short", t - 0.3, 0.6)
-    fx("drum", t - 0.3, 0.8)
-    rev = 1.1
+    fx("drum", t, 0.8)
+    fx("riser_short", t, 0.5)
+    rev = 1.0
     fx("impact", t + rev, 0.9)
     fx("correct", t + rev, 0.8)
-    fx("applause", t + rev, 0.55)
+    fx("applause", t + rev, 0.5)
     sc["reveal"] = rev
     a = rev + 0.35
-    d = speak(r["voz"], t + a)
-    a += d + 0.25
+    if r.get("voz"):
+        d, _ = speak(r["voz"], t + a)
+        a += d + 0.15
     sc["perfiles"] = []
     for p in r["perfiles"]:
-        fx("whoosh", t + a - 0.2, 0.4)
-        fx("pop", t + a - 0.05, 0.5)
-        d = speak(p["voz"], t + a)
-        sc["perfiles"].append((a - 0.2, a, a + d))
-        a += d + 0.15
-    fx("impact", t + a - 0.15, 0.6)
-    sc["tie_start"] = a - 0.2
-    d = speak(r["empate_voz"], t + a)
-    a += d + 0.5
+        fx("pop", t + a - 0.1, 0.6)
+        fx("whoosh", t + a - 0.2, 0.35)
+        d, _ = speak(p["voz"], t + a)
+        sc["perfiles"].append((a - 0.15, a, a + d))
+        a += d + 0.12
+    sc["tie_start"] = a - 0.1
+    fx("boing", t + a - 0.05, 0.6)
+    a += 1.4
     sc["dur"] = a
     scenes.append(sc)
     t += a
@@ -178,16 +232,17 @@ def build_timeline(c, voice):
     cc = c["cierre"]
     sc = {"kind": "cta", "start": t, "c": cc}
     fx("whoosh", t, 0.6)
-    fx("impact", t + 0.1, 0.8)
-    v = 0.7
-    d = speak(cc["voz"], t + v)
+    fx("impact", t + 0.05, 0.8)
+    v = 0.45
+    d, _ = speak(cc["voz"], t + v)
     sc["vstart"], sc["vdur"] = v, d
-    sc["follow"] = v + d * 0.74
-    fx("correct", t + sc["follow"], 0.6)
-    fx("applause", t + v + d - 0.2, 0.6)
-    for k in range(18):  # tecleo del comentario
-        fx("type", t + 2.0 + 0.07 * k, 0.35)
-    sc["dur"] = v + d + 2.3
+    sc["follow"] = v + d * 0.82
+    sc["typing"] = v + 1.2
+    fx("correct", t + sc["follow"], 0.55)
+    fx("applause", t + v + d - 0.2, 0.55)
+    for k in range(16):
+        fx("type", t + sc["typing"] + 0.06 * k, 0.35)
+    sc["dur"] = v + d + 1.4
     scenes.append(sc)
     t += sc["dur"]
     return scenes, events, subs, t
@@ -224,13 +279,19 @@ def sfx_stamp():
     return 0.8 * thump
 
 
+def sfx_boing():
+    t = np.arange(int(0.45 * audio.SR)) / audio.SR
+    f = 180 + 260 * np.exp(-t * 9) * (1 + 0.35 * np.sin(2 * np.pi * 14 * t))
+    return 0.55 * np.sin(2 * np.pi * np.cumsum(f) / audio.SR) * np.exp(-t * 6)
+
+
 def build_audio(events, total, path):
     mix = audio.Mixer(total)
     fx = {"whoosh": audio.sfx_whoosh(), "pop": audio.sfx_pop(), "tick": audio.sfx_tick(),
           "tick_high": audio.sfx_tick(True), "tock": audio.sfx_tock(), "heart": audio.sfx_heartbeat(),
           "riser": audio.sfx_riser(COUNTDOWN), "riser_short": audio.sfx_riser(1.4), "buzz": audio.sfx_buzz_end(),
           "correct": audio.sfx_correct(), "applause": audio.sfx_applause(), "chime": audio.sfx_correct(),
-          "impact": sfx_impact(), "drum": sfx_drum(), "stamp": sfx_stamp(), "type": audio.sfx_tick() * 0.5}
+          "impact": sfx_impact(), "drum": sfx_drum(), "stamp": sfx_stamp(), "boing": sfx_boing(), "type": audio.sfx_tick() * 0.5}
     boosts = []
     for ev in events:
         if ev[0] == "fx":
@@ -437,23 +498,41 @@ def username(img):
 
 
 def subtitles(img, t):
-    for a, b, txt in _S["subs"]:
-        if a <= t < b:
-            k = ease_out_back(min(1, (t - a) / 0.18))
-            f, lines, lh = fit(ImageDraw.Draw(img), txt, 860, 120, 46, minimum=34, spacing=1.1)
-            lay = Image.new("RGBA", (W, 260), (0, 0, 0, 0))
-            d = ImageDraw.Draw(lay)
-            wmax = max(d.textlength(l, font=f) for l in lines)
-            hh = lh * len(lines)
-            cy = 130
-            d.rounded_rectangle((540 - wmax / 2 - 30, cy - hh / 2 - 18, 540 + wmax / 2 + 30, cy + hh / 2 + 18), 26,
-                                fill=(0, 0, 0, 175))
-            y = cy - hh / 2 + lh / 2
-            for l in lines:
-                d.text((540, y), l, font=f, fill=WHITE, anchor="mm", stroke_width=2, stroke_fill=BLACK)
-                y += lh
-            paste_c(img, lay, 540, 1490 + 14 * (1 - k), 0.92 + 0.08 * k, alpha=min(1, (t - a) / 0.1))
-            break
+    """Subtítulos estilo TikTok: 1-3 palabras gordas con contorno; la palabra que suena salta en color."""
+    for k, ch in enumerate(_S["subs"]):
+        if not (ch["start"] <= t < ch["end"]):
+            continue
+        words = [w.upper() for w, _, _ in ch["words"]]
+        size = 84
+        tmp = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+        sp = 22
+        while True:
+            f = tfont(size)
+            ws = [tmp.textlength(w, font=f) for w in words]
+            total = sum(ws) + sp * (len(words) - 1)
+            if total <= 940 or size <= 48:
+                break
+            size -= 4
+        hl = YEL if k % 2 == 0 else TURQ
+        acts = [a <= t < b + 0.05 for _, a, b in ch["words"]]
+        sizes = [int(size * 1.12) if ac else size for ac in acts]
+        wds = [tmp.textlength(w, font=tfont(sz)) for w, sz in zip(words, sizes)]
+        total = sum(wds) + sp * (len(words) - 1)
+        lay = Image.new("RGBA", (W + 200, 240), (0, 0, 0, 0))
+        d = ImageDraw.Draw(lay)
+        x = (W + 200) / 2 - total / 2
+        for (w, a, b), txt, wd, sz, active in zip(ch["words"], words, wds, sizes, acts):
+            fill = hl if active else WHITE
+            cx = x + wd / 2
+            yoff = -10 * math.sin(min(1, (t - a) / 0.14) * math.pi) if active else 0
+            d.text((cx + 5, 128 + 7 + yoff), txt, font=tfont(sz), anchor="mm", fill=(0, 0, 0, 170),
+                   stroke_width=11, stroke_fill=(0, 0, 0, 170))
+            d.text((cx, 128 + yoff), txt, font=tfont(sz), anchor="mm", fill=fill, stroke_width=10,
+                   stroke_fill=BLACK)
+            x += wd + sp
+        p = ease_out_back(min(1, (t - ch["start"]) / 0.16))
+        paste_c(img, lay, 540, 1470, 0.75 + 0.25 * p, 3 if k % 2 else -3)
+        break
 
 
 def flash(img, a):
@@ -484,61 +563,78 @@ def draw_intro(img, sc, lt):
         _S["cache"]["intro_title"] = [text_sprite([l], 150 if l[1] == "y" else 118, FILL, stroke=12)
                                       for l in [tuple(x) for x in _S["c"]["intro"]["titulo"]]]
     sprites = _S["cache"]["intro_title"]
-    # rayo que cae al principio
-    if lt < 0.45:
+    if lt < 0.4:  # rayo
         lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-        bolt(ImageDraw.Draw(lay), 540, 780, 520 * ease_out(lt / 0.2), YEL, outline=WHITE)
-        a = 1 - max(0, (lt - 0.25) / 0.2)
-        paste_c(img, lay, 540, 960, alpha=max(0, a))
-    flash(img, 0.85 * max(0, 1 - lt / 0.25) if lt > 0.05 else 0)
+        bolt(ImageDraw.Draw(lay), 540, 780, 520 * ease_out(lt / 0.18), YEL, outline=WHITE)
+        paste_c(img, lay, 540, 960, alpha=max(0, 1 - max(0, (lt - 0.22) / 0.18)))
+    flash(img, 0.85 * max(0, 1 - lt / 0.22) if lt > 0.04 else 0)
     ys = [470, 640, 805, 950]
     for k, spr in enumerate(sprites):
-        a0 = 0.25 + 0.16 * k
+        a0 = sc["title_times"][k] - 0.05
         if lt < a0:
             continue
-        p = (lt - a0) / 0.35
-        sc_ = 2.4 - 1.4 * ease_out_back(p) if p < 1 else 1.0 + 0.02 * math.sin(lt * 3 + k)
-        ang = 4 * math.sin(lt * 1.7 + k) * min(1, p) * 0.6
-        paste_c(img, spr, 540, ys[k], sc_, ang - 2, alpha=min(1, p * 3))
-    d = ImageDraw.Draw(img)
-    if lt > 1.1:
-        p = ease_out_back((lt - 1.1) / 0.4)
+        p = (lt - a0) / 0.3
+        sc_ = 2.4 - 1.4 * ease_out_back(p) if p < 1 else 1.0 + 0.025 * math.sin(lt * 3 + k)
+        paste_c(img, spr, 540, ys[k], sc_, 3 * math.sin(lt * 1.7 + k) - 2, alpha=min(1, p * 3))
+    pt = sc["pill_t"]
+    if lt > pt:
+        p = ease_out_back((lt - pt) / 0.35)
         lay = Image.new("RGBA", (W, 200), (0, 0, 0, 0))
         pill(ImageDraw.Draw(lay), 540, 100, "TEST DE PERSONALIDAD", 56, TURQ, BLACK)
-        paste_c(img, lay, 540 + (1 - p) * 700, 1120)
-    if lt > 1.5:
-        p = min(1, (lt - 1.5) / 0.4)
-        lay = Image.new("RGBA", (W, 120), (0, 0, 0, 0))
-        ImageDraw.Draw(lay).text((540, 60), "9 PREGUNTAS · ELIGE A, B, C O D", font=font(46), fill=WHITE,
-                                 anchor="mm", stroke_width=6, stroke_fill=BLACK)
-        paste_c(img, lay, 540, 1235 + 20 * (1 - p), alpha=p)
-    # emojis 3D alrededor del titular
+        paste_c(img, lay, 540 + (1 - p) * 700, 1130, 1, -2)
     for k, (name, x, y, s) in enumerate([("mascaras", 150, 380, 190), ("cerebro", 940, 560, 170),
                                          ("pensativo", 135, 1010, 170), ("ojos", 945, 1050, 160)]):
-        a0 = 0.7 + 0.15 * k
+        a0 = 0.5 + 0.12 * k
         if lt > a0:
-            p = ease_out_back((lt - a0) / 0.4)
+            p = ease_out_back((lt - a0) / 0.35)
             paste_c(img, _img(name, s), x, y + 14 * math.sin(lt * 2.2 + k), p, 10 * math.sin(lt * 1.6 + k))
-    del d
 
 
 # ---------------------------------------------------------------- escena: pregunta
 
-def q_card(sc):
-    key = ("qcard", sc["i"])
+def q_layout(sc):
+    """Coloca las palabras de la pregunta (para iluminarlas una a una)."""
+    key = ("qlay", sc["i"])
     if key not in _S["cache"]:
-        card = Image.new("RGBA", (960, 330), (0, 0, 0, 0))
-        d = ImageDraw.Draw(card)
+        tmp = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+        f, lines, lh = fit(tmp, sc["q"]["pregunta"], 850, 250, 80, minimum=46, spacing=1.08)
+        sp = tmp.textlength(" ", font=f)
+        pos = []
+        y = 157 - lh * len(lines) / 2 + lh / 2
+        for l in lines:
+            ws = l.split()
+            wl = [tmp.textlength(w, font=f) for w in ws]
+            x = 480 - (sum(wl) + sp * (len(ws) - 1)) / 2
+            for w, wd in zip(ws, wl):
+                pos.append((w, x + wd / 2, y))
+                x += wd + sp
+            y += lh
+        bg = Image.new("RGBA", (960, 330), (0, 0, 0, 0))
+        d = ImageDraw.Draw(bg)
         d.rounded_rectangle((10, 26, 950, 326), 48, fill=(90, 30, 190))
         d.rounded_rectangle((10, 8, 950, 306), 48, fill=WHITE)
         d.rounded_rectangle((26, 18, 934, 90), 32, fill=(244, 238, 255))
-        f, lines, lh = fit(d, sc["q"]["pregunta"], 850, 250, 78, minimum=44, spacing=1.08)
-        y = 157 - lh * len(lines) / 2 + lh / 2
-        for l in lines:
-            d.text((480, y), l, font=f, fill=(48, 14, 104), anchor="mm")
-            y += lh
-        _S["cache"][key] = card
+        _S["cache"][key] = (f, pos, bg)
     return _S["cache"][key]
+
+
+def q_card(sc, lt):
+    f, pos, bg = q_layout(sc)
+    card = bg.copy()
+    d = ImageDraw.Draw(card)
+    qw = sc["qwords"]
+    done = lt >= qw[-1][2] + 0.1
+    for k, (w, x, y) in enumerate(pos):
+        a, b = (qw[k][1], qw[k][2]) if k < len(qw) else (0, 0)
+        if done or lt >= b:
+            d.text((x, y), w, font=f, fill=(48, 14, 104), anchor="mm")
+        elif lt >= a:  # palabra que suena: salta en color
+            p = min(1, (lt - a) / 0.12)
+            fs = tfont(int(f.size * (1.0 + 0.12 * math.sin(p * math.pi))))
+            d.text((x, y - 6 * math.sin(p * math.pi)), w, font=fs, fill=PURP, anchor="mm")
+        else:
+            d.text((x, y), w, font=f, fill=(48, 14, 104, 45), anchor="mm")
+    return card
 
 
 def opt_card(sc, k, hl=False):
@@ -560,7 +656,7 @@ def opt_card(sc, k, hl=False):
         d.ellipse((cx - 40, cy - 40, cx + 40, cy + 40), fill=WHITE if k != 3 else YEL)
         d.text((cx, cy + 3), LETTERS[k], font=tfont(54), fill=(bg if k != 3 else BLACK) if k in (2, 3) else BLACK,
                anchor="mm")
-        f, lines, lh = fit(d, sc["q"]["opciones"][k], 760, 92, 46, minimum=30, spacing=1.0)
+        f, lines, lh = fit(d, sc["q"]["opciones"][k], 740, 92, 56, minimum=30, spacing=1.0)
         y = cy - lh * len(lines) / 2 + lh / 2 + 2
         for l in lines:
             d.text((528, y), l, font=f, fill=fg, anchor="mm")
@@ -600,26 +696,25 @@ def countdown_ring(img, sc, lt, cx=540, cy=800):
 def draw_question(img, sc, lt):
     i = sc["i"]
     d = ImageDraw.Draw(img)
-    # cabecera: nº de pregunta + barra de progreso
     lay = Image.new("RGBA", (W, 200), (0, 0, 0, 0))
-    ld = ImageDraw.Draw(lay)
-    pill(ld, 838, 105, f"PREGUNTA {i + 1}/{sc['n']}", 44, YEL, BLACK)
-    paste_c(img, lay, 540, 100 + 105 - 100 + 0 * lt, 1.0)
+    pill(ImageDraw.Draw(lay), 838, 105, f"PREGUNTA {i + 1}/{sc['n']}", 44, YEL, BLACK)
+    paste_c(img, lay, 540, 205, 1.0)
     x0, x1, yb = 90, 990, 292
-    seg = (x1 - x0 - 8 * (sc["n"] - 1)) / sc["n"]
+    seg = (x1 - x0 - 10 * (sc["n"] - 1)) / sc["n"]
     for k in range(sc["n"]):
-        xa = x0 + k * (seg + 8)
-        col = YEL if k < i else ((255, 255, 255, 70) if k > i else None)
-        if k == i:
-            pk = 0.5 + 0.5 * math.sin(lt * 6)
-            col = tuple(int(TURQ[j] * (0.7 + 0.3 * pk) + 255 * 0.3 * (1 - pk) * 0) for j in range(3))
+        xa = x0 + k * (seg + 10)
+        if k < i:
+            col = YEL
+        elif k > i:
+            col = (255, 255, 255, 70)
+        else:
+            col = TURQ if int(lt * 4) % 2 == 0 else (120, 255, 240)
         d.rounded_rectangle((xa, yb - 8, xa + seg, yb + 8), 8, fill=col)
 
-    # transición de entrada (varía cada pregunta)
-    p = min(1.0, lt / 0.5)
+    p = min(1.0, lt / 0.45)
     mode = i % 4
-    card = q_card(sc)
-    cx, cy, s, ang, alpha = 540, 505, 1.0, -1.0 + 1.2 * math.sin(lt * 1.3) * 0.5, 1.0
+    card = q_card(sc, lt)
+    cx, cy, s, ang, alpha = 540, 505, 1.0, -1.0 + 0.6 * math.sin(lt * 1.3), 1.0
     if mode == 0:
         cx = 540 + (1 - ease_out_back(p)) * 1100
     elif mode == 1:
@@ -627,87 +722,80 @@ def draw_question(img, sc, lt):
         alpha = min(1, p * 2.5)
     elif mode == 2:
         cy = 505 - (1 - ease_out_back(p)) * 900
-    else:
-        s = 1.0
-        if p < 1:
-            card = card.resize((max(1, int(card.width * max(0.02, ease_out_back(p)))), card.height),
-                               Image.BILINEAR)
+    elif p < 1:
+        card = card.resize((max(1, int(card.width * max(0.02, ease_out_back(p)))), card.height), Image.BILINEAR)
     paste_c(img, card, cx, cy, s, ang, alpha)
 
-    # dibujo 3D a la izquierda y emoji de pensar a la derecha del cronómetro
-    if lt > 0.45:
-        pe = ease_out_back((lt - 0.45) / 0.4)
+    if lt > 0.4:
+        pe = ease_out_back((lt - 0.4) / 0.35)
         paste_c(img, _img(sc["q"]["imagen"], 190), 230, 800 + 12 * math.sin(lt * 2.4), pe, 8 * math.sin(lt * 1.8))
         paste_c(img, _img(SIDE_EMOJI[i % 3], 150), 852, 800 + 12 * math.sin(lt * 2.4 + 2), pe,
                 -8 * math.sin(lt * 1.5))
     countdown_ring(img, sc, lt)
 
-    # opciones: entran por los lados con rebote, luego flotan
     cd_end = sc["cd_end"]
     for k in range(4):
-        a0 = 0.55 + 0.09 * k
+        a0 = 0.5 + 0.08 * k
         if lt < a0:
             continue
-        pk = ease_out_back((lt - a0) / 0.45)
+        pk = ease_out_back((lt - a0) / 0.4)
         side = -1 if (k + i) % 2 == 0 else 1
-        hl = False
-        if sc["opt_read"]:
-            ra, rb = sc["opt_read"][k]
-            hl = ra <= lt < rb
         x = 540 + side * (1 - pk) * 1150
         y = 965 + k * 128 + 4 * math.sin(lt * 2.6 + k * 1.3)
-        s = 1.05 if hl else 1.0
+        s = 1.0
+        ang = 0
         if 0 <= lt - sc["cd_start"] < COUNTDOWN and COUNTDOWN - (lt - sc["cd_start"]) < 2:
             s += 0.015 * math.sin(lt * 20 + k)
-        if lt >= cd_end:  # golpe de "tiempo" en las tarjetas
-            s += 0.06 * max(0, 1 - (lt - cd_end) / 0.25)
-        paste_c(img, opt_card(sc, k, hl), x, y, s)
+        if lt >= cd_end:  # las tarjetas tiemblan con la reacción
+            e = max(0, 1 - (lt - cd_end) / 0.6)
+            ang = 4 * e * math.sin((lt - cd_end) * 40 + k)
+        paste_c(img, opt_card(sc, k), x, y, s, ang)
 
-    # sello «¡APÚNTALA!» al acabar el tiempo
-    if cd_end <= lt < cd_end + 0.85:
-        q = (lt - cd_end) / 0.25
-        key = ("stamp", i)
+    # reacción divertida (pegatina + emoji 3D)
+    if lt >= cd_end:
+        q = (lt - cd_end) / 0.22
+        key = ("react", i)
         if key not in _S["cache"]:
-            txt = STAMPS[i % len(STAMPS)]
-            f = tfont(96)
+            txt = sc["q"]["reaccion"].upper()
+            fs_ = 100
+            while ImageDraw.Draw(Image.new("RGBA", (1, 1))).textlength(txt, font=tfont(fs_)) > 700:
+                fs_ -= 4
+            f = tfont(fs_)
             tw = ImageDraw.Draw(Image.new("RGBA", (1, 1))).textlength(txt, font=f)
-            st = Image.new("RGBA", (int(tw) + 140, 200), (0, 0, 0, 0))
+            st = Image.new("RGBA", (int(tw) + 300, 230), (0, 0, 0, 0))
             sd = ImageDraw.Draw(st)
-            sd.rounded_rectangle((6, 6, st.width - 6, 194), 40, fill=PINK, outline=WHITE, width=10)
-            sd.text((st.width / 2, 104), txt, font=f, fill=WHITE, anchor="mm", stroke_width=6, stroke_fill=BLACK)
+            sd.rounded_rectangle((14, 30, st.width - 6, 222), 46, fill=(0, 0, 0, 120))
+            sd.rounded_rectangle((6, 14, st.width - 14, 206), 46, fill=PINK, outline=WHITE, width=10)
+            sd.text(((st.width - 200) / 2 + 200 - 10, 112), txt, font=f, fill=WHITE, anchor="mm",
+                    stroke_width=7, stroke_fill=BLACK)
+            em = _img(sc["q"]["reaccion_emoji"], 190)
+            st.alpha_composite(em, (20, 112 - em.height // 2))
             _S["cache"][key] = st
-        sc_ = 2.2 - 1.2 * ease_out(q) if q < 1 else 1.0
-        paste_c(img, _S["cache"][key], 540, 1150, sc_, -6, min(1, q * 3))
-    flash(img, 0.45 * max(0, 1 - (lt - cd_end) / 0.15) if lt >= cd_end else 0)
+        sc_ = 2.3 - 1.3 * ease_out_back(q) if q < 1 else 1.0 + 0.04 * math.sin((lt - cd_end) * 12)
+        paste_c(img, _S["cache"][key], 540, 1150, sc_, -5 + 3 * math.sin((lt - cd_end) * 9), min(1, q * 3))
+    flash(img, 0.4 * max(0, 1 - (lt - cd_end) / 0.15) if lt >= cd_end else 0)
 
 
 # ---------------------------------------------------------------- escena: resultados
 
-def profile_card(p, k):
-    key = ("prof", k)
+def profile_tile(p, k):
+    key = ("tile", k)
     if key not in _S["cache"]:
         bg, fg, edge = OPT[k]
-        card = Image.new("RGBA", (950, 200), (0, 0, 0, 0))
+        card = Image.new("RGBA", (460, 350), (0, 0, 0, 0))
         d = ImageDraw.Draw(card)
-        d.rounded_rectangle((8, 20, 942, 196), 38, fill=edge if k != 3 else (8, 4, 16))
-        d.rounded_rectangle((8, 8, 942, 184), 38, fill=bg, outline=YEL if k == 3 else None,
-                            width=5 if k == 3 else 0)
-        d.ellipse((26, 46, 126, 146), fill=WHITE if k != 3 else YEL)
-        d.text((76, 98), p["letra"], font=tfont(70), fill=bg if k == 2 else BLACK, anchor="mm")
-        fn = tfont(50)
-        name = p["nombre"]
-        s = 50
-        while d.textlength(name, font=tfont(s)) > 620 and s > 30:
-            s -= 2
-        d.text((150, 56), name, font=tfont(s), fill=fg, anchor="lm")
-        f, lines, lh = fit(d, p["texto"], 620, 100, 34, minimum=24, spacing=1.05)
-        y = 92 + lh / 2
+        d.rounded_rectangle((8, 22, 452, 346), 44, fill=edge if k != 3 else (8, 4, 16))
+        d.rounded_rectangle((8, 8, 452, 332), 44, fill=bg, outline=YEL if k == 3 else WHITE, width=6)
+        d.ellipse((24, 22, 124, 122), fill=WHITE if k != 3 else YEL)
+        d.text((74, 74), p["letra"], font=tfont(72), fill=bg if k == 2 else BLACK, anchor="mm")
+        em = _img(p["imagen"], 170)
+        card.alpha_composite(em, (280 - em.width // 2 + 30, 110 - em.height // 2 + 10))
+        f, lines, lh = fit(d, p["nombre"], 400, 120, 50, minimum=30, spacing=1.0)
+        lines = [l.upper() for l in lines]
+        y = 262 - lh * len(lines) / 2 + lh / 2
         for l in lines:
-            d.text((150, y), l, font=f, fill=fg, anchor="lm")
+            d.text((230, y), l, font=tfont(f.size), fill=fg, anchor="mm")
             y += lh
-        em = _img(p["imagen"], 130)
-        card.alpha_composite(em, (942 - 20 - em.width, 96 - em.height // 2))
-        del fn
         _S["cache"][key] = card
     return _S["cache"][key]
 
@@ -716,74 +804,48 @@ def draw_results(img, sc, lt):
     r = sc["r"]
     rev = sc["reveal"]
     if lt < rev:  # redoble: letras A-D girando cada vez más rápido
-        sp = 2 + 10 * (lt / rev) ** 2
+        sp = 2 + 12 * (lt / rev) ** 2
         for k in range(4):
             a = lt * sp + k * math.pi / 2
-            rad = 260 - 80 * (lt / rev)
+            rad = 260 - 90 * (lt / rev)
             lay = Image.new("RGBA", (190, 190), (0, 0, 0, 0))
             ld = ImageDraw.Draw(lay)
-            bg = OPT[k][0]
-            ld.rounded_rectangle((10, 10, 180, 180), 40, fill=bg, outline=WHITE, width=6)
+            ld.rounded_rectangle((10, 10, 180, 180), 40, fill=OPT[k][0], outline=WHITE, width=6)
             ld.text((95, 100), LETTERS[k], font=tfont(110), fill=BLACK if k < 2 else WHITE, anchor="mm")
-            paste_c(img, lay, 540 + rad * math.cos(a), 860 + rad * math.sin(a), 1.0, math.degrees(-a) * 0.2)
-        lay = Image.new("RGBA", (W, 200), (0, 0, 0, 0))
-        ImageDraw.Draw(lay).text((540, 100), "RESULTADOS", font=tfont(110), fill=YEL, anchor="mm",
-                                 stroke_width=10, stroke_fill=BLACK)
-        paste_c(img, lay, 540, 470, 1 + 0.05 * math.sin(lt * 18))
+            paste_c(img, lay, 540 + rad * math.cos(a), 900 + rad * math.sin(a), 1.0, math.degrees(-a) * 0.2)
         return
     lr = lt - rev
     flash(img, 0.7 * max(0, 1 - lr / 0.2))
     if "res_title" not in _S["cache"]:
-        _S["cache"]["res_title"] = text_sprite([tuple(x) for x in r["titulo"]], 86, FILL, stroke=10)
+        _S["cache"]["res_title"] = text_sprite([tuple(x) for x in r["titulo"]], 120, FILL, stroke=12)
     st = _S["cache"]["res_title"]
-    s = 2.0 - ease_out_back(min(1, lr / 0.4)) if lr < 0.4 else 1 + 0.015 * math.sin(lt * 3)
-    paste_c(img, st, 540, 410, s, -1.5)
+    s = 2.0 - ease_out_back(min(1, lr / 0.4)) if lr < 0.4 else 1 + 0.02 * math.sin(lt * 3)
+    paste_c(img, st, 540, 450, s, -2)
+    centers = [(290, 760), (790, 760), (290, 1110), (790, 1110)]
     tie = sc["tie_start"]
     for k, (p, (ap, va, vb)) in enumerate(zip(r["perfiles"], sc["perfiles"])):
         if lt < ap:
             continue
-        pk = ease_out_back((lt - ap) / 0.45)
-        side = -1 if k % 2 == 0 else 1
-        x = 540 + side * (1 - pk) * 1150
-        y = 640 + k * 208
-        active = va <= lt < vb + 0.3
-        s = 1.04 + 0.01 * math.sin(lt * 6) if active else 0.97
-        alpha = 1.0 if active else 0.62
-        if lt >= tie:
-            alpha = 0.3
-        paste_c(img, profile_card(p, k), x, y, s, 0, alpha)
-    if lt >= tie:  # panel de empate + aviso
-        q = ease_out_back((lt - tie) / 0.45)
-        key = "tie_panel"
-        if key not in _S["cache"]:
-            pn = Image.new("RGBA", (920, 560), (0, 0, 0, 0))
-            d = ImageDraw.Draw(pn)
-            d.rounded_rectangle((10, 26, 910, 554), 54, fill=(0, 0, 0, 160))
-            d.rounded_rectangle((10, 10, 910, 538), 54, fill=BLACK, outline=YEL, width=10)
-            d.text((460, 130), r["empate_titulo"], font=tfont(120), fill=TURQ, anchor="mm",
-                   stroke_width=8, stroke_fill=PURP_D)
-            f, lines, lh = fit(d, r["empate_texto"], 780, 140, 60, minimum=40)
-            y = 270 - lh * len(lines) / 2 + lh / 2
-            for l in lines:
-                d.text((460, y), l, font=f, fill=WHITE, anchor="mm")
-                y += lh
-            d.rounded_rectangle((60, 380, 860, 500), 30, fill=(48, 36, 70))
-            f2, l2, lh2 = fit(d, r["aviso"], 740, 100, 36, minimum=26)
-            y = 440 - lh2 * len(l2) / 2 + lh2 / 2
-            for l in l2:
-                d.text((460, y), l, font=f2, fill=YEL, anchor="mm")
-                y += lh2
-            _S["cache"][key] = pn
-        # letras orbitando el panel
-        if q > 0.5:
-            for k in range(4):
-                a = (lt - tie) * 1.6 + k * math.pi / 2
-                lay = Image.new("RGBA", (110, 110), (0, 0, 0, 0))
-                ld = ImageDraw.Draw(lay)
-                ld.rounded_rectangle((5, 5, 105, 105), 26, fill=OPT[k][0], outline=WHITE, width=4)
-                ld.text((55, 58), LETTERS[k], font=tfont(64), fill=BLACK if k < 2 else WHITE, anchor="mm")
-                paste_c(img, lay, 540 + 470 * math.cos(a), 960 + 300 * math.sin(a), 1.0, 10 * math.sin(a))
-        paste_c(img, _S["cache"][key], 540, 960, q, 0)
+        pk = ease_out_back((lt - ap) / 0.4)
+        active = va <= lt < vb + 0.1
+        s = 1.08 + 0.02 * math.sin(lt * 7) if active else 0.94
+        alpha = 1.0 if active or lt >= tie else 0.55
+        ang = 3 * math.sin(lt * 5) if active else 0
+        cx, cy = centers[k]
+        if active:
+            paste_c(img, _S["glow_w"], cx, cy, 1.0, 0, 0.5)
+        paste_c(img, profile_tile(p, k), cx, cy, s * pk, ang, alpha)
+    if lt >= tie:
+        q = ease_out_back((lt - tie) / 0.35)
+        lay = Image.new("RGBA", (W, 230), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(lay)
+        pill(ld, 540, 70, r["empate"], 50, BLACK, YEL, outline=YEL)
+        f, lines, lh = fit(ld, r["aviso"], 900, 90, 30, minimum=24)
+        y = 170 - lh * len(lines) / 2 + lh / 2
+        for l in lines:
+            ld.text((540, y), l, font=f, fill=WHITE, anchor="mm", stroke_width=4, stroke_fill=BLACK)
+            y += lh
+        paste_c(img, lay, 540, 1385, q)
     confetti(img, lr, 540, 520, 1.0)
 
 
@@ -818,7 +880,8 @@ def draw_cta(img, sc, lt):
         paste_c(img, lay, 180 + k * 240, 905 - jump, pk, 6 * math.sin(lt * 3 + k))
     hide = max(0.0, min(1.0, (lt - follow) / 0.3))
     # comentarios que se escriben solos
-    comments = [("Me ha salido la C… ¡tiene razón!", 2.0, PINK), ("@tu_amigo ¡tienes que hacerlo!", 3.6, TURQ)]
+    tp = sc["typing"]
+    comments = [("¡Me ha salido la C!", tp, PINK), ("@tu_amigo ¡hazlo ya!", tp + 1.3, TURQ)]
     for k, (txt, a0, col) in enumerate(comments):
         if lt < a0 or hide >= 1:
             continue
@@ -842,12 +905,12 @@ def draw_cta(img, sc, lt):
     if lt >= follow:
         q = ease_out_back((lt - follow) / 0.45)
         glow = _S["glow_w"]
-        paste_c(img, glow, 540, 1170, 1.2 + 0.1 * math.sin(lt * 5), 0, 0.8 * q)
-        paste_c(img, _S["logo_b"], 540, 1170, q * (1 + 0.03 * math.sin(lt * 4)), 4 * math.sin(lt * 2))
+        paste_c(img, glow, 540, 1130, 1.2 + 0.1 * math.sin(lt * 5), 0, 0.8 * q)
+        paste_c(img, _S["logo_b"], 540, 1130, q * (1 + 0.03 * math.sin(lt * 4)), 4 * math.sin(lt * 2))
         lay = Image.new("RGBA", (W, 160), (0, 0, 0, 0))
         b = pill(ImageDraw.Draw(lay), 520, 80, "SÍGUENOS: HORA DEL QUIZ", 50, YEL, BLACK)
         bolt(ImageDraw.Draw(lay), b[2] - 6, 76, 46, TURQ, outline=BLACK)
-        paste_c(img, lay, 540, 1385, q)
+        paste_c(img, lay, 540, 1320, q)
         confetti(img, lt - follow, 540, 1100, 0.9)
 
 
