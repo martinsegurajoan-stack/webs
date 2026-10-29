@@ -150,3 +150,11 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 
 ## Alternativa gratuita (si ElevenLabs no está disponible)
 `--voz kokoro:ef_dora` (requiere `./instalar_voz.sh`; adapta tono a `assets/voz_ref/perfil.npz`).
+
+## Portadas / miniaturas (cuando las pida)
+`python3 portada.py quizzes/<video>.json` → `portadas/<video>_9x16.png` (1080x1920: Reels, Shorts,
+Facebook) y `portadas/<video>_3x4.png` (1080x1440: portada de TikTok). Textos de cada portada en el
+diccionario `PORTADAS` de `portada.py` (añade una entrada por vídeo nuevo): etiqueta de arriba,
+titular gigante (línea "a" = color de acento), pregunta de muestra (índice), 2 emojis 3D de
+`assets/portada/`, pegatina gancho y subtítulo. La tarjeta NUNCA marca la respuesta correcta; lo
+importante queda en la franja central 3:4. Usa la misma paleta que el vídeo (registro de tonos).
