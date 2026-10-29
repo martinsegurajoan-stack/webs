@@ -34,6 +34,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_01.mp4` | `quizzes/hora_del_quiz_01.json` | 61 s | Trivial nº1 (verde, 3+1, estilo anterior a las mejoras) |
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
+| `salida/pareja_02.mp4` | `quizzes/pareja_02.json` | 81 s | Parejas nº2 (rojo coral, 5+extra, portada cartel) |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
 | `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
@@ -56,7 +57,7 @@ Plantillas y piezas reutilizables:
 
 ## Nombres de archivo
 - Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 05).
-- Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 02).
+- Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
