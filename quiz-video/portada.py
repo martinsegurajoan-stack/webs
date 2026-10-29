@@ -23,7 +23,11 @@ BASE = os.path.dirname(os.path.abspath(__file__))
 A = os.path.join(BASE, "assets")
 USUARIO = "@hora.delquiz"
 
-# Textos de cada portada: gancho grande + pregunta de muestra + pegatina
+# Textos de cada portada: gancho grande + pregunta de muestra + pegatina.
+# Vídeos NUEVOS: pon este mismo bloque como clave "portada" dentro del JSON del quiz (sin "paleta":
+# se elige sola según el modo). Campos: arriba, titulo [(texto, "w"|"a")], tam (opcional),
+# pregunta (índice), emoji, emoji2 (nombres de assets/portada/), estilo clasica|sello|cartel,
+# pegatina (clasica/cartel) o sello (2 líneas, estilo sello), sub ("|" = salto de línea en sello).
 PORTADAS = {
     "pareja_01": {
         "paleta": lambda: themes.paleta_romantica(themes.elegir_tono("pareja_01")),
@@ -151,6 +155,7 @@ def titular(lineas, th, ang=-4, tam=None):
     tmp = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
     maxw = 960
     sizes = []
+    lineas = [tuple(l) for l in lineas]
     for txt, _ in lineas:
         s = 200
         while tmp.textlength(txt, font=tfont(s)) > maxw and s > 60:
@@ -284,11 +289,24 @@ def pill(base, cx, cy, texto, size, bg, fg):
     d.text((cx, cy + 3), texto, font=f, fill=fg, anchor="mm")
 
 
+def paleta_para(video, quiz, cfg):
+    """Misma paleta que el vídeo (el tono ya está en el registro tras renderizar)."""
+    if "paleta" in cfg:
+        return cfg["paleta"]()
+    h = themes.elegir_tono(video)
+    modo = quiz.get("modo", "trivial")
+    if modo == "pareja":
+        return themes.paleta_romantica(h)
+    if modo == "halloween":
+        return themes.paleta_halloween(h)
+    return themes.paleta_desde_tono(h)
+
+
 def crear(quiz_path, out_dir):
     video = os.path.splitext(os.path.basename(quiz_path))[0]
-    cfg = PORTADAS[video]
     quiz = json.load(open(quiz_path, encoding="utf-8"))
-    th = cfg["paleta"]()
+    cfg = quiz.get("portada") or PORTADAS[video]
+    th = paleta_para(video, quiz, cfg)
     hall = th.get("formas") == "halloween"
     base = fondo(th, hall)
     E = os.path.join(A, "portada")

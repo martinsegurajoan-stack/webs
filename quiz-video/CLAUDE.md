@@ -14,6 +14,18 @@
 - Antes de nada, prueba que todo funciona sin gastar créditos:
   `python3 generar.py quizzes/hora_del_quiz_02.json --frases-pendientes` → debe imprimir `[]`.
 
+## ENTREGA OBLIGATORIA DE CADA VÍDEO (aunque el usuario no lo pida)
+Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), envía SIEMPRE, sin preguntar:
+1. El MP4 (`SendUserFile`, display "attach").
+2. Las 2 portadas (`SendUserFile`, display "render"): `portadas/<video>_9x16.png` (Instagram Reels,
+   Facebook Reels, YouTube Shorts) y `portadas/<video>_3x4.png` (TikTok).
+3. En el mensaje, título + descripción + hashtags para cada plataforma, VÍDEO A VÍDEO (sin mezclar
+   vídeos) y en bloques de código para copiar: TikTok, YouTube Shorts, Instagram, Facebook.
+   Reglas: TikTok/Instagram/Facebook no tienen campo título → el "título" es la 1ª línea del texto;
+   YouTube: título ≤100 caracteres con `#shorts`; Instagram MÁXIMO 5 hashtags; siempre `#horadelquiz`;
+   nunca revelar respuestas; CTA a comentar la puntuación (parejas: etiquetar a la pareja).
+   Guarda esos textos en `descripciones/<video>.md`.
+
 ## INVENTARIO (estado a 29-10-2026)
 Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | Archivo | Quiz (JSON) | Duración | Notas |
@@ -145,16 +157,22 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 5. Verifica la salida de ffprobe ("OK", 1080x1920, aac) y una hoja de fotogramas:
    `ffmpeg -i X.mp4 -vf "fps=1,scale=180:320,tile=12x6" -frames:v 1 hoja.png`.
    No digas que hay vídeo si el MP4 no existe o no pasó la verificación.
-6. Commit del JSON, audios nuevos de la caché y MP4 (`salida/`), push, envía el MP4. Mensaje corto:
-   duración + créditos aproximados + avisos sobre respuestas.
+6. PORTADAS (siempre): añade la clave `"portada"` al JSON (ver sección Portadas; alterna el `estilo`
+   respecto al vídeo anterior) y ejecuta `python3 portada.py quizzes/<archivo>.json` DESPUÉS del render
+   (así usa el mismo color). Revisa la imagen (que nada se solape y que NO marque la respuesta).
+7. TEXTOS (siempre): crea `descripciones/<video>.md` con el formato de `descripciones/hora_del_quiz_02.md`.
+8. Commit del JSON, audios nuevos de la caché, MP4, portadas y descripción; push.
+9. ENTREGA (ver "ENTREGA OBLIGATORIA" arriba): MP4 + 2 portadas + textos por plataforma en el mensaje.
+   Mensaje corto: duración + créditos aproximados + avisos sobre respuestas.
 
 ## Alternativa gratuita (si ElevenLabs no está disponible)
 `--voz kokoro:ef_dora` (requiere `./instalar_voz.sh`; adapta tono a `assets/voz_ref/perfil.npz`).
 
-## Portadas / miniaturas (cuando las pida)
+## Portadas / miniaturas (SIEMPRE con cada vídeo)
 `python3 portada.py quizzes/<video>.json` → `portadas/<video>_9x16.png` (1080x1920: Reels, Shorts,
-Facebook) y `portadas/<video>_3x4.png` (1080x1440: portada de TikTok). Textos de cada portada en el
-diccionario `PORTADAS` de `portada.py` (añade una entrada por vídeo nuevo): etiqueta de arriba,
+Facebook) y `portadas/<video>_3x4.png` (1080x1440: portada de TikTok). Textos de cada portada: en vídeos nuevos,
+clave `"portada"` dentro del JSON del quiz (los 3 primeros están en el diccionario `PORTADAS` de
+`portada.py`; copia su forma, `titulo` como lista de pares [texto, "w"|"a"], sin `paleta`): etiqueta de arriba,
 titular gigante (línea "a" = color de acento), pregunta de muestra (índice), 2 emojis 3D de
 `assets/portada/`, pegatina gancho y subtítulo. La tarjeta NUNCA marca la respuesta correcta; lo
 importante queda en la franja central 3:4. Usa la misma paleta que el vídeo (registro de tonos).
