@@ -12,3 +12,5 @@ Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags 
 - Plantillas de referencia: `quiz-video/quizzes/hora_del_quiz_02.json` (quiz) y
   `quiz-video/quizzes/pareja_01.json` (quiz de parejas). Generador: `quiz-video/generar.py`.
 - Portadas: `quiz-video/portada.py` → `quiz-video/portadas/`. Textos para redes: `quiz-video/descripciones/`.
+- Presentador fijo DON QUIZÁS (vídeos de concurso con presentador): `quiz-video/quizvideo/presentador.py`,
+  ficha `quiz-video/presentador/don_quizas_ficha.png`. Misma cara siempre; traje y plató según el vídeo.

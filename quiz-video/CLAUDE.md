@@ -154,6 +154,18 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
 - Colores de marca: amarillo, turquesa, morado y negro. Logo "HORA DEL QUIZ ⚡" arriba a la izquierda.
 - Voz QUIZ "[playful and a little cheeky]" SIN acelerar (tempo 1,0). v2: 103 s, ~940 créditos nuevos.
 
+## PRESENTADOR FIJO: "DON QUIZÁS" (cuando el usuario pida vídeo con presentador / concurso)
+- Personaje dibujado por código en `quizvideo/presentador.py` (gratis, siempre idéntico):
+  `presentador(traje, expresion, boca=0..1, parpadeo, mirada, gesto="dedo"|"abierto")` → RGBA 600x900.
+- RASGOS FIJOS (no cambiar NUNCA): cabeza redonda, tupé amarillo eléctrico con forma de rayo, bigotón
+  castaño rizado, nariz redonda, cejas gruesas, mejillas sonrosadas, diente separado, micro con rayo.
+- Cambia en cada vídeo: TRAJE (`TRAJES`: clasico, personalidad, halloween, parejas, trivial; añade
+  uno nuevo por temática) y PLATÓ (`plato(nombre)`: clasico, personalidad, halloween, parejas, trivial).
+- Expresiones: feliz, sorprendido, picaro, riendo, sospecha. Para hablar, anima `boca` con el volumen
+  de la voz y parpadea cada 3-4 s.
+- Muletilla: «¿Quizás sí… o quizás no?». Saludo: «¡Bienvenidos a la Hora del Quiz!».
+- Ficha de personaje: `presentador/don_quizas_ficha.png` (se regenera con `python3 presentador/ficha.py`).
+
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` o `quizzes/pareja_NN.json` (siguiente número libre; copia la
    estructura de `hora_del_quiz_02.json` / `pareja_01.json`; añade la imagen 3D de cada pregunta) con el texto del
