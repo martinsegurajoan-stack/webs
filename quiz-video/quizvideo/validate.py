@@ -4,7 +4,7 @@ import json
 
 LETTERS = "ABCD"
 MAX_Q = 120  # caracteres de la pregunta (legibilidad)
-MAX_OPT = 42  # caracteres por opción
+MAX_OPT = 48  # caracteres por opción
 
 
 def load_quiz(path: str) -> dict:
@@ -43,6 +43,8 @@ def validate(quiz: dict) -> list[str]:
             if len(o) > MAX_OPT:
                 errors.append(f"{p} opción demasiado larga: '{o}'.")
         c = str(q.get("correcta", "")).strip().upper()
+        if not c and (q.get("sin_respuesta") or quiz.get("modo") == "pareja"):
+            continue
         if c not in LETTERS or len(c) != 1:
             errors.append(f"{p} 'correcta' debe ser A, B, C o D.")
     return errors

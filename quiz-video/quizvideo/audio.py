@@ -105,7 +105,63 @@ def sfx_applause(dur=2.5, seed=5):
 
 # ---------------------------------------------------------------- música
 
-def music(duration, bpm=118, seed=7):
+def music(duration, bpm=118, seed=7, style="pop"):
+    if style == "romantica":
+        return music_romantica(duration)
+    return music_pop(duration, bpm, seed)
+
+
+def music_romantica(duration, bpm=92, seed=9):
+    """Pop suave y romántico: I–vi–IV–V, arpegio de campanitas, bajo redondo y percusión ligera."""
+    beat = 60.0 / bpm
+    bar = 4 * beat
+    n = int(duration * SR) + SR
+    out = np.zeros(n)
+    rng = np.random.default_rng(seed)
+    kick = _t(0.22)
+    kick = np.sin(2 * np.pi * np.cumsum(45 + 70 * np.exp(-kick * 25)) / SR) * _env(len(kick), 0.002, 0.12)
+    shaker = rng.standard_normal(int(0.06 * SR))
+    shaker = (shaker - _lowpass(shaker, 0.35)) * _env(len(shaker), 0.01, 0.02) * 0.18
+    snap = rng.standard_normal(int(0.08 * SR))
+    snap = (snap - _lowpass(snap, 0.2)) * _env(len(snap), 0.001, 0.03) * 0.25
+    chords = [[60, 64, 67], [57, 60, 64], [53, 57, 60], [55, 59, 62]]
+    bass = [36, 33, 41, 43]
+    arp = [0, 1, 2, 1, 0, 1, 2, 1]
+
+    def add(sig, start, gain=1.0):
+        st = int(start * SR)
+        if st >= n:
+            return
+        e = min(n, st + len(sig))
+        out[st:e] += gain * sig[: e - st]
+
+    t, bi = 0.0, 0
+    while t < duration + bar:
+        ch = chords[bi % 4]
+        for b in range(4):
+            bt = t + b * beat
+            if b in (0, 2):
+                add(kick, bt, 0.55)
+            if b in (1, 3):
+                add(snap, bt, 0.5)
+            add(shaker, bt + beat / 2, 1.0)
+        add(_note(_midi(bass[bi % 4]), bar * 0.95, "sine", decay=bar * 0.5, attack=0.01), t, 0.45)
+        for k, pidx in enumerate(arp):
+            m = ch[pidx] + 24
+            add(_note(_midi(m), beat, "sine", decay=0.35) + 0.3 * _note(_midi(m + 12), beat, "sine", decay=0.15),
+                t + k * beat / 2, 0.09)
+        for m in ch:
+            add(_note(_midi(m), bar, "tri", decay=bar * 0.8, attack=0.25), t, 0.07)
+        t += bar
+        bi += 1
+    out = out[: int(duration * SR)]
+    f = int(0.6 * SR)
+    out[:f] *= np.linspace(0, 1, f)
+    out[-int(1.5 * SR):] *= np.linspace(1, 0, int(1.5 * SR))
+    return out
+
+
+def music_pop(duration, bpm=118, seed=7):
     """Bucle pop alegre: I–V–vi–IV en Do mayor, con bombo, palmas, hi-hats y bajo."""
     beat = 60.0 / bpm
     bar = 4 * beat

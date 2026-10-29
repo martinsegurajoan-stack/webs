@@ -19,6 +19,17 @@ diseño ni la voz salvo que lo pida.
 - Cierre: "¿Cuántas has acertado?" y "¡Sígueme para más!" gritado con aplausos.
 - Las frases fijas ya están en `assets/voz_eleven/cache/` y se reutilizan (no se regeneran).
 
+## Modo "pareja" (¿Cuánto conoces a tu pareja?)
+Si el usuario pide un quiz de pareja / "cuánto conoces a tu pareja" o preguntas sin respuesta correcta
+sobre la pareja, usa `"modo": "pareja"` en el JSON (ver `quizzes/pareja_01.json`): paleta `romantico`
+(rosas/morados, corazones), música suave, voz QUIZ con etiqueta "[warm, playful and a little flirty]"
+(contenta pero no eufórica, romántica y bromista), tempo x1.08. No hay respuesta correcta: tras la
+cuenta atrás sale una frase pícara rotatoria ("¿Habéis coincidido?", ...). La pregunta que el usuario
+marque para comentarios lleva `"sin_respuesta": true`. Cierre: "¿Cuántas habéis acertado?" +
+"¡Etiqueta a tu pareja y sígueme para más!". No hace falta `correcta`. Sin límite de 60 s.
+Las frases fijas de este modo ya están en caché; por vídeo solo se generan las preguntas.
+Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
+
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` (siguiente número libre; formato en README) con el texto del
    usuario (ortografía corregida, mayúsculas normales). `titulo` "¿Cuánto sabes de <tema>?",
@@ -29,7 +40,8 @@ diseño ni la voz salvo que lo pida.
    "elevenlabs generate speech") con `prompt` = el "texto" EXACTO de la lista, `voice_id`
    `7Jak8XD0XjFEAyIV8XkL`, `model_id` `eleven_v4`, `generations_count` 1. Luego
    `creative_get_flow_run_status` hasta completar. Escribe un TSV "<texto>\t<url mp3>" y ejecuta
-   `python3 descargar_voz.py archivo.tsv` (guarda cada mp3 con el nombre correcto en la caché).
+   `python3 descargar_voz.py archivo.tsv` (guarda cada mp3 con el nombre correcto en la caché;
+   el texto del TSV debe ser el "texto" exacto, etiquetas entre corchetes incluidas).
    Si dice que está saturado, espera un minuto y reintenta (nunca repitas una generación que sí arrancó).
 4. `python3 generar.py quizzes/hora_del_quiz_NN.json` (~2-3 min, timeout 600000 ms). Objetivo ≤ 60 s
    (con 4 preguntas sale ~60 s); si se pasa mucho, avisa.

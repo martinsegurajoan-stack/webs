@@ -1,6 +1,23 @@
 """Paletas de colores. Cada tema define fondo, acentos y colores de opciones."""
 
 THEMES = {
+    "romantico": {
+        "bg_top": (255, 105, 150),
+        "bg_bottom": (150, 25, 90),
+        "bg_mid": (255, 160, 190),
+        "bg_alt": (170, 60, 170),
+        "blob": (255, 200, 225),
+        "accent": (255, 222, 120),
+        "accent2": (214, 30, 100),
+        "card": (255, 255, 255),
+        "text_dark": (80, 10, 45),
+        "text_light": (255, 255, 255),
+        "correct": (230, 40, 110),
+        "wrong": (150, 120, 135),
+        "options": [(255, 64, 129), (171, 71, 188), (255, 112, 90), (229, 40, 70)],
+        "formas": "corazones",
+        "rayos": 0.7,
+    },
     "verde": {
         "bg_top": (0, 214, 110),
         "bg_bottom": (0, 110, 70),

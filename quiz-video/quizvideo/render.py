@@ -39,6 +39,42 @@ BPM = 118  # mismo tempo que la música, para que el fondo "lata" al ritmo
 FRASES_CORRECTA = ["¡Es la {L}! {O}.", "¡La correcta es la {L}! {O}.", "¡Correcto, la {L}! {O}."]
 FRASE_SIN_RESPUESTA = "¡Escríbelo en los comentarios si te lo sabes!"
 
+# Modos de plantilla. "trivial" = quiz con respuesta correcta; "pareja" = ¿cuánto conoces a tu pareja?
+MODOS = {
+    "trivial": {
+        "intro_voz": "¡Es hora del quiz! ¿Estás preparado? ¡Vamos!",
+        "intro_l1": "¡ES HORA", "intro_l2": "DEL QUIZ!", "pill_intro": None,
+        "comentarios_voz": FRASE_SIN_RESPUESTA, "comentarios_pill": "¡ESCRÍBELO EN COMENTARIOS!",
+        "outro_voz": "¿Cuántas has acertado?", "outro_titulo": "¿Cuántas has acertado?",
+        "outro_sub": "¡Escríbelo en comentarios!", "final_voz": "¡Sígueme para más!",
+        "musica": "pop", "bpm": 118, "estilo_voz": "", "tag_final": "[shouting excitedly]",
+        "tempo": 1.15, "paleta": "verde", "fin": None,
+    },
+    "pareja": {
+        "intro_voz": "¡Es hora del quiz de parejas! ¿Cuánto conoces a tu pareja? Vamos a comprobarlo...",
+        "intro_l1": "¡QUIZ DE", "intro_l2": "PAREJAS!", "pill_intro": "¡JUGAD EN PAREJA!",
+        "comentarios_voz": "¡Escribe tu respuesta en los comentarios!",
+        "comentarios_pill": "¡ESCRÍBELO EN COMENTARIOS!",
+        "outro_voz": "¿Cuántas habéis acertado?", "outro_titulo": "¿Cuántas habéis acertado?",
+        "outro_sub": "¡Etiqueta a tu pareja!", "final_voz": "¡Etiqueta a tu pareja y sígueme para más!",
+        "musica": "romantica", "bpm": 92, "estilo_voz": "[warm, playful and a little flirty]",
+        "tag_final": "[cheerful and playful]", "tempo": 1.08, "paleta": "romantico",
+        # frase tras la cuenta atrás (voz, cartel); se van alternando
+        "fin": [
+            ("¿Habéis coincidido?", "¿HABÉIS COINCIDIDO?"),
+            ("¿Lo ha acertado tu pareja?", "¿LO HA ACERTADO?"),
+            ("Uy, uy, uy... ¿qué ha contestado?", "UY, UY, UY…"),
+            ("¡Esta da para discutir!", "¡ESTA DA PARA DISCUTIR!"),
+            ("¿Os conocéis o no?", "¿OS CONOCÉIS O NO?"),
+            ("¡Sed sinceros, eh!", "¡SED SINCEROS!"),
+        ],
+    },
+}
+
+
+def modo_de(quiz):
+    return MODOS.get(quiz.get("modo", "trivial"), MODOS["trivial"])
+
 
 
 # ------------------------------------------------------------------ utilidades
@@ -135,13 +171,17 @@ def build_timeline(quiz, voice, countdown=5):
     n = len(quiz["preguntas"])
     tema = quiz["tema"]
 
+    modo = modo_de(quiz)
+    if hasattr(voice, "configure"):
+        voice.configure(style=modo["estilo_voz"], final_tag=modo["tag_final"], tempo=modo["tempo"])
+
     def say(text):
         sig, dur = voice.say(text)
         return sig, dur
 
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
-    sig, d = say("¡Es hora del quiz! ¿Estás preparado? ¡Vamos!")
+    sig, d = say(modo["intro_voz"])
     dur = max(2.8, 0.3 + d + 0.2)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text})
@@ -164,12 +204,19 @@ def build_timeline(quiz, voice, countdown=5):
         for s in range(countdown):
             events.append(("fx", "tick_high" if s >= countdown - 2 else "tick", st + cd_start + s))
         rv = cd_start + countdown
-        ci = LETTERS.index(q["correcta"].upper())
-        nores = bool(q.get("sin_respuesta"))
+        ci = LETTERS.index(q["correcta"].upper()) if q.get("correcta") else -1
+        comentarios = bool(q.get("sin_respuesta"))
+        nores = comentarios or modo["fin"] is not None
+        end_pill = None
         if nores:
-            # pregunta para comentarios: no se revela la respuesta
-            sig, dv = say(FRASE_SIN_RESPUESTA)
-            events += [("fx", "buzz", st + rv), ("voice", sig, st + rv + 0.35)]
+            # no se revela respuesta: invitación a comentar o frase pícara (modo pareja)
+            if comentarios:
+                frase, end_pill = modo["comentarios_voz"], modo["comentarios_pill"]
+            else:
+                frase, end_pill = modo["fin"][qi % len(modo["fin"])]
+            sig, dv = say(frase)
+            fx_end = "buzz" if modo["fin"] is None else "chime"
+            events += [("fx", fx_end, st + rv), ("voice", sig, st + rv + 0.35)]
             rdur = max(2.3, 0.35 + dv + 0.5)
         else:
             # se narra solo la opción correcta
@@ -181,13 +228,13 @@ def build_timeline(quiz, voice, countdown=5):
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
-                       "reveal": rv, "correct": ci, "nores": nores})
+                       "reveal": rv, "correct": ci, "nores": nores, "end_pill": end_pill})
         t += dur
 
-    last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta"))
-    sig, d = say("¿Cuántas has acertado?" if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
+    last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta")) or modo["fin"] is not None
+    sig, d = say(modo["outro_voz"] if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
     shout_at = 0.4 + d + 0.1
-    sig2, d2 = voice.say("¡Sígueme para más!", shout=True)
+    sig2, d2 = voice.say(modo["final_voz"], shout=True)
     dur = max(3.5, shout_at + d2 + 0.9)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.4), ("voice", sig2, t + shout_at),
                ("fx", "applause", t + shout_at)]
@@ -196,13 +243,13 @@ def build_timeline(quiz, voice, countdown=5):
     return scenes, events, t
 
 
-def build_audio(events, total, path, music_on=True):
+def build_audio(events, total, path, music_on=True, music_style="pop"):
     mix = audio.Mixer(total)
     fx = {
         "whoosh": audio.sfx_whoosh(), "pop": audio.sfx_pop(), "tick": audio.sfx_tick(),
-        "tick_high": audio.sfx_tick(True), "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(), "applause": audio.sfx_applause(),
+        "tick_high": audio.sfx_tick(True), "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(), "applause": audio.sfx_applause(), "chime": audio.sfx_correct(),
     }
-    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8}
+    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8, "chime": 0.5}
     boosts = [(a, b) for kind, a, b in events if kind == "music_boost"]
     for kind, what, at in events:
         if kind == "music_boost":
@@ -211,7 +258,7 @@ def build_audio(events, total, path, music_on=True):
             mix.add_fx(fx[what], at, gains[what])
         elif what is not None:
             mix.add_voice(what, at, 1.0)
-    music = audio.music(total) if music_on else np.zeros(int(total * audio.SR))
+    music = audio.music(total, style=music_style) if music_on else np.zeros(int(total * audio.SR))
     audio.write_wav(path, mix.render(music, boosts=boosts))
 
 
@@ -258,6 +305,8 @@ def _shape(d, kind, x, y, s, ang, col):
     elif kind == 2:  # triángulo
         d.polygon([(x + s * math.cos(ang + k * 2.094), y + s * math.sin(ang + k * 2.094)) for k in range(3)],
                   fill=col)
+    elif kind == 4:  # corazón
+        _heart(d, x, y, s, ang, col)
     else:  # estrella
         pts = []
         for k in range(10):
@@ -267,6 +316,18 @@ def _shape(d, kind, x, y, s, ang, col):
         d.polygon(pts, fill=col)
 
 
+def _heart(d, x, y, s, ang, col):
+    pts = []
+    ca, sa = math.cos(ang * 0.3), math.sin(ang * 0.3)
+    for k in range(28):
+        u = k / 28 * 2 * math.pi
+        hx = 16 * math.sin(u) ** 3
+        hy = -(13 * math.cos(u) - 5 * math.cos(2 * u) - 2 * math.cos(3 * u) - math.cos(4 * u))
+        hx, hy = hx * s / 17, hy * s / 17
+        pts.append((x + hx * ca - hy * sa, y + hx * sa + hy * ca))
+    d.polygon(pts, fill=col)
+
+
 def _background(t):
     th = _STATE["theme"]
     off = int((t * 70) % H)  # el degradado sube poco a poco
@@ -274,8 +335,9 @@ def _background(t):
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     # rayos giratorios de concurso que laten al ritmo de la música
-    beat = (t % (60 / BPM)) / (60 / BPM)
-    glow = 16 + 20 * math.exp(-beat * 5)
+    bpm = _STATE.get("bpm", BPM)
+    beat = (t % (60 / bpm)) / (60 / bpm)
+    glow = (16 + 20 * math.exp(-beat * 5)) * th.get("rayos", 1.0)
     cx, cy, R = 540, 880, 2200
     base = math.radians(t * 12)
     for k in range(18):
@@ -292,7 +354,12 @@ def _background(t):
     for x0, y0, s, sp, rot, ph, kind, ci in _STATE["shapes"]:
         y = (y0 - sp * t) % (H + 120) - 60
         x = x0 + 50 * math.sin(t * 1.3 + ph)
-        _shape(d, kind, x, y, s, ph + rot * t, with_alpha(cols[ci], 0.75))
+        if th.get("formas") == "corazones":
+            kind = 4 if kind != 3 else 3  # casi todo corazones, algún destello
+            ang = ph + 0.4 * math.sin(t * 1.5 + ph)
+        else:
+            ang = ph + rot * t
+        _shape(d, kind, x, y, s * (1.25 if kind == 4 else 1), ang, with_alpha(cols[ci], 0.75))
     img.alpha_composite(layer)
     return img
 
@@ -318,9 +385,10 @@ def _draw_intro(layer, sc, lt):
     # "¡ES HORA DEL QUIZ!" que rebota
     p = ease_out_back(lt / 0.6)
     wob = math.sin(lt * 5)
-    d.text((540, 365), "¡ES HORA", font=font((30 + 92 * p) * (1 + 0.025 * wob)), fill=th["text_light"],
+    modo = modo_de(quiz)
+    d.text((540, 365), modo["intro_l1"], font=font((30 + 92 * p) * (1 + 0.025 * wob)), fill=th["text_light"],
            anchor="mm", stroke_width=12, stroke_fill=th["text_dark"])
-    d.text((540, 515), "DEL QUIZ!", font=font((40 + 112 * p) * (1 - 0.025 * wob)), fill=th["accent"],
+    d.text((540, 515), modo["intro_l2"], font=font((40 + 112 * p) * (1 - 0.025 * wob)), fill=th["accent"],
            anchor="mm", stroke_width=14, stroke_fill=th["text_dark"])
     # tarjeta con el título
     a = ease_out_back((lt - 0.25) / 0.5)
@@ -334,7 +402,8 @@ def _draw_intro(layer, sc, lt):
     b = ease_out_back((lt - 0.55) / 0.45)
     if b > 0:
         dif = DIFICULTAD.get(str(quiz.get("dificultad", "media")).lower(), str(quiz.get("dificultad", "")).upper())
-        _pill(d, 540 - (1 - b) * 1200, 1230, f"NIVEL: {dif}", 50, th["accent2"], th["text_light"])
+        _pill(d, 540 - (1 - b) * 1200, 1230, modo["pill_intro"] or f"NIVEL: {dif}", 50,
+              th["accent2"], th["text_light"])
         n = len(quiz["preguntas"])
         _pill(d, 540 + (1 - b) * 1200, 1360,
               f"{n} PREGUNTAS · {_STATE['countdown']} SEGUNDOS", 44, th["accent"], th["text_dark"])
@@ -343,14 +412,15 @@ def _draw_intro(layer, sc, lt):
 def _draw_outro(layer, sc, lt):
     th = _STATE["theme"]
     d = ImageDraw.Draw(layer)
+    modo = modo_de(_STATE["quiz"])
     a = ease_out_back(lt / 0.5)
     y = 250 + (1 - a) * -800
     box = (80, y, 1000, y + 520)
     shadow_box(d, box, 50)
     d.rounded_rectangle(box, 50, fill=th["card"])
-    f, lines, lh = fit(d, "¿Cuántas has acertado?", 820, 300, 110)
+    f, lines, lh = fit(d, modo["outro_titulo"], 820, 300, 110)
     draw_lines(d, lines, f, lh, 540, y + 200, th["text_dark"])
-    d.text((540, y + 420), "¡Escríbelo en comentarios!", font=font(54), fill=th["accent2"], anchor="mm")
+    d.text((540, y + 420), modo["outro_sub"], font=font(54), fill=th["accent2"], anchor="mm")
     b = ease_out_back((lt - sc.get("shout_at", 0.5) + 0.15) / 0.4)
     if b > 0:
         pulse = 1 + 0.07 * math.sin(lt * 9)
@@ -396,7 +466,16 @@ def _draw_question(layer, sc, lt):
         # en vez del cronómetro: invitación a comentar
         pp = ease_out_back(rlt / 0.45)
         pulse = 1 + 0.05 * math.sin(rlt * 9)
-        _pill(d, 540, 840, "¡ESCRÍBELO EN COMENTARIOS!", int(max(10, 52 * pp * pulse)), th["accent2"], th["text_light"])
+        _pill(d, 540, 840, sc.get("end_pill") or "¡ESCRÍBELO EN COMENTARIOS!", int(max(10, 52 * pp * pulse)),
+              th["accent2"], th["text_light"])
+        if th.get("formas") == "corazones" and rlt < 2.2:
+            # corazones que suben desde el cartel
+            cols = th["options"] + [th["accent"]]
+            for vx, vy, ci, sz, ph in _STATE["confetti"][:30]:
+                hx = 540 + vx * 420 + 25 * math.sin(rlt * 4 + ph)
+                hy = 840 - (0.6 - vy) * 520 * rlt
+                al = 1 - max(0, (rlt - 1.4) / 0.8)
+                _heart(d, hx, hy, sz * 1.1, ph, with_alpha(cols[ci], al))
     elif lt >= cs - 0.3:
         ap = ease_out_back((lt - cs + 0.3) / 0.35)
         cx, cy = TIMER_C
@@ -510,9 +589,10 @@ def render_video(quiz, theme, voice, out_path, countdown=5, workers=None, music_
     scenes, events, total = build_timeline(quiz, voice, countdown)
     os.makedirs(os.path.dirname(os.path.abspath(out_path)), exist_ok=True)
     wav = out_path + ".audio.wav"
-    build_audio(events, total, wav, music_on)
+    modo = modo_de(quiz)
+    build_audio(events, total, wav, music_on, modo["musica"])
     frames = int(total * FPS)
-    state = {"scenes": scenes, "theme": theme, "quiz": quiz, "countdown": countdown}
+    state = {"scenes": scenes, "theme": theme, "quiz": quiz, "countdown": countdown, "bpm": modo["bpm"]}
 
     if preview is not None:  # solo un fotograma PNG para revisar el diseño
         _init(state)

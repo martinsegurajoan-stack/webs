@@ -1,0 +1,22 @@
+{
+  "modo": "pareja",
+  "tema": "pareja",
+  "titulo": "¿Cuánto conoces a tu pareja?",
+  "preguntas": [
+    {"pregunta": "¿Qué necesito más cuando estoy pasando un mal día?",
+     "opciones": ["Que me abraces", "Que me escuches", "Que me dejes a solas", "Que me hagas reír"]},
+    {"pregunta": "¿Cuál sería mi plan perfecto contigo?",
+     "opciones": ["Una cena romántica", "Una escapada de fin de semana", "Una tarde de sofá y peli", "Una noche de fiesta"]},
+    {"pregunta": "Cuando discutimos, ¿qué hago normalmente?",
+     "opciones": ["Quiero solucionarlo enseguida", "Me quedo en silencio", "Necesito estar a solas", "Espero a que vengas tú"]},
+    {"pregunta": "¿Qué situación me daría más celos?",
+     "opciones": ["Que le dieras un like a tu ex", "Que salieras de fiesta sin mí", "Que hablaras mucho con alguien que te atrae", "Que ocultaras el móvil cuando estoy cerca"]},
+    {"pregunta": "¿Qué gasto me costaría más evitar?",
+     "opciones": ["Ropa y zapatillas", "Comida a domicilio", "Viajes y escapadas", "Tecnología y caprichos"]},
+    {"pregunta": "Si me tocara la lotería mañana, ¿qué haría primero?",
+     "opciones": ["Dejar de trabajar", "Comprar una casa", "Reservar un viaje", "Darme un capricho enorme"]},
+    {"pregunta": "¿Qué valor tiene mi mujer en camellos?",
+     "opciones": ["0-25", "26-50", "51-75", "+75"], "sin_respuesta": true,
+     "pregunta_voz": "¿Qué valor tiene mi mujer en camellos?"}
+  ]
+}

@@ -2,7 +2,8 @@
 
 Los audios los genera Claude con el conector de ElevenLabs y los guarda en
 assets/voz_eleven/cache/<clave>.mp3. Este módulo solo los lee; si falta alguno, lo apunta
-para que `generar.py --frases-pendientes` diga cuáles hay que generar.
+para que `generar.py --frases-pendientes` diga cuáles hay que generar (con el texto EXACTO
+que hay que enviar a ElevenLabs, etiquetas de tono incluidas).
 """
 
 import hashlib
@@ -16,22 +17,12 @@ from . import audio
 
 VOICE_ID = "7Jak8XD0XjFEAyIV8XkL"  # voz "QUIZ" de la cuenta de ElevenLabs del usuario
 MODEL = "eleven_v4"
-TEMPO = 1.15  # acelera la voz sin cambiar el tono (ritmo TikTok)
 CACHE = os.path.join(os.path.dirname(__file__), "..", "assets", "voz_eleven", "cache")
 
 
-def prompt_for(text, shout=False):
-    """Texto que se envía a ElevenLabs (el grito lleva etiqueta de dirección)."""
-    return f"[shouting excitedly] {text}" if shout else text
-
-
-def key_for(text, shout=False):
-    raw = f"{VOICE_ID}|{MODEL}|{prompt_for(text, shout)}"
-    return hashlib.sha1(raw.encode("utf-8")).hexdigest()[:16]
-
-
-def path_for(text, shout=False):
-    return os.path.join(CACHE, key_for(text, shout) + ".mp3")
+def cache_path(prompt):
+    key = hashlib.sha1(f"{VOICE_ID}|{MODEL}|{prompt}".encode("utf-8")).hexdigest()[:16]
+    return os.path.join(CACHE, key + ".mp3")
 
 
 class ElevenVoice:
@@ -39,14 +30,26 @@ class ElevenVoice:
 
     def __init__(self):
         self.missing = {}
+        self.style = ""                         # etiqueta de tono para todas las frases
+        self.final_tag = "[shouting excitedly]"  # etiqueta de la frase final
+        self.tempo = 1.15                       # acelera sin cambiar el tono
+
+    def configure(self, style="", final_tag="[shouting excitedly]", tempo=1.15):
+        self.style, self.final_tag, self.tempo = style, final_tag, tempo
+
+    def prompt_for(self, text, shout=False):
+        if shout:
+            return f"{self.final_tag} {text}"
+        return f"{self.style} {text}" if self.style else text
 
     def say(self, text, shout=False):
-        p = path_for(text, shout)
+        prompt = self.prompt_for(text, shout)
+        p = cache_path(prompt)
         if not os.path.exists(p):
-            self.missing[os.path.basename(p)] = prompt_for(text, shout)
+            self.missing[os.path.basename(p)] = prompt
             return None, max(0.8, len(text) / 15.0)
-        raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", p, "-af", f"atempo={TEMPO}", "-ac", "1",
-                                       "-ar", str(audio.SR), "-f", "s16le", "-"])
+        raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", p, "-af", f"atempo={self.tempo}",
+                                       "-ac", "1", "-ar", str(audio.SR), "-f", "s16le", "-"])
         from .tts import trim_silence
 
         sig = trim_silence(np.frombuffer(raw, np.int16).astype(np.float64) / 32768)

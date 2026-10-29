@@ -22,7 +22,7 @@ def main():
     ap = argparse.ArgumentParser(description="Generador de vídeos de quiz para TikTok")
     ap.add_argument("quiz", help="Archivo JSON con el quiz")
     ap.add_argument("-o", "--salida", help="Ruta del MP4 (por defecto salida/<nombre>.mp4)")
-    ap.add_argument("--tema-color", default="verde", help=f"Paleta: {', '.join(themes.THEMES)}")
+    ap.add_argument("--tema-color", default=None, help=f"Paleta: {', '.join(themes.THEMES)}")
     ap.add_argument("--voz", default="eleven", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
     ap.add_argument("--velocidad-voz", type=float, default=1.22)
     ap.add_argument("--preguntas", type=int, help="Usar solo las N primeras preguntas")
@@ -38,6 +38,7 @@ def main():
     quiz = load_quiz(args.quiz)
     if args.preguntas:
         quiz["preguntas"] = quiz["preguntas"][: args.preguntas]
+    args.tema_color = args.tema_color or quiz.get("paleta") or render.modo_de(quiz)["paleta"]
     theme = themes.get_theme(args.tema_color)
     voice = tts.get_voice(args.voz, args.velocidad_voz)
 
