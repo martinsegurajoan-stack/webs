@@ -28,6 +28,24 @@
       "fuente": "El pulpo tiene un corazón sistémico y dos branquiales."
     },
     {
+      "pregunta": "¿Cuántos animales de cada especie metió Moisés en el arca?",
+      "opciones": [
+        "Dos",
+        "Siete",
+        "Uno",
+        "Ninguno"
+      ],
+      "correcta": "D",
+      "imagen": "arca_3d.png",
+      "opcion_voz": [
+        "Dos",
+        "Siete",
+        "Uno",
+        "Ninguno, ¡fue Noé!"
+      ],
+      "fuente": "Trampa: el arca es de Noé, no de Moisés."
+    },
+    {
       "pregunta": "Tienes 5 caramelos y regalas 2. ¿Cuántos te quedan?",
       "opciones": [
         "2",
@@ -38,6 +56,24 @@
       "correcta": "B",
       "imagen": "caramelo_3d.png",
       "fuente": "5 - 2 = 3."
+    },
+    {
+      "pregunta": "¿Qué pesa más: un kilo de paja o un kilo de hierro?",
+      "opciones": [
+        "La paja",
+        "El hierro",
+        "Pesan lo mismo",
+        "Depende del día"
+      ],
+      "correcta": "C",
+      "imagen": "balanza_3d.png",
+      "opcion_voz": [
+        "La paja",
+        "El hierro",
+        "Pesan lo mismo, ¡es un kilo!",
+        "Depende del día"
+      ],
+      "fuente": "Un kilo es un kilo."
     },
     {
       "pregunta": "Si adelantas al que va segundo en una carrera, ¿en qué posición te pones?",

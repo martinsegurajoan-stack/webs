@@ -39,6 +39,11 @@ def main():
     if args.preguntas:
         quiz["preguntas"] = quiz["preguntas"][: args.preguntas]
     base = os.path.splitext(os.path.basename(args.quiz))[0]
+    frase = None
+    if quiz.get("modo", "trivial") != "pareja" and not quiz.get("frase_intro"):
+        from quizvideo.frases_intro import elegir_frase
+
+        frase = quiz["frase_intro"] = elegir_frase(base)
     tono = None
     args.tema_color = args.tema_color or quiz.get("paleta") or "auto"
     if args.tema_color == "auto":
@@ -55,8 +60,8 @@ def main():
     while True:
         _, _, total = render.build_timeline(quiz, voice, args.cuenta_atras)
         if args.duracion_max is None:
-            if not 30 <= total <= 62:
-                print(f"AVISO: duración estimada {total:.1f}s (objetivo 30-60s).")
+            if not 30 <= total <= 100:
+                print(f"AVISO: duración estimada {total:.1f}s (objetivo 30-100s).")
             break
         if total <= args.duracion_max or len(quiz["preguntas"]) == 1:
             break
@@ -96,6 +101,10 @@ def main():
         sys.exit(1)
     if tono is not None:
         themes.registrar_tono(base, tono)
+    if frase is not None:
+        from quizvideo.frases_intro import registrar_frase
+
+        registrar_frase(base, frase)
 
 
 if __name__ == "__main__":

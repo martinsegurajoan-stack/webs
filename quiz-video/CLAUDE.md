@@ -4,6 +4,16 @@ Flujo: el usuario SOLO escribe las preguntas (con opciones y respuesta). Sin ped
 genera el vídeo con esta plantilla y envíale el MP4 (SendUserFile, display "attach"). No cambies el
 diseño ni la voz salvo que lo pida.
 
+## Formato (desde el vídeo 2)
+- QUIZ: 5 preguntas + 1 EXTRA sin respuesta al final (`"sin_respuesta": true`, cabecera "PREGUNTA EXTRA",
+  voz "¡Pregunta extra!", pide escribirla en comentarios). Si el usuario manda menos de 5 normales,
+  completa tú con un acertijo/pregunta verificada del mismo estilo y díselo.
+- PAREJA: 7 en total = 6 + la extra de comentarios.
+- INTRO del quiz: "¡Es hora del quiz!" + una frase SALSEANTE distinta en cada vídeo, elegida sola de
+  `quizvideo/frases_intro.py` (registro `assets/frases_usadas.json`). Si se agotan, añade más frases de
+  ese estilo al final de la lista (picantes, de reto, en español de España).
+- Duración esperada: ~85-90 s (5+1). No recortes preguntas.
+
 ## Plantilla (ya implementada en el código)
 - COLOR: NUNCA repetir el color de fondo entre vídeos. Por defecto la paleta es `auto`: `generar.py`
   elige el tono más alejado de los ya usados (registro `assets/paletas_usadas.json`, se actualiza solo
@@ -14,13 +24,16 @@ diseño ni la voz salvo que lo pida.
   `package/assets/<codigo>.webp` (p. ej. pulpo 1f419, calendario 1f4c6, caramelo 1f36c, bandera 1f3c1)
   y guardarlo como PNG en `assets/imagenes/`. Elige el objeto que mejor represente la pregunta.
   El usuario eligió estos dibujos gratis frente a imágenes realistas de pago (~212 créditos c/u).
+- Tipografías: `fuentes/titulo.ttf` (Lilita One) y `fuentes/texto.ttf` (Baloo 2 ExtraBold), OFL.
+- Cuenta atrás con tensión: tic-tac de madera, latido grave, subida (riser), tics dobles en los 2 últimos
+  segundos y viñeta roja pulsante en los bordes. Barra de progreso por segmentos bajo la cabecera.
 - Fondo dinámico (degradado en movimiento, rayos que laten con la
   música, formas de colores flotando). Cuenta atrás de 5 s, tic-tac fuerte, música más alta al pensar.
 - Intro "¡ES HORA DEL QUIZ!" + título + "NIVEL: MEDIO" (FÁCIL/MEDIO/DIFÍCIL) + nº de preguntas.
 - `@hora.delquiz` fijo abajo siempre. Logo `assets/logo.png` en el cierre bajo "¡SÍGUEME PARA MÁS!".
 - VOZ: ElevenLabs, voz "QUIZ" de la cuenta del usuario (voice_id `7Jak8XD0XjFEAyIV8XkL`, modelo
   `eleven_v4`), acelerada x1.15 al montar. El usuario tiene plan Starter (uso comercial permitido).
-- Narración: "¡Es hora del quiz! ¿Estás preparado? ¡Vamos!", "¡Pregunta N!" + pregunta, y SOLO la
+- Narración: "¡Es hora del quiz! <frase salseante>", "¡Pregunta N!" + pregunta, y SOLO la
   opción correcta al revelarla. Nunca lee las opciones.
 - Pregunta con `"sin_respuesta": true`: no se revela; al acabar el tiempo dice
   "¡Escríbelo en los comentarios si te lo sabes!" y sale ese cartel (úsalo si el usuario pide que no

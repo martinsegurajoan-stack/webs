@@ -47,8 +47,44 @@ def _midi(n):
 # ---------------------------------------------------------------- efectos
 
 def sfx_tick(high=False):
-    f = 1800 if high else 1250
-    return 0.55 * _note(f, 0.07, "sine", decay=0.02, attack=0.001)
+    """Tic de reloj tipo bloque de madera (más agudo en los últimos segundos)."""
+    f = 2100 if high else 1500
+    t = _t(0.06)
+    body = np.sin(2 * np.pi * f * t) + 0.5 * np.sin(2 * np.pi * f * 2.7 * t)
+    click = np.random.default_rng(1).standard_normal(len(t)) * np.exp(-t * 900) * 0.6
+    return 0.6 * (body * np.exp(-t * 70) + click)
+
+
+def sfx_tock():
+    t = _t(0.07)
+    body = np.sin(2 * np.pi * 950 * t) + 0.4 * np.sin(2 * np.pi * 2300 * t)
+    return 0.45 * body * np.exp(-t * 60)
+
+
+def sfx_heartbeat():
+    """Latido grave doble (lub-dub)."""
+    out = np.zeros(int(0.5 * SR))
+    for off, g in ((0.0, 1.0), (0.17, 0.7)):
+        t = _t(0.18)
+        f = 48 + 30 * np.exp(-t * 20)
+        th = np.sin(2 * np.pi * np.cumsum(f) / SR) * _env(len(t), 0.004, 0.07)
+        s = int(off * SR)
+        out[s:s + len(th)] += g * th
+    return 0.9 * out
+
+
+def sfx_riser(dur=5.0):
+    """Subida de tensión: sierra filtrada cuyo tono y volumen crecen durante la cuenta atrás."""
+    n = int(dur * SR)
+    t = np.arange(n) / SR
+    f = 110 * 2 ** (t / dur * 2.0)  # dos octavas
+    ph = np.cumsum(f) / SR
+    saw = 2 * (ph % 1) - 1 + 0.5 * (2 * ((ph * 1.01) % 1) - 1)
+    noise = np.random.default_rng(4).standard_normal(n) * 0.15
+    sig = _lowpass(saw + noise, 0.08) 
+    env = (t / dur) ** 2
+    trem = 0.75 + 0.25 * np.sin(2 * np.pi * (4 + 8 * t / dur) * t)
+    return 0.5 * sig * env * trem
 
 
 def sfx_pop():
@@ -237,7 +273,7 @@ class Mixer:
     def add_voice(self, sig, start, gain=1.0):
         self._add(self.voice, sig, start, gain)
 
-    def render(self, music_sig, music_gain=0.32, boosts=(), boost=1.45):
+    def render(self, music_sig, music_gain=0.32, boosts=(), boost=1.25):
         m = np.zeros(self.n)
         m[: min(self.n, len(music_sig))] = music_sig[: self.n]
         # durante la cuenta atrás la música sube un poco (rampa suave de 0,25 s)
