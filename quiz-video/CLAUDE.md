@@ -35,6 +35,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
+| `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 89 s | MISTERIO CRIMINAL nº1 (Caso imposible: la mansión) = PLANTILLA DE MISTERIO |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
@@ -153,6 +154,24 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
   Sincronía: pausas reales del audio + reparto por longitud (`align_words`).
 - Colores de marca: amarillo, turquesa, morado y negro. Logo "HORA DEL QUIZ ⚡" arriba a la izquierda.
 - Voz QUIZ "[playful and a little cheeky]" SIN acelerar (tempo 1,0). v2: 103 s, ~940 créditos nuevos.
+
+## Formato "MISTERIO CRIMINAL" (historia narrada, NO es un quiz)
+`quizzes/misterio_NN.json` → `generar_misterio.py` + `quizvideo/misterio.py` → `salida/misterio_NN.mp4`,
+`portadas/misterio_NN_*.png`, `descripciones/misterio_NN.md`. Entrega LIMPIA: solo MP4 + 2 miniaturas + textos.
+- Estética de thriller, seria y NO infantil: imágenes cinematográficas generadas con ElevenLabs
+  (`bytedance-seedream-5-lite`, ~212 créditos c/u, salen 2560x1440 y se recortan en vertical con
+  movimiento de cámara). Personajes coherentes: primero el RETRATO de cada uno y luego sus escenas con
+  `creative_edit_image` usando el retrato como referencia. Imágenes en `assets/misterio_NN/`.
+  Coordenadas de la cara/zona de interés en `focos` del JSON.
+- Voz DISTINTA a la de los quizzes: "Jose Conde" (`Otf4KTIb4E5xLTCtWfye`, castellano, grave) con
+  etiqueta "[mysterious]", una frase por clip (cada clip = un plano). Caché normal de voces.
+- Duración máx. 90 s: se acortan pausas largas y la voz se acelera solo lo necesario (tope x1.14).
+- Tipografías serias: `fuentes/serio_bold.ttf`/`serio_semi.ttf` (Montserrat) y `serio_titulo.ttf`
+  (Bebas Neue). Subtítulos blancos en mayúsculas, palabras clave en amarillo/turquesa (`destacar`),
+  palabra a palabra con sincronía real. Rótulos de sospechoso/pista arriba a la izquierda,
+  tarjetas de declaración, tríptico de sospechosos en columnas, cuenta atrás de 5 s, sello, CTA.
+- Música de thriller original sintetizada (`music_thriller`), golpes en pistas, silencio antes de la revelación.
+- Coste caso 1: ~2.970 créditos de imágenes (14) + ~1.600 de voz.
 
 ## PRESENTADOR FIJO: "DON QUIZÁS" (cuando el usuario pida vídeo con presentador / concurso)
 - Personaje dibujado por código en `quizvideo/presentador.py` (gratis, siempre idéntico):
