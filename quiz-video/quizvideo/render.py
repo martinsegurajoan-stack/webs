@@ -34,12 +34,6 @@ ASSETS = os.path.join(os.path.dirname(__file__), "..", "assets")
 USUARIO = "@hora.delquiz"
 USER_Y = 1665  # nombre de usuario fijo abajo
 
-# Frases de concursante: se van alternando para que no suene repetitivo
-FRASES_REVELACION = [
-    "¡Tiempo! ¡Es la {L}! {O}.",
-    "¡Y la respuesta es... la {L}! {O}.",
-    "¡Correcta, la {L}! {O}.",
-]
 
 
 # ------------------------------------------------------------------ utilidades
@@ -151,27 +145,24 @@ def build_timeline(quiz, voice, countdown=5):
     for qi, q in enumerate(quiz["preguntas"]):
         st = t
         loc = 0.5
-        sig, dq = say(q.get("pregunta_voz", q["pregunta"]))
+        sig, dq = say(f"¡Pregunta {qi + 1}! " + q.get("pregunta_voz", q["pregunta"]))
         events += [("fx", "whoosh", st), ("voice", sig, st + loc)]
         loc += dq + 0.15
         opt_times = []
         for k, o in enumerate(q["opciones"]):
-            o_voz = q.get("opcion_voz", q["opciones"])[k]
-            sig, do = say(f"{LETTERS[k]}: {o_voz}." if voice.name != "sin voz" else o)
-            if voice.name == "sin voz":
-                do = 0.35
+            # las opciones solo se muestran (no se narran)
             opt_times.append(loc)
-            events += [("fx", "pop", st + loc), ("voice", sig, st + loc + 0.05)]
-            loc += do + 0.04
-        cd_start = loc + 0.15
+            events.append(("fx", "pop", st + loc))
+            loc += 0.3
+        cd_start = loc + 0.2
+        events.append(("music_boost", cd_start, cd_start + countdown))
         for s in range(countdown):
             events.append(("fx", "tick_high" if s >= countdown - 2 else "tick", st + cd_start + s))
         rv = cd_start + countdown
         ci = LETTERS.index(q["correcta"].upper())
-        frase = FRASES_REVELACION[qi % len(FRASES_REVELACION)]
-        sig, dv = say(frase.format(L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci]))
-        events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.55)]
-        rdur = max(2.0, 0.5 + dv + 0.3)
+        # la respuesta se revela solo con animación y sonido (sin narrar)
+        events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15)]
+        rdur = 2.2
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
@@ -192,14 +183,17 @@ def build_audio(events, total, path, music_on=True):
         "whoosh": audio.sfx_whoosh(), "pop": audio.sfx_pop(), "tick": audio.sfx_tick(),
         "tick_high": audio.sfx_tick(True), "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(),
     }
-    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 0.9, "tick_high": 1.0, "buzz": 0.6, "correct": 0.9}
+    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9}
+    boosts = [(a, b) for kind, a, b in events if kind == "music_boost"]
     for kind, what, at in events:
+        if kind == "music_boost":
+            continue
         if kind == "fx":
             mix.add_fx(fx[what], at, gains[what])
         elif what is not None:
             mix.add_voice(what, at, 1.0)
     music = audio.music(total) if music_on else np.zeros(int(total * audio.SR))
-    audio.write_wav(path, mix.render(music))
+    audio.write_wav(path, mix.render(music, boosts=boosts))
 
 
 # ------------------------------------------------------------------ dibujo

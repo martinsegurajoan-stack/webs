@@ -23,7 +23,7 @@ def main():
     ap.add_argument("quiz", help="Archivo JSON con el quiz")
     ap.add_argument("-o", "--salida", help="Ruta del MP4 (por defecto salida/<nombre>.mp4)")
     ap.add_argument("--tema-color", default="verde", help=f"Paleta: {', '.join(themes.THEMES)}")
-    ap.add_argument("--voz", default="kokoro:em_alex", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
+    ap.add_argument("--voz", default="kokoro:em_santa", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
     ap.add_argument("--velocidad-voz", type=float, default=1.2)
     ap.add_argument("--preguntas", type=int, help="Usar solo las N primeras preguntas")
     ap.add_argument("--duracion-max", type=float, default=None,

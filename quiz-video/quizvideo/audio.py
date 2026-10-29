@@ -167,9 +167,16 @@ class Mixer:
     def add_voice(self, sig, start, gain=1.0):
         self._add(self.voice, sig, start, gain)
 
-    def render(self, music_sig, music_gain=0.32):
+    def render(self, music_sig, music_gain=0.32, boosts=(), boost=1.45):
         m = np.zeros(self.n)
         m[: min(self.n, len(music_sig))] = music_sig[: self.n]
+        # durante la cuenta atrás la música sube un poco (rampa suave de 0,25 s)
+        g = np.ones(self.n)
+        for a, b in boosts:
+            g[int(a * SR):int(b * SR)] = boost
+        ramp = int(0.25 * SR)
+        g = np.convolve(g, np.ones(ramp) / ramp, mode="same")
+        m *= g
         # ducking: baja la música mientras habla la voz
         env = np.abs(self.voice)
         win = int(0.05 * SR)

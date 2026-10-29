@@ -1,7 +1,7 @@
 # quiz-video — plantilla de @hora.delquiz
 
 El usuario normalmente solo dará preguntas y respuestas. Usa SIEMPRE la misma plantilla:
-paleta verde, voz `kokoro:em_alex` a 1.2, intro "¡ES HORA DEL QUIZ!", `@hora.delquiz` abajo,
+paleta verde, voz `kokoro:em_santa` a 1.2 con tono +2 (alegre); solo se narran intro, preguntas y cierre (NO opciones ni respuestas), intro "¡ES HORA DEL QUIZ!", `@hora.delquiz` abajo,
 logo en el cierre, cuenta atrás de 5 s, nivel MEDIO salvo que diga otro.
 
 1. Si `modelos/` no existe, ejecuta `./instalar_voz.sh` (solo PyPI/npm, gratis).

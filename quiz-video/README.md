@@ -17,8 +17,8 @@ python3 generar.py quizzes/geografia_espana.json --preview 16.8   # un fotograma
 
 Primera vez en un entorno nuevo: `./instalar_voz.sh` (voz Kokoro, gratuita y local).
 
-Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz` (por defecto `kokoro:em_alex`;
-también `kokoro:ef_dora`, `kokoro:em_santa`, o `ninguna`), `--velocidad-voz` (1.2),
+Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz` (por defecto `kokoro:em_santa`, con tono subido;
+también `kokoro:em_alex`, `kokoro:ef_dora`, o `ninguna`), `--velocidad-voz` (1.2),
 `--preguntas`, `--duracion-max`, `--cuenta-atras`, `--sin-musica`.
 
 ## Formato del quiz (JSON)

@@ -20,7 +20,7 @@ def get_voice(name: str, speed: float = 1.0):
     if name.startswith("kokoro"):
         from .tts_kokoro import KokoroVoice
 
-        voice_id = name.split(":", 1)[1] if ":" in name else "ef_dora"
+        voice_id = name.split(":", 1)[1] if ":" in name else "em_santa"
         return KokoroVoice(voice_id, speed)
     raise SystemExit(f"Voz '{name}' desconocida. Usa 'ninguna' o 'kokoro:ef_dora'.")
 
