@@ -16,6 +16,7 @@ from . import audio
 
 VOICE_ID = "7Jak8XD0XjFEAyIV8XkL"  # voz "QUIZ" de la cuenta de ElevenLabs del usuario
 MODEL = "eleven_v4"
+TEMPO = 1.15  # acelera la voz sin cambiar el tono (ritmo TikTok)
 CACHE = os.path.join(os.path.dirname(__file__), "..", "assets", "voz_eleven", "cache")
 
 
@@ -44,7 +45,7 @@ class ElevenVoice:
         if not os.path.exists(p):
             self.missing[os.path.basename(p)] = prompt_for(text, shout)
             return None, max(0.8, len(text) / 15.0)
-        raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", p, "-ac", "1",
+        raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", p, "-af", f"atempo={TEMPO}", "-ac", "1",
                                        "-ar", str(audio.SR), "-f", "s16le", "-"])
         from .tts import trim_silence
 

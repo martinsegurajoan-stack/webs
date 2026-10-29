@@ -142,24 +142,24 @@ def build_timeline(quiz, voice, countdown=5):
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
     sig, d = say("¡Es hora del quiz! ¿Estás preparado? ¡Vamos!")
-    dur = max(2.8, 0.35 + d + 0.35)
+    dur = max(2.8, 0.3 + d + 0.2)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text})
     t += dur
 
     for qi, q in enumerate(quiz["preguntas"]):
         st = t
-        loc = 0.5
+        loc = 0.35
         sig, dq = say(f"¡Pregunta {qi + 1}! " + q.get("pregunta_voz", q["pregunta"]))
         events += [("fx", "whoosh", st), ("voice", sig, st + loc)]
-        loc += dq + 0.15
+        loc += max(0.3, dq - 0.4)  # las opciones entran al final de la pregunta
         opt_times = []
         for k, o in enumerate(q["opciones"]):
             # las opciones solo se muestran (no se narran)
             opt_times.append(loc)
             events.append(("fx", "pop", st + loc))
-            loc += 0.22
-        cd_start = loc + 0.2
+            loc += 0.18
+        cd_start = loc + 0.1
         events.append(("music_boost", cd_start, cd_start + countdown))
         for s in range(countdown):
             events.append(("fx", "tick_high" if s >= countdown - 2 else "tick", st + cd_start + s))
@@ -176,8 +176,8 @@ def build_timeline(quiz, voice, countdown=5):
             texto = FRASES_CORRECTA[qi % len(FRASES_CORRECTA)].format(
                 L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci].rstrip("."))
             sig, dv = say(texto)
-            events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.5)]
-            rdur = max(2.0, 0.5 + dv + 0.25)
+            events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.4)]
+            rdur = max(2.0, 0.4 + dv + 0.15)
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
@@ -188,7 +188,7 @@ def build_timeline(quiz, voice, countdown=5):
     sig, d = say("¿Cuántas has acertado?" if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
     shout_at = 0.4 + d + 0.1
     sig2, d2 = voice.say("¡Sígueme para más!", shout=True)
-    dur = max(3.5, shout_at + d2 + 1.0)
+    dur = max(3.5, shout_at + d2 + 0.9)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.4), ("voice", sig2, t + shout_at),
                ("fx", "applause", t + shout_at)]
     scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at})
