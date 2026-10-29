@@ -299,12 +299,19 @@ def paleta_para(video, quiz, cfg):
         return themes.paleta_romantica(h)
     if modo == "halloween":
         return themes.paleta_halloween(h)
+    if modo == "personalidad":  # colores de marca del test: amarillo, turquesa, morado y negro
+        th = themes.paleta_desde_tono(h)
+        th.update({"bg_top": (96, 30, 190), "bg_bottom": (14, 8, 26), "bg_mid": (150, 70, 255),
+                   "blob": (0, 222, 205), "accent": (255, 212, 0), "text_dark": (36, 10, 80),
+                   "options": [(230, 160, 0), (0, 165, 155), (138, 58, 255), (255, 64, 160)]})
+        return th
     return themes.paleta_desde_tono(h)
 
 
 def crear(quiz_path, out_dir):
     video = os.path.splitext(os.path.basename(quiz_path))[0]
     quiz = json.load(open(quiz_path, encoding="utf-8"))
+    video = quiz.get("video", video)  # nombre del vídeo si el JSON lo indica
     cfg = quiz.get("portada") or PORTADAS[video]
     th = paleta_para(video, quiz, cfg)
     hall = th.get("formas") == "halloween"

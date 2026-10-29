@@ -1,0 +1,203 @@
+{
+  "modo": "personalidad",
+  "tema": "personalidad",
+  "video": "hora_del_quiz_personalidad",
+  "titulo": "¿Qué tipo de persona eres realmente?",
+  "intro": {
+    "titulo": [
+      [
+        "¿QUÉ TIPO DE",
+        "w"
+      ],
+      [
+        "PERSONA",
+        "y"
+      ],
+      [
+        "ERES",
+        "w"
+      ],
+      [
+        "REALMENTE?",
+        "t"
+      ]
+    ],
+    "voz": "Vamos a descubrir cómo eres realmente. Elige una respuesta en cada pregunta y no hagas trampas. ¡Tu resultado puede dejarte en evidencia!"
+  },
+  "preguntas": [
+    {
+      "pregunta": "Un amigo te cancela un plan a última hora. ¿Qué haces?",
+      "opciones": [
+        "Aprovecho para descansar",
+        "Me enfado, pero no digo nada",
+        "Busco otro plan inmediatamente",
+        "Le digo que ya no cuente conmigo"
+      ],
+      "leer_opciones": "La A: aprovecho para descansar. La B: me enfado, pero no digo nada. La C: busco otro plan inmediatamente. O la D: le digo que ya no cuente conmigo.",
+      "imagen": "movil.png"
+    },
+    {
+      "pregunta": "Te toca la lotería. ¿A quién se lo cuentas primero?",
+      "opciones": [
+        "A mi pareja",
+        "A mi familia",
+        "A mi mejor amigo",
+        "A nadie hasta tener el dinero"
+      ],
+      "imagen": "dinero.png"
+    },
+    {
+      "pregunta": "Descubres que un amigo habla mal de ti. ¿Qué haces?",
+      "opciones": [
+        "Le pregunto directamente",
+        "Hago como si no supiera nada",
+        "Me alejo sin dar explicaciones",
+        "Se lo cuento a todo el mundo"
+      ],
+      "imagen": "hablar.png"
+    },
+    {
+      "pregunta": "¿Qué te dolería más?",
+      "opciones": [
+        "Que me mintieran",
+        "Que me traicionaran",
+        "Que me ignoraran",
+        "Que me sustituyeran por otra persona"
+      ],
+      "imagen": "corazon_roto.png"
+    },
+    {
+      "pregunta": "Tu mejor amigo empieza a salir con tu ex. ¿Cómo reaccionas?",
+      "opciones": [
+        "Me da igual, ya es pasado",
+        "Me duele, pero lo acepto",
+        "Hablo claro con los dos",
+        "Se acabó la amistad"
+      ],
+      "imagen": "secreto.png"
+    },
+    {
+      "pregunta": "Le prestas dinero a un amigo y no te lo devuelve. ¿Qué haces?",
+      "opciones": [
+        "Lo dejo estar, no merece la pena",
+        "Espero a que se acuerde solo",
+        "Se lo pido directamente",
+        "Se lo recuerdo delante de todos"
+      ],
+      "imagen": "dinero_vuela.png"
+    },
+    {
+      "pregunta": "Ves a tu pareja muy simpática con otra persona. ¿Qué haces?",
+      "opciones": [
+        "Ni me inmuto",
+        "Me entran celos por dentro",
+        "Me uno a la conversación",
+        "Le monto una escena"
+      ],
+      "imagen": "celos.png"
+    },
+    {
+      "pregunta": "Te equivocas delante de todo el mundo. ¿Qué haces?",
+      "opciones": [
+        "Me río y sigo como si nada",
+        "Lo paso fatal en silencio",
+        "Lo arreglo rápido",
+        "Defiendo que tenía razón"
+      ],
+      "imagen": "sonrojado.png"
+    },
+    {
+      "pregunta": "Te ofrecen el trabajo de tus sueños en otro país. ¿Qué haces?",
+      "opciones": [
+        "Lo pienso todo con calma",
+        "Me quedo cerca de los míos",
+        "Hago las maletas ya",
+        "Acepto, pero con mis condiciones"
+      ],
+      "imagen": "avion.png"
+    }
+  ],
+  "resultado": {
+    "titulo": [
+      [
+        "¡DESCUBRE QUÉ TIPO",
+        "w"
+      ],
+      [
+        "DE PERSONA ERES!",
+        "y"
+      ]
+    ],
+    "voz": "¡Descubre qué tipo de persona eres! Cuenta qué letra has elegido más veces. El resultado es orientativo, ¿eh?",
+    "perfiles": [
+      {
+        "letra": "A",
+        "nombre": "TRANQUILO Y PRÁCTICO",
+        "texto": "Piensas las cosas con calma y prefieres evitar dramas innecesarios.",
+        "imagen": "tranquilo.png",
+        "voz": "Mayoría de A: tranquilo y práctico. Piensas las cosas con calma y prefieres evitar dramas innecesarios."
+      },
+      {
+        "letra": "B",
+        "nombre": "EMOCIONAL Y LEAL",
+        "texto": "Te importan mucho las personas que quieres y las cosas te llegan más de lo que aparentas.",
+        "imagen": "emocional.png",
+        "voz": "Mayoría de B: emocional y leal. Te importan mucho las personas que quieres y las cosas te llegan más de lo que aparentas."
+      },
+      {
+        "letra": "C",
+        "nombre": "INDEPENDIENTE Y RESOLUTIVO",
+        "texto": "Te adaptas rápido, buscas soluciones y no te gusta depender de nadie.",
+        "imagen": "cohete.png",
+        "voz": "Mayoría de C: independiente y resolutivo. Te adaptas rápido, buscas soluciones y no te gusta depender de nadie."
+      },
+      {
+        "letra": "D",
+        "nombre": "CARÁCTER Y ORGULLO",
+        "texto": "Tienes personalidad, defiendes tus límites y no soportas que te tomen por tonto.",
+        "imagen": "orgullo.png",
+        "voz": "Mayoría de D: carácter y orgullo. Tienes personalidad, defiendes tus límites y no soportas que te tomen por tonto."
+      }
+    ],
+    "empate_voz": "¿Te han empatado varias letras? Entonces eres una mezcla de personalidades. Y recuerda: esto es un test para divertirse, no una evaluación psicológica.",
+    "empate_titulo": "¿EMPATE?",
+    "empate_texto": "¡Eres una mezcla de personalidades!",
+    "aviso": "Test de entretenimiento. No es una evaluación psicológica."
+  },
+  "cierre": {
+    "titulo": [
+      [
+        "¿QUÉ LETRA",
+        "w"
+      ],
+      [
+        "TE HA SALIDO?",
+        "y"
+      ]
+    ],
+    "voz": "¡Ahora confiesa! Escribe en comentarios la letra que más has elegido y etiqueta a ese amigo que necesita hacer este test. Síguenos en Hora del Quiz para más retos."
+  },
+  "portada": {
+    "arriba": "TEST DE PERSONALIDAD",
+    "titulo": [
+      [
+        "¿QUÉ TIPO DE",
+        "w"
+      ],
+      [
+        "PERSONA ERES",
+        "a"
+      ],
+      [
+        "REALMENTE?",
+        "w"
+      ]
+    ],
+    "pregunta": 3,
+    "emoji": "ojos",
+    "emoji2": "mascaras",
+    "estilo": "clasica",
+    "pegatina": "¿QUÉ LETRA ERES?",
+    "sub": "Elige A, B, C o D… y descúbrelo"
+  }
+}

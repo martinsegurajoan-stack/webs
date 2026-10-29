@@ -134,6 +134,26 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 - Para otras temáticas (Navidad, verano...) crea un modo nuevo igual que `halloween` (paleta,
   decorado, música, frases) y pregúntale al usuario solo si no está claro el estilo.
 
+## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
+Carpeta `quiz_personalidad/` (contenido.json, MP4, guion.txt, preguntas.txt, README.txt). Programa
+`generar_personalidad.py` + `quizvideo/personalidad.py` (reutiliza voz, efectos, música y exportación).
+- Colores de marca: amarillo, turquesa, morado y negro (tarjetas A amarilla, B turquesa, C morada,
+  D negra con borde amarillo). Logo "HORA DEL QUIZ ⚡" discreto arriba a la izquierda todo el vídeo.
+- Estructura: gancho (rayo + titular que cae palabra a palabra + emojis 3D) → 9 preguntas (entradas
+  variadas: deslizar, zoom, caída, giro; opciones que entran por los lados con rebote; dibujo 3D a la
+  izquierda y emoji de pensar a la derecha del cronómetro; cuenta atrás de 5 s con anillo que se
+  vacía, tic-tac, latido y riser; sello «¡APÚNTALA!») → resultados (redoble con letras girando,
+  confeti, tarjeta por letra que se resalta mientras se narra, panel de empate + aviso "test de
+  entretenimiento") → cierre «¿QUÉ LETRA TE HA SALIDO?» (mano 👇, fichas A-D botando, comentarios que
+  se escriben solos, logo + "SÍGUENOS").
+- Subtítulos sincronizados abajo (fragmentos repartidos según la duración real de cada audio).
+- Voz QUIZ con etiqueta "[playful and a little cheeky]" y SIN acelerar (tempo 1,0, petición del
+  usuario: la duración se ajusta al audio real). Solo la pregunta 1 lee las opciones (campo
+  `leer_opciones`); las demás solo la pregunta. Coste: ~2.200 créditos el primero (18 frases).
+- Con 9 preguntas dura ~170 s (por debajo de los 3 min de Shorts/Reels). Para acercarse a 90 s hay que
+  quitar preguntas o acortar la narración de los resultados.
+- Portada: clave "portada" en contenido.json (modo personalidad → paleta de marca en portada.py).
+
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` o `quizzes/pareja_NN.json` (siguiente número libre; copia la
    estructura de `hora_del_quiz_02.json` / `pareja_01.json`; añade la imagen 3D de cada pregunta) con el texto del
