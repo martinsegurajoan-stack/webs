@@ -205,3 +205,23 @@ def paleta_halloween(h):
         "rayos": 0.45,
     })
     return th
+
+
+def paleta_futbol(h):
+    """Paleta de fútbol: campo de césped verde (tono que no se repite) y detalles dorados."""
+    th = paleta_desde_tono(h)
+    th.update({
+        "cesped1": _hsv(h, 0.62, 0.62), "cesped2": _hsv(h + 3, 0.66, 0.52),
+        "bg_top": _hsv(h, 0.7, 0.6), "bg_bottom": _hsv(h, 0.8, 0.35), "bg_mid": _hsv(h, 0.5, 0.75),
+        "blob": (255, 255, 255),
+        "accent": (255, 214, 0),                    # dorado de trofeo
+        "accent2": (20, 30, 60),
+        "card": (255, 255, 255),
+        "text_dark": (12, 40, 22),
+        "correct": (255, 190, 0),                    # dorado: no se pierde sobre el césped
+        "wrong": (120, 130, 125),
+        "options": [(0, 120, 255), (230, 40, 60), (255, 150, 0), (130, 60, 230)],
+        "formas": "futbol",
+        "rayos": 0.0,
+    })
+    return th

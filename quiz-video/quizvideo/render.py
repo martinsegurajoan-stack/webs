@@ -28,7 +28,7 @@ OPT_Y, OPT_H, OPT_GAP = 970, 128, 22
 OPT_X0, OPT_X1 = 70, 1010
 
 DIFICULTAD = {"facil": "FÁCIL", "fácil": "FÁCIL", "media": "MEDIO", "medio": "MEDIO",
-              "dificil": "DIFÍCIL", "difícil": "DIFÍCIL"}
+              "dificil": "DIFÍCIL", "difícil": "DIFÍCIL", "alto": "ALTO", "alta": "ALTO"}
 
 ASSETS = os.path.join(os.path.dirname(__file__), "..", "assets")
 USUARIO = "@hora.delquiz"
@@ -85,6 +85,17 @@ MODOS["halloween"] = dict(MODOS["trivial"], **{
     "final_voz": "¡Sígueme para más, si no te da miedo!",
     "musica": "halloween", "bpm": 104, "estilo_voz": "[playful and spooky]",
     "tag_final": "[spooky, shouting excitedly]", "tempo": 1.12,
+})
+MODOS["futbol"] = dict(MODOS["trivial"], **{
+    "saludo": "¡Es hora del quiz de fútbol!",
+    "intro_l1": "¡QUIZ DE", "intro_l2": "FÚTBOL!",
+    "comentarios_voz": "¡Escríbelo en los comentarios si eres un crack!",
+    "comentarios_pill": "¡ESCRÍBELO EN COMENTARIOS!",
+    "outro_sub": "¡Escríbelo en comentarios!",
+    "final_voz": "¡Sígueme para más, crack!",
+    "musica": "futbol", "bpm": 122, "estilo_voz": "[excited sports commentator]",
+    "tag_final": "[shouting, stadium announcer]", "tempo": 1.12,
+    "gancho_primero": True,  # la frase gancho va ANTES del saludo
 })
 MODOS["trivial"]["saludo"] = "¡Es hora del quiz!"
 MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
@@ -205,7 +216,10 @@ def build_timeline(quiz, voice, countdown=5):
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
     salsa = quiz.get("frase_intro")
     saludo = modo["saludo"]
-    sig, d = say(f"{saludo} {salsa}" if salsa else modo["intro_voz"])
+    if salsa and modo.get("gancho_primero"):
+        sig, d = say(f"{salsa} {saludo}")
+    else:
+        sig, d = say(f"{saludo} {salsa}" if salsa else modo["intro_voz"])
     dur = max(2.8, 0.3 + d + 0.2)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text,
@@ -345,6 +359,8 @@ def _init(state):
     vig.putalpha(Image.fromarray(va, "L"))
     _STATE["vignette"] = vig.resize((W, H), Image.BILINEAR)
     _STATE["decor"] = {}
+    if th.get("formas") == "futbol":
+        _init_futbol(th)
     if th.get("formas") == "halloween":
         dd = os.path.join(ASSETS, "decor_halloween")
 
@@ -426,8 +442,115 @@ def _heart(d, x, y, s, ang, col):
     d.polygon(pts, fill=col)
 
 
+def _init_futbol(th):
+    """Campo de fútbol visto desde arriba (césped a rayas y líneas) + sprites del decorado."""
+    c1, c2 = np.array(th["cesped1"], float), np.array(th["cesped2"], float)
+    yy = np.arange(H)[:, None]
+    band = ((yy // 160) % 2).astype(float)
+    rng = np.random.default_rng(3)
+    grass = c1 * (1 - band[..., None]) + c2 * band[..., None]
+    grass = np.repeat(grass, W, axis=1)
+    grass += rng.normal(0, 4, (H, W, 1))                       # textura de césped
+    xx = np.linspace(-1, 1, W)[None, :, None]
+    yv = np.linspace(-1, 1, H)[:, None, None]
+    grass *= (1 - 0.28 * (xx ** 2 + 0.6 * yv ** 2))[..., :]     # luz de estadio en el centro
+    pitch = Image.fromarray(np.clip(grass, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
+    ln = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ln)
+    col, w = (255, 255, 255, 170), 7
+    x0, y0, x1, y1 = 60, 110, W - 60, H - 110
+    d.rectangle((x0, y0, x1, y1), outline=col, width=w)
+    d.line((x0, H / 2, x1, H / 2), fill=col, width=w)
+    d.ellipse((540 - 175, H / 2 - 175, 540 + 175, H / 2 + 175), outline=col, width=w)
+    d.ellipse((540 - 10, H / 2 - 10, 540 + 10, H / 2 + 10), fill=col)
+    for top in (True, False):
+        ya, yb = (y0, y0 + 300) if top else (y1 - 300, y1)
+        d.rectangle((230, ya, 850, yb), outline=col, width=w)
+        ga, gb = (y0, y0 + 120) if top else (y1 - 120, y1)
+        d.rectangle((380, ga, 700, gb), outline=col, width=w)
+        sp = y0 + 215 if top else y1 - 215
+        d.ellipse((540 - 9, sp - 9, 540 + 9, sp + 9), fill=col)
+        if top:
+            d.arc((540 - 165, sp - 165, 540 + 165, sp + 165), 37, 143, fill=col, width=w)
+        else:
+            d.arc((540 - 165, sp - 165, 540 + 165, sp + 165), 217, 323, fill=col, width=w)
+        # portería con red
+        gy = y0 - 50 if top else y1
+        d.rectangle((440, gy, 640, gy + 50), outline=(255, 255, 255, 210), width=6)
+        for k in range(441, 640, 16):
+            d.line((k, gy, k, gy + 50), fill=(255, 255, 255, 70), width=2)
+    for cx_, cy_, a0 in ((x0, y0, 0), (x1, y0, 90), (x1, y1, 180), (x0, y1, 270)):
+        d.arc((cx_ - 30, cy_ - 30, cx_ + 30, cy_ + 30), a0, a0 + 90, fill=col, width=w)
+    from PIL import ImageFilter
+    pitch.alpha_composite(ln.filter(ImageFilter.GaussianBlur(1.2)))
+    _STATE["pitch"] = pitch
+    # brillo de focos (se dibuja latiendo en cada fotograma)
+    gy, gx = np.mgrid[0:700, 0:700]
+    gr = np.sqrt((gx - 350) ** 2 + (gy - 350) ** 2) / 350
+    flare = Image.new("RGBA", (700, 700), (255, 255, 235, 0))
+    flare.putalpha(Image.fromarray((np.clip(1 - gr, 0, 1) ** 2.2 * 150).astype(np.uint8), "L"))
+    D = _STATE["decor"]
+    D["flare"] = flare
+    dd = os.path.join(ASSETS, "decor_futbol")
+
+    def spr(name, size):
+        im = Image.open(os.path.join(dd, name + ".png")).convert("RGBA")
+        return im.resize((size, size), Image.LANCZOS)
+
+    D["sprites"] = {n: [spr(n, sz) for sz in (70, 100, 130)]
+                    for n in ("balon", "tarjeta_amarilla", "tarjeta_roja", "trofeo", "bota", "medalla", "megafono")}
+    rs = random.Random(8)
+    names = ["balon"] * 6 + ["tarjeta_amarilla", "tarjeta_roja"] * 3 + ["trofeo", "bota", "medalla", "megafono"]
+    D["flyers"] = [(n, rs.randint(0, 2), rs.uniform(0, W), rs.uniform(0, H), rs.uniform(50, 120),
+                    rs.uniform(0, 6.28), rs.choice((-1, 1))) for n in names]
+    D["confeti"] = [(rs.uniform(0, W), rs.uniform(0, H), rs.uniform(60, 160), rs.uniform(0, 6.28),
+                     rs.choice([(255, 221, 0), (255, 255, 255), (0, 200, 255), (255, 70, 90)])) for _ in range(46)]
+
+
+def _futbol(img, t, beat):
+    """Decorado de fútbol: focos que laten, balones botando, tarjetas girando, trofeos y confeti."""
+    D = _STATE["decor"]
+    pulse = math.exp(-beat * 4)
+    for x in (-120, W - 580):
+        fl = D["flare"]
+        a = 0.55 + 0.35 * pulse
+        f2 = fl.copy()
+        f2.putalpha(f2.getchannel("A").point(lambda v, a_=a: int(v * a_)))
+        img.alpha_composite(f2, (x, -260))
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    for x0, y0, sp, ph, col in D["confeti"]:
+        y = (y0 + sp * t) % (H + 40) - 20
+        x = x0 + 30 * math.sin(t * 1.4 + ph)
+        s = 7 + 3 * math.sin(t * 5 + ph)
+        d.rectangle((x - s, y - s * 0.45, x + s, y + s * 0.45), fill=col + (170,))
+    img.alpha_composite(layer)
+    for n, si, x0, y0, sp, ph, dirx in D["flyers"]:
+        im = D["sprites"][n][si]
+        if n == "balon":  # cruza botando y girando
+            x = (x0 + dirx * sp * 1.8 * t) % (W + 260) - 130
+            y = y0 + (-160 * abs(math.sin(t * 2.2 + ph)))
+            im = im.rotate(-dirx * t * 220 % 360, resample=Image.BICUBIC)
+        elif n.startswith("tarjeta"):  # tarjetas que caen girando como una moneda
+            x = x0 + 50 * math.sin(t * 0.7 + ph)
+            y = (y0 + sp * 0.9 * t) % (H + 300) - 150
+            flip = abs(math.cos(t * 2.5 + ph))
+            im = im.resize((max(6, int(im.width * flip)), im.height), Image.BILINEAR)
+        else:
+            x = x0 + 40 * math.sin(t * 0.8 + ph)
+            y = (y0 - sp * t) % (H + 300) - 150
+            im = im.rotate(18 * math.sin(t * 1.5 + ph), resample=Image.BICUBIC, expand=True)
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+
+
 def _background(t):
     th = _STATE["theme"]
+    if th.get("formas") == "futbol":
+        bpm = _STATE.get("bpm", BPM)
+        beat = (t % (60 / bpm)) / (60 / bpm)
+        img = _STATE["pitch"].copy()
+        _futbol(img, t, beat)
+        return img
     off = int((t * 70) % H)  # el degradado sube poco a poco
     img = _STATE["bg"].crop((0, off, W, off + H))
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))

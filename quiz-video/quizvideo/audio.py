@@ -146,7 +146,48 @@ def music(duration, bpm=118, seed=7, style="pop"):
         return music_romantica(duration)
     if style == "halloween":
         return music_halloween(duration)
+    if style == "futbol":
+        return music_futbol(duration)
     return music_pop(duration, bpm, seed)
+
+
+def _lp_fft(x, fc):
+    X = np.fft.rfft(x)
+    f = np.fft.rfftfreq(len(x), 1 / SR)
+    X *= 1 / (1 + (f / fc) ** 4)
+    return np.fft.irfft(X, len(x))
+
+
+def music_futbol(duration, bpm=122, seed=21):
+    """Ambiente de estadio original: base pop enérgica + murmullo de afición que sube y baja +
+    palmas de grada (pam, pam, pam-pam-pam) cada cuatro compases."""
+    n = int(duration * SR)
+    base = music_pop(duration, bpm, seed)[:n]
+    rng = np.random.default_rng(seed)
+    t = np.arange(n) / SR
+    crowd = _lp_fft(rng.standard_normal(n), 900) - _lp_fft(rng.standard_normal(n), 120) * 0.3
+    crowd *= 0.55 + 0.45 * np.sin(2 * np.pi * t / 7.0) ** 2
+    crowd /= np.max(np.abs(crowd)) or 1
+    claps = np.zeros(n)
+    clap = rng.standard_normal(int(0.09 * SR))
+    clap = (clap - _lp_fft(clap, 700)) * np.exp(-np.arange(len(clap)) / SR * 30)
+    beat = 60 / bpm
+    bar = 4 * beat
+    tb = 2 * bar
+    while tb < duration - bar:
+        for off in (0, beat, 2 * beat, 2.5 * beat, 3 * beat):  # pam, pam, pam-pam-pam
+            s0 = int((tb + off) * SR)
+            # muchas palmas ligeramente desfasadas = grada
+            for _ in range(6):
+                j = s0 + int(rng.uniform(0, 0.03) * SR)
+                e = min(n, j + len(clap))
+                claps[j:e] += clap[: e - j] * rng.uniform(0.4, 0.9)
+        tb += 4 * bar
+    claps /= np.max(np.abs(claps)) or 1
+    out = 0.85 * base + 0.16 * crowd + 0.22 * claps
+    f = int(0.4 * SR)
+    out[:f] *= np.linspace(0, 1, f)
+    return out
 
 
 def music_halloween(duration, bpm=104, seed=13):

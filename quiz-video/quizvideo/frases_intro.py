@@ -75,11 +75,22 @@ FRASES_HALLOWEEN = [
     "Coge tu escoba, que esta noche toca volar entre preguntas. ¡Arranca el quiz de Halloween!",
 ]
 
-LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA, "halloween": FRASES_HALLOWEEN}
+# Frases GANCHO para quiz de FÚTBOL (van ANTES de "¡Es hora del quiz de fútbol!"): reto fuerte.
+FRASES_FUTBOL = [
+    "Solo un futbolero de verdad acierta las cinco… y la extra no la sabe casi nadie.",
+    "Si aciertas todas, eres una leyenda del fútbol. Si fallas una… vuelve a ver los resúmenes.",
+    "Estas preguntas separan a los que ven fútbol de los que lo VIVEN.",
+    "Tu cuñado dice que sabe de fútbol. Vamos a comprobar si tú sabes más.",
+    "Pita el árbitro, empieza el partido… y solo los cracks llegan al final.",
+    "Aquí no vale el VAR: o te lo sabes, o te lo sabes.",
+]
+
+LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA, "halloween": FRASES_HALLOWEEN, "futbol": FRASES_FUTBOL}
 REGISTROS = {
     "trivial": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_usadas.json"),
     "pareja": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_pareja_usadas.json"),
     "halloween": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_halloween_usadas.json"),
+    "futbol": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_futbol_usadas.json"),
 }
 
 

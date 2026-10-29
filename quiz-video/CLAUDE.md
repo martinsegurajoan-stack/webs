@@ -35,6 +35,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
+| `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -53,7 +54,7 @@ Plantillas y piezas reutilizables:
   `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
 
 ## Nombres de archivo
-- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 04).
+- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 05).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 02).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
@@ -135,6 +136,18 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   "¡Drácula ya está temblando!", "¡Abracadabra, acertaste!". (~45 créditos y ~2,5 s cada uno.)
 - Para otras temáticas (Navidad, verano...) crea un modo nuevo igual que `halloween` (paleta,
   decorado, música, frases) y pregúntale al usuario solo si no está claro el estilo.
+
+## Modo "futbol" (quiz temático de fútbol)
+- `"modo": "futbol"` (ver `quizzes/hora_del_quiz_04.json`): misma dinámica que el trivial (5+extra,
+  respuesta narrada, `comentario` corto tras cada respuesta). Fondo = CAMPO DE FÚTBOL (`_init_futbol`:
+  césped a rayas, líneas, porterías, focos de estadio que laten), decorado `_futbol()` (balones botando,
+  tarjetas amarilla/roja girando, trofeos, medallas, confeti), sprites en `assets/decor_futbol/`.
+  Paleta `paleta_futbol` (tono verde nuevo en 95-140, correcta en dorado). Música `music_futbol`
+  (pop + murmullo de afición + palmas de grada). Voz QUIZ "[excited sports commentator]", tempo x1.12.
+- GANCHO PRIMERO: la frase de `FRASES_FUTBOL` va ANTES de "¡Es hora del quiz de fútbol!" (registro
+  `assets/frases_futbol_usadas.json`). Dificultad admite "alto" → "NIVEL: ALTO".
+- Imágenes genéricas de fútbol (trofeo, balón, tarjeta roja, medalla, portería, pizarra): nunca la respuesta.
+- Etiquetas de voz cortas (se cobran en cada frase). Coste quiz 1: ~1.550 créditos.
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
 `quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`
