@@ -24,7 +24,7 @@ def main():
     ap.add_argument("-o", "--salida", help="Ruta del MP4 (por defecto salida/<nombre>.mp4)")
     ap.add_argument("--tema-color", default="verde", help=f"Paleta: {', '.join(themes.THEMES)}")
     ap.add_argument("--voz", default="kokoro:ef_dora", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
-    ap.add_argument("--velocidad-voz", type=float, default=1.15)
+    ap.add_argument("--velocidad-voz", type=float, default=1.22)
     ap.add_argument("--preguntas", type=int, help="Usar solo las N primeras preguntas")
     ap.add_argument("--duracion-max", type=float, default=None,
                     help="Segundos máximos: si se pasa, se quitan preguntas del final")

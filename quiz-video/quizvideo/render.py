@@ -33,6 +33,11 @@ DIFICULTAD = {"facil": "FÁCIL", "fácil": "FÁCIL", "media": "MEDIO", "medio": 
 ASSETS = os.path.join(os.path.dirname(__file__), "..", "assets")
 USUARIO = "@hora.delquiz"
 USER_Y = 1665  # nombre de usuario fijo abajo
+BPM = 118  # mismo tempo que la música, para que el fondo "lata" al ritmo
+
+# Frases para narrar la respuesta correcta (se alternan)
+FRASES_CORRECTA = ["¡Es la {L}! {O}.", "¡La correcta es la {L}! {O}.", "¡Correcto, la {L}! {O}."]
+FRASE_SIN_RESPUESTA = "¡Escríbelo en los comentarios si te lo sabes!"
 
 
 
@@ -153,26 +158,37 @@ def build_timeline(quiz, voice, countdown=5):
             # las opciones solo se muestran (no se narran)
             opt_times.append(loc)
             events.append(("fx", "pop", st + loc))
-            loc += 0.3
+            loc += 0.22
         cd_start = loc + 0.2
         events.append(("music_boost", cd_start, cd_start + countdown))
         for s in range(countdown):
             events.append(("fx", "tick_high" if s >= countdown - 2 else "tick", st + cd_start + s))
         rv = cd_start + countdown
         ci = LETTERS.index(q["correcta"].upper())
-        # la respuesta se revela solo con animación y sonido (sin narrar)
-        events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15)]
-        rdur = 2.2
+        nores = bool(q.get("sin_respuesta"))
+        if nores:
+            # pregunta para comentarios: no se revela la respuesta
+            sig, dv = say(FRASE_SIN_RESPUESTA)
+            events += [("fx", "buzz", st + rv), ("voice", sig, st + rv + 0.35)]
+            rdur = max(2.3, 0.35 + dv + 0.5)
+        else:
+            # se narra solo la opción correcta
+            texto = FRASES_CORRECTA[qi % len(FRASES_CORRECTA)].format(
+                L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci])
+            sig, dv = say(texto)
+            events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.5)]
+            rdur = max(2.0, 0.5 + dv + 0.25)
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
-                       "reveal": rv, "correct": ci})
+                       "reveal": rv, "correct": ci, "nores": nores})
         t += dur
 
-    sig, d = say("¿Cuántas has acertado? ¡Déjamelo en comentarios!")
+    last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta"))
+    sig, d = say("¿Cuántas has acertado?" if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
     shout_at = 0.4 + d + 0.1
     sig2, d2 = voice.say("¡Sígueme para más!", shout=True)
-    dur = max(3.5, shout_at + d2 + 1.2)
+    dur = max(3.5, shout_at + d2 + 1.0)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.4), ("voice", sig2, t + shout_at),
                ("fx", "applause", t + shout_at)]
     scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at})
@@ -208,33 +224,75 @@ def _init(state):
     _STATE.update(state)
     th = state["theme"]
     top, bot = np.array(th["bg_top"], float), np.array(th["bg_bottom"], float)
-    yy = np.linspace(0, 1, H)[:, None, None]
+    lime = np.array(th.get("bg_mid", (120, 230, 40)), float)
+    teal = np.array(th.get("bg_alt", (0, 170, 140)), float)
+    # degradado cíclico (periodo H) en una imagen de 2H de alto: se desplaza para dar movimiento
+    yy = np.linspace(0, 2, 2 * H)[:, None, None]
     xx = np.linspace(0, 1, W)[None, :, None]
-    g = top * (1 - (0.75 * yy + 0.25 * xx)) + bot * (0.75 * yy + 0.25 * xx)
+    ph = 2 * np.pi * (yy + 0.35 * xx)
+    w1 = (np.cos(ph) + 1) / 2
+    w2 = (np.cos(ph * 2 + 1.3) + 1) / 2
+    g = top * w1 + bot * (1 - w1)
+    g = g * (1 - 0.35 * w2) + (lime * (xx < 2) * 0.6 + teal * 0.4) * 0.35 * w2
     _STATE["bg"] = Image.fromarray(np.clip(g, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
     lp = os.path.join(ASSETS, "logo.png")
     _STATE["logo"] = Image.open(lp).convert("RGBA").resize((800, 800), Image.LANCZOS) if os.path.exists(lp) else None
     rnd = random.Random(11)
-    _STATE["bubbles"] = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.uniform(30, 150), rnd.uniform(25, 90),
-                          rnd.uniform(0.08, 0.2), rnd.uniform(0, 6.28)) for _ in range(16)]
+    _STATE["bubbles"] = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.uniform(40, 160), rnd.uniform(40, 120),
+                          rnd.uniform(0.08, 0.18), rnd.uniform(0, 6.28)) for _ in range(12)]
+    # formas de colores flotando: (x, y, tamaño, velocidad, giro, fase, tipo, color)
+    _STATE["shapes"] = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.uniform(18, 48), rnd.uniform(60, 180),
+                         rnd.uniform(-2, 2), rnd.uniform(0, 6.28), rnd.randint(0, 3), rnd.randint(0, 4))
+                        for _ in range(26)]
     _STATE["confetti"] = [(rnd.uniform(-1, 1), rnd.uniform(-1.4, -0.4), rnd.randint(0, 4),
                            rnd.uniform(12, 26), rnd.uniform(0, 6.28)) for _ in range(70)]
 
 
+def _shape(d, kind, x, y, s, ang, col):
+    if kind == 0:  # anillo
+        d.ellipse((x - s, y - s, x + s, y + s), outline=col, width=max(4, int(s / 4)))
+    elif kind == 1:  # cruz / signo más
+        for a in (ang, ang + math.pi / 2):
+            dx, dy = math.cos(a) * s, math.sin(a) * s
+            d.line([(x - dx, y - dy), (x + dx, y + dy)], fill=col, width=max(5, int(s / 3)))
+    elif kind == 2:  # triángulo
+        d.polygon([(x + s * math.cos(ang + k * 2.094), y + s * math.sin(ang + k * 2.094)) for k in range(3)],
+                  fill=col)
+    else:  # estrella
+        pts = []
+        for k in range(10):
+            r = s if k % 2 == 0 else s * 0.45
+            a = ang + k * math.pi / 5
+            pts.append((x + r * math.cos(a), y + r * math.sin(a)))
+        d.polygon(pts, fill=col)
+
+
 def _background(t):
     th = _STATE["theme"]
-    img = _STATE["bg"].copy()
+    off = int((t * 70) % H)  # el degradado sube poco a poco
+    img = _STATE["bg"].crop((0, off, W, off + H))
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
+    # rayos giratorios de concurso que laten al ritmo de la música
+    beat = (t % (60 / BPM)) / (60 / BPM)
+    glow = 16 + 20 * math.exp(-beat * 5)
+    cx, cy, R = 540, 880, 2200
+    base = math.radians(t * 12)
+    for k in range(18):
+        a0 = base + k * 2 * math.pi / 18
+        a1 = a0 + math.pi / 18
+        d.polygon([(cx, cy), (cx + R * math.cos(a0), cy + R * math.sin(a0)),
+                   (cx + R * math.cos(a1), cy + R * math.sin(a1))], fill=(255, 255, 255, int(glow)))
     for x0, y0, r, sp, a, ph in _STATE["bubbles"]:
         y = (y0 - sp * t) % (H + 2 * r) - r
-        x = x0 + 30 * math.sin(t * 0.7 + ph)
-        d.ellipse((x - r, y - r, x + r, y + r), fill=with_alpha(th["blob"], a))
-    # franjas diagonales sutiles
-    off = (t * 40) % 160
-    for k in range(-4, 20):
-        x = k * 160 + off
-        d.polygon([(x, 0), (x + 50, 0), (x + 50 - 700, H), (x - 700, H)], fill=(255, 255, 255, 10))
+        x = x0 + 40 * math.sin(t * 0.9 + ph)
+        rr = r * (1 + 0.06 * math.exp(-beat * 5))
+        d.ellipse((x - rr, y - rr, x + rr, y + rr), fill=with_alpha(th["blob"], a))
+    cols = th["options"] + [th["accent"]]
+    for x0, y0, s, sp, rot, ph, kind, ci in _STATE["shapes"]:
+        y = (y0 - sp * t) % (H + 120) - 60
+        x = x0 + 50 * math.sin(t * 1.3 + ph)
+        _shape(d, kind, x, y, s, ph + rot * t, with_alpha(cols[ci], 0.75))
     img.alpha_composite(layer)
     return img
 
@@ -313,7 +371,9 @@ def _draw_question(layer, sc, lt):
     th = _STATE["theme"]
     d = ImageDraw.Draw(layer)
     q = sc["q"]
-    revealed = lt >= sc["reveal"]
+    nores = sc.get("nores", False)
+    ended = lt >= sc["reveal"]
+    revealed = ended and not nores  # se muestra la correcta
     rlt = lt - sc["reveal"]
 
     # cabecera: pregunta X/N + puntos de progreso
@@ -332,7 +392,12 @@ def _draw_question(layer, sc, lt):
 
     # cronómetro
     cs, n = sc["cd_start"], sc["countdown"]
-    if lt >= cs - 0.3:
+    if nores and ended:
+        # en vez del cronómetro: invitación a comentar
+        pp = ease_out_back(rlt / 0.45)
+        pulse = 1 + 0.05 * math.sin(rlt * 9)
+        _pill(d, 540, 840, "¡ESCRÍBELO EN COMENTARIOS!", int(max(10, 52 * pp * pulse)), th["accent2"], th["text_light"])
+    elif lt >= cs - 0.3:
         ap = ease_out_back((lt - cs + 0.3) / 0.35)
         cx, cy = TIMER_C
         r = TIMER_R * ap
@@ -458,7 +523,7 @@ def render_video(quiz, theme, voice, out_path, countdown=5, workers=None, music_
     cmd = ["ffmpeg", "-y", "-loglevel", "error",
            "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
            "-i", wav,
-           "-c:v", "libx264", "-preset", "medium", "-crf", "19", "-pix_fmt", "yuv420p",
+           "-c:v", "libx264", "-preset", "medium", "-crf", "21", "-pix_fmt", "yuv420p",
            "-profile:v", "high", "-level", "4.1",
            "-c:a", "aac", "-b:a", "192k", "-ar", "44100",
            "-shortest", "-movflags", "+faststart", out_path]

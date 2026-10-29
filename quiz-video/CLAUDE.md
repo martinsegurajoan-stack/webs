@@ -1,26 +1,32 @@
-# quiz-video — plantilla de @hora.delquiz (DEFINITIVA)
+# quiz-video — plantilla FINAL de @hora.delquiz
 
-Flujo del usuario: solo escribe las preguntas, opciones y respuestas. Tú generas el vídeo con esta
-plantilla SIN cambiar nada del diseño ni de la voz, y le envías el MP4 (SendUserFile, display "attach").
+Flujo: el usuario SOLO escribe las preguntas (con opciones y respuesta). Sin pedir más instrucciones,
+genera el vídeo con esta plantilla y envíale el MP4 (SendUserFile, display "attach"). No cambies el
+diseño ni la voz salvo que lo pida.
 
-## Plantilla fija (ya implementada en el código; no tocar salvo que el usuario lo pida)
-- 1080x1920, MP4, paleta `verde`, cuenta atrás de 5 s con tic-tac fuerte y música algo más alta al pensar.
-- Intro: "¡ES HORA DEL QUIZ!" + título + "NIVEL: MEDIO" (masculino: FÁCIL / MEDIO / DIFÍCIL) + nº de preguntas.
-- `@hora.delquiz` fijo abajo todo el vídeo. Logo `assets/logo.png` en el cierre bajo "¡SÍGUEME PARA MÁS!".
-- Voz: FEMENINA, divertida y amigable: `kokoro:ef_dora`, velocidad 1.15, entonación exagerada con pyworld
-  (EXPAND/PITCH en `quizvideo/tts_kokoro.py`).
-- La voz SOLO narra: intro, "¡Pregunta N!" + la pregunta, y el cierre. NUNCA lee las opciones ni la respuesta.
-- Cierre: "¿Cuántas has acertado? ¡Déjamelo en comentarios!" y después "¡Sígueme para más!" GRITADO
-  (más fuerte y agudo) con aplausos.
+## Plantilla (ya implementada en el código)
+- 1080x1920 MP4, paleta `verde` con fondo dinámico (degradado en movimiento, rayos giratorios que laten
+  con la música, formas de colores flotando). Cuenta atrás de 5 s, tic-tac fuerte, música más alta al pensar.
+- Intro "¡ES HORA DEL QUIZ!" + título + "NIVEL: MEDIO" (FÁCIL/MEDIO/DIFÍCIL) + nº de preguntas.
+- `@hora.delquiz` fijo abajo siempre. Logo `assets/logo.png` en el cierre bajo "¡SÍGUEME PARA MÁS!".
+- Voz femenina alegre: `kokoro:ef_dora` a 1.22, adaptada a la voz de referencia del usuario mediante
+  `assets/voz_ref/perfil.npz` (tono ~255 Hz, entonación muy expresiva). No borres ese perfil.
+- Narración: intro, "¡Pregunta N!" + pregunta, y SOLO la opción correcta al revelarla
+  ("¡Es la B! ..."). Nunca lee las opciones.
+- Pregunta con `"sin_respuesta": true`: no se revela; al acabar el tiempo dice
+  "¡Escríbelo en los comentarios si te lo sabes!" y aparece ese cartel. Úsalo cuando el usuario diga
+  que no se diga la respuesta / que la pongan en comentarios (suele ser la última).
+- Cierre: "¿Cuántas has acertado?" y "¡Sígueme para más!" gritado con aplausos.
 
 ## Pasos
-1. Si no existe `modelos/`, ejecuta `./instalar_voz.sh` (gratis, solo PyPI/npm; en la nube, nunca en el PC del usuario).
-2. Crea `quizzes/hora_del_quiz_NN.json` (siguiente número libre) con el texto del usuario tal cual.
-   `titulo`: "¿Cuánto sabes de <tema>?" según las preguntas; `dificultad`: "medio" salvo que diga otra.
-   Verifica cada respuesta (busca en la web si es actualidad) y anótalo en `fuente`.
-   Si una respuesta es errónea o ambigua, avísale en el mensaje final (no la cambies sin decírselo).
-3. `python3 generar.py quizzes/hora_del_quiz_NN.json` (~2-3 min, pon timeout de 600000 ms).
-4. Comprueba la salida de ffprobe ("OK", 1080x1920, audio aac) y mira 2-3 fotogramas con ffmpeg.
+1. Si no existe `modelos/`, ejecuta `./instalar_voz.sh` (gratis, PyPI/npm, solo en la nube).
+2. Crea `quizzes/hora_del_quiz_NN.json` (siguiente número libre; formato en README) con el texto del
+   usuario (ortografía corregida, mayúsculas normales). `titulo` "¿Cuánto sabes de <tema>?",
+   `dificultad` "medio" salvo que diga otra. Verifica cada respuesta (web si es actualidad) en `fuente`;
+   si alguna es errónea o ambigua, avísale en el mensaje final.
+3. `python3 generar.py quizzes/hora_del_quiz_NN.json` (~3 min, timeout 600000 ms). Objetivo ≤ 60 s;
+   si se pasa, avisa (no quites preguntas sin decírselo).
+4. Verifica la salida de ffprobe ("OK", 1080x1920, aac) y una hoja de fotogramas:
+   `ffmpeg -i X.mp4 -vf "fps=1,scale=180:320,tile=12x5" -frames:v 1 hoja.png`.
    No digas que hay vídeo si el MP4 no existe o no pasó la verificación.
-5. Commit del JSON y del MP4 en `salida/`, push a la rama de trabajo, y envía el MP4 al usuario.
-6. Respuesta corta: duración del vídeo + avisos sobre respuestas dudosas, si los hay.
+5. Commit del JSON y MP4 (`salida/`), push, envía el MP4. Mensaje corto: duración + avisos.
