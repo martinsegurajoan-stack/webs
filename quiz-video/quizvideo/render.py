@@ -77,6 +77,19 @@ MODOS = {
 from .frases_intro import FRASES_INTRO  # noqa: E402
 
 
+MODOS["halloween"] = dict(MODOS["trivial"], **{
+    "saludo": "¡Es hora del quiz de Halloween!",
+    "intro_l1": "¡QUIZ DE", "intro_l2": "HALLOWEEN!",
+    "comentarios_voz": "¡Escríbelo en los comentarios… si te atreves!",
+    "outro_sub": "¡Escríbelo en comentarios… si te atreves!",
+    "final_voz": "¡Sígueme para más, si no te da miedo!",
+    "musica": "halloween", "bpm": 104, "estilo_voz": "[playful and spooky]",
+    "tag_final": "[spooky, shouting excitedly]", "tempo": 1.12,
+})
+MODOS["trivial"]["saludo"] = "¡Es hora del quiz!"
+MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
+
+
 def modo_de(quiz):
     return MODOS.get(quiz.get("modo", "trivial"), MODOS["trivial"])
 
@@ -191,7 +204,7 @@ def build_timeline(quiz, voice, countdown=5):
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
     salsa = quiz.get("frase_intro")
-    saludo = "¡Es hora del quiz de parejas!" if modo["fin"] is not None else "¡Es hora del quiz!"
+    saludo = modo["saludo"]
     sig, d = say(f"{saludo} {salsa}" if salsa else modo["intro_voz"])
     dur = max(2.8, 0.3 + d + 0.2)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
@@ -249,11 +262,18 @@ def build_timeline(quiz, voice, countdown=5):
             sig, dv = say(texto)
             events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.4)]
             rdur = max(2.0, 0.4 + dv + 0.15)
+            if q.get("chiste"):
+                # chiste corto después de la respuesta (se ve en la tarjeta mientras se dice)
+                sigj, dj = say(q["chiste"])
+                joke_at = rv + 0.4 + dv + 0.2
+                events.append(("voice", sigj, st + joke_at))
+                rdur = max(rdur, joke_at - rv + dj + 0.35)
+        joke_t = (rv + 0.4 + dv + 0.2) if (q.get("chiste") and not nores) else None
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
                        "reveal": rv, "correct": ci, "nores": nores, "end_pill": end_pill,
-                       "extra": extra, "n_reg": n_reg})
+                       "extra": extra, "n_reg": n_reg, "joke_t": joke_t})
         t += dur
 
     last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta")) or modo["fin"] is not None
@@ -324,6 +344,42 @@ def _init(state):
     vig = Image.new("RGBA", (W // 4, H // 4), (230, 20, 40, 0))
     vig.putalpha(Image.fromarray(va, "L"))
     _STATE["vignette"] = vig.resize((W, H), Image.BILINEAR)
+    _STATE["decor"] = {}
+    if th.get("formas") == "halloween":
+        dd = os.path.join(ASSETS, "decor_halloween")
+
+        def spr(name, size):
+            im = Image.open(os.path.join(dd, name + ".png")).convert("RGBA")
+            return im.resize((size, size), Image.LANCZOS)
+
+        D = _STATE["decor"]
+        D["luna"] = spr("luna", 250)
+        D["telarana"] = spr("telarana", 300)
+        D["arana"] = spr("arana", 90)
+        D["calabaza_s"] = spr("calabaza", 110)
+        D["sprites"] = {n: [spr(n, sz) for sz in (70, 100, 130)]
+                        for n in ("murcielago", "fantasma", "calabaza", "calavera", "caramelo", "piruleta")}
+        # halo de la luna
+        gy, gx = np.mgrid[0:500, 0:500]
+        gr = np.sqrt((gx - 250) ** 2 + (gy - 250) ** 2) / 250
+        halo = Image.new("RGBA", (500, 500), (255, 200, 120, 0))
+        halo.putalpha(Image.fromarray((np.clip(1 - gr, 0, 1) ** 2 * 150).astype(np.uint8), "L"))
+        D["halo"] = halo
+        # niebla: franja de nubes blancas semitransparentes (se desplaza en horizontal)
+        fog = Image.new("RGBA", (W * 2, 520), (0, 0, 0, 0))
+        fd = ImageDraw.Draw(fog)
+        rf = random.Random(5)
+        for _ in range(40):
+            fx, fy = rf.uniform(0, W * 2), rf.uniform(150, 520)
+            fw, fh = rf.uniform(180, 420), rf.uniform(60, 140)
+            fd.ellipse((fx - fw, fy - fh, fx + fw, fy + fh), fill=(235, 225, 255, rf.randint(18, 40)))
+        from PIL import ImageFilter
+
+        D["fog"] = fog.filter(ImageFilter.GaussianBlur(30))
+        rs = random.Random(21)
+        names = ["murcielago"] * 6 + ["fantasma"] * 4 + ["calavera", "caramelo", "piruleta", "calabaza"] * 2
+        D["flyers"] = [(n, rs.randint(0, 2), rs.uniform(0, W), rs.uniform(0, H), rs.uniform(40, 110),
+                        rs.uniform(0, 6.28), rs.choice((-1, 1))) for n in names]
     lp = os.path.join(ASSETS, "logo.png")
     _STATE["logo"] = Image.open(lp).convert("RGBA").resize((800, 800), Image.LANCZOS) if os.path.exists(lp) else None
     rnd = random.Random(11)
@@ -392,6 +448,10 @@ def _background(t):
         x = x0 + 40 * math.sin(t * 0.9 + ph)
         rr = r * (1 + 0.06 * math.exp(-beat * 5))
         d.ellipse((x - rr, y - rr, x + rr, y + rr), fill=with_alpha(th["blob"], a))
+    if th.get("formas") == "halloween":
+        img.alpha_composite(layer)
+        _halloween(img, t, beat)
+        return img
     cols = th["options"] + [th["accent"]]
     for x0, y0, s, sp, rot, ph, kind, ci in _STATE["shapes"]:
         y = (y0 - sp * t) % (H + 120) - 60
@@ -404,6 +464,55 @@ def _background(t):
         _shape(d, kind, x, y, s * (1.25 if kind == 4 else 1), ang, with_alpha(cols[ci], 0.75))
     img.alpha_composite(layer)
     return img
+
+
+def _halloween(img, t, beat):
+    """Decorado de Halloween: luna con halo, telarañas, araña colgando, murciélagos, fantasmas,
+    caramelos y calaveras flotando, niebla y calabazas abajo."""
+    D = _STATE["decor"]
+    # luna arriba a la derecha con halo que late suave
+    hs = int(500 * (1 + 0.04 * math.sin(t * 1.3)))
+    halo = D["halo"].resize((hs, hs), Image.BILINEAR)
+    img.alpha_composite(halo, (int(890 - hs / 2), int(110 - hs / 2)))
+    img.alpha_composite(D["luna"], (890 - 125, 110 - 125))
+    # telarañas en las esquinas superiores
+    img.alpha_composite(D["telarana"], (-70, -70))
+    # araña bajando y subiendo de su hilo
+    sy = 230 + 120 * (0.5 + 0.5 * math.sin(t * 0.9))
+    dr = ImageDraw.Draw(img)
+    dr.line((60, 40, 60, sy - 30), fill=(230, 230, 240, 200), width=3)
+    img.alpha_composite(D["arana"], (60 - 45, int(sy - 45)))
+    # bichos y dulces volando
+    for n, si, x0, y0, sp, ph, dirx in D["flyers"]:
+        im = D["sprites"][n][si]
+        if n == "murcielago":
+            # cruzan en horizontal aleteando
+            x = (x0 + dirx * sp * 2.2 * t) % (W + 300) - 150
+            y = y0 + 60 * math.sin(t * 2 + ph)
+            flap = 0.55 + 0.45 * abs(math.sin(t * 9 + ph))
+            im = im.resize((max(8, int(im.width * flap)), im.height), Image.BILINEAR)
+            if dirx < 0:
+                im = im.transpose(Image.FLIP_LEFT_RIGHT)
+        elif n == "fantasma":
+            x = x0 + 70 * math.sin(t * 0.6 + ph)
+            y = (y0 - sp * 0.8 * t) % (H + 300) - 150
+            a = im.getchannel("A").point(lambda v: int(v * 0.8))
+            im = im.copy()
+            im.putalpha(a)
+        else:
+            x = x0 + 40 * math.sin(t * 0.8 + ph)
+            y = (y0 - sp * t) % (H + 300) - 150
+            im = im.rotate(20 * math.sin(t * 1.5 + ph), resample=Image.BICUBIC, expand=True)
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+    # niebla abajo moviéndose
+    off = int((t * 40) % W)
+    fog = D["fog"].crop((off, 0, off + W, D["fog"].height))
+    img.alpha_composite(fog, (0, H - fog.height))
+    # calabazas en el suelo que "laten" con la música
+    for k, (px, sz) in enumerate(((120, 2), (330, 1), (760, 1), (960, 2))):
+        im = D["sprites"]["calabaza"][sz]
+        bump = int(8 * math.exp(-beat * 5))
+        img.alpha_composite(im, (int(px - im.width / 2), int(H - 90 - im.height / 2 - bump)))
 
 
 def _pill(d, cx, cy, text, size, bg, fg, pad=(36, 18)):
@@ -472,7 +581,8 @@ def _draw_outro(layer, sc, lt):
     d.rounded_rectangle(box, 50, fill=th["card"])
     f, lines, lh = fit(d, modo["outro_titulo"], 820, 300, 110)
     draw_lines(d, lines, f, lh, 540, y + 200, th["text_dark"])
-    d.text((540, y + 420), modo["outro_sub"], font=font(54), fill=th["accent2"], anchor="mm")
+    fs, ls_, lhs = fit(d, modo["outro_sub"], 840, 110, 54, 30, 1.05)
+    draw_lines(d, ls_, fs, lhs, 540, y + 420, th["accent2"])
     b = ease_out_back((lt - sc.get("shout_at", 0.5) + 0.15) / 0.4)
     if b > 0:
         pulse = 1 + 0.07 * math.sin(lt * 9)
@@ -524,8 +634,18 @@ def _draw_question(layer, sc, lt):
     box = (OPT_X0, y, OPT_X1, y + CARD_H)
     shadow_box(d, box, 44)
     d.rounded_rectangle(box, 44, fill=th["card"])
-    f, lines, lh = fit(d, q["pregunta"], 840, CARD_H - 70, 78, 40)
-    draw_lines(d, lines, f, lh, 540, y + CARD_H / 2, th["text_dark"])
+    jt = sc.get("joke_t")
+    if jt is not None and lt >= jt:
+        # el texto de la tarjeta pasa a ser el chiste, con un pequeño rebote
+        jp = ease_out_back((lt - jt) / 0.35)
+        f, lines, lh = fit(d, q["chiste"], 820, CARD_H - 90, int(60 * (0.85 + 0.15 * jp)), 34, 1.08)
+        draw_lines(d, lines, f, lh, 540, y + CARD_H / 2 + 6, th["accent2"])
+        sprite = _STATE.get("decor", {}).get("calabaza_s")
+        if sprite is not None:
+            layer.alpha_composite(sprite, (int(OPT_X1 - 70), int(y - 40 + 6 * math.sin(lt * 8))))
+    else:
+        f, lines, lh = fit(d, q["pregunta"], 840, CARD_H - 70, 78, 40)
+        draw_lines(d, lines, f, lh, 540, y + CARD_H / 2, th["text_dark"])
 
     # imagen de la pregunta (entra con rebote, flota y se aparta si sale el cartel final)
     im = _STATE["imgs"].get(q.get("imagen"))

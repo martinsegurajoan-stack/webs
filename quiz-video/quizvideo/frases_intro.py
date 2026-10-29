@@ -61,10 +61,25 @@ FRASES_PAREJA = [
     "Advertencia: este quiz puede provocar risas, celos y alguna que otra mirada asesina. ¡Vamos!",
 ]
 
-LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA}
+# Frases para quiz de HALLOWEEN: terroríficas y con humor.
+FRASES_HALLOWEEN = [
+    "Si fallas más de dos, esta noche el fantasma de tu profe de historia te visita. ¡Vamos a comprobarlo!",
+    "Prepárate, que estas preguntas dan más miedo que tu cuenta del banco a final de mes. ¡Empezamos!",
+    "Si no aciertas ninguna, mejor disfrázate de zombi: ya tienes el cerebro a juego. ¡Vamos allá!",
+    "Las brujas ya están volando y los vampiros afilando los colmillos. ¿Tú estás listo? ¡Empieza el quiz!",
+    "Dicen que quien falla este quiz se queda sin caramelos un año entero. ¡Mucho cuidado!",
+    "Apaga la luz, sube el volumen y que empiece el quiz más terrorífico del año. ¡Vamos!",
+    "Este quiz tiene trampas más escondidas que un esqueleto en el armario. ¡A por ello!",
+    "Truco o trato: si aciertas todas, trato. Si no… te toca el truco. ¡Empezamos!",
+    "Hasta Drácula ha fallado alguna de estas. A ver qué tal se te da a ti. ¡Vamos allá!",
+    "Coge tu escoba, que esta noche toca volar entre preguntas. ¡Arranca el quiz de Halloween!",
+]
+
+LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA, "halloween": FRASES_HALLOWEEN}
 REGISTROS = {
     "trivial": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_usadas.json"),
     "pareja": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_pareja_usadas.json"),
+    "halloween": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_halloween_usadas.json"),
 }
 
 

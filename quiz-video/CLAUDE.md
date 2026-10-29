@@ -22,6 +22,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_01.mp4` | `quizzes/hora_del_quiz_01.json` | 61 s | Trivial nº1 (verde, 3+1, estilo anterior a las mejoras) |
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
+| `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 118 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, chistes) = PLANTILLA TEMÁTICA DE REFERENCIA |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
 
@@ -38,7 +39,7 @@ Plantillas y piezas reutilizables:
   `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
 
 ## Nombres de archivo
-- Trivial: `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente número libre: 03).
+- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 04).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 02).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
@@ -102,6 +103,21 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   rotatoria ("¿Habéis coincidido?", ...) con lluvia de corazones. No hace falta `correcta`.
 - Cierre: "¿Cuántas habéis acertado?" + "¡Etiqueta a tu pareja y sígueme para más!" + logo.
 - Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
+
+## Modo "halloween" (quiz temático) y CHISTES
+- `"modo": "halloween"`: misma dinámica que el trivial (5+extra, respuesta narrada, cronómetro con
+  tensión...) pero TODO Halloween: paleta `paleta_halloween` (noche morada/negra + naranja, tono
+  registrado en 262-300), decorado `_halloween()` en `render.py` (luna con halo, telaraña con araña
+  colgando, murciélagos aleteando, fantasmas, calaveras y dulces flotando, niebla y calabazas que laten),
+  sprites en `assets/decor_halloween/`, música `music_halloween` (La menor, órgano, clavecín, theremin),
+  voz con etiqueta "[playful and spooky]", intro "¡Es hora del quiz de Halloween!" + frase de
+  `FRASES_HALLOWEEN` (registro `assets/frases_halloween_usadas.json`), cierre "…si te atreves".
+- CHISTES: campo opcional `"chiste"` en cada pregunta con respuesta: se narra justo después de la
+  respuesta y su texto sustituye a la pregunta en la tarjeta (con una calabaza si es Halloween). El
+  usuario los pidió ("sigue haciendo chistes entre preguntas", relacionados con el tema): escríbelos
+  tú, cortos y en español de España. Cada chiste añade ~5 s y ~95 créditos.
+- Para otras temáticas (Navidad, verano...) crea un modo nuevo igual que `halloween` (paleta,
+  decorado, música, frases) y pregúntale al usuario solo si no está claro el estilo.
 
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` o `quizzes/pareja_NN.json` (siguiente número libre; copia la

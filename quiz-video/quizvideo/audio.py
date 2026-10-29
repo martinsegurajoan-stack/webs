@@ -144,7 +144,84 @@ def sfx_applause(dur=2.5, seed=5):
 def music(duration, bpm=118, seed=7, style="pop"):
     if style == "romantica":
         return music_romantica(duration)
+    if style == "halloween":
+        return music_halloween(duration)
     return music_pop(duration, bpm, seed)
+
+
+def music_halloween(duration, bpm=104, seed=13):
+    """Música de Halloween divertida y misteriosa: La menor armónica (Am–F–Dm–E), órgano con vibrato,
+    clavecín en arpegio, bajo pizzicato, campanitas y melodía tipo theremin."""
+    beat = 60.0 / bpm
+    bar = 4 * beat
+    n = int(duration * SR) + SR
+    out = np.zeros(n)
+    rng = np.random.default_rng(seed)
+
+    def add(sig, start, gain=1.0):
+        st = int(start * SR)
+        if st >= n:
+            return
+        e = min(n, st + len(sig))
+        out[st:e] += gain * sig[: e - st]
+
+    def organ(m, dur):
+        t = _t(dur)
+        f = _midi(m) * (1 + 0.004 * np.sin(2 * np.pi * 5.5 * t))
+        ph = np.cumsum(f) / SR
+        w = np.sign(np.sin(2 * np.pi * ph)) * 0.4 + np.sin(2 * np.pi * 2 * ph) * 0.3 + np.sin(2 * np.pi * 3 * ph) * 0.2
+        env = np.minimum(1, t / 0.05) * np.minimum(1, (dur - t) / 0.1)
+        return w * env
+
+    def theremin(m, dur):
+        t = _t(dur)
+        f = _midi(m) * (1 + 0.012 * np.sin(2 * np.pi * 6 * t))
+        w = np.sin(2 * np.pi * np.cumsum(f) / SR)
+        env = np.minimum(1, t / 0.08) * np.minimum(1, (dur - t) / 0.12)
+        return w * env
+
+    kick = _t(0.2)
+    kick = np.sin(2 * np.pi * np.cumsum(45 + 80 * np.exp(-kick * 25)) / SR) * _env(len(kick), 0.002, 0.1)
+    snare = rng.standard_normal(int(0.12 * SR))
+    snare = (snare - _lowpass(snare, 0.15)) * _env(len(snare), 0.001, 0.04) * 0.35
+    chords = [[57, 60, 64], [53, 57, 60], [50, 53, 57], [52, 56, 59]]   # Am F Dm E
+    bass = [45, 41, 38, 40]
+    arp = [0, 2, 1, 2, 0, 2, 1, 2]
+    melody = [  # (nota, inicio en tiempos, duración en tiempos) para 4 compases
+        (76, 0, 1), (81, 1, 1), (84, 2, 1.5), (83, 3.5, 0.5),
+        (81, 4, 1), (76, 5, 1), (77, 6, 1.5), (76, 7.5, 0.5),
+        (74, 8, 1), (77, 9, 1), (81, 10, 1.5), (80, 11.5, 0.5),
+        (76, 12, 1), (80, 13, 1), (83, 14, 1), (88, 15, 1),
+    ]
+    t, bi = 0.0, 0
+    while t < duration + bar:
+        k = bi % 4
+        ch = chords[k]
+        for b in range(4):
+            bt = t + b * beat
+            add(kick, bt, 0.6 if b in (0, 2) else 0.0)
+            if b in (1, 3):
+                add(snare, bt, 0.55)
+            # bajo pizzicato saltarín
+            add(_note(_midi(bass[k]), beat * 0.4, "tri", decay=0.12), bt, 0.5)
+            add(_note(_midi(bass[k] + 7), beat * 0.3, "tri", decay=0.08), bt + beat / 2, 0.3)
+        for j, pi_ in enumerate(arp):  # clavecín
+            m = ch[pi_] + 12
+            add(_note(_midi(m), beat * 0.5, "saw", decay=0.09), t + j * beat / 2, 0.08)
+        for m in ch:  # órgano de fondo
+            add(organ(m, bar * 0.98), t, 0.045)
+        if bi % 8 >= 4:  # la melodía entra cada dos frases para no cansar
+            for m, st_, du in melody[(k * 4):(k * 4 + 4)]:
+                add(theremin(m, du * beat * 0.95), t + (st_ - k * 4) * beat, 0.09)
+        else:  # campanitas tétricas
+            add(_note(_midi(ch[0] + 24), beat, "sine", decay=0.5), t + 3.5 * beat, 0.08)
+        t += bar
+        bi += 1
+    out = out[: int(duration * SR)]
+    f = int(0.6 * SR)
+    out[:f] *= np.linspace(0, 1, f)
+    out[-int(1.5 * SR):] *= np.linspace(1, 0, int(1.5 * SR))
+    return out
 
 
 def music_romantica(duration, bpm=92, seed=9):

@@ -183,3 +183,25 @@ def paleta_romantica(h):
         "options": [(255, 64, 129), (171, 71, 188), (255, 112, 90), (229, 40, 70)],
     })
     return th
+
+
+def paleta_halloween(h):
+    """Paleta de Halloween: noche morada/negra con brillo naranja; tono base morado que no se repite."""
+    th = paleta_desde_tono(h)
+    th.update({
+        "bg_top": _hsv(h, 0.75, 0.45),
+        "bg_bottom": (10, 4, 22),
+        "bg_mid": _hsv(h + 10, 0.7, 0.55),
+        "bg_alt": (255, 120, 20),                  # brillo naranja de calabaza
+        "blob": (255, 150, 50),
+        "accent": (255, 145, 0),                   # naranja calabaza
+        "accent2": (150, 70, 235),                 # morado brujería
+        "card": (255, 248, 236),                   # pergamino
+        "text_dark": (38, 10, 52),
+        "correct": (110, 210, 40),                 # verde poción
+        "wrong": (120, 110, 130),
+        "options": [(255, 120, 0), (150, 70, 230), (90, 190, 50), (225, 40, 60)],
+        "formas": "halloween",
+        "rayos": 0.45,
+    })
+    return th
