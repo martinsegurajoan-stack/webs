@@ -41,8 +41,9 @@ PORTADAS = {
         "tam": 140,
         "pregunta": 0,
         "emoji": "mente_explota", "emoji2": "cerebro",
-        "pegatina": "¿LLEGAS AL 6/6?",
-        "sub": "La 1ª ya la falla casi todo el mundo",
+        "estilo": "sello",
+        "sello": ("¿LLEGAS", "AL 6/6?"),
+        "sub": "La 1ª ya la falla|casi todo el mundo",
     },
     "hora_del_quiz_03": {
         "paleta": lambda: themes.paleta_halloween(themes.elegir_tono("hora_del_quiz_03")),
@@ -50,6 +51,7 @@ PORTADAS = {
         "titulo": [("¿CUÁNTO SABES", "w"), ("DE HALLOWEEN?", "a")],
         "pregunta": 0,
         "emoji": "calavera", "emoji2": "calabaza",
+        "estilo": "cartel",
         "pegatina": "¿TE ATREVES?",
         "sub": "Solo los valientes llegan al final",
     },
@@ -170,11 +172,12 @@ def titular(lineas, th, ang=-4, tam=None):
     return layer.rotate(ang, Image.BICUBIC, expand=True)
 
 
-def tarjeta(q, th, ancho=880):
+def tarjeta(q, th, ancho=880, hueco="der"):
     """Tarjeta con una pregunta real del vídeo y sus 4 opciones (2x2), sin marcar ninguna."""
     pad = 32
     tmp = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
-    qw = ancho - 2 * pad - 175  # hueco a la derecha para el emoji
+    hl, hr = {"der": (0, 175), "izq": (175, 0), "ambos": (130, 130)}[hueco]  # hueco para los emojis
+    qw = ancho - 2 * pad - hl - hr
     fq, lq, lhq = fit(tmp, q["pregunta"], qw, 130, 56, minimum=38)
     alto_q = int(len(lq) * lhq) + 2 * pad
     opt_h, gap = 92, 16
@@ -184,7 +187,7 @@ def tarjeta(q, th, ancho=880):
     d.rounded_rectangle((0, 0, ancho - 1, alto - 1), 46, fill=th["card"])
     y = pad
     for line in lq:
-        d.text((pad + qw / 2 + 20, y + lhq / 2), line, font=fq, fill=th["text_dark"], anchor="mm")
+        d.text((pad + hl + qw / 2 + (20 if hueco == "der" else -20 if hueco == "izq" else 0), y + lhq / 2), line, font=fq, fill=th["text_dark"], anchor="mm")
         y += lhq
     ow = (ancho - 2 * pad - gap) / 2
     for i, o in enumerate(q["opciones"]):
@@ -218,9 +221,35 @@ def pegatina(texto, bg, fg, ang=6, size=86):
     d = ImageDraw.Draw(st)
     d.rounded_rectangle((4, 4, pw + 14, ph + 14), 34, fill=(255, 255, 255))
     d.rounded_rectangle((14, 14, pw + 4, ph + 4), 28, fill=bg)
-    d.rounded_rectangle((24, 20, pw - 6, 14 + ph * 0.42), 20, fill=(255, 255, 255, 40))
+    hl = Image.new("RGBA", st.size, (0, 0, 0, 0))
+    ImageDraw.Draw(hl).rounded_rectangle((24, 20, pw - 6, 14 + ph * 0.42), 20, fill=(255, 255, 255, 40))
+    st.alpha_composite(hl)
     d.text(((pw + 18) / 2, (ph + 18) / 2 + 4), texto, font=f, fill=fg, anchor="mm",
            stroke_width=4, stroke_fill=tuple(int(c * 0.6) for c in bg))
+    return con_sombra(st, off=14, blur=12, alpha=120).rotate(ang, Image.BICUBIC, expand=True)
+
+
+def sello(arriba, abajo, bg, fg, r=170, ang=12):
+    """Sello en forma de estallido con dos líneas de texto."""
+    size = 2 * r + 80
+    st = Image.new("RGBA", (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(st)
+    c = size / 2
+    for rad, col in [(r + 16, (255, 255, 255)), (r, bg)]:
+        pts = []
+        for k in range(36):
+            rr = rad if k % 2 == 0 else rad * 0.86
+            a = k * math.pi / 18
+            pts.append((c + rr * math.cos(a), c + rr * math.sin(a)))
+        d.polygon(pts, fill=col)
+    hl = Image.new("RGBA", st.size, (0, 0, 0, 0))
+    ImageDraw.Draw(hl).ellipse((c - r * 0.7, c - r * 0.78, c + r * 0.7, c - r * 0.1), fill=(255, 255, 255, 38))
+    st.alpha_composite(hl)
+    sombra = tuple(int(v * 0.55) for v in bg)
+    d.text((c, c - r * 0.27), arriba, font=tfont(int(r * 0.27)), fill=(255, 255, 255), anchor="mm",
+           stroke_width=4, stroke_fill=sombra)
+    d.text((c, c + r * 0.17), abajo, font=tfont(int(r * 0.43)), fill=fg, anchor="mm",
+           stroke_width=6, stroke_fill=sombra)
     return con_sombra(st, off=14, blur=12, alpha=120).rotate(ang, Image.BICUBIC, expand=True)
 
 
@@ -265,47 +294,82 @@ def crear(quiz_path, out_dir):
     E = os.path.join(A, "portada")
     dark = th["text_dark"]
 
-    # cabecera: logo + etiqueta
-    logo = con_sombra(img(os.path.join(A, "logo.png"), 170), off=10, blur=10, alpha=90)
-    pegar(base, logo, 175, 340, 6)
-    pill(base, 620, 330, cfg["arriba"], 54, th["accent"], dark)
-
-    # titular gigante
-    t = titular(cfg["titulo"], th, tam=cfg.get("tam"))
-    pegar(base, t, 540, 420 + t.height / 2 - 40)
-    y_tit = 420 + t.height - 40
-
-    # tarjeta con pregunta real (sin respuesta marcada), un poco girada
-    card = tarjeta(quiz["preguntas"][cfg["pregunta"]], th, 860)
-    cy_card = y_tit + card.height / 2 - 60
-    pegar(base, card, 540, cy_card, 2)
-    top_card = cy_card - card.height / 2 + 40  # +40: margen de la sombra
-
-    # emoji 3D gigante en la esquina (hueco reservado en la tarjeta) + secundario
+    q = quiz["preguntas"][cfg["pregunta"]]
     e1 = con_sombra(img(os.path.join(E, cfg["emoji"] + ".png"), 250), off=16, blur=14)
-    pegar(base, e1, 905, top_card + 30, -10)
     e2 = con_sombra(img(os.path.join(E, cfg["emoji2"] + ".png"), 170), off=12, blur=12)
-    pegar(base, e2, 95, cy_card + card.height / 2 - 70, 12)
-
-    # flecha roja señalando la pregunta
-    flecha(base, (70, top_card - 110), (20, top_card + 20), (150, top_card + 75))
-
-    # pegatina gancho
-    y_peg = cy_card + card.height / 2 + 15
+    logo = con_sombra(img(os.path.join(A, "logo.png"), 170), off=10, blur=10, alpha=90)
     peg_col = (230, 30, 50) if not hall else (255, 120, 0)
-    pegar(base, pegatina(cfg["pegatina"], peg_col, (255, 255, 255), size=80), 540, y_peg, 4)
-
-    # subtítulo debajo de la pegatina + usuario abajo del todo
     d = ImageDraw.Draw(base)
-    y_sub = min(y_peg + 150, 1640)
-    d.text((540, y_sub), cfg["sub"], font=font(46), fill=(255, 255, 255), anchor="mm",
-           stroke_width=7, stroke_fill=dark)
-    pill(base, 540, min(y_sub + 90, 1665), "5 PREGUNTAS + 1 EXTRA", 40, (255, 255, 255), dark)
+    estilo = cfg.get("estilo", "clasica")
+
+    def subtitulo(y):
+        d.text((540, y), cfg["sub"], font=font(46), fill=(255, 255, 255), anchor="mm",
+               stroke_width=7, stroke_fill=dark)
+
+    if estilo == "clasica":
+        # logo izq + etiqueta, titular inclinado a la izquierda, flecha desde la izquierda,
+        # emoji arriba a la derecha y pegatina alargada debajo
+        pegar(base, logo, 175, 340, 6)
+        pill(base, 620, 330, cfg["arriba"], 54, th["accent"], dark)
+        t = titular(cfg["titulo"], th, ang=-4, tam=cfg.get("tam"))
+        pegar(base, t, 540, 420 + t.height / 2 - 40)
+        y_tit = 420 + t.height - 40
+        card = tarjeta(q, th, 860, "der")
+        cy = y_tit + card.height / 2 - 60
+        pegar(base, card, 540, cy, 2)
+        top = cy - card.height / 2 + 40
+        pegar(base, e1, 905, top + 30, -10)
+        pegar(base, e2, 95, cy + card.height / 2 - 70, 12)
+        flecha(base, (70, top - 110), (20, top + 20), (150, top + 75))
+        y_peg = cy + card.height / 2 + 15
+        pegar(base, pegatina(cfg["pegatina"], peg_col, (255, 255, 255), size=80), 540, y_peg, 4)
+        subtitulo(y_peg + 150)
+
+    elif estilo == "sello":
+        # espejo: etiqueta izq + logo dcha, titular inclinado a la derecha, emoji a la izquierda,
+        # flecha desde la derecha y sello redondo sobre la esquina de la tarjeta
+        pill(base, 450, 330, cfg["arriba"], 54, th["accent"], dark)
+        pegar(base, logo, 900, 340, -6)
+        t = titular(cfg["titulo"], th, ang=4, tam=cfg.get("tam"))
+        pegar(base, t, 540, 420 + t.height / 2 - 40)
+        y_tit = 420 + t.height - 40
+        card = tarjeta(q, th, 860, "izq")
+        cy = y_tit + card.height / 2 - 60
+        pegar(base, card, 540, cy, -2.5)
+        top = cy - card.height / 2 + 40
+        pegar(base, e1, 170, top + 30, 10)
+        flecha(base, (1010, top - 110), (1065, top + 20), (935, top + 70))
+        bot = cy + card.height / 2 - 40
+        a1, a2 = cfg["sello"]
+        pegar(base, sello(a1, a2, peg_col, th["accent"], r=180, ang=10), 830, bot + 130, 10)
+        pegar(base, e2, 150, bot + 320, -12)
+        for i, linea in enumerate(cfg["sub"].split("|")):
+            d.text((360, bot + 150 + i * 62), linea, font=font(50), fill=(255, 255, 255), anchor="mm",
+                   stroke_width=7, stroke_fill=dark)
+
+    else:  # "cartel": todo centrado y recto, pegatina arriba, emojis a ambos lados de la pregunta
+        pegar(base, logo, 540, 300, 0)
+        pegar(base, pegatina(cfg["pegatina"], peg_col, (255, 255, 255), size=74), 540, 470, -5)
+        t = titular(cfg["titulo"], th, ang=0, tam=cfg.get("tam"))
+        pegar(base, t, 540, 540 + t.height / 2 - 30)
+        y_tit = 540 + t.height - 30
+        card = tarjeta(q, th, 900, "ambos")
+        cy = y_tit + card.height / 2 - 20
+        pegar(base, card, 540, cy, 0)
+        top = cy - card.height / 2 + 40
+        pegar(base, con_sombra(img(os.path.join(E, cfg["emoji2"] + ".png"), 210), off=14, blur=12),
+              105, top + 20, -12)
+        pegar(base, con_sombra(img(os.path.join(E, cfg["emoji"] + ".png"), 220), off=14, blur=12),
+              975, top + 20, 12)
+        bot = cy + card.height / 2 - 40
+        subtitulo(bot + 85)
+        pill(base, 540, bot + 185, cfg["arriba"], 50, th["accent"], dark)
+
+    # usuario abajo del todo
     fu = font(44)
     w = d.textlength(USUARIO, font=fu)
     d.rounded_rectangle((540 - w / 2 - 34, 1735, 540 + w / 2 + 34, 1805), 35, fill=(0, 0, 0, 120))
     d.text((540, 1772), USUARIO, font=fu, fill=(255, 255, 255), anchor="mm")
-    print(video, "pegatina y =", int(y_peg), "sub y =", int(y_sub))
 
     os.makedirs(out_dir, exist_ok=True)
     rgb = base.convert("RGB")

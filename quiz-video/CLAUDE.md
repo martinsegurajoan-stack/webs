@@ -158,3 +158,6 @@ diccionario `PORTADAS` de `portada.py` (añade una entrada por vídeo nuevo): et
 titular gigante (línea "a" = color de acento), pregunta de muestra (índice), 2 emojis 3D de
 `assets/portada/`, pegatina gancho y subtítulo. La tarjeta NUNCA marca la respuesta correcta; lo
 importante queda en la franja central 3:4. Usa la misma paleta que el vídeo (registro de tonos).
+Sin "5 preguntas + 1 extra". Cada portada debe verse DISTINTA con el mismo estilo: clave `estilo` =
+`clasica` (pegatina alargada debajo, flecha izq.), `sello` (espejo, sello redondo, flecha dcha.) o
+`cartel` (centrado y recto, pegatina arriba, emojis a ambos lados); ve alternándolos.
