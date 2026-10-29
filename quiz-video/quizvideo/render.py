@@ -262,13 +262,13 @@ def build_timeline(quiz, voice, countdown=5):
             sig, dv = say(texto)
             events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.4)]
             rdur = max(2.0, 0.4 + dv + 0.15)
-            if q.get("chiste"):
+            if q.get("comentario", q.get("chiste")):
                 # chiste corto después de la respuesta (se ve en la tarjeta mientras se dice)
-                sigj, dj = say(q["chiste"])
+                sigj, dj = say(q.get("comentario", q.get("chiste")))
                 joke_at = rv + 0.4 + dv + 0.2
                 events.append(("voice", sigj, st + joke_at))
-                rdur = max(rdur, joke_at - rv + dj + 0.35)
-        joke_t = (rv + 0.4 + dv + 0.2) if (q.get("chiste") and not nores) else None
+                rdur = max(rdur, joke_at - rv + dj + 0.3)
+        joke_t = (rv + 0.4 + dv + 0.2) if (q.get("comentario", q.get("chiste")) and not nores) else None
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
@@ -638,7 +638,7 @@ def _draw_question(layer, sc, lt):
     if jt is not None and lt >= jt:
         # el texto de la tarjeta pasa a ser el chiste, con un pequeño rebote
         jp = ease_out_back((lt - jt) / 0.35)
-        f, lines, lh = fit(d, q["chiste"], 820, CARD_H - 90, int(60 * (0.85 + 0.15 * jp)), 34, 1.08)
+        f, lines, lh = fit(d, q.get("comentario", q.get("chiste")), 820, CARD_H - 90, int(78 * (0.85 + 0.15 * jp)), 34, 1.08)
         draw_lines(d, lines, f, lh, 540, y + CARD_H / 2 + 6, th["accent2"])
         sprite = _STATE.get("decor", {}).get("calabaza_s")
         if sprite is not None:

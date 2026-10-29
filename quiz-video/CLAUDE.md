@@ -22,7 +22,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_01.mp4` | `quizzes/hora_del_quiz_01.json` | 61 s | Trivial nº1 (verde, 3+1, estilo anterior a las mejoras) |
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
-| `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 118 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, chistes) = PLANTILLA TEMÁTICA DE REFERENCIA |
+| `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
 
@@ -63,6 +63,9 @@ diseño ni la voz salvo que lo pida.
 - COLOR: NUNCA repetir el color de fondo entre vídeos. Por defecto la paleta es `auto`: `generar.py`
   elige el tono más alejado de los ya usados (registro `assets/paletas_usadas.json`, se actualiza solo
   tras un render correcto; regenerar el mismo vídeo reutiliza su tono). No pases `--tema-color`.
+- IMÁGENES — REGLA DEL USUARIO: el dibujo NUNCA puede mostrar ni insinuar la respuesta correcta ni
+  ninguna opción (nada de gato negro en "¿qué animal…?", bandera en "¿qué país…?"). Usa un dibujo
+  GENÉRICO del tema (en Halloween: calabaza, fantasma, calavera, araña, piruleta, telaraña…).
 - IMÁGENES: cada pregunta lleva `"imagen": "<nombre>_3d.png"` (dibujo 3D gratis con fondo
   transparente, a la izquierda del cronómetro). Salen del paquete npm `@lobehub/fluent-emoji-3d`
   (MIT): `npm pack @lobehub/fluent-emoji-3d`, buscar el emoji por su código Unicode en
@@ -112,10 +115,10 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   sprites en `assets/decor_halloween/`, música `music_halloween` (La menor, órgano, clavecín, theremin),
   voz con etiqueta "[playful and spooky]", intro "¡Es hora del quiz de Halloween!" + frase de
   `FRASES_HALLOWEEN` (registro `assets/frases_halloween_usadas.json`), cierre "…si te atreves".
-- CHISTES: campo opcional `"chiste"` en cada pregunta con respuesta: se narra justo después de la
-  respuesta y su texto sustituye a la pregunta en la tarjeta (con una calabaza si es Halloween). El
-  usuario los pidió ("sigue haciendo chistes entre preguntas", relacionados con el tema): escríbelos
-  tú, cortos y en español de España. Cada chiste añade ~5 s y ~95 créditos.
+- COMENTARIOS (NO chistes, petición del usuario): campo opcional `"comentario"` en cada pregunta con
+  respuesta: una frase MUY corta (2-5 palabras) relacionada con el tema, que se dice justo después de
+  la respuesta y sustituye un momento al texto de la tarjeta. Ej. Halloween: "¡Miau… qué escalofrío!",
+  "¡Drácula ya está temblando!", "¡Abracadabra, acertaste!". (~45 créditos y ~2,5 s cada uno.)
 - Para otras temáticas (Navidad, verano...) crea un modo nuevo igual que `halloween` (paleta,
   decorado, música, frases) y pregúntale al usuario solo si no está claro el estilo.
 

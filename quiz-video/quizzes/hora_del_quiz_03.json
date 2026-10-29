@@ -4,34 +4,89 @@
   "titulo": "¿Cuánto sabes de Halloween?",
   "dificultad": "medio",
   "preguntas": [
-    {"pregunta": "¿En qué país se originó Halloween?",
-     "opciones": ["Estados Unidos", "Escocia", "Alemania", "Irlanda"], "correcta": "D",
-     "imagen": "irlanda_3d.png",
-     "chiste": "Los irlandeses inventaron Halloween… y los americanos, las bolsas gigantes de caramelos.",
-     "fuente": "Origen en la fiesta celta de Samhain, sobre todo en Irlanda (también se celebraba en Escocia)."},
-    {"pregunta": "¿Qué animal se asocia tradicionalmente con la mala suerte en Halloween?",
-     "opciones": ["El búho", "El cuervo", "El gato negro", "El murciélago"], "correcta": "C",
-     "imagen": "gato_negro_3d.png",
-     "chiste": "Tranquilo: el gato negro solo trae mala suerte si eres un ratón.",
-     "fuente": "Superstición del gato negro, ligada a las brujas."},
-    {"pregunta": "¿Qué significa literalmente «Halloween»?",
-     "opciones": ["Noche de los muertos", "Víspera de Todos los Santos", "Fiesta de las brujas", "Noche de los espíritus"],
-     "correcta": "B", "imagen": "vela_3d.png",
-     "chiste": "Y yo que creía que significaba «noche de comer chuches hasta reventar».",
-     "fuente": "All Hallows' Eve → Hallowe'en: víspera de Todos los Santos."},
-    {"pregunta": "Según la leyenda, ¿qué hay que hacer para protegerse de los vampiros?",
-     "opciones": ["Utilizar ajo", "Llevar sal en los bolsillos", "Vestirse de negro", "Encender una vela verde"],
-     "correcta": "A", "imagen": "vampiro_3d.png",
-     "chiste": "El ajo espanta vampiros… y también a cualquiera que quiera darte un beso.",
-     "fuente": "El ajo es la protección clásica contra vampiros en el folclore europeo."},
-    {"pregunta": "¿Qué significa la palabra «bruja» en inglés?",
-     "opciones": ["Witch", "Wizard", "Ghost", "Spell"], "correcta": "A", "imagen": "bruja_3d.png",
-     "opcion_voz": ["Witch", "Wizard", "Ghost", "Spell"],
-     "chiste": "Y no confundas witch con sándwich, que la bruja se enfada y te convierte en bocadillo.",
-     "fuente": "Witch = bruja; wizard = mago; ghost = fantasma; spell = hechizo."},
-    {"pregunta": "¿Cuál de estos objetos se relaciona tradicionalmente con la leyenda de los hombres lobo?",
-     "opciones": ["Una corona de espinas", "Un espejo roto", "La luna llena", "Una vela negra"],
-     "correcta": "C", "sin_respuesta": true, "imagen": "lobo_3d.png",
-     "fuente": "La luna llena (no se revela: va a comentarios)."}
+    {
+      "pregunta": "¿En qué país se originó Halloween?",
+      "opciones": [
+        "Estados Unidos",
+        "Escocia",
+        "Alemania",
+        "Irlanda"
+      ],
+      "correcta": "D",
+      "imagen": "calabaza_3d.png",
+      "fuente": "Origen en la fiesta celta de Samhain, sobre todo en Irlanda (también se celebraba en Escocia).",
+      "comentario": "¡Uuuuh… qué bien!"
+    },
+    {
+      "pregunta": "¿Qué animal se asocia tradicionalmente con la mala suerte en Halloween?",
+      "opciones": [
+        "El búho",
+        "El cuervo",
+        "El gato negro",
+        "El murciélago"
+      ],
+      "correcta": "C",
+      "imagen": "fantasma_3d.png",
+      "fuente": "Superstición del gato negro, ligada a las brujas.",
+      "comentario": "¡Miau… qué escalofrío!"
+    },
+    {
+      "pregunta": "¿Qué significa literalmente «Halloween»?",
+      "opciones": [
+        "Noche de los muertos",
+        "Víspera de Todos los Santos",
+        "Fiesta de las brujas",
+        "Noche de los espíritus"
+      ],
+      "correcta": "B",
+      "imagen": "calavera_3d.png",
+      "fuente": "All Hallows' Eve → Hallowe'en: víspera de Todos los Santos.",
+      "comentario": "¡Que tiemblen los espíritus!"
+    },
+    {
+      "pregunta": "Según la leyenda, ¿qué hay que hacer para protegerse de los vampiros?",
+      "opciones": [
+        "Utilizar ajo",
+        "Llevar sal en los bolsillos",
+        "Vestirse de negro",
+        "Encender una vela verde"
+      ],
+      "correcta": "A",
+      "imagen": "arana_3d.png",
+      "fuente": "El ajo es la protección clásica contra vampiros en el folclore europeo.",
+      "comentario": "¡Drácula ya está temblando!"
+    },
+    {
+      "pregunta": "¿Qué significa la palabra «bruja» en inglés?",
+      "opciones": [
+        "Witch",
+        "Wizard",
+        "Ghost",
+        "Spell"
+      ],
+      "correcta": "A",
+      "imagen": "piruleta_3d.png",
+      "opcion_voz": [
+        "Witch",
+        "Wizard",
+        "Ghost",
+        "Spell"
+      ],
+      "fuente": "Witch = bruja; wizard = mago; ghost = fantasma; spell = hechizo.",
+      "comentario": "¡Abracadabra, acertaste!"
+    },
+    {
+      "pregunta": "¿Cuál de estos objetos se relaciona tradicionalmente con la leyenda de los hombres lobo?",
+      "opciones": [
+        "Una corona de espinas",
+        "Un espejo roto",
+        "La luna llena",
+        "Una vela negra"
+      ],
+      "correcta": "C",
+      "sin_respuesta": true,
+      "imagen": "telarana_3d.png",
+      "fuente": "La luna llena (no se revela: va a comentarios)."
+    }
   ]
 }
