@@ -12,6 +12,7 @@ ejecuta los comandos de su fila**. Todos los comandos se lanzan desde la carpeta
 | `halloween.json` | Quiz temático Halloween | Como el trivial pero todo Halloween: luna, telarañas, murciélagos, fantasmas, música de miedo, voz «spooky» y comentario corto tras cada respuesta. | `generar.py` | `salida/hora_del_quiz_03.mp4` |
 | `futbol.json` | Quiz temático fútbol | Fondo de campo de fútbol, balones y tarjetas, música de estadio, voz de comentarista, gancho fuerte ANTES del saludo, «NIVEL: ALTO». | `generar.py` | `salida/hora_del_quiz_04.mp4` |
 | `personalidad.json` | Test de personalidad | 6 preguntas con opciones A-D cortas, la pregunta se ilumina palabra a palabra, reacción graciosa tras cada cuenta atrás, resultados por letra mayoritaria, subtítulos estilo TikTok. 1:30-1:45. | `generar_personalidad.py` | `quiz_personalidad/hora_del_quiz_personalidad.mp4` |
+| `niveles.json` | Niveles (pruebas distintas) | Gancho con escalera de niveles que se enciende, 5 niveles con color propio (verde→amarillo→naranja→rojo→morado) y mecánica distinta (secuencia, encuentra el diferente, lógica, memoria, acertijo), cartel «NIVEL N», sello «¡NIVEL SUPERADO!» con confeti y barra de progreso arriba; nivel IMPOSIBLE (reloj) a comentarios. ~1:45. | `generar_niveles.py` | `salida/niveles_01.mp4` |
 | `misterio.json` | Misterio criminal | Historia narrada con imágenes cinematográficas realistas (personajes con la misma cara), voz de thriller con emoción, pistas, cuenta atrás y final «¿QUIÉN MIENTE?» SIN revelar al culpable. Máx. 90 s. | `generar_misterio.py` | `salida/misterio_01.mp4` |
 
 ## Cómo se usa cada una
@@ -37,6 +38,12 @@ ejecuta los comandos de su fila**. Todos los comandos se lanzan desde la carpeta
    → genéralas (voz QUIZ) → `python3 generar_personalidad.py quiz_personalidad/<nombre>.json`
    → `python3 portada.py quiz_personalidad/<nombre>.json`.
 
+### Niveles (`niveles`)
+1. `cp plantillas-quiz/niveles.json quizzes/niveles_NN.json` y cambia `video`, `gancho` y las `rondas`
+   (cada `tipo` tiene sus campos: `serie`, `filas`, `numeros`+`posicion`, `explicacion`, `hora`…).
+2. `python3 generar_niveles.py quizzes/niveles_NN.json --preview 1,10,20 -o /tmp/p` (diseño gratis) →
+   `--frases-pendientes` → voces (voz QUIZ) → `python3 generar_niveles.py quizzes/niveles_NN.json`.
+
 ### Misterio criminal (`misterio`)
 1. `cp plantillas-quiz/misterio.json quizzes/misterio_NN.json` y cambia `video`, `titulo` e `imagenes`
    (`assets/misterio_NN`).
@@ -50,6 +57,7 @@ ejecuta los comandos de su fila**. Todos los comandos se lanzan desde la carpeta
    `30jLfQdV8RTduXvosh02`) → `python3 generar_misterio.py quizzes/misterio_NN.json` (MP4 + portadas).
 
 ## Siempre, con cada vídeo
+- GANCHO FUERTE al principio (antes del saludo, voz y texto desde el fotograma 0). Ver `quiz-video/CLAUDE.md`.
 - Entregar SOLO: el MP4, las 2 miniaturas (9:16 para Instagram/Facebook/Shorts y 3:4 para TikTok) y
   título + descripción + hashtags por plataforma (guardados en `descripciones/<video>.md`).
 - Comprobar el MP4 (1080x1920, con audio, duración correcta) y revisar una hoja de fotogramas.

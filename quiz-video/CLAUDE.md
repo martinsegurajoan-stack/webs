@@ -14,6 +14,18 @@
 - Antes de nada, prueba que todo funciona sin gastar créditos:
   `python3 generar.py quizzes/hora_del_quiz_02.json --frases-pendientes` → debe imprimir `[]`.
 
+## GANCHO INICIAL — OBLIGATORIO EN TODOS LOS VÍDEOS (regla del usuario, mejorarlo siempre)
+Los 2 primeros segundos deciden si la gente se queda. En CUALQUIER formato (quiz, parejas, temático,
+niveles, personalidad, misterio…):
+- El gancho va PRIMERO, antes del saludo «¡Es hora del quiz!». La voz suena desde el fotograma 0 (sin
+  silencio ni whoosh antes) y hay texto GRANDE en pantalla desde el primer fotograma (nada de fundidos lentos).
+- Frase muy corta (≤ 3 s) de reto, curiosidad o tensión, hablándole al espectador: «Casi nadie llega al
+  final… ¿hasta dónde llegas tú?», «Si aciertas la última eres un genio», «La pregunta 5 la falla todo el mundo».
+  NUNCA estadísticas inventadas («el 97 % falla») ni prometer algo que el vídeo no cumple.
+- Adelanta lo más llamativo que viene (la pregunta extra, el nivel imposible, el giro) sin revelar respuestas.
+- Movimiento fuerte en el primer segundo (zoom, sacudida, destello, piezas que se encienden).
+- Distinto en cada vídeo. Si dudas entre dos, elige el más provocador.
+
 ## ENTREGA OBLIGATORIA DE CADA VÍDEO (aunque el usuario no lo pida)
 Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), envía SIEMPRE, sin preguntar:
 1. El MP4 (`SendUserFile`, display "attach").
@@ -38,6 +50,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
 | `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
+| `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
@@ -58,6 +71,7 @@ Plantillas y piezas reutilizables:
 ## Nombres de archivo
 - Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 05).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
+- Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -169,6 +183,23 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
   Sincronía: pausas reales del audio + reparto por longitud (`align_words`).
 - Colores de marca: amarillo, turquesa, morado y negro. Logo "HORA DEL QUIZ ⚡" arriba a la izquierda.
 - Voz QUIZ "[playful and a little cheeky]" SIN acelerar (tempo 1,0). v2: 103 s, ~940 créditos nuevos.
+
+## Formato "NIVELES" (ir pasando niveles, cada uno con una prueba distinta)
+`quizzes/niveles_NN.json` → `generar_niveles.py` + `quizvideo/niveles.py` → `salida/niveles_NN.mp4` y
+`portadas/niveles_NN_*.png` (las portadas salen solas tras el render; `--solo-portada` para rehacerlas).
+- Gancho: «¿HASTA QUÉ NIVEL LLEGAS?» + escalera de 6 niveles que se encienden con la voz (el imposible
+  tiembla en rojo con destello). Voz desde el fotograma 0.
+- Cada nivel: cartel (fondo nuevo que entra en círculo, «NIVEL N» gigante, nombre, medidor de dificultad)
+  y prueba con mecánica distinta. Tipos: `secuencia` (fichas + «?» que gira), `busca` (filas de dígitos =
+  opciones A-D, círculo en el diferente), `logica` (dibujo 3D + `explicacion`), `memoria` (fichas 5 s con
+  barra, se dan la vuelta y luego la pregunta), `acertijo` (cuerdas, opciones en lista, `explicacion`),
+  `reloj` (reloj dibujado con la hora `hora`). Cualquier tipo puede ser la ronda `extra` (sin respuesta).
+- Barra de niveles arriba (se marcan con ✓ al superar), sello «¡NIVEL N SUPERADO!» con confeti, cuenta
+  atrás de 5 s con tic-tac/latido/riser y viñeta roja. Colores fijos por nivel: verde, amarillo, naranja,
+  rojo, morado e imposible (negro/rojo); el fondo oscuro del gancho/cierre cambia de tono en cada vídeo.
+- Voz QUIZ sin etiqueta (salvo `[excited]` en el gancho y `[whispers]` en el nivel imposible), tempo x1.18.
+- Cierre: chips 1-5 + ☠, «¿Hasta qué nivel has llegado?», «¡SÍGUEME PARA MÁS!» y logo.
+- Nº1: 105 s, ~1.000 créditos de voz (20 frases).
 
 ## Formato "MISTERIO CRIMINAL" (historia narrada, NO es un quiz)
 `quizzes/misterio_NN.json` → `generar_misterio.py` + `quizvideo/misterio.py` → `salida/misterio_NN.mp4`,

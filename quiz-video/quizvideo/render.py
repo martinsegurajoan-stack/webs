@@ -98,6 +98,9 @@ MODOS["futbol"] = dict(MODOS["trivial"], **{
     "gancho_primero": True,  # la frase gancho va ANTES del saludo
 })
 MODOS["trivial"]["saludo"] = "¡Es hora del quiz!"
+# GANCHO PRIMERO en todos los modos (regla del usuario): la frase gancho va antes del saludo
+for _m in ("trivial", "pareja", "halloween", "futbol"):
+    MODOS[_m]["gancho_primero"] = True
 MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
 
 
@@ -221,7 +224,8 @@ def build_timeline(quiz, voice, countdown=5):
     else:
         sig, d = say(f"{saludo} {salsa}" if salsa else modo["intro_voz"])
     dur = max(2.8, 0.3 + d + 0.2)
-    events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
+    # GANCHO: la voz suena desde el primer fotograma (regla del usuario)
+    events += [("fx", "whoosh", t), ("voice", sig, t + 0.05)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text,
                    "salsa": salsa})
     t += dur
@@ -659,7 +663,7 @@ def _draw_intro(layer, sc, lt):
     d = ImageDraw.Draw(layer)
     quiz = _STATE["quiz"]
     # "¡ES HORA DEL QUIZ!" que rebota
-    p = ease_out_back(lt / 0.6)
+    p = 0.72 + 0.28 * ease_out_back(lt / 0.35)  # grande desde el primer fotograma
     wob = math.sin(lt * 5)
     modo = modo_de(quiz)
     d.text((540, 365), modo["intro_l1"], font=tfont((34 + 104 * p) * (1 + 0.025 * wob)), fill=th["text_light"],
@@ -667,8 +671,8 @@ def _draw_intro(layer, sc, lt):
     d.text((540, 515), modo["intro_l2"], font=tfont((44 + 128 * p) * (1 - 0.025 * wob)), fill=th["accent"],
            anchor="mm", stroke_width=14, stroke_fill=th["text_dark"])
     # tarjeta con el título
-    a = ease_out_back((lt - 0.25) / 0.5)
-    y = 650 + (1 - a) * 900
+    a = ease_out_back(lt / 0.35)
+    y = 650 + (1 - a) * 140  # la tarjeta con el gancho se ve desde el primer fotograma
     box = (80, y, 1000, y + 440)
     shadow_box(d, box, 50)
     d.rounded_rectangle(box, 50, fill=th["card"])

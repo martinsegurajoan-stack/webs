@@ -6,6 +6,8 @@ Con CADA vídeo envía SIEMPRE, aunque no lo pida: el MP4, las 2 portadas (9:16 
 Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags por plataforma
 (sección "ENTREGA OBLIGATORIA" de `quiz-video/CLAUDE.md`).
 
+- GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
+  ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`.
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.
