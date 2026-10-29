@@ -37,7 +37,7 @@ PORTADAS = {
     "hora_del_quiz_02": {
         "paleta": lambda: themes.paleta_desde_tono(themes.elegir_tono("hora_del_quiz_02")),
         "arriba": "SOLO PARA LISTOS",
-        "titulo": [("6 ACERTIJOS", "w"), ("TRAMPA", "a")],
+        "titulo": [("PREGUNTAS", "w"), ("TRAMPA", "a")],
         "tam": 140,
         "pregunta": 0,
         "emoji": "mente_explota", "emoji2": "cerebro",
