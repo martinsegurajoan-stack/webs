@@ -33,6 +33,7 @@ DIFICULTAD = {"facil": "FÁCIL", "fácil": "FÁCIL", "media": "MEDIO", "medio": 
 ASSETS = os.path.join(os.path.dirname(__file__), "..", "assets")
 USUARIO = "@hora.delquiz"
 USER_Y = 1665  # nombre de usuario fijo abajo
+IMG_SIZE, IMG_C = 250, (215, 840)  # imagen de la pregunta: a la izquierda del cronómetro
 BPM = 118  # mismo tempo que la música, para que el fondo "lata" al ritmo
 
 # Frases para narrar la respuesta correcta (se alternan)
@@ -282,6 +283,16 @@ def _init(state):
     g = top * w1 + bot * (1 - w1)
     g = g * (1 - 0.35 * w2) + (lime * (xx < 2) * 0.6 + teal * 0.4) * 0.35 * w2
     _STATE["bg"] = Image.fromarray(np.clip(g, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
+    # imágenes de las preguntas (PNG con fondo transparente en assets/imagenes/)
+    _STATE["imgs"] = {}
+    for sc in state["scenes"]:
+        name = sc.get("q", {}).get("imagen") if sc["kind"] == "question" else None
+        if name and name not in _STATE["imgs"]:
+            ip = os.path.join(ASSETS, "imagenes", name)
+            if os.path.exists(ip):
+                im = Image.open(ip).convert("RGBA")
+                im.thumbnail((IMG_SIZE, IMG_SIZE), Image.LANCZOS)
+                _STATE["imgs"][name] = im
     lp = os.path.join(ASSETS, "logo.png")
     _STATE["logo"] = Image.open(lp).convert("RGBA").resize((800, 800), Image.LANCZOS) if os.path.exists(lp) else None
     rnd = random.Random(11)
@@ -459,6 +470,25 @@ def _draw_question(layer, sc, lt):
     d.rounded_rectangle(box, 44, fill=th["card"])
     f, lines, lh = fit(d, q["pregunta"], 840, CARD_H - 70, 78, 40)
     draw_lines(d, lines, f, lh, 540, y + CARD_H / 2, th["text_dark"])
+
+    # imagen de la pregunta (entra con rebote, flota y se aparta si sale el cartel final)
+    im = _STATE["imgs"].get(q.get("imagen"))
+    if im is not None and lt > 0.5:
+        ip = ease_out_back((lt - 0.5) / 0.5)
+        fade = 1.0
+        if nores and ended:
+            fade = max(0.0, 1 - rlt / 0.3)
+        if fade > 0 and ip > 0.05:
+            sc_ = ip * (1 + 0.03 * math.sin(lt * 3))
+            w_, h_ = max(4, int(im.width * sc_)), max(4, int(im.height * sc_))
+            img2 = im.resize((w_, h_), Image.BILINEAR).rotate(6 * math.sin(lt * 1.7), resample=Image.BICUBIC, expand=True)
+            if fade < 1:
+                a_ = img2.getchannel("A").point(lambda v: int(v * fade))
+                img2.putalpha(a_)
+            cx_, cy_ = IMG_C[0], IMG_C[1] + 10 * math.sin(lt * 2.2)
+            d.ellipse((cx_ - w_ * 0.38, IMG_C[1] + IMG_SIZE * 0.47 - 14, cx_ + w_ * 0.38, IMG_C[1] + IMG_SIZE * 0.47 + 14),
+                      fill=(0, 0, 0, int(60 * fade * ip)))
+            layer.alpha_composite(img2, (int(cx_ - img2.width / 2), int(cy_ - img2.height / 2)))
 
     # cronómetro
     cs, n = sc["cd_start"], sc["countdown"]

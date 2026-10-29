@@ -1,0 +1,56 @@
+{
+  "tema": "acertijos",
+  "titulo": "¿Eres capaz de acertar estos acertijos?",
+  "dificultad": "medio",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuántos meses tienen 28 días?",
+      "opciones": [
+        "Uno",
+        "Dos",
+        "Seis",
+        "Los doce"
+      ],
+      "correcta": "D",
+      "imagen": "calendario_3d.png",
+      "fuente": "Todos los meses tienen al menos 28 días."
+    },
+    {
+      "pregunta": "¿Qué animal tiene tres corazones?",
+      "opciones": [
+        "El tiburón",
+        "El pulpo",
+        "La tortuga",
+        "El delfín"
+      ],
+      "correcta": "B",
+      "imagen": "pulpo_3d.png",
+      "fuente": "El pulpo tiene un corazón sistémico y dos branquiales."
+    },
+    {
+      "pregunta": "Tienes 5 caramelos y regalas 2. ¿Cuántos te quedan?",
+      "opciones": [
+        "2",
+        "3",
+        "5",
+        "7"
+      ],
+      "correcta": "B",
+      "imagen": "caramelo_3d.png",
+      "fuente": "5 - 2 = 3."
+    },
+    {
+      "pregunta": "Si adelantas al que va segundo en una carrera, ¿en qué posición te pones?",
+      "opciones": [
+        "Primero",
+        "Segundo",
+        "Tercero",
+        "Último"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "imagen": "carrera_3d.png",
+      "fuente": "Segundo (ocupas su puesto). No se revela: va a comentarios."
+    }
+  ]
+}

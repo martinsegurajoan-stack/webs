@@ -38,8 +38,17 @@ def main():
     quiz = load_quiz(args.quiz)
     if args.preguntas:
         quiz["preguntas"] = quiz["preguntas"][: args.preguntas]
-    args.tema_color = args.tema_color or quiz.get("paleta") or render.modo_de(quiz)["paleta"]
-    theme = themes.get_theme(args.tema_color)
+    base = os.path.splitext(os.path.basename(args.quiz))[0]
+    tono = None
+    args.tema_color = args.tema_color or quiz.get("paleta") or "auto"
+    if args.tema_color == "auto":
+        # color nuevo, nunca usado en otro vídeo (se reutiliza si se regenera este mismo vídeo)
+        pareja = quiz.get("modo") == "pareja"
+        tono = themes.elegir_tono(base, (285, 20) if pareja else None)
+        theme = themes.paleta_desde_tono(tono, "corazones" if pareja else None)
+        args.tema_color = f"auto (tono {tono}°)"
+    else:
+        theme = themes.get_theme(args.tema_color)
     voice = tts.get_voice(args.voz, args.velocidad_voz)
 
     # Ajusta el número de preguntas a la duración máxima
@@ -61,7 +70,6 @@ def main():
         if voice.missing:
             raise SystemExit("Faltan audios de ElevenLabs. Ejecuta con --frases-pendientes:\n" + voice.pending_json())
 
-    base = os.path.splitext(os.path.basename(args.quiz))[0]
     out = args.salida or os.path.join(os.path.dirname(os.path.abspath(__file__)), "salida",
                                        base + (".png" if args.preview is not None else ".mp4"))
     print(f"Quiz: {quiz['tema']} · {len(quiz['preguntas'])} preguntas · voz: {voice.name} · paleta: {args.tema_color}")
@@ -86,6 +94,8 @@ def main():
           f"renderizado en {time.time() - t0:.0f}s")
     if not ok:
         sys.exit(1)
+    if tono is not None:
+        themes.registrar_tono(base, tono)
 
 
 if __name__ == "__main__":

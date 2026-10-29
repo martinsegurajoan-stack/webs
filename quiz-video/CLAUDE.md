@@ -5,7 +5,16 @@ genera el vídeo con esta plantilla y envíale el MP4 (SendUserFile, display "at
 diseño ni la voz salvo que lo pida.
 
 ## Plantilla (ya implementada en el código)
-- 1080x1920 MP4, paleta `verde` con fondo dinámico (degradado en movimiento, rayos que laten con la
+- COLOR: NUNCA repetir el color de fondo entre vídeos. Por defecto la paleta es `auto`: `generar.py`
+  elige el tono más alejado de los ya usados (registro `assets/paletas_usadas.json`, se actualiza solo
+  tras un render correcto; regenerar el mismo vídeo reutiliza su tono). No pases `--tema-color`.
+- IMÁGENES: cada pregunta lleva `"imagen": "<nombre>_3d.png"` (dibujo 3D gratis con fondo
+  transparente, a la izquierda del cronómetro). Salen del paquete npm `@lobehub/fluent-emoji-3d`
+  (MIT): `npm pack @lobehub/fluent-emoji-3d`, buscar el emoji por su código Unicode en
+  `package/assets/<codigo>.webp` (p. ej. pulpo 1f419, calendario 1f4c6, caramelo 1f36c, bandera 1f3c1)
+  y guardarlo como PNG en `assets/imagenes/`. Elige el objeto que mejor represente la pregunta.
+  El usuario eligió estos dibujos gratis frente a imágenes realistas de pago (~212 créditos c/u).
+- Fondo dinámico (degradado en movimiento, rayos que laten con la
   música, formas de colores flotando). Cuenta atrás de 5 s, tic-tac fuerte, música más alta al pensar.
 - Intro "¡ES HORA DEL QUIZ!" + título + "NIVEL: MEDIO" (FÁCIL/MEDIO/DIFÍCIL) + nº de preguntas.
 - `@hora.delquiz` fijo abajo siempre. Logo `assets/logo.png` en el cierre bajo "¡SÍGUEME PARA MÁS!".
@@ -33,7 +42,8 @@ Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuent
 ## Pasos para un vídeo nuevo
 1. Crea `quizzes/hora_del_quiz_NN.json` (siguiente número libre; formato en README) con el texto del
    usuario (ortografía corregida, mayúsculas normales). `titulo` "¿Cuánto sabes de <tema>?",
-   `dificultad` "medio" salvo que diga otra. Verifica cada respuesta (web si es actualidad) en `fuente`;
+   `dificultad` "medio" salvo que diga otra. Si falta el enunciado de alguna pregunta, pregúntalo
+  (AskUserQuestion) antes de gastar créditos. Verifica cada respuesta (web si es actualidad) en `fuente`;
    si alguna es errónea o ambigua, avísale en el mensaje final.
 2. `python3 generar.py quizzes/hora_del_quiz_NN.json --frases-pendientes` → lista de frases que faltan.
 3. Para cada frase: `creative_generate_speech` (conector ElevenLabs; carga con ToolSearch
