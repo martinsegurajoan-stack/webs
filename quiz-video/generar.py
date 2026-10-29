@@ -23,10 +23,10 @@ def main():
     ap.add_argument("quiz", help="Archivo JSON con el quiz")
     ap.add_argument("-o", "--salida", help="Ruta del MP4 (por defecto salida/<nombre>.mp4)")
     ap.add_argument("--tema-color", default="verde", help=f"Paleta: {', '.join(themes.THEMES)}")
-    ap.add_argument("--voz", default="ninguna", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
-    ap.add_argument("--velocidad-voz", type=float, default=1.0)
+    ap.add_argument("--voz", default="kokoro:em_alex", help="'ninguna' o 'kokoro:<voz>' (p. ej. kokoro:ef_dora)")
+    ap.add_argument("--velocidad-voz", type=float, default=1.2)
     ap.add_argument("--preguntas", type=int, help="Usar solo las N primeras preguntas")
-    ap.add_argument("--duracion-max", type=float, default=60,
+    ap.add_argument("--duracion-max", type=float, default=None,
                     help="Segundos máximos: si se pasa, se quitan preguntas del final")
     ap.add_argument("--cuenta-atras", type=int, default=5, help="Segundos por pregunta")
     ap.add_argument("--sin-musica", action="store_true")
@@ -42,6 +42,10 @@ def main():
     # Ajusta el número de preguntas a la duración máxima
     while True:
         _, _, total = render.build_timeline(quiz, voice, args.cuenta_atras)
+        if args.duracion_max is None:
+            if not 30 <= total <= 62:
+                print(f"AVISO: duración estimada {total:.1f}s (objetivo 30-60s).")
+            break
         if total <= args.duracion_max or len(quiz["preguntas"]) == 1:
             break
         quiz["preguntas"] = quiz["preguntas"][:-1]

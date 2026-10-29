@@ -200,3 +200,17 @@ def resample(sig, sr_from):
     x_old = np.arange(len(sig)) / sr_from
     x_new = np.arange(int(len(sig) * SR / sr_from)) / SR
     return np.interp(x_new, x_old, sig)
+
+
+def presenter_fx(sig):
+    """Voz de concurso: realce de presencia, compresión suave y normalización."""
+    low = _lowpass_fast(sig, 0.08)
+    bright = sig + 0.35 * (sig - low)  # más brillo y presencia
+    # compresión suave
+    comp = np.tanh(bright * 2.2) / np.tanh(2.2)
+    peak = np.max(np.abs(comp)) or 1.0
+    return 0.85 * comp / peak
+
+
+def _lowpass_fast(x, alpha):
+    return _lowpass(x, alpha)

@@ -27,7 +27,19 @@ TIMER_C, TIMER_R = (540, 835), 92
 OPT_Y, OPT_H, OPT_GAP = 970, 128, 22
 OPT_X0, OPT_X1 = 70, 1010
 
-DIFICULTAD = {"facil": "FÁCIL", "fácil": "FÁCIL", "media": "MEDIA", "dificil": "DIFÍCIL", "difícil": "DIFÍCIL"}
+DIFICULTAD = {"facil": "FÁCIL", "fácil": "FÁCIL", "media": "MEDIO", "medio": "MEDIO",
+              "dificil": "DIFÍCIL", "difícil": "DIFÍCIL"}
+
+ASSETS = os.path.join(os.path.dirname(__file__), "..", "assets")
+USUARIO = "@hora.delquiz"
+USER_Y = 1665  # nombre de usuario fijo abajo
+
+# Frases de concursante: se van alternando para que no suene repetitivo
+FRASES_REVELACION = [
+    "¡Tiempo! ¡Es la {L}! {O}.",
+    "¡Y la respuesta es... la {L}! {O}.",
+    "¡Correcta, la {L}! {O}.",
+]
 
 
 # ------------------------------------------------------------------ utilidades
@@ -130,7 +142,7 @@ def build_timeline(quiz, voice, countdown=5):
 
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
-    sig, d = say(f"{intro_text} Tienes {countdown} segundos por pregunta.")
+    sig, d = say(f"¡Es hora del quiz! {intro_text} ¡Vamos!")
     dur = max(2.8, 0.35 + d + 0.35)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text})
@@ -139,32 +151,34 @@ def build_timeline(quiz, voice, countdown=5):
     for qi, q in enumerate(quiz["preguntas"]):
         st = t
         loc = 0.5
-        sig, dq = say(q["pregunta"])
+        sig, dq = say(q.get("pregunta_voz", q["pregunta"]))
         events += [("fx", "whoosh", st), ("voice", sig, st + loc)]
-        loc += dq + 0.25
+        loc += dq + 0.15
         opt_times = []
         for k, o in enumerate(q["opciones"]):
-            sig, do = say(f"{LETTERS[k]}: {o}." if voice.name != "sin voz" else o)
+            o_voz = q.get("opcion_voz", q["opciones"])[k]
+            sig, do = say(f"{LETTERS[k]}: {o_voz}." if voice.name != "sin voz" else o)
             if voice.name == "sin voz":
                 do = 0.35
             opt_times.append(loc)
             events += [("fx", "pop", st + loc), ("voice", sig, st + loc + 0.05)]
-            loc += do + 0.12
-        cd_start = loc + 0.25
+            loc += do + 0.04
+        cd_start = loc + 0.15
         for s in range(countdown):
             events.append(("fx", "tick_high" if s >= countdown - 2 else "tick", st + cd_start + s))
         rv = cd_start + countdown
         ci = LETTERS.index(q["correcta"].upper())
-        sig, dv = say(f"¡La correcta es la {LETTERS[ci]}! {q['opciones'][ci]}.")
+        frase = FRASES_REVELACION[qi % len(FRASES_REVELACION)]
+        sig, dv = say(frase.format(L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci]))
         events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.55)]
-        rdur = max(2.2, 0.55 + dv + 0.45)
+        rdur = max(2.0, 0.5 + dv + 0.3)
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
                        "reveal": rv, "correct": ci})
         t += dur
 
-    sig, d = say("¿Cuántas has acertado? Déjalo en comentarios y sígueme para más quizzes.")
+    sig, d = say("¿Cuántas has acertado? ¡Comenta y sígueme para más!")
     dur = max(3.2, 0.4 + d + 0.8)
     events += [("fx", "whoosh", t), ("voice", sig, t + 0.4)]
     scenes.append({"kind": "outro", "start": t, "dur": dur})
@@ -201,6 +215,8 @@ def _init(state):
     xx = np.linspace(0, 1, W)[None, :, None]
     g = top * (1 - (0.75 * yy + 0.25 * xx)) + bot * (0.75 * yy + 0.25 * xx)
     _STATE["bg"] = Image.fromarray(np.clip(g, 0, 255).astype(np.uint8), "RGB").convert("RGBA")
+    lp = os.path.join(ASSETS, "logo.png")
+    _STATE["logo"] = Image.open(lp).convert("RGBA").resize((800, 800), Image.LANCZOS) if os.path.exists(lp) else None
     rnd = random.Random(11)
     _STATE["bubbles"] = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.uniform(30, 150), rnd.uniform(25, 90),
                           rnd.uniform(0.08, 0.2), rnd.uniform(0, 6.28)) for _ in range(16)]
@@ -244,26 +260,28 @@ def _draw_intro(layer, sc, lt):
     th = _STATE["theme"]
     d = ImageDraw.Draw(layer)
     quiz = _STATE["quiz"]
-    # "QUIZ" que rebota
+    # "¡ES HORA DEL QUIZ!" que rebota
     p = ease_out_back(lt / 0.6)
-    size = 60 + 190 * p + 8 * math.sin(lt * 5)
-    d.text((540, 470), "QUIZ", font=font(size), fill=th["accent"], anchor="mm",
-           stroke_width=14, stroke_fill=th["text_dark"])
+    wob = math.sin(lt * 5)
+    d.text((540, 365), "¡ES HORA", font=font((30 + 92 * p) * (1 + 0.025 * wob)), fill=th["text_light"],
+           anchor="mm", stroke_width=12, stroke_fill=th["text_dark"])
+    d.text((540, 515), "DEL QUIZ!", font=font((40 + 112 * p) * (1 - 0.025 * wob)), fill=th["accent"],
+           anchor="mm", stroke_width=14, stroke_fill=th["text_dark"])
     # tarjeta con el título
     a = ease_out_back((lt - 0.25) / 0.5)
-    y = 620 + (1 - a) * 900
-    box = (80, y, 1000, y + 470)
+    y = 650 + (1 - a) * 900
+    box = (80, y, 1000, y + 440)
     shadow_box(d, box, 50)
     d.rounded_rectangle(box, 50, fill=th["card"])
-    f, lines, lh = fit(d, sc["title"], 820, 380, 86)
-    draw_lines(d, lines, f, lh, 540, y + 235, th["text_dark"])
+    f, lines, lh = fit(d, sc["title"], 820, 360, 86)
+    draw_lines(d, lines, f, lh, 540, y + 220, th["text_dark"])
     # etiquetas
     b = ease_out_back((lt - 0.55) / 0.45)
     if b > 0:
         dif = DIFICULTAD.get(str(quiz.get("dificultad", "media")).lower(), str(quiz.get("dificultad", "")).upper())
-        _pill(d, 540 - (1 - b) * 1200, 1210, f"NIVEL: {dif}", 50, th["accent2"], th["text_light"])
+        _pill(d, 540 - (1 - b) * 1200, 1230, f"NIVEL: {dif}", 50, th["accent2"], th["text_light"])
         n = len(quiz["preguntas"])
-        _pill(d, 540 + (1 - b) * 1200, 1340,
+        _pill(d, 540 + (1 - b) * 1200, 1360,
               f"{n} PREGUNTAS · {_STATE['countdown']} SEGUNDOS", 44, th["accent"], th["text_dark"])
 
 
@@ -271,7 +289,7 @@ def _draw_outro(layer, sc, lt):
     th = _STATE["theme"]
     d = ImageDraw.Draw(layer)
     a = ease_out_back(lt / 0.5)
-    y = 380 + (1 - a) * -800
+    y = 250 + (1 - a) * -800
     box = (80, y, 1000, y + 520)
     shadow_box(d, box, 50)
     d.rounded_rectangle(box, 50, fill=th["card"])
@@ -281,7 +299,17 @@ def _draw_outro(layer, sc, lt):
     b = ease_out_back((lt - 0.5) / 0.5)
     if b > 0:
         pulse = 1 + 0.05 * math.sin(lt * 7)
-        _pill(d, 540, 1150 + (1 - b) * 900, "¡SÍGUEME PARA MÁS!", int(64 * pulse), th["accent"], th["text_dark"])
+        _pill(d, 540, 900 + (1 - b) * 900, "¡SÍGUEME PARA MÁS!", int(64 * pulse), th["accent"], th["text_dark"])
+    c = ease_out_back((lt - 0.8) / 0.6)
+    if c > 0 and _STATE.get("logo") is not None:
+        size = int(400 * c * (1 + 0.025 * math.sin(lt * 4)))
+        if size > 4:
+            logo = _STATE["logo"].resize((size, size), Image.LANCZOS)
+            sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+            ImageDraw.Draw(sh).ellipse((540 - size / 2, 1300 - size / 2 + 12, 540 + size / 2, 1300 + size / 2 + 12),
+                                       fill=(0, 0, 0, 70))
+            layer.alpha_composite(sh)
+            layer.alpha_composite(logo, (540 - size // 2, 1300 - size // 2))
 
 
 def _draw_question(layer, sc, lt):
@@ -397,7 +425,21 @@ def render_frame(i):
                 layer = moved
             img.alpha_composite(layer)
             break
+    _username(img)
     return img.convert("RGB").tobytes()
+
+
+def _username(img):
+    th = _STATE["theme"]
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    f = font(50)
+    w = d.textlength(USUARIO, font=f)
+    box = (540 - w / 2 - 34, USER_Y - 44, 540 + w / 2 + 34, USER_Y + 44)
+    d.rounded_rectangle(box, 44, fill=(0, 0, 0, 120))
+    d.text((540, USER_Y), USUARIO, font=f, fill=th["text_light"], anchor="mm",
+           stroke_width=3, stroke_fill=(0, 0, 0, 160))
+    img.alpha_composite(layer)
 
 
 # ------------------------------------------------------------------ exportación

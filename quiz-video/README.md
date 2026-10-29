@@ -15,7 +15,10 @@ python3 generar.py quizzes/geografia_espana.json --tema-color neon --preguntas 3
 python3 generar.py quizzes/geografia_espana.json --preview 16.8   # un fotograma PNG para revisar
 ```
 
-Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz`, `--velocidad-voz`,
+Primera vez en un entorno nuevo: `./instalar_voz.sh` (voz Kokoro, gratuita y local).
+
+Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz` (por defecto `kokoro:em_alex`;
+también `kokoro:ef_dora`, `kokoro:em_santa`, o `ninguna`), `--velocidad-voz` (1.2),
 `--preguntas`, `--duracion-max`, `--cuenta-atras`, `--sin-musica`.
 
 ## Formato del quiz (JSON)
@@ -34,3 +37,11 @@ Opciones: `--tema-color` (verde, lima, neon, tropical), `--voz`, `--velocidad-vo
 El validador comprueba 4 opciones distintas, una letra correcta válida y longitudes legibles.
 Las preguntas las redacta y verifica Claude cuando le pides un tema; el campo `fuente`
 documenta por qué la respuesta es correcta.
+
+Campos opcionales por pregunta: `pregunta_voz` y `opcion_voz` (lista de 4) para cambiar
+cómo se pronuncia algo sin cambiar el texto en pantalla.
+
+## Plantilla de @hora.delquiz
+
+Intro "¡ES HORA DEL QUIZ!", usuario `@hora.delquiz` fijo abajo, logo (`assets/logo.png`)
+en el cierre bajo "¡SÍGUEME PARA MÁS!", voz de concurso, paleta verde.
