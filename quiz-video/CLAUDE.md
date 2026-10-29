@@ -1,5 +1,46 @@
 # quiz-video — plantilla FINAL de @hora.delquiz
 
+## EMPEZAR EN UNA CONVERSACIÓN NUEVA (leer primero)
+- Repositorio: `martinsegurajoan-stack/webs`. TODO el proyecto está en la rama
+  `claude/tiktok-quiz-video-generator-nub6w6` (NO está en `main` mientras el usuario no pida fusionarlo).
+  Si la sesión arranca en `main` y no existe `quiz-video/`, haz
+  `git fetch origin claude/tiktok-quiz-video-generator-nub6w6 && git checkout claude/tiktok-quiz-video-generator-nub6w6`.
+- Carpeta del proyecto: `quiz-video/` (rutas de abajo relativas a ella). Ejecuta los comandos desde ahí.
+- Requisitos ya presentes en el entorno: Python 3 con Pillow y numpy, ffmpeg/ffprobe, npm. Comprueba
+  con `python3 -c "import PIL, numpy"` y `ffmpeg -version`. No hace falta instalar nada más para la voz
+  ElevenLabs (los audios se guardan en el repo). Kokoro (`modelos/`) solo es la alternativa gratis.
+- Conector ElevenLabs: cárgalo con ToolSearch ("elevenlabs generate speech"). Usa el conector completo
+  (`mcp__ElevenLabs-ef767449__*`) o el restringido; ambos tienen `creative_generate_speech`.
+- Antes de nada, prueba que todo funciona sin gastar créditos:
+  `python3 generar.py quizzes/hora_del_quiz_02.json --frases-pendientes` → debe imprimir `[]`.
+
+## INVENTARIO (estado a 29-10-2026)
+Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
+| Archivo | Quiz (JSON) | Duración | Notas |
+|---|---|---|---|
+| `salida/geografia_espana.mp4` | `quizzes/geografia_espana.json` | 50 s | Prueba v1 sin voz (estilo antiguo, no publicar) |
+| `salida/hora_del_quiz_01.mp4` | `quizzes/hora_del_quiz_01.json` | 61 s | Trivial nº1 (verde, 3+1, estilo anterior a las mejoras) |
+| `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
+| `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
+Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
+en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
+
+Plantillas y piezas reutilizables:
+- Contenido de ejemplo (copiar para vídeos nuevos): `quizzes/hora_del_quiz_02.json` (trivial) y
+  `quizzes/pareja_01.json` (pareja).
+- Generador: `generar.py` (CLI) + `quizvideo/` (`render.py` diseño/animación/modos, `themes.py` paletas,
+  `audio.py` música y efectos, `frases_intro.py` frases salseantes, `tts_eleven.py` voz, `validate.py`).
+- Voz: `descargar_voz.py` (baja los mp3 de ElevenLabs a la caché), caché `assets/voz_eleven/cache/*.mp3`.
+- Recursos: `assets/logo.png`, `assets/imagenes/*_3d.png`, `fuentes/titulo.ttf`, `fuentes/texto.ttf`.
+- Registros (NO borrar, hacer commit tras cada vídeo): `assets/paletas_usadas.json` (colores usados),
+  `assets/frases_usadas.json` y `assets/frases_pareja_usadas.json` (frases de intro usadas).
+- No están en git a propósito: `modelos/` (Kokoro, se reinstala con `./instalar_voz.sh`) y
+  `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
+
+## Nombres de archivo
+- Trivial: `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente número libre: 03).
+- Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 02).
+
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
 
@@ -63,7 +104,8 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 - Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
 
 ## Pasos para un vídeo nuevo
-1. Crea `quizzes/hora_del_quiz_NN.json` (siguiente número libre; formato en README) con el texto del
+1. Crea `quizzes/hora_del_quiz_NN.json` o `quizzes/pareja_NN.json` (siguiente número libre; copia la
+   estructura de `hora_del_quiz_02.json` / `pareja_01.json`; añade la imagen 3D de cada pregunta) con el texto del
    usuario (ortografía corregida, mayúsculas normales). `titulo` "¿Cuánto sabes de <tema>?",
    `dificultad` "medio" salvo que diga otra. Si falta el enunciado de alguna pregunta, pregúntalo
   (AskUserQuestion) antes de gastar créditos. Verifica cada respuesta (web si es actualidad) en `fuente`;
@@ -76,8 +118,11 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
    `python3 descargar_voz.py archivo.tsv` (guarda cada mp3 con el nombre correcto en la caché;
    el texto del TSV debe ser el "texto" exacto, etiquetas entre corchetes incluidas).
    Si dice que está saturado, espera un minuto y reintenta (nunca repitas una generación que sí arrancó).
-4. `python3 generar.py quizzes/hora_del_quiz_NN.json` (~2-3 min, timeout 600000 ms). Objetivo ≤ 60 s
-   (con 4 preguntas sale ~60 s); si se pasa mucho, avisa.
+   Las URLs de los mp3 caducan a las 2 h: descárgalas en cuanto terminen. Comprueba después que
+   `--frases-pendientes` devuelve `[]`.
+4. `python3 generar.py quizzes/<archivo>.json` (~3-4 min con 5+1, timeout 600000 ms). Duración
+   esperada ~85-90 s; no recortes preguntas. Antes, si quieres revisar el diseño gratis:
+   `--voz ninguna --preview <segundo> -o /ruta/prueba.png` (no gasta créditos ni toca registros).
 5. Verifica la salida de ffprobe ("OK", 1080x1920, aac) y una hoja de fotogramas:
    `ffmpeg -i X.mp4 -vf "fps=1,scale=180:320,tile=12x6" -frames:v 1 hoja.png`.
    No digas que hay vídeo si el MP4 no existe o no pasó la verificación.
