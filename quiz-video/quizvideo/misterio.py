@@ -33,7 +33,7 @@ PURP = (150, 80, 255)
 WHITE = (255, 255, 255)
 XF = 0.4            # fundido entre planos
 MAX_TOTAL = 88.0    # margen bajo los 90 s
-MAX_TEMPO = 1.14    # nunca acelerar más de esto
+MAX_TEMPO = 1.05    # casi sin acelerar: la voz debe sonar natural
 
 
 def F(kind, size):
@@ -50,7 +50,12 @@ _FC = {}
 # ---------------------------------------------------------------- voz
 
 def prompt_de(c, clip):
-    return f"{c['voz']['estilo']} {clip['texto']}"
+    return f"{c['voz'].get('estilo', '')} {clip['texto']}".strip()
+
+
+def limpio(texto):
+    """Texto sin etiquetas de interpretación [como esta] (para subtítulos)."""
+    return re.sub(r"\s+", " ", re.sub(r"\[[^\]]*\]", "", texto)).strip()
 
 
 def ruta_voz(c, clip):
@@ -131,7 +136,7 @@ def build(c, sin_voz=False):
             sigs.append(_compact(_decode(p)))
         else:
             sigs.append(None)
-    raw_d = [len(s) / SR if s is not None else len(cl["texto"]) / 14 for s, cl in zip(sigs, c["clips"])]
+    raw_d = [len(s) / SR if s is not None else len(limpio(cl["texto"])) / 14 for s, cl in zip(sigs, c["clips"])]
     fijo = 0.3 + sum(cl.get("pausa", 0.2) + cl.get("silencio_antes", 0) + cl.get("cuenta_atras", 0)
                      for cl in c["clips"])
     tempo = min(MAX_TEMPO, max(1.0, sum(raw_d) / max(1.0, MAX_TOTAL - fijo)))
@@ -145,7 +150,7 @@ def build(c, sin_voz=False):
         if sig is not None:
             sig = sig / (np.max(np.abs(sig)) or 1) * 0.9
         voices.append((sig, t))
-        words, times = align_words(cl["texto"], sig, d)
+        words, times = align_words(limpio(cl["texto"]), sig, d)
         cols = _destacados(c, words)
         idx = 0
         for ch in caption_chunks(words, times, t, maxw=3, maxc=18):
@@ -186,62 +191,94 @@ def _env_note(n, a, r):
     return np.minimum(1, t / a) * np.exp(-t / r)
 
 
-def music_thriller(dur, seed=3):
-    """Base oscura original: dron grave, acordes menores filtrados, notas sueltas de piano con eco,
-    pulso grave y textura de ruido. Generada aquí: sin licencias de terceros."""
+def music_thriller(dur, seed=3, marcas=None):
+    """Base de suspense ORIGINAL (sin licencias): dron grave, bajo en ostinato que empuja, hi-hats,
+    bombo que entra a partir del primer tercio, acordes menores filtrados y alguna nota de piano.
+    `marcas` = {"cuenta": t, "final": t}: la intensidad sube en la cuenta atrás y estalla en el final."""
+    marcas = marcas or {}
     n = int(dur * SR) + SR
     t = np.arange(n) / SR
     rng = np.random.default_rng(seed)
-    out = 0.35 * np.sin(2 * np.pi * 55 * t) * (0.7 + 0.3 * np.sin(2 * np.pi * 0.05 * t))
-    out += 0.18 * np.sin(2 * np.pi * 82.41 * t + 0.6 * np.sin(2 * np.pi * 0.11 * t))
-    saw = 2 * ((t * 55.3) % 1) - 1
-    out += 0.12 * _lp(saw, 180)
-    # acordes: Am – F – Dm – E (4,8 s cada uno)
-    chords = [[57, 60, 64], [53, 57, 60], [50, 53, 57], [52, 56, 59]]
-    seg = 4.8
+    bpm = 104
+    beat = 60 / bpm
+    t_cd = marcas.get("cuenta", dur * 0.8)
+    t_fin = marcas.get("final", dur - 8)
+    inten = np.clip(t / max(1, t_cd), 0, 1) ** 0.8 * 0.7 + 0.3          # crece durante la historia
+    inten = np.where(t >= t_cd, 1.0, inten)
+    out = 0.28 * np.sin(2 * np.pi * 55 * t) * (0.7 + 0.3 * np.sin(2 * np.pi * 0.05 * t))
+    out += 0.10 * _lp(2 * ((t * 55.2) % 1) - 1, 160)
+
+    def add(buf, sig, start, g=1.0):
+        s0 = int(start * SR)
+        if s0 >= n or s0 < 0:
+            return
+        e = min(n, s0 + len(sig))
+        buf[s0:e] += g * sig[: e - s0]
+
+    # ostinato de bajo en corcheas (La – La – Do – La – Sol – La – Mi – La)
+    bass = np.zeros(n)
+    seq = [45, 45, 48, 45, 43, 45, 40, 45]
+    L = int(beat / 2 * SR)
+    tt = np.arange(L) / SR
+    k, tb = 0, 0.0
+    while tb < dur:
+        m = seq[k % 8]
+        f = 440 * 2 ** ((m - 69) / 12)
+        pl = (2 * ((tt * f) % 1) - 1) * np.exp(-tt * 9)
+        add(bass, pl, tb, 0.5)
+        tb += beat / 2
+        k += 1
+    out += _lp(bass, 600) * np.interp(t, [0, 3, t_cd, t_fin, dur], [0.2, 0.6, 0.9, 1.0, 1.0])
+    # percusión: hi-hat en corcheas desde el principio, bombo y caja suaves a partir de 1/3
+    perc = np.zeros(n)
+    hat = rng.standard_normal(int(0.04 * SR))
+    hat = (hat - _lp(hat, 3000)) * np.exp(-np.arange(len(hat)) / SR * 90)
+    kt = np.arange(int(0.3 * SR)) / SR
+    kick = np.sin(2 * np.pi * np.cumsum(45 + 90 * np.exp(-kt * 30)) / SR) * np.exp(-kt * 9)
+    sn = rng.standard_normal(int(0.18 * SR)) * np.exp(-np.arange(int(0.18 * SR)) / SR * 22)
+    tb, k = 0.0, 0
+    while tb < dur:
+        add(perc, hat, tb + beat / 2, 0.10)
+        if tb > dur * 0.3 or tb > t_cd:
+            add(perc, kick, tb, 0.55)
+            if k % 2 == 1:
+                add(perc, _lp(sn, 2500), tb, 0.18)
+        tb += beat
+        k += 1
+    out += perc * inten
+    # acordes menores filtrados (muy discretos)
+    chords = [[57, 60, 64], [53, 57, 60], [55, 59, 62], [52, 56, 59]]
+    seg = beat * 8
     pad = np.zeros(n)
     k = 0
-    while k * seg < dur + seg:
-        s0 = int(k * seg * SR)
-        if s0 >= n:
-            break
-        L = int((seg + 2.0) * SR)
-        tt = np.arange(L) / SR
-        env = np.minimum(1, tt / 1.6) * np.minimum(1, np.maximum(0, (seg + 2.0 - tt) / 2.0))
-        sig = np.zeros(L)
-        for m in chords[k % 4]:
-            f = 440 * 2 ** ((m - 12 - 69) / 12)
-            for det in (0.997, 1.0, 1.004):
-                sig += np.sin(2 * np.pi * f * det * tt + rng.uniform(0, 6))
-        e = min(n, s0 + L)
-        pad[s0:e] += (0.05 * env * sig)[: e - s0]
+    while k * seg < dur:
+        Lp = int((seg + 1.5) * SR)
+        tp = np.arange(Lp) / SR
+        env = np.minimum(1, tp / 1.0) * np.minimum(1, np.maximum(0, (seg + 1.5 - tp) / 1.5))
+        sig = sum(np.sin(2 * np.pi * 440 * 2 ** ((m - 12 - 69) / 12) * det * tp)
+                  for m in chords[k % 4] for det in (0.997, 1.003))
+        add(pad, 0.035 * env * sig, k * seg)
         k += 1
-    out += _lp(pad, 900)
-    # notas de piano sueltas (La menor) con eco
-    notes = [69, 72, 76, 74, 71, 67, 64]
-    pn = np.zeros(n)
-    tn = 1.2
-    while tn < dur:
-        m = rng.choice(notes)
-        f = 440 * 2 ** ((m - 69) / 12)
-        L = int(2.4 * SR)
-        tt = np.arange(L) / SR
-        s = (np.sin(2 * np.pi * f * tt) + 0.35 * np.sin(2 * np.pi * 2 * f * tt) + 0.12 * np.sin(2 * np.pi * 3.01 * f * tt))
-        s *= _env_note(L, 0.004, 0.7)
-        for dly, g in ((0, 1.0), (0.38, 0.35), (0.76, 0.15)):
-            s0 = int((tn + dly) * SR)
-            e = min(n, s0 + L)
-            if s0 < n:
-                pn[s0:e] += 0.07 * g * s[: e - s0]
-        tn += rng.choice([2.4, 3.2, 4.0])
-    out += pn
-    # textura de ruido muy suave
-    out += 0.02 * _lp(rng.standard_normal(n), 400)
+    out += _lp(pad, 1200)
+    # notas de piano con eco (pocas)
+    notes = [69, 72, 76, 74, 71]
+    tn = 2.0
+    while tn < t_cd:
+        f = 440 * 2 ** ((rng.choice(notes) - 69) / 12)
+        Ln = int(1.8 * SR)
+        tq = np.arange(Ln) / SR
+        s_ = (np.sin(2 * np.pi * f * tq) + 0.3 * np.sin(4 * np.pi * f * tq)) * _env_note(Ln, 0.004, 0.5)
+        for dly, g in ((0, 0.06), (beat * 0.75, 0.025)):
+            add(out, s_, tn + dly, g)
+        tn += beat * 8
+    # subidón final: platillo inverso + golpe
+    sw = _lp(rng.standard_normal(int(1.2 * SR)), 5000) * np.linspace(0, 1, int(1.2 * SR)) ** 3
+    add(out, 0.25 * sw, t_fin - 1.2)
     out = out[: int(dur * SR)]
     out /= np.max(np.abs(out)) or 1
-    f_ = int(1.0 * SR)
+    f_ = int(0.6 * SR)
     out[:f_] *= np.linspace(0, 1, f_)
-    out[-int(1.5 * SR):] *= np.linspace(1, 0, int(1.5 * SR))
+    out[-int(1.2 * SR):] *= np.linspace(1, 0, int(1.2 * SR))
     return out
 
 
@@ -273,8 +310,17 @@ def build_audio(tl, c, path):
         if sig is not None:
             mix.add_voice(sig, at, 1.0)
     whoosh = audio.sfx_whoosh(0.6)
-    music = music_thriller(total)
+    marcas = {}
+    for info in tl["clips"]:
+        if info["clip"].get("cuenta_atras"):
+            marcas["cuenta"] = info["cd_start"]
+        if info["clip"].get("final"):
+            marcas["final"] = info["start"]
+    music = music_thriller(total, marcas=marcas)
     env = np.full(len(music), 0.30)
+    if "final" in marcas:
+        a = int(marcas["final"] * SR)
+        env[a:] = 0.42
     for info in tl["clips"]:
         cl = info["clip"]
         s = cl.get("sfx")
@@ -443,7 +489,7 @@ def _text_shadow(lay, xy, txt, font, fill, anchor="la", blur=8, sh=(0, 0, 0, 200
 def _rotulo(img, info, t):
     cl = info["clip"]
     r = cl.get("rotulo")
-    if not r:
+    if not r or r["tipo"] == "final":
         return
     a = _fade(t, info["start"] + 0.15, info["end"] - 0.05, 0.35, 0.3)
     if a <= 0:
@@ -556,8 +602,8 @@ def _cuenta_atras(img, info, t):
     img.alpha_composite(dark)
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    _text_shadow(lay, (W / 2, 250), "¿QUIÉN SE", F("titulo", 130), WHITE, "ma")
-    _text_shadow(lay, (W / 2, 380), "CONTRADICE?", F("titulo", 130), YEL, "ma")
+    _text_shadow(lay, (W / 2, 250), "¿QUIÉN", F("titulo", 130), WHITE, "ma")
+    _text_shadow(lay, (W / 2, 380), "MIENTE?", F("titulo", 130), YEL, "ma")
     el = max(0.0, t - cd)
     rem = max(0.0, n - el)
     num = max(1, math.ceil(rem)) if el < n else 0
@@ -572,6 +618,60 @@ def _cuenta_atras(img, info, t):
     if num:
         d.text((cx, cy + 8), str(num), font=F("titulo", int(190 * beat)), fill=WHITE, anchor="mm")
     img.alpha_composite(lay)
+
+
+COMENTARIOS = ["Clara, seguro…", "¿Y si fue Sofía?", "Yo voto Roberto", "¡Lo tengo clarísimo!"]
+
+
+def _final(img, info, t):
+    """Final con gancho: las tres caras se iluminan por turnos, «¿QUIÉN MIENTE?» late y aparecen
+    comentarios que se escriben solos. No se revela la respuesta."""
+    cl = info["clip"]
+    if not cl.get("final"):
+        return
+    lt = t - info["start"]
+    r = cl["rotulo"]
+    lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(lay)
+    # cara iluminada (ritmo de la música)
+    k = int(lt * 2.4) % 3
+    x = 6 + k * 364
+    for g, a in ((22, 60), (12, 110), (0, 255)):
+        d.rounded_rectangle((x - g, 560 - g, x + 352 + g, 1330 + g), 10 + g, outline=YEL + (a,), width=8)
+    d.ellipse((x + 176 - 46, 590, x + 176 + 46, 682), fill=YEL)
+    d.text((x + 176, 638), "?", font=F("titulo", 90), fill=(10, 8, 20), anchor="mm")
+    img.alpha_composite(lay)
+    # titular que late
+    p = ease_out_back(min(1, lt / 0.4))
+    beat = 1 + 0.035 * math.exp(-((lt % 0.577) / 0.12))
+    key = ("fin_tit", id(cl))
+    if key not in _S["cache"]:
+        tl_ = Image.new("RGBA", (W, 420), (0, 0, 0, 0))
+        _text_shadow(tl_, (W / 2, 60), r["texto"], F("titulo", 160), WHITE, "ma", blur=16, sh=(0, 140, 130, 230))
+        f = F("bold", 40)
+        tw = ImageDraw.Draw(tl_).textlength(r["sub"].upper(), font=f)
+        ImageDraw.Draw(tl_).rounded_rectangle((W / 2 - tw / 2 - 40, 270, W / 2 + tw / 2 + 40, 350), 40, fill=TURQ)
+        ImageDraw.Draw(tl_).text((W / 2, 310), r["sub"].upper(), font=f, fill=(10, 8, 20), anchor="mm")
+        _S["cache"][key] = tl_
+    tl_ = _S["cache"][key]
+    s = max(0.05, p) * beat
+    t2 = tl_.resize((int(W * s), int(420 * s)), Image.BICUBIC)
+    img.alpha_composite(t2, (int(W / 2 - t2.width / 2), int(150 + 210 - t2.height / 2)))
+    # comentario que se escribe solo (cambia cada 1,7 s)
+    if lt > 0.8:
+        j = int((lt - 0.8) / 1.7) % len(COMENTARIOS)
+        lj = (lt - 0.8) % 1.7
+        txt = COMENTARIOS[j]
+        nch = int(min(len(txt), lj / 0.05))
+        bub = Image.new("RGBA", (760, 110), (0, 0, 0, 0))
+        bd = ImageDraw.Draw(bub)
+        bd.rounded_rectangle((0, 0, 759, 109), 40, fill=(255, 255, 255, 235))
+        bd.ellipse((18, 18, 92, 92), fill=[TURQ, YEL, PURP, TURQ][j])
+        bd.text((55, 56), "@", font=F("bold", 40), fill=(10, 8, 20), anchor="mm")
+        bd.text((115, 56), txt[:nch] + ("|" if nch < len(txt) and int(lt * 4) % 2 else ""), font=F("bold", 40),
+                fill=(10, 8, 20), anchor="lm")
+        a = min(1, lj / 0.2) * min(1, (1.7 - lj) / 0.2)
+        img.alpha_composite(_alpha_img(bub, a), (160, 1545))
 
 
 def _subtitulos(img, t):
@@ -650,6 +750,7 @@ def render_frame(i):
         _rotulo(img, info, t)
         _tarjetas(img, info, t)
         _cuenta_atras(img, info, t)
+        _final(img, info, t)
     _subtitulos(img, t)
     _marca(img, t)
     img.alpha_composite(_S["grain"][i % len(_S["grain"])])

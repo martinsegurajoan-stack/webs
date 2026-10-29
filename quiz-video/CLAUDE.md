@@ -35,7 +35,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
-| `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 89 s | MISTERIO CRIMINAL nº1 (Caso imposible: la mansión) = PLANTILLA DE MISTERIO |
+| `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
@@ -171,7 +171,12 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
   palabra a palabra con sincronía real. Rótulos de sospechoso/pista arriba a la izquierda,
   tarjetas de declaración, tríptico de sospechosos en columnas, cuenta atrás de 5 s, sello, CTA.
 - Música de thriller original sintetizada (`music_thriller`), golpes en pistas, silencio antes de la revelación.
-- Coste caso 1: ~2.970 créditos de imágenes (14) + ~1.600 de voz.
+- Coste caso 1: ~2.970 créditos de imágenes (14) + ~1.600 de voz (v1) + ~1.250 de voz (v2).
+- REGLAS DEL USUARIO (v2): NO revelar al culpable ni dar pistas de quién es ("sin embargo, antes había
+  dicho…", "busca quién se contradice" PROHIBIDO). Final con gancho y emoción: «¿QUIÉN MIENTE?», caras que
+  se iluminan por turnos, comentarios que se escriben solos, pedir la teoría en comentarios y seguir.
+  Voz v2: "Juanjo TikTok" (`30jLfQdV8RTduXvosh02`, castellano, enérgico) con etiquetas de v4 por frase
+  ([suspenseful], [intrigued], [whispers], [excited]) y SIN acelerar (tope x1.05). Música con pulso que crece.
 
 ## PRESENTADOR FIJO: "DON QUIZÁS" (cuando el usuario pida vídeo con presentador / concurso)
 - Personaje dibujado por código en `quizvideo/presentador.py` (gratis, siempre idéntico):
