@@ -1,5 +1,8 @@
 # quiz-video — plantilla FINAL de @hora.delquiz
 
+RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
+5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
+
 Flujo: el usuario SOLO escribe las preguntas (con opciones y respuesta). Sin pedir más instrucciones,
 genera el vídeo con esta plantilla y envíale el MP4 (SendUserFile, display "attach"). No cambies el
 diseño ni la voz salvo que lo pida.
@@ -8,7 +11,7 @@ diseño ni la voz salvo que lo pida.
 - QUIZ: 5 preguntas + 1 EXTRA sin respuesta al final (`"sin_respuesta": true`, cabecera "PREGUNTA EXTRA",
   voz "¡Pregunta extra!", pide escribirla en comentarios). Si el usuario manda menos de 5 normales,
   completa tú con un acertijo/pregunta verificada del mismo estilo y díselo.
-- PAREJA: 7 en total = 6 + la extra de comentarios.
+- PAREJA: igual que el quiz: 5 preguntas + 1 EXTRA de comentarios (6 en total).
 - INTRO del quiz: "¡Es hora del quiz!" + una frase SALSEANTE distinta en cada vídeo, elegida sola de
   `quizvideo/frases_intro.py` (registro `assets/frases_usadas.json`). Si se agotan, añade más frases de
   ese estilo al final de la lista (picantes, de reto, en español de España).
@@ -43,8 +46,9 @@ diseño ni la voz salvo que lo pida.
 
 ## Modo "pareja" (QUIZ DE PAREJAS / ¿Cuánto conoces a tu pareja?)
 MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo cambia el estilo:
-- `"modo": "pareja"` en el JSON (ver `quizzes/pareja_01.json`). 7 preguntas = 6 + 1 EXTRA de
-  comentarios al final (`"sin_respuesta": true`, cabecera "PREGUNTA EXTRA").
+- `"modo": "pareja"` en el JSON (ver `quizzes/pareja_01.json`). 5 preguntas + 1 EXTRA de
+  comentarios al final (`"sin_respuesta": true`, cabecera "PREGUNTA EXTRA"). Si el usuario manda
+  más, pregunta cuál quitar; si manda menos, completa tú con una del mismo estilo y díselo.
 - Intro: "¡Es hora del quiz de parejas!" + frase salseante romántica/pícara distinta en cada vídeo
   (lista `FRASES_PAREJA` en `quizvideo/frases_intro.py`, registro `assets/frases_pareja_usadas.json`).
 - Imagen 3D en cada pregunta (igual que el trivial; elige algo romántico/relacionado: corazón 2764-fe0f,
