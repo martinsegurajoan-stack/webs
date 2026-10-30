@@ -61,6 +61,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
 | `salida/niveles_02.mp4` | `quizzes/niveles_02.json` | 111 s | NIVELES nº2 «PARTE 2: MÁS DIFÍCIL» (gama de colores B, pruebas más duras, imposible = reloj 22 superposiciones) |
+| `salida/niveles_03.mp4` | `quizzes/niveles_03.json` | 88 s | NIVELES nº3: MINIJUEGOS rápidos (fugitivo, rojo, memoria6, infiltrado, ilusión) + foto pixelada imposible |
 | `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
 | `salida/hora_del_quiz_05.mp4` | `quizzes/hora_del_quiz_05.json` | 101 s | Quiz GAMER (modo `gamer`, 5 + PREGUNTA IMPOSIBLE, pantalla de RANGOS) = PLANTILLA GAMER |
 | `salida/hora_del_quiz_07.mp4` | `quizzes/hora_del_quiz_07.json` | 89 s | Quiz GAMER nº2 (modo `gamer`, piques + comentarios, PREGUNTA TRAMPA, rangos rápidos, tempo 1,28) |
@@ -87,7 +88,7 @@ Plantillas y piezas reutilizables:
 - Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 08).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Mascotas: `quizzes/mascota_NN.json` → `salida/mascota_NN.mp4` (siguiente: 02).
-- Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 03).
+- Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 04).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
 - Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, siguiente: 02).
@@ -272,6 +273,16 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
   en vez de las cuerdas (sirve para cualquier acertijo).
 - Nº2 («PARTE 2: MÁS DIFÍCIL», gama B): secuencia +3+5+7, un 6 entre nueves, memoria de 7 números, 5 máquinas,
   bate y pelota, imposible = ¿cuántas veces se superponen las agujas en 24 h? (22). 111 s, ~770 créditos de voz.
+- MINIJUEGOS (niveles_03, petición del usuario: 90 s MÁXIMO, cada vez más imposible, más difícil que los
+  anteriores, muy decorado). Tipos nuevos (`_ronda_nueva`): `fugitivo` (números muy rápidos, ¿cuántas veces
+  volvió el primero?), `rojo` (círculos de colores a toda velocidad, contar verdes; los rojos dan destello y
+  zumbido), `memoria6` (6 objetos 3 s, se tapan, se barajan y falta uno; usar objetos parecidos), `infiltrado`
+  (40 caras 3D casi iguales 😀/😃 en filas, 5 s), `ilusion` (Ebbinghaus con DOBLE trampa: el que parece
+  pequeño ES más grande, así fallan también los que «se saben» la ilusión) y `pixel` (EXTRA: foto del usuario
+  que se va despixelando por segundos; al final «¿En qué segundo lo adivinaste?»). Campos: `cuenta` (seg. de
+  cuenta atrás por ronda), `ritmo`, `memoriza`, `tempo` y `rango_tono` en el JSON. Gancho con `teaser`: la foto
+  muy pixelada + «NIVEL IMPOSIBLE» + «¿QUIÉN ES?» (también en la portada). Fotos de personas: solo las que manda
+  el usuario (se mejoran con Pillow; quitar el fondo necesitaría instalar una herramienta → preguntar antes).
 
 ## Formato "ELIGE UNA CARTA" (juego para beber con amigos)
 `quizzes/cartas_NN.json` → `generar_cartas.py` + `quizvideo/cartas.py` → `salida/cartas_NN.mp4` + portadas

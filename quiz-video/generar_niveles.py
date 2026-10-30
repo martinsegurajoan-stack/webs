@@ -29,8 +29,8 @@ def main():
     c = json.load(open(a.contenido, encoding="utf-8"))
     out = a.salida or os.path.join(BASE, "salida", c["video"] + ".mp4")
     voice = ElevenVoice()
-    voice.configure(style="", tempo=1.18)
-    tono = themes.elegir_tono(c["video"])  # tono del fondo oscuro del gancho y del cierre
+    voice.configure(style="", tempo=c.get("tempo", 1.18))
+    tono = themes.elegir_tono(c["video"], tuple(c["rango_tono"]) if c.get("rango_tono") else None)  # tono del fondo oscuro del gancho y del cierre
     state = {"c": c, "tono": tono}
 
     if a.frases_pendientes:

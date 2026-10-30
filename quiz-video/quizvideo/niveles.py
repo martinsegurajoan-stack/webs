@@ -57,7 +57,17 @@ LAYOUT = {
     "memoria": {"card": (290, 470), "vis": 700, "timer": (540, 1045), "opts": ("grid", 1140)},
     "acertijo": {"card": (290, 620), "vis": 775, "timer": (540, 955), "opts": ("list", 1035)},
     "reloj": {"card": (290, 510), "vis": 770, "timer": (540, 1050), "opts": ("grid", 1140)},
+    # minijuegos (niveles_02)
+    "fugitivo": {"card": (290, 540), "vis": 810, "timer": (540, 1050), "opts": ("grid", 1140)},
+    "rojo": {"card": (290, 540), "vis": 820, "timer": (540, 1050), "opts": ("grid", 1140)},
+    "memoria6": {"card": (290, 540), "vis": 800, "timer": (540, 1080), "opts": ("grid", 1160)},
+    "infiltrado": {"card": (290, 470), "vis": 865, "timer": (960, 865), "opts": ("grid", 1250)},
+    "ilusion": {"card": (290, 540), "vis": 800, "timer": (540, 1050), "opts": ("grid", 1140)},
+    "pixel": {"card": (290, 470), "vis": 860, "timer": (540, 1290), "opts": ("grid", 1400)},
 }
+NUEVOS = ("fugitivo", "rojo", "memoria6", "infiltrado", "ilusion", "pixel")
+ROJO_COLS = {"V": (34, 200, 84), "R": (239, 40, 55), "A": (40, 120, 255), "M": (255, 205, 0),
+             "Z": (150, 80, 240), "N": (255, 135, 0)}
 NODES_Y = 200
 NODES_X = [150 + i * 156 for i in range(6)]
 
@@ -96,6 +106,9 @@ def build_timeline(c, voice):
     for k, r in enumerate(rondas):
         extra = bool(r.get("extra"))
         lay = LAYOUT[r["tipo"]]
+        if r["tipo"] in NUEVOS:
+            t = _ronda_nueva(r, k, extra, lay, voice, ev, scenes, t)
+            continue
         # cartel de nivel
         sig, d = voice.say(r["anuncio"])
         cdur = max(1.6, 0.25 + d + 0.15)
@@ -162,6 +175,74 @@ def build_timeline(c, voice):
     scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at, "lv": 6})
     t += dur
     return scenes, ev, t
+
+
+def _ronda_nueva(r, k, extra, lay, voice, ev, scenes, t):
+    """Minijuegos rápidos: cartel corto → estímulo → pregunta → cuenta atrás corta → respuesta."""
+    sig, d = voice.say(r["anuncio"])
+    cdur = max(1.3, 0.2 + d + 0.1)
+    ev += [("fx", "whoosh", t), ("voice", sig, t + 0.2)]
+    ev += [("fx", "heart", t + 0.3), ("fx", "heart", t + 0.95), ("fx", "buzz", t + 0.3)] if extra \
+        else [("fx", "pop", t + 0.35), ("fx", "chime", t + 0.5)]
+    scenes.append({"kind": "card", "start": t, "dur": cdur, "k": k, "r": r, "lv": k})
+    t += cdur
+    st = t
+    n = r.get("cuenta", COUNTDOWN)
+    sc = {"kind": "q", "start": st, "k": k, "r": r, "lv": k, "lay": lay, "extra": extra, "n": n}
+    ev.append(("fx", "whoosh", st))
+    tipo = r["tipo"]
+    loc = 0.25
+    if tipo == "fugitivo":
+        rit = r["ritmo"]
+        for i in range(len(r["numeros"])):
+            ev.append(("fx", "tick_high" if i == 0 else "tick", st + loc + i * rit))
+        sc["stim"] = (loc, loc + len(r["numeros"]) * rit)
+        loc = sc["stim"][1] + 0.2
+    elif tipo == "rojo":
+        rit = r["ritmo"]
+        for i, p in enumerate(r["pasos"]):
+            ev.append(("fx", "buzz" if "R" in p else "pop", st + loc + i * rit))
+        sc["stim"] = (loc, loc + len(r["pasos"]) * rit)
+        loc = sc["stim"][1] + 0.2
+    elif tipo == "memoria6":
+        for i in range(6):
+            ev.append(("fx", "pop", st + loc + 0.06 * i))
+        m0 = loc + 0.45
+        _countdown_events(ev, st + m0, 3, riser=False)
+        sc["memo"] = (m0, m0 + 3)
+        ev += [("fx", "whoosh", st + m0 + 3), ("fx", "pop", st + m0 + 3.5)]
+        sc["stim"] = (loc, m0 + 3.5)
+        loc = m0 + 3.9
+    sc["q_t"] = loc
+    sig, d = voice.say(r.get("voz", r["pregunta"]))
+    ev.append(("voice", sig, st + loc))
+    loc += max(0.5, d - 0.35)
+    opt_times = []
+    for _ in r["opciones"]:
+        opt_times.append(loc)
+        ev.append(("fx", "pop", st + loc))
+        loc += 0.14
+    if tipo == "pixel":
+        loc = sc["q_t"] + d + 0.1
+    cd = loc + 0.1
+    if tipo == "infiltrado":
+        ev.append(("fx", "whoosh", st + cd - 0.15))
+    _countdown_events(ev, st + cd, n)
+    rv = cd + n
+    sig, dv = voice.say(r["respuesta_voz"])
+    if extra:
+        ev += [("fx", "chime", st + rv), ("fx", "applause", st + rv + 0.1), ("voice", sig, st + rv + 0.6)]
+        rdur = max(2.6, 0.6 + dv + 0.6)
+        stp = None
+    else:
+        ev += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.12), ("voice", sig, st + rv + 0.35)]
+        stp = rv + 0.35 + min(dv, 1.0)
+        ev += [("fx", "pop", st + stp), ("fx", "chime", st + stp + 0.05)]
+        rdur = max(0.35 + dv + 0.15, stp - rv + 0.8)
+    sc.update({"opt_times": opt_times, "cd": cd, "reveal": rv, "stamp": stp,
+               "correct": LETTERS.index(r["correcta"]), "dur": rv + rdur})
+    scenes.append(sc)
+    return t + sc["dur"]
 
 
 # ------------------------------------------------------------------ utilidades de dibujo
@@ -274,6 +355,16 @@ def _init(state):
     dist = np.sqrt(((xx - W / 2) / (W / 2)) ** 2 + ((yy - H / 2) / (H / 2)) ** 2)
     _S["vig"] = Image.fromarray((np.clip((dist - 0.75) / 0.6, 0, 1) * 200).astype(np.uint8), "L")
     _S["logo"] = Image.open(os.path.join(ASSETS, "logo.png")).convert("RGBA")
+    _S["pix"] = {}
+    for r in state["c"]["rondas"]:
+        if r.get("foto"):
+            _S["foto"] = Image.open(os.path.join(ASSETS, r["foto"])).convert("RGB").resize((620, 620), Image.LANCZOS)
+        if r["tipo"] == "rojo":
+            rp = random.Random(42)
+            pos = []
+            for p in r["pasos"]:
+                pos.append([(rp.uniform(190, 890), rp.uniform(620, 1020), rp.uniform(62, 90)) for _ in p])
+            _S["rojo_pos"] = pos
     # confeti fijo
     rc = random.Random(5)
     cols = [YEL, (0, 222, 205), (255, 64, 160), WHITE, (138, 58, 255), GREEN]
@@ -388,8 +479,9 @@ def timer(img, d, sc, lt):
     a = pop(lt, cd - 0.3, 0.35)
     if lt > sc["reveal"]:
         a = 1 - ease_in((lt - sc["reveal"]) / 0.35)
-    rem = max(0.0, cd + COUNTDOWN - lt)
-    n = min(COUNTDOWN, int(math.ceil(rem))) if lt >= cd else COUNTDOWN
+    N = sc.get("n", COUNTDOWN)
+    rem = max(0.0, cd + N - lt)
+    n = min(N, int(math.ceil(rem))) if lt >= cd else N
     urgent = lt >= cd and rem <= 2
     col = RED if urgent else lvl(sc["k"])[2]
     beat = 1 + (0.08 * max(0, math.cos((lt - cd) * 2 * math.pi)) if urgent else 0)
@@ -398,7 +490,7 @@ def timer(img, d, sc, lt):
         return
     d.ellipse((cx - R + 4, cy - R + 10, cx + R + 4, cy + R + 10), fill=(0, 0, 0, 60))
     d.ellipse((cx - R, cy - R, cx + R, cy + R), fill=WHITE)
-    frac = rem / COUNTDOWN if lt >= cd else 1.0
+    frac = rem / N if lt >= cd else 1.0
     d.arc((cx - R + 7, cy - R + 7, cx + R - 7, cy + R - 7), -90, -90 + 360 * frac, fill=col, width=int(12 * a))
     if n > 0:
         d.text((cx, cy + 4), str(n), font=tfont(int(76 * a * beat)), fill=col if urgent else (30, 24, 40),
@@ -406,7 +498,7 @@ def timer(img, d, sc, lt):
 
 
 def vignette(img, sc, lt):
-    end = sc["cd"] + COUNTDOWN
+    end = sc["cd"] + sc.get("n", COUNTDOWN)
     if end - 2.5 <= lt < end:
         k = (lt - (end - 2.5)) / 2.5
         beat = 0.5 + 0.5 * math.cos((lt - sc["cd"]) * 2 * math.pi * 2)
@@ -493,7 +585,9 @@ def stamp(img, d, sc, lt):
         _S["spr"][key] = s.rotate(6, resample=Image.BICUBIC, expand=True)
     a = ease_out(lt2 / 0.22)
     scale = 1.55 - 0.55 * a
-    cy = sc["lay"]["vis"] if sc["r"]["tipo"] != "busca" else 1305
+    cy = sc["lay"]["vis"] if sc["r"]["tipo"] not in ("busca", "infiltrado") else 1305
+    if sc["r"]["tipo"] in NUEVOS:
+        cy = 1060
     paste_c(img, _S["spr"][key], 540, cy, scale * 0.95, alpha=min(1, a * 1.3))
     # confeti
     if lt2 < 1.6:
@@ -706,7 +800,262 @@ def vis_busca(img, d, sc, lt):
     d.ellipse((x - R, y - R, x + R, y + R), outline=YEL, width=9)
 
 
-VIS = {"secuencia": vis_secuencia, "logica": vis_logica, "memoria": vis_memoria, "acertijo": vis_acertijo,
+def _pixelada(b):
+    if b not in _S["pix"]:
+        f = _S["foto"]
+        if b <= 1:
+            _S["pix"][b] = f
+        else:
+            sm = f.resize((max(1, 620 // b), max(1, 620 // b)), Image.BILINEAR)
+            _S["pix"][b] = sm.resize((620, 620), Image.NEAREST)
+    return _S["pix"][b]
+
+
+def _marco_foto(img, d, im, cx, cy, glow_col, lt, scale=1.0, glitch=0):
+    s = int(620 * scale)
+    if s < 10:
+        return
+    g = 0.5 + 0.5 * math.sin(lt * 6)
+    for w, a in ((40, 40), (24, 70), (12, 130)):
+        rr(d, (cx - s / 2 - w, cy - s / 2 - w, cx + s / 2 + w, cy + s / 2 + w), 46 + w,
+           glow_col + (int(a * (0.6 + 0.4 * g)),))
+    pic = im if s == 620 else im.resize((s, s), Image.BILINEAR)
+    m = Image.new("L", (s, s), 0)
+    ImageDraw.Draw(m).rounded_rectangle((0, 0, s - 1, s - 1), 40, fill=255)
+    if glitch:
+        r_, g_, b_ = pic.split()
+        pic = Image.merge("RGB", (r_.transform(pic.size, Image.AFFINE, (1, 0, glitch, 0, 1, 0)), g_,
+                                  b_.transform(pic.size, Image.AFFINE, (1, 0, -glitch, 0, 1, 0))))
+    img.paste(pic, (int(cx - s / 2), int(cy - s / 2)), m)
+    rr(d, (cx - s / 2, cy - s / 2, cx + s / 2, cy + s / 2), 40, None, outline=WHITE, width=8)
+
+
+def vis_fugitivo(img, d, sc, lt):
+    r, L = sc["r"], lvl(sc["k"])
+    s0, s1 = sc["stim"]
+    cy = sc["lay"]["vis"]
+    nums = r["numeros"]
+    cols = [(255, 255, 255), (255, 220, 90), (120, 230, 255), (255, 150, 200), (190, 255, 140)]
+    if s0 <= lt < s1:
+        i = int((lt - s0) / r["ritmo"])
+        q = ((lt - s0) % r["ritmo"]) / r["ritmo"]
+        a = ease_out_back(min(1, q / 0.25))
+        jx = (i * 37 % 7 - 3) * 22
+        tile(d, 540 + jx, cy, 360 * a, 300 * a, nums[i], cols[i % len(cols)], L[3], int(210 * a))
+        # contador de destellos
+        for j in range(len(nums)):
+            x = 540 + (j - (len(nums) - 1) / 2) * 34
+            d.ellipse((x - 9, cy + 200 - 9, x + 9, cy + 200 + 9), fill=WHITE if j <= i else (255, 255, 255, 70))
+    elif lt >= s1:
+        rv = sc["reveal"]
+        if lt < rv:
+            p = 1 + 0.05 * math.sin(lt * 7)
+            tile(d, 540, cy, 300 * p, 260 * p, "?", L[3], WHITE, 190, outline=WHITE)
+        else:
+            a = pop(lt, rv, 0.35)
+            tile(d, 540, cy, 320, 270, nums[0], GREEN, WHITE, 190, outline=WHITE)
+            pill(d, 700, cy - 130, "×2", int(64 * max(a, 0.1)), YEL, (60, 40, 0), pad=(22, 10))
+
+
+def vis_rojo(img, d, sc, lt):
+    r = sc["r"]
+    s0, s1 = sc["stim"]
+    cy = sc["lay"]["vis"]
+    if s0 <= lt < s1:
+        i = int((lt - s0) / r["ritmo"])
+        q = ((lt - s0) % r["ritmo"]) / r["ritmo"]
+        a = ease_out_back(min(1, q / 0.3)) * (1 if q < 0.85 else max(0, (1 - q) / 0.15))
+        red = "R" in r["pasos"][i]
+        if red:
+            for w, al in ((50, 90), (90, 40)):
+                d.rectangle((0, 0, W, H), outline=RED + (al,), width=w)
+        for ch, (x, y, rad) in zip(r["pasos"][i], _S["rojo_pos"][i]):
+            col = ROJO_COLS[ch]
+            R = rad * a * (1.2 if ch == "R" else 1)
+            if R < 2:
+                continue
+            d.ellipse((x - R + 5, y - R + 10, x + R + 5, y + R + 10), fill=(0, 0, 0, 60))
+            d.ellipse((x - R, y - R, x + R, y + R), fill=col, outline=WHITE, width=6)
+            d.ellipse((x - R * 0.55, y - R * 0.7, x + R * 0.1, y - R * 0.2), fill=(255, 255, 255, 70))
+    elif lt >= s1:
+        rv = sc["reveal"]
+        if lt < rv:
+            k = 1 + 0.06 * math.sin(lt * 7)
+            text(d, (540, cy), "¿CUÁNTOS?", tfont(int(110 * k)), WHITE, 12, (20, 10, 40), sh=8)
+        else:
+            nv = sum(p.count("V") for p in r["pasos"])
+            for j in range(nv):
+                a = pop(lt, rv + 0.05 * j, 0.3)
+                x = 540 + (j - (nv - 1) / 2) * 100
+                R = 38 * a
+                d.ellipse((x - R, cy - R, x + R, cy + R), fill=ROJO_COLS["V"], outline=WHITE, width=5)
+
+
+def _obj_card(img, d, name, cx, cy, s=1.0, flip=1.0, good=False):
+    w = 194 * s * abs(flip)
+    h = 194 * s
+    if w < 4:
+        return
+    box = (cx - w / 2, cy - h / 2, cx + w / 2, cy + h / 2)
+    shadow(d, box, 34, 10, 60)
+    rr(d, box, 34, GREEN if good else WHITE, outline=WHITE if good else None, width=6 if good else 0)
+    if name and abs(flip) > 0.3:
+        spr = _sprite("niveles2/%s.png" % name, int(148 * s))
+        if flip != 1.0:
+            spr = spr.resize((max(2, int(spr.width * abs(flip))), spr.height))
+        paste_c(img, spr, cx, cy)
+
+
+def vis_memoria6(img, d, sc, lt):
+    r, L = sc["r"], lvl(sc["k"])
+    cy = sc["lay"]["vis"]
+    m0, m1 = sc["memo"]
+    rv = sc["reveal"]
+    slots = [(540 + (i % 3 - 1) * 250, cy - 112 + (i // 3) * 222) for i in range(6)]
+    for i, (x, y) in enumerate(slots):
+        a = pop(lt, 0.25 + 0.06 * i, 0.35)
+        if a <= 0:
+            continue
+        if lt < m1:
+            _obj_card(img, d, r["objetos"][i], x, y, a)
+        elif lt < m1 + 0.5:
+            fl = math.cos(min(1, (lt - m1) / 0.25) * math.pi)
+            if fl > 0:
+                _obj_card(img, d, r["objetos"][i], x, y, 1, fl)
+            else:
+                box = (x - 97, y - 97, x + 97, y + 97)
+                rr(d, box, 34, L[3], outline=WHITE, width=6)
+                d.text((x, y + 6), "?", font=tfont(110), fill=WHITE, anchor="mm")
+        else:
+            nm = r["orden2"][i]
+            q = pop(lt, m1 + 0.5 + 0.05 * i, 0.3)
+            if nm is None:
+                if lt >= rv + 0.1:
+                    _obj_card(img, d, r["falta"], x, y, pop(lt, rv + 0.1, 0.35), good=True)
+                else:
+                    box = (x - 97, y - 97, x + 97, y + 97)
+                    rr(d, box, 34, (255, 255, 255, 50), outline=(255, 255, 255, 200), width=5)
+                    d.text((x, y + 6), "?", font=tfont(int(110 * (1 + 0.06 * math.sin(lt * 7)))), fill=WHITE,
+                           anchor="mm")
+            else:
+                _obj_card(img, d, nm, x, y, q)
+    if m0 - 0.3 <= lt < m1 + 0.3:
+        a = pop(lt, m0 - 0.3, 0.3) if lt < m1 else 1 - ease_in((lt - m1) / 0.3)
+        frac = max(0.0, min(1.0, (m1 - lt) / (m1 - m0)))
+        bw = 760 * a
+        by = cy + 248
+        rr(d, (540 - bw / 2, by - 16, 540 + bw / 2, by + 16), 16, (0, 0, 0, 70))
+        if frac > 0:
+            rr(d, (540 - bw / 2, by - 16, 540 - bw / 2 + bw * frac, by + 16), 16, WHITE if frac > 0.4 else YEL)
+
+
+def vis_infiltrado(img, d, sc, lt):
+    r = sc["r"]
+    cd, rv = sc["cd"], sc["reveal"]
+    nf, nc = r["filas"], r["columnas"]
+    fr, fc = r["pos"]
+    cy = sc["lay"]["vis"]
+    step_y, step_x, size = 94, 118, 84
+    y0 = cy - (nf - 1) / 2 * step_y
+    x0 = 540 - (nc - 1) / 2 * step_x
+    if lt < cd - 0.2:
+        k = 1 + 0.07 * math.sin(lt * 8)
+        text(d, (540, cy - 40), "¿PREPARADO?", tfont(int(100 * k)), WHITE, 12, (20, 10, 40), sh=8)
+        text(d, (540, cy + 80), "40 CARAS · 5 SEGUNDOS", tfont(52), YEL, 8, (20, 10, 40))
+        return
+    for i in range(nf):
+        y = y0 + i * step_y
+        pill(d, x0 - 115, y, str(i + 1), 40, WHITE, lvl(sc["k"])[3], pad=(16, 6))
+        for j in range(nc):
+            a = pop(lt, cd - 0.2 + 0.012 * (i * nc + j), 0.25)
+            odd = (i + 1, j + 1) == (fr, fc)
+            nm = r["diferente"] if odd else r["figura"]
+            al = 1.0
+            if lt >= rv and not odd:
+                al = max(0.25, 1 - (lt - rv) / 0.3)
+            paste_c(img, _sprite("niveles2/%s.png" % nm, size), x0 + j * step_x, y, a, alpha=al)
+    if lt >= rv + 0.1:
+        x, y = x0 + (fc - 1) * step_x, y0 + (fr - 1) * step_y
+        a = pop(lt, rv + 0.1, 0.35)
+        R = 64 * a * (1 + 0.06 * math.sin(lt * 9))
+        d.ellipse((x - R, y - R, x + R, y + R), outline=YEL, width=10)
+
+
+def vis_ilusion(img, d, sc, lt):
+    r = sc["r"]
+    cy = sc["lay"]["vis"]
+    rv = sc["reveal"]
+    rl, rd = r["radios"]
+    a = pop(lt, 0.25, 0.5)
+    if a <= 0:
+        return
+    fade = 1.0 if lt < rv else max(0.0, 1 - (lt - rv) / 0.35)
+    mv = 0.0 if lt < rv + 0.35 else ease_out((lt - rv - 0.35) / 0.5)
+    lx, rx = 290 + 140 * mv, 790 - 140 * mv
+    grey = (215, 215, 225)
+    if fade > 0:
+        for j in range(6):
+            ang = j * math.pi / 3
+            x, y = 290 + 165 * math.cos(ang), cy + 165 * math.sin(ang)
+            R = 80 * a
+            d.ellipse((x - R, y - R, x + R, y + R), fill=grey + (int(255 * fade),))
+        for j in range(8):
+            ang = j * math.pi / 4
+            x, y = 790 + 102 * math.cos(ang), cy + 102 * math.sin(ang)
+            R = 23 * a
+            d.ellipse((x - R, y - R, x + R, y + R), fill=grey + (int(255 * fade),))
+    org = (255, 128, 0)
+    for x, R in ((lx, rl * a), (rx, rd * a)):
+        d.ellipse((x - R, cy - R, x + R, cy + R), fill=org)
+    if mv > 0.9:
+        b = pop(lt, rv + 0.85, 0.35)
+        for yy in (cy - rl, cy + rl):
+            for xx in range(int(lx - rl), int(rx + rd), 30):
+                d.line((xx, yy, xx + 16, yy), fill=YEL, width=6)
+        pill(d, 540, cy - 165 - (1 - b) * 40, "¡EL IZQUIERDO ES MÁS GRANDE!", int(50 * max(b, 0.1)), WHITE, GREEN_D,
+             pad=(30, 16))
+
+
+PIX_STAGES = [100, 66, 44, 28, 17, 10]
+
+
+def vis_pixel(img, d, sc, lt):
+    r = sc["r"]
+    cy = sc["lay"]["vis"]
+    cd, rv, n = sc["cd"], sc["reveal"], sc["n"]
+    a = pop(lt, 0.2, 0.45)
+    if a <= 0:
+        return
+    if lt < cd:
+        b = 150
+    elif lt < rv:
+        b = PIX_STAGES[min(len(PIX_STAGES) - 1, int((lt - cd) / n * len(PIX_STAGES)))]
+    else:
+        b = 1
+    gl = int(10 * math.sin(lt * 31)) if lt < rv and (lt * 7) % 1 < 0.25 else 0
+    sc_ = a * (1 + (0.04 * max(0, 1 - (lt - rv) / 0.4) if lt >= rv else 0))
+    _marco_foto(img, d, _pixelada(b), 540, cy, RED if lt < rv else GREEN, lt, sc_, gl)
+    if lt < rv:
+        for j, (dx, dy, ph) in enumerate([(-360, -250, 0), (365, -200, 1.7), (-370, 230, 3.1), (360, 260, 4.4)]):
+            s = 70 + 10 * math.sin(lt * 3 + ph)
+            text(d, (540 + dx, cy + dy + math.sin(lt * 2 + ph) * 12), "?", tfont(int(s)), YEL, 8, (40, 0, 10))
+    else:
+        if lt < rv + 0.25:
+            img.paste((255, 255, 255), (0, 0), Image.new("L", (W, H), int(200 * (1 - (lt - rv) / 0.25))))
+        e = lt - rv
+        if e < 1.8:
+            for (vx, vy, col, sz, ph) in _S["confeti"]:
+                x = 540 + vx * 620 * e
+                y = cy + vy * 700 * e + 900 * e * e
+                ang = ph + e * 8
+                pts = [(x + sz * math.cos(ang + j * math.pi / 2) * (1 if j % 2 else 0.5),
+                        y + sz * math.sin(ang + j * math.pi / 2) * (1 if j % 2 else 0.5)) for j in range(4)]
+                d.polygon(pts, fill=col + (int(255 * max(0, 1 - e / 1.8)),))
+
+
+VIS = {"fugitivo": vis_fugitivo, "rojo": vis_rojo, "memoria6": vis_memoria6, "infiltrado": vis_infiltrado,
+       "ilusion": vis_ilusion, "pixel": vis_pixel,
+       "secuencia": vis_secuencia, "logica": vis_logica, "memoria": vis_memoria, "acertijo": vis_acertijo,
        "reloj": vis_reloj, "busca": vis_busca}
 
 
@@ -755,20 +1104,40 @@ def draw_hook(img, d, sc, lt):
     sh = math.sin(lt * 50) * 10 * max(0, 1 - lt / 0.35)
     text(d, (540 + sh, 330), l1, tfont(int(118 * s)), WHITE, 12, (20, 10, 40), sh=10)
     text(d, (540 - sh, 470), l2, tfont(int(128 * s)), YEL, 13, (20, 10, 40), sh=10)
-    draw_ladder(img, d, sc["lights"], lt)
-    peg = c["gancho"].get("pegatina")
-    if peg:
-        # pegatina de reto que entra de golpe y late
-        a = pop(lt, 0.15, 0.3)
-        if a > 0:
-            f = tfont(50)
-            tw = d.textlength(peg, font=f)
-            st = Image.new("RGBA", (int(tw + 90), 120), (0, 0, 0, 0))
-            sd = ImageDraw.Draw(st)
-            rr(sd, (8, 14, st.width - 2, 118), 48, (0, 0, 0, 80))
-            rr(sd, (0, 2, st.width - 10, 106), 48, RED, outline=WHITE, width=6)
-            sd.text(((st.width - 10) / 2, 55), peg, font=f, fill=WHITE, anchor="mm")
-            paste_c(img, st, 540, 600, a * (1 + 0.05 * math.sin(lt * 9)), angle=-4)
+    if c["gancho"].get("teaser") and _S.get("foto") is not None:
+        b = 140 if int(lt * 7) % 2 == 0 else 110
+        gl = int(14 * math.sin(lt * 40))
+        a = ease_out_back(min(1, lt / 0.35))
+        _marco_foto(img, d, _pixelada(b), 540 + math.sin(lt * 45) * 8 * max(0, 1 - lt / 0.5), 980,
+                    RED, lt, 0.92 * (0.75 + 0.25 * a), gl)
+        for j, (dx, dy, ph) in enumerate([(-360, -250, 0), (360, -200, 1.7), (-360, 250, 3.1), (360, 270, 4.4)]):
+            s_ = 80 + 12 * math.sin(lt * 3 + ph)
+            text(d, (540 + dx, 980 + dy + math.sin(lt * 2 + ph) * 12), "?", tfont(int(s_)), YEL, 8, (40, 0, 10))
+        st = pop(lt, 0.35, 0.35)
+        if st > 0:
+            stp = Image.new("RGBA", (640, 150), (0, 0, 0, 0))
+            sd = ImageDraw.Draw(stp)
+            rr(sd, (6, 6, 634, 144), 30, RED + (235,), outline=WHITE, width=8)
+            sd.text((320, 78), "NIVEL IMPOSIBLE", font=tfont(78), fill=WHITE, anchor="mm")
+            paste_c(img, stp, 540, 1015, 1.6 - 0.6 * st, angle=-10)
+        q = pop(lt, 0.7, 0.4)
+        if q > 0:
+            pill(d, 540, 1400 + (1 - q) * 120, "¿QUIÉN ES?", int(80 * max(q, 0.1)), YEL, (40, 20, 0), pad=(46, 22))
+    else:
+        draw_ladder(img, d, sc["lights"], lt)
+        peg = c["gancho"].get("pegatina")
+        if peg:
+            # pegatina de reto que entra de golpe y late
+            a = pop(lt, 0.15, 0.3)
+            if a > 0:
+                f = tfont(50)
+                tw = d.textlength(peg, font=f)
+                st = Image.new("RGBA", (int(tw + 90), 120), (0, 0, 0, 0))
+                sd = ImageDraw.Draw(st)
+                rr(sd, (8, 14, st.width - 2, 118), 48, (0, 0, 0, 80))
+                rr(sd, (0, 2, st.width - 10, 106), 48, RED, outline=WHITE, width=6)
+                sd.text(((st.width - 10) / 2, 55), peg, font=f, fill=WHITE, anchor="mm")
+                paste_c(img, st, 540, 600, a * (1 + 0.05 * math.sin(lt * 9)), angle=-4)
     # destello al encenderse el nivel imposible
     tl = sc["lights"][5]
     if tl <= lt < tl + 0.25:
@@ -821,7 +1190,7 @@ def draw_q(img, d, sc, lt):
         done = k + 1
         fill_k = ease_out((lt - sc["stamp"]) / 0.5)
     path_bar(img, d, k if done == k else min(k + 1, 5), done, lt, fill_k)
-    if r["tipo"] == "memoria":
+    if r["tipo"] == "memoria" or (r["tipo"] in NUEVOS and r.get("memoriza")):
         txt = r["memoriza"] if lt < sc["q_t"] else r["pregunta"]
         q_card(img, d, sc, lt, txt, 0.0 if lt < sc["q_t"] else sc["q_t"])
     else:
@@ -831,9 +1200,16 @@ def draw_q(img, d, sc, lt):
         VIS["busca"](img, d, sc, lt)
     else:
         VIS[r["tipo"]](img, d, sc, lt)
-        options(img, d, sc, lt)
+        if r["opciones"]:
+            options(img, d, sc, lt)
     timer(img, d, sc, lt)
-    if sc["extra"] and lt >= sc["reveal"]:
+    if sc["extra"] and lt >= sc["reveal"] and r.get("pill_final"):
+        b = pop(lt, sc["reveal"] + 0.3, 0.4)
+        cx, cy = sc["lay"]["timer"]
+        pulse = 1 + 0.05 * math.sin(lt * 8)
+        pill(d, 540, cy + 30 + (1 - b) * 80, r["pill_final"], int(52 * max(b, 0.1) * pulse), YEL, (40, 20, 0),
+             pad=(36, 18))
+    elif sc["extra"] and lt >= sc["reveal"]:
         b = pop(lt, sc["reveal"] + 0.1, 0.4)
         cx, cy = sc["lay"]["timer"]
         pill(d, 540, cy + (1 - b) * 80, "¡ESCRÍBELO EN COMENTARIOS!", int(50 * max(b, 0.1)), YEL, (40, 20, 0),
@@ -926,7 +1302,18 @@ def portada(c, state, out_dir):
     l1, l2 = c["portada"]["titulo"]
     text(d, (540, 330), l1, tfont(120), WHITE, 12, (20, 10, 40), sh=10)
     text(d, (540, 470), l2, tfont(132), YEL, 13, (20, 10, 40), sh=10)
-    draw_ladder(img, d, [0] * 6, 5.0, y_top=680, step=134)
+    if c["gancho"].get("teaser") and _S.get("foto") is not None:
+        _marco_foto(img, d, _pixelada(120), 540, 960, RED, 0.3, 0.9, 6)
+        for (dx, dy) in [(-350, -230), (350, -190), (-350, 230), (350, 250)]:
+            text(d, (540 + dx, 960 + dy), "?", tfont(96), YEL, 8, (40, 0, 10))
+        stp = Image.new("RGBA", (640, 150), (0, 0, 0, 0))
+        sd0 = ImageDraw.Draw(stp)
+        rr(sd0, (6, 6, 634, 144), 30, RED + (235,), outline=WHITE, width=8)
+        sd0.text((320, 78), "NIVEL IMPOSIBLE", font=tfont(78), fill=WHITE, anchor="mm")
+        paste_c(img, stp, 540, 990, 1.0, angle=-10)
+        pill(d, 540, 1325, "¿QUIÉN ES?", 80, YEL, (40, 20, 0), pad=(46, 22))
+    else:
+        draw_ladder(img, d, [0] * 6, 5.0, y_top=680, step=134)
     # pegatina
     st = Image.new("RGBA", (900, 150), (0, 0, 0, 0))
     sd = ImageDraw.Draw(st)

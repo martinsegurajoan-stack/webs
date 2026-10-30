@@ -1,0 +1,195 @@
+{
+  "modo": "niveles",
+  "video": "niveles_03",
+  "titulo": "¿Llegas al nivel 6?",
+  "tempo": 1.25,
+  "gancho": {
+    "voz": "[excited] ¡Casi nadie adivina el nivel seis! ¿Y tú?",
+    "texto": [
+      "¿LLEGAS AL",
+      "NIVEL 6?"
+    ],
+    "teaser": true
+  },
+  "rondas": [
+    {
+      "tipo": "fugitivo",
+      "nombre": "EL NÚMERO FUGITIVO",
+      "dificultad": "FÁCIL",
+      "cuenta": 3,
+      "anuncio": "Nivel uno: recuerda el primero.",
+      "memoriza": "¡Memoriza el PRIMER número!",
+      "numeros": [
+        "47",
+        "74",
+        "41",
+        "47",
+        "14",
+        "71",
+        "44",
+        "74",
+        "17",
+        "47",
+        "41"
+      ],
+      "ritmo": 0.38,
+      "pregunta": "¿Cuántas veces volvió a salir el primer número?",
+      "voz": "¿Cuántas veces volvió a salir el primero?",
+      "opciones": [
+        "0 veces",
+        "1 vez",
+        "2 veces",
+        "3 veces"
+      ],
+      "correcta": "C",
+      "respuesta_voz": "¡La C, dos veces!"
+    },
+    {
+      "tipo": "rojo",
+      "nombre": "NO PULSES EN ROJO",
+      "dificultad": "MEDIA",
+      "cuenta": 3,
+      "anuncio": "Nivel dos: cuenta los verdes.",
+      "memoriza": "Cuenta los VERDES… ¡y ni se te ocurra pulsar en rojo!",
+      "pasos": [
+        "V",
+        "A",
+        "R",
+        "V",
+        "M",
+        "VR",
+        "Z",
+        "V",
+        "N",
+        "R",
+        "V",
+        "A",
+        "VM",
+        "R",
+        "Z",
+        "V",
+        "RN",
+        "V"
+      ],
+      "ritmo": 0.27,
+      "pregunta": "¿Cuántos círculos verdes han salido?",
+      "voz": "¿Cuántos verdes has contado?",
+      "opciones": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "correcta": "B",
+      "respuesta_voz": "¡La B, ocho verdes!"
+    },
+    {
+      "tipo": "memoria6",
+      "nombre": "MEMORIA EXTREMA",
+      "dificultad": "DIFÍCIL",
+      "cuenta": 3,
+      "anuncio": "Nivel tres: memoriza los seis.",
+      "memoriza": "¡Memoriza los 6 objetos!",
+      "objetos": [
+        "manzana",
+        "fresa",
+        "cereza",
+        "tomate",
+        "guindilla",
+        "sandia"
+      ],
+      "falta": "cereza",
+      "orden2": [
+        "guindilla",
+        "tomate",
+        null,
+        "sandia",
+        "manzana",
+        "fresa"
+      ],
+      "pregunta": "¿Qué objeto ha desaparecido?",
+      "voz": "¿Cuál ha desaparecido?",
+      "opciones": [
+        "Fresa",
+        "Tomate",
+        "Cereza",
+        "Arándanos"
+      ],
+      "correcta": "C",
+      "respuesta_voz": "¡La C, la cereza!"
+    },
+    {
+      "tipo": "infiltrado",
+      "nombre": "ENCUENTRA AL INFILTRADO",
+      "dificultad": "MUY DIFÍCIL",
+      "cuenta": 5,
+      "anuncio": "Nivel cuatro: el infiltrado.",
+      "figura": "cara_a",
+      "diferente": "cara_b",
+      "filas": 8,
+      "columnas": 5,
+      "pos": [
+        5,
+        3
+      ],
+      "pregunta": "Una cara es DIFERENTE. ¿En qué fila está?",
+      "voz": "¿En qué fila está? ¡Cinco segundos!",
+      "opciones": [
+        "Fila 3",
+        "Fila 5",
+        "Fila 6",
+        "Fila 8"
+      ],
+      "correcta": "C",
+      "respuesta_voz": "¡La C, fila seis!"
+    },
+    {
+      "tipo": "ilusion",
+      "nombre": "TU CEREBRO TE ENGAÑA",
+      "dificultad": "EXPERTO",
+      "cuenta": 4,
+      "anuncio": "Nivel cinco: tu cerebro te engaña.",
+      "pregunta": "¿Qué círculo naranja es más GRANDE?",
+      "voz": "¿Qué círculo naranja es más grande?",
+      "opciones": [
+        "El de la izquierda",
+        "El de la derecha",
+        "Son iguales",
+        "No se puede saber"
+      ],
+      "correcta": "A",
+      "radios": [
+        66,
+        59
+      ],
+      "respuesta_voz": "¡La A! ¡Tu cerebro te ha engañado!"
+    },
+    {
+      "tipo": "pixel",
+      "extra": true,
+      "nombre": "IMPOSIBLE",
+      "dificultad": "SOLO GENIOS",
+      "cuenta": 6,
+      "anuncio": "[whispers] Nivel imposible…",
+      "pregunta": "¿QUIÉN ES?",
+      "voz": "¿Quién es? ¡Adivínalo antes de que se revele!",
+      "foto": "niveles2/foto_extra.png",
+      "opciones": [],
+      "correcta": "A",
+      "pill_final": "¿EN QUÉ SEGUNDO LO ADIVINASTE?",
+      "respuesta_voz": "¿En qué segundo lo adivinaste? ¡Comenta!"
+    }
+  ],
+  "cierre_voz": "¿Hasta qué nivel has llegado? ¡Dímelo en comentarios!",
+  "portada": {
+    "titulo": [
+      "¿LLEGAS AL",
+      "NIVEL 6?"
+    ],
+    "pegatina": "EL 6 ES IMPOSIBLE"
+  },
+  "rango_tono": [
+    30,
+    45
+  ]
+}
