@@ -5,6 +5,7 @@ Vídeos de quiz de TikTok (@hora.delquiz): si el usuario escribe preguntas de qu
 Con CADA vídeo envía SIEMPRE, aunque no lo pida: el MP4, las 2 portadas (9:16 para Instagram,
 Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags por plataforma
 (sección "ENTREGA OBLIGATORIA" de `quiz-video/CLAUDE.md`).
+Hashtags: MUCHOS y virales (#fyp #viral #parati #trending…) + los del tema; Instagram máx. 5.
 
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
   ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`. El usuario lo ha repetido: SIEMPRE gancho espectacular que
