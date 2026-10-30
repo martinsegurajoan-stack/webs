@@ -183,8 +183,15 @@ def _init(state):
         src = ImageOps.exif_transpose(Image.open(os.path.join(BASE, p))).convert("RGB")
     _S["foto"] = src
     foco = c.get("foco")
-    _S["hook_img"] = _cover(src, W, H, foco) if src else _placeholder(W, H)
-    _S["hook_big"] = _cover(src, int(W * 1.3), int(H * 1.3), foco) if src else _placeholder(int(W * 1.3), int(H * 1.3))
+    # fondo: la foto desenfocada y oscurecida; delante, la foto nítida enmarcada (fotos pequeñas no se pixelan)
+    base = _cover(src, W, H, foco) if src else _placeholder(W, H)
+    _S["hook_img"] = Image.blend(base.filter(ImageFilter.GaussianBlur(30)), Image.new("RGB", (W, H), (12, 6, 26)), 0.35)
+    card = _cover(src, 880, 880, foco, zoom=1.0) if src else _placeholder(880, 880)
+    card = card.filter(ImageFilter.UnsharpMask(2, 80, 2)).convert("RGBA")
+    mk = Image.new("L", card.size, 0)
+    ImageDraw.Draw(mk).rounded_rectangle((0, 0, 879, 879), 60, fill=255)
+    card.putalpha(mk)
+    _S["hook_card"] = card
     cam = _cover(src, 270, 270, foco, zoom=float(c.get("zoom_cam", 1.6))) if src else _placeholder(270, 270)
     m = Image.new("L", cam.size, 0)
     ImageDraw.Draw(m).rounded_rectangle((0, 0, 269, 269), 26, fill=255)
@@ -231,11 +238,11 @@ def warn_icon(d, cx, cy, s, col=INK, bg=YEL):
     d.ellipse((cx - s * 0.11, cy + s * 0.35, cx + s * 0.11, cy + s * 0.55), fill=col)
 
 
-def banner(img, d, t):
+def banner(img, d, t, dy=0):
     """Aviso fijo arriba durante todo el vídeo (cinta de advertencia)."""
     l1, l2 = _S["c"]["aviso"]
     pulse = 1 + 0.015 * math.sin(t * 6)
-    x0, x1, y0, y1 = 60, 1020, 160, 300
+    x0, x1, y0, y1 = 60, 1020, 160 + dy, 300 + dy
     rr(d, (x0 + 6, y0 + 10, x1 + 6, y1 + 10), 26, (0, 0, 0, 90))
     rr(d, (x0, y0, x1, y1), 26, YEL)
     # rayas de advertencia en los extremos
@@ -341,13 +348,16 @@ def burst(d, lt, cx, cy, dur=1.5):
 
 def draw_hook(img, d, sc, lt, t):
     c = _S["c"]
-    z = 1.3 - 0.25 * ease_out(lt / 0.6) - 0.03 * lt
-    big = _S["hook_big"]
-    w = int(W * z)
-    hh = int(H * z)
-    ph = big.resize((w, hh), Image.BILINEAR)
+    img.paste(_S["hook_img"])
+    dd = ImageDraw.Draw(img, "RGBA")
+    z = 1.25 - 0.25 * ease_out(lt / 0.45) + 0.02 * lt
     sh = math.sin(lt * 55) * 18 * max(0, 1 - lt / 0.4)
-    img.paste(ph, (int((W - w) / 2 + sh), int((H - hh) / 2)))
+    cy0 = 760
+    g = 0.5 + 0.5 * math.sin(lt * 5)
+    R = 440 * z
+    rr(dd, (540 - R - 22 + sh, cy0 - R - 22, 540 + R + 22 + sh, cy0 + R + 22), 80, _S["acc"] + (int(90 + 80 * g),))
+    rr(dd, (540 - R - 10 + sh, cy0 - R - 10, 540 + R + 10 + sh, cy0 + R + 10), 70, YEL)
+    paste_c(img, _S["hook_card"], 540 + sh, cy0, z)
     # glitch RGB los primeros instantes
     if lt < 0.35:
         r, g, b = img.split()
@@ -356,26 +366,20 @@ def draw_hook(img, d, sc, lt, t):
         b = b.transform(b.size, Image.AFFINE, (1, 0, off, 0, 1, 0))
         img.paste(Image.merge("RGB", (r, g, b)))
     d2 = ImageDraw.Draw(img, "RGBA")
-    # degradado inferior para leer el texto
-    grad = Image.new("L", (1, H))
-    for yy in range(H):
-        grad.putpixel((0, yy), int(max(0, (yy - H * 0.45) / (H * 0.55)) * 235))
-    img.paste((8, 4, 18), (0, 0), grad.resize((W, H)))
-    d2 = ImageDraw.Draw(img, "RGBA")
-    live_badge(d2, 70, 360, lt, 38)
-    viewers(d2, 380, 360, lt, 34)
+    live_badge(d2, 150, 380, lt, 38)
+    viewers(d2, 460, 380, lt, 34)
     l1, l2 = c["gancho"]["texto"]
     p = ease_out(lt / 0.25)
     s = 1.12 - 0.12 * p
-    text(d2, (540, 1150), l1, tfont(int(96 * s)), WHITE, 11, INK, sh=10)
+    text(d2, (540, 1300), l1, tfont(int(90 * s)), WHITE, 11, INK, sh=10)
     f = tfont(int(178 * s))
     while d2.textlength(l2, font=f) > 1000:
         f = tfont(f.size - 4)
-    text(d2, (540, 1300), l2, f, YEL, 15, INK, sh=12)
+    text(d2, (540, 1435), l2, f, YEL, 15, INK, sh=12)
     b = pop(lt, 0.45, 0.35)
     if b > 0:
         flash = 0.75 + 0.25 * (math.sin(lt * 14) > 0)
-        pill(d2, 540, 1475 + (1 - b) * 100, c["gancho"]["pegatina"], int(62 * max(b, 0.1)),
+        pill(d2, 540, 1570 + (1 - b) * 100, c["gancho"]["pegatina"], int(62 * max(b, 0.1)),
              tuple(int(v * flash) for v in RED), WHITE, pad=(40, 22))
     banner(img, d2, t)
     if lt < 0.15:
@@ -553,33 +557,34 @@ def render_frame(i):
 def portada(c, state, out_dir):
     _init(state)
     img = _S["hook_img"].copy()
-    grad = Image.new("L", (1, H))
-    for yy in range(H):
-        grad.putpixel((0, yy), int(max(0, (yy - H * 0.42) / (H * 0.58)) * 240))
-    img.paste((8, 4, 18), (0, 0), grad.resize((W, H)))
     d = ImageDraw.Draw(img, "RGBA")
-    banner(img, d, 0.0)
-    live_badge(d, 70, 360, 0.0, 38)
-    viewers(d, 380, 360, 0.0, 34)
+    R = 375
+    rr(d, (540 - R - 24, 875 - R - 24, 540 + R + 24, 875 + R + 24), 80, _S["acc"] + (150,))
+    rr(d, (540 - R - 10, 875 - R - 10, 540 + R + 10, 875 + R + 10), 70, YEL)
+    paste_c(img, _S["hook_card"], 540, 875, R / 440)
+    banner(img, d, 0.0, dy=95)
+    live_badge(d, 200, 520, 0.0, 30)
+    viewers(d, 480, 520, 0.0, 26)
     l1, l2 = c["portada"]["titulo"]
-    text(d, (540, 1130), l1, tfont(96), WHITE, 11, INK, sh=10)
+    text(d, (540, 1330), l1, tfont(90), WHITE, 11, INK, sh=10)
     f = tfont(178)
     while d.textlength(l2, font=f) > 1000:
         f = tfont(f.size - 4)
-    text(d, (540, 1285), l2, f, YEL, 15, INK, sh=12)
-    st = Image.new("RGBA", (900, 140), (0, 0, 0, 0))
+    text(d, (540, 1458), l2, f, YEL, 15, INK, sh=12)
+    st = Image.new("RGBA", (900, 130), (0, 0, 0, 0))
     sd = ImageDraw.Draw(st)
-    rr(sd, (8, 16, 892, 136), 56, (0, 0, 0, 80))
-    rr(sd, (0, 4, 884, 124), 56, RED, outline=WHITE, width=7)
-    f2 = tfont(62)
+    rr(sd, (8, 14, 892, 126), 52, (0, 0, 0, 80))
+    rr(sd, (0, 4, 884, 116), 52, RED, outline=WHITE, width=7)
+    f2 = tfont(58)
     while sd.textlength(c["portada"]["pegatina"], font=f2) > 800:
         f2 = tfont(f2.size - 3)
-    sd.text((442, 66), c["portada"]["pegatina"], font=f2, fill=WHITE, anchor="mm")
-    paste_c(img, st, 540, 1470, 1.0, angle=-3)
-    username(img, 1616)
+    sd.text((442, 62), c["portada"]["pegatina"], font=f2, fill=WHITE, anchor="mm")
+    paste_c(img, st, 540, 1612, 0.95, angle=-3)
     p916 = os.path.join(out_dir, f"{c['video']}_9x16.png")
     p34 = os.path.join(out_dir, f"{c['video']}_3x4.png")
-    img.save(p916)
+    full = img.copy()
+    username(full)
+    full.save(p916)
     img.crop((0, 240, 1080, 1680)).save(p34)
     return p916, p34
 

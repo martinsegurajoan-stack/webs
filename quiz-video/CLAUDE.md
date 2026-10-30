@@ -52,6 +52,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
 | `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
+| `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
@@ -238,6 +239,8 @@ NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/B
   FAN» con confeti. Extra → «PREGUNTA EXTRA · SOLO FANS» y «¡ESCRÍBELO EN COMENTARIOS!».
 - Color neón distinto en cada vídeo (tono 200-330 registrado), música pop con semilla por vídeo.
 - Voz QUIZ sin etiqueta (gancho `[excited]`), tempo x1.15; reutiliza las frases fijas de la caché.
+- Fotos pequeñas (la de Auron es 350x350): en el gancho va ENMARCADA (880 px, con enfoque) sobre la
+  misma foto desenfocada, así no se pixela. Nº1: 84 s, ~640 créditos de voz.
 
 ## Formato "MISTERIO CRIMINAL" (historia narrada, NO es un quiz)
 `quizzes/misterio_NN.json` → `generar_misterio.py` + `quizvideo/misterio.py` → `salida/misterio_NN.mp4`,
