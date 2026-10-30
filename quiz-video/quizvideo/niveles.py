@@ -37,6 +37,18 @@ LEVELS = [
     ((70, 12, 26), (8, 3, 10), (239, 55, 70), (30, 6, 12)),            # imposible
 ]
 
+# Gama alternativa (vídeo nº2): turquesa, azul, fucsia, lima, carmesí e imposible negro/verde tóxico.
+# Se elige con "colores": "B" en el JSON para que cada vídeo se vea distinto.
+LEVELS_B = [
+    ((90, 232, 222), (0, 138, 150), (0, 182, 188), (0, 66, 76)),        # 1 turquesa
+    ((120, 176, 255), (30, 66, 210), (52, 112, 242), (14, 32, 110)),    # 2 azul
+    ((255, 124, 204), (196, 18, 128), (230, 50, 160), (98, 6, 60)),     # 3 fucsia
+    ((196, 240, 70), (86, 164, 0), (128, 198, 20), (38, 76, 0)),        # 4 lima
+    ((255, 96, 96), (160, 0, 26), (218, 28, 48), (86, 0, 14)),          # 5 carmesí
+    ((12, 44, 26), (2, 8, 5), (60, 240, 120), (6, 26, 14)),             # imposible (verde tóxico)
+]
+PALETAS = {"A": list(LEVELS), "B": LEVELS_B}
+
 # posiciones de los elementos de cada mecánica
 LAYOUT = {
     "secuencia": {"card": (290, 520), "vis": 770, "timer": (540, 1045), "opts": ("grid", 1140)},
@@ -240,6 +252,7 @@ def _gradient(top, bot):
 def _init(state):
     _S.clear()
     _S.update(state)
+    LEVELS[:] = PALETAS[state["c"].get("colores", "A")]
     _S["spr"] = {}
     h = state["tono"]
     dark_top, dark_bot = themes._hsv(h, 0.72, 0.36), themes._hsv(h + 12, 0.9, 0.11)
@@ -622,6 +635,18 @@ def vis_acertijo(img, d, sc, lt):
     a = pop(lt, 0.25, 0.45)
     if a <= 0:
         return
+    if sc["r"].get("imagen"):
+        if lt < rv + 0.3:
+            al = 1.0 if lt < rv else max(0, 1 - (lt - rv) / 0.3)
+            paste_c(img, _sprite("imagenes/" + sc["r"]["imagen"], 190), 540, cy + math.sin(lt * 2.4) * 10,
+                    a, alpha=al, angle=8 * math.sin(lt * 1.7))
+            for dx in (-200, 200):
+                d.text((540 + dx, cy + math.sin(lt * 2 + dx) * 10), "?", font=tfont(int(60 * a)),
+                       fill=(255, 255, 255, int(200 * al)), anchor="mm")
+        if lt >= rv + 0.3 and sc["r"].get("explicacion"):
+            b = pop(lt, rv + 0.3, 0.4)
+            pill(d, 540, cy, sc["r"]["explicacion"], int(56 * max(b, 0.1)), WHITE, GREEN_D, pad=(38, 20))
+        return
     xr = 170 + (1 - a) * 400
     for j, yy in enumerate((cy - 60, cy + 55)):
         _rope(d, yy, xr, 840, j * 1.3)
@@ -731,6 +756,19 @@ def draw_hook(img, d, sc, lt):
     text(d, (540 + sh, 330), l1, tfont(int(118 * s)), WHITE, 12, (20, 10, 40), sh=10)
     text(d, (540 - sh, 470), l2, tfont(int(128 * s)), YEL, 13, (20, 10, 40), sh=10)
     draw_ladder(img, d, sc["lights"], lt)
+    peg = c["gancho"].get("pegatina")
+    if peg:
+        # pegatina de reto que entra de golpe y late
+        a = pop(lt, 0.15, 0.3)
+        if a > 0:
+            f = tfont(50)
+            tw = d.textlength(peg, font=f)
+            st = Image.new("RGBA", (int(tw + 90), 120), (0, 0, 0, 0))
+            sd = ImageDraw.Draw(st)
+            rr(sd, (8, 14, st.width - 2, 118), 48, (0, 0, 0, 80))
+            rr(sd, (0, 2, st.width - 10, 106), 48, RED, outline=WHITE, width=6)
+            sd.text(((st.width - 10) / 2, 55), peg, font=f, fill=WHITE, anchor="mm")
+            paste_c(img, st, 540, 600, a * (1 + 0.05 * math.sin(lt * 9)), angle=-4)
     # destello al encenderse el nivel imposible
     tl = sc["lights"][5]
     if tl <= lt < tl + 0.25:

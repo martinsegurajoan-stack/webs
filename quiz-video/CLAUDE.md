@@ -60,6 +60,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
+| `salida/niveles_02.mp4` | `quizzes/niveles_02.json` | 111 s | NIVELES nº2 «PARTE 2: MÁS DIFÍCIL» (gama de colores B, pruebas más duras, imposible = reloj 22 superposiciones) |
 | `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
 | `salida/hora_del_quiz_05.mp4` | `quizzes/hora_del_quiz_05.json` | 101 s | Quiz GAMER (modo `gamer`, 5 + PREGUNTA IMPOSIBLE, pantalla de RANGOS) = PLANTILLA GAMER |
 | `salida/fiesta_01.mp4` | `quizzes/fiesta_01.json` | 119 s | FIESTA nº1 (7 pruebas distintas para beber + prueba imposible + brindis final) = PLANTILLA FIESTA |
@@ -85,7 +86,7 @@ Plantillas y piezas reutilizables:
 - Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 07).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Mascotas: `quizzes/mascota_NN.json` → `salida/mascota_NN.mp4` (siguiente: 02).
-- Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
+- Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 03).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
 - Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, siguiente: 02).
@@ -261,6 +262,12 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
 - Voz QUIZ sin etiqueta (salvo `[excited]` en el gancho y `[whispers]` en el nivel imposible), tempo x1.18.
 - Cierre: chips 1-5 + ☠, «¿Hasta qué nivel has llegado?», «¡SÍGUEME PARA MÁS!» y logo.
 - Nº1: 105 s, ~1.000 créditos de voz (20 frases).
+- COLORES: `"colores": "B"` en el JSON usa otra gama de niveles (turquesa, azul, fucsia, lima, carmesí e imposible
+  negro/verde tóxico) para que cada vídeo se vea distinto (A = la del nº1). Añade gamas nuevas en `PALETAS`.
+- Gancho: `gancho.pegatina` = pegatina roja de reto bajo el titular. `acertijo` con `imagen` muestra un dibujo 3D
+  en vez de las cuerdas (sirve para cualquier acertijo).
+- Nº2 («PARTE 2: MÁS DIFÍCIL», gama B): secuencia +3+5+7, un 6 entre nueves, memoria de 7 números, 5 máquinas,
+  bate y pelota, imposible = ¿cuántas veces se superponen las agujas en 24 h? (22). 111 s, ~770 créditos de voz.
 
 ## Formato "ELIGE UNA CARTA" (juego para beber con amigos)
 `quizzes/cartas_NN.json` → `generar_cartas.py` + `quizvideo/cartas.py` → `salida/cartas_NN.mp4` + portadas
