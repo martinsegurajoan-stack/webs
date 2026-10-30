@@ -37,15 +37,14 @@ Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), en
 3. En el mensaje, título + descripción + hashtags para cada plataforma, VÍDEO A VÍDEO (sin mezclar
    vídeos) y en bloques de código para copiar: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER/X
    (desde 31-10-2026 el usuario también sube a su cuenta personal de X: un solo texto de ≤280 caracteres
-   CONTANDO los hashtags; gancho corto + CTA a responder + 4-6 hashtags virales/tema, siempre #horadelquiz).
+   CONTANDO los hashtags; gancho corto + CTA a responder + los 4 hashtags).
    Reglas: TikTok/Instagram/Facebook no tienen campo título → el "título" es la 1ª línea del texto;
-   YouTube: título ≤100 caracteres con `#shorts`; Instagram también con muchos hashtags (ya NO hay máximo de 5); siempre `#horadelquiz`;
+   YouTube: título ≤100 caracteres con `#shorts`; siempre `#horadelquiz`;
    nunca revelar respuestas; CTA a comentar la puntuación (parejas: etiquetar a la pareja).
    Guarda esos textos en `descripciones/<video>.md`.
-   HASHTAGS (petición del usuario 30-10-2026): MUCHOS MÁS y más virales. TikTok: 15-20 (virales #fyp #foryou
-   #parati #viral #viralvideo #trending #tiktokespaña #xyzbca + los del tema del vídeo + #quiz #horadelquiz).
-   YouTube: 10-15 en la descripción (#shorts #viral #fyp #trending + tema). Facebook: 10-15 (#reels #viral
-   #fyp #parati + tema). Instagram: 15-20 también (#fyp #viral #explore #reels #parati + tema + #horadelquiz).
+   HASHTAGS (regla FINAL del usuario, 31-10-2026): MÁXIMO 4 en TODAS las plataformas (TikTok, Shorts,
+   Instagram, Facebook y X), siempre estos: #fyp #viral #test #trending (sustituye a reglas anteriores,
+   incluido «siempre #horadelquiz»).
 
 ## INVENTARIO (estado a 29-10-2026)
 Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:

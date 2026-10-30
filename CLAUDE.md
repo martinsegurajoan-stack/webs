@@ -6,7 +6,8 @@ Con CADA vídeo envía SIEMPRE, aunque no lo pida: el MP4, las 2 portadas (9:16 
 Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags por plataforma
 (sección "ENTREGA OBLIGATORIA" de `quiz-video/CLAUDE.md`).
 Plataformas de los textos: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER/X (≤280 caracteres con hashtags).
-Hashtags: MUCHOS y virales (#fyp #viral #parati #trending…) + los del tema, en TODAS las plataformas (Instagram incluido).
+Banner de X: `quiz-video/banner_twitter.py` → `quiz-video/portadas/twitter_banner_1500x500.png` (1500x500).
+Hashtags: MÁXIMO 4 en TODAS las plataformas: #fyp #viral #test #trending.
 
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
   ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`. El usuario lo ha repetido: SIEMPRE gancho espectacular que
