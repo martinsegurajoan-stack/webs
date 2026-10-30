@@ -563,7 +563,7 @@ def _draw_teaser(img, sc, lt, t):
     for ln in lines:
         d.text((540 + sh, yy), ln, font=f, fill=WHITE, anchor="mm")
         yy += lh
-    pill(d, 540 + sh, box[1], "PREGUNTA EXTRA · SOLO FANS", 36, RED, WHITE, pad=(26, 12))
+    pill(d, 540 + sh, box[1], f"PREGUNTA {c.get('extra_nombre', 'EXTRA')} · SOLO FANS", 36, RED, WHITE, pad=(26, 12))
     # opciones bloqueadas
     for i, bx in enumerate(opt_boxes()):
         a2 = pop(lt, 0.12 + i * 0.08, 0.25)
@@ -607,11 +607,14 @@ def draw_extra_intro(img, d, sc, lt, t):
         d.ellipse((540 - R - 22 + sh, 560 - R - 22, 540 + R + 22 + sh, 560 + R + 22), fill=RED + (int(80 + 100 * g),))
         d.ellipse((540 - R - 9 + sh, 560 - R - 9, 540 + R + 9 + sh, 560 + R + 9), fill=YEL)
         paste_c(img, _S["cam_big"], 540 + sh, 560, R / 280)
-    for k, (word, y, size, col, st, at) in enumerate([("PREGUNTA", 860, 150, WHITE, RED, 0.15), ("EXTRA", 1040, 230, RED, WHITE, 0.32)]):
+    for k, (word, y, size, col, st, at) in enumerate([("PREGUNTA", 860, 150, WHITE, RED, 0.15), (_S["c"].get("extra_nombre", "EXTRA"), 1040, 230, RED, WHITE, 0.32)]):
         if lt < at:
             continue
         kk = ease_out(min(1, (lt - at) / 0.16))
-        text(d, (540 + sh, y), word, tfont(int(size * (2.0 - kk))), col, 14, st, sh=12)
+        fw = tfont(int(size * (2.0 - kk)))
+        while d.textlength(word, font=fw) > 660 and fw.size > 40:  # palabras largas («EXCLUSIVA») caben entre los avisos
+            fw = tfont(fw.size - 6)
+        text(d, (540 + sh, y), word, fw, col, 14, st, sh=12)
     if lt > 0.32:
         p = 0.5 + 0.5 * math.sin(lt * 8)
         warn_icon(d, 140 + sh, 1040, 52 + 8 * p, INK, YEL)
@@ -712,7 +715,7 @@ def draw_q(img, d, sc, lt, t):
     for ln in lines:
         d.text((485, yy), ln, font=f, fill=WHITE, anchor="mm")
         yy += lh
-    lab = "PREGUNTA EXTRA · SOLO FANS" if sc["extra"] else f"PREGUNTA {sc['i'] + 1}/{sc['n']}"
+    lab = f"PREGUNTA {_S['c'].get('extra_nombre', 'EXTRA')} · SOLO FANS" if sc["extra"] else f"PREGUNTA {sc['i'] + 1}/{sc['n']}"
     pill(d, 330, box[1], lab, 36, RED if sc["extra"] else YEL, WHITE if sc["extra"] else INK, pad=(26, 12))
     # temporizador en la esquina de la tarjeta
     cd, rv = sc["cd"], sc["rv"]
