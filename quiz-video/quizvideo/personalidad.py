@@ -152,7 +152,7 @@ def build_timeline(c, voice):
 
     t = 0.0
     # ---- gancho: el titular cae al ritmo de las palabras
-    v0 = 0.45
+    v0 = float(c["intro"].get("v0", 0.45))  # 0.05 = voz desde el fotograma 0 (regla del gancho)
     fx("impact", 0.0, 1.0)
     fx("whoosh", 0.0, 0.5)
     dv, wt = speak(c["intro"]["voz"], v0)
@@ -391,6 +391,11 @@ def _init(state):
     xx = np.linspace(0, 1, W)[None, :, None]
     top = np.array(PURP_D, float)
     mid = np.array((96, 30, 190), float)
+    h = _S["c"].get("tono_fondo") if _S.get("c") else None
+    if h is not None:  # color de fondo propio de cada test (nunca repetir)
+        from . import themes
+        top = np.array(themes._hsv(h, 0.86, 0.50)[:3], float)
+        mid = np.array(themes._hsv(h, 0.84, 0.75)[:3], float)
     bot = np.array(BLACK, float)
     g = np.where(yy < 0.45, top + (mid - top) * (yy / 0.45), mid + (bot - mid) * ((yy - 0.45) / 0.55))
     g = g + np.array(TURQ, float) * 0.10 * np.exp(-((xx - 0.2) ** 2 + (yy - 0.25) ** 2) / 0.05)

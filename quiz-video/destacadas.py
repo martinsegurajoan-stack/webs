@@ -26,6 +26,7 @@ CATS = [
     ("streamers", 268, "1f3ae", "live"),
     ("fiesta", 182, "1f37b", "confeti"),
     ("mascotas", 118, "1f436", "huellas"),
+    ("personalidad", 222, "1f3ad", "letras"),
 ]
 
 
@@ -108,6 +109,16 @@ def portada(nombre, h, code, detalle):
             x, y = C + math.cos(a) * 420, C + math.sin(a) * 420
             d.ellipse((x - 30, y - 30, x + 30, y + 30), fill=col + (255,), outline=(255, 255, 255, 255), width=6)
         paste_c(img, emoji("1f480", 120), C + math.cos(math.radians(-30)) * 420, C + math.sin(math.radians(-30)) * 420 - 4)
+    if detalle == "letras":  # chips A-D del test de personalidad sobre el aro
+        from PIL import ImageFont
+        fl = ImageFont.truetype(os.path.join(BASE, "fuentes", "titulo.ttf"), 46)
+        cols = [((255, 212, 0), (20, 14, 30)), ((0, 222, 205), (20, 14, 30)), ((138, 58, 255), (255, 255, 255)),
+                ((26, 18, 44), (255, 255, 255))]
+        for i, (bg, fg) in enumerate(cols):
+            a = math.radians(-168 + i * 30)
+            x, y = C + math.cos(a) * 420, C + math.sin(a) * 420
+            d.ellipse((x - 38, y - 38, x + 38, y + 38), fill=bg + (255,), outline=(255, 255, 255, 255), width=6)
+            d.text((x, y + 2), "ABCD"[i], font=fl, fill=fg + (255,), anchor="mm")
     paste_c(img, emoji(code, 590), C, C - 15)
     d = ImageDraw.Draw(img)
     if detalle == "pregunta":
@@ -132,6 +143,8 @@ def portada(nombre, h, code, detalle):
             x, y = C + math.cos(a) * rad, C + math.sin(a) * rad
             col = hsv(r.choice([46, 335, 200, 120, 25]), 0.8, 1.0)
             d.rounded_rectangle((x - 9, y - 5, x + 9, y + 5), 3, fill=col)
+    elif detalle == "letras":
+        paste_c(img, emoji("1f52e", 160), C + 255, C - 225, angle=-12)
     elif detalle == "huellas":
         paste_c(img, emoji("1f43e", 160), C + 250, C - 230, angle=-14)
     # destellos
@@ -147,7 +160,7 @@ def portada(nombre, h, code, detalle):
 
 def hoja(paths):
     """Simula la fila de destacadas del perfil para comprobar que el conjunto queda estético."""
-    w = 6 * 190 + 40
+    w = len(paths) * 190 + 40
     im = Image.new("RGB", (w, 260), (255, 255, 255))
     d = ImageDraw.Draw(im)
     from PIL import ImageFont

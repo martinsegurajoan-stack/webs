@@ -32,7 +32,11 @@ def main():
     out = a.salida or os.path.join(carpeta, c["video"] + ".mp4")
 
     voice = ElevenVoice()
-    voice.configure(style=ESTILO_VOZ, tempo=1.0)  # sin acelerar la voz
+    voice.configure(style=ESTILO_VOZ, tempo=float(c.get("tempo", 1.0)))  # 1.0 = sin acelerar la voz
+    tono = personalidad.TONO
+    if c.get("rango_tono"):  # color de fondo nuevo en cada test
+        tono = themes.elegir_tono(c["video"], tuple(c["rango_tono"]))
+        c["tono_fondo"] = tono
 
     if a.frases_pendientes:
         personalidad.build_timeline(c, voice)
@@ -59,7 +63,7 @@ def main():
     dur = float(j["format"]["duration"])
     ok = v and au and v[0]["width"] == 1080 and v[0]["height"] == 1920
     if ok:
-        themes.registrar_tono(c["video"], personalidad.TONO)
+        themes.registrar_tono(c["video"], tono)
     print(("OK" if ok else "ERROR") + f": {out} · {v[0]['codec_name']} {v[0]['width']}x{v[0]['height']} · "
           f"audio {au[0]['codec_name'] if au else 'NO'} · duración {dur:.1f}s · "
           f"{os.path.getsize(out) / 1e6:.1f} MB")
