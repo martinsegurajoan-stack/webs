@@ -37,13 +37,13 @@ Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), en
 3. En el mensaje, título + descripción + hashtags para cada plataforma, VÍDEO A VÍDEO (sin mezclar
    vídeos) y en bloques de código para copiar: TikTok, YouTube Shorts, Instagram, Facebook.
    Reglas: TikTok/Instagram/Facebook no tienen campo título → el "título" es la 1ª línea del texto;
-   YouTube: título ≤100 caracteres con `#shorts`; Instagram MÁXIMO 5 hashtags; siempre `#horadelquiz`;
+   YouTube: título ≤100 caracteres con `#shorts`; Instagram también con muchos hashtags (ya NO hay máximo de 5); siempre `#horadelquiz`;
    nunca revelar respuestas; CTA a comentar la puntuación (parejas: etiquetar a la pareja).
    Guarda esos textos en `descripciones/<video>.md`.
    HASHTAGS (petición del usuario 30-10-2026): MUCHOS MÁS y más virales. TikTok: 15-20 (virales #fyp #foryou
    #parati #viral #viralvideo #trending #tiktokespaña #xyzbca + los del tema del vídeo + #quiz #horadelquiz).
    YouTube: 10-15 en la descripción (#shorts #viral #fyp #trending + tema). Facebook: 10-15 (#reels #viral
-   #fyp #parati + tema). Instagram sigue con MÁXIMO 5, mezclando virales y del tema (#horadelquiz siempre).
+   #fyp #parati + tema). Instagram: 15-20 también (#fyp #viral #explore #reels #parati + tema + #horadelquiz).
 
 ## INVENTARIO (estado a 29-10-2026)
 Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
