@@ -74,6 +74,7 @@ Plantillas y piezas reutilizables:
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
+- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, siguiente: 02).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -219,6 +220,24 @@ y la nota «Vale con cualquier bebida» (ayuda con TikTok, que limita contenido 
 - Fondo de fiesta: degradado, focos que barren, confeti cayendo; gancho/cierre en morado/fucsia (tono 280-340).
 - Voz QUIZ con estilo `[cheerful and excited]` (en el JSON), tempo x1.25. Música pop a 124 bpm.
 - Nº1: 109 s, ~1.740 créditos de voz (30 frases; las 3 reacciones de voz se quitaron por ritmo).
+
+## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
+`quizzes/streamer_NN.json` → `generar_streamer.py` + `quizvideo/streamer.py` → MP4 + portadas solas.
+NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/Baloo, amarillo, logo,
+@hora.delquiz, voz QUIZ alegre, cuenta atrás con tensión) pero con look de directo de Twitch.
+- FOTO REAL del streamer OBLIGATORIA (`foto`, en `assets/streamers/`): gancho a pantalla completa con
+  zoom, sacudida, glitch RGB y destello, «EN DIRECTO» + espectadores, «QUIZ DE <NOMBRE>» y pegatina
+  «NIVEL: IMPOSIBLE». `foco` = [x, y] de la cara en la foto original (para recortar), `zoom_cam`.
+  La red de la sesión bloquea Wikipedia/Wikimedia: la foto la tiene que mandar el usuario (o subirla
+  al repo en esa carpeta). Nunca generar con IA la cara de una persona real. `generar_streamer.py`
+  se niega a renderizar sin foto.
+- `aviso` (2 líneas) = cinta amarilla de advertencia FIJA arriba durante TODO el vídeo.
+- Preguntas: chat en directo con mensajes genéricos que suben, cámara del streamer (su foto) con
+  «EN DIRECTO», tarjeta oscura con borde neón, opciones como ENCUESTA de directo con barras y % que
+  suben durante la cuenta atrás (aleatorios, no indican la respuesta), alerta «¡CORRECTA! +1 PUNTO DE
+  FAN» con confeti. Extra → «PREGUNTA EXTRA · SOLO FANS» y «¡ESCRÍBELO EN COMENTARIOS!».
+- Color neón distinto en cada vídeo (tono 200-330 registrado), música pop con semilla por vídeo.
+- Voz QUIZ sin etiqueta (gancho `[excited]`), tempo x1.15; reutiliza las frases fijas de la caché.
 
 ## Formato "MISTERIO CRIMINAL" (historia narrada, NO es un quiz)
 `quizzes/misterio_NN.json` → `generar_misterio.py` + `quizvideo/misterio.py` → `salida/misterio_NN.mp4`,
