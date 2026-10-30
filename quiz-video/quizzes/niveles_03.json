@@ -46,11 +46,11 @@
     },
     {
       "tipo": "rojo",
-      "nombre": "NO PULSES EN ROJO",
+      "nombre": "CUENTA LOS VERDES",
       "dificultad": "MEDIA",
       "cuenta": 3,
       "anuncio": "Nivel dos: cuenta los verdes.",
-      "memoriza": "Cuenta los VERDES… ¡y ni se te ocurra pulsar en rojo!",
+      "memoriza": "CUENTA los VERDES… ¡que no te despiste el rojo!",
       "pasos": [
         "V",
         "A",
@@ -125,12 +125,12 @@
       "cuenta": 5,
       "anuncio": "Nivel cuatro: el infiltrado.",
       "figura": "cara_a",
-      "diferente": "cara_b",
+      "diferente": "cara_c",
       "filas": 8,
       "columnas": 5,
       "pos": [
-        5,
-        3
+        6,
+        4
       ],
       "pregunta": "Una cara es DIFERENTE. ¿En qué fila está?",
       "voz": "¿En qué fila está? ¡Cinco segundos!",
@@ -176,8 +176,8 @@
       "foto": "niveles2/foto_extra.png",
       "opciones": [],
       "correcta": "A",
-      "pill_final": "¿EN QUÉ SEGUNDO LO ADIVINASTE?",
-      "respuesta_voz": "¿En qué segundo lo adivinaste? ¡Comenta!"
+      "pill_final": "¿QUIÉN ES? ¡COMÉNTALO!",
+      "respuesta_voz": "¡Escríbelo en los comentarios si te lo sabes!"
     }
   ],
   "cierre_voz": "¿Hasta qué nivel has llegado? ¡Dímelo en comentarios!",

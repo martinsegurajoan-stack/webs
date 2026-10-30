@@ -283,6 +283,11 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
   cuenta atrás por ronda), `ritmo`, `memoriza`, `tempo` y `rango_tono` en el JSON. Gancho con `teaser`: la foto
   muy pixelada + «NIVEL IMPOSIBLE» + «¿QUIÉN ES?» (también en la portada). Fotos de personas: solo las que manda
   el usuario (se mejoran con Pillow; quitar el fondo necesitaría instalar una herramienta → preguntar antes).
+  CORRECCIONES DEL USUARIO (v2): nunca decir «pulsa/toca» (en TikTok un toque PAUSA el vídeo) → usar «CUENTA»;
+  el infiltrado debe tener un cambio REAL visible (😄 ojos cerrados entre 😀; comprobar que `pos` coincide con la
+  respuesta); la foto del nivel imposible NO se revela del todo (se queda en ~80 %, `PIX_FINAL`) y se pide
+  «¿QUIÉN ES? ¡COMÉNTALO!»; los sonidos del gancho deben corresponder con lo que se ve; portada muy decorada
+  (`_portada_teaser`: rayos, chips de niveles, foto pixelada con sello, flecha, emojis, destellos).
 
 ## Formato "ELIGE UNA CARTA" (juego para beber con amigos)
 `quizzes/cartas_NN.json` → `generar_cartas.py` + `quizvideo/cartas.py` → `salida/cartas_NN.mp4` + portadas

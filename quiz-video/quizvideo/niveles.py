@@ -97,8 +97,13 @@ def build_timeline(c, voice):
     dur = max(3.0, d + 0.45)
     span = min(d, 3.2) - 0.35
     lights = [0.2 + i * span / 5 for i in range(6)]
-    for i, tl in enumerate(lights):
-        ev.append(("fx", "pop" if i < 5 else "buzz", tl))
+    if c["gancho"].get("teaser"):
+        # foto pixelada: golpe + latidos + sello «NIVEL IMPOSIBLE» + «¿QUIÉN ES?»
+        ev += [("fx", "whoosh", 0.0), ("fx", "heart", 0.05), ("fx", "buzz", 0.35), ("fx", "heart", 0.6),
+               ("fx", "pop", 0.7), ("fx", "heart", 1.15), ("fx", "heart", 1.7)]
+    else:
+        for i, tl in enumerate(lights):
+            ev.append(("fx", "pop" if i < 5 else "buzz", tl))
     ev.append(("fx", "whoosh", dur - 0.25))
     scenes.append({"kind": "hook", "start": 0.0, "dur": dur, "lights": lights, "lv": -1})
     t = dur
@@ -231,8 +236,8 @@ def _ronda_nueva(r, k, extra, lay, voice, ev, scenes, t):
     rv = cd + n
     sig, dv = voice.say(r["respuesta_voz"])
     if extra:
-        ev += [("fx", "chime", st + rv), ("fx", "applause", st + rv + 0.1), ("voice", sig, st + rv + 0.6)]
-        rdur = max(2.6, 0.6 + dv + 0.6)
+        ev += [("fx", "buzz", st + rv), ("fx", "heart", st + rv + 0.4), ("voice", sig, st + rv + 0.35)]
+        rdur = max(2.6, 0.35 + dv + 0.6)
         stp = None
     else:
         ev += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.12), ("voice", sig, st + rv + 0.35)]
@@ -401,6 +406,19 @@ def _bg_frame(lv, t):
 def background(sc, lt, t):
     lv = sc["lv"]
     img = _bg_frame(lv, t)
+    if sc["kind"] == "q" and sc["r"]["tipo"] in NUEVOS:
+        d = ImageDraw.Draw(img, "RGBA")
+        cy = sc["lay"]["vis"]
+        for k in range(14):
+            a0 = t * 0.35 + k * math.pi / 7
+            d.polygon([(540, cy), (540 + 1500 * math.cos(a0), cy + 1500 * math.sin(a0)),
+                       (540 + 1500 * math.cos(a0 + 0.15), cy + 1500 * math.sin(a0 + 0.15))], fill=(255, 255, 255, 16))
+        for k in range(18):
+            x = (k * 263 + t * 30) % W
+            y = (k * 431 - t * (40 + k * 3)) % H
+            r_ = 4 + (k % 3) * 2
+            tw = 0.5 + 0.5 * math.sin(t * 3 + k)
+            d.polygon([(x, y - r_ * 3), (x + r_, y), (x, y + r_ * 3), (x - r_, y)], fill=(255, 255, 255, int(120 * tw)))
     if sc["kind"] == "card" and lt < 0.5:
         prev = -1 if sc["k"] == 0 else sc["k"] - 1
         old = _bg_frame(prev, t)
@@ -1016,7 +1034,8 @@ def vis_ilusion(img, d, sc, lt):
              pad=(30, 16))
 
 
-PIX_STAGES = [100, 66, 44, 28, 17, 10]
+PIX_STAGES = [104, 70, 48, 33, 23, 16]
+PIX_FINAL = 14  # nunca se revela del todo (≈80 %): que lo comenten
 
 
 def vis_pixel(img, d, sc, lt):
@@ -1031,26 +1050,22 @@ def vis_pixel(img, d, sc, lt):
     elif lt < rv:
         b = PIX_STAGES[min(len(PIX_STAGES) - 1, int((lt - cd) / n * len(PIX_STAGES)))]
     else:
-        b = 1
-    gl = int(10 * math.sin(lt * 31)) if lt < rv and (lt * 7) % 1 < 0.25 else 0
-    sc_ = a * (1 + (0.04 * max(0, 1 - (lt - rv) / 0.4) if lt >= rv else 0))
-    _marco_foto(img, d, _pixelada(b), 540, cy, RED if lt < rv else GREEN, lt, sc_, gl)
-    if lt < rv:
+        b = PIX_FINAL
+    gl = int(10 * math.sin(lt * 31)) if (lt * 7) % 1 < 0.22 else 0
+    sc_ = a * (1 + 0.015 * math.sin(lt * 5))
+    # rayos de tensión detrás de la foto
+    for k in range(16):
+        a0 = lt * 0.6 + k * math.pi / 8
+        d.polygon([(540, cy), (540 + 900 * math.cos(a0), cy + 900 * math.sin(a0)),
+                   (540 + 900 * math.cos(a0 + 0.12), cy + 900 * math.sin(a0 + 0.12))], fill=(255, 60, 70, 26))
+    _marco_foto(img, d, _pixelada(b), 540, cy, RED, lt, sc_, gl)
+    # líneas de escaneo
+    for yy in range(int(cy - 310 * sc_), int(cy + 310 * sc_), 9):
+        d.line((540 - 310 * sc_, yy, 540 + 310 * sc_, yy), fill=(0, 0, 0, 28), width=2)
+    if True:
         for j, (dx, dy, ph) in enumerate([(-360, -250, 0), (365, -200, 1.7), (-370, 230, 3.1), (360, 260, 4.4)]):
             s = 70 + 10 * math.sin(lt * 3 + ph)
             text(d, (540 + dx, cy + dy + math.sin(lt * 2 + ph) * 12), "?", tfont(int(s)), YEL, 8, (40, 0, 10))
-    else:
-        if lt < rv + 0.25:
-            img.paste((255, 255, 255), (0, 0), Image.new("L", (W, H), int(200 * (1 - (lt - rv) / 0.25))))
-        e = lt - rv
-        if e < 1.8:
-            for (vx, vy, col, sz, ph) in _S["confeti"]:
-                x = 540 + vx * 620 * e
-                y = cy + vy * 700 * e + 900 * e * e
-                ang = ph + e * 8
-                pts = [(x + sz * math.cos(ang + j * math.pi / 2) * (1 if j % 2 else 0.5),
-                        y + sz * math.sin(ang + j * math.pi / 2) * (1 if j % 2 else 0.5)) for j in range(4)]
-                d.polygon(pts, fill=col + (int(255 * max(0, 1 - e / 1.8)),))
 
 
 VIS = {"fugitivo": vis_fugitivo, "rojo": vis_rojo, "memoria6": vis_memoria6, "infiltrado": vis_infiltrado,
@@ -1303,15 +1318,7 @@ def portada(c, state, out_dir):
     text(d, (540, 330), l1, tfont(120), WHITE, 12, (20, 10, 40), sh=10)
     text(d, (540, 470), l2, tfont(132), YEL, 13, (20, 10, 40), sh=10)
     if c["gancho"].get("teaser") and _S.get("foto") is not None:
-        _marco_foto(img, d, _pixelada(120), 540, 960, RED, 0.3, 0.9, 6)
-        for (dx, dy) in [(-350, -230), (350, -190), (-350, 230), (350, 250)]:
-            text(d, (540 + dx, 960 + dy), "?", tfont(96), YEL, 8, (40, 0, 10))
-        stp = Image.new("RGBA", (640, 150), (0, 0, 0, 0))
-        sd0 = ImageDraw.Draw(stp)
-        rr(sd0, (6, 6, 634, 144), 30, RED + (235,), outline=WHITE, width=8)
-        sd0.text((320, 78), "NIVEL IMPOSIBLE", font=tfont(78), fill=WHITE, anchor="mm")
-        paste_c(img, stp, 540, 990, 1.0, angle=-10)
-        pill(d, 540, 1325, "¿QUIÉN ES?", 80, YEL, (40, 20, 0), pad=(46, 22))
+        return _portada_teaser(c, out_dir)
     else:
         draw_ladder(img, d, [0] * 6, 5.0, y_top=680, step=134)
     # pegatina
@@ -1326,6 +1333,82 @@ def portada(c, state, out_dir):
     sd.text((442, 72), txt, font=f, fill=WHITE, anchor="mm")
     paste_c(img, st, 540, 1500, 1.0, angle=-4)
     username(img, 1616)
+    p916 = os.path.join(out_dir, f"{c['video']}_9x16.png")
+    p34 = os.path.join(out_dir, f"{c['video']}_3x4.png")
+    img.save(p916)
+    img.crop((0, 240, 1080, 1680)).save(p34)
+    return p916, p34
+
+
+def _portada_teaser(c, out_dir):
+    """Portada del gancho «¿quién es?»: rayos, chips de niveles, foto pixelada con sello y flecha."""
+    img = _bg_frame(-1, 2.0)
+    d = ImageDraw.Draw(img, "RGBA")
+    cx, cy = 540, 1035
+    # rayos de concurso y halo
+    for k in range(24):
+        a0 = k * math.pi / 12 + 0.05
+        col = (255, 210, 60, 46) if k % 2 == 0 else (255, 90, 60, 30)
+        d.polygon([(cx, cy), (cx + 2200 * math.cos(a0), cy + 2200 * math.sin(a0)),
+                   (cx + 2200 * math.cos(a0 + math.pi / 24), cy + 2200 * math.sin(a0 + math.pi / 24))], fill=col)
+    glow = Image.new("L", (W, H), 0)
+    ImageDraw.Draw(glow).ellipse((cx - 420, cy - 420, cx + 420, cy + 420), fill=150)
+    img.paste((255, 70, 60), (0, 0), glow.filter(ImageFilter.GaussianBlur(120)))
+    # viñeta
+    v = _S["vig"].point(lambda x: int(x * 0.9))
+    img.paste((10, 4, 6), (0, 0), v)
+    d = ImageDraw.Draw(img, "RGBA")
+    # destellos
+    rs = random.Random(4)
+    for _ in range(26):
+        x, y, r_ = rs.uniform(40, 1040), rs.uniform(250, 1650), rs.uniform(5, 13)
+        d.polygon([(x, y - r_ * 3), (x + r_, y), (x, y + r_ * 3), (x - r_, y)], fill=(255, 240, 180, 170))
+    pill(d, 540, 290, "RETO MENTAL · 6 NIVELES", 46, WHITE, (90, 30, 10), pad=(30, 12))
+    l1, l2 = c["portada"]["titulo"]
+    text(d, (540, 410), l1, tfont(128), WHITE, 14, (30, 8, 10), sh=12)
+    text(d, (540, 555), l2, tfont(150), YEL, 15, (30, 8, 10), sh=12)
+    # chips de niveles
+    for i in range(6):
+        x = 540 + (i - 2.5) * 140
+        y = 715
+        if i == 5:
+            d.ellipse((x - 70, y - 70, x + 70, y + 70), fill=(239, 55, 70, 110))
+            d.ellipse((x - 54, y - 54, x + 54, y + 54), fill=(30, 6, 12), outline=RED, width=7)
+            paste_c(img, _sprite("imagenes/calavera_3d.png", 74), x, y)
+        else:
+            rr(d, (x - 46 + 4, y - 46 + 9, x + 46 + 4, y + 46 + 9), 46, (0, 0, 0, 70))
+            d.ellipse((x - 46, y - 46, x + 46, y + 46), fill=lvl(i)[2], outline=WHITE, width=6)
+            d.text((x, y + 3), str(i + 1), font=tfont(54), fill=WHITE, anchor="mm")
+        if i < 5:
+            d.line((x + 52, y, x + 88, y), fill=(255, 255, 255, 180), width=6)
+    # foto pixelada con sello
+    _marco_foto(img, d, _pixelada(116), cx, cy, RED, 0.3, 0.76, 6)
+    for yy in range(int(cy - 236), int(cy + 236), 9):
+        d.line((cx - 236, yy, cx + 236, yy), fill=(0, 0, 0, 30), width=2)
+    for (dx, dy, sz) in [(-330, -170, 110), (330, -120, 96), (-320, 190, 90), (335, 210, 120)]:
+        text(d, (cx + dx, cy + dy), "?", tfont(sz), YEL, 9, (40, 0, 10), sh=8)
+    stp = Image.new("RGBA", (660, 150), (0, 0, 0, 0))
+    sd0 = ImageDraw.Draw(stp)
+    rr(sd0, (10, 16, 656, 148), 30, (0, 0, 0, 90))
+    rr(sd0, (4, 6, 650, 140), 30, RED, outline=WHITE, width=8)
+    sd0.text((327, 76), "NIVEL IMPOSIBLE", font=tfont(80), fill=WHITE, anchor="mm")
+    paste_c(img, stp, cx, cy + 40, 1.0, angle=-10)
+    # emojis y flecha
+    paste_c(img, _sprite("niveles2/cerebro.png", 180), 130, 880, 1.0, angle=-14)
+    paste_c(img, _sprite("niveles2/ojo.png", 150), 960, 1290, 1.0, angle=12)
+    pts = [(150 + 170 * u + 60 * math.sin(u * 3.1), 1330 - 160 * u - 40 * math.sin(u * 2)) for u in [i / 20 for i in range(21)]]
+    d.line(pts, fill=(20, 6, 8), width=22, joint="curve")
+    d.line(pts, fill=YEL, width=12, joint="curve")
+    ex, ey = pts[-1]
+    d.polygon([(ex + 26, ey - 26), (ex - 30, ey - 14), (ex + 6, ey + 34)], fill=YEL, outline=(20, 6, 8), width=5)
+    pill(d, 540, 1345, "¿QUIÉN ES?", 86, YEL, (40, 20, 0), pad=(50, 24))
+    st = Image.new("RGBA", (900, 150), (0, 0, 0, 0))
+    sd = ImageDraw.Draw(st)
+    rr(sd, (8, 16, 892, 146), 60, (0, 0, 0, 80))
+    rr(sd, (0, 4, 884, 134), 60, RED, outline=WHITE, width=7)
+    sd.text((442, 72), c["portada"]["pegatina"], font=tfont(66), fill=WHITE, anchor="mm")
+    paste_c(img, st, 540, 1500, 0.9, angle=-4)
+    username(img, 1625)
     p916 = os.path.join(out_dir, f"{c['video']}_9x16.png")
     p34 = os.path.join(out_dir, f"{c['video']}_3x4.png")
     img.save(p916)
