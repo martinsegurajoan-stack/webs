@@ -39,7 +39,13 @@
       ],
       "correcta": "A",
       "opcion_voz": "Mario Alonso Gallardo",
-      "fuente": "Dato del usuario (ESdiario: Mario Alonso Gallardo; otras fuentes: Garrido)."
+      "fuente": "Dato del usuario (ESdiario: Mario Alonso Gallardo; otras fuentes: Garrido).",
+      "encuesta": [
+        18,
+        33,
+        22,
+        27
+      ]
     },
     {
       "pregunta": "¿En qué localidad nació DjMaRiiO?",
@@ -65,7 +71,13 @@
       ],
       "correcta": "A",
       "opcion_voz": "Dybala",
-      "fuente": "Dato del usuario."
+      "fuente": "Dato del usuario.",
+      "encuesta": [
+        16,
+        22,
+        34,
+        28
+      ]
     },
     {
       "pregunta": "¿Qué famoso meme futbolístico se relaciona con DjMaRiiO?",
@@ -90,7 +102,13 @@
       ],
       "correcta": "B",
       "opcion_voz": "Ultimate Team",
-      "fuente": "FIFA Ultimate Team."
+      "fuente": "FIFA Ultimate Team.",
+      "encuesta": [
+        12,
+        52,
+        14,
+        22
+      ]
     },
     {
       "pregunta": "¿Qué hace DjMaRiiO en sus vídeos de FIFA cuando pierde?",

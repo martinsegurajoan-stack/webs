@@ -334,6 +334,9 @@ def _init(state):
     _S["polls"] = []
     for q in c["preguntas"]:
         v = [r.uniform(8, 40) for _ in range(4)]
+        if q.get("encuesta"):  # porcentajes fijados a mano (p. ej. que la correcta no destaque)
+            _S["polls"].append(list(q["encuesta"]))
+            continue
         tot = sum(v)
         pc = [int(round(x / tot * 100)) for x in v]
         pc[0] += 100 - sum(pc)
