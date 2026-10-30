@@ -70,6 +70,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/streamer_02.mp4` | `quizzes/streamer_02.json` | 88 s | STREAMER: Ibai (misma edición que AuronPlay; no mencionar que es parte de una serie) |
 | `salida/streamer_03.mp4` | `quizzes/streamer_03.json` | 82 s | STREAMER: ElXokas (chat temático + comentarios random, miniatura igual que la serie) |
 | `salida/streamer_04.mp4` | `quizzes/streamer_04.json` | 87 s | STREAMER: elRubius (chat con guion: conversaciones, piques, MOD serio con la respuesta; cierre «¿quién quieres que sea el siguiente?») |
+| `salida/streamer_05.mp4` | `quizzes/streamer_05.json` | 90 s | STREAMER: DjMaRiiO (gancho v2 con la extra bloqueada, extra con alarma, final v2 con encuesta del siguiente) |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -95,7 +96,7 @@ Plantillas y piezas reutilizables:
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 04).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
-- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, nº4 = elRubius, siguiente: 05). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
+- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, nº4 = elRubius, nº5 = DjMaRiiO, siguiente: 06). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -373,6 +374,21 @@ NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/B
   caché) con tarjeta «¿QUIÉN QUIERES QUE SEA EL SIGUIENTE?», corazones, confeti y bocadillos de comentarios con
   propuestas (`siguiente`: 6 nombres de otros streamers). En los textos de redes, pedir también el siguiente.
   En otros formatos, adaptar la misma idea al final («¿de qué quieres el siguiente?»).
+- MEJORAS DEL Nº5 (DjMaRiiO, petición del usuario: «mejor gancho, mejóralo mucho más, y el final también»;
+  «métele emoción al presentar la extra… para siempre»). USAR SIEMPRE EN ADELANTE:
+  · GANCHO v2 (`gancho.teaser`: `voz`, `pregunta` corta, `reto`): primero «LA ÚLTIMA PREGUNTA» con la pregunta
+    extra en pantalla y las 4 opciones BLOQUEADAS (??? + candado), sirena, luces de alarma rojas, sacudida,
+    glitch y «¿LLEGAS HASTA AQUÍ?»; destello y luego la foto con «QUIZ DE …» + `gancho.voz` («¡Solo los fans
+    de verdad llegan hasta el final!»). Voz desde el fotograma 0.
+  · EXTRA CON EMOCIÓN (`extra_intro_voz`, p. ej. «[whispers] Y ahora... la pregunta extra. [excited] ¡Solo para
+    fans de verdad!»): escena de alarma antes de la extra (sirena, «PREGUNTA» + «EXTRA» que caen con golpe y
+    glitch, avisos ⚠, «SOLO PARA FANS DE VERDAD»); la pregunta extra se lee sin «¡Pregunta extra!».
+  · FINAL v2 (`final_voz` + `siguiente` 4 nombres + `siguiente_escribe`): «¿CUÁNTAS HAS ACERTADO?» →
+    «¡AHORA DECIDES TÚ!» con ENCUESTA del siguiente (barras que compiten en directo), comentario que se
+    escribe solo («que sea Illojuan!!») con flecha, corazones, confeti, «¡SÍGUEME PARA MÁS!» + logo.
+  · Nombre del streamer con su grafía exacta (DjMaRiiO, no DJMARIIO): `nombre_cam` para la etiqueta de la
+    cámara; `aviso`, `gancho.texto` y `portada.titulo` escritos tal cual. `tempo` en el JSON (nº5: 1,25) para
+    no pasar de 90 s. Las preguntas del usuario se dejan TAL CUAL aunque no se encuentren en la web (lo pidió).
 - Preguntas: chat en directo con mensajes genéricos que suben, cámara del streamer (su foto) con
   «EN DIRECTO», tarjeta oscura con borde neón, opciones como ENCUESTA de directo con barras y % que
   suben durante la cuenta atrás (aleatorios, no indican la respuesta), alerta «¡CORRECTA! +1 PUNTO DE

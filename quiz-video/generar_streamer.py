@@ -29,7 +29,7 @@ def main():
     c = json.load(open(a.contenido, encoding="utf-8"))
     out = a.salida or os.path.join(BASE, "salida", c["video"] + ".mp4")
     voice = ElevenVoice()
-    voice.configure(style="", tempo=1.15)
+    voice.configure(style="", tempo=float(c.get("tempo", 1.15)))
     tono = themes.elegir_tono(c["video"], (200, 330))  # neón morado/azul/fucsia, distinto en cada vídeo  # tono del fondo oscuro del gancho y del cierre
     state = {"c": c, "tono": tono}
 

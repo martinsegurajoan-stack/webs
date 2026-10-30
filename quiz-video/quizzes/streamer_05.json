@@ -1,0 +1,569 @@
+{
+  "modo": "streamer",
+  "video": "streamer_05",
+  "nombre": "DjMaRiiO",
+  "titulo": "¿Cuánto sabes de DjMaRiiO?",
+  "foto": "assets/streamers/djmariio.jpg",
+  "foco": [
+    1072,
+    330
+  ],
+  "zoom_cam": 1.6,
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DE DjMaRiiO",
+    "SABRÁN LA ÚLTIMA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡Solo los fans de verdad llegan hasta el final!",
+    "texto": [
+      "QUIZ DE",
+      "DjMaRiiO"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE",
+    "teaser": {
+      "voz": "[excited] ¿Sabes qué hace DjMario cuando pierde?",
+      "pregunta": "¿Qué hace DjMaRiiO cuando pierde?",
+      "reto": "¿LLEGAS HASTA AQUÍ?"
+    }
+  },
+  "extra_intro_voz": "[whispers] Y ahora... la pregunta extra. [excited] ¡Solo para fans de verdad!",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el nombre real de DjMaRiiO?",
+      "pregunta_voz": "¿Cuál es el nombre real de DjMario?",
+      "opciones": [
+        "Mario Alonso Gallardo",
+        "Mario García Alonso",
+        "Mario Martín Garrido",
+        "Mario Alfonso González"
+      ],
+      "correcta": "A",
+      "opcion_voz": "Mario Alonso Gallardo",
+      "fuente": "Dato del usuario (ESdiario: Mario Alonso Gallardo; otras fuentes: Garrido)."
+    },
+    {
+      "pregunta": "¿En qué localidad nació DjMaRiiO?",
+      "pregunta_voz": "¿En qué localidad nació DjMario?",
+      "opciones": [
+        "Leganés",
+        "Móstoles",
+        "Alcorcón",
+        "Getafe"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Móstoles",
+      "fuente": "Móstoles (30-08-1990)."
+    },
+    {
+      "pregunta": "¿Qué jugador protagonizó uno de los SBC más recordados de FIFA por su calidad-precio?",
+      "pregunta_voz": "¿Qué jugador protagonizó uno de los SBC más recordados de FIFA?",
+      "opciones": [
+        "Dybala",
+        "Benzema",
+        "Suárez",
+        "Griezmann"
+      ],
+      "correcta": "A",
+      "opcion_voz": "Dybala",
+      "fuente": "Dato del usuario."
+    },
+    {
+      "pregunta": "¿Qué famoso meme futbolístico se relaciona con DjMaRiiO?",
+      "pregunta_voz": "¿Qué meme futbolístico se relaciona con DjMario?",
+      "opciones": [
+        "Willian x Filipe",
+        "Messi x Cristiano",
+        "Neymar x Mbappé",
+        "Bale x Hazard"
+      ],
+      "correcta": "A",
+      "opcion_voz": "Willian y Filipe",
+      "fuente": "Dato del usuario."
+    },
+    {
+      "pregunta": "¿Qué modo de FIFA le dio gran popularidad?",
+      "opciones": [
+        "Modo Carrera",
+        "Ultimate Team",
+        "Volta",
+        "Clubes Pro"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Ultimate Team",
+      "fuente": "FIFA Ultimate Team."
+    },
+    {
+      "pregunta": "¿Qué hace DjMaRiiO en sus vídeos de FIFA cuando pierde?",
+      "pregunta_voz": "¿Qué hace DjMario en sus vídeos de FIFA cuando pierde?",
+      "opciones": [
+        "Se queda completamente callado",
+        "Aprende de los errores",
+        "Se enfada y revienta el mando (con cariño)",
+        "Cierra el directo"
+      ],
+      "correcta": "C",
+      "sin_respuesta": true,
+      "fuente": "Dato del usuario. No se revela."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "final_voz": "[excited] ¡Y ahora decides tú! ¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!",
+  "siguiente": [
+    "ILLOJUAN",
+    "THE GREFG",
+    "SPREEN",
+    "WILLYREX"
+  ],
+  "siguiente_escribe": [
+    "que sea Illojuan!!",
+    "THE GREFG YAAA",
+    "Spreen porfa",
+    "Willyrex o me enfado",
+    "Vegetta777!!"
+  ],
+  "portada": {
+    "titulo": [
+      "QUIZ DE",
+      "DjMaRiiO"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  },
+  "chat_mod": "modo_serio",
+  "chat_guion": [
+    {
+      "antes": [
+        [
+          "tito_sobres",
+          "MARIOOOO"
+        ],
+        [
+          "lauritaa_",
+          "hola desde Móstoles... o no"
+        ],
+        [
+          "tito_sobres",
+          "acabo de abrir un sobre"
+        ],
+        [
+          "sara.xd",
+          "@tito_sobres y qué te ha salido"
+        ],
+        [
+          "tito_sobres",
+          "@sara.xd un portero de bronce"
+        ],
+        [
+          "sara.xd",
+          "@tito_sobres F en el chat"
+        ],
+        [
+          "kevin_23",
+          "esta me la sé seguro"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 siempre dices lo mismo"
+        ],
+        [
+          "kevin_23",
+          "@elcrack99 y siempre acierto"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 mentira cochina"
+        ],
+        [
+          "mr_tostada",
+          "mi madre lo llama Marito"
+        ],
+        [
+          "abuela_gamer",
+          "hola soy la abuela de Kevin"
+        ]
+      ],
+      "serio": [
+        "modo_serio",
+        "Mario Alonso Gallardo, apuntad"
+      ],
+      "despues": [
+        [
+          "abuela_gamer",
+          "@kevin_23 cariño has fallado"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA NO ME DELATES"
+        ],
+        [
+          "tito_sobres",
+          "otro sobre, otro bronce"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "pepitogamer",
+          "segunda y ya sudo"
+        ],
+        [
+          "noob_master",
+          "esta la sabe todo el mundo"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master pues yo no"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial eso no es mi problema"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master qué borde hoy"
+        ],
+        [
+          "lucia.gamer",
+          "no os peleéis que me agobio"
+        ],
+        [
+          "pato_feliz",
+          "estoy haciendo una tortilla"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz con o sin cebolla"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada CON obviamente"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz ya no somos amigos"
+        ],
+        [
+          "yoquese_",
+          "dudo entre dos"
+        ],
+        [
+          "sara.xd",
+          "rápido que se acaba"
+        ]
+      ],
+      "serio": [
+        "modo_serio",
+        "Nació en Móstoles en 1990"
+      ],
+      "despues": [
+        [
+          "noob_master",
+          "@burlao_oficial perdón, toma un abrazo"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master acepto el abrazo"
+        ],
+        [
+          "pato_feliz",
+          "se me ha quemado la tortilla"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "tito_sobres",
+          "SBC??? yo los hago todos"
+        ],
+        [
+          "elcrack99",
+          "@tito_sobres y te arruinas"
+        ],
+        [
+          "tito_sobres",
+          "@elcrack99 me arruino feliz"
+        ],
+        [
+          "lauritaa_",
+          "esta es de fan de los de antes"
+        ],
+        [
+          "kevin_23",
+          "yo hice ese SBC creo"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin qué es un SBC"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer luego te lo explico"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 suena a medicina"
+        ],
+        [
+          "noob_master",
+          "mi perro sabe hacer SBC"
+        ],
+        [
+          "lucia.gamer",
+          "@noob_master tu perro es un crack"
+        ],
+        [
+          "mr_tostada",
+          "he soñado con monedas de FIFA"
+        ],
+        [
+          "pepitogamer",
+          "no me acuerdo de nada"
+        ]
+      ],
+      "serio": [
+        "modo_serio",
+        "Dybala: calidad-precio top"
+      ],
+      "despues": [
+        [
+          "tito_sobres",
+          "yo lo tenía en mi equipo!!"
+        ],
+        [
+          "sara.xd",
+          "@tito_sobres no te creo"
+        ],
+        [
+          "tito_sobres",
+          "@sara.xd me ofende tu desconfianza"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "burlao_oficial",
+          "el meme JAJAJA"
+        ],
+        [
+          "yoquese_",
+          "me meo con ese meme"
+        ],
+        [
+          "pepitogamer",
+          "no lo he visto nunca"
+        ],
+        [
+          "burlao_oficial",
+          "@pepitogamer dónde vives tú"
+        ],
+        [
+          "pepitogamer",
+          "@burlao_oficial en una cueva"
+        ],
+        [
+          "lauritaa_",
+          "@pepitogamer normal que no lo sepas"
+        ],
+        [
+          "pato_feliz",
+          "acabo de ver un perro con boina"
+        ],
+        [
+          "elcrack99",
+          "@pato_feliz foto o no pasó"
+        ],
+        [
+          "pato_feliz",
+          "@elcrack99 se ha ido corriendo"
+        ],
+        [
+          "sara.xd",
+          "esta es muy de comunidad"
+        ],
+        [
+          "kevin_23",
+          "abuela no mires el chat"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 lo estoy mirando todo"
+        ]
+      ],
+      "serio": [
+        "modo_serio",
+        "Willian y Filipe, un clásico"
+      ],
+      "despues": [
+        [
+          "pepitogamer",
+          "ahora lo busco jajaja"
+        ],
+        [
+          "burlao_oficial",
+          "@pepitogamer bienvenido al lado bueno"
+        ],
+        [
+          "lucia.gamer",
+          "quedan dos!!"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "tito_sobres",
+          "ESTA ES MI VIDA"
+        ],
+        [
+          "lauritaa_",
+          "esta es regalada"
+        ],
+        [
+          "noob_master",
+          "@lauritaa_ no gafes"
+        ],
+        [
+          "lauritaa_",
+          "@noob_master yo no gafo nada"
+        ],
+        [
+          "noob_master",
+          "@lauritaa_ siempre gafas"
+        ],
+        [
+          "lauritaa_",
+          "@noob_master ME LLEVAS LA CONTRARIA"
+        ],
+        [
+          "mr_tostada",
+          "le he puesto nombre a mi tostadora"
+        ],
+        [
+          "yoquese_",
+          "@mr_tostada y cómo se llama"
+        ],
+        [
+          "mr_tostada",
+          "@yoquese_ Mbappé, porque corre"
+        ],
+        [
+          "elcrack99",
+          "mi mando tiene miedo"
+        ],
+        [
+          "pato_feliz",
+          "yo juego con los pies"
+        ],
+        [
+          "sara.xd",
+          "casi llegamos a la extra"
+        ]
+      ],
+      "serio": [
+        "modo_serio",
+        "Ultimate Team, el rey del FUT"
+      ],
+      "despues": [
+        [
+          "tito_sobres",
+          "SABÍA QUE LA SABÍA"
+        ],
+        [
+          "lucia.gamer",
+          "que viene la extraaa"
+        ],
+        [
+          "burlao_oficial",
+          "modo pánico activado"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "elcrack99",
+          "LA EXTRA LA EXTRA"
+        ],
+        [
+          "pepitogamer",
+          "esta es imposible"
+        ],
+        [
+          "tito_sobres",
+          "yo hago lo mismo cuando pierdo"
+        ],
+        [
+          "sara.xd",
+          "@tito_sobres o sea que pierdes mucho"
+        ],
+        [
+          "tito_sobres",
+          "@sara.xd eso ha dolido"
+        ],
+        [
+          "kevin_23",
+          "mi mando sigue vivo de milagro"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 por eso compramos tres"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA POR FAVOR"
+        ],
+        [
+          "noob_master",
+          "esta la sé y no la digo"
+        ],
+        [
+          "lauritaa_",
+          "@noob_master egoísta"
+        ],
+        [
+          "mr_tostada",
+          "me he comprado un jabalí"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada cómo se llama"
+        ]
+      ],
+      "serio": [
+        "modo_serio",
+        "me la sé pero a comentarios"
+      ],
+      "despues": [
+        [
+          "mr_tostada",
+          "@pato_feliz se llama Dybala"
+        ],
+        [
+          "burlao_oficial",
+          "@modo_serio NOOO dilaaa"
+        ],
+        [
+          "yoquese_",
+          "lo pongo en comentarios"
+        ]
+      ]
+    }
+  ],
+  "chat": [
+    "MARIO EL MEJOR",
+    "FUT gang",
+    "otro sobre otro bronce",
+    "madridista hasta la muerte",
+    "el rey de FIFA"
+  ],
+  "chat_random": [
+    "mi abuelo tiene Twitch",
+    "he soñado con una cabra",
+    "estoy en clase shhh",
+    "alguien quiere macarrones"
+  ],
+  "tempo": 1.25,
+  "nombre_cam": "DjMaRiiO"
+}

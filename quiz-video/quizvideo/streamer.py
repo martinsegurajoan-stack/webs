@@ -50,18 +50,38 @@ def _countdown(ev, at):
 
 def build_timeline(c, voice):
     scenes, ev = [], []
-    sig, d = voice.say(c["gancho"]["voz"])
-    ev += [("voice", sig, 0.05), ("fx", "impact", 0.0), ("fx", "whoosh", 0.02)]
-    dur = max(3.0, d + 0.45)
-    scenes.append({"kind": "hook", "start": 0.0, "dur": dur})
+    tz = c["gancho"].get("teaser")
+    if tz:  # GANCHO v2: primero se ve la PREGUNTA EXTRA bloqueada con alarma y luego la foto
+        s1, d1 = voice.say(tz["voz"])
+        s2, d2 = voice.say(c["gancho"]["voz"])
+        ta = max(1.6, d1 + 0.2)
+        ev += [("voice", s1, 0.03), ("fx", "impact", 0.0), ("fx", "siren", 0.0),
+               ("fx", "whoosh", ta - 0.08), ("fx", "impact", ta), ("voice", s2, ta + 0.08)]
+        for k in range(4):
+            ev.append(("fx", "pop", 0.12 + k * 0.08))
+        dur = ta + 0.08 + d2 + 0.35
+        scenes.append({"kind": "hook", "start": 0.0, "dur": dur, "ta": ta})
+    else:
+        sig, d = voice.say(c["gancho"]["voz"])
+        ev += [("voice", sig, 0.05), ("fx", "impact", 0.0), ("fx", "whoosh", 0.02)]
+        dur = max(3.0, d + 0.45)
+        scenes.append({"kind": "hook", "start": 0.0, "dur": dur})
     t = dur
     qs = c["preguntas"]
     n_reg = sum(1 for q in qs if not q.get("sin_respuesta"))
     for qi, q in enumerate(qs):
-        st = t
         extra = bool(q.get("sin_respuesta"))
-        etiqueta = "¡Pregunta extra!" if extra else f"¡Pregunta {qi + 1}!"
-        sig, dq = voice.say(f"{etiqueta} " + q.get("pregunta_voz", q["pregunta"]))
+        intro = extra and c.get("extra_intro_voz")
+        if intro:  # escena de alarma: «PREGUNTA EXTRA · SOLO PARA FANS DE VERDAD»
+            si, di = voice.say(c["extra_intro_voz"])
+            ev += [("fx", "siren", t), ("fx", "impact", t + 0.15), ("fx", "impact", t + 0.32),
+                   ("voice", si, t + 0.35), ("fx", "heart", t + 0.9), ("fx", "heart", t + 1.6)]
+            di_ = 0.35 + di + 0.35
+            scenes.append({"kind": "extra_intro", "start": t, "dur": di_})
+            t += di_
+        st = t
+        etiqueta = "" if intro else ("¡Pregunta extra!" if extra else f"¡Pregunta {qi + 1}!")
+        sig, dq = voice.say((f"{etiqueta} " + q.get("pregunta_voz", q["pregunta"])).strip())
         ev += [("fx", "whoosh", st), ("voice", sig, st + 0.3)]
         loc = 0.3 + max(0.4, dq - 0.4)
         opt_t = []
@@ -87,6 +107,19 @@ def build_timeline(c, voice):
         scenes.append({"kind": "q", "start": st, "dur": rv + rdur, "q": q, "i": qi, "n": n_reg, "extra": extra,
                        "opt_t": opt_t, "cd": cd, "rv": rv, "ci": ci})
         t += rv + rdur
+    if c.get("final_voz"):  # FINAL v2: «¡AHORA DECIDES TÚ!» + encuesta del siguiente + comentario escribiéndose
+        sc_, dc = voice.say(c.get("cierre_voz", "¿Cuántas has acertado?"))
+        sw = 0.3 + dc + 0.1
+        sf, df = voice.say(c["final_voz"])
+        shout_at = sw + df + 0.1
+        s2, d2 = voice.say("¡Sígueme para más!", shout=True)
+        dur = shout_at + d2 + 1.0
+        ev += [("fx", "whoosh", t), ("voice", sc_, t + 0.3), ("fx", "impact", t + sw), ("fx", "correct", t + sw + 0.05),
+               ("voice", sf, t + sw + 0.1), ("voice", s2, t + shout_at), ("fx", "applause", t + shout_at)]
+        for k in range(4):
+            ev.append(("fx", "pop", t + sw + 0.5 + k * 0.12))
+        scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at, "sw": sw, "v2": True})
+        return scenes, ev, t + dur
     sig, d = voice.say(c.get("cierre_voz", "¿Cuántas has acertado?"))
     ev += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
     sig_at = None
@@ -116,15 +149,25 @@ def sfx_alert():
     return 0.35 * out
 
 
+def sfx_siren(dur=1.3):
+    sr = audio.SR
+    tt = np.arange(int(dur * sr)) / sr
+    f = 760 + 340 * np.sin(2 * np.pi * 2.4 * tt - np.pi / 2)
+    ph = 2 * np.pi * np.cumsum(f) / sr
+    sig = np.sin(ph) * 0.6 + np.sign(np.sin(ph)) * 0.15
+    env = np.minimum(1, tt / 0.03) * np.clip((dur - tt) / 0.35, 0, 1)
+    return 0.35 * sig * env
+
+
 def build_audio(events, total, path, seed):
     from .personalidad import sfx_impact
     mix = audio.Mixer(total)
     fx = {"whoosh": audio.sfx_whoosh(), "pop": audio.sfx_pop(), "tick": audio.sfx_tick(), "tick_high": audio.sfx_tick(True),
           "tock": audio.sfx_tock(), "heart": audio.sfx_heartbeat(), "riser": audio.sfx_riser(COUNTDOWN),
           "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(), "applause": audio.sfx_applause(),
-          "impact": sfx_impact(), "alert": sfx_alert()}
+          "impact": sfx_impact(), "alert": sfx_alert(), "siren": sfx_siren()}
     gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.3, "tick_high": 1.45, "tock": 0.95, "heart": 0.85, "riser": 0.5,
-             "buzz": 0.6, "correct": 0.9, "applause": 0.8, "impact": 0.75, "alert": 0.8}
+             "buzz": 0.6, "correct": 0.9, "applause": 0.8, "impact": 0.75, "alert": 0.8, "siren": 0.45}
     boosts = [(a, b) for k, a, b in events if k == "music_boost"]
     for kind, what, at in events:
         if kind == "music_boost":
@@ -256,6 +299,7 @@ def _init(state):
     ImageDraw.Draw(mk).rounded_rectangle((0, 0, 879, 879), 60, fill=255)
     card.putalpha(mk)
     _S["hook_card"] = card
+    _S["teaser_bg"] = Image.blend(_S["hook_img"], Image.new("RGB", (W, H), (40, 4, 12)), 0.55)
     cam = _cover(src, 270, 270, foco, zoom=float(c.get("zoom_cam", 1.6))) if src else _placeholder(270, 270)
     m = Image.new("L", cam.size, 0)
     ImageDraw.Draw(m).rounded_rectangle((0, 0, 269, 269), 26, fill=255)
@@ -450,8 +494,142 @@ def burst(d, lt, cx, cy, dur=1.5):
 
 # ------------------------------------------------------------------ escenas
 
+def _red_vig(img, al):
+    v = _S.get("vig")
+    if v is None:
+        yy_, xx_ = np.mgrid[0:H, 0:W]
+        dist = np.sqrt(((xx_ - W / 2) / (W / 2)) ** 2 + ((yy_ - H / 2) / (H / 2)) ** 2)
+        v = _S["vig"] = Image.fromarray((np.clip((dist - 0.75) / 0.6, 0, 1) * 190).astype(np.uint8), "L")
+    img.paste((230, 20, 40), (0, 0), v.point(lambda x, a_=max(0.0, min(1.0, al)): int(x * a_)))
+
+
+def _beams(d, lt):
+    """Luces de alarma que barren desde las esquinas."""
+    for k, (bx, base) in enumerate([(0, 0.25), (W, math.pi - 0.25)]):
+        a = base + math.sin(lt * 4.5 + k * 1.7) * 0.75 * (1 if k == 0 else -1)
+        for wdt, al in ((0.22, 40), (0.1, 55)):
+            p1 = (bx + math.cos(a - wdt) * 2400, 230 + math.sin(a - wdt) * 2400)
+            p2 = (bx + math.cos(a + wdt) * 2400, 230 + math.sin(a + wdt) * 2400)
+            d.polygon([(bx, 230), p1, p2], fill=(255, 40, 60, al))
+
+
+def _glitch(img, k):
+    if k <= 0:
+        return
+    r, g, b = img.split()
+    off = int(18 * k)
+    r = r.transform(r.size, Image.AFFINE, (1, 0, -off, 0, 1, 0))
+    b = b.transform(b.size, Image.AFFINE, (1, 0, off, 0, 1, 0))
+    img.paste(Image.merge("RGB", (r, g, b)))
+
+
+def _padlock(d, cx, cy, s, col):
+    d.arc((cx - s * 0.55, cy - s * 1.15, cx + s * 0.55, cy + s * 0.1), 180, 360, fill=col, width=max(3, int(s * 0.22)))
+    rr(d, (cx - s * 0.8, cy - s * 0.4, cx + s * 0.8, cy + s * 0.75), s * 0.2, col)
+    d.ellipse((cx - s * 0.14, cy - s * 0.05, cx + s * 0.14, cy + s * 0.23), fill=INK)
+
+
+def _draw_teaser(img, sc, lt, t):
+    """Gancho v2, fase 1: la pregunta extra bloqueada, con alarma, sacudida y destello."""
+    c = _S["c"]
+    tz = c["gancho"]["teaser"]
+    img.paste(_S["teaser_bg"])
+    d = ImageDraw.Draw(img, "RGBA")
+    _beams(d, lt)
+    _red_vig(img, 0.45 + 0.4 * (0.5 + 0.5 * math.sin(lt * 2 * math.pi * 2.4)))
+    d = ImageDraw.Draw(img, "RGBA")
+    sh = math.sin(lt * 60) * 18 * max(0, 1 - lt / 0.4)
+    # titular que cae de golpe
+    k = ease_out(min(1, lt / 0.22))
+    sz = 1.7 - 0.7 * k
+    text(d, (370 + sh, 410), "LA ÚLTIMA", tfont(int(92 * sz)), WHITE, 10, INK, sh=8)
+    text(d, (370 + sh, 530), "PREGUNTA", tfont(int(122 * sz)), RED, 12, WHITE, sh=10)
+    cam_frame(img, d, t, 740, 330, c.get("nombre_cam", c["nombre"].upper()))
+    # tarjeta con la pregunta extra
+    b = pop(lt, 0.05, 0.3)
+    fq = math.sin(t * 1.4) * 5
+    y0, y1 = 655 + fq, 865 + fq
+    cy = (y0 + y1) / 2
+    hh = (y1 - y0) / 2 * (0.8 + 0.2 * b)
+    box = (70 + sh, cy - hh, 1010 + sh, cy + hh)
+    gl = 0.5 + 0.5 * math.sin(lt * 12)
+    rr(d, (box[0] - 10, box[1] - 10, box[2] + 10, box[3] + 10), 36, RED + (int(60 + 80 * gl),))
+    rr(d, box, 30, (20, 10, 26, 245), outline=RED, width=6)
+    f, lines, lh = fit(d, tz["pregunta"], 860, 150, 62, 34, 1.06)
+    yy = cy + 12 - lh * len(lines) / 2 + lh / 2
+    for ln in lines:
+        d.text((540 + sh, yy), ln, font=f, fill=WHITE, anchor="mm")
+        yy += lh
+    pill(d, 540 + sh, box[1], "PREGUNTA EXTRA · SOLO FANS", 36, RED, WHITE, pad=(26, 12))
+    # opciones bloqueadas
+    for i, bx in enumerate(opt_boxes()):
+        a2 = pop(lt, 0.12 + i * 0.08, 0.25)
+        if a2 <= 0:
+            continue
+        x0, yb0, x1, yb1 = bx
+        dx = (1 - a2) * 400 + math.sin(lt * 38 + i * 2) * 3 + sh
+        b2 = (x0 + dx, yb0, x1 + dx, yb1)
+        rr(d, (b2[0] + 5, b2[1] + 9, b2[2] + 5, b2[3] + 9), 28, (0, 0, 0, 90))
+        rr(d, b2, 28, (30, 14, 34, 235), outline=RED + (200,), width=3)
+        lc = (b2[0] + 62, (b2[1] + b2[3]) / 2)
+        d.ellipse((lc[0] - 36, lc[1] - 36, lc[0] + 36, lc[1] + 36), fill=RED)
+        d.text((lc[0], lc[1] + 3), LETTERS[i], font=tfont(42), fill=WHITE, anchor="mm")
+        d.text((b2[0] + 130, lc[1] + 2), "? ? ? ? ? ?", font=tfont(46), fill=(255, 255, 255, 150), anchor="lm")
+        _padlock(d, b2[2] - 70, lc[1] + 4, 26, YEL)
+    e = pop(lt, 0.4, 0.3)
+    if e > 0:
+        pulse = 1 + 0.06 * math.sin(lt * 10)
+        text(d, (540, 1555 + (1 - e) * 80), tz.get("reto", "¿LLEGAS HASTA AQUÍ?"), tfont(int(92 * e * pulse)), YEL, 12, INK, sh=10)
+    banner(img, d, t)
+    _glitch(img, 1 - lt / 0.3 if lt < 0.3 else 0)
+    if lt < 0.14:
+        img.paste(WHITE, (0, 0), Image.new("L", (W, H), int(140 * (1 - lt / 0.14))))
+    ta = sc["ta"]
+    if lt > ta - 0.1:  # destello de paso a la foto
+        img.paste(WHITE, (0, 0), Image.new("L", (W, H), int(200 * (lt - (ta - 0.1)) / 0.1)))
+
+
+def draw_extra_intro(img, d, sc, lt, t):
+    """Antes de la extra: alarma, «PREGUNTA EXTRA» que cae con glitch y «SOLO PARA FANS DE VERDAD»."""
+    d.rectangle((0, 0, W, H), fill=(0, 0, 0, 120))
+    _beams(d, lt)
+    particles(d, t)
+    _red_vig(img, 0.5 + 0.45 * (0.5 + 0.5 * math.sin(lt * 2 * math.pi * 2.2)))
+    d = ImageDraw.Draw(img, "RGBA")
+    sh = math.sin(lt * 60) * 20 * max(0, 1 - abs(lt - 0.32) / 0.35) if lt > 0.15 else 0
+    a = pop(lt, 0.0, 0.35)
+    if a > 0:
+        g = 0.5 + 0.5 * math.sin(lt * 9)
+        R = 175 * a * (1 + 0.03 * math.sin(lt * 7))
+        d.ellipse((540 - R - 22 + sh, 560 - R - 22, 540 + R + 22 + sh, 560 + R + 22), fill=RED + (int(80 + 100 * g),))
+        d.ellipse((540 - R - 9 + sh, 560 - R - 9, 540 + R + 9 + sh, 560 + R + 9), fill=YEL)
+        paste_c(img, _S["cam_big"], 540 + sh, 560, R / 280)
+    for k, (word, y, size, col, st, at) in enumerate([("PREGUNTA", 860, 150, WHITE, RED, 0.15), ("EXTRA", 1040, 230, RED, WHITE, 0.32)]):
+        if lt < at:
+            continue
+        kk = ease_out(min(1, (lt - at) / 0.16))
+        text(d, (540 + sh, y), word, tfont(int(size * (2.0 - kk))), col, 14, st, sh=12)
+    if lt > 0.32:
+        p = 0.5 + 0.5 * math.sin(lt * 8)
+        warn_icon(d, 140 + sh, 1040, 52 + 8 * p, INK, YEL)
+        warn_icon(d, 940 + sh, 1040, 52 + 8 * p, INK, YEL)
+    e = pop(lt, 0.6, 0.35)
+    if e > 0:
+        pill(d, 540, 1225 + (1 - e) * 80, "SOLO PARA FANS DE VERDAD", int(56 * max(e, 0.1)), YEL, INK, pad=(36, 18))
+    banner(img, d, t)
+    if 0.32 <= lt < 0.55:
+        _glitch(img, 1 - (lt - 0.32) / 0.23)
+    for at in (0.15, 0.32):
+        if at <= lt < at + 0.1:
+            img.paste(WHITE, (0, 0), Image.new("L", (W, H), int(170 * (1 - (lt - at) / 0.1))))
+
+
 def draw_hook(img, d, sc, lt, t):
     c = _S["c"]
+    if sc.get("ta") is not None:
+        if lt < sc["ta"]:
+            return _draw_teaser(img, sc, lt, t)
+        lt -= sc["ta"]
     img.paste(_S["hook_img"])
     dd = ImageDraw.Draw(img, "RGBA")
     z = 1.25 - 0.25 * ease_out(lt / 0.45) + 0.02 * lt
@@ -516,7 +694,7 @@ def draw_q(img, d, sc, lt, t):
     a = pop(lt, 0.0, 0.35)
     chat_panel(img, d, t, (70, 330 + (1 - a) * 30, 690, 590 + (1 - a) * 30), idx0=sc["i"] * 7,
                seq=_S.get("chat_q", {}).get(sc["i"]), lt=lt)
-    cam_frame(img, d, t, 720, 325, _S["c"]["nombre"].upper())
+    cam_frame(img, d, t, 720, 325, _S["c"].get("nombre_cam", _S["c"]["nombre"].upper()))
     # tarjeta de pregunta (oscura, borde neón)
     b = pop(lt, 0.1, 0.4)
     fq = math.sin(t * 1.4) * 5
@@ -631,9 +809,117 @@ def draw_q(img, d, sc, lt, t):
         img.paste((230, 20, 40), (0, 0), v.point(lambda x, a_=al: int(x * a_)))
 
 
+def _outro_v2(img, d, sc, lt, t):
+    """Final v2: «¿CUÁNTAS HAS ACERTADO?» → «¡AHORA DECIDES TÚ!» con encuesta del siguiente streamer
+    (barras que compiten), comentario que se escribe solo con propuestas y flecha hacia él."""
+    c = _S["c"]
+    acc = _S["acc"]
+    sw = sc["sw"]
+    lt2 = lt - sw
+    # corazones subiendo detrás de todo
+    if lt2 > 0:
+        for k in range(16):
+            ph = (lt2 * 0.42 + k / 16) % 1
+            hx = 90 + (k * 137) % 900 + math.sin(lt * 2 + k) * 25
+            _heart(d, hx, 1650 - ph * 1450, 13 + (k % 3) * 6, (255, 60 + (k % 4) * 30, 120, int(170 * (1 - ph))))
+    banner(img, d, t)
+    sh = math.sin(lt2 * 55) * 16 * max(0, 1 - lt2 / 0.35) if lt2 > 0 else 0
+    # foto
+    a = pop(lt, 0.05, 0.4)
+    if a > 0:
+        g = 0.5 + 0.5 * math.sin(lt * 4)
+        R = (150 if lt2 > 0 else 230) * a * (1 + 0.025 * math.sin(lt * 6))
+        cy = 600 if lt2 > 0 else 680
+        d.ellipse((540 - R - 20 + sh, cy - R - 20, 540 + R + 20 + sh, cy + R + 20), fill=acc + (int(70 + 70 * g),))
+        d.ellipse((540 - R - 8 + sh, cy - R - 8, 540 + R + 8 + sh, cy + R + 8), fill=YEL)
+        paste_c(img, _S["cam_big"], 540 + sh, cy, R / 280)
+    if lt2 < 0:
+        b = pop(lt, 0.2, 0.4)
+        if b > 0:
+            y = 1020 + (1 - b) * 200
+            rr(d, (96, y + 12, 996, y + 232 + 12), 36, (0, 0, 0, 110))
+            rr(d, (90, y, 990, y + 232), 36, (20, 13, 38, 245), outline=acc, width=5)
+            d.text((540, y + 80), "¿CUÁNTAS HAS ACERTADO?", font=tfont(66), fill=WHITE, anchor="mm")
+            d.text((540, y + 162), "¡Dímelo en comentarios!", font=font(50), fill=YEL, anchor="mm")
+        return
+    # titular que cae
+    k = ease_out(min(1, lt2 / 0.2))
+    text(d, (540 + sh, 370), "¡AHORA DECIDES TÚ!", tfont(int(96 * (1.6 - 0.6 * k))), YEL, 13, INK, sh=10)
+    # pregunta
+    e = pop(lt2, 0.1, 0.35)
+    y = 790 + (1 - e) * 60
+    rr(d, (96, y + 10, 996, y + 150 + 10), 32, (0, 0, 0, 110))
+    rr(d, (90, y, 990, y + 150), 32, (20, 13, 38, 245), outline=YEL, width=6)
+    d.text((540, y + 48), "¿QUIÉN QUIERES QUE SEA", font=tfont(54), fill=WHITE, anchor="mm")
+    d.text((540, y + 108), "EL SIGUIENTE?", font=tfont(70), fill=YEL, anchor="mm")
+    # encuesta en directo: las barras compiten
+    names = c.get("siguiente", [])[:4]
+    base = [31, 27, 23, 19]
+    vals = [base[i] + 5 * math.sin(lt2 * 1.8 + i * 1.9) for i in range(len(names))]
+    tot = sum(vals) or 1
+    pcs = [v / tot * 100 for v in vals]
+    lead = max(range(len(pcs)), key=lambda i: pcs[i]) if pcs else -1
+    grow = ease_out(min(1, max(0, (lt2 - 0.5) / 1.2)))
+    for i, nm in enumerate(names):
+        ai = pop(lt2, 0.5 + i * 0.12, 0.3)
+        if ai <= 0:
+            continue
+        y0 = 970 + i * 92
+        dx = (1 - ai) * -400
+        bx = (90 + dx, y0, 990 + dx, y0 + 78)
+        rr(d, (bx[0] + 5, bx[1] + 8, bx[2] + 5, bx[3] + 8), 24, (0, 0, 0, 90))
+        rr(d, bx, 24, (24, 16, 44, 235), outline=(YEL if i == lead else acc) + (220,), width=4 if i == lead else 3)
+        fw = (bx[2] - bx[0] - 12) * pcs[i] / 100 * grow * 1.6
+        if fw > 30:
+            rr(d, (bx[0] + 6, bx[1] + 6, bx[0] + 6 + fw, bx[3] - 6), 20, (YEL + (150,)) if i == lead else (acc + (110,)))
+        d.text((bx[0] + 34, (bx[1] + bx[3]) / 2 + 2), nm, font=tfont(44), fill=WHITE, anchor="lm")
+        d.text((bx[2] - 30, (bx[1] + bx[3]) / 2 + 2), f"{int(pcs[i] * grow)}%", font=tfont(42), fill=WHITE, anchor="rm")
+        if i == lead and grow > 0.5:
+            _heart(d, bx[2] - 150, (bx[1] + bx[3]) / 2 - 2, 15, (255, 60, 110))
+    # comentario que se escribe solo
+    ec = pop(lt2, 1.0, 0.35)
+    if ec > 0:
+        y0 = 1345 + (1 - ec) * 60
+        rr(d, (96, y0 + 8, 966, y0 + 96), 46, (0, 0, 0, 100))
+        rr(d, (90, y0, 960, y0 + 88), 44, WHITE)
+        d.ellipse((108, y0 + 14, 168, y0 + 74), fill=acc)
+        d.text((138, y0 + 46), "TÚ", font=tfont(26), fill=WHITE, anchor="mm")
+        frases = c.get("siguiente_escribe") or [f"que sea {n}!!" for n in c.get("siguiente", [])]
+        per = 1.7
+        tl = max(0.0, lt2 - 1.0)
+        fr = frases[int(tl / per) % len(frases)] if frases else ""
+        u = tl % per
+        n = int(len(fr) * min(1, u / 0.85)) if u < 1.3 else int(len(fr) * max(0, 1 - (u - 1.3) / 0.35))
+        txt = fr[:n]
+        fnt = font(42)
+        if txt:
+            d.text((190, y0 + 45), txt, font=fnt, fill=INK, anchor="lm")
+        else:
+            d.text((190, y0 + 45), "Añade un comentario...", font=fnt, fill=(150, 150, 160), anchor="lm")
+        if (lt * 2.5) % 1 < 0.55:
+            cx = 190 + (d.textlength(txt, font=fnt) if txt else 0) + 4
+            d.rectangle((cx, y0 + 22, cx + 4, y0 + 68), fill=acc)
+        d.polygon([(900, y0 + 26), (938, y0 + 44), (900, y0 + 62), (908, y0 + 44)], fill=acc)
+        bo = math.sin(lt * 8) * 14
+        ax = 1035 + bo
+        d.polygon([(ax - 40, y0 + 44), (ax, y0 + 14), (ax, y0 + 30), (ax + 30, y0 + 30), (ax + 30, y0 + 58),
+                   (ax, y0 + 58), (ax, y0 + 74)], fill=YEL, outline=INK)
+    c2 = pop(lt, sc["shout_at"] - 0.15, 0.4)
+    if c2 > 0:
+        pulse = 1 + 0.07 * math.sin(lt * 9)
+        pill(d, 500, 1530 + (1 - c2) * 400, "¡SÍGUEME PARA MÁS!", int(60 * pulse), YEL, INK)
+    c3 = pop(lt, sc["shout_at"] + 0.2, 0.5)
+    if c3 > 0:
+        paste_c(img, _S["logo"], 935, 1530, 130 * c3 / _S["logo"].width)
+    burst(d, lt2, 540, 860, 1.6)
+    burst(d, lt - sc["shout_at"], 500, 1450, 1.8)
+
+
 def draw_outro(img, d, sc, lt, t):
     img.paste(_S["outro_bg"])
     d = ImageDraw.Draw(img, "RGBA")
+    if sc.get("v2"):
+        return _outro_v2(img, d, sc, lt, t)
     banner(img, d, t)
     a = pop(lt, 0.05, 0.45)
     if a > 0:
@@ -746,7 +1032,7 @@ def render_frame(i):
     bg = _S["bg"].copy()
     img = bg.copy()
     d = ImageDraw.Draw(img, "RGBA")
-    {"hook": draw_hook, "q": draw_q, "outro": draw_outro}[sc["kind"]](img, d, sc, lt, t)
+    {"hook": draw_hook, "q": draw_q, "outro": draw_outro, "extra_intro": draw_extra_intro}[sc["kind"]](img, d, sc, lt, t)
     out_t = sc["dur"] - lt
     if out_t < 0.2 and sc is not scenes[-1]:
         nxt = scenes[scenes.index(sc) + 1]
