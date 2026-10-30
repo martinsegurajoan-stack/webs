@@ -63,6 +63,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/niveles_02.mp4` | `quizzes/niveles_02.json` | 111 s | NIVELES nº2 «PARTE 2: MÁS DIFÍCIL» (gama de colores B, pruebas más duras, imposible = reloj 22 superposiciones) |
 | `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
 | `salida/hora_del_quiz_05.mp4` | `quizzes/hora_del_quiz_05.json` | 101 s | Quiz GAMER (modo `gamer`, 5 + PREGUNTA IMPOSIBLE, pantalla de RANGOS) = PLANTILLA GAMER |
+| `salida/hora_del_quiz_07.mp4` | `quizzes/hora_del_quiz_07.json` | 89 s | Quiz GAMER nº2 (modo `gamer`, piques + comentarios, PREGUNTA TRAMPA, rangos rápidos, tempo 1,28) |
 | `salida/fiesta_01.mp4` | `quizzes/fiesta_01.json` | 119 s | FIESTA nº1 (7 pruebas distintas para beber + prueba imposible + brindis final) = PLANTILLA FIESTA |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
@@ -83,7 +84,7 @@ Plantillas y piezas reutilizables:
   `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
 
 ## Nombres de archivo
-- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 07).
+- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 08).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Mascotas: `quizzes/mascota_NN.json` → `salida/mascota_NN.mp4` (siguiente: 02).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 03).
@@ -226,6 +227,9 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 - RANGOS (cualquier modo): `"rangos_voz"` + lista `"rangos"` con `rango` («0–2»), `nombre`, `imagen` 3D y
   `voz`. Escena antes del cierre: cada rango entra y se ilumina al decirse; el último en dorado con confeti.
   En modo gamer el cierre pide «¡Dime tu rango en los comentarios!».
+- Gamer nº2 (`hora_del_quiz_07`, ≤90 s): `pique` + `comentario` en cada pregunta (diversión), `pregunta_voz` más
+  corta que el texto en pantalla para ahorrar segundos, `rangos_rapido` (reutiliza `rangos_voz` y el «¡Sígueme!»
+  de la caché), `tempo` 1,28. ~620 créditos de voz.
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
 `quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`
