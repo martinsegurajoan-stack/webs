@@ -57,6 +57,8 @@ def main():
                                                                    ((95, 140) if futbol else ((25, 80) if mascota else None))))
         if quiz.get("modo") == "gamer":
             theme = themes.paleta_gamer(tono)
+        elif quiz.get("modo") == "cole":
+            theme = themes.paleta_desde_tono(tono, "cole")
         elif halloween:
             theme = themes.paleta_halloween(tono)
         elif futbol:

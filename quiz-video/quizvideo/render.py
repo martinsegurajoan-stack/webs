@@ -105,8 +105,13 @@ MODOS["gamer"] = dict(MODOS["trivial"], **{
     "musica": "gamer", "bpm": 128,
 })
 MODOS["trivial"]["saludo"] = "¡Es hora del quiz!"
+# QUIZ "DEL COLE": trivial con decorado escolar (lápices, libros, fórmulas de tiza) y notas al final
+MODOS["cole"] = dict(MODOS["trivial"], **{
+    "outro_voz": "¡Dime tu nota en los comentarios!", "outro_titulo": "¿Qué nota has sacado?",
+    "outro_sub": "¡Escríbelo en comentarios!",
+})
 # GANCHO PRIMERO en todos los modos (regla del usuario): la frase gancho va antes del saludo
-for _m in ("trivial", "pareja", "halloween", "futbol", "gamer"):
+for _m in ("trivial", "pareja", "halloween", "futbol", "gamer", "cole"):
     MODOS[_m]["gancho_primero"] = True
 MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
 # QUIZ DE MASCOTAS: como el de parejas (no hay respuesta correcta), decorado de perros, gatos, conejos…
@@ -237,7 +242,7 @@ def build_timeline(quiz, voice, countdown=5):
 
     modo = modo_de(quiz)
     if hasattr(voice, "configure"):
-        voice.configure(style=modo["estilo_voz"], final_tag=modo["tag_final"], tempo=modo["tempo"])
+        voice.configure(style=modo["estilo_voz"], final_tag=modo["tag_final"], tempo=quiz.get("tempo", modo["tempo"]))
 
     def say(text):
         sig, dur = voice.say(text)
@@ -329,7 +334,15 @@ def build_timeline(quiz, voice, countdown=5):
         events += [("fx", "whoosh", st), ("voice", sig, st + 0.25)]
         loc = 0.25 + d0 + 0.1
         times = []
-        for r in quiz["rangos"]:
+        if quiz.get("rangos_rapido"):
+            # versión corta: las notas entran seguidas mientras suena una sola frase
+            loc = 0.6
+            for r in quiz["rangos"]:
+                times.append(loc)
+                events.append(("fx", "pop", st + loc))
+                loc += 0.55
+            loc = max(loc, 0.25 + d0 + 0.2)
+        for r in ([] if quiz.get("rangos_rapido") else quiz["rangos"]):
             sigr, dr = say(r["voz"])
             times.append(loc)
             events += [("fx", "pop", st + loc), ("voice", sigr, st + loc + 0.1)]
@@ -340,7 +353,10 @@ def build_timeline(quiz, voice, countdown=5):
         t += dur
 
     last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta")) or modo["fin"] is not None
-    sig, d = say(modo["outro_voz"] if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
+    if quiz.get("rangos_rapido"):
+        sig, d = None, 0.0  # la pantalla de notas ya pide comentar: solo queda el «¡Sígueme!»
+    else:
+        sig, d = say(modo["outro_voz"] if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
     shout_at = 0.4 + d + 0.1
     sig2, d2 = voice.say(modo["final_voz"], shout=True)
     dur = max(3.5, shout_at + d2 + 0.9)
@@ -415,6 +431,8 @@ def _init(state):
     _STATE["decor"] = {}
     if th.get("formas") == "gamer":
         _init_gamer(th)
+    if th.get("formas") == "cole":
+        _init_cole(th)
     if th.get("formas") == "futbol":
         _init_futbol(th)
     if th.get("formas") == "mascotas":
@@ -697,6 +715,10 @@ def _background(t):
         img.alpha_composite(layer)
         _gamer(img, t, beat)
         return img
+    if th.get("formas") == "cole":
+        img.alpha_composite(layer)
+        _cole(img, t, beat)
+        return img
     if th.get("formas") == "mascotas":
         img.alpha_composite(layer)
         _mascotas(img, t, beat)
@@ -762,6 +784,64 @@ def _halloween(img, t, beat):
         im = D["sprites"]["calabaza"][sz]
         bump = int(8 * math.exp(-beat * 5))
         img.alpha_composite(im, (int(px - im.width / 2), int(H - 90 - im.height / 2 - bump)))
+
+
+def _init_cole(th):
+    """Decorado escolar: lápices, libros, reglas, manzanas… flotando y fórmulas de tiza."""
+    dd = os.path.join(ASSETS, "decor_cole")
+
+    def spr(name, size):
+        im = Image.open(os.path.join(dd, name + ".png")).convert("RGBA")
+        return im.resize((size, size), Image.LANCZOS)
+
+    D = _STATE["decor"]
+    nombres = ("lapiz", "libro", "regla", "mochila", "globo", "abaco", "manzana", "bombilla", "birrete",
+               "microscopio", "libros", "probeta", "escuadra")
+    D["sprites"] = {n: [spr(n, sz) for sz in (80, 110, 140)] for n in nombres}
+    D["burst"] = [spr(n, 120) for n in ("lapiz", "libro", "regla", "manzana", "bombilla", "birrete", "escuadra")]
+    rs = random.Random(44)
+    names = list(nombres) + ["lapiz", "libro", "bombilla"]
+    D["flyers"] = [(n, rs.randint(0, 2), rs.uniform(0, W), rs.uniform(0, H), rs.uniform(45, 95),
+                    rs.uniform(0, 6.28), rs.choice((-1, 1))) for n in names]
+    # fórmulas de tiza que flotan (texto blanco semitransparente)
+    formulas = ["2+2=4", "3x3=9", "H2O", "10:2=5", "7x8=?", "ABC", "1/2", "%", "x+y", "?", "A+B", "100%", "5+5=10", "!"]
+    D["tiza"] = []
+    for k, f in enumerate(formulas):
+        fnt = tfont(rs.choice((54, 64, 78)))
+        tmp = ImageDraw.Draw(Image.new("RGBA", (1, 1)))
+        w_ = int(tmp.textlength(f, font=fnt)) + 20
+        im = Image.new("RGBA", (w_, fnt.size + 30), (0, 0, 0, 0))
+        ImageDraw.Draw(im).text((10, 6), f, font=fnt, fill=(255, 255, 255, 95))
+        D["tiza"].append((im, rs.uniform(0, W), rs.uniform(0, H), rs.uniform(25, 55), rs.uniform(0, 6.28)))
+    # cuadrícula de cuaderno muy suave
+    grid = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    gd = ImageDraw.Draw(grid)
+    for x in range(0, W, 60):
+        gd.line((x, 0, x, H), fill=(255, 255, 255, 22), width=2)
+    for y in range(0, H, 60):
+        gd.line((0, y, W, y), fill=(255, 255, 255, 22), width=2)
+    gd.line((110, 0, 110, H), fill=(255, 90, 110, 70), width=4)  # margen rojo del cuaderno
+    D["grid"] = grid
+
+
+def _cole(img, t, beat):
+    D = _STATE["decor"]
+    off = int((t * 20) % 60)
+    img.alpha_composite(D["grid"].crop((0, 0, W, H - off)), (0, off))
+    for im, x0, y0, sp, ph in D["tiza"]:
+        x = x0 + 30 * math.sin(t * 0.5 + ph)
+        y = (y0 - sp * t) % (H + 200) - 100
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+    for n, si, x0, y0, sp, ph, dirx in D["flyers"]:
+        im = D["sprites"][n][si]
+        x = x0 + 45 * math.sin(t * 0.8 + ph)
+        y = (y0 - sp * t) % (H + 300) - 150
+        bote = 1 + 0.07 * math.exp(-beat * 5)
+        im = im.resize((int(im.width * bote), int(im.height * bote)), Image.BILINEAR)
+        im = im.rotate(20 * math.sin(t * 1.4 + ph) + (t * 25 * dirx if n == "lapiz" else 0),
+                       resample=Image.BICUBIC, expand=True)
+        im.putalpha(im.getchannel("A").point(lambda v: int(v * 0.85)))
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
 
 
 def _init_mascotas(th):
@@ -911,6 +991,20 @@ def _draw_intro(layer, sc, lt):
             pulse = 1 + 0.06 * math.sin(lt * 9)
             _pill(d, 540, 1500 + (1 - c) * 400, quiz["pegatina_gancho"], int(max(10, 66 * pulse)),
                   (235, 35, 60), (255, 255, 255), pad=(46, 24))
+    if th.get("formas") == "cole" and lt < 1.8:
+        # GANCHO: destello + estallido de lápices, libros y reglas desde el título
+        D = _STATE["decor"]
+        if lt < 0.18:
+            ImageDraw.Draw(layer).rectangle((0, 0, W, H), fill=(255, 255, 255, int(110 * (1 - lt / 0.18))))
+        for j, (vx, vy, ci, s_, ph) in enumerate(_STATE["confetti"][:22]):
+            im = D["burst"][j % len(D["burst"])]
+            x = 540 + vx * 900 * lt
+            y = 450 + vy * 1000 * lt + 1100 * lt * lt
+            al = max(0.0, 1 - lt / 1.8)
+            im2 = im.rotate(math.degrees(ph + lt * 6 * (1 if j % 2 else -1)), resample=Image.BICUBIC)
+            if al < 1:
+                im2.putalpha(im2.getchannel("A").point(lambda v, a_=al: int(v * a_)))
+            layer.alpha_composite(im2, (int(x - im2.width / 2), int(y - im2.height / 2)))
     if th.get("formas") == "gamer":
         # estallido de bloques de píxel desde el título en el primer segundo
         fx = Image.new("RGBA", (W, H), (0, 0, 0, 0))
@@ -1176,6 +1270,25 @@ def _draw_question(layer, sc, lt):
             beat = (lt - cs) % 1 if lt >= cs else 1
             pop = 1 + 0.35 * (1 - ease_out(beat / 0.25)) if lt >= cs else 1
             d.text((cx, cy + 6), str(max(1, num)), font=tfont(104 * pop * ap), fill=th["text_dark"], anchor="mm")
+
+    # pegatina "pique" junto al cronómetro durante la cuenta atrás (solo texto, sin voz)
+    if q.get("pique") and cs <= lt < sc["reveal"]:
+        pp = ease_out_back((lt - cs - 0.6) / 0.35)
+        if pp > 0:
+            lines_ = q["pique"].upper().split("|")
+            fs = tfont(46)
+            tw = max(d.textlength(l_, font=fs) for l_ in lines_)
+            st = Image.new("RGBA", (int(tw + 60), int(56 * len(lines_) + 50)), (0, 0, 0, 0))
+            sd = ImageDraw.Draw(st)
+            sd.rounded_rectangle((6, 12, st.width - 2, st.height - 2), 26, fill=(0, 0, 0, 80))
+            sd.rounded_rectangle((0, 0, st.width - 8, st.height - 12), 26, fill=th["accent"],
+                                 outline=th["text_dark"], width=5)
+            for li, l_ in enumerate(lines_):
+                sd.text(((st.width - 8) / 2, 25 + 28 + li * 56), l_, font=fs, fill=th["text_dark"], anchor="mm")
+            k_ = max(0.05, pp * (1 + 0.05 * math.sin(lt * 8)))
+            st = st.resize((max(2, int(st.width * k_)), max(2, int(st.height * k_))), Image.BILINEAR)
+            st = st.rotate(8 + 3 * math.sin(lt * 5), resample=Image.BICUBIC, expand=True)
+            layer.alpha_composite(st, (int(845 - st.width / 2), int(835 - st.height / 2)))
 
     # opciones
     for k, opt in enumerate(q["opciones"]):

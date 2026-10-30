@@ -54,6 +54,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
 | `salida/pareja_02.mp4` | `quizzes/pareja_02.json` | 81 s | Parejas nº2 (rojo coral, 5+extra, portada cartel) |
+| `salida/hora_del_quiz_06.mp4` | `quizzes/hora_del_quiz_06.json` | 89 s | QUIZ DEL COLE (modo `cole`, verde, fácil→muy difícil sin avisar, notas al final) = PLANTILLA COLE |
 | `salida/mascota_01.mp4` | `quizzes/mascota_01.json` | 87 s | QUIZ DE MASCOTAS nº1 (modo `mascota`, amarillo, 5+exclusiva, cierre parte 2) = PLANTILLA MASCOTAS |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
 | `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
@@ -81,7 +82,7 @@ Plantillas y piezas reutilizables:
   `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
 
 ## Nombres de archivo
-- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 06).
+- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 07).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Mascotas: `quizzes/mascota_NN.json` → `salida/mascota_NN.mp4` (siguiente: 02).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
@@ -153,6 +154,19 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   rotatoria ("¿Habéis coincidido?", ...) con lluvia de corazones. No hace falta `correcta`.
 - Cierre: "¿Cuántas habéis acertado?" + "¡Etiqueta a tu pareja y sígueme para más!" + logo.
 - Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
+
+## Modo "cole" (QUIZ DEL COLE / «lo sabe hasta un niño de 13 años»)
+- `"modo": "cole"` (ver `quizzes/hora_del_quiz_06.json`): trivial con respuesta narrada. Se VENDE como fácil
+  («NIVEL: FÁCIL», «lo sabe hasta un niño de 13 años») pero las preguntas se ponen difíciles sin avisar
+  (1-3 asequibles, 4-6 muy difíciles: cosas de primaria que se estudiaron y se olvidan).
+- Decorado `_cole()` (sprites en `assets/decor_cole/`): cuadrícula de cuaderno con margen rojo, lápices,
+  libros, reglas, manzanas, bombillas… flotando y fórmulas de tiza; estallido de material + destello en el
+  gancho. Paleta `paleta_desde_tono(tono, "cole")` (tono auto).
+- Por pregunta: `comentario` (voz, 2-4 palabras, aleatorio y gracioso) y `pique` (pegatina SOLO de texto junto
+  al cronómetro durante la cuenta atrás, «|» = salto de línea; no gasta créditos).
+- Final: `rangos` + `"rangos_rapido": true` (las 4 notas entran seguidas con UNA frase de voz y el cierre
+  solo grita «¡Sígueme para más!»). `tempo` en el JSON acelera la voz para no pasar de 90 s (nº1: 1,28).
+- Nº1: 89 s, ~695 créditos de voz (18 frases).
 
 ## Modo "mascota" (QUIZ DE MASCOTAS / ¿Cuánto conoces a tu mascota?)
 - `"modo": "mascota"` (ver `quizzes/mascota_01.json`): como el de parejas (sin respuesta correcta, no hace
