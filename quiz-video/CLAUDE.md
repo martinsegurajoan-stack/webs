@@ -52,6 +52,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
 | `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
+| `salida/fiesta_01.mp4` | `quizzes/fiesta_01.json` | 119 s | FIESTA nº1 (7 pruebas distintas para beber + prueba imposible + brindis final) = PLANTILLA FIESTA |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -75,6 +76,7 @@ Plantillas y piezas reutilizables:
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
+- Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
 - Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, siguiente: 02).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
@@ -221,6 +223,29 @@ y la nota «Vale con cualquier bebida» (ayuda con TikTok, que limita contenido 
 - Fondo de fiesta: degradado, focos que barren, confeti cayendo; gancho/cierre en morado/fucsia (tono 280-340).
 - Voz QUIZ con estilo `[cheerful and excited]` (en el JSON), tempo x1.25. Música pop a 124 bpm.
 - Nº1: 109 s, ~1.740 créditos de voz (30 frases; las 3 reacciones de voz se quitaron por ritmo).
+
+## Formato "FIESTA" (pruebas para beber con amigos, cada una con mecánica distinta)
+`quizzes/fiesta_NN.json` → `generar_fiesta.py` + `quizvideo/fiesta.py` → MP4 + portadas solas
+(`--preview s1,s2 -o ruta` para revisar gratis; `--solo-portada`). Úsalo cuando pida «otro para beber»
+que NO sea solo elegir cartas. MISMAS REGLAS que cartas: nada guarro, «sorbos», «Vale con cualquier bebida»,
+que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir frases de «yo nunca», categorías…).
+- Estética de DISCOTECA: bola de disco con rayos, reflejos que giran, láseres desde las esquinas, ecualizador
+  abajo al ritmo (128 bpm), confeti, bocina de fiesta, sacudidas de pantalla en los golpes.
+- Gancho: «¿QUIÉN AGUANTA HASTA EL FINAL?» + carrusel 3D con los iconos de las pruebas (la última bloqueada
+  con «?» en rojo) + pegatina «LA ÚLTIMA ES IMPOSIBLE». Luego «¿CÓMO SE JUEGA?» (3 fichas + pausa).
+- Cada prueba: fondo neón propio que entra en círculo, barra de pruebas arriba (✓), título que entra
+  gigante y sube a la cabecera. Tipos (`tipo`): `ruleta` (8 `sectores`, `gana` = índice; ticks reales al
+  pasar cada sector), `senalar` («¿quién es más probable que…?» + 3-2-1 + manos señalando),
+  `yo_nunca` (3 `frases` en tarjetas que vuelan + sello «¡BEBE!»), `reflejos` (`secuencia` de emojis,
+  `trampas` que tiemblan, al salir la cerveza «¡YA!»), `bomba` (`categoria`, mecha que se quema,
+  tic-tac que acelera, explosión), `esto_aquello` (dos cartas VS + 3-2-1 «¡VOTAD!», bebe la minoría) y
+  `final` (PRUEBA IMPOSIBLE: susurro, relámpagos, título con glitch, trabalenguas palabra a palabra,
+  «¡VUESTRO TURNO!» con cuenta atrás, «¿FALLAS? ¡BEBE!» y corona de REY DE LA FIESTA) → escena de
+  BRINDIS FINAL con fuegos artificiales, cervezas chocando y champán. Cierre «¿QUIÉN HA GANADO LA FIESTA?».
+- Emojis 3D en `assets/fiesta/` (de `@lobehub/fluent-emoji-3d`). Voz QUIZ `[cheerful and excited]`, tempo
+  x1,27; las frases que empiezan con etiqueta (`[whispers]`, `[excited]`) van sin el estilo general.
+- Nº1: 119 s, ~1.750 créditos de voz (26 frases). Ideas para el siguiente: «la patata caliente» (pasar el
+  móvil), «piedra papel tijera» contra la pantalla, «el dado», «verdad o sorbo», «cadena de palabras».
 
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
 CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,

@@ -8,6 +8,8 @@ Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags 
 
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
   ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`.
+- JUEGO DE FIESTA PARA BEBER con pruebas variadas: plantilla `quiz-video/plantillas-quiz/fiesta.json` +
+  `generar_fiesta.py` (ver "FIESTA" en `quiz-video/CLAUDE.md`). Solo cartas: `cartas.json`.
 - QUIZ DE STREAMERS (AuronPlay, etc.): plantilla `quiz-video/plantillas-quiz/streamer.json` + `generar_streamer.py`
   (necesita FOTO REAL que manda el usuario). Mejorar la estética un poco en cada vídeo nuevo.
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`

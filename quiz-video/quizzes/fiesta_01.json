@@ -1,0 +1,160 @@
+{
+  "modo": "fiesta",
+  "video": "fiesta_01",
+  "titulo": "¿Quién aguanta hasta el final?",
+  "estilo_voz": "[cheerful and excited]",
+  "gancho": {
+    "voz": "[excited] ¡La última prueba es imposible! ¿Quién de tus amigos llega al final?",
+    "texto": [
+      "¿QUIÉN AGUANTA",
+      "HASTA EL FINAL?"
+    ],
+    "pegatina": "LA ÚLTIMA ES IMPOSIBLE"
+  },
+  "instrucciones": {
+    "voz": "Vasos llenos y todos alrededor del móvil. ¡Si no os da tiempo, pausad!",
+    "pasos": [
+      [
+        "cerveza",
+        "Vasos llenos"
+      ],
+      [
+        "movil",
+        "Todos alrededor del móvil"
+      ],
+      [
+        "reloj",
+        "¿Sin tiempo? ¡Pausa!"
+      ]
+    ],
+    "nota": "Vale con cualquier bebida"
+  },
+  "pruebas": [
+    {
+      "tipo": "ruleta",
+      "nombre": "LA RULETA LOCA",
+      "icono": "_ruleta",
+      "anuncio": "¡Prueba uno: la ruleta loca!",
+      "sectores": [
+        "EL MÁS ALTO",
+        "TODOS BEBEN",
+        "REPARTE 3",
+        "ROPA NEGRA",
+        "TE LIBRAS",
+        "EL MÁS BAJO",
+        "MÓVIL EN MANO",
+        "EL MÁS JOVEN"
+      ],
+      "gana": 3,
+      "resultado": "¡Bebe todo el que lleve algo negro!",
+      "resultado_voz": "¡Bebe todo el que lleve algo negro!"
+    },
+    {
+      "tipo": "senalar",
+      "nombre": "EL DEDO ACUSADOR",
+      "icono": "senala",
+      "anuncio": "¡Prueba dos: el dedo acusador!",
+      "pregunta": "…se quede dormido en esta fiesta?",
+      "emoji": "dormido",
+      "voz": "¿Quién es más probable que se quede dormido en esta fiesta? ¡A la de tres, señalad!",
+      "resultado": "El más señalado bebe 2 sorbos",
+      "resultado_voz": "¡El más señalado bebe dos sorbos!"
+    },
+    {
+      "tipo": "yo_nunca",
+      "nombre": "YO NUNCA NUNCA",
+      "icono": "mano",
+      "anuncio": "¡Prueba tres: yo nunca nunca! Si lo has hecho, bebes.",
+      "frases": [
+        [
+          "he mandado un audio al chat equivocado",
+          "Yo nunca he mandado un audio al chat equivocado."
+        ],
+        [
+          "he fingido que me sabía una canción",
+          "Yo nunca he fingido que me sabía una canción."
+        ],
+        [
+          "me he reído en un momento serio",
+          "Yo nunca me he reído en un momento serio."
+        ]
+      ]
+    },
+    {
+      "tipo": "reflejos",
+      "nombre": "REFLEJOS",
+      "icono": "cerveza",
+      "anuncio": "¡Prueba cuatro: reflejos! Cuando salga la cerveza, ¡golpead la mesa!",
+      "secuencia": [
+        "pizza",
+        "limon",
+        "refresco",
+        "helado",
+        "tropical",
+        "cerveza"
+      ],
+      "trampas": [
+        "refresco",
+        "tropical"
+      ],
+      "resultado": [
+        "EL ÚLTIMO BEBE",
+        "¡Y EL QUE SE ADELANTÓ TAMBIÉN!"
+      ],
+      "resultado_voz": "¡El último bebe! Y quien se adelantó… ¡también!"
+    },
+    {
+      "tipo": "bomba",
+      "nombre": "LA BOMBA",
+      "icono": "bomba",
+      "anuncio": "¡Prueba cinco: la bomba!",
+      "voz": "Por turnos, decid marcas de coche. ¡A quien le explote, bebe tres!",
+      "categoria": "MARCAS DE COCHE",
+      "emoji": "coche",
+      "segundos": 7,
+      "resultado": "¡BEBE 3 SORBOS!",
+      "resultado_voz": "¡Bum! ¡Tres sorbos!"
+    },
+    {
+      "tipo": "esto_aquello",
+      "nombre": "ESTO O AQUELLO",
+      "icono": "huevo",
+      "anuncio": "¡Prueba seis: esto o aquello!",
+      "voz": "¿Tortilla con cebolla o sin cebolla? ¡A la de tres, votad!",
+      "pregunta": [
+        "¿TORTILLA CON",
+        "O SIN CEBOLLA?"
+      ],
+      "a": [
+        "CON CEBOLLA",
+        "cebolla"
+      ],
+      "b": [
+        "SIN CEBOLLA",
+        "huevo"
+      ],
+      "resultado": "El bando con menos votos bebe 2",
+      "resultado_voz": "¡El bando con menos votos bebe dos!"
+    },
+    {
+      "tipo": "final",
+      "nombre": "IMPOSIBLE",
+      "icono": "calavera",
+      "anuncio": "[whispers] Y ahora… la prueba imposible.",
+      "voz": "¡El trabalenguas maldito! Decidlo tres veces seguidas sin fallar.",
+      "trabalenguas": "Tres tristes tigres tragaban trigo en un trigal",
+      "trabalenguas_voz": "Tres tristes tigres tragaban trigo en un trigal.",
+      "segundos": 6,
+      "resultado_voz": "Quien falle, bebe. ¡Y quien lo consiga es el rey de la fiesta y reparte cinco!",
+      "brindis_voz": "¡Y para terminar… brindis final! ¡Todos arriba!"
+    }
+  ],
+  "cierre_voz": "¿Quién ha ganado la fiesta? ¡Etiqueta a tus amigos!",
+  "portada": {
+    "titulo": [
+      "¿QUIÉN AGUANTA",
+      "HASTA EL FINAL?"
+    ],
+    "pegatina": "LA ÚLTIMA ES IMPOSIBLE"
+  }
+}
