@@ -35,7 +35,9 @@ Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), en
 2. Las 2 portadas (`SendUserFile`, display "render"): `portadas/<video>_9x16.png` (Instagram Reels,
    Facebook Reels, YouTube Shorts) y `portadas/<video>_3x4.png` (TikTok).
 3. En el mensaje, título + descripción + hashtags para cada plataforma, VÍDEO A VÍDEO (sin mezclar
-   vídeos) y en bloques de código para copiar: TikTok, YouTube Shorts, Instagram, Facebook.
+   vídeos) y en bloques de código para copiar: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER/X
+   (desde 31-10-2026 el usuario también sube a su cuenta personal de X: un solo texto de ≤280 caracteres
+   CONTANDO los hashtags; gancho corto + CTA a responder + 4-6 hashtags virales/tema, siempre #horadelquiz).
    Reglas: TikTok/Instagram/Facebook no tienen campo título → el "título" es la 1ª línea del texto;
    YouTube: título ≤100 caracteres con `#shorts`; Instagram también con muchos hashtags (ya NO hay máximo de 5); siempre `#horadelquiz`;
    nunca revelar respuestas; CTA a comentar la puntuación (parejas: etiquetar a la pareja).
