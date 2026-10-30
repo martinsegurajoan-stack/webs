@@ -37,5 +37,5 @@ Nombre real, Toro, la vuelta al mundo, La Velada… ¿Cuántas aciertas? Y dinos
 
 ## Comentario para fijar
 ```
-La extra: ¡un capibara! 🦫 ¿Acertaste? ¿Y quién quieres que sea el siguiente? 👇
+La extra: ¡una capibara! 🦫 ¿Acertaste? ¿Y quién quieres que sea el siguiente? 👇
 ```
