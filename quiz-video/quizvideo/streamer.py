@@ -227,6 +227,9 @@ def _init(state):
     _S["burst"] = [(rb.uniform(-1, 1), rb.uniform(-1.5, -0.4), rb.choice(cols), rb.uniform(9, 20),
                     rb.uniform(0, 6.28)) for _ in range(44)]
     _S["viewers0"] = 8000 + seed % 9000
+    rp = random.Random(seed + 7)
+    _S["parts"] = [(rp.uniform(0, W), rp.uniform(0, H), rp.uniform(0.5, 1.4), rp.uniform(2.5, 5.5),
+                    rp.uniform(0, 6.28)) for _ in range(26)]
 
 
 # ------------------------------------------------------------------ piezas
@@ -391,9 +394,22 @@ def opt_boxes():
     return [(70, y0 + i * (h + g), 1010, y0 + i * (h + g) + h) for i in range(4)]
 
 
+def particles(d, t):
+    """Chispas de neón que suben despacio y titilan (fondo con vida)."""
+    for k, (x0, y0, sp, sz, ph) in enumerate(_S["parts"]):
+        y = (y0 - t * 55 * sp) % (H + 80) - 40
+        x = x0 + math.sin(t * 0.9 * sp + ph) * 26
+        tw = 0.5 + 0.5 * math.sin(t * 3 * sp + ph)
+        col = _S["acc"] if k % 3 else YEL
+        r = sz * (0.7 + 0.5 * tw)
+        d.ellipse((x - r * 2.4, y - r * 2.4, x + r * 2.4, y + r * 2.4), fill=col + (int(26 * tw),))
+        d.ellipse((x - r, y - r, x + r, y + r), fill=col + (int(110 + 120 * tw),))
+
+
 def draw_q(img, d, sc, lt, t):
     q = sc["q"]
     acc = _S["acc"]
+    particles(d, t)
     banner(img, d, t)
     # fila superior: chat + cámara
     a = pop(lt, 0.0, 0.35)
@@ -401,7 +417,8 @@ def draw_q(img, d, sc, lt, t):
     cam_frame(img, d, t, 720, 325, _S["c"]["nombre"].upper())
     # tarjeta de pregunta (oscura, borde neón)
     b = pop(lt, 0.1, 0.4)
-    y0, y1 = 625, 870
+    fq = math.sin(t * 1.4) * 5
+    y0, y1 = 625 + fq, 870 + fq
     cy = (y0 + y1) / 2
     hh = (y1 - y0) / 2 * (0.85 + 0.15 * b)
     box = (70, cy - hh, 1010, cy + hh)
@@ -446,10 +463,24 @@ def draw_q(img, d, sc, lt, t):
         dx = (1 - a2) * -300
         good = revealed and i == sc["ci"]
         bad = revealed and not good
-        b2 = (x0 + dx, y0b, x1 + dx, y1b)
-        rr(d, (b2[0] + 5, b2[1] + 9, b2[2] + 5, b2[3] + 9), 28, (0, 0, 0, 90))
+        # las respuestas FLOTAN: cada una con su propio vaivén suave
+        fy = math.sin(t * 1.9 + i * 1.4) * 9
+        fx = math.sin(t * 1.2 + i * 2.1) * 6
+        if good:
+            fy -= 10 * ease_out(min(1, (lt - rv) / 0.3))
+        b2 = (x0 + dx + fx, y0b + fy, x1 + dx + fx, y1b + fy)
+        lift = 9 - fy * 0.6
+        if good:
+            gg = 0.5 + 0.5 * math.sin(lt * 7)
+            rr(d, (b2[0] - 10, b2[1] - 10, b2[2] + 10, b2[3] + 10), 36, GREEN + (int(60 + 60 * gg),))
+        elif not bad:
+            rr(d, (b2[0] - 4, b2[1] - 4, b2[2] + 4, b2[3] + 4), 32, acc + (28,))
+        rr(d, (b2[0] + 5, b2[1] + lift, b2[2] + 5, b2[3] + lift), 28, (0, 0, 0, 90))
         rr(d, b2, 28, (24, 16, 44, 235) if not bad else (24, 16, 44, 130),
            outline=(GREEN if good else acc + ((90,) if bad else (200,))), width=5 if good else 3)
+        # brillo de cristal en la mitad superior
+        rr(d, (b2[0] + 10, b2[1] + 6, b2[2] - 10, b2[1] + (b2[3] - b2[1]) * 0.42), 22,
+           (255, 255, 255, 14 if not bad else 6))
         # barra de votos
         fw = (b2[2] - b2[0] - 16) * pcs[i] / 100 * vote
         if fw > 30:

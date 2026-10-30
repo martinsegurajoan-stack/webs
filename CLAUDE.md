@@ -8,6 +8,8 @@ Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags 
 
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
   ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`.
+- QUIZ DE STREAMERS (AuronPlay, etc.): plantilla `quiz-video/plantillas-quiz/streamer.json` + `generar_streamer.py`
+  (necesita FOTO REAL que manda el usuario). Mejorar la estética un poco en cada vídeo nuevo.
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.

@@ -223,6 +223,13 @@ y la nota «Vale con cualquier bebida» (ayuda con TikTok, que limita contenido 
 - Nº1: 109 s, ~1.740 créditos de voz (30 frases; las 3 reacciones de voz se quitaron por ritmo).
 
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
+CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,
+referencia `quizzes/streamer_01.json`). REGLA DEL USUARIO: en cada vídeo nuevo MEJORARLA un poco más en
+estética (sin perder el estilo reconocible). Ya hecho tras el nº1: respuestas que FLOTAN (vaivén propio
+cada una, la correcta se eleva y brilla), tarjeta de pregunta flotando, halo neón y brillo de cristal en
+las opciones, chispas de neón subiendo por el fondo. Ideas para los siguientes: emotes que suben por el
+chat, «¡NUEVO SUSCRIPTOR!»/donaciones falsas como transiciones, foto con recorte y contorno (pegatina),
+barra de «hype train» que se llena con las preguntas, cámara que se mueve un poco, partículas al revelar.
 `quizzes/streamer_NN.json` → `generar_streamer.py` + `quizvideo/streamer.py` → MP4 + portadas solas.
 NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/Baloo, amarillo, logo,
 @hora.delquiz, voz QUIZ alegre, cuenta atrás con tensión) pero con look de directo de Twitch.
