@@ -54,6 +54,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_02.mp4` | `quizzes/hora_del_quiz_02.json` | 88 s | Trivial nº2 acertijos (azul, 5+extra) = PLANTILLA TRIVIAL DE REFERENCIA |
 | `salida/pareja_01.mp4` | `quizzes/pareja_01.json` | 84 s | Parejas nº1 (rosa, 5+extra) = PLANTILLA PAREJA DE REFERENCIA |
 | `salida/pareja_02.mp4` | `quizzes/pareja_02.json` | 81 s | Parejas nº2 (rojo coral, 5+extra, portada cartel) |
+| `salida/mascota_01.mp4` | `quizzes/mascota_01.json` | 87 s | QUIZ DE MASCOTAS nº1 (modo `mascota`, amarillo, 5+exclusiva, cierre parte 2) = PLANTILLA MASCOTAS |
 | `salida/hora_del_quiz_03.mp4` | `quizzes/hora_del_quiz_03.json` | 105 s | Quiz de HALLOWEEN (modo `halloween`, 5+extra, comentarios cortos, dibujos genéricos) = PLANTILLA TEMÁTICA DE REFERENCIA |
 | `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
@@ -82,6 +83,7 @@ Plantillas y piezas reutilizables:
 ## Nombres de archivo
 - Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 06).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
+- Mascotas: `quizzes/mascota_NN.json` → `salida/mascota_NN.mp4` (siguiente: 02).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
@@ -151,6 +153,23 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   rotatoria ("¿Habéis coincidido?", ...) con lluvia de corazones. No hace falta `correcta`.
 - Cierre: "¿Cuántas habéis acertado?" + "¡Etiqueta a tu pareja y sígueme para más!" + logo.
 - Coste aproximado: ~85 créditos por pregunta (la etiqueta de tono también cuenta).
+
+## Modo "mascota" (QUIZ DE MASCOTAS / ¿Cuánto conoces a tu mascota?)
+- `"modo": "mascota"` (ver `quizzes/mascota_01.json`): como el de parejas (sin respuesta correcta, no hace
+  falta `correcta`), 5 + 1 EXTRA de comentarios. Gancho de `FRASES_MASCOTA` ANTES de «¡Es hora del quiz de
+  mascotas!» (registro `assets/frases_mascota_usadas.json`).
+- Decorado `_mascotas()` en `render.py` (sprites en `assets/decor_mascotas/`): rastros de huellas que cruzan,
+  perros/gatos/conejos/hámsters latiendo con la música, huesos, peces, ovillos, pelotas, y un perro y un gato
+  que se asoman por abajo. El dibujo de cada pregunta sale en una FOTO POLAROID. Tras la cuenta atrás: frase
+  graciosa (campo `fin`: [voz, CARTEL] por pregunta) con lluvia de huellas, huesos y corazones.
+- Paleta `paleta_mascota` (tonos cálidos 25-80, nº1 amarillo 57). Música pop. Voz QUIZ "[cheerful and playful]",
+  tempo x1.12; final "[excited, cheerful]".
+- Campos por pregunta (sirven en cualquier modo): `cabecera` (p. ej. "PREGUNTA EXCLUSIVA"), `etiqueta_voz`
+  ("¡Pregunta exclusiva!"), `pegatina` (cartel rojo inclinado sobre la tarjeta), `pregunta_voz`, `fin`.
+- Cierre: «¿Conoces de verdad a tu mascota?» + «Si te ha gustado y quieres la parte dos, ¡sígueme y apoya
+  el vídeo!» con «¡SÍGUEME PARA LA PARTE 2!» y «♥ APOYA EL VÍDEO» (claves `outro_pill`/`outro_pill2` del modo).
+- Nº1: 87 s, ~1.075 créditos de voz (15 frases). Dibujos 3D gratis (el usuario pidió «fotos»; se usaron
+  los dibujos 3D gratis de siempre).
 
 ## Modo "halloween" (quiz temático) y CHISTES
 - `"modo": "halloween"`: misma dinámica que el trivial (5+extra, respuesta narrada, cronómetro con

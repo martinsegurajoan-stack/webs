@@ -9,6 +9,7 @@ ejecuta los comandos de su fila**. Todos los comandos se lanzan desde la carpeta
 |---|---|---|---|---|
 | `trivial.json` | Quiz normal | 5 preguntas + 1 EXTRA sin respuesta (a comentarios). Frase gancho salseante, cuenta atrás de 5 s con tensión, voz QUIZ narra la pregunta y la respuesta correcta, color de fondo nuevo cada vez. | `generar.py` | `salida/hora_del_quiz_02.mp4` |
 | `pareja.json` | Quiz de parejas | «¿Cuánto conoces a tu pareja?»: 5 + 1 extra, sin respuesta correcta, frase pícara tras cada cuenta atrás, corazones, música romántica, voz cariñosa y bromista. | `generar.py` | `salida/pareja_01.mp4` |
+| `mascota.json` | Quiz de mascotas | «¿Cuánto conoces a tu mascota?»: 5 + 1 pregunta EXCLUSIVA con pegatina, sin respuesta correcta, frase graciosa tras cada cuenta atrás con lluvia de huellas y huesos, fondo cálido con perros, gatos, conejos, rastros de huellas y mascotas que se asoman, dibujo de cada pregunta en foto polaroid, cierre «¡SÍGUEME PARA LA PARTE 2!» + «APOYA EL VÍDEO». | `generar.py` | `salida/mascota_01.mp4` |
 | `halloween.json` | Quiz temático Halloween | Como el trivial pero todo Halloween: luna, telarañas, murciélagos, fantasmas, música de miedo, voz «spooky» y comentario corto tras cada respuesta. | `generar.py` | `salida/hora_del_quiz_03.mp4` |
 | `futbol.json` | Quiz temático fútbol | Fondo de campo de fútbol, balones y tarjetas, música de estadio, voz de comentarista, gancho fuerte ANTES del saludo, «NIVEL: ALTO». | `generar.py` | `salida/hora_del_quiz_04.mp4` |
 | `gamer.json` | Quiz GAMER (videojuegos) | Plantilla trivial con decorado gamer synthwave (píxeles, rejilla neón, mandos, monedas), música chiptune, PREGUNTA IMPOSIBLE y pantalla de RANGOS (novato → leyenda). ~1:40. | `generar.py` | `salida/hora_del_quiz_05.mp4` |
@@ -21,8 +22,8 @@ ejecuta los comandos de su fila**. Todos los comandos se lanzan desde la carpeta
 
 ## Cómo se usa cada una
 
-### Quizzes (`trivial`, `pareja`, `halloween`, `futbol`)
-1. `cp plantillas-quiz/trivial.json quizzes/hora_del_quiz_NN.json` (parejas: `quizzes/pareja_NN.json`).
+### Quizzes (`trivial`, `pareja`, `mascota`, `halloween`, `futbol`)
+1. `cp plantillas-quiz/trivial.json quizzes/hora_del_quiz_NN.json` (parejas: `quizzes/pareja_NN.json`; mascotas: `quizzes/mascota_NN.json`).
 2. Cambia `tema`, `titulo`, `dificultad` («medio», «alto»…) y las `preguntas`: `pregunta`, 4 `opciones`,
    `correcta` (A-D), `imagen` (dibujo 3D genérico de `assets/imagenes/`, que NUNCA revele la respuesta),
    `comentario` opcional (2-5 palabras, temáticos). La última lleva `"sin_respuesta": true`.

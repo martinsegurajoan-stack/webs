@@ -299,6 +299,8 @@ def paleta_para(video, quiz, cfg):
         return themes.paleta_romantica(h)
     if modo == "halloween":
         return themes.paleta_halloween(h)
+    if modo == "mascota":
+        return themes.paleta_mascota(h)
     if modo == "personalidad":  # colores de marca del test: amarillo, turquesa, morado y negro
         th = themes.paleta_desde_tono(h)
         th.update({"bg_top": (96, 30, 190), "bg_bottom": (14, 8, 26), "bg_mid": (150, 70, 255),

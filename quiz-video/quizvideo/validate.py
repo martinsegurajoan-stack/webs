@@ -43,7 +43,7 @@ def validate(quiz: dict) -> list[str]:
             if len(o) > MAX_OPT:
                 errors.append(f"{p} opción demasiado larga: '{o}'.")
         c = str(q.get("correcta", "")).strip().upper()
-        if not c and (q.get("sin_respuesta") or quiz.get("modo") == "pareja"):
+        if not c and (q.get("sin_respuesta") or quiz.get("modo") in ("pareja", "mascota")):
             continue
         if c not in LETTERS or len(c) != 1:
             errors.append(f"{p} 'correcta' debe ser A, B, C o D.")

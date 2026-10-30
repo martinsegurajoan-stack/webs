@@ -40,7 +40,7 @@ def main():
         quiz["preguntas"] = quiz["preguntas"][: args.preguntas]
     base = os.path.splitext(os.path.basename(args.quiz))[0]
     frase = None
-    modo_q = quiz.get("modo", "trivial") if quiz.get("modo") in ("pareja", "halloween", "futbol", "gamer") else "trivial"
+    modo_q = quiz.get("modo", "trivial") if quiz.get("modo") in ("pareja", "halloween", "futbol", "gamer", "mascota") else "trivial"
     if not quiz.get("frase_intro"):
         from quizvideo.frases_intro import elegir_frase
 
@@ -52,14 +52,17 @@ def main():
         pareja = quiz.get("modo") == "pareja"
         halloween = quiz.get("modo") == "halloween"
         futbol = quiz.get("modo") == "futbol"
+        mascota = quiz.get("modo") == "mascota"
         tono = themes.elegir_tono(base, (160, 300) if quiz.get("modo") == "gamer" else (285, 20) if pareja else ((262, 300) if halloween else
-                                                                   ((95, 140) if futbol else None)))
+                                                                   ((95, 140) if futbol else ((25, 80) if mascota else None))))
         if quiz.get("modo") == "gamer":
             theme = themes.paleta_gamer(tono)
         elif halloween:
             theme = themes.paleta_halloween(tono)
         elif futbol:
             theme = themes.paleta_futbol(tono)
+        elif mascota:
+            theme = themes.paleta_mascota(tono)
         else:
             theme = themes.paleta_romantica(tono) if pareja else themes.paleta_desde_tono(tono)
         args.tema_color = f"auto (tono {tono}°)"

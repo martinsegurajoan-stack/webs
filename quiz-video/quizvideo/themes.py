@@ -241,3 +241,24 @@ def paleta_gamer(h):
         "rayos": 0.6,
     })
     return th
+
+
+def paleta_mascota(h):
+    """Paleta de mascotas: cálida y alegre (amarillos/naranjas/melocotón) con tono que no se repite."""
+    th = paleta_desde_tono(h, "mascotas")
+    th.update({
+        "bg_top": _hsv(h, 0.78, 1.0),
+        "bg_bottom": _hsv(h - 18, 0.9, 0.62),
+        "bg_mid": _hsv(h + 12, 0.55, 1.0),
+        "bg_alt": _hsv(h - 30, 0.75, 0.9),
+        "blob": _hsv(h + 5, 0.3, 1.0),
+        "accent": (255, 255, 255) if _dist(h, 52) <= 35 else (255, 221, 0),
+        "accent2": (0, 150, 220),                   # azul collar
+        "text_dark": _hsv(h - 25, 0.9, 0.28),       # marrón chocolate
+        "correct": (0, 150, 220),
+        "wrong": (140, 130, 120),
+        "options": [(255, 90, 120), (0, 160, 230), (120, 200, 40), (160, 90, 230)],
+        "formas": "mascotas",
+        "rayos": 0.8,
+    })
+    return th

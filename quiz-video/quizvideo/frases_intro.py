@@ -93,14 +93,23 @@ FRASES_GAMER = [
     "Tu primo dice que sabe de videojuegos. Vamos a ver si tú sabes más.",
 ]
 
+# Frases GANCHO para el quiz de MASCOTAS (van ANTES de "¡Es hora del quiz de mascotas!").
+FRASES_MASCOTA = [
+    "La última pregunta te va a doler… ¿tu mascota te quiere de verdad?",
+    "Tu mascota sabe todo de ti… ¿y tú de ella?",
+    "Dices que conoces a tu mascota… vamos a comprobarlo.",
+    "Si fallas una, tu mascota te va a mirar mal toda la semana.",
+]
+
 LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA, "halloween": FRASES_HALLOWEEN, "futbol": FRASES_FUTBOL,
-          "gamer": FRASES_GAMER}
+          "gamer": FRASES_GAMER, "mascota": FRASES_MASCOTA}
 REGISTROS = {
     "trivial": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_usadas.json"),
     "pareja": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_pareja_usadas.json"),
     "halloween": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_halloween_usadas.json"),
     "futbol": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_futbol_usadas.json"),
     "gamer": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_gamer_usadas.json"),
+    "mascota": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_mascota_usadas.json"),
 }
 
 

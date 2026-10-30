@@ -109,6 +109,27 @@ MODOS["trivial"]["saludo"] = "¡Es hora del quiz!"
 for _m in ("trivial", "pareja", "halloween", "futbol", "gamer"):
     MODOS[_m]["gancho_primero"] = True
 MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
+# QUIZ DE MASCOTAS: como el de parejas (no hay respuesta correcta), decorado de perros, gatos, conejos…
+MODOS["mascota"] = dict(MODOS["pareja"], **{
+    "saludo": "¡Es hora del quiz de mascotas!",
+    "intro_l1": "¡QUIZ DE", "intro_l2": "MASCOTAS!", "pill_intro": "¡PIENSA EN TU MASCOTA!",
+    "comentarios_voz": "¡Escribe en los comentarios qué haría la tuya!",
+    "comentarios_pill": "¡DÍMELO EN COMENTARIOS!",
+    "outro_voz": "¿Conoces de verdad a tu mascota? ¡Cuéntamelo en comentarios!",
+    "outro_titulo": "¿Conoces de verdad a tu mascota?", "outro_sub": "¡Cuéntamelo en comentarios!",
+    "final_voz": "Si te ha gustado y quieres la parte dos, ¡sígueme y apoya el vídeo!",
+    "outro_pill": "¡SÍGUEME PARA LA PARTE 2!", "outro_pill2": "APOYA EL VÍDEO",
+    "musica": "pop", "bpm": 118, "estilo_voz": "[cheerful and playful]",
+    "tag_final": "[excited, cheerful]", "tempo": 1.12,
+    "fin": [
+        ("¿Lo sabías seguro?", "¿LO SABÍAS SEGURO?"),
+        ("¡Ay, pobrecito!", "¡AY, POBRECITO!"),
+        ("¡El rey de la casa!", "¡EL REY DE LA CASA!"),
+        ("¡Qué penita da!", "¡QUÉ PENITA!"),
+        ("¿Viene o pasa de ti?", "¿VIENE O PASA DE TI?"),
+    ],
+    "gancho_primero": True,
+})
 
 
 def modo_de(quiz):
@@ -242,7 +263,7 @@ def build_timeline(quiz, voice, countdown=5):
         st = t
         loc = 0.35
         extra = bool(q.get("sin_respuesta")) and qi == n - 1 and n_reg >= 1
-        etiqueta = q.get("etiqueta_voz", "¡Pregunta extra!") if extra else f"¡Pregunta {qi + 1}!"
+        etiqueta = q.get("etiqueta_voz") or ("¡Pregunta extra!" if extra else f"¡Pregunta {qi + 1}!")
         sig, dq = say(f"{etiqueta} " + q.get("pregunta_voz", q["pregunta"]))
         events += [("fx", "whoosh", st), ("voice", sig, st + loc)]
         loc += max(0.3, dq - 0.4)  # las opciones entran al final de la pregunta
@@ -274,7 +295,7 @@ def build_timeline(quiz, voice, countdown=5):
             if comentarios:
                 frase, end_pill = modo["comentarios_voz"], modo["comentarios_pill"]
             else:
-                frase, end_pill = modo["fin"][qi % len(modo["fin"])]
+                frase, end_pill = q.get("fin") or modo["fin"][qi % len(modo["fin"])]
             sig, dv = say(frase)
             fx_end = "buzz" if modo["fin"] is None else "chime"
             events += [("fx", fx_end, st + rv), ("voice", sig, st + rv + 0.35)]
@@ -396,6 +417,8 @@ def _init(state):
         _init_gamer(th)
     if th.get("formas") == "futbol":
         _init_futbol(th)
+    if th.get("formas") == "mascotas":
+        _init_mascotas(th)
     if th.get("formas") == "halloween":
         dd = os.path.join(ASSETS, "decor_halloween")
 
@@ -674,6 +697,10 @@ def _background(t):
         img.alpha_composite(layer)
         _gamer(img, t, beat)
         return img
+    if th.get("formas") == "mascotas":
+        img.alpha_composite(layer)
+        _mascotas(img, t, beat)
+        return img
     cols = th["options"] + [th["accent"]]
     for x0, y0, s, sp, rot, ph, kind, ci in _STATE["shapes"]:
         y = (y0 - sp * t) % (H + 120) - 60
@@ -735,6 +762,94 @@ def _halloween(img, t, beat):
         im = D["sprites"]["calabaza"][sz]
         bump = int(8 * math.exp(-beat * 5))
         img.alpha_composite(im, (int(px - im.width / 2), int(H - 90 - im.height / 2 - bump)))
+
+
+def _init_mascotas(th):
+    """Sprites del decorado de mascotas (perros, gatos, conejos, huellas, huesos…)."""
+    dd = os.path.join(ASSETS, "decor_mascotas")
+
+    def spr(name, size):
+        im = Image.open(os.path.join(dd, name + ".png")).convert("RGBA")
+        return im.resize((size, size), Image.LANCZOS)
+
+    D = _STATE["decor"]
+    nombres = ("perro", "gato", "conejo", "hamster", "hueso", "pez", "ovillo", "pelota", "loro", "tortuga",
+               "corazon")
+    D["sprites"] = {n: [spr(n, sz) for sz in (80, 110, 140)] for n in nombres}
+    # huella blanca semitransparente (rastro de patitas que cruza la pantalla)
+    hu = spr("huella", 64)
+    blanca = Image.new("RGBA", hu.size, (255, 255, 255, 0))
+    blanca.putalpha(hu.getchannel("A").point(lambda v: int(v * 0.5)))
+    D["huella"] = blanca
+    D["asomados"] = {n: spr(n + "_cuerpo", 260) for n in ("perro", "gato")}
+    D["conejo_asoma"] = spr("conejo", 210)
+    D["lluvia"] = [spr(n, 70) for n in ("huella", "hueso", "corazon", "pez", "pelota", "huella")]
+    rs = random.Random(31)
+    names = ["perro", "gato", "conejo", "hamster"] * 2 + ["hueso", "pez", "ovillo", "pelota", "loro",
+                                                         "tortuga", "corazon", "corazon"]
+    D["flyers"] = [(n, rs.randint(0, 2), rs.uniform(0, W), rs.uniform(0, H), rs.uniform(45, 100),
+                    rs.uniform(0, 6.28), rs.choice((-1, 1))) for n in names]
+    # rastros de huellas: (y inicial, inclinación, velocidad, desfase)
+    D["rastros"] = [(rs.uniform(200, H - 200), rs.uniform(-0.35, 0.35), rs.uniform(130, 190), rs.uniform(0, 30))
+                    for _ in range(3)]
+
+
+def _mascotas(img, t, beat):
+    """Decorado de mascotas: rastros de huellas, animalitos y juguetes flotando y mascotas asomándose."""
+    D = _STATE["decor"]
+    hu = D["huella"]
+    for k, (y0, inc, sp, ph) in enumerate(D["rastros"]):
+        # las patitas aparecen una a una (como si alguien caminara) y se desvanecen
+        paso, n_huellas = 95, 9
+        cab = (t * sp + ph * 40) % (W + n_huellas * paso + 400) - 200
+        for j in range(n_huellas):
+            x = cab - j * paso
+            if not -80 < x < W + 80:
+                continue
+            y = y0 + inc * x + (22 if j % 2 else -22)
+            a = 1 - j / n_huellas
+            im = hu.rotate(-90 - math.degrees(math.atan(inc)), resample=Image.BICUBIC, expand=True)
+            if a < 1:
+                im.putalpha(im.getchannel("A").point(lambda v, a_=a: int(v * a_)))
+            img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+    for n, si, x0, y0, sp, ph, dirx in D["flyers"]:
+        im = D["sprites"][n][si]
+        x = x0 + 50 * math.sin(t * 0.7 + ph)
+        y = (y0 - sp * t) % (H + 300) - 150
+        if n in ("perro", "gato", "conejo", "hamster"):
+            bote = 1 + 0.08 * math.exp(-beat * 5)  # laten con la música
+            im = im.resize((int(im.width * bote), int(im.height * bote)), Image.BILINEAR)
+        im = im.rotate(16 * math.sin(t * 1.6 + ph), resample=Image.BICUBIC, expand=True)
+        a = im.getchannel("A").point(lambda v: int(v * 0.85))
+        im.putalpha(a)
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+    # perro y gato que se asoman por abajo a los lados (suben y bajan por turnos)
+    for k, (n, x) in enumerate((("perro", 105), ("gato", W - 105))):
+        ciclo = (t + k * 3.5) % 7
+        sube = ease_out_back(ciclo / 0.6) if ciclo < 3.5 else max(0.0, 1 - (ciclo - 3.5) / 0.5)
+        sube = max(0.0, min(1.1, sube))
+        im = D["asomados"][n]
+        if k == 1:
+            im = im.transpose(Image.FLIP_LEFT_RIGHT)
+        im = im.rotate(8 * math.sin(t * 3 + k) * (-1 if k else 1), resample=Image.BICUBIC)
+        y = H + 30 - sube * 230 - 6 * math.exp(-beat * 5)
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+
+
+def _polaroid(im, th):
+    """Pone la imagen de la pregunta en una foto tipo polaroid (marco blanco con pie más ancho)."""
+    m, pie = 22, 58
+    w, h = im.width + 2 * m, im.height + m + pie
+    ph = Image.new("RGBA", (w + 16, h + 16), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ph)
+    d.rounded_rectangle((8, 14, w + 8, h + 14), 14, fill=(0, 0, 0, 70))
+    d.rounded_rectangle((0, 0, w, h), 14, fill=(255, 255, 255))
+    d.rectangle((m, m, w - m, m + im.height), fill=th["blob"])
+    ph.alpha_composite(im, (m, m))
+    # cinta adhesiva arriba
+    d.rectangle((w / 2 - 55, -2, w / 2 + 55, 30), fill=(255, 240, 180, 200))
+    _heart(d, w / 2, m + im.height + pie / 2, 17, 0, (230, 30, 50))
+    return ph
 
 
 def _pill(d, cx, cy, text, size, bg, fg, pad=(36, 18)):
@@ -829,17 +944,29 @@ def _draw_outro(layer, sc, lt):
     b = ease_out_back((lt - sc.get("shout_at", 0.5) + 0.15) / 0.4)
     if b > 0:
         pulse = 1 + 0.07 * math.sin(lt * 9)
-        _pill(d, 540, 900 + (1 - b) * 900, "¡SÍGUEME PARA MÁS!", int(64 * pulse), th["accent"], th["text_dark"])
+        _pill(d, 540, 900 + (1 - b) * 900, modo.get("outro_pill", "¡SÍGUEME PARA MÁS!"), int(64 * pulse),
+              th["accent"], th["text_dark"])
+    if modo.get("outro_pill2"):
+        b2 = ease_out_back((lt - sc.get("shout_at", 0.5) - 1.1) / 0.4)
+        if b2 > 0:
+            yb = 1040 + (1 - b2) * 900
+            _pill(d, 590, yb, modo["outro_pill2"], 54, (230, 30, 50), (255, 255, 255), pad=(36, 16))
+            fw = d.textlength(modo["outro_pill2"], font=tfont(54))
+            hb = 1 + 0.25 * abs(math.sin(lt * 6))
+            hx = 590 - fw / 2 - 36 - 52
+            _heart(d, hx, yb + 2, 40 * hb + 7, 0, (255, 255, 255))
+            _heart(d, hx, yb + 2, 40 * hb, 0, (230, 30, 50))
     c = ease_out_back((lt - sc.get("shout_at", 0.5) - 0.2) / 0.6)
+    ly = 1360 if modo.get("outro_pill2") else 1300
     if c > 0 and _STATE.get("logo") is not None:
-        size = int(400 * c * (1 + 0.025 * math.sin(lt * 4)))
+        size = int((330 if modo.get("outro_pill2") else 400) * c * (1 + 0.025 * math.sin(lt * 4)))
         if size > 4:
             logo = _STATE["logo"].resize((size, size), Image.LANCZOS)
             sh = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-            ImageDraw.Draw(sh).ellipse((540 - size / 2, 1300 - size / 2 + 12, 540 + size / 2, 1300 + size / 2 + 12),
+            ImageDraw.Draw(sh).ellipse((540 - size / 2, ly - size / 2 + 12, 540 + size / 2, ly + size / 2 + 12),
                                        fill=(0, 0, 0, 70))
             layer.alpha_composite(sh)
-            layer.alpha_composite(logo, (540 - size // 2, 1300 - size // 2))
+            layer.alpha_composite(logo, (540 - size // 2, ly - size // 2))
 
 
 def _draw_rangos(layer, sc, lt):
@@ -921,9 +1048,9 @@ def _draw_question(layer, sc, lt):
     a = ease_out_back(lt / 0.45)
     if sc.get("extra"):
         yh = 175 - (1 - a) * 300
-        etq = q.get("etiqueta", "PREGUNTA EXTRA")
-        _pill(d, 540, yh, etq, 48, th["accent2"], th["text_light"])
-        wtxt = d.textlength(etq, font=tfont(48))
+        cab = q.get("cabecera", q.get("etiqueta", "PREGUNTA EXTRA"))
+        _pill(d, 540, yh, cab, 48, th["accent2"], th["text_light"])
+        wtxt = d.textlength(cab, font=tfont(48))
         for sx in (-1, 1):
             _shape(d, 3, 540 + sx * (wtxt / 2 + 80), yh, 26 + 3 * math.sin(lt * 6), lt * 2 * sx, th["accent"])
     else:
@@ -955,7 +1082,22 @@ def _draw_question(layer, sc, lt):
             layer.alpha_composite(sprite, (int(OPT_X1 - 70), int(y - 40 + 6 * math.sin(lt * 8))))
     else:
         f, lines, lh = fit(d, q["pregunta"], 840, CARD_H - 70, 78, 40)
-        draw_lines(d, lines, f, lh, 540, y + CARD_H / 2, th["text_dark"])
+        draw_lines(d, lines, f, lh, 540, y + CARD_H / 2 + (22 if q.get("pegatina") else 0), th["text_dark"])
+    if q.get("pegatina") and lt > 0.35:
+        sp = ease_out_back((lt - 0.35) / 0.45)
+        txt = q["pegatina"]
+        fs = tfont(44)
+        tw = d.textlength(txt, font=fs)
+        st = Image.new("RGBA", (int(tw + 90), 110), (0, 0, 0, 0))
+        sd = ImageDraw.Draw(st)
+        sd.rounded_rectangle((6, 12, st.width - 6, st.height - 4), 30, fill=(0, 0, 0, 80))
+        sd.rounded_rectangle((0, 0, st.width - 8, st.height - 14), 30, fill=(230, 30, 50),
+                             outline=(255, 255, 255), width=6)
+        sd.text(((st.width - 8) / 2, (st.height - 14) / 2 + 2), txt, font=fs, fill=(255, 255, 255), anchor="mm")
+        k = max(0.05, sp * (1 + 0.04 * math.sin(lt * 7)))
+        st = st.resize((max(2, int(st.width * k)), max(2, int(st.height * k))), Image.BILINEAR)
+        st = st.rotate(-3, resample=Image.BICUBIC, expand=True)
+        layer.alpha_composite(st, (int(540 - st.width / 2), int(y - st.height / 2 + 6)))
 
     # imagen de la pregunta (entra con rebote, flota y se aparta si sale el cartel final)
     im = _STATE["imgs"].get(q.get("imagen"))
@@ -967,11 +1109,14 @@ def _draw_question(layer, sc, lt):
         if fade > 0 and ip > 0.05:
             sc_ = ip * (1 + 0.03 * math.sin(lt * 3))
             w_, h_ = max(4, int(im.width * sc_)), max(4, int(im.height * sc_))
-            img2 = im.resize((w_, h_), Image.BILINEAR).rotate(6 * math.sin(lt * 1.7), resample=Image.BICUBIC, expand=True)
+            img2 = im.resize((w_, h_), Image.BILINEAR)
+            if th.get("formas") == "mascotas":
+                img2 = _polaroid(img2.resize((int(w_ * 0.76), int(h_ * 0.76)), Image.BILINEAR), th)
+            img2 = img2.rotate(6 * math.sin(lt * 1.7), resample=Image.BICUBIC, expand=True)
             if fade < 1:
                 a_ = img2.getchannel("A").point(lambda v: int(v * fade))
                 img2.putalpha(a_)
-            cx_, cy_ = IMG_C[0], IMG_C[1] + 10 * math.sin(lt * 2.2)
+            cx_, cy_ = IMG_C[0], IMG_C[1] + 10 * math.sin(lt * 2.2) + (14 if th.get("formas") == "mascotas" else 0)
             d.ellipse((cx_ - w_ * 0.38, IMG_C[1] + IMG_SIZE * 0.47 - 14, cx_ + w_ * 0.38, IMG_C[1] + IMG_SIZE * 0.47 + 14),
                       fill=(0, 0, 0, int(60 * fade * ip)))
             layer.alpha_composite(img2, (int(cx_ - img2.width / 2), int(cy_ - img2.height / 2)))
@@ -984,6 +1129,20 @@ def _draw_question(layer, sc, lt):
         pulse = 1 + 0.05 * math.sin(rlt * 9)
         _pill(d, 540, 840, sc.get("end_pill") or "¡ESCRÍBELO EN COMENTARIOS!", int(max(10, 52 * pp * pulse)),
               th["accent2"], th["text_light"])
+        if th.get("formas") == "mascotas" and rlt < 2.4:
+            # lluvia de huellas, huesos y corazones que sale del cartel
+            sp_ = _STATE["decor"]["lluvia"]
+            for j, (vx, vy, ci, sz, ph) in enumerate(_STATE["confetti"][:26]):
+                im_ = sp_[j % len(sp_)]
+                hx = 540 + vx * 620 * rlt + 20 * math.sin(rlt * 4 + ph)
+                hy = 840 + vy * 600 * rlt + 1300 * rlt * rlt
+                al = 1 - max(0, (rlt - 1.6) / 0.8)
+                im2 = im_.rotate(math.degrees(ph + rlt * 3 * (1 if j % 2 else -1)), resample=Image.BICUBIC)
+                if al < 1:
+                    im2.putalpha(im2.getchannel("A").point(lambda v, a_=al: int(v * a_)))
+                layer.alpha_composite(im2, (int(hx - im2.width / 2), int(hy - im2.height / 2)))
+            _pill(d, 540, 840, sc.get("end_pill") or "¡ESCRÍBELO EN COMENTARIOS!", int(max(10, 52 * pp * pulse)),
+                  th["accent2"], th["text_light"])  # el cartel queda por encima de la lluvia
         if th.get("formas") == "corazones" and rlt < 2.2:
             # corazones que suben desde el cartel
             cols = th["options"] + [th["accent"]]
