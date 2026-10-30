@@ -69,6 +69,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/fiesta_01.mp4` | `quizzes/fiesta_01.json` | 119 s | FIESTA nº1 (7 pruebas distintas para beber + prueba imposible + brindis final) = PLANTILLA FIESTA |
 | `salida/streamer_02.mp4` | `quizzes/streamer_02.json` | 88 s | STREAMER: Ibai (misma edición que AuronPlay; no mencionar que es parte de una serie) |
 | `salida/streamer_03.mp4` | `quizzes/streamer_03.json` | 82 s | STREAMER: ElXokas (chat temático + comentarios random, miniatura igual que la serie) |
+| `salida/streamer_04.mp4` | `quizzes/streamer_04.json` | 87 s | STREAMER: elRubius (chat con guion: conversaciones, piques, MOD serio con la respuesta; cierre «¿quién quieres que sea el siguiente?») |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -94,7 +95,7 @@ Plantillas y piezas reutilizables:
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 04).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
-- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, siguiente: 04). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
+- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, nº4 = elRubius, siguiente: 05). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -359,6 +360,19 @@ NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/B
 - CHAT (regla del usuario, SIEMPRE): `chat` = comentarios graciosos relacionados con el streamer (sin
   polémicas ni insultos) y `chat_random` = cosas MUY random que salen cada ~4 mensajes («me he comprado un
   jabalí», «mi abuela juega al Fortnite»…). Cambiarlos en cada vídeo. Sin emojis (la fuente no los dibuja).
+- CHAT CON GUION (regla del usuario desde el nº4, elRubius): `chat_guion` = una entrada por pregunta con `antes`
+  (~12 mensajes [usuario, texto] antes de revelar), `serio` y `despues` (~3). Mensajes que NO se repiten en todo
+  el vídeo, usuarios que HABLAN ENTRE ELLOS con @ (piques, alguno enfadado SIN insultar: «ya no te hablo», «ME
+  OFENDES»), personajes que vuelven (la abuela de Kevin…), cosas muy random y graciosas, y un usuario SERIO con
+  insignia MOD (`chat_mod`) que dice la respuesta justo tras revelarla (en la extra: «me la sé pero a comentarios»).
+  Antes de revelar, nada en el chat puede dar pistas de la respuesta. Ritmo 1 mensaje/s (`RATE_GUION`), texto
+  corto (≤ ~30 caracteres: si no cabe, la letra se encoge). La alerta «¡CORRECTA!» va sobre la tarjeta de la
+  pregunta para no tapar el chat.
+- CIERRE (regla del usuario, SIEMPRE en adelante): tras «¿Cuántas has acertado?», muy animado
+  `siguiente_voz` = «[excited] ¿Y quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!» (está en
+  caché) con tarjeta «¿QUIÉN QUIERES QUE SEA EL SIGUIENTE?», corazones, confeti y bocadillos de comentarios con
+  propuestas (`siguiente`: 6 nombres de otros streamers). En los textos de redes, pedir también el siguiente.
+  En otros formatos, adaptar la misma idea al final («¿de qué quieres el siguiente?»).
 - Preguntas: chat en directo con mensajes genéricos que suben, cámara del streamer (su foto) con
   «EN DIRECTO», tarjeta oscura con borde neón, opciones como ENCUESTA de directo con barras y % que
   suben durante la cuenta atrás (aleatorios, no indican la respuesta), alerta «¡CORRECTA! +1 PUNTO DE

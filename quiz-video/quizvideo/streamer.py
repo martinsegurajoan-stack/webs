@@ -88,11 +88,18 @@ def build_timeline(c, voice):
                        "opt_t": opt_t, "cd": cd, "rv": rv, "ci": ci})
         t += rv + rdur
     sig, d = voice.say(c.get("cierre_voz", "¿Cuántas has acertado?"))
+    ev += [("fx", "whoosh", t), ("voice", sig, t + 0.35)]
+    sig_at = None
+    if c.get("siguiente_voz"):  # «¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!»
+        sig_at = 0.35 + d + 0.15
+        s3, d3 = voice.say(c["siguiente_voz"])
+        ev += [("voice", s3, t + sig_at), ("fx", "pop", t + sig_at), ("fx", "correct", t + sig_at + 0.05)]
+        d = sig_at - 0.35 + d3
     shout_at = 0.35 + d + 0.1
     sig2, d2 = voice.say("¡Sígueme para más!", shout=True)
     dur = max(3.6, shout_at + d2 + 1.0)
-    ev += [("fx", "whoosh", t), ("voice", sig, t + 0.35), ("voice", sig2, t + shout_at), ("fx", "applause", t + shout_at)]
-    scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at})
+    ev += [("voice", sig2, t + shout_at), ("fx", "applause", t + shout_at)]
+    scenes.append({"kind": "outro", "start": t, "dur": dur, "shout_at": shout_at, "sig_at": sig_at})
     return scenes, ev, t + dur
 
 
@@ -151,6 +158,63 @@ def _placeholder(w, h):
     d.ellipse((w * 0.12, h * 0.55, w * 0.88, h * 1.2), fill=(120, 100, 150))
     d.text((w / 2, h * 0.9), "FOTO PENDIENTE", font=tfont(int(w / 12)), fill=WHITE, anchor="mm")
     return im
+
+
+USER_COLS = [(255, 90, 90), (90, 200, 255), (120, 255, 140), (255, 200, 60), (255, 120, 220), (170, 140, 255),
+             (255, 160, 80), (100, 240, 220), (200, 255, 90), (255, 140, 160)]
+RATE_GUION = 1.0  # mensajes por segundo en el chat con guion (se pueden leer)
+
+
+def _ucol(u):
+    return USER_COLS[zlib.crc32(u.encode()) % len(USER_COLS)]
+
+
+def _guion(c, r):
+    """Chat con guion por pregunta: conversaciones entre usuarios (sin repetir mensajes), un MOD serio que
+    dice la respuesta justo después de revelarla y relleno random si sobra hueco."""
+    g = c.get("chat_guion")
+    scenes = _S.get("scenes")
+    _S["chat_q"] = {}
+    if not g or not scenes:
+        return
+    mod = c.get("chat_mod", "")
+    usados = set()
+    relleno = [m for m in (c.get("chat_random") or []) + (c.get("chat") or [])]
+    r.shuffle(relleno)
+    todos = [m for b in g for k in ("antes", "despues") for _, m in b.get(k, [])]
+    relleno = [m for m in relleno if m not in todos]
+
+    def item(u, m):
+        usados.add(m)
+        return (u, _ucol(u), m, u == mod)
+
+    def hueco():
+        while relleno:
+            m = relleno.pop()
+            if m not in usados:
+                return item(r.choice(CHAT_USERS)[0], m)
+        return None
+
+    for s in scenes:
+        if s["kind"] != "q" or s["i"] >= len(g):
+            continue
+        b = g[s["i"]]
+        n = int(s["dur"] * RATE_GUION) + 5
+        rs = int((s["rv"] + 0.8) * RATE_GUION) + 3  # hueco del MOD (3 mensajes ya visibles al empezar)
+        antes = [item(u, m) for u, m in b.get("antes", [])][:rs]
+        while len(antes) < rs:
+            x = hueco()
+            if not x:
+                break
+            antes.append(x)
+        seq = antes + ([item(*b["serio"])] if b.get("serio") else [])
+        seq += [item(u, m) for u, m in b.get("despues", [])]
+        while len(seq) < n:
+            x = hueco()
+            if not x:
+                break
+            seq.append(x)
+        _S["chat_q"][s["i"]] = seq
 
 
 def _init(state):
@@ -222,6 +286,7 @@ def _init(state):
             if rnd and i % 4 == 3:
                 chat.append((r.choice(CHAT_USERS), rnd.pop()))
     _S["chat"] = chat
+    _guion(c, r)
     _S["polls"] = []
     for q in c["preguntas"]:
         v = [r.uniform(8, 40) for _ in range(4)]
@@ -305,25 +370,54 @@ def viewers(d, x, y, t, size=30):
     d.text((x + size * 1.45, y + 2), s, font=f, fill=WHITE, anchor="lm")
 
 
-def chat_panel(img, d, t, box, idx0=0, rate=1.25, burst_t=None):
+def _chat_line(d, x, yy, wmax, user, col, msg, mod=False):
+    sz = 30
+    while sz > 20:
+        fu = font(sz)
+        wb = (d.textlength("MOD", font=tfont(sz - 8)) + 22) if mod else 0
+        if wb + d.textlength(user + ": " + msg, font=fu) <= wmax:
+            break
+        sz -= 1
+    fu = font(sz)
+    if mod:  # insignia de moderador (el que responde en serio)
+        fb = tfont(sz - 8)
+        wbx = d.textlength("MOD", font=fb) + 14
+        rr(d, (x, yy - sz * 0.45, x + wbx, yy + sz * 0.45), 8, GREEN)
+        d.text((x + wbx / 2, yy + 1), "MOD", font=fb, fill=WHITE, anchor="mm")
+        x += wbx + 8
+    d.text((x, yy), user + ":", font=fu, fill=col, anchor="lm")
+    wu = d.textlength(user + ": ", font=fu)
+    d.text((x + wu, yy), msg, font=fu, fill=(200, 255, 210) if mod else WHITE, anchor="lm")
+
+
+def chat_panel(img, d, t, box, idx0=0, rate=1.25, burst_t=None, seq=None, lt=0.0):
     x0, y0, x1, y1 = box
     rr(d, (x0 + 5, y0 + 9, x1 + 5, y1 + 9), 24, (0, 0, 0, 80))
     rr(d, box, 24, (14, 9, 28, 225), outline=_S["acc"] + (160,), width=3)
     d.text((x0 + 24, y0 + 30), "CHAT EN DIRECTO", font=tfont(30), fill=_S["acc"], anchor="lm")
     d.ellipse((x1 - 44, y0 + 22, x1 - 28, y0 + 38), fill=RED)
-    n = int(t * rate) + idx0
+    if seq:
+        rate = RATE_GUION
+        n = int(lt * rate) + 3
+        frac = (lt * rate) % 1
+    else:
+        n = int(t * rate) + idx0
+        frac = (t * rate) % 1
     lines = 4
     lh = (y1 - y0 - 70) / lines
-    frac = (t * rate) % 1
     slide = ease_out(min(1, frac / 0.25))
     for j in range(lines):
         k = n - (lines - 1 - j)
         if k < 0:
             continue
-        (user, col), msg = _S["chat"][k % len(_S["chat"])]
         yy = y0 + 70 + j * lh + lh / 2 + (1 - slide) * lh
         if yy > y1 - 12:
             continue
+        if seq:
+            user, col, msg, mod = seq[min(k, len(seq) - 1)]
+            _chat_line(d, x0 + 24, yy, x1 - x0 - 44, user, col, msg, mod)
+            continue
+        (user, col), msg = _S["chat"][k % len(_S["chat"])]
         fu = font(30)
         d.text((x0 + 24, yy), user + ":", font=fu, fill=col, anchor="lm")
         wu = d.textlength(user + ": ", font=fu)
@@ -420,7 +514,8 @@ def draw_q(img, d, sc, lt, t):
     banner(img, d, t)
     # fila superior: chat + cámara
     a = pop(lt, 0.0, 0.35)
-    chat_panel(img, d, t, (70, 330 + (1 - a) * 30, 690, 590 + (1 - a) * 30), idx0=sc["i"] * 7)
+    chat_panel(img, d, t, (70, 330 + (1 - a) * 30, 690, 590 + (1 - a) * 30), idx0=sc["i"] * 7,
+               seq=_S.get("chat_q", {}).get(sc["i"]), lt=lt)
     cam_frame(img, d, t, 720, 325, _S["c"]["nombre"].upper())
     # tarjeta de pregunta (oscura, borde neón)
     b = pop(lt, 0.1, 0.4)
@@ -517,12 +612,12 @@ def draw_q(img, d, sc, lt, t):
         else:
             e = pop(lt, rv + 0.5, 0.35)
             if e > 0:
-                ax, ay = 380, 460 + (1 - e) * -120
+                ax, ay = 540, 748 + (1 - e) * -120
                 rr(d, (ax - 300 + 6, ay - 70 + 10, ax + 300 + 6, ay + 70 + 10), 30, (0, 0, 0, 110))
                 rr(d, (ax - 300, ay - 70, ax + 300, ay + 70), 30, GREEN, outline=WHITE, width=5)
                 d.text((ax, ay - 18), "¡CORRECTA!", font=tfont(58), fill=WHITE, anchor="mm")
                 d.text((ax, ay + 36), "+1 PUNTO DE FAN", font=tfont(34), fill=INK, anchor="mm")
-            burst(d, lt2 - 0.5, 380, 460)
+            burst(d, lt2 - 0.5, 540, 748)
     # viñeta roja al final de la cuenta atrás
     end = cd + COUNTDOWN
     if end - 2.5 <= lt < end:
@@ -548,6 +643,10 @@ def draw_outro(img, d, sc, lt, t):
         d.ellipse((540 - R - 9, 640 - R - 9, 540 + R + 9, 640 + R + 9), fill=_S["acc"])
         paste_c(img, _S["cam_big"], 540, 640, a)
         live_badge(d, 410, 360 + (1 - a) * 40, t, 30)
+    sa = sc.get("sig_at")
+    if sa is not None and lt >= sa - 0.1:
+        _outro_siguiente(img, d, sc, lt, t, sa)
+        return
     b = pop(lt, 0.25, 0.45)
     if b > 0:
         y = 1000 + (1 - b) * 300
@@ -563,6 +662,75 @@ def draw_outro(img, d, sc, lt, t):
     if c3 > 0:
         size = 210 * c3
         paste_c(img, _S["logo"], 540, 1510, size / _S["logo"].width)
+    burst(d, lt - sc["shout_at"], 540, 1200, 1.8)
+
+
+def _heart(d, cx, cy, s, col):
+    d.ellipse((cx - s, cy - s * 0.75, cx, cy + s * 0.2), fill=col)
+    d.ellipse((cx, cy - s * 0.75, cx + s, cy + s * 0.2), fill=col)
+    d.polygon([(cx - s * 0.97, cy - s * 0.1), (cx + s * 0.97, cy - s * 0.1), (cx, cy + s * 1.0)], fill=col)
+
+
+BURBUJAS = [(240, 430, -6), (850, 450, 5), (205, 700, 4), (875, 720, -5), (255, 925, 3), (830, 935, -3)]
+
+
+def _outro_siguiente(img, d, sc, lt, t, sa):
+    """Cierre: «¿QUIÉN QUIERES QUE SEA EL SIGUIENTE?» con comentarios de nombres que saltan alrededor."""
+    lt2 = lt - sa
+    acc = _S["acc"]
+    # corazones subiendo
+    for k in range(14):
+        ph = (lt2 * 0.45 + k / 14) % 1
+        hx = 120 + (k * 137) % 840 + math.sin(lt * 2 + k) * 25
+        hy = 1700 - ph * 1500
+        _heart(d, hx, hy, 14 + (k % 3) * 6, (255, 60 + (k % 4) * 30, 120, int(200 * (1 - ph))))
+    g = 0.5 + 0.5 * math.sin(lt * 4)
+    R = 280 * (1 + 0.025 * math.sin(lt * 6))
+    d.ellipse((540 - R - 22, 640 - R - 22, 540 + R + 22, 640 + R + 22), fill=acc + (int(70 + 70 * g),))
+    d.ellipse((540 - R - 9, 640 - R - 9, 540 + R + 9, 640 + R + 9), fill=YEL)
+    paste_c(img, _S["cam_big"], 540, 640, R / 280)
+    live_badge(d, 410, 360, t, 30)
+    # comentarios con propuestas (salen uno a uno y flotan)
+    for k, nm in enumerate(_S["c"].get("siguiente", [])[:len(BURBUJAS)]):
+        e = pop(lt2, 0.25 + k * 0.32, 0.35)
+        if e <= 0:
+            continue
+        bx, by, ang = BURBUJAS[k]
+        by += math.sin(t * 2 + k) * 8
+        u = CHAT_USERS[k % len(CHAT_USERS)]
+        lay = Image.new("RGBA", (440, 130), (0, 0, 0, 0))
+        ld = ImageDraw.Draw(lay)
+        fm = tfont(40)
+        w = max(ld.textlength(nm, font=fm), ld.textlength(u[0], font=font(26))) + 50
+        x0 = (440 - w) / 2
+        rr(ld, (x0 + 4, 12, x0 + w + 4, 112), 26, (0, 0, 0, 90))
+        rr(ld, (x0, 6, x0 + w, 106), 26, WHITE)
+        ld.polygon([(x0 + 40, 104), (x0 + 72, 104), (x0 + 36, 126)], fill=WHITE)
+        ld.text((x0 + 25, 32), u[0], font=font(26), fill=tuple(int(v * 0.7) for v in u[1]), anchor="lm")
+        ld.text((x0 + 25, 74), nm, font=fm, fill=INK, anchor="lm")
+        paste_c(img, lay, bx, by, 0.6 + 0.4 * e, angle=ang)
+    # tarjeta con la pregunta
+    e = pop(lt2, 0.0, 0.4)
+    y = 990 + (1 - e) * 60
+    sz = 1 + 0.04 * max(0, math.sin(lt2 * 7)) * (1 if lt2 < 1.2 else 0)
+    rr(d, (90 + 6, y + 12, 990 + 6, y + 280 + 12), 36, (0, 0, 0, 110))
+    rr(d, (90, y, 990, y + 280), 36, (20, 13, 38, 245), outline=YEL, width=6)
+    d.text((540, y + 66), "¿QUIÉN QUIERES QUE SEA", font=tfont(int(62 * sz)), fill=WHITE, anchor="mm")
+    d.text((540, y + 140), "EL SIGUIENTE?", font=tfont(int(80 * sz)), fill=YEL, anchor="mm")
+    f = font(44)
+    s1 = "¡Coméntalo y apoya el vídeo!"
+    wv = d.textlength(s1, font=f)
+    d.text((540 + 26, y + 222), s1, font=f, fill=WHITE, anchor="mm")
+    hb = 1 + 0.18 * max(0, math.sin(lt * 8))
+    _heart(d, 540 - wv / 2 - 14, y + 218, 20 * hb, (255, 60, 110))
+    c2 = pop(lt, sc["shout_at"] - 0.15, 0.4)
+    if c2 > 0:
+        pulse = 1 + 0.07 * math.sin(lt * 9)
+        pill(d, 540, 1365 + (1 - c2) * 500, "¡SÍGUEME PARA MÁS!", int(62 * pulse), YEL, INK)
+    c3 = pop(lt, sc["shout_at"] + 0.2, 0.5)
+    if c3 > 0:
+        paste_c(img, _S["logo"], 540, 1530, 200 * c3 / _S["logo"].width)
+    burst(d, lt2, 540, 1130, 1.6)
     burst(d, lt - sc["shout_at"], 540, 1200, 1.8)
 
 

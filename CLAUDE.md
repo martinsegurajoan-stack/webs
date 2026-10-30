@@ -17,6 +17,8 @@ Hashtags: MÁXIMO 4 en TODAS las plataformas: #fyp #viral #test #trending.
   `generar_fiesta.py` (ver "FIESTA" en `quiz-video/CLAUDE.md`). Solo cartas: `cartas.json`.
 - QUIZ DE STREAMERS (AuronPlay, etc.): plantilla `quiz-video/plantillas-quiz/streamer.json` + `generar_streamer.py`
   (necesita FOTO REAL que manda el usuario). Mejorar la estética un poco en cada vídeo nuevo.
+  Chat con guion (`chat_guion`: conversaciones entre usuarios sin repetir, piques sin insultos, cosas random,
+  MOD serio que dice la respuesta) y cierre SIEMPRE «¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!».
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.
