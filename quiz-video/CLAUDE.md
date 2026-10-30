@@ -72,6 +72,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/streamer_04.mp4` | `quizzes/streamer_04.json` | 87 s | STREAMER: elRubius (chat con guion: conversaciones, piques, MOD serio con la respuesta; cierre «¿quién quieres que sea el siguiente?») |
 | `salida/streamer_05.mp4` | `quizzes/streamer_05.json` | 90 s | STREAMER: DjMaRiiO (gancho v2 con la extra bloqueada, extra con alarma, final v2 con encuesta del siguiente) |
 | `salida/streamer_06.mp4` | `quizzes/streamer_06.json` | 89 s | STREAMER: TheGrefg (formato del nº5; extra llamada «EXCLUSIVA» con `extra_nombre`) |
+| `salida/streamer_07.mp4` | `quizzes/streamer_07.json` | 89 s | STREAMER: Plex (foto vertical: `foco` en el centro de la CABEZA, `zoom_cam` 2.0) |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -97,7 +98,7 @@ Plantillas y piezas reutilizables:
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 04).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
-- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, nº4 = elRubius, nº5 = DjMaRiiO, nº6 = TheGrefg, siguiente: 07). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
+- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, nº4 = elRubius, nº5 = DjMaRiiO, nº6 = TheGrefg, nº7 = Plex, siguiente: 08). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -390,6 +391,9 @@ NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/B
   · Nombre del streamer con su grafía exacta (DjMaRiiO, no DJMARIIO): `nombre_cam` para la etiqueta de la
     cámara; `aviso`, `gancho.texto` y `portada.titulo` escritos tal cual. `tempo` en el JSON (nº5: 1,25) para
     no pasar de 90 s. Las preguntas del usuario se dejan TAL CUAL aunque no se encuentren en la web (lo pidió).
+  · FOTO (corrección del usuario con Plex: «se ve la cara cortada»): `foco` = centro de la CABEZA entera (pelo
+    incluido), no de los ojos; `_cover` deja ese punto al 42 % del recorte. Revisar SIEMPRE la cámara pequeña y el
+    círculo del final con `--preview` antes de montar (que no se corte el pelo ni la barbilla).
   · `extra_nombre` (p. ej. "EXCLUSIVA") cambia «PREGUNTA EXTRA» en el gancho, la alarma y la tarjeta.
     `encuesta` por pregunta fija los % de la encuesta (el usuario pidió que la correcta no destaque salvo
     cuando es muy obvia).
