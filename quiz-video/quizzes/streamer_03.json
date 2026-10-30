@@ -1,0 +1,109 @@
+{
+  "modo": "streamer",
+  "video": "streamer_03",
+  "nombre": "ElXokas",
+  "titulo": "¿Cuánto sabes del Xokas?",
+  "foto": "assets/streamers/xokas.jpg",
+  "foco": [
+    0,
+    0
+  ],
+  "zoom_cam": 1.15,
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DEL XOKAS",
+    "SABRÁN ESTA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡Si aciertas la última del Shokas, eres un fan de verdad!",
+    "texto": [
+      "QUIZ DEL",
+      "XOKAS"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE"
+  },
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el nombre real de ElXokas?",
+      "pregunta_voz": "¿Cuál es el nombre real del Shokas?",
+      "opciones": [
+        "Joaquín Domínguez Portela",
+        "Javier Domínguez Pérez",
+        "Joaquín Fernández Portela",
+        "Jorge Domínguez López"
+      ],
+      "correcta": "A",
+      "opcion_voz": "Joaquín Domínguez Portela",
+      "fuente": "Joaquín Domínguez Portela (El Correo Gallego, The Objective)."
+    },
+    {
+      "pregunta": "¿En qué ciudad nació ElXokas?",
+      "pregunta_voz": "¿En qué ciudad nació el Shokas?",
+      "opciones": [
+        "A Coruña",
+        "Santiago de Compostela",
+        "Lugo",
+        "Vigo"
+      ],
+      "correcta": "C",
+      "opcion_voz": "Lugo",
+      "fuente": "Nació en Lugo el 13-04-1991 (El Progreso, El Correo Gallego)."
+    },
+    {
+      "pregunta": "¿Para qué club trabajó como editor de vídeo?",
+      "opciones": [
+        "FC Barcelona",
+        "Atlético de Madrid",
+        "Real Madrid",
+        "Manchester City"
+      ],
+      "correcta": "C",
+      "opcion_voz": "El Real Madrid",
+      "fuente": "Editor de vídeo en el Real Madrid (sección de baloncesto) hasta 2019."
+    },
+    {
+      "pregunta": "¿Qué premio ganó en los primeros premios ESLAND?",
+      "opciones": [
+        "Mejor streamer del año",
+        "Streamer revelación",
+        "Mejor evento del año",
+        "Mejor serie de Minecraft"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Streamer revelación",
+      "fuente": "Streamer revelación en la 1.ª edición de los ESLAND (enero de 2022, premiaba 2021)."
+    },
+    {
+      "pregunta": "¿Qué máster hizo en Madrid?",
+      "opciones": [
+        "Marketing digital",
+        "Dirección cinematográfica",
+        "Postproducción audiovisual",
+        "Diseño gráfico"
+      ],
+      "correcta": "C",
+      "opcion_voz": "Postproducción audiovisual",
+      "fuente": "Máster en postproducción en Madrid (2015)."
+    },
+    {
+      "pregunta": "¿Qué hacía ElXokas con la basura para no salir a tirarla?",
+      "pregunta_voz": "¿Qué hacía el Shokas con la basura para no salir a tirarla?",
+      "opciones": [
+        "La dejaba en el balcón",
+        "La congelaba",
+        "La guardaba en el garaje",
+        "La bajaba una vez por semana"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "fuente": "Guardaba los restos en el congelador (Xataka). No se revela."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "portada": {
+    "titulo": [
+      "QUIZ DEL",
+      "XOKAS"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  }
+}
