@@ -225,6 +225,12 @@ y la nota «Vale con cualquier bebida» (ayuda con TikTok, que limita contenido 
 - Nº1: 109 s, ~1.740 créditos de voz (30 frases; las 3 reacciones de voz se quitaron por ritmo).
 
 ## Formato "FIESTA" (pruebas para beber con amigos, cada una con mecánica distinta)
+CONCEPTO APROBADO POR EL USUARIO (30-10-2026): CUANDO PIDA UN VÍDEO PARA BEBER / DE FIESTA / CON AMIGOS →
+USAR ESTE CONCEPTO (`plantillas-quiz/fiesta.json`) sin preguntar. Se mantiene SIEMPRE: gancho espectacular
+de «la última prueba es imposible», pruebas con mecánicas distintas (no solo cartas), estética de discoteca,
+prueba final IMPOSIBLE grandiosa y gran final (brindis, fuegos artificiales). En cada vídeo nuevo cambian:
+las pruebas y retos (mezclar tipos existentes con tipos nuevos de la lista de ideas), la prueba imposible
+(inventar otra grandiosa: no repetir el trabalenguas), el texto del gancho y el color del fondo.
 `quizzes/fiesta_NN.json` → `generar_fiesta.py` + `quizvideo/fiesta.py` → MP4 + portadas solas
 (`--preview s1,s2 -o ruta` para revisar gratis; `--solo-portada`). Úsalo cuando pida «otro para beber»
 que NO sea solo elegir cartas. MISMAS REGLAS que cartas: nada guarro, «sorbos», «Vale con cualquier bebida»,
