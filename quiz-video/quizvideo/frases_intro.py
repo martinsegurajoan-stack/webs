@@ -85,12 +85,22 @@ FRASES_FUTBOL = [
     "Aquí no vale el VAR: o te lo sabes, o te lo sabes.",
 ]
 
-LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA, "halloween": FRASES_HALLOWEEN, "futbol": FRASES_FUTBOL}
+# Frases GANCHO para quiz GAMER (van ANTES de "¡Es hora del quiz gamer!").
+FRASES_GAMER = [
+    "Solo los gamers de verdad llegan al seis de seis… y la última es una trampa.",
+    "Si fallas la primera, desinstala todo. Si aciertas todas, eres una leyenda.",
+    "Este quiz no tiene guardado automático: o llegas al final, o game over.",
+    "Tu primo dice que sabe de videojuegos. Vamos a ver si tú sabes más.",
+]
+
+LISTAS = {"trivial": FRASES_INTRO, "pareja": FRASES_PAREJA, "halloween": FRASES_HALLOWEEN, "futbol": FRASES_FUTBOL,
+          "gamer": FRASES_GAMER}
 REGISTROS = {
     "trivial": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_usadas.json"),
     "pareja": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_pareja_usadas.json"),
     "halloween": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_halloween_usadas.json"),
     "futbol": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_futbol_usadas.json"),
+    "gamer": os.path.join(os.path.dirname(__file__), "..", "assets", "frases_gamer_usadas.json"),
 }
 
 

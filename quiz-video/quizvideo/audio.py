@@ -148,7 +148,73 @@ def music(duration, bpm=118, seed=7, style="pop"):
         return music_halloween(duration)
     if style == "futbol":
         return music_futbol(duration)
+    if style == "gamer":
+        return music_gamer(duration)
     return music_pop(duration, bpm, seed)
+
+
+def music_gamer(duration, bpm=128, seed=33):
+    """Chiptune alegre (Do–Sol–Lam–Fa): bajo triangular, arpegio de onda cuadrada, melodía y batería 8 bits."""
+    beat = 60.0 / bpm
+    step = beat / 4
+    bar = 4 * beat
+    n = int(duration * SR) + SR
+    out = np.zeros(n)
+    rng = np.random.default_rng(seed)
+
+    def add(sig, at, g):
+        s0 = int(at * SR)
+        if s0 >= n:
+            return
+        e = min(n, s0 + len(sig))
+        out[s0:e] += g * sig[: e - s0]
+
+    def sq(f, dur, duty=0.5, dec=0.15):
+        t = _t(dur)
+        ph = (t * f) % 1
+        return np.where(ph < duty, 1.0, -1.0) * _env(len(t), 0.002, dec)
+
+    def tri(f, dur):
+        t = _t(dur)
+        ph = (t * f) % 1
+        return (4 * np.abs(ph - 0.5) - 1) * _env(len(t), 0.003, dur * 0.8)
+
+    prog = [(48, [60, 64, 67]), (43, [55, 59, 62]), (45, [57, 60, 64]), (41, [53, 57, 60])]
+    escala = [60, 62, 64, 67, 69, 72, 74, 76]
+    mel = []
+    for b in range(4):
+        notas = []
+        for k in range(8):
+            if rng.random() < 0.25 and k % 2:
+                notas.append(None)
+            else:
+                ch = prog[b][1]
+                notas.append(rng.choice(ch) + 12 if k % 2 == 0 else rng.choice(escala) + 12)
+        mel.append(notas)
+    kick = _t(0.18)
+    kick = np.sin(2 * np.pi * np.cumsum(45 + 140 * np.exp(-kick * 35)) / SR) * _env(len(kick), 0.001, 0.1)
+    snare = rng.standard_normal(int(0.12 * SR)) * _env(int(0.12 * SR), 0.001, 0.05)
+    hat = rng.standard_normal(int(0.03 * SR))
+    hat = np.sign(hat) * _env(len(hat), 0.001, 0.01)
+    for b in range(int(duration / bar) + 2):
+        root, ch = prog[b % 4]
+        t0 = b * bar
+        for k in range(8):
+            add(tri(_midi(root + (12 if k % 2 else 0)), beat / 2 * 0.95), t0 + k * beat / 2, 0.30)
+        for k in range(16):
+            add(sq(_midi(ch[k % 3] + 12), step * 0.9, 0.25, 0.06), t0 + k * step, 0.045)
+        if b >= 2:
+            for k, nn in enumerate(mel[b % 4]):
+                if nn is not None:
+                    add(sq(_midi(nn + (12 if (b // 8) % 2 else 0)), beat / 2 * 0.9, 0.5, 0.25), t0 + k * beat / 2, 0.06)
+        for k in range(4):
+            add(kick, t0 + k * beat, 0.55)
+            if k % 2:
+                add(snare, t0 + k * beat, 0.22)
+        for k in range(8):
+            add(hat, t0 + k * beat / 2 + beat / 4, 0.08)
+    out = _lp_fft(out[: int(duration * SR)], 6000)
+    return out / (np.max(np.abs(out)) or 1) * 0.8
 
 
 def _lp_fft(x, fc):

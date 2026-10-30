@@ -305,6 +305,8 @@ def paleta_para(video, quiz, cfg):
                    "blob": (0, 222, 205), "accent": (255, 212, 0), "text_dark": (36, 10, 80),
                    "options": [(230, 160, 0), (0, 165, 155), (138, 58, 255), (255, 64, 160)]})
         return th
+    if modo == "gamer":
+        return themes.paleta_gamer(h)
     return themes.paleta_desde_tono(h)
 
 

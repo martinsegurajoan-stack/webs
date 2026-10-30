@@ -7,7 +7,9 @@ Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags 
 (sección "ENTREGA OBLIGATORIA" de `quiz-video/CLAUDE.md`).
 
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
-  ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`.
+  ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`. El usuario lo ha repetido: SIEMPRE gancho espectacular que
+  incite a quedarse hasta el final.
+- Quiz de VIDEOJUEGOS: modo `gamer` (`quizzes/hora_del_quiz_05.json`), con pantalla de RANGOS al final.
 - VÍDEO PARA BEBER / FIESTA CON AMIGOS (concepto aprobado por el usuario, úsalo siempre): pruebas variadas, plantilla `quiz-video/plantillas-quiz/fiesta.json` +
   `generar_fiesta.py` (ver "FIESTA" en `quiz-video/CLAUDE.md`). Solo cartas: `cartas.json`.
 - QUIZ DE STREAMERS (AuronPlay, etc.): plantilla `quiz-video/plantillas-quiz/streamer.json` + `generar_streamer.py`

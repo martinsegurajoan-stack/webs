@@ -225,3 +225,19 @@ def paleta_futbol(h):
         "rayos": 0.0,
     })
     return th
+
+
+def paleta_gamer(h):
+    """Paleta gamer: mismo estilo que el trivial pero más oscura y neón (synthwave), tono que no se repite."""
+    th = paleta_desde_tono(h, "gamer")
+    th.update({
+        "bg_top": _hsv(h, 0.85, 0.62),
+        "bg_bottom": _hsv(h + 45, 0.9, 0.2),
+        "bg_mid": _hsv(h + 20, 0.7, 0.75),
+        "bg_alt": _hsv(h + 150, 0.8, 0.6),
+        "blob": _hsv(h, 0.4, 1.0),
+        "accent": (255, 214, 0),
+        "accent2": (255, 45, 150),
+        "rayos": 0.6,
+    })
+    return th

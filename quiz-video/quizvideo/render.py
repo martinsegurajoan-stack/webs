@@ -97,9 +97,16 @@ MODOS["futbol"] = dict(MODOS["trivial"], **{
     "tag_final": "[shouting, stadium announcer]", "tempo": 1.12,
     "gancho_primero": True,  # la frase gancho va ANTES del saludo
 })
+MODOS["gamer"] = dict(MODOS["trivial"], **{
+    "saludo": "¡Es hora del quiz gamer!",
+    "intro_l1": "¡QUIZ", "intro_l2": "GAMER!",
+    "outro_voz": "¡Dime tu rango en los comentarios!", "outro_titulo": "¿Qué rango tienes?",
+    "outro_sub": "¡Escríbelo en comentarios!",
+    "musica": "gamer", "bpm": 128,
+})
 MODOS["trivial"]["saludo"] = "¡Es hora del quiz!"
 # GANCHO PRIMERO en todos los modos (regla del usuario): la frase gancho va antes del saludo
-for _m in ("trivial", "pareja", "halloween", "futbol"):
+for _m in ("trivial", "pareja", "halloween", "futbol", "gamer"):
     MODOS[_m]["gancho_primero"] = True
 MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
 
@@ -235,7 +242,7 @@ def build_timeline(quiz, voice, countdown=5):
         st = t
         loc = 0.35
         extra = bool(q.get("sin_respuesta")) and qi == n - 1 and n_reg >= 1
-        etiqueta = "¡Pregunta extra!" if extra else f"¡Pregunta {qi + 1}!"
+        etiqueta = q.get("etiqueta_voz", "¡Pregunta extra!") if extra else f"¡Pregunta {qi + 1}!"
         sig, dq = say(f"{etiqueta} " + q.get("pregunta_voz", q["pregunta"]))
         events += [("fx", "whoosh", st), ("voice", sig, st + loc)]
         loc += max(0.3, dq - 0.4)  # las opciones entran al final de la pregunta
@@ -292,6 +299,23 @@ def build_timeline(quiz, voice, countdown=5):
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
                        "reveal": rv, "correct": ci, "nores": nores, "end_pill": end_pill,
                        "extra": extra, "n_reg": n_reg, "joke_t": joke_t})
+        t += dur
+
+    if quiz.get("rangos"):
+        # pantalla de rangos: cada rango entra y se ilumina mientras se dice
+        st = t
+        sig, d0 = say(quiz.get("rangos_voz", "¿Cuántas has acertado? ¡Mira tu rango!"))
+        events += [("fx", "whoosh", st), ("voice", sig, st + 0.25)]
+        loc = 0.25 + d0 + 0.1
+        times = []
+        for r in quiz["rangos"]:
+            sigr, dr = say(r["voz"])
+            times.append(loc)
+            events += [("fx", "pop", st + loc), ("voice", sigr, st + loc + 0.1)]
+            loc += 0.1 + dr + 0.15
+        events += [("fx", "correct", st + times[-1]), ("fx", "applause", st + times[-1] + 0.2)]
+        dur = loc + 0.7
+        scenes.append({"kind": "rangos", "start": st, "dur": dur, "times": times})
         t += dur
 
     last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta")) or modo["fin"] is not None
@@ -362,7 +386,14 @@ def _init(state):
     vig = Image.new("RGBA", (W // 4, H // 4), (230, 20, 40, 0))
     vig.putalpha(Image.fromarray(va, "L"))
     _STATE["vignette"] = vig.resize((W, H), Image.BILINEAR)
+    _STATE["rimgs"] = {}
+    for r in state["quiz"].get("rangos", []):
+        ip = os.path.join(ASSETS, "imagenes", r["imagen"])
+        if os.path.exists(ip):
+            _STATE["rimgs"][r["imagen"]] = Image.open(ip).convert("RGBA").resize((150, 150), Image.LANCZOS)
     _STATE["decor"] = {}
+    if th.get("formas") == "gamer":
+        _init_gamer(th)
     if th.get("formas") == "futbol":
         _init_futbol(th)
     if th.get("formas") == "halloween":
@@ -444,6 +475,66 @@ def _heart(d, x, y, s, ang, col):
         hx, hy = hx * s / 17, hy * s / 17
         pts.append((x + hx * ca - hy * sa, y + hx * sa + hy * ca))
     d.polygon(pts, fill=col)
+
+
+def _init_gamer(th):
+    """Decorado gamer: sprites 3D (mandos, monedas, gemas, invasores…), bloques de píxel y estrellas."""
+    D = _STATE["decor"]
+    dd = os.path.join(ASSETS, "decor_gamer")
+    names = ("mando", "joystick", "invasor", "moneda", "gema", "seta", "estrella", "corazon", "trofeo", "espada")
+    D["sprites"] = {n: [Image.open(os.path.join(dd, n + ".png")).convert("RGBA").resize((sz, sz), Image.LANCZOS)
+                        for sz in (62, 86, 112)] for n in names}
+    rs = random.Random(13)
+    lst = ["mando", "invasor", "moneda", "moneda", "gema", "seta", "estrella", "corazon", "joystick",
+           "trofeo", "espada", "invasor", "moneda", "estrella", "gema"]
+    D["flyers"] = [(n, rs.randint(0, 2), rs.uniform(0, W), rs.uniform(0, H), rs.uniform(40, 95),
+                    rs.uniform(0, 6.28)) for n in lst]
+    D["blocks"] = [(rs.uniform(0, W), rs.uniform(0, H), rs.choice((24, 32, 42, 54)), rs.uniform(30, 85),
+                    rs.uniform(0, 6.28), rs.randint(0, 4)) for _ in range(20)]
+    D["stars"] = [(rs.uniform(0, W), rs.uniform(0, 1260), rs.choice((5, 7, 9)), rs.uniform(0, 6.28))
+                  for _ in range(36)]
+
+
+def _gamer(img, t, beat):
+    """Estrellas de píxel, rejilla synthwave al ritmo, bloques de píxel subiendo y sprites gamer."""
+    th = _STATE["theme"]
+    D = _STATE["decor"]
+    pulse = math.exp(-beat * 5)
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    for x, y, s, ph in D["stars"]:
+        a = 0.3 + 0.7 * abs(math.sin(t * 2.2 + ph))
+        d.rectangle((x - s / 2, y - s * 1.5, x + s / 2, y + s * 1.5), fill=(255, 255, 255, int(160 * a)))
+        d.rectangle((x - s * 1.5, y - s / 2, x + s * 1.5, y + s / 2), fill=(255, 255, 255, int(160 * a)))
+    hz = 1300
+    gc = th["accent"]
+    d.rectangle((0, hz - 5, W, hz + 5), fill=gc + (int(110 + 90 * pulse),))
+    for k in range(14):
+        z = ((k + t * 1.5) % 14) / 14
+        y = hz + (H - hz) * z ** 2.2
+        d.line((0, y, W, y), fill=gc + (int(30 + 110 * z),), width=max(2, int(2 + 5 * z)))
+    for k in range(-11, 12):
+        d.line((540 + k * 16, hz, 540 + k * 230, H), fill=gc + (85,), width=3)
+    cols = th["options"] + [th["accent"]]
+    for x0, y0, s, sp, ph, ci in D["blocks"]:
+        y = (y0 - sp * t) % (H + 120) - 60
+        x = x0 + 22 * math.sin(t * 0.8 + ph)
+        c = cols[ci]
+        d.rectangle((x - s / 2, y - s / 2, x + s / 2, y + s / 2), fill=c + (190,))
+        d.rectangle((x - s / 2, y - s / 2, x + s / 2, y - s / 2 + s * 0.24), fill=(255, 255, 255, 90))
+        d.rectangle((x - s / 2, y + s / 2 - s * 0.24, x + s / 2, y + s / 2), fill=(0, 0, 0, 70))
+        d.rectangle((x - s / 2, y - s / 2, x + s / 2, y + s / 2), outline=(0, 0, 0, 110), width=3)
+    img.alpha_composite(layer)
+    for n, si, x0, y0, sp, ph in D["flyers"]:
+        im = D["sprites"][n][si]
+        x = x0 + 45 * math.sin(t * 0.7 + ph)
+        y = (y0 - sp * t) % (H + 260) - 130
+        if n == "moneda":  # gira como una moneda
+            fl = abs(math.cos(t * 3 + ph))
+            im = im.resize((max(6, int(im.width * fl)), im.height), Image.BILINEAR)
+        else:
+            im = im.rotate(16 * math.sin(t * 1.4 + ph), resample=Image.BICUBIC, expand=True)
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
 
 
 def _init_futbol(th):
@@ -579,6 +670,10 @@ def _background(t):
         img.alpha_composite(layer)
         _halloween(img, t, beat)
         return img
+    if th.get("formas") == "gamer":
+        img.alpha_composite(layer)
+        _gamer(img, t, beat)
+        return img
     cols = th["options"] + [th["accent"]]
     for x0, y0, s, sp, rot, ph, kind, ci in _STATE["shapes"]:
         y = (y0 - sp * t) % (H + 120) - 60
@@ -695,6 +790,27 @@ def _draw_intro(layer, sc, lt):
         n_reg = sum(1 for q in quiz["preguntas"] if not q.get("sin_respuesta"))
         txt_n = f"{n_reg} PREGUNTAS + EXTRA" if n_reg < n else f"{n} PREGUNTAS"
         _pill(d, 540 + (1 - b) * 1200, 1360, f"{txt_n} · {_STATE['countdown']} S", 44, th["accent"], th["text_dark"])
+    if quiz.get("pegatina_gancho"):
+        c = ease_out_back((lt - 0.3) / 0.4)
+        if c > 0:
+            pulse = 1 + 0.06 * math.sin(lt * 9)
+            _pill(d, 540, 1500 + (1 - c) * 400, quiz["pegatina_gancho"], int(max(10, 66 * pulse)),
+                  (235, 35, 60), (255, 255, 255), pad=(46, 24))
+    if th.get("formas") == "gamer":
+        # estallido de bloques de píxel desde el título en el primer segundo
+        fx = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+        d = ImageDraw.Draw(fx)
+        if lt < 1.6:
+            cols = th["options"] + [th["accent"]]
+            for vx, vy, ci, s, ph in _STATE["confetti"]:
+                x = 540 + vx * 820 * lt
+                y = 450 + vy * 900 * lt + 900 * lt * lt
+                al = max(0.0, 1 - lt / 1.6)
+                d.rectangle((x - s / 2, y - s / 2, x + s / 2, y + s / 2), fill=with_alpha(cols[ci], al),
+                            outline=(0, 0, 0, int(120 * al)), width=3)
+        if lt < 0.15:
+            d.rectangle((0, 0, W, H), fill=(255, 255, 255, int(90 * (1 - lt / 0.15))))
+        layer.alpha_composite(fx)
 
 
 def _draw_outro(layer, sc, lt):
@@ -726,6 +842,72 @@ def _draw_outro(layer, sc, lt):
             layer.alpha_composite(logo, (540 - size // 2, 1300 - size // 2))
 
 
+def _draw_rangos(layer, sc, lt):
+    th = _STATE["theme"]
+    d = ImageDraw.Draw(layer)
+    rangos = _STATE["quiz"]["rangos"]
+    a = ease_out_back(lt / 0.4)
+    d.text((540, 240 - (1 - a) * 400), "¿CUÁNTAS", font=tfont(118), fill=th["text_light"], anchor="mm",
+           stroke_width=12, stroke_fill=th["text_dark"])
+    d.text((540, 375 - (1 - a) * 400), "HAS ACERTADO?", font=tfont(108), fill=th["accent"], anchor="mm",
+           stroke_width=12, stroke_fill=th["text_dark"])
+    times = sc["times"]
+    cur = max([i for i, tt in enumerate(times) if lt >= tt], default=-1)
+    n = len(rangos)
+    h, gap, y0 = 200, 26, 520
+    gold = (255, 196, 30)
+    for i, r in enumerate(rangos):
+        tt = times[i]
+        if lt < tt:
+            continue
+        p = ease_out_back((lt - tt) / 0.4)
+        on = i == cur
+        last = i == n - 1
+        y = y0 + i * (h + gap)
+        xo = (1 - p) * (1100 if i % 2 == 0 else -1100)
+        grow = (12 + 4 * math.sin((lt - tt) * 7)) if on else 0
+        box = (70 + xo - grow, y - grow / 2, 1010 + xo + grow, y + h + grow / 2)
+        if on:
+            gl = 0.45 + 0.25 * math.sin(lt * 8)
+            d.rounded_rectangle((box[0] - 16, box[1] - 16, box[2] + 16, box[3] + 16), 56,
+                                fill=with_alpha(gold if last else th["accent"], gl))
+        fill = (255, 232, 140) if last else th["card"]
+        shadow_box(d, box, 40, 0.25, 12)
+        d.rounded_rectangle((box[0], box[1] + 8, box[2], box[3] + 8), 40,
+                            fill=tuple(max(0, int(c * 0.78)) for c in fill[:3]))
+        d.rounded_rectangle(box, 40, fill=fill)
+        bc = gold if last else th["options"][i % 4]
+        bb = (box[0] + 20, box[1] + 22, box[0] + 250, box[3] - 22)
+        d.rounded_rectangle(bb, 32, fill=bc)
+        d.rounded_rectangle((bb[0] + 8, bb[1] + 6, bb[2] - 8, bb[1] + (bb[3] - bb[1]) * 0.4), 20,
+                            fill=(255, 255, 255, 45))
+        d.text(((bb[0] + bb[2]) / 2, (bb[1] + bb[3]) / 2 + 4), r["rango"], font=tfont(80),
+               fill=th["text_light"], anchor="mm", stroke_width=5, stroke_fill=(0, 0, 0, 90))
+        f = tfont(76)
+        while d.textlength(r["nombre"].upper(), font=f) > 470 and f.size > 40:
+            f = tfont(f.size - 4)
+        d.text((box[0] + 285, (box[1] + box[3]) / 2 + 4), r["nombre"].upper(), font=f,
+               fill=th["text_dark"], anchor="lm")
+        im = _STATE["rimgs"].get(r["imagen"])
+        if im is not None:
+            bob = 8 * math.sin(lt * 4 + i)
+            im2 = im.rotate(8 * math.sin(lt * 3 + i), resample=Image.BICUBIC, expand=True)
+            layer.alpha_composite(im2, (int(box[2] - 100 - im2.width / 2), int((box[1] + box[3]) / 2 - im2.height / 2 + bob)))
+    # confeti al llegar a la leyenda
+    rl = lt - times[-1]
+    if 0 <= rl < 2.5:
+        cols = th["options"] + [th["accent"], gold]
+        yy = y0 + (n - 1) * (h + gap) + h / 2
+        for vx, vy, ci, s, ph in _STATE["confetti"]:
+            x = 540 + vx * 900 * rl
+            y = yy + vy * 1300 * rl + 1400 * rl * rl
+            ang = ph + rl * 8
+            dx, dy = math.cos(ang) * s, math.sin(ang) * s * 0.5
+            al = 1 - max(0, (rl - 1.6) / 0.9)
+            d.polygon([(x - dx, y - dy), (x + dy, y - dx), (x + dx, y + dy), (x - dy, y + dx)],
+                      fill=with_alpha(cols[ci % len(cols)], al))
+
+
 def _draw_question(layer, sc, lt):
     th = _STATE["theme"]
     d = ImageDraw.Draw(layer)
@@ -739,8 +921,9 @@ def _draw_question(layer, sc, lt):
     a = ease_out_back(lt / 0.45)
     if sc.get("extra"):
         yh = 175 - (1 - a) * 300
-        _pill(d, 540, yh, "PREGUNTA EXTRA", 48, th["accent2"], th["text_light"])
-        wtxt = d.textlength("PREGUNTA EXTRA", font=tfont(48))
+        etq = q.get("etiqueta", "PREGUNTA EXTRA")
+        _pill(d, 540, yh, etq, 48, th["accent2"], th["text_light"])
+        wtxt = d.textlength(etq, font=tfont(48))
         for sx in (-1, 1):
             _shape(d, 3, 540 + sx * (wtxt / 2 + 80), yh, 26 + 3 * math.sin(lt * 6), lt * 2 * sx, th["accent"])
     else:
@@ -894,7 +1077,7 @@ def render_frame(i):
         lt = t - sc["start"]
         if 0 <= lt < sc["dur"]:
             layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-            {"intro": _draw_intro, "question": _draw_question, "outro": _draw_outro}[sc["kind"]](layer, sc, lt)
+            {"intro": _draw_intro, "question": _draw_question, "rangos": _draw_rangos, "outro": _draw_outro}[sc["kind"]](layer, sc, lt)
             out_t = sc["dur"] - lt
             if out_t < 0.3 and sc is not scenes[-1]:
                 # transición de salida: desliza hacia la izquierda

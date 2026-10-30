@@ -25,6 +25,9 @@ niveles, personalidad, misterio…):
 - Adelanta lo más llamativo que viene (la pregunta extra, el nivel imposible, el giro) sin revelar respuestas.
 - Movimiento fuerte en el primer segundo (zoom, sacudida, destello, piezas que se encienden).
 - Distinto en cada vídeo. Si dudas entre dos, elige el más provocador.
+- REGLA REPETIDA POR EL USUARIO (30-10-2026): «quiero un gancho espectacular al principio incitando que se
+  queden todo el vídeo. Recuérdalo siempre». Además del texto, refuerza con pegatina de reto («¿LLEGAS AL 6/6?»)
+  y anticipa la pregunta final/imposible para que esperen hasta el final.
 
 ## ENTREGA OBLIGATORIA DE CADA VÍDEO (aunque el usuario no lo pida)
 Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), envía SIEMPRE, sin preguntar:
@@ -52,6 +55,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
 | `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
+| `salida/hora_del_quiz_05.mp4` | `quizzes/hora_del_quiz_05.json` | 101 s | Quiz GAMER (modo `gamer`, 5 + PREGUNTA IMPOSIBLE, pantalla de RANGOS) = PLANTILLA GAMER |
 | `salida/fiesta_01.mp4` | `quizzes/fiesta_01.json` | 119 s | FIESTA nº1 (7 pruebas distintas para beber + prueba imposible + brindis final) = PLANTILLA FIESTA |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
@@ -72,7 +76,7 @@ Plantillas y piezas reutilizables:
   `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
 
 ## Nombres de archivo
-- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 05).
+- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 06).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
@@ -170,6 +174,20 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   `assets/frases_futbol_usadas.json`). Dificultad admite "alto" → "NIVEL: ALTO".
 - Imágenes genéricas de fútbol (trofeo, balón, tarjeta roja, medalla, portería, pizarra): nunca la respuesta.
 - Etiquetas de voz cortas (se cobran en cada frase). Coste quiz 1: ~1.550 créditos.
+
+## Modo "gamer" (quiz de videojuegos) y PANTALLA DE RANGOS
+- `"modo": "gamer"` (ver `quizzes/hora_del_quiz_05.json`): MISMA plantilla que el trivial (el usuario lo pidió
+  así: mismo estilo, sin calcar colores, muy decorado). Paleta `paleta_gamer` (synthwave oscuro, tono nuevo en
+  160-300, amarillo + fucsia), decorado `_gamer()` en `render.py`: estrellas de píxel, rejilla synthwave que
+  avanza al ritmo, bloques de píxel subiendo y sprites 3D (`assets/decor_gamer/`: mandos, monedas que giran,
+  gemas, invasores, setas…). Música chiptune `music_gamer` (128 bpm). Voz QUIZ sin etiqueta (reutiliza caché).
+- Gancho: `frase_intro` propia del vídeo (adelanta la trampa/la imposible) + «¡Es hora del quiz gamer!»,
+  estallido de píxeles y `pegatina_gancho` («¿LLEGAS AL 6/6?»). Lista de reserva `FRASES_GAMER`.
+- Pregunta extra con otro nombre: `"etiqueta": "PREGUNTA IMPOSIBLE"`, `"etiqueta_voz": "¡Pregunta imposible!"`
+  (sirve en cualquier modo).
+- RANGOS (cualquier modo): `"rangos_voz"` + lista `"rangos"` con `rango` («0–2»), `nombre`, `imagen` 3D y
+  `voz`. Escena antes del cierre: cada rango entra y se ilumina al decirse; el último en dorado con confeti.
+  En modo gamer el cierre pide «¡Dime tu rango en los comentarios!».
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
 `quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`
