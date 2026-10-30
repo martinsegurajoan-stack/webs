@@ -614,7 +614,7 @@ def portada(c, state, out_dir):
     p916 = os.path.join(out_dir, f"{c['video']}_9x16.png")
     p34 = os.path.join(out_dir, f"{c['video']}_3x4.png")
     full = img.copy()
-    username(full)
+    username(full, 1745)
     full.save(p916)
     img.crop((0, 240, 1080, 1680)).save(p34)
     return p916, p34
