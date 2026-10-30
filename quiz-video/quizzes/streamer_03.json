@@ -5,8 +5,8 @@
   "titulo": "¿Cuánto sabes del Xokas?",
   "foto": "assets/streamers/xokas.jpg",
   "foco": [
-    0,
-    0
+    787,
+    562
   ],
   "zoom_cam": 1.15,
   "aviso": [
@@ -105,5 +105,33 @@
       "XOKAS"
     ],
     "pegatina": "SOLO PARA VERDADEROS FANS"
-  }
+  },
+  "chat": [
+    "XOKAS EN LA CASA",
+    "el rey de Lugo",
+    "GALICIA PRESENTE",
+    "congelador gang",
+    "esa la sé de los directos",
+    "editor del Madrid detected",
+    "más difícil que un souls",
+    "mi madre ve sus directos",
+    "si fallo me voy a por pulpo",
+    "Lugo representa",
+    "esto lo sabe hasta su perro",
+    "XOKAS 1 - CHAT 0",
+    "fan desde el día 1",
+    "modo souls activado"
+  ],
+  "chat_random": [
+    "me he comprado un jabalí",
+    "mi abuela juega al Fortnite",
+    "acabo de ver un pato con gafas",
+    "le he puesto nombre a mi tostadora",
+    "mi vecino tiene un flamenco",
+    "estoy en la cola del DNI",
+    "he desayunado croquetas",
+    "perdí una chancla en 2014",
+    "mi gato dice que la B",
+    "alguien sabe cocer pasta??"
+  ]
 }

@@ -210,10 +210,17 @@ def _init(state):
     seed = zlib.crc32(c["video"].encode())
     r = random.Random(seed)
     chat = []
+    tema = c.get("chat") or []          # comentarios graciosos sobre el streamer
+    raros = c.get("chat_random") or []  # cosas MUY random de vez en cuando
     while len(chat) < 400:  # sin mensajes repetidos seguidos
-        msgs = CHAT_MSG[:]
+        msgs = (tema + CHAT_MSG[:6]) if tema else CHAT_MSG[:]
         r.shuffle(msgs)
-        chat += [(r.choice(CHAT_USERS), m) for m in msgs]
+        rnd = raros[:]
+        r.shuffle(rnd)
+        for i, m in enumerate(msgs):
+            chat.append((r.choice(CHAT_USERS), m))
+            if rnd and i % 4 == 3:
+                chat.append((r.choice(CHAT_USERS), rnd.pop()))
     _S["chat"] = chat
     _S["polls"] = []
     for q in c["preguntas"]:

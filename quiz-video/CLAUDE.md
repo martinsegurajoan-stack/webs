@@ -68,6 +68,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_07.mp4` | `quizzes/hora_del_quiz_07.json` | 89 s | Quiz GAMER nº2 (modo `gamer`, piques + comentarios, PREGUNTA TRAMPA, rangos rápidos, tempo 1,28) |
 | `salida/fiesta_01.mp4` | `quizzes/fiesta_01.json` | 119 s | FIESTA nº1 (7 pruebas distintas para beber + prueba imposible + brindis final) = PLANTILLA FIESTA |
 | `salida/streamer_02.mp4` | `quizzes/streamer_02.json` | 88 s | STREAMER: Ibai (misma edición que AuronPlay; no mencionar que es parte de una serie) |
+| `salida/streamer_03.mp4` | `quizzes/streamer_03.json` | 82 s | STREAMER: ElXokas (chat temático + comentarios random, miniatura igual que la serie) |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -93,7 +94,7 @@ Plantillas y piezas reutilizables:
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 04).
 - Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 - Fiesta: `quizzes/fiesta_NN.json` → `salida/fiesta_NN.mp4` (siguiente: 02).
-- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, siguiente: 03). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
+- Streamer: `quizzes/streamer_NN.json` → `salida/streamer_NN.mp4` (nº1 = AuronPlay, nº2 = Ibai, nº3 = ElXokas, siguiente: 04). El usuario los sube desordenados: NUNCA decir «segundo vídeo», «parte 2» ni numerarlos en el vídeo o en los textos.
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -355,6 +356,9 @@ NO es la plantilla trivial (petición del usuario): mismo ADN de marca (Lilita/B
   al repo en esa carpeta). Nunca generar con IA la cara de una persona real. `generar_streamer.py`
   se niega a renderizar sin foto.
 - `aviso` (2 líneas) = cinta amarilla de advertencia FIJA arriba durante TODO el vídeo.
+- CHAT (regla del usuario, SIEMPRE): `chat` = comentarios graciosos relacionados con el streamer (sin
+  polémicas ni insultos) y `chat_random` = cosas MUY random que salen cada ~4 mensajes («me he comprado un
+  jabalí», «mi abuela juega al Fortnite»…). Cambiarlos en cada vídeo. Sin emojis (la fuente no los dibuja).
 - Preguntas: chat en directo con mensajes genéricos que suben, cámara del streamer (su foto) con
   «EN DIRECTO», tarjeta oscura con borde neón, opciones como ENCUESTA de directo con barras y % que
   suben durante la cuenta atrás (aleatorios, no indican la respuesta), alerta «¡CORRECTA! +1 PUNTO DE
