@@ -51,6 +51,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/hora_del_quiz_04.mp4` | `quizzes/hora_del_quiz_04.json` | 106 s | Quiz de FÚTBOL nivel ALTO (modo `futbol`, campo de fútbol) = PLANTILLA FÚTBOL |
 | `salida/misterio_01.mp4` | `quizzes/misterio_01.json` | 81 s | MISTERIO CRIMINAL nº1 v2 (sin revelar culpable, final con gancho) = PLANTILLA DE MISTERIO |
 | `salida/niveles_01.mp4` | `quizzes/niveles_01.json` | 105 s | NIVELES nº1 (6 pruebas distintas, nivel imposible a comentarios) = PLANTILLA DE NIVELES |
+| `salida/cartas_01.mp4` | `quizzes/cartas_01.json` | 109 s | ELIGE UNA CARTA nº1 (juego para beber con amigos) = PLANTILLA DE CARTAS |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
 en frases nuevas). No regeneres vídeos ya entregados salvo que el usuario lo pida.
@@ -72,6 +73,7 @@ Plantillas y piezas reutilizables:
 - Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 05).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 02).
+- Cartas: `quizzes/cartas_NN.json` → `salida/cartas_NN.mp4` (siguiente: 02).
 
 RESUMEN: "quiz" → plantilla trivial; "quiz de parejas" → plantilla pareja. Ambos con TODAS las mejoras,
 5 preguntas + 1 extra sin respuesta (comentarios), y se envía el MP4 sin pedir más instrucciones.
@@ -200,6 +202,23 @@ REGLAS DEL USUARIO (v2): duración 1:30-1:45 MÁXIMO, poca letra, muy divertido.
 - Voz QUIZ sin etiqueta (salvo `[excited]` en el gancho y `[whispers]` en el nivel imposible), tempo x1.18.
 - Cierre: chips 1-5 + ☠, «¿Hasta qué nivel has llegado?», «¡SÍGUEME PARA MÁS!» y logo.
 - Nº1: 105 s, ~1.000 créditos de voz (20 frases).
+
+## Formato "ELIGE UNA CARTA" (juego para beber con amigos)
+`quizzes/cartas_NN.json` → `generar_cartas.py` + `quizvideo/cartas.py` → `salida/cartas_NN.mp4` + portadas
+(salen solas; `--solo-portada` para rehacerlas). REGLAS DEL USUARIO: muy divertido y alegre, que la gente
+PAUSE e interactúe entre ellos, que beban, NADA guarro/sexual. Usar «sorbos» (no chupitos ni «fondo»)
+y la nota «Vale con cualquier bebida» (ayuda con TikTok, que limita contenido que incita a beber).
+- Gancho: «ELIGE UNA CARTA» desde el fotograma 0 con destello, cartas que salen girando del mazo,
+  confeti y pegatina «¡Y QUE BEBA QUIEN TOQUE!». Luego «¿CÓMO SE JUEGA?» con pastilla de pausa.
+- Ronda: fondo de color nuevo que entra en círculo (turquesa, naranja, rosa, azul, morado, dorado),
+  puntos de progreso, «RONDA N» + nombre, 3 cartas boca abajo flotando (dorso con rombos y número),
+  cuenta atrás 5 s + «¡PAUSA Y ELEGID!», las cartas se giran una a una (cara: emoji 3D de
+  `assets/cartas/`, texto, cinta de color según `tag`) y al final «¡SALUD!» con copas y confeti.
+  Giros: carta TRAMPA que castiga a otra carta, «¿seguro?», MALDICIÓN, ronda final con `dorada` y
+  `orden` para dejar la carta dorada para el final.
+- Fondo de fiesta: degradado, focos que barren, confeti cayendo; gancho/cierre en morado/fucsia (tono 280-340).
+- Voz QUIZ con estilo `[cheerful and excited]` (en el JSON), tempo x1.25. Música pop a 124 bpm.
+- Nº1: 109 s, ~1.740 créditos de voz (30 frases; las 3 reacciones de voz se quitaron por ritmo).
 
 ## Formato "MISTERIO CRIMINAL" (historia narrada, NO es un quiz)
 `quizzes/misterio_NN.json` → `generar_misterio.py` + `quizvideo/misterio.py` → `salida/misterio_NN.mp4`,
