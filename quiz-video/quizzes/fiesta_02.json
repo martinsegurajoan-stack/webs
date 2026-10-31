@@ -1,0 +1,376 @@
+{
+  "modo": "fiesta",
+  "video": "fiesta_02",
+  "titulo": "La fiesta de los 8",
+  "estilo_voz": "[cheerful and excited]",
+  "jugadores": [
+    "Nerea",
+    "Mir",
+    "Corbeto",
+    "Carla",
+    "Joan",
+    "Adri",
+    "Víctor",
+    "Andrea"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡Nerea, Mir, Corbeto, Carla, Joan, Adri, Víctor y Andrea! ¡Solo uno aguanta hasta el final!",
+    "texto": [
+      "¿QUIÉN AGUANTA",
+      "HASTA EL FINAL?"
+    ],
+    "pegatina": "LA ÚLTIMA ES IMPOSIBLE"
+  },
+  "instrucciones": {
+    "voz": "Vasos llenos y todos alrededor del móvil. ¡Si no os da tiempo, pausad!",
+    "pasos": [
+      [
+        "cerveza",
+        "Vasos llenos"
+      ],
+      [
+        "movil",
+        "Todos alrededor del móvil"
+      ],
+      [
+        "reloj",
+        "¿Sin tiempo? ¡Pausa!"
+      ]
+    ],
+    "nota": "Vale con cualquier bebida"
+  },
+  "pruebas": [
+    {
+      "tipo": "ruleta",
+      "nombre": "LA RULETA DE NOMBRES",
+      "icono": "_ruleta",
+      "anuncio": "¡Prueba uno: la ruleta de nombres! ¿A quién le tocará?",
+      "sectores": [
+        "NEREA",
+        "MIR",
+        "CORBETO",
+        "CARLA",
+        "JOAN",
+        "ADRI",
+        "VÍCTOR",
+        "ANDREA"
+      ],
+      "gana": 2,
+      "resultado": "¡CORBETO, 2 SORBOS Y A BAILAR!",
+      "resultado_voz": "¡Le toca a Corbeto! ¡Dos sorbos y a bailar!"
+    },
+    {
+      "tipo": "senalar",
+      "nombre": "EL DEDO ACUSADOR",
+      "icono": "senala",
+      "anuncio": "¡Prueba dos: el dedo acusador!",
+      "pregunta": "…acabe bailando encima de una silla?",
+      "emoji": "notas",
+      "voz": "¿Quién es más probable que acabe bailando encima de una silla esta noche? ¡A la de tres, señalad!",
+      "resultado": "El más señalado bebe 2 sorbos",
+      "resultado_voz": "¡El más señalado bebe dos sorbos!"
+    },
+    {
+      "tipo": "yo_nunca",
+      "nombre": "YO NUNCA NUNCA",
+      "icono": "mano",
+      "anuncio": "¡Prueba tres: yo nunca nunca! Si lo has hecho, bebes.",
+      "frases": [
+        [
+          "he dejado un mensaje en visto a propósito",
+          "Yo nunca he dejado un mensaje en visto a propósito."
+        ],
+        [
+          "he cantado en la ducha como en un concierto",
+          "Yo nunca he cantado en la ducha como en un concierto."
+        ],
+        [
+          "le he robado patatas fritas a Mir",
+          "Yo nunca le he robado patatas fritas a Mir."
+        ]
+      ]
+    },
+    {
+      "tipo": "ruleta",
+      "nombre": "LA RULETA DE NOMBRES",
+      "icono": "_ruleta",
+      "anuncio": "¡Prueba cuatro: vuelve la ruleta!",
+      "sectores": [
+        "NEREA",
+        "MIR",
+        "CORBETO",
+        "CARLA",
+        "JOAN",
+        "ADRI",
+        "VÍCTOR",
+        "ANDREA"
+      ],
+      "gana": 3,
+      "resultado": "¡CARLA ELIGE QUIÉN BEBE CON ELLA!",
+      "resultado_voz": "¡Carla! Elige a alguien y bebéis juntas o juntos dos sorbos."
+    },
+    {
+      "tipo": "bomba",
+      "nombre": "LA BOMBA",
+      "icono": "bomba",
+      "anuncio": "¡Prueba cinco: la bomba!",
+      "voz": "Empieza Andrea: decid futbolistas por turnos. ¡A quien le explote, bebe tres!",
+      "categoria": "FUTBOLISTAS",
+      "emoji": "trofeo",
+      "segundos": 8,
+      "resultado": "¡BEBE 3 SORBOS!",
+      "resultado_voz": "¡Bum! ¡Tres sorbos!"
+    },
+    {
+      "tipo": "esto_aquello",
+      "nombre": "ESTO O AQUELLO",
+      "icono": "huevo",
+      "anuncio": "¡Prueba seis: esto o aquello!",
+      "voz": "¿Pizza o helado? ¡A la de tres, votad!",
+      "pregunta": [
+        "¿PIZZA",
+        "O HELADO?"
+      ],
+      "a": [
+        "PIZZA",
+        "pizza"
+      ],
+      "b": [
+        "HELADO",
+        "helado"
+      ],
+      "resultado": "El bando con menos votos bebe 2",
+      "resultado_voz": "¡El bando con menos votos bebe dos!"
+    },
+    {
+      "tipo": "senalar",
+      "nombre": "EL DEDO ACUSADOR",
+      "icono": "senala",
+      "anuncio": "¡Prueba siete: otra vez el dedo acusador!",
+      "pregunta": "…mande un audio de cinco minutos?",
+      "emoji": "movil",
+      "voz": "¿Quién es más probable que mande un audio de cinco minutos al grupo? ¡A la de tres, señalad!",
+      "resultado": "El más señalado bebe 2 sorbos",
+      "resultado_voz": "¡El más señalado bebe dos sorbos!"
+    },
+    {
+      "tipo": "reflejos",
+      "nombre": "REFLEJOS",
+      "icono": "cerveza",
+      "anuncio": "¡Prueba ocho: reflejos! Cuando salga la cerveza, ¡golpead la mesa!",
+      "secuencia": [
+        "limon",
+        "pizza",
+        "refresco",
+        "helado",
+        "tropical",
+        "cerveza"
+      ],
+      "trampas": [
+        "refresco",
+        "tropical"
+      ],
+      "resultado": [
+        "EL ÚLTIMO BEBE",
+        "¡Y EL QUE SE ADELANTÓ TAMBIÉN!"
+      ],
+      "resultado_voz": "¡El último bebe! Y quien se adelantó… ¡también!"
+    },
+    {
+      "tipo": "ruleta",
+      "nombre": "LA RULETA DE NOMBRES",
+      "icono": "_ruleta",
+      "anuncio": "¡Prueba nueve: la ruleta otra vez!",
+      "sectores": [
+        "NEREA",
+        "MIR",
+        "CORBETO",
+        "CARLA",
+        "JOAN",
+        "ADRI",
+        "VÍCTOR",
+        "ANDREA"
+      ],
+      "gana": 5,
+      "resultado": "¡ADRI IMITA A ALGUIEN DEL GRUPO!",
+      "resultado_voz": "¡Adri! Imita a alguien del grupo. Si lo adivinan, ¡todos beben!"
+    },
+    {
+      "tipo": "yo_nunca",
+      "nombre": "YO NUNCA NUNCA",
+      "icono": "mano",
+      "anuncio": "¡Prueba diez: otra de yo nunca nunca!",
+      "frases": [
+        [
+          "he fingido estar malo para no ir a clase",
+          "Yo nunca he fingido estar malo para no ir a clase."
+        ],
+        [
+          "he hecho un baile de TikTok a escondidas",
+          "Yo nunca he hecho un baile de TikTok a escondidas."
+        ],
+        [
+          "he dicho «ya voy» sin haber salido de casa",
+          "Yo nunca he dicho «ya voy» sin haber salido de casa."
+        ]
+      ]
+    },
+    {
+      "tipo": "bomba",
+      "nombre": "LA BOMBA",
+      "icono": "bomba",
+      "anuncio": "¡Prueba once: vuelve la bomba!",
+      "voz": "Empieza Víctor: decid canciones de reguetón. ¡A quien le explote, bebe tres!",
+      "categoria": "CANCIONES DE REGUETÓN",
+      "emoji": "notas",
+      "segundos": 8,
+      "resultado": "¡BEBE 3 SORBOS!",
+      "resultado_voz": "¡Bum! ¡Tres sorbos!"
+    },
+    {
+      "tipo": "esto_aquello",
+      "nombre": "ESTO O AQUELLO",
+      "icono": "huevo",
+      "anuncio": "¡Prueba doce: esto o aquello!",
+      "voz": "Mir, Andrea… ¿cerveza o refresco? ¡A la de tres, votad!",
+      "pregunta": [
+        "¿CERVEZA",
+        "O REFRESCO?"
+      ],
+      "a": [
+        "CERVEZA",
+        "cerveza"
+      ],
+      "b": [
+        "REFRESCO",
+        "refresco"
+      ],
+      "resultado": "El bando con menos votos bebe 2",
+      "resultado_voz": "¡El bando con menos votos bebe dos!"
+    },
+    {
+      "tipo": "senalar",
+      "nombre": "EL DEDO ACUSADOR",
+      "icono": "senala",
+      "anuncio": "¡Prueba trece: el dedo acusador!",
+      "pregunta": "…se ría en el momento más serio?",
+      "emoji": "risa",
+      "voz": "¿Quién es más probable que se ría en el momento más serio? ¡A la de tres, señalad!",
+      "resultado": "El más señalado bebe 2 sorbos",
+      "resultado_voz": "¡El más señalado bebe dos sorbos!"
+    },
+    {
+      "tipo": "ruleta",
+      "nombre": "LA RULETA DE NOMBRES",
+      "icono": "_ruleta",
+      "anuncio": "¡Prueba catorce: la ruleta decide!",
+      "sectores": [
+        "NEREA",
+        "MIR",
+        "CORBETO",
+        "CARLA",
+        "JOAN",
+        "ADRI",
+        "VÍCTOR",
+        "ANDREA"
+      ],
+      "gana": 0,
+      "resultado": "¡NEREA REPARTE 3 SORBOS!",
+      "resultado_voz": "¡Nerea! Reparte tres sorbos entre quien quieras."
+    },
+    {
+      "tipo": "reflejos",
+      "nombre": "REFLEJOS",
+      "icono": "cerveza",
+      "anuncio": "¡Prueba quince: reflejos! Joan, esta vez no te despistes.",
+      "secuencia": [
+        "pizza",
+        "tropical",
+        "limon",
+        "refresco",
+        "helado",
+        "pinya",
+        "cerveza"
+      ],
+      "trampas": [
+        "tropical",
+        "refresco"
+      ],
+      "resultado": [
+        "EL ÚLTIMO BEBE",
+        "¡Y EL QUE SE ADELANTÓ TAMBIÉN!"
+      ],
+      "resultado_voz": "¡El último bebe! Y quien se adelantó… ¡también!"
+    },
+    {
+      "tipo": "senalar",
+      "nombre": "EL DEDO ACUSADOR",
+      "icono": "senala",
+      "anuncio": "¡Prueba dieciséis: el último dedo acusador!",
+      "pregunta": "…acabe cantando en el karaoke?",
+      "emoji": "micro",
+      "voz": "¿Quién es más probable que acabe cantando en el karaoke esta noche? ¡A la de tres, señalad!",
+      "resultado": "El más señalado bebe 2 sorbos",
+      "resultado_voz": "¡El más señalado bebe dos sorbos!"
+    },
+    {
+      "tipo": "ruleta",
+      "nombre": "LA RULETA DE NOMBRES",
+      "icono": "_ruleta",
+      "anuncio": "¡Prueba diecisiete: la última ruleta!",
+      "sectores": [
+        "NEREA",
+        "MIR",
+        "CORBETO",
+        "CARLA",
+        "JOAN",
+        "ADRI",
+        "VÍCTOR",
+        "ANDREA"
+      ],
+      "gana": 6,
+      "resultado": "¡VÍCTOR ELIGE A DOS QUE BRINDAN!",
+      "resultado_voz": "¡Víctor! Elige a dos personas: brindan y beben."
+    },
+    {
+      "tipo": "yo_nunca",
+      "nombre": "YO NUNCA NUNCA",
+      "icono": "mano",
+      "anuncio": "¡Prueba dieciocho: el último yo nunca nunca!",
+      "frases": [
+        [
+          "me he quedado dormido en el autobús",
+          "Yo nunca me he quedado dormido en el autobús."
+        ],
+        [
+          "he dicho que no bebía y he acabado brindando",
+          "Yo nunca he dicho que no bebía y he acabado brindando."
+        ],
+        [
+          "he olvidado el cumpleaños de un amigo",
+          "Yo nunca he olvidado el cumpleaños de un amigo."
+        ]
+      ]
+    },
+    {
+      "tipo": "final",
+      "nombre": "IMPOSIBLE",
+      "icono": "calavera",
+      "anuncio": "[excited] ¡Y ahora... la prueba imposible!",
+      "voz": "¡El trabalenguas maldito! Decidlo tres veces seguidas sin fallar.",
+      "trabalenguas": "El cielo está enladrillado, ¿quién lo desenladrillará?",
+      "trabalenguas_voz": "El cielo está enladrillado, ¿quién lo desenladrillará?",
+      "segundos": 7,
+      "resultado_voz": "Quien falle, bebe. ¡Y quien lo consiga es el rey de la fiesta y reparte cinco!",
+      "brindis_voz": "¡Nerea, Mir, Corbeto, Carla, Joan, Adri, Víctor y Andrea! ¡Brindis final! ¡Todos arriba!"
+    }
+  ],
+  "cierre_voz": "¿Quién ha ganado la fiesta? ¡Sois los mejores!",
+  "portada": {
+    "titulo": [
+      "LA FIESTA",
+      "DE LOS 8"
+    ],
+    "pegatina": "SOLO UNO AGUANTA"
+  }
+}

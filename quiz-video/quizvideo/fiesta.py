@@ -625,7 +625,9 @@ def meter(img, d, sc, lt):
     n, k = sc["n"], sc["k"]
     c = _S["c"]
     y = 125
-    xs = [540 + (i - (n - 1) / 2) * 132 for i in range(n)]
+    sp = min(132, 990 / max(1, n - 1))  # con muchas pruebas se juntan y se encogen
+    ks = min(1.0, sp / 105)
+    xs = [540 + (i - (n - 1) / 2) * sp for i in range(n)]
     d.line([(xs[0], y), (xs[-1], y)], fill=(255, 255, 255, 70), width=8)
     if k > 0:
         d.line([(xs[0], y), (xs[k], y)], fill=YEL + (230,), width=8)
@@ -633,20 +635,20 @@ def meter(img, d, sc, lt):
         p = c["pruebas"][i]
         col = NEON[p["tipo"]]
         if i == k:
-            rad = 52 + 4 * math.sin(lt * 7)
+            rad = (52 + 4 * math.sin(lt * 7)) * max(ks, 0.8)
             d.ellipse((x - rad - 10, y - rad - 10, x + rad + 10, y + rad + 10), fill=col + (90,))
             d.ellipse((x - rad, y - rad, x + rad, y + rad), fill=WHITE, outline=col, width=7)
-            paste_c(img, spr(p["icono"], 72), x, y, 1.0)
+            paste_c(img, spr(p["icono"], int(72 * max(ks, 0.8))), x, y, 1.0)
         elif i < k:
-            d.ellipse((x - 40, y - 40, x + 40, y + 40), fill=WHITE)
-            paste_c(img, spr(p["icono"], 54), x, y, 1.0, 0.45)
-            check(d, x, y + 2, 40, (22, 170, 90), 9)
+            d.ellipse((x - 40 * ks, y - 40 * ks, x + 40 * ks, y + 40 * ks), fill=WHITE)
+            paste_c(img, spr(p["icono"], max(10, int(54 * ks))), x, y, 1.0, 0.45)
+            check(d, x, y + 2, 40 * ks, (22, 170, 90), 9)
         else:
-            d.ellipse((x - 40, y - 40, x + 40, y + 40), fill=(0, 0, 0, 90), outline=(255, 255, 255, 90), width=4)
+            d.ellipse((x - 40 * ks, y - 40 * ks, x + 40 * ks, y + 40 * ks), fill=(0, 0, 0, 90), outline=(255, 255, 255, 90), width=4)
             if p["tipo"] == "final":
-                d.text((x, y + 4), "?", font=tfont(56), fill=RED, anchor="mm", stroke_width=4, stroke_fill=WHITE)
+                d.text((x, y + 4), "?", font=tfont(max(12, int(56 * ks))), fill=RED, anchor="mm", stroke_width=4, stroke_fill=WHITE)
             else:
-                paste_c(img, spr(p["icono"], 54), x, y, 1.0, 0.5)
+                paste_c(img, spr(p["icono"], max(10, int(54 * ks))), x, y, 1.0, 0.5)
 
 
 def header(img, d, sc, lt):
@@ -1153,6 +1155,21 @@ def draw_hook(img, d, sc, lt):
     sc_ = 1.18 - 0.18 * p_
     text(d, (540 + sh, 560), l1, tfont(int(118 * sc_)), WHITE, 14, DARK, sh=10)
     text(d, (540 - sh, 710), l2, tfont(int(118 * sc_)), YEL, 14, DARK, sh=10)
+    js = c.get("jugadores")
+    if js:  # los nombres de los jugadores van saltando en dos filas bajo el titular
+        filas = [js[:(len(js) + 1) // 2], js[(len(js) + 1) // 2:]]
+        for r, fila in enumerate(filas):
+            f = tfont(46)
+            ws = [d.textlength(nm.upper(), font=f) + 56 for nm in fila]
+            x = 540 - (sum(ws) + 14 * (len(fila) - 1)) / 2
+            for q, (nm, w_) in enumerate(zip(fila, ws)):
+                a_ = pop(lt, 0.15 + 0.07 * (r * 4 + q), 0.3)
+                if a_ > 0:
+                    cx_ = x + w_ / 2
+                    cy_ = 845 + r * 78 + math.sin(lt * 6 + q + r) * 5
+                    col = CONF_COLS[(r * 4 + q) % len(CONF_COLS)]
+                    pill(d, cx_, cy_, nm.upper(), int(46 * a_), col, DARK if col in (WHITE, YEL) else WHITE, pad=(24, 8))
+                x += w_ + 14
     b = pop(lt, 0.55, 0.4)
     sticker(img, c["gancho"]["pegatina"], 560, 1420 + math.sin(lt * 4) * 6, 58, RED, WHITE, angle=-3,
             scale=b * (1 + 0.04 * math.sin(lt * 8)))

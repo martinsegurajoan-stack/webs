@@ -394,6 +394,11 @@ que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir fr
   BRINDIS FINAL con fuegos artificiales, cervezas chocando y champán. Cierre «¿QUIÉN HA GANADO LA FIESTA?».
 - Emojis 3D en `assets/fiesta/` (de `@lobehub/fluent-emoji-3d`). Voz QUIZ `[cheerful and excited]`, tempo
   x1,27; las frases que empiezan con etiqueta (`[whispers]`, `[excited]`) van sin el estilo general.
+- Nº2 PRIVADO (`fiesta_02`, 31-10-2026): vídeo de ~5 min para el grupo del usuario (Nerea, Mir, Corbeto, Carla, Joan,
+  Adri, Víctor y Andrea). `jugadores` en el JSON = sus nombres saltan en el gancho; ruletas con los 8 nombres
+  (`gana` = índice), nombres en las frases de voz (bomba «Empieza Andrea…», brindis con todos). 19 pruebas: la barra
+  de arriba se encoge sola. Sin portadas ni textos de redes (privado). ~2.900 créditos de voz (41 frases nuevas; varias
+  se reutilizaron de la caché del nº1).
 - Nº1: 119 s, ~1.750 créditos de voz (26 frases). Ideas para el siguiente: «la patata caliente» (pasar el
   móvil), «piedra papel tijera» contra la pantalla, «el dado», «verdad o sorbo», «cadena de palabras».
 
