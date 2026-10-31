@@ -1346,7 +1346,7 @@ def _draw_question(layer, sc, lt):
     if jt is not None and lt >= jt:
         # el texto de la tarjeta pasa a ser el chiste, con un pequeño rebote
         jp = ease_out_back((lt - jt) / 0.35)
-        f, lines, lh = fit(d, q.get("comentario", q.get("chiste")), 820, CARD_H - 90, int(78 * (0.85 + 0.15 * jp)), 34, 1.08)
+        f, lines, lh = fit(d, __import__("re").sub(r"\[[^\]]*\]\s*", "", q.get("comentario", q.get("chiste"))), 820, CARD_H - 90, int(78 * (0.85 + 0.15 * jp)), 34, 1.08)
         draw_lines(d, lines, f, lh, 540, y + CARD_H / 2 + 6, th["accent2"])
         sprite = _STATE.get("decor", {}).get("calabaza_s")
         if sprite is not None:
