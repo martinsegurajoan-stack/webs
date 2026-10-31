@@ -262,3 +262,26 @@ def paleta_mascota(h):
         "rayos": 0.8,
     })
     return th
+
+
+def paleta_mexico(h):
+    """Paleta de MÉXICO: verde bandera (tono que no se repite), rojo y blanco de la bandera y
+    colores de fiesta (rosa mexicano, turquesa, naranja, morado) en las opciones."""
+    th = paleta_desde_tono(h, "mexico")
+    th.update({
+        "bg_top": _hsv(h, 0.95, 0.62),
+        "bg_bottom": _hsv(h + 6, 1.0, 0.26),
+        "bg_mid": _hsv(h - 8, 0.8, 0.78),
+        "bg_alt": (206, 17, 38),                    # rojo bandera
+        "blob": (255, 255, 255),
+        "accent": (255, 205, 0),                    # amarillo cempasúchil
+        "accent2": (206, 17, 38),                   # rojo bandera
+        "card": (255, 255, 255),
+        "text_dark": (20, 46, 30),
+        "correct": (255, 190, 0),                   # dorado: se ve sobre el verde
+        "wrong": (130, 135, 130),
+        "options": [(228, 0, 124), (0, 160, 190), (255, 120, 0), (130, 50, 200)],
+        "formas": "mexico",
+        "rayos": 0.55,
+    })
+    return th

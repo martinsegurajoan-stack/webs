@@ -73,6 +73,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/streamer_05.mp4` | `quizzes/streamer_05.json` | 90 s | STREAMER: DjMaRiiO (gancho v2 con la extra bloqueada, extra con alarma, final v2 con encuesta del siguiente) |
 | `salida/streamer_06.mp4` | `quizzes/streamer_06.json` | 89 s | STREAMER: TheGrefg (formato del nº5; extra llamada «EXCLUSIVA» con `extra_nombre`) |
 | `salida/streamer_07.mp4` | `quizzes/streamer_07.json` | 89 s | STREAMER: Plex (foto vertical: `foco` en el centro de la CABEZA, `zoom_cam` 2.0) |
+| `salida/hora_del_quiz_08.mp4` | `quizzes/hora_del_quiz_08.json` | 90 s | Quiz de MÉXICO (modo `mexico`: bandera gigante ondeando en el gancho, papel picado, sarape, voz con acento mexicano y risa) = PLANTILLA DE PAÍS |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -92,7 +93,7 @@ Plantillas y piezas reutilizables:
   `assets/voz_ref/referencia.wav` (audio de referencia del usuario; solo se guarda `perfil.npz`).
 
 ## Nombres de archivo
-- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 08).
+- Trivial (y temáticos como Halloween): `quizzes/hora_del_quiz_NN.json` → `salida/hora_del_quiz_NN.mp4` (siguiente: 09).
 - Pareja: `quizzes/pareja_NN.json` → `salida/pareja_NN.mp4` (siguiente: 03).
 - Mascotas: `quizzes/mascota_NN.json` → `salida/mascota_NN.mp4` (siguiente: 02).
 - Niveles: `quizzes/niveles_NN.json` → `salida/niveles_NN.mp4` (siguiente: 04).
@@ -238,6 +239,23 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 - Gamer nº2 (`hora_del_quiz_07`, ≤90 s): `pique` + `comentario` en cada pregunta (diversión), `pregunta_voz` más
   corta que el texto en pantalla para ahorrar segundos, `rangos_rapido` (reutiliza `rangos_voz` y el «¡Sígueme!»
   de la caché), `tempo` 1,28. ~620 créditos de voz.
+
+## Modo "mexico" (quiz de un PAÍS, todo decorado del país) — plantilla para otros países
+- `"modo": "mexico"` (ver `quizzes/hora_del_quiz_08.json`). Petición del usuario: «adórnalo todo de México, con su
+  bandera, en grande al principio y en la portada; TODO mexicano; el narrador con voz mexicana en tono risa».
+- Piezas en `quizvideo/mexico.py`: `BanderaOndeando` (bandera dibujada por código con escudo = águila + nopal 3D +
+  laurel, ondea con sombreado), `PapelPicado` (guirnalda que se mece), `sarape` (franja de rayas). Sprites 3D en
+  `assets/decor_mexico/` (sombrero, maracas, taco, chile, cactus, piñata, guitarra, calavera, cempasúchil…).
+- GANCHO `_draw_intro_mexico`: bandera GIGANTE ondeando desde el fotograma 0 con halo, rayos amarillos/rosas,
+  estallido de dibujos, «¡QUIZ DE / MÉXICO!» con letras verde/blanco/rojo, tarjeta con franja tricolor y pegatina.
+  Banderitas junto a «PREGUNTA N/5». Paleta `paleta_mexico` (verde bandera, tono 140-165). Música `music_mexico`
+  (mariachi original: guitarrón um-pa, vihuela, trompetas en terceras, maracas). Portada `crear_mexico` en `portada.py`.
+- Voz QUIZ con `[Mexican accent, laughing]` + `[laughs]` en comentarios; respuestas «¡Órale/Ándale/Ajúa, la X!».
+  Las risas alargan las frases: para ≤ 90 s se usó `tempo` 1,35, `cuenta_atras` 4 (clave nueva del JSON),
+  `outro_corto` (solo el grito final) y `ritmo_rapido` del modo (menos huecos tras la respuesta); comentarios solo
+  en 3 preguntas. Final: «¿De qué país quieres el siguiente? ¡Coméntalo y apoya el vídeo!».
+- Para OTRO PAÍS: copiar el modo (paleta, bandera, decorado, música y acento) cambiando colores y dibujos.
+- Nº1: 90 s, ~1.500 créditos de voz (20 frases; 2 comentarios no se usaron).
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
 `quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`

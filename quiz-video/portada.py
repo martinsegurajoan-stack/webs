@@ -309,7 +309,60 @@ def paleta_para(video, quiz, cfg):
         return th
     if modo == "gamer":
         return themes.paleta_gamer(h)
+    if modo == "mexico":
+        return themes.paleta_mexico(h)
     return themes.paleta_desde_tono(h)
+
+
+def crear_mexico(video, quiz, cfg, th, out_dir):
+    """Portada de MÉXICO: bandera GIGANTE ondeando, papel picado, sarape y dibujos mexicanos."""
+    from quizvideo import mexico as mx
+
+    base = fondo(th, False)
+    dark = th["text_dark"]
+    d = ImageDraw.Draw(base)
+    # papel picado arriba (dentro del recorte 3:4) y sarape abajo
+    mx.PapelPicado(n=9, fw=104, fh=120, y0=232, caida=40, seed=3).draw(base, 0.4)
+    base.alpha_composite(mx.sarape(W, 130), (0, H - 130))
+    # franja de arriba (solo se ve en la 9:16): etiqueta + piñata y chile
+    pill(base, 540, 130, cfg["arriba"], 58, th["accent"], dark)
+    pegar(base, con_sombra(mx.sprite("pinata", 150), off=10, blur=10), 115, 125, 8)
+    pegar(base, con_sombra(mx.sprite("chile", 140), off=10, blur=10), 965, 125, -20)
+    # bandera grande con halo
+    fl = mx.BanderaOndeando(640, 366).frame(0.9)
+    halo = Image.new("RGBA", (fl.width + 200, fl.height + 200), (0, 0, 0, 0))
+    ImageDraw.Draw(halo).rounded_rectangle((100, 110, fl.width + 100, fl.height + 80), 40, fill=(255, 255, 230, 170))
+    halo = halo.filter(ImageFilter.GaussianBlur(36))
+    pegar(base, halo, 540, 560)
+    pegar(base, con_sombra(fl, off=16, blur=16), 540, 560, 3)
+    # dibujos alrededor
+    pegar(base, con_sombra(mx.sprite("sombrero", 170), off=12, blur=12), 110, 430, 14)
+    pegar(base, con_sombra(mx.sprite("maracas", 160), off=12, blur=12), 980, 760, -14)
+    # titular: ¿CUÁNTO SABES / DE MÉXICO?
+    t = titular(cfg["titulo"], th, ang=-3, tam=cfg.get("tam", 112))
+    pegar(base, t, 540, 740 + t.height / 2 - 40)
+    y_tit = 740 + t.height - 60
+    q = quiz["preguntas"][cfg["pregunta"]]
+    card = tarjeta(q, th, 860, "ambos")
+    cy = y_tit + card.height / 2 - 50
+    pegar(base, card, 540, cy, 1.5)
+    top = cy - card.height / 2 + 40
+    pegar(base, con_sombra(mx.sprite("cactus", 170), off=12, blur=12), 95, top + 40, -10)
+    pegar(base, con_sombra(mx.sprite("taco", 160), off=12, blur=12), 985, top + 40, 10)
+    bot = cy + card.height / 2 - 30
+    pegar(base, pegatina(cfg["pegatina"], (228, 0, 124), (255, 255, 255), size=58), 540, bot + 20, -3)
+    fu = font(44)
+    w = d.textlength(USUARIO, font=fu)
+    d.rounded_rectangle((540 - w / 2 - 34, 1735, 540 + w / 2 + 34, 1805), 35, fill=(0, 0, 0, 120))
+    d.text((540, 1772), USUARIO, font=fu, fill=(255, 255, 255), anchor="mm")
+    pegar(base, con_sombra(img(os.path.join(A, "logo.png"), 150), off=8, blur=8, alpha=90), 950, 1770)
+    os.makedirs(out_dir, exist_ok=True)
+    rgb = base.convert("RGB")
+    p916 = os.path.join(out_dir, f"{video}_9x16.png")
+    p34 = os.path.join(out_dir, f"{video}_3x4.png")
+    rgb.save(p916, optimize=True)
+    rgb.crop((0, 240, W, 1680)).save(p34, optimize=True)
+    return p916, p34
 
 
 def crear(quiz_path, out_dir):
@@ -318,6 +371,8 @@ def crear(quiz_path, out_dir):
     video = quiz.get("video", video)  # nombre del vídeo si el JSON lo indica
     cfg = quiz.get("portada") or PORTADAS[video]
     th = paleta_para(video, quiz, cfg)
+    if quiz.get("modo") == "mexico":
+        return crear_mexico(video, quiz, cfg, th, out_dir)
     hall = th.get("formas") == "halloween"
     base = fondo(th, hall)
     E = os.path.join(A, "portada")

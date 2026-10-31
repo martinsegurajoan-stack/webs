@@ -28,7 +28,7 @@ def main():
     ap.add_argument("--preguntas", type=int, help="Usar solo las N primeras preguntas")
     ap.add_argument("--duracion-max", type=float, default=None,
                     help="Segundos máximos: si se pasa, se quitan preguntas del final")
-    ap.add_argument("--cuenta-atras", type=int, default=5, help="Segundos por pregunta")
+    ap.add_argument("--cuenta-atras", type=int, default=None, help="Segundos por pregunta (por defecto «cuenta_atras» del JSON o 5)")
     ap.add_argument("--sin-musica", action="store_true")
     ap.add_argument("--frases-pendientes", action="store_true",
                     help="Con la voz de ElevenLabs: lista las frases que faltan por generar y sale")
@@ -36,6 +36,8 @@ def main():
     args = ap.parse_args()
 
     quiz = load_quiz(args.quiz)
+    if args.cuenta_atras is None:
+        args.cuenta_atras = int(quiz.get("cuenta_atras", 5))
     if args.preguntas:
         quiz["preguntas"] = quiz["preguntas"][: args.preguntas]
     base = os.path.splitext(os.path.basename(args.quiz))[0]
@@ -53,9 +55,11 @@ def main():
         halloween = quiz.get("modo") == "halloween"
         futbol = quiz.get("modo") == "futbol"
         mascota = quiz.get("modo") == "mascota"
-        tono = themes.elegir_tono(base, (160, 300) if quiz.get("modo") == "gamer" else (285, 20) if pareja else ((262, 300) if halloween else
+        tono = themes.elegir_tono(base, (140, 165) if quiz.get("modo") == "mexico" else (160, 300) if quiz.get("modo") == "gamer" else (285, 20) if pareja else ((262, 300) if halloween else
                                                                    ((95, 140) if futbol else ((25, 80) if mascota else None))))
-        if quiz.get("modo") == "gamer":
+        if quiz.get("modo") == "mexico":
+            theme = themes.paleta_mexico(tono)
+        elif quiz.get("modo") == "gamer":
             theme = themes.paleta_gamer(tono)
         elif quiz.get("modo") == "cole":
             theme = themes.paleta_desde_tono(tono, "cole")

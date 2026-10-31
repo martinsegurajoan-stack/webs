@@ -110,8 +110,23 @@ MODOS["cole"] = dict(MODOS["trivial"], **{
     "outro_voz": "¡Dime tu nota en los comentarios!", "outro_titulo": "¿Qué nota has sacado?",
     "outro_sub": "¡Escríbelo en comentarios!",
 })
+# QUIZ DE MÉXICO: bandera gigante en el gancho, papel picado, sarape, voz con acento mexicano y risa
+MODOS["mexico"] = dict(MODOS["trivial"], **{
+    "saludo": "¡Es hora del quiz de México!",
+    "intro_l1": "¡QUIZ DE", "intro_l2": "MÉXICO!",
+    "comentarios_voz": "[laughs] ¡Escríbelo en los comentarios, compadre!",
+    "comentarios_pill": "¡ESCRÍBELO EN COMENTARIOS!",
+    "outro_voz": "[laughs] ¿Cuántas has acertado, compadre?", "outro_titulo": "¿Cuántas has acertado?",
+    "outro_sub": "¿De qué país quieres el siguiente?",
+    "final_voz": "¿De qué país quieres el siguiente? ¡Coméntalo y apoya el vídeo!",
+    "outro_pill": "¡COMÉNTALO!", "outro_pill2": "APOYA EL VÍDEO",
+    "musica": "mexico", "bpm": 132, "estilo_voz": "[Mexican accent, laughing]",
+    "tag_final": "[Mexican accent, shouting excitedly]", "tempo": 1.2,
+    "ritmo_rapido": True,
+    "frases_correcta": ["¡Órale, es la {L}! {O}.", "¡Ándale, la {L}! {O}.", "¡Ajúa, la {L}! {O}."],
+})
 # GANCHO PRIMERO en todos los modos (regla del usuario): la frase gancho va antes del saludo
-for _m in ("trivial", "pareja", "halloween", "futbol", "gamer", "cole"):
+for _m in ("trivial", "pareja", "halloween", "futbol", "gamer", "cole", "mexico"):
     MODOS[_m]["gancho_primero"] = True
 MODOS["pareja"]["saludo"] = "¡Es hora del quiz de parejas!"
 # QUIZ DE MASCOTAS: como el de parejas (no hay respuesta correcta), decorado de perros, gatos, conejos…
@@ -307,19 +322,21 @@ def build_timeline(quiz, voice, countdown=5):
             rdur = max(2.3, 0.35 + dv + 0.5)
         else:
             # se narra solo la opción correcta
-            texto = FRASES_CORRECTA[qi % len(FRASES_CORRECTA)].format(
+            frases = modo.get("frases_correcta", FRASES_CORRECTA)
+            texto = frases[qi % len(frases)].format(
                 L=LETTERS[ci], O=q.get("opcion_voz", q["opciones"])[ci].rstrip("."))
             texto = texto.replace("!.", "!").replace("?.", "?")
             sig, dv = say(texto)
-            events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + 0.4)]
-            rdur = max(2.0, 0.4 + dv + 0.15)
+            g0, g1, g2 = (0.25, 0.0, 0.15) if modo.get("ritmo_rapido") else (0.4, 0.2, 0.3)
+            events += [("fx", "buzz", st + rv), ("fx", "correct", st + rv + 0.15), ("voice", sig, st + rv + g0)]
+            rdur = max(2.0, g0 + dv + 0.15)
             if q.get("comentario", q.get("chiste")):
                 # chiste corto después de la respuesta (se ve en la tarjeta mientras se dice)
                 sigj, dj = say(q.get("comentario", q.get("chiste")))
-                joke_at = rv + 0.4 + dv + 0.2
+                joke_at = rv + g0 + dv + g1
                 events.append(("voice", sigj, st + joke_at))
-                rdur = max(rdur, joke_at - rv + dj + 0.3)
-        joke_t = (rv + 0.4 + dv + 0.2) if (q.get("comentario", q.get("chiste")) and not nores) else None
+                rdur = max(rdur, joke_at - rv + dj + g2)
+        joke_t = joke_at if (q.get("comentario", q.get("chiste")) and not nores) else None
         dur = rv + rdur
         scenes.append({"kind": "question", "start": st, "dur": dur, "q": q, "index": qi, "total": n,
                        "opt_times": opt_times, "cd_start": cd_start, "countdown": countdown,
@@ -353,7 +370,7 @@ def build_timeline(quiz, voice, countdown=5):
         t += dur
 
     last_nores = bool(quiz["preguntas"][-1].get("sin_respuesta")) or modo["fin"] is not None
-    if quiz.get("rangos_rapido"):
+    if quiz.get("rangos_rapido") or quiz.get("outro_corto"):
         sig, d = None, 0.0  # la pantalla de notas ya pide comentar: solo queda el «¡Sígueme!»
     else:
         sig, d = say(modo["outro_voz"] if last_nores else "¿Cuántas has acertado? ¡Déjamelo en comentarios!")
@@ -437,6 +454,8 @@ def _init(state):
         _init_futbol(th)
     if th.get("formas") == "mascotas":
         _init_mascotas(th)
+    if th.get("formas") == "mexico":
+        _init_mexico(th)
     if th.get("formas") == "halloween":
         dd = os.path.join(ASSETS, "decor_halloween")
 
@@ -723,6 +742,10 @@ def _background(t):
         img.alpha_composite(layer)
         _mascotas(img, t, beat)
         return img
+    if th.get("formas") == "mexico":
+        img.alpha_composite(layer)
+        _mexico(img, t, beat)
+        return img
     cols = th["options"] + [th["accent"]]
     for x0, y0, s, sp, rot, ph, kind, ci in _STATE["shapes"]:
         y = (y0 - sp * t) % (H + 120) - 60
@@ -735,6 +758,153 @@ def _background(t):
         _shape(d, kind, x, y, s * (1.25 if kind == 4 else 1), ang, with_alpha(cols[ci], 0.75))
     img.alpha_composite(layer)
     return img
+
+
+def _init_mexico(th):
+    """Decorado de MÉXICO: papel picado, sarape abajo, bandera que ondea (gancho) y sprites 3D
+    (sombreros, maracas, tacos, chiles, cactus, piñatas, guitarras, calaveras, flores)."""
+    from . import mexico as mx
+
+    D = _STATE["decor"]
+    D["picado"] = mx.PapelPicado(n=10, fw=90, fh=100, y0=0, caida=26, seed=3)
+    D["sarape"] = mx.sarape(W, 120)
+    nombres = ("sombrero", "maracas", "taco", "chile", "cactus", "pinata", "guitarra", "calavera", "aguacate",
+               "maiz", "trompeta", "burrito", "flor", "bandera")
+    D["sprites"] = {n: [mx.sprite(n, sz) for sz in (72, 100, 128)] for n in nombres}
+    # flores de cempasúchil: la flor tintada de naranja
+    for k, im in enumerate(D["sprites"]["flor"]):
+        a = np.asarray(im).astype(float)
+        a[..., 0] = np.clip(a[..., 0] * 1.0 + 30, 0, 255)
+        a[..., 1] = a[..., 1] * 0.62
+        a[..., 2] = a[..., 2] * 0.15
+        D["sprites"]["flor"][k] = Image.fromarray(a.astype(np.uint8), "RGBA")
+    rs = random.Random(52)
+    lista = ["sombrero", "maracas", "taco", "chile", "cactus", "pinata", "guitarra", "calavera", "aguacate",
+             "maiz", "trompeta", "burrito", "flor", "flor", "bandera", "bandera", "chile", "maracas"]
+    D["flyers"] = [(n, rs.randint(0, 2), rs.uniform(0, W), rs.uniform(0, H), rs.uniform(40, 95),
+                    rs.uniform(0, 6.28), rs.choice((-1, 1))) for n in lista]
+    D["burst"] = [mx.sprite(n, 130) for n in ("sombrero", "maracas", "taco", "chile", "cactus", "pinata",
+                                               "guitarra", "calavera", "trompeta", "flor")]
+    D["calabaza_s"] = mx.sprite("sombrero", 110)  # sale junto al comentario gracioso
+    D["mini_flag"] = mx.sprite("bandera", 96)
+    # bandera grande del gancho (ondea) + halo blanco fijo detrás
+    D["flag"] = mx.BanderaOndeando(840, 480)
+    fw, fh = 840 + 40, 480 + 2 * D["flag"].pad + 60
+    from PIL import ImageFilter
+    halo = Image.new("RGBA", (fw + 160, fh + 160), (0, 0, 0, 0))
+    ImageDraw.Draw(halo).rounded_rectangle((80, 90, fw + 80, fh + 40), 40, fill=(255, 255, 230, 150))
+    D["flag_halo"] = halo.filter(ImageFilter.GaussianBlur(34))
+    D["confeti"] = [(rs.uniform(0, W), rs.uniform(0, H), rs.uniform(50, 140), rs.uniform(0, 6.28),
+                     rs.choice(mx.FIESTA)) for _ in range(40)]
+
+
+def _mexico(img, t, beat):
+    D = _STATE["decor"]
+    layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    for x0, y0, sp, ph, col in D["confeti"]:  # confeti de papel cayendo
+        y = (y0 + sp * t) % (H + 40) - 20
+        x = x0 + 30 * math.sin(t * 1.3 + ph)
+        s = 8 + 3 * math.sin(t * 4 + ph)
+        d.rectangle((x - s, y - s * 0.5, x + s, y + s * 0.5), fill=col + (150,))
+    img.alpha_composite(layer)
+    for n, si, x0, y0, sp, ph, dirx in D["flyers"]:
+        im = D["sprites"][n][si]
+        x = x0 + 45 * math.sin(t * 0.7 + ph)
+        y = (y0 - sp * t) % (H + 280) - 140
+        if n == "maracas":  # se agitan al ritmo
+            im = im.rotate(25 * math.sin(t * 14 + ph) * math.exp(-beat * 2), resample=Image.BICUBIC, expand=True)
+        elif n == "pinata":
+            im = im.rotate(14 * math.sin(t * 2.4 + ph), resample=Image.BICUBIC, expand=True)
+        else:
+            im = im.rotate(16 * math.sin(t * 1.4 + ph), resample=Image.BICUBIC, expand=True)
+        img.alpha_composite(im, (int(x - im.width / 2), int(y - im.height / 2)))
+    # sarape abajo y papel picado arriba (se mecen)
+    sa = D["sarape"]
+    bump = int(6 * math.exp(-beat * 5))
+    img.alpha_composite(sa, (0, H - sa.height + 20 - bump))
+    D["picado"].draw(img, t)
+
+
+def _draw_intro_mexico(layer, sc, lt):
+    """GANCHO de México: bandera GIGANTE ondeando desde el fotograma 0, destello, estallido de
+    sombreros, maracas, tacos… y «¡QUIZ DE MÉXICO!» con las letras de la bandera."""
+    th = _STATE["theme"]
+    D = _STATE["decor"]
+    quiz = _STATE["quiz"]
+    d = ImageDraw.Draw(layer)
+    # rayos de sol amarillos y rosas detrás de la bandera
+    rays = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    rd = ImageDraw.Draw(rays)
+    cx, cy, R = 540, 470, 1500
+    base = math.radians(lt * 18)
+    for k in range(16):
+        a0 = base + k * 2 * math.pi / 16
+        a1 = a0 + math.pi / 16
+        col = (255, 205, 0, 70) if k % 2 else (228, 0, 124, 60)
+        rd.polygon([(cx, cy), (cx + R * math.cos(a0), cy + R * math.sin(a0)),
+                    (cx + R * math.cos(a1), cy + R * math.sin(a1))], fill=col)
+    layer.alpha_composite(rays)
+    # bandera: entra de golpe (grande desde el primer fotograma) y ondea
+    zoom = 1.16 - 0.16 * ease_out_back(lt / 0.4)
+    fr = D["flag"].frame(lt, fuerza=1.0 + 0.6 * math.exp(-lt * 2))
+    halo = D["flag_halo"]
+    if abs(zoom - 1) > 0.005:
+        fr = fr.resize((int(fr.width * zoom), int(fr.height * zoom)), Image.BILINEAR)
+        halo = halo.resize((int(halo.width * zoom), int(halo.height * zoom)), Image.BILINEAR)
+    fy = 470
+    layer.alpha_composite(halo, (int(540 - halo.width / 2), int(fy - halo.height / 2)))
+    layer.alpha_composite(fr, (int(540 - fr.width / 2), int(fy - fr.height / 2)))
+    # «¡QUIZ DE / MÉXICO!» (MÉXICO con los colores de la bandera)
+    p = 0.75 + 0.25 * ease_out_back(lt / 0.35)
+    wob = math.sin(lt * 5)
+    dark = (18, 30, 22)
+    d.text((540, 815), "¡QUIZ DE", font=tfont(118 * p * (1 + 0.02 * wob)), fill=(255, 255, 255), anchor="mm",
+           stroke_width=13, stroke_fill=dark)
+    f = tfont(170 * p * (1 - 0.02 * wob))
+    word = "MÉXICO!"
+    cols = [(0, 150, 80), (255, 255, 255), (230, 30, 50), (0, 150, 80), (255, 255, 255), (230, 30, 50), (255, 205, 0)]
+    tw = d.textlength(word, font=f)
+    x = 540 - tw / 2
+    for ch, col in zip(word, cols):
+        cw = d.textlength(ch, font=f)
+        d.text((x + cw / 2, 965 + 6 * math.sin(lt * 7 + x / 90)), ch, font=f, fill=col, anchor="mm",
+               stroke_width=15, stroke_fill=dark)
+        x += cw
+    # tarjeta con el título y la frase gancho
+    a = ease_out_back(0.35 + lt / 0.4)
+    y = 1090 + (1 - a) * 300
+    box = (80, y, 1000, y + 340)
+    shadow_box(d, box, 46)
+    d.rounded_rectangle(box, 46, fill=th["card"])
+    d.rounded_rectangle((80, y, 1000, y + 16), 8, fill=(0, 104, 71))
+    d.rectangle((80 + 920 / 3, y, 80 + 2 * 920 / 3, y + 16), fill=(255, 255, 255))
+    d.rounded_rectangle((80 + 2 * 920 / 3, y, 1000, y + 16), 8, fill=(206, 17, 38))
+    f1, l1, lh1 = fit(d, sc["title"], 820, 110, 64, 36, 1.0)
+    draw_lines(d, l1, f1, lh1, 540, y + 85, th["text_dark"])
+    d.line((240, y + 150, 840, y + 150), fill=th["accent2"], width=6)
+    if sc.get("salsa"):
+        f2, l2, lh2 = fit(d, sc["salsa"].replace("[laughs]", "").strip(), 840, 150, 50, 30, 1.05)
+        draw_lines(d, l2, f2, lh2, 540, y + 245, th["accent2"])
+    if quiz.get("pegatina_gancho"):
+        c = ease_out_back(0.3 + lt / 0.4)
+        if c > 0:
+            pulse = 1 + 0.06 * math.sin(lt * 9)
+            _pill(d, 540, 1535 + (1 - c) * 400, quiz["pegatina_gancho"], int(max(10, 60 * pulse)),
+                  (228, 0, 124), (255, 255, 255), pad=(44, 22))
+    if lt < 2.0:  # estallido de sombreros, maracas, tacos… desde la bandera
+        for j, (vx, vy, ci, s_, ph) in enumerate(_STATE["confetti"][:24]):
+            im = D["burst"][j % len(D["burst"])]
+            tb = lt + 0.18  # ya salen abiertos en el fotograma 0
+            x = 540 + vx * 950 * tb
+            y = 470 + vy * 1050 * tb + 1150 * tb * tb
+            al = max(0.0, 1 - lt / 2.0)
+            im2 = im.rotate(math.degrees(ph + lt * 5 * (1 if j % 2 else -1)), resample=Image.BICUBIC)
+            if al < 1:
+                im2.putalpha(im2.getchannel("A").point(lambda v, a_=al: int(v * a_)))
+            layer.alpha_composite(im2, (int(x - im2.width / 2), int(y - im2.height / 2)))
+    if lt < 0.16:  # destello (se superpone, no sustituye)
+        layer.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(75 * (1 - lt / 0.16)))))
 
 
 def _halloween(img, t, beat):
@@ -950,6 +1120,8 @@ def _check(d, cx, cy, s, color, width=10):
 
 def _draw_intro(layer, sc, lt):
     th = _STATE["theme"]
+    if th.get("formas") == "mexico":
+        return _draw_intro_mexico(layer, sc, lt)
     d = ImageDraw.Draw(layer)
     quiz = _STATE["quiz"]
     # "¡ES HORA DEL QUIZ!" que rebota
@@ -1150,6 +1322,11 @@ def _draw_question(layer, sc, lt):
     else:
         tot = sc.get("n_reg") or sc["total"]
         _pill(d, 540, 175 - (1 - a) * 300, f"PREGUNTA {sc['index'] + 1}/{tot}", 48, th["accent"], th["text_dark"])
+        if th.get("formas") == "mexico":  # banderitas a los lados de la cabecera
+            mf = _STATE["decor"]["mini_flag"]
+            for sx in (-1, 1):
+                im_ = mf.rotate(8 * math.sin(lt * 3 + sx), resample=Image.BICUBIC, expand=True)
+                layer.alpha_composite(im_, (int(540 + sx * 255 - im_.width / 2), int(175 - (1 - a) * 300 - im_.height / 2)))
     # barra de progreso por segmentos
     segs = sc["total"]
     sw, gap = 70, 12

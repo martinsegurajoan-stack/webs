@@ -150,8 +150,79 @@ def music(duration, bpm=118, seed=7, style="pop"):
         return music_futbol(duration)
     if style == "gamer":
         return music_gamer(duration)
+    if style == "mexico":
+        return music_mexico(duration)
     return music_pop(duration, bpm, seed)
 
+
+
+def music_mexico(duration, bpm=132, seed=52):
+    """Música alegre de inspiración mariachi (original): guitarrón en «um-pa» (tónica y quinta),
+    vihuela rasgueada a contratiempo, dos trompetas en terceras con vibrato y maracas.
+    Re mayor: D–D–A–A–A–A–D–D | G–G–D–D–A–A–D–D (un acorde por compás de 2/4)."""
+    beat = 60.0 / bpm
+    bar = 2 * beat
+    n = int(duration * SR) + SR
+    out = np.zeros(n)
+    rng = np.random.default_rng(seed)
+
+    def add(sig, at, g):
+        s0 = int(at * SR)
+        if s0 >= n or s0 < 0:
+            return
+        e = min(n, s0 + len(sig))
+        out[s0:e] += g * sig[: e - s0]
+
+    def bajo(f, dur):  # guitarrón: grave, redondo y con ataque de cuerda
+        t = _t(dur)
+        w = np.sin(2 * np.pi * f * t) + 0.45 * np.sin(4 * np.pi * f * t) + 0.18 * np.sin(6 * np.pi * f * t)
+        return w * _env(len(t), 0.004, 0.22)
+
+    def cuerda(f, dur):  # vihuela: pulsación brillante y corta
+        t = _t(dur)
+        w = 0.6 * (2 * ((f * t) % 1) - 1) + 0.4 * np.sin(2 * np.pi * 2 * f * t)
+        return w * _env(len(t), 0.002, 0.07)
+
+    def trompeta(f, dur):
+        t = _t(dur)
+        vib = 1 + 0.006 * np.sin(2 * np.pi * 5.5 * t) * np.clip(t / 0.15, 0, 1)
+        ph = np.cumsum(f * vib) / SR
+        w = sum((1 / k) * np.sin(2 * np.pi * k * ph) for k in range(1, 9))
+        env = np.clip(t / 0.03, 0, 1) * np.clip((dur - t) / 0.05, 0, 1)
+        return np.tanh(1.6 * w) * env
+
+    acordes = {"D": (50, [62, 66, 69]), "A": (45, [61, 64, 69]), "G": (43, [62, 67, 71])}
+    prog = list("DDAAAADD") + list("GGDDAADD")
+    # melodía de trompetas: 2 corcheas o negra por tiempo, notas del acorde (frases de 4 compases)
+    def frase(ch, k):
+        top = sorted(ch)
+        return [top[(k + j) % 3] + 12 for j in range(4)]
+
+    maraca = rng.standard_normal(int(0.05 * SR))
+    maraca = (maraca - _lp_fft(maraca, 3000)) * _env(len(maraca), 0.003, 0.02)
+    n_bars = int(duration / bar) + 2
+    for b in range(n_bars):
+        name = prog[b % len(prog)]
+        root, ch = acordes[name]
+        t0 = b * bar
+        add(bajo(_midi(root - 12 + 12), beat * 0.9), t0, 0.42)            # um
+        add(bajo(_midi(root - 12 + 19), beat * 0.9), t0 + beat, 0.34)     # pa (quinta)
+        for k in (0.5, 1.5):  # rasgueo a contratiempo (cuerdas un poco desfasadas)
+            for j, nn in enumerate(ch):
+                add(cuerda(_midi(nn), beat * 0.4), t0 + k * beat + j * 0.012, 0.07)
+        for k in range(4):
+            add(maraca, t0 + k * beat / 2, 0.05 if k % 2 else 0.08)
+        # trompetas en terceras: entran a partir del compás 4, frases de 4 compases con descanso
+        if b >= 4 and (b // 4) % 2 == 0:
+            notas = frase(ch, b)
+            ritmo = [(0, 0.5), (0.5, 0.5), (1.0, 0.75)] if b % 2 == 0 else [(0, 1.0), (1.0, 0.5), (1.5, 0.5)]
+            for (st, du), nn in zip(ritmo, notas):
+                add(trompeta(_midi(nn), beat * du * 0.92), t0 + st * beat, 0.05)
+                add(trompeta(_midi(nn - 4 if nn - 4 not in (63, 68) else nn - 3), beat * du * 0.92), t0 + st * beat, 0.035)
+    out = _lp_fft(out[: int(duration * SR)], 5500)
+    f = int(0.3 * SR)
+    out[:f] *= np.linspace(0.6, 1, f)
+    return out / (np.max(np.abs(out)) or 1) * 0.8
 
 def music_gamer(duration, bpm=128, seed=33):
     """Chiptune alegre (Do–Sol–Lam–Fa): bajo triangular, arpegio de onda cuadrada, melodía y batería 8 bits."""
