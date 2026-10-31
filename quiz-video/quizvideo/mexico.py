@@ -191,3 +191,22 @@ def sombra(im, off=12, blur=12, alpha=110, col=(0, 0, 0)):
     out.alpha_composite(sh.filter(ImageFilter.GaussianBlur(blur)))
     out.alpha_composite(im, (pad, pad))
     return out
+
+
+def talavera(s):
+    """Azulejo de Talavera (azul cobalto, blanco y amarillo) con flor central."""
+    im = Image.new("RGBA", (s, s), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    azul, ama = (24, 70, 170), (250, 190, 30)
+    d.rounded_rectangle((0, 0, s - 1, s - 1), s * 0.12, fill=(250, 248, 238), outline=azul, width=max(2, s // 18))
+    c = s / 2
+    for k in range(8):
+        a = k * math.pi / 4
+        r = s * 0.26
+        x, y = c + math.cos(a) * r, c + math.sin(a) * r
+        pr = s * 0.11
+        d.ellipse((x - pr, y - pr, x + pr, y + pr), fill=azul)
+    d.ellipse((c - s * 0.15, c - s * 0.15, c + s * 0.15, c + s * 0.15), fill=ama, outline=azul, width=2)
+    for (x, y) in ((0, 0), (s, 0), (0, s), (s, s)):
+        d.pieslice((x - s * 0.22, y - s * 0.22, x + s * 0.22, y + s * 0.22), 0, 360, fill=azul)
+    return im

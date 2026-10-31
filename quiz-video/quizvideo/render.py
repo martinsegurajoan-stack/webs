@@ -278,7 +278,7 @@ def build_timeline(quiz, voice, countdown=5):
     tz = quiz.get("gancho_teaser")
     if tz:
         sig0, d0 = say_raw(tz["voz"])
-        ta = max(1.8, d0 + 0.15)
+        ta = max(1.8, d0 + 0.08)
         events += [("fx", tz.get("sonido", "siren"), 0.0), ("fx", "impact", 0.0), ("voice", sig0, 0.03)]
         for k in range(4):
             events.append(("fx", "pop", 0.12 + k * 0.08))
@@ -309,7 +309,7 @@ def build_timeline(quiz, voice, countdown=5):
         if con_intro:
             # presentación de la extra con emoción: alarma, «PREGUNTA EXTRA» que cae de golpe
             sigx, dx = say_raw(quiz["extra_intro_voz"])
-            durx = max(2.6, 0.1 + dx + 0.2)
+            durx = max(2.6, 0.1 + dx + 0.15)
             events += [("fx", quiz.get("extra_sonido", "siren"), t), ("fx", "impact", t + 0.15), ("fx", "impact", t + 0.32),
                        ("voice", sigx, t + 0.1)]
             scenes.append({"kind": "extra_intro", "start": t, "dur": durx})
@@ -430,7 +430,7 @@ def build_audio(events, total, path, music_on=True, music_style="pop", countdown
     from .streamer import sfx_siren
     from .personalidad import sfx_impact
     fx.update({"siren": sfx_siren(), "impact": sfx_impact(), "fanfarria": audio.sfx_fanfarria()})
-    gains = {"fanfarria": 0.9, "siren": 0.45, "impact": 0.75, "whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8, "chime": 0.5, "riser": 0.55, "heart": 0.9, "tock": 1.0}
+    gains = {"fanfarria": 0.4, "siren": 0.45, "impact": 0.75, "whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8, "chime": 0.5, "riser": 0.55, "heart": 0.9, "tock": 1.0}
     boosts = [(a, b) for kind, a, b in events if kind == "music_boost"]
     for kind, what, at in events:
         if kind == "music_boost":
@@ -485,6 +485,30 @@ def _init(state):
         if os.path.exists(ip):
             _STATE["rimgs"][r["imagen"]] = Image.open(ip).convert("RGBA").resize((150, 150), Image.LANCZOS)
     _STATE["decor"] = {}
+    _STATE["fotos"] = {}
+    for sc in state["scenes"]:
+        fname = sc.get("q", {}).get("foto") if sc["kind"] == "question" else None
+        if fname and fname not in _STATE["fotos"]:
+            fp = os.path.join(ASSETS, "fotos", fname)
+            if os.path.exists(fp):
+                im = Image.open(fp).convert("RGBA")
+                k = max(W / im.width, H / im.height) * 1.06
+                im = im.resize((int(im.width * k) + 1, int(im.height * k) + 1), Image.LANCZOS)
+                _STATE["fotos"][fname] = im
+                fx = float(sc["q"].get("foto_x", 0.5))
+                pw = im.height * 0.62
+                px0 = min(max(0, fx * im.width - pw / 2), im.width - pw)
+                pol = im.crop((px0, im.height * 0.2, px0 + pw, im.height * 0.2 + pw))
+                _STATE["fotos"][fname + "#pol"] = pol.resize((176, 176), Image.LANCZOS)
+    if _STATE["fotos"]:
+        # velo: verde bandera arriba y abajo, más claro en el centro (la foto se ve y el texto se lee)
+        yy = np.linspace(0, 1, H)[:, None]
+        al = (0.62 - 0.30 * np.exp(-((yy - 0.55) / 0.22) ** 2)) * 255
+        base = np.array(th["bg_bottom"], float)
+        v = np.zeros((H, 1, 4))
+        v[..., :3] = base
+        v[..., 3] = al
+        _STATE["velo"] = Image.fromarray(np.repeat(v, W, axis=1).astype(np.uint8), "RGBA")
     if th.get("formas") == "gamer":
         _init_gamer(th)
     if th.get("formas") == "cole":
@@ -747,6 +771,24 @@ def _background(t):
         return img
     off = int((t * 70) % H)  # el degradado sube poco a poco
     img = _STATE["bg"].crop((0, off, W, off + H))
+    fotos = _STATE.get("fotos")
+    if fotos:
+        # FOTO del tema de la pregunta a pantalla completa (zoom lento) con velo de color para leer bien
+        for sc in _STATE["scenes"]:
+            if sc["kind"] == "question" and sc["start"] <= t < sc["start"] + sc["dur"]:
+                ft = fotos.get(sc["q"].get("foto"))
+                if ft is not None:
+                    lt = t - sc["start"]
+                    z = 1.0 + 0.05 * lt / max(1.0, sc["dur"])
+                    cw, ch = int(W / z), int(H / z)
+                    fx = float(sc["q"].get("foto_x", 0.5))
+                    ox = int(min(max(0, fx * ft.width - cw / 2), ft.width - cw))
+                    oy = (ft.height - ch) // 2
+                    ph = ft.crop((ox, oy, ox + cw, oy + ch)).resize((W, H), Image.BILINEAR)
+                    a_in = min(1.0, lt / 0.35)
+                    img = Image.blend(img, ph, a_in) if a_in < 1 else ph.copy()
+                    img.alpha_composite(_STATE["velo"])
+                break
     layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(layer)
     # rayos giratorios de concurso que laten al ritmo de la música
@@ -827,6 +869,7 @@ def _init_mexico(th):
     D["calabaza_s"] = mx.sprite("sombrero", 110)  # sale junto al comentario gracioso
     D["mini_flag"] = mx.sprite("bandera", 96)
     D["sombrero_big"] = mx.sprite("sombrero", 300)
+    D["talavera"] = mx.talavera(78)
     gl = Image.new("RGBA", (900, 900), (0, 0, 0, 0))
     ImageDraw.Draw(gl).ellipse((150, 150, 750, 750), fill=(255, 250, 220, 120))
     D["glow_c"] = gl.filter(ImageFilter.GaussianBlur(110))
@@ -1354,6 +1397,23 @@ def _polaroid(im, th):
     return ph
 
 
+def _polaroid_mx(im, th):
+    """Foto en marco polaroid con cinta de papel picado y banderita (quiz de país)."""
+    m, pie = 16, 40
+    w, h = im.width + 2 * m, im.height + m + pie
+    ph = Image.new("RGBA", (w + 40, h + 50), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ph)
+    d.rounded_rectangle((8, 26, w + 8, h + 26), 12, fill=(0, 0, 0, 80))
+    d.rounded_rectangle((0, 18, w, h + 18), 12, fill=(255, 255, 255))
+    ph.alpha_composite(im, (m, 18 + m))
+    # tricolor en el pie
+    for k, col in enumerate(((0, 104, 71), (235, 235, 235), (206, 17, 38))):
+        d.rectangle((m + k * im.width / 3, 18 + m + im.height + 12, m + (k + 1) * im.width / 3, 18 + m + im.height + 24), fill=col)
+    # cinta rosa arriba
+    d.rectangle((w / 2 - 50, 4, w / 2 + 50, 34), fill=(228, 0, 124, 210))
+    return ph
+
+
 def _pill(d, cx, cy, text, size, bg, fg, pad=(36, 18)):
     f = tfont(size)
     w = d.textlength(text, font=f)
@@ -1594,6 +1654,13 @@ def _draw_question(layer, sc, lt):
     box = (OPT_X0, y, OPT_X1, y + CARD_H)
     shadow_box(d, box, 44)
     d.rounded_rectangle(box, 44, fill=th["card"])
+    if th.get("formas") == "mexico":  # marco de azulejos de Talavera y franja tricolor
+        d.rounded_rectangle(box, 44, outline=(24, 70, 170), width=8)
+        tl = _STATE["decor"]["talavera"]
+        for cx_t, cy_t, ang in ((box[0] + 8, box[1] + 8, 8), (box[2] - 8, box[1] + 8, -8),
+                                (box[0] + 8, box[3] - 8, -6), (box[2] - 8, box[3] - 8, 6)):
+            im_t = tl.rotate(ang, resample=Image.BICUBIC, expand=True)
+            layer.alpha_composite(im_t, (int(cx_t - im_t.width / 2), int(cy_t - im_t.height / 2)))
     jt = sc.get("joke_t")
     if jt is not None and lt >= jt:
         # el texto de la tarjeta pasa a ser el chiste, con un pequeño rebote
@@ -1635,6 +1702,14 @@ def _draw_question(layer, sc, lt):
             img2 = im.resize((w_, h_), Image.BILINEAR)
             if th.get("formas") == "mascotas":
                 img2 = _polaroid(img2.resize((int(w_ * 0.76), int(h_ * 0.76)), Image.BILINEAR), th)
+            pol = _STATE.get("fotos", {}).get(str(q.get("foto")) + "#pol")
+            if pol is not None:
+                pp = _polaroid_mx(pol, th)
+                k_ = sc_ * 1.0
+                pp = pp.resize((max(4, int(pp.width * k_)), max(4, int(pp.height * k_))), Image.BILINEAR)
+                sticker = img2.resize((max(4, int(img2.width * 0.5)), max(4, int(img2.height * 0.5))), Image.BILINEAR)
+                pp.alpha_composite(sticker, (pp.width - sticker.width, pp.height - sticker.height))
+                img2 = pp
             img2 = img2.rotate(6 * math.sin(lt * 1.7), resample=Image.BICUBIC, expand=True)
             if fade < 1:
                 a_ = img2.getchannel("A").point(lambda v: int(v * fade))

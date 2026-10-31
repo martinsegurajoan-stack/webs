@@ -266,9 +266,18 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
     para los más mexicanos!») + escena `_draw_extra_intro_mx` (fondo festivo, sombrero gigante, «PREGUNTA
     EXTRA» que cae de golpe, avisos, `extra_lema`, estallido de dibujos, `extra_sonido`). La pregunta extra se lee
     sin «¡Pregunta extra!». `intro_voz` = frase propia tras el teaser («¿Llegas hasta el final, compadre? ¡Es hora…»).
+  · VOZ DEL GANCHO Y DE LA EXTRA SIEMPRE FUERTE Y CLARA (corrección del usuario: «el principio no se oye nada»):
+    nada de `[whispers]`; usar `[<país> accent, excited]`. Fanfarria bajita (ganancia 0,4) para no tapar la voz.
+  · FOTOS DE CADA PREGUNTA (petición del usuario: «pon fotos con relación a lo que preguntas»): `"foto"` (en
+    `assets/fotos/`) + `"foto_x"` (0-1, dónde centrar el recorte vertical). Se ven a pantalla completa de fondo con
+    zoom lento y velo de color, y en una polaroid con franja tricolor junto al cronómetro (el dibujo 3D va de
+    pegatina). Los bancos de fotos gratis están bloqueados en la sesión: se generan con ElevenLabs
+    (`bytedance-seedream-5-lite`, ~212 créditos c/u; PREGUNTAR antes de gastar). La foto NUNCA da la respuesta
+    (temas genéricos: palacio, ruinas, desierto, playa, volcán, pirámide). Revisar banderas al revés (se volteó la del palacio).
+  · Tarjeta de pregunta con marco azul y azulejos de Talavera en las esquinas (`mexico.talavera`).
   · Para OTRO PAÍS: copiar el modo `mexico` (paleta, bandera en `mexico.py`, decorado, música, acento, lema)
     cambiando colores, dibujos y expresiones.
-- Nº1: 90 s, ~1.500 créditos de voz (20 frases; 2 comentarios no se usaron).
+- Nº1: 90 s, ~2.100 créditos de voz (varias versiones del gancho) + ~1.270 de fotos (6). Tempo final 1,43.
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
 `quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`
