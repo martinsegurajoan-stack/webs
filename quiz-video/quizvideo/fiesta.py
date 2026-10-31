@@ -1157,18 +1157,22 @@ def draw_hook(img, d, sc, lt):
     text(d, (540 - sh, 710), l2, tfont(int(118 * sc_)), YEL, 14, DARK, sh=10)
     js = c.get("jugadores")
     if js:  # los nombres de los jugadores van saltando en dos filas bajo el titular
-        filas = [js[:(len(js) + 1) // 2], js[(len(js) + 1) // 2:]]
+        nf = 2 if len(js) <= 8 else 3
+        per = -(-len(js) // nf)
+        filas = [js[i:i + per] for i in range(0, len(js), per)]
+        fs = 46 if nf == 2 else 40
+        dy = 78 if nf == 2 else 64
         for r, fila in enumerate(filas):
-            f = tfont(46)
+            f = tfont(fs)
             ws = [d.textlength(nm.upper(), font=f) + 56 for nm in fila]
             x = 540 - (sum(ws) + 14 * (len(fila) - 1)) / 2
             for q, (nm, w_) in enumerate(zip(fila, ws)):
-                a_ = pop(lt, 0.15 + 0.07 * (r * 4 + q), 0.3)
+                a_ = pop(lt, 0.15 + 0.06 * (r * per + q), 0.3)
                 if a_ > 0:
                     cx_ = x + w_ / 2
-                    cy_ = 845 + r * 78 + math.sin(lt * 6 + q + r) * 5
+                    cy_ = 840 + r * dy + math.sin(lt * 6 + q + r) * 5
                     col = CONF_COLS[(r * 4 + q) % len(CONF_COLS)]
-                    pill(d, cx_, cy_, nm.upper(), int(46 * a_), col, DARK if col in (WHITE, YEL) else WHITE, pad=(24, 8))
+                    pill(d, cx_, cy_, nm.upper(), int(fs * a_), col, DARK if col in (WHITE, YEL) else WHITE, pad=(24, 8))
                 x += w_ + 14
     b = pop(lt, 0.55, 0.4)
     sticker(img, c["gancho"]["pegatina"], 560, 1420 + math.sin(lt * 4) * 6, 58, RED, WHITE, angle=-3,
