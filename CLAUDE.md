@@ -9,6 +9,14 @@ Plataformas de los textos: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER
 Banner de X: `quiz-video/banner_twitter.py` → `quiz-video/portadas/twitter_banner_1500x500.png` (1500x500).
 Hashtags: MÁXIMO 4 en TODAS las plataformas: #fyp #viral #test #trending.
 
+REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PERMANENTES» en `quiz-video/CLAUDE.md`):
+1. FINAL QUE INCITA A INTERACTUAR: pedir que comenten cuántas han acertado, de qué quieren el siguiente vídeo,
+   que apoyen el vídeo… (voz + carteles muy animados).
+2. IMÁGENES REALES en las preguntas (como el quiz de México: foto de fondo + polaroid), sin dar nunca la respuesta.
+   ANTES de generarlas, PREGUNTAR SIEMPRE el coste (~212 créditos por foto) y esperar el sí.
+3. GANCHO INICIAL y PREGUNTA EXTRA mejorados al máximo: cada vídeo MEJOR que el anterior.
+4. Decorar el vídeo entero y añadir cosas durante las preguntas para que la gente no se aburra.
+
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
   ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`. El usuario lo ha repetido: SIEMPRE gancho espectacular que
   incite a quedarse hasta el final.

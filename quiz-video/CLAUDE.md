@@ -14,6 +14,21 @@
 - Antes de nada, prueba que todo funciona sin gastar créditos:
   `python3 generar.py quizzes/hora_del_quiz_02.json --frases-pendientes` → debe imprimir `[]`.
 
+## REGLAS PERMANENTES PARA TODOS LOS QUIZZES (petición del usuario, 31-10-2026 — aplicar SIEMPRE)
+1. FINAL QUE INCITA A INTERACTUAR: en cualquier quiz, al acabar, pedir con voz muy animada y carteles que
+   comenten su puntuación, DE QUÉ QUIEREN EL SIGUIENTE VÍDEO (tema, país, streamer…) y que apoyen el vídeo
+   (p. ej. «¿De qué quieres el siguiente? ¡Coméntalo y apoya el vídeo!»). También en los textos de redes.
+2. IMÁGENES REALES: como en el quiz de México (`hora_del_quiz_08`), cada pregunta lleva una foto relacionada con
+   su tema (`"foto"` + `"foto_x"`: fondo a pantalla completa con zoom lento y velo + polaroid). La foto NUNCA da
+   la respuesta. Los bancos de fotos gratis están bloqueados: se generan con ElevenLabs
+   (`bytedance-seedream-5-lite`, ~212 créditos por foto). ANTES DE GENERARLAS, PREGUNTAR SIEMPRE AL USUARIO EL
+   COSTE (nº de fotos × ~212) con AskUserQuestion y no gastar sin su sí.
+3. GANCHO INICIAL Y PREGUNTA EXTRA AL MÁXIMO: cada vídeo tiene que ser MEJOR que el anterior en el gancho (voz
+   fuerte desde el fotograma 0, colorido y temático, la extra bloqueada, reto) y en la presentación de la extra
+   (escena propia con mucha emoción). Revisar el último vídeo del mismo tipo y superarlo.
+4. ENTRETENIMIENTO CONSTANTE: decorar todo el vídeo y añadir cosas durante las preguntas para que no se aburran
+   (fotos, dibujos animados, pegatinas de pique, comentarios graciosos, efectos al revelar, sonidos…).
+
 ## GANCHO INICIAL — OBLIGATORIO EN TODOS LOS VÍDEOS (regla del usuario, mejorarlo siempre)
 Los 2 primeros segundos deciden si la gente se queda. En CUALQUIER formato (quiz, parejas, temático,
 niveles, personalidad, misterio…):
