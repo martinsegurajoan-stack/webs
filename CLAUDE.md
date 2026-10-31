@@ -12,6 +12,10 @@ Hashtags: MÁXIMO 4 en TODAS las plataformas: #fyp #viral #test #trending.
 - GANCHO FUERTE al principio de TODOS los vídeos (antes del saludo, voz y texto desde el fotograma 0):
   ver "GANCHO INICIAL" en `quiz-video/CLAUDE.md`. El usuario lo ha repetido: SIEMPRE gancho espectacular que
   incite a quedarse hasta el final.
+- QUIZ DE UN PAÍS (México, etc.): modo `mexico` como plantilla (`quiz-video/quizzes/hora_del_quiz_08.json`):
+  TODO del país (bandera grande al principio y en portada, colores, dibujos, música, acento del país riendo),
+  PRIMER FOTOGRAMA COLORIDO DEL PAÍS con la extra bloqueada, y la extra vendida con mucha emoción
+  (ver «Modo "mexico"» en `quiz-video/CLAUDE.md`).
 - Quiz de VIDEOJUEGOS: modo `gamer` (`quizzes/hora_del_quiz_05.json`), con pantalla de RANGOS al final.
 - VÍDEO PARA BEBER / FIESTA CON AMIGOS (concepto aprobado por el usuario, úsalo siempre): pruebas variadas, plantilla `quiz-video/plantillas-quiz/fiesta.json` +
   `generar_fiesta.py` (ver "FIESTA" en `quiz-video/CLAUDE.md`). Solo cartas: `cartas.json`.

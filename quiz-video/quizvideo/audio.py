@@ -582,3 +582,23 @@ def presenter_fx(sig, drive=2.2):
 
 def _lowpass_fast(x, alpha):
     return _lowpass(x, alpha)
+
+
+def sfx_fanfarria():
+    """Fanfarria de trompetas de mariachi (arpegio Re–Fa#–La–Re con trino final), original."""
+    out = np.zeros(int(1.3 * SR))
+
+    def tp(f, dur):
+        t = _t(dur)
+        vib = 1 + 0.008 * np.sin(2 * np.pi * 6 * t) * np.clip(t / 0.1, 0, 1)
+        ph = np.cumsum(f * vib) / SR
+        w = sum((1 / k) * np.sin(2 * np.pi * k * ph) for k in range(1, 9))
+        env = np.clip(t / 0.02, 0, 1) * np.clip((dur - t) / 0.06, 0, 1)
+        return np.tanh(1.8 * w) * env
+
+    for k, (n, st, du) in enumerate([(74, 0.0, 0.12), (78, 0.12, 0.12), (81, 0.24, 0.12), (86, 0.36, 0.8)]):
+        for dn in (0, -4 if n != 86 else -3):
+            s = tp(_midi(n + dn), du)
+            i = int(st * SR)
+            out[i:i + len(s)] += s * (0.5 if dn == 0 else 0.35)
+    return 0.4 * out / (np.max(np.abs(out)) or 1)

@@ -3,8 +3,8 @@
   "tema": "México",
   "titulo": "¿Cuánto sabes de México?",
   "dificultad": "medio",
-  "tempo": 1.35,
-  "frase_intro": "[laughs] ¡Ay, ay, ay! La última pregunta casi nadie la acierta… ¿llegas al final?",
+  "tempo": 1.42,
+  "frase_intro": "¿Llegas hasta el final, compadre? La última casi nadie la acierta.",
   "pegatina_gancho": "¿MÁS MEXICANO QUE UN TACO?",
   "preguntas": [
     {
@@ -109,5 +109,16 @@
     "sub": "¿Llegas al final, compadre?"
   },
   "cuenta_atras": 4,
-  "outro_corto": true
+  "outro_corto": true,
+  "gancho_teaser": {
+    "voz": "[Mexican accent, whispers] Esta es la última pregunta del vídeo... [excited] ¡y casi nadie la acierta!",
+    "pregunta": "¿Qué civilización fue la más avanzada de Mesoamérica?",
+    "reto": "¿LLEGAS HASTA AQUÍ?",
+    "etiqueta": "PREGUNTA EXTRA",
+    "sonido": "fanfarria"
+  },
+  "intro_voz": "[Mexican accent, excited] ¿Llegas hasta el final, compadre? ¡Es hora del quiz de México!",
+  "extra_intro_voz": "[Mexican accent, whispers] Y ahora... la pregunta extra. [excited] ¡Solo para los más mexicanos!",
+  "extra_lema": "SOLO PARA LOS MÁS MEXICANOS",
+  "extra_sonido": "fanfarria"
 }

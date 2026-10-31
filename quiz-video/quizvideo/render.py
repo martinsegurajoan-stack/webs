@@ -7,7 +7,7 @@ import subprocess
 from multiprocessing import Pool
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
 from . import audio
 
@@ -263,28 +263,64 @@ def build_timeline(quiz, voice, countdown=5):
         sig, dur = voice.say(text)
         return sig, dur
 
+    def say_raw(text):
+        """Frase con sus propias etiquetas (sin el estilo general del modo)."""
+        st = getattr(voice, "style", None)
+        if st is not None:
+            voice.style = ""
+        try:
+            return voice.say(text)
+        finally:
+            if st is not None:
+                voice.style = st
+
+    # GANCHO v2: la pregunta extra bloqueada con alarma, antes de todo
+    tz = quiz.get("gancho_teaser")
+    if tz:
+        sig0, d0 = say_raw(tz["voz"])
+        ta = max(1.8, d0 + 0.15)
+        events += [("fx", tz.get("sonido", "siren"), 0.0), ("fx", "impact", 0.0), ("voice", sig0, 0.03)]
+        for k in range(4):
+            events.append(("fx", "pop", 0.12 + k * 0.08))
+        scenes.append({"kind": "teaser", "start": 0.0, "dur": ta})
+        t = ta
+
     # Intro
     intro_text = quiz.get("titulo") or f"¿Cuánto sabes de {tema}?"
     salsa = quiz.get("frase_intro")
     saludo = modo["saludo"]
-    if salsa and modo.get("gancho_primero"):
+    if quiz.get("intro_voz"):
+        sig, d = say_raw(quiz["intro_voz"])
+    elif salsa and modo.get("gancho_primero"):
         sig, d = say(f"{salsa} {saludo}")
     else:
         sig, d = say(f"{saludo} {salsa}" if salsa else modo["intro_voz"])
     dur = max(2.8, 0.3 + d + 0.2)
     # GANCHO: la voz suena desde el primer fotograma (regla del usuario)
-    events += [("fx", "whoosh", t), ("voice", sig, t + 0.05)]
+    events += [("fx", "impact" if tz else "whoosh", t), ("voice", sig, t + 0.05)]
     scenes.append({"kind": "intro", "start": t, "dur": dur, "title": intro_text,
                    "salsa": salsa})
     t += dur
 
     n_reg = sum(1 for q in quiz["preguntas"] if not q.get("sin_respuesta"))
     for qi, q in enumerate(quiz["preguntas"]):
+        extra = bool(q.get("sin_respuesta")) and qi == n - 1 and n_reg >= 1
+        con_intro = extra and quiz.get("extra_intro_voz")
+        if con_intro:
+            # presentación de la extra con emoción: alarma, «PREGUNTA EXTRA» que cae de golpe
+            sigx, dx = say_raw(quiz["extra_intro_voz"])
+            durx = max(2.6, 0.1 + dx + 0.2)
+            events += [("fx", quiz.get("extra_sonido", "siren"), t), ("fx", "impact", t + 0.15), ("fx", "impact", t + 0.32),
+                       ("voice", sigx, t + 0.1)]
+            scenes.append({"kind": "extra_intro", "start": t, "dur": durx})
+            t += durx
         st = t
         loc = 0.35
-        extra = bool(q.get("sin_respuesta")) and qi == n - 1 and n_reg >= 1
         etiqueta = q.get("etiqueta_voz") or ("¡Pregunta extra!" if extra else f"¡Pregunta {qi + 1}!")
-        sig, dq = say(f"{etiqueta} " + q.get("pregunta_voz", q["pregunta"]))
+        if con_intro:
+            sig, dq = say(q.get("pregunta_voz", q["pregunta"]))
+        else:
+            sig, dq = say(f"{etiqueta} " + q.get("pregunta_voz", q["pregunta"]))
         events += [("fx", "whoosh", st), ("voice", sig, st + loc)]
         loc += max(0.3, dq - 0.4)  # las opciones entran al final de la pregunta
         opt_times = []
@@ -391,7 +427,10 @@ def build_audio(events, total, path, music_on=True, music_style="pop", countdown
         "tick_high": audio.sfx_tick(True), "buzz": audio.sfx_buzz_end(), "correct": audio.sfx_correct(), "applause": audio.sfx_applause(), "chime": audio.sfx_correct(),
         "riser": audio.sfx_riser(countdown_len), "heart": audio.sfx_heartbeat(), "tock": audio.sfx_tock(),
     }
-    gains = {"whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8, "chime": 0.5, "riser": 0.55, "heart": 0.9, "tock": 1.0}
+    from .streamer import sfx_siren
+    from .personalidad import sfx_impact
+    fx.update({"siren": sfx_siren(), "impact": sfx_impact(), "fanfarria": audio.sfx_fanfarria()})
+    gains = {"fanfarria": 0.9, "siren": 0.45, "impact": 0.75, "whoosh": 0.5, "pop": 0.6, "tick": 1.35, "tick_high": 1.5, "buzz": 0.6, "correct": 0.9, "applause": 0.8, "chime": 0.5, "riser": 0.55, "heart": 0.9, "tock": 1.0}
     boosts = [(a, b) for kind, a, b in events if kind == "music_boost"]
     for kind, what, at in events:
         if kind == "music_boost":
@@ -484,7 +523,7 @@ def _init(state):
             fx, fy = rf.uniform(0, W * 2), rf.uniform(150, 520)
             fw, fh = rf.uniform(180, 420), rf.uniform(60, 140)
             fd.ellipse((fx - fw, fy - fh, fx + fw, fy + fh), fill=(235, 225, 255, rf.randint(18, 40)))
-        from PIL import ImageFilter
+        pass
 
         D["fog"] = fog.filter(ImageFilter.GaussianBlur(30))
         rs = random.Random(21)
@@ -636,7 +675,7 @@ def _init_futbol(th):
             d.line((k, gy, k, gy + 50), fill=(255, 255, 255, 70), width=2)
     for cx_, cy_, a0 in ((x0, y0, 0), (x1, y0, 90), (x1, y1, 180), (x0, y1, 270)):
         d.arc((cx_ - 30, cy_ - 30, cx_ + 30, cy_ + 30), a0, a0 + 90, fill=col, width=w)
-    from PIL import ImageFilter
+    pass
     pitch.alpha_composite(ln.filter(ImageFilter.GaussianBlur(1.2)))
     _STATE["pitch"] = pitch
     # brillo de focos (se dibuja latiendo en cada fotograma)
@@ -787,10 +826,14 @@ def _init_mexico(th):
                                                "guitarra", "calavera", "trompeta", "flor")]
     D["calabaza_s"] = mx.sprite("sombrero", 110)  # sale junto al comentario gracioso
     D["mini_flag"] = mx.sprite("bandera", 96)
+    D["sombrero_big"] = mx.sprite("sombrero", 300)
+    gl = Image.new("RGBA", (900, 900), (0, 0, 0, 0))
+    ImageDraw.Draw(gl).ellipse((150, 150, 750, 750), fill=(255, 250, 220, 120))
+    D["glow_c"] = gl.filter(ImageFilter.GaussianBlur(110))
     # bandera grande del gancho (ondea) + halo blanco fijo detrás
     D["flag"] = mx.BanderaOndeando(840, 480)
     fw, fh = 840 + 40, 480 + 2 * D["flag"].pad + 60
-    from PIL import ImageFilter
+    pass
     halo = Image.new("RGBA", (fw + 160, fh + 160), (0, 0, 0, 0))
     ImageDraw.Draw(halo).rounded_rectangle((80, 90, fw + 80, fh + 40), 40, fill=(255, 255, 230, 150))
     D["flag_halo"] = halo.filter(ImageFilter.GaussianBlur(34))
@@ -905,6 +948,215 @@ def _draw_intro_mexico(layer, sc, lt):
             layer.alpha_composite(im2, (int(x - im2.width / 2), int(y - im2.height / 2)))
     if lt < 0.16:  # destello (se superpone, no sustituye)
         layer.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(75 * (1 - lt / 0.16)))))
+
+
+def _beams_mx(layer, lt):
+    """Luces de alarma rojas que barren desde las esquinas de arriba."""
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ov)
+    for k, (bx, base) in enumerate([(0, 0.25), (W, math.pi - 0.25)]):
+        a = base + math.sin(lt * 4.5 + k * 1.7) * 0.75 * (1 if k == 0 else -1)
+        for wdt, al in ((0.22, 45), (0.1, 60)):
+            p1 = (bx + math.cos(a - wdt) * 2400, 150 + math.sin(a - wdt) * 2400)
+            p2 = (bx + math.cos(a + wdt) * 2400, 150 + math.sin(a + wdt) * 2400)
+            d.polygon([(bx, 150), p1, p2], fill=(255, 40, 60, al))
+    layer.alpha_composite(ov)
+
+
+def _fiesta_fondo(layer, lt):
+    """Fondo FESTIVO del país: rayos que giran con los colores de fiesta y brillo central."""
+    from . import mexico as mx
+    ov = Image.new("RGBA", (W, H), (0, 0, 0, 0))
+    d = ImageDraw.Draw(ov)
+    cx, cy, R = 540, 720, 2300
+    base = math.radians(lt * 22)
+    cols = mx.FIESTA
+    n = 14
+    for k in range(n):
+        a0 = base + k * 2 * math.pi / n
+        a1 = a0 + math.pi / n
+        d.polygon([(cx, cy), (cx + R * math.cos(a0), cy + R * math.sin(a0)),
+                   (cx + R * math.cos(a1), cy + R * math.sin(a1))], fill=cols[k % len(cols)] + (95,))
+    layer.alpha_composite(ov)
+    if "flag_halo" in _STATE["decor"]:
+        g = _STATE["decor"]["glow_c"]
+        layer.alpha_composite(g, (int(cx - g.width / 2), int(cy - g.height / 2)))
+
+
+def _alarma_fondo(layer, lt, oscuro=120):
+    layer.alpha_composite(Image.new("RGBA", (W, H), (12, 0, 8, oscuro)))
+    _beams_mx(layer, lt)
+    v = _STATE["vignette"].copy()
+    al = 0.55 + 0.45 * (0.5 + 0.5 * math.sin(lt * 2 * math.pi * 2.4))
+    v.putalpha(v.getchannel("A").point(lambda x, a_=al: int(x * a_)))
+    layer.alpha_composite(v)
+
+
+def _padlock_mx(d, cx, cy, s, col):
+    d.arc((cx - s * 0.55, cy - s * 1.15, cx + s * 0.55, cy + s * 0.1), 180, 360, fill=col, width=max(3, int(s * 0.22)))
+    d.rounded_rectangle((cx - s * 0.8, cy - s * 0.4, cx + s * 0.8, cy + s * 0.75), s * 0.2, fill=col)
+    d.ellipse((cx - s * 0.14, cy - s * 0.05, cx + s * 0.14, cy + s * 0.23), fill=(20, 10, 20))
+
+
+def _warn_mx(d, cx, cy, s):
+    d.polygon([(cx, cy - s), (cx + s * 1.1, cy + s * 0.85), (cx - s * 1.1, cy + s * 0.85)], fill=(20, 10, 20))
+    d.polygon([(cx, cy - s * 0.62), (cx + s * 0.75, cy + s * 0.62), (cx - s * 0.75, cy + s * 0.62)], fill=(255, 205, 0))
+    d.rounded_rectangle((cx - s * 0.1, cy - s * 0.35, cx + s * 0.1, cy + s * 0.25), 3, fill=(20, 10, 20))
+    d.ellipse((cx - s * 0.11, cy + s * 0.35, cx + s * 0.11, cy + s * 0.55), fill=(20, 10, 20))
+
+
+def _flash(layer, al):
+    if al > 0:
+        layer.alpha_composite(Image.new("RGBA", (W, H), (255, 255, 255, int(255 * min(1, al)))))
+
+
+def _draw_teaser_mx(layer, sc, lt):
+    """GANCHO v2 del quiz de país, COLORIDO y 100 % del país desde el fotograma 0: rayos de fiesta, bandera
+    ondeando, «LA ÚLTIMA PREGUNTA», la extra con las opciones BLOQUEADAS (colores de fiesta + candado),
+    sombrero, maracas, chiles y confeti, y «¿LLEGAS HASTA AQUÍ?»."""
+    quiz = _STATE["quiz"]
+    tz = quiz["gancho_teaser"]
+    D = _STATE["decor"]
+    th = _STATE["theme"]
+    _fiesta_fondo(layer, lt)
+    d = ImageDraw.Draw(layer)
+    sh = math.sin(lt * 50) * 12 * max(0, 1 - lt / 0.35)
+    dark = (18, 30, 22)
+    # bandera ondeando arriba
+    fr = D["flag"].frame(lt + 3, fuerza=1.4)
+    zf = 0.74 * (1.08 - 0.08 * ease_out(min(1, lt / 0.3)))
+    fr = fr.resize((int(fr.width * zf), int(fr.height * zf)), Image.BILINEAR)
+    hl = D["flag_halo"].resize((int(D["flag_halo"].width * zf), int(D["flag_halo"].height * zf)), Image.BILINEAR)
+    layer.alpha_composite(hl, (int(540 - hl.width / 2 + sh), int(365 - hl.height / 2)))
+    layer.alpha_composite(fr, (int(540 - fr.width / 2 + sh), int(365 - fr.height / 2)))
+    # sombrero y maracas a los lados de la bandera
+    som = D["sprites"]["sombrero"][2].rotate(10 * math.sin(lt * 5), resample=Image.BICUBIC, expand=True)
+    layer.alpha_composite(som, (int(100 - som.width / 2), int(430 - som.height / 2)))
+    mar = D["sprites"]["maracas"][2].rotate(28 * math.sin(lt * 16), resample=Image.BICUBIC, expand=True)
+    layer.alpha_composite(mar, (int(980 - mar.width / 2), int(430 - mar.height / 2)))
+    # «LA ÚLTIMA PREGUNTA» con los colores de la bandera
+    k = ease_out(min(1, lt / 0.2))
+    f = tfont(int(118 * (1.15 - 0.15 * k)))
+    word = "LA ÚLTIMA PREGUNTA"
+    while d.textlength(word, font=f) > 970 and f.size > 40:
+        f = tfont(f.size - 4)
+    cols = [(0, 150, 80), (255, 255, 255), (230, 30, 50)]
+    tw = d.textlength(word, font=f)
+    x = 540 - tw / 2 + sh
+    parts = [("LA ", 0), ("ÚLTIMA ", 1), ("PREGUNTA", 2)]
+    for txt, ci in parts:
+        cw = d.textlength(txt, font=f)
+        d.text((x, 640), txt, font=f, fill=cols[ci], anchor="lm", stroke_width=13, stroke_fill=dark)
+        x += cw
+    # tarjeta con la pregunta extra
+    b = ease_out_back(min(1, 0.4 + lt / 0.3))
+    fq = math.sin(lt * 1.4) * 5
+    y0, y1 = 735 + fq, 935 + fq
+    cy = (y0 + y1) / 2
+    hh = (y1 - y0) / 2 * (0.85 + 0.15 * b)
+    box = (70 + sh, cy - hh, 1010 + sh, cy + hh)
+    gl = 0.5 + 0.5 * math.sin(lt * 10)
+    d.rounded_rectangle((box[0] - 10, box[1] - 10, box[2] + 10, box[3] + 10), 40, fill=(255, 205, 0, int(150 + 100 * gl)))
+    d.rounded_rectangle(box, 34, fill=(255, 255, 255))
+    d.rounded_rectangle((box[0], box[3] - 14, box[0] + 940 / 3, box[3]), 6, fill=(0, 104, 71))
+    d.rectangle((box[0] + 940 / 3, box[3] - 14, box[0] + 2 * 940 / 3, box[3]), fill=(235, 235, 235))
+    d.rounded_rectangle((box[0] + 2 * 940 / 3, box[3] - 14, box[2], box[3]), 6, fill=(206, 17, 38))
+    fq_, lines, lh = fit(d, tz["pregunta"], 860, 150, 66, 34, 1.06)
+    draw_lines(d, lines, fq_, lh, 540 + sh, cy + 8, th["text_dark"])
+    _pill(d, 540 + sh, box[1], tz.get("etiqueta", "PREGUNTA EXTRA"), 38, (228, 0, 124), (255, 255, 255), pad=(30, 12))
+    # reto
+    e = ease_out_back(min(1, 0.45 + lt / 0.35))
+    pulse = 1 + 0.06 * math.sin(lt * 10)
+    d.text((540, 1005), tz.get("reto", "¿LLEGAS HASTA AQUÍ?"), font=tfont(max(10, 80 * e * pulse)),
+           fill=(255, 205, 0), anchor="mm", stroke_width=12, stroke_fill=dark)
+    # opciones BLOQUEADAS con los colores de fiesta
+    oh, og = 108, 18
+    for i in range(4):
+        a2 = ease_out_back(min(1, max(0, (lt + 0.12 - i * 0.07) / 0.25)))
+        if a2 <= 0:
+            continue
+        yb0 = 1075 + i * (oh + og)
+        dx = (1 - a2) * 500 * (1 if i % 2 else -1) + math.sin(lt * 30 + i * 2) * 3 + sh
+        bb = (OPT_X0 + dx, yb0, OPT_X1 + dx, yb0 + oh)
+        col = th["options"][i % len(th["options"])]
+        d.rounded_rectangle((bb[0], bb[1] + 9, bb[2], bb[3] + 9), 30, fill=tuple(int(c * 0.65) for c in col))
+        d.rounded_rectangle(bb, 30, fill=col, outline=(255, 255, 255), width=4)
+        d.rounded_rectangle((bb[0] + 8, bb[1] + 6, bb[2] - 8, bb[1] + oh * 0.4), 20, fill=(255, 255, 255, 45))
+        lc = (bb[0] + 62, (bb[1] + bb[3]) / 2)
+        d.ellipse((lc[0] - 36, lc[1] - 36, lc[0] + 36, lc[1] + 36), fill=(255, 255, 255))
+        d.text((lc[0], lc[1] + 3), LETTERS[i], font=tfont(42), fill=col, anchor="mm")
+        d.text((bb[0] + 135, lc[1] + 2), "? ? ? ? ? ?", font=tfont(50), fill=(255, 255, 255), anchor="lm",
+               stroke_width=3, stroke_fill=tuple(int(c * 0.6) for c in col))
+        _padlock_mx(d, bb[2] - 70, lc[1] + 4, 27, (255, 205, 0))
+    # confeti de papel picado y chiles saltando desde el centro
+    if lt < 1.6:
+        for j, (vx, vy, ci, s_, ph) in enumerate(_STATE["confetti"][:14]):
+            im = D["burst"][j % len(D["burst"])]
+            tb = lt + 0.25
+            x = 540 + vx * 900 * tb
+            y = 330 + vy * 950 * tb + 1100 * tb * tb
+            al = max(0.0, 1 - lt / 1.6)
+            im2 = im.resize((90, 90), Image.BILINEAR).rotate(math.degrees(ph + tb * 5), resample=Image.BICUBIC)
+            im2.putalpha(im2.getchannel("A").point(lambda v, a_=al: int(v * a_)))
+            layer.alpha_composite(im2, (int(x - im2.width / 2), int(y - im2.height / 2)))
+    ta = sc["dur"]
+    if lt > ta - 0.12:  # destello de paso a la bandera gigante
+        _flash(layer, 0.85 * (lt - (ta - 0.12)) / 0.12)
+
+
+def _draw_extra_intro_mx(layer, sc, lt):
+    """Antes de la extra: alarma, sombrero gigante, «PREGUNTA» + «EXTRA» que caen de golpe con glitch,
+    avisos ⚠ y «SOLO PARA LOS MÁS MEXICANOS»."""
+    quiz = _STATE["quiz"]
+    D = _STATE["decor"]
+    _fiesta_fondo(layer, lt)
+    D["picado"].draw(layer, lt, dy=0)
+    d = ImageDraw.Draw(layer)
+    sh = math.sin(lt * 60) * 20 * max(0, 1 - abs(lt - 0.32) / 0.35) if lt > 0.15 else 0
+    a = ease_out_back(min(1, lt / 0.35))
+    if a > 0.02:
+        g = 0.5 + 0.5 * math.sin(lt * 9)
+        R = 190 * a * (1 + 0.04 * math.sin(lt * 7))
+        d.ellipse((540 - R - 24 + sh, 560 - R - 24, 540 + R + 24 + sh, 560 + R + 24), fill=(230, 30, 50, int(90 + 110 * g)))
+        d.ellipse((540 - R - 10 + sh, 560 - R - 10, 540 + R + 10 + sh, 560 + R + 10), fill=(255, 205, 0))
+        d.ellipse((540 - R + sh, 560 - R, 540 + R + sh, 560 + R), fill=(0, 104, 71))
+        big = D.get("sombrero_big")
+        if big is not None:
+            s_ = max(4, int(big.width * a * (1 + 0.05 * math.sin(lt * 12))))
+            im_ = big.resize((s_, s_), Image.BILINEAR).rotate(8 * math.sin(lt * 6), resample=Image.BICUBIC)
+            layer.alpha_composite(im_, (int(540 + sh - s_ / 2), int(560 - s_ / 2)))
+    for word, y, size, col, st, at in [("PREGUNTA", 860, 150, (255, 255, 255), (230, 30, 50), 0.15),
+                                       (quiz.get("extra_nombre", "EXTRA"), 1040, 230, (230, 30, 50), (255, 255, 255), 0.32)]:
+        if lt < at:
+            continue
+        kk = ease_out(min(1, (lt - at) / 0.16))
+        fw = tfont(int(size * (2.0 - kk)))
+        while d.textlength(word, font=fw) > 660 and fw.size > 40:
+            fw = tfont(fw.size - 6)
+        d.text((540 + sh + 8, y + 10), word, font=fw, fill=(0, 0, 0, 120), anchor="mm", stroke_width=14, stroke_fill=(0, 0, 0, 120))
+        d.text((540 + sh, y), word, font=fw, fill=col, anchor="mm", stroke_width=14, stroke_fill=st)
+    if lt > 0.32:
+        p = 0.5 + 0.5 * math.sin(lt * 8)
+        _warn_mx(d, 135 + sh, 1040, 52 + 8 * p)
+        _warn_mx(d, 945 + sh, 1040, 52 + 8 * p)
+    e = ease_out_back(min(1, max(0, (lt - 0.6) / 0.35)))
+    if e > 0:
+        _pill(d, 540, 1230 + (1 - e) * 80, quiz.get("extra_lema", "SOLO PARA LOS MÁS MEXICANOS"),
+              int(54 * max(e, 0.1)), (255, 205, 0), (20, 8, 16), pad=(36, 18))
+    if lt < 2.0 and "burst" in D:  # estallido de maracas, chiles… al caer «EXTRA»
+        tb = max(0.0, lt - 0.32)
+        if tb > 0:
+            for j, (vx, vy, ci, s_, ph) in enumerate(_STATE["confetti"][:16]):
+                im = D["burst"][j % len(D["burst"])]
+                x = 540 + vx * 900 * (tb + 0.1)
+                y = 1040 + vy * 900 * (tb + 0.1) + 1100 * tb * tb
+                al = max(0.0, 1 - tb / 1.5)
+                im2 = im.rotate(math.degrees(ph + tb * 5), resample=Image.BICUBIC)
+                im2.putalpha(im2.getchannel("A").point(lambda v, a_=al: int(v * a_)))
+                layer.alpha_composite(im2, (int(x - im2.width / 2), int(y - im2.height / 2)))
+    for at in (0.15, 0.32):
+        if at <= lt < at + 0.1:
+            _flash(layer, 0.65 * (1 - (lt - at) / 0.1))
 
 
 def _halloween(img, t, beat):
@@ -1526,7 +1778,8 @@ def render_frame(i):
         lt = t - sc["start"]
         if 0 <= lt < sc["dur"]:
             layer = Image.new("RGBA", (W, H), (0, 0, 0, 0))
-            {"intro": _draw_intro, "question": _draw_question, "rangos": _draw_rangos, "outro": _draw_outro}[sc["kind"]](layer, sc, lt)
+            {"intro": _draw_intro, "question": _draw_question, "rangos": _draw_rangos, "outro": _draw_outro,
+             "teaser": _draw_teaser_mx, "extra_intro": _draw_extra_intro_mx}[sc["kind"]](layer, sc, lt)
             out_t = sc["dur"] - lt
             if out_t < 0.3 and sc is not scenes[-1]:
                 # transición de salida: desliza hacia la izquierda
@@ -1545,6 +1798,17 @@ def render_frame(i):
                     v.putalpha(v.getchannel("A").point(lambda x, a_=alpha: int(x * a_)))
                     img.alpha_composite(v)
             img.alpha_composite(layer)
+            gk = 0.0
+            if sc["kind"] == "teaser" and lt < 0.2:
+                gk = 0.35 * (1 - lt / 0.2)
+            elif sc["kind"] == "extra_intro" and 0.32 <= lt < 0.55:
+                gk = 1 - (lt - 0.32) / 0.23
+            if gk > 0:  # glitch RGB
+                r, g, b, a = img.split()
+                off = int(18 * gk)
+                r = r.transform(r.size, Image.AFFINE, (1, 0, -off, 0, 1, 0))
+                b = b.transform(b.size, Image.AFFINE, (1, 0, off, 0, 1, 0))
+                img = Image.merge("RGBA", (r, g, b, a))
             break
     _username(img)
     return img.convert("RGB").tobytes()

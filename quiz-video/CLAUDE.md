@@ -254,7 +254,20 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
   Las risas alargan las frases: para ≤ 90 s se usó `tempo` 1,35, `cuenta_atras` 4 (clave nueva del JSON),
   `outro_corto` (solo el grito final) y `ritmo_rapido` del modo (menos huecos tras la respuesta); comentarios solo
   en 3 preguntas. Final: «¿De qué país quieres el siguiente? ¡Coméntalo y apoya el vídeo!».
-- Para OTRO PAÍS: copiar el modo (paleta, bandera, decorado, música y acento) cambiando colores y dibujos.
+- REGLAS DEL USUARIO PARA CUALQUIER QUIZ DE PAÍS (México 31-10-2026, «acuérdate para cuando te pida otro país»):
+  · TODO decorado del país: bandera GRANDE al principio y en la portada, colores, dibujos 3D típicos, música
+    típica (original sintetizada) y narrador con el ACENTO del país en tono de risa (`[<país> accent, laughing]`,
+    `[laughs]`) con expresiones típicas («¡Órale!», «¡Ándale!»…).
+  · PRIMER FOTOGRAMA COLORIDO Y DEL PAÍS (nada de alarma roja oscura): `gancho_teaser` → `_draw_teaser_mx`
+    (rayos de colores de fiesta, bandera ondeando, «LA ÚLTIMA PREGUNTA» con los colores de la bandera, la
+    pregunta extra con opciones BLOQUEADAS en colores vivos + candado, dibujos del país, confeti y «¿LLEGAS
+    HASTA AQUÍ?», fanfarria típica en vez de sirena: `"sonido": "fanfarria"`). Luego destello y la bandera gigante.
+  · EXTRA VENDIDA CON MUCHA EMOCIÓN: `extra_intro_voz` («[whispers] Y ahora... la pregunta extra. [excited] ¡Solo
+    para los más mexicanos!») + escena `_draw_extra_intro_mx` (fondo festivo, sombrero gigante, «PREGUNTA
+    EXTRA» que cae de golpe, avisos, `extra_lema`, estallido de dibujos, `extra_sonido`). La pregunta extra se lee
+    sin «¡Pregunta extra!». `intro_voz` = frase propia tras el teaser («¿Llegas hasta el final, compadre? ¡Es hora…»).
+  · Para OTRO PAÍS: copiar el modo `mexico` (paleta, bandera en `mexico.py`, decorado, música, acento, lema)
+    cambiando colores, dibujos y expresiones.
 - Nº1: 90 s, ~1.500 créditos de voz (20 frases; 2 comentarios no se usaron).
 
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
