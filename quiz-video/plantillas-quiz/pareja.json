@@ -1,0 +1,88 @@
+{
+  "_plantilla": "pareja",
+  "_uso": "Quiz de parejas (sin respuesta correcta). Copia a quizzes/pareja_NN.json y usa los mismos comandos que el trivial (generar.py + portada.py).",
+  "modo": "pareja",
+  "tema": "pareja",
+  "titulo": "¿Cuánto conoces a tu pareja?",
+  "preguntas": [
+    {
+      "pregunta": "¿Qué necesito más cuando estoy pasando un mal día?",
+      "opciones": [
+        "Que me abraces",
+        "Que me escuches",
+        "Que me dejes a solas",
+        "Que me hagas reír"
+      ],
+      "imagen": "abrazo_3d.png"
+    },
+    {
+      "pregunta": "¿Cuál sería mi plan perfecto contigo?",
+      "opciones": [
+        "Una cena romántica",
+        "Una escapada de fin de semana",
+        "Una tarde de sofá y peli",
+        "Una noche de fiesta"
+      ],
+      "imagen": "pareja_3d.png"
+    },
+    {
+      "pregunta": "Cuando discutimos, ¿qué hago normalmente?",
+      "opciones": [
+        "Quiero solucionarlo enseguida",
+        "Me quedo en silencio",
+        "Necesito estar a solas",
+        "Espero a que vengas tú"
+      ],
+      "imagen": "enfado_3d.png"
+    },
+    {
+      "pregunta": "¿Qué situación me daría más celos?",
+      "opciones": [
+        "Que le dieras un like a tu ex",
+        "Que salieras de fiesta sin mí",
+        "Que hablaras mucho con alguien que te atrae",
+        "Que ocultaras el móvil cuando estoy cerca"
+      ],
+      "imagen": "movil_3d.png"
+    },
+    {
+      "pregunta": "Si me tocara la lotería mañana, ¿qué haría primero?",
+      "opciones": [
+        "Dejar de trabajar",
+        "Comprar una casa",
+        "Reservar un viaje",
+        "Darme un capricho enorme"
+      ],
+      "imagen": "dinero_3d.png"
+    },
+    {
+      "pregunta": "¿Qué valor tiene mi pareja en camellos?",
+      "opciones": [
+        "0-25",
+        "26-50",
+        "51-75",
+        "+75"
+      ],
+      "sin_respuesta": true,
+      "imagen": "camello_3d.png"
+    }
+  ],
+  "portada": {
+    "arriba": "QUIZ DE PAREJAS",
+    "titulo": [
+      [
+        "¿CUÁNTO CONOCES",
+        "w"
+      ],
+      [
+        "A TU PAREJA?",
+        "a"
+      ]
+    ],
+    "pregunta": 3,
+    "emoji": "sonrojado",
+    "emoji2": "corazon_flecha",
+    "pegatina": "¡ETIQUETA A TU PAREJA!",
+    "sub": "Si fallas… duermes en el sofá"
+  }
+}

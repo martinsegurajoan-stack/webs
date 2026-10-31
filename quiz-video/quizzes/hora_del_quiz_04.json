@@ -1,0 +1,66 @@
+{
+  "modo": "futbol",
+  "tema": "fútbol",
+  "titulo": "¿Cuánto sabes de fútbol?",
+  "dificultad": "alto",
+  "preguntas": [
+    {
+      "pregunta": "¿Contra qué equipo remontó el Liverpool la final de Champions de 2005 tras ir perdiendo 3-0 al descanso?",
+      "opciones": ["Juventus", "Real Madrid", "AC Milan", "Bayern de Múnich"],
+      "correcta": "C",
+      "imagen": "trofeo_3d.png",
+      "fuente": "Final de Estambul 2005: Milan 3-3 Liverpool, ganó el Liverpool en los penaltis.",
+      "comentario": "¡Remontada histórica!"
+    },
+    {
+      "pregunta": "¿Qué selección africana alcanzó por primera vez los cuartos de final de un Mundial, en 1990?",
+      "opciones": ["Nigeria", "Marruecos", "Ghana", "Camerún"],
+      "correcta": "D",
+      "imagen": "balon_3d.png",
+      "fuente": "Camerún, primera selección africana en cuartos (Italia 90).",
+      "comentario": "¡Qué equipazo!"
+    },
+    {
+      "pregunta": "¿A qué jugador golpeó Zidane con un cabezazo en la final del Mundial de 2006?",
+      "opciones": ["Fabio Cannavaro", "Marco Materazzi", "Alessandro Nesta", "Gennaro Gattuso"],
+      "correcta": "B",
+      "imagen": "tarjeta_roja_3d.png",
+      "fuente": "Final de Berlín 2006: Zidane fue expulsado por el cabezazo a Materazzi.",
+      "comentario": "¡Roja directa!"
+    },
+    {
+      "pregunta": "¿Quién fue el primer futbolista africano en ganar el Balón de Oro, en 1995?",
+      "opciones": ["Abedi Pelé", "Didier Drogba", "George Weah", "Roger Milla"],
+      "correcta": "C",
+      "imagen": "medalla_3d.png",
+      "fuente": "George Weah (AC Milan), Balón de Oro 1995.",
+      "comentario": "¡Una leyenda!"
+    },
+    {
+      "pregunta": "¿Qué selección ganó por sorpresa la Eurocopa de 2004?",
+      "opciones": ["Portugal", "Grecia", "República Checa", "Países Bajos"],
+      "correcta": "B",
+      "imagen": "porteria_3d.png",
+      "fuente": "Grecia ganó la Euro 2004 al vencer 1-0 a Portugal en la final (Lisboa). Añadida porque la del Liverpool venía repetida.",
+      "comentario": "¡Nadie se lo esperaba!"
+    },
+    {
+      "pregunta": "¿Qué entrenador fichó a Ronaldinho para el F.C. Barcelona en 2003?",
+      "opciones": ["Louis van Gaal", "Frank Rijkaard", "Radomir Antić", "Carles Rexach"],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "imagen": "pizarra_3d.png",
+      "fuente": "Frank Rijkaard (no se revela: va a comentarios)."
+    }
+  ],
+  "portada": {
+    "arriba": "NIVEL: ALTO",
+    "titulo": [["¿CUÁNTO SABES", "w"], ["DE FÚTBOL?", "a"]],
+    "pregunta": 2,
+    "emoji": "balon",
+    "emoji2": "trofeo",
+    "estilo": "sello",
+    "sello": ["¿LLEGAS", "AL 5/5?"],
+    "sub": "Solo para futboleros|de verdad"
+  }
+}

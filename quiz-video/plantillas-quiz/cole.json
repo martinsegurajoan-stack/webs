@@ -1,0 +1,156 @@
+{
+  "_plantilla": "cole",
+  "_uso": "Quiz del cole (trivial con decorado escolar, pegatina 'pique' durante la cuenta atrás, comentario tras cada respuesta y pantalla de notas rápida). Copia a quizzes/hora_del_quiz_NN.json; generar.py + portada.py. Ajusta 'tempo' para quedar <=90 s.",
+  "modo": "cole",
+  "tema": "cultura general del cole",
+  "titulo": "Preguntas que hasta un niño de 13 años se sabe",
+  "dificultad": "facil",
+  "tempo": 1.28,
+  "frase_intro": "Esto lo sabe hasta un niño de trece años… ¿y tú?",
+  "pegatina_gancho": "¿LLEGAS AL 5/5?",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuántos lados tiene un hexágono?",
+      "opciones": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "correcta": "B",
+      "opcion_voz": [
+        "5",
+        "Seis lados",
+        "7",
+        "8"
+      ],
+      "imagen": "escuadra_3d.png",
+      "pique": "¡FACILÍSIMA!",
+      "comentario": "¡Regalada!",
+      "fuente": "Hexágono = 6 lados."
+    },
+    {
+      "pregunta": "¿Cuál es el planeta más grande del sistema solar?",
+      "opciones": [
+        "Saturno",
+        "Júpiter",
+        "Neptuno",
+        "La Tierra"
+      ],
+      "correcta": "B",
+      "imagen": "telescopio_3d.png",
+      "pique": "¿SEGURO?",
+      "comentario": "¡Tu profe, orgullosa!",
+      "fuente": "Júpiter es el planeta más grande (NASA)."
+    },
+    {
+      "pregunta": "¿Cuál es el río más largo de la península ibérica?",
+      "opciones": [
+        "Ebro",
+        "Duero",
+        "Tajo",
+        "Guadalquivir"
+      ],
+      "correcta": "C",
+      "imagen": "mapa_3d.png",
+      "pique": "¡NO TE|LÍES!",
+      "comentario": "¿A que dijiste Ebro?",
+      "fuente": "Tajo, ~1.007 km (el Ebro es el más largo que discurre entero por España, 910 km)."
+    },
+    {
+      "pregunta": "¿Cuál es la capital de Australia?",
+      "opciones": [
+        "Sídney",
+        "Melbourne",
+        "Canberra",
+        "Perth"
+      ],
+      "correcta": "C",
+      "imagen": "avion_3d.png",
+      "pique": "TIC, TAC…",
+      "comentario": "¡Sídney llorando!",
+      "fuente": "Canberra es la capital de Australia."
+    },
+    {
+      "pregunta": "¿Cuántos huesos tiene el cuerpo humano adulto?",
+      "opciones": [
+        "186",
+        "206",
+        "216",
+        "306"
+      ],
+      "correcta": "B",
+      "opcion_voz": [
+        "186",
+        "Doscientos seis",
+        "216",
+        "306"
+      ],
+      "imagen": "estetoscopio_3d.png",
+      "pique": "¡ESTO LO|ESTUDIASTE!",
+      "comentario": "¡Sin contar dientes!",
+      "fuente": "Un adulto tiene 206 huesos; los dientes no se cuentan como huesos."
+    },
+    {
+      "pregunta": "¿Cuál es el sujeto de la frase «Me gustan las manzanas»?",
+      "opciones": [
+        "Yo",
+        "Me",
+        "Las manzanas",
+        "No tiene sujeto"
+      ],
+      "correcta": "C",
+      "sin_respuesta": true,
+      "imagen": "libro_abierto_3d.png",
+      "pique": "¡PIENSA|BIEN!",
+      "fuente": "El sujeto es «las manzanas» (concuerda con «gustan»); «me» es complemento indirecto. No se revela."
+    }
+  ],
+  "rangos_voz": "¿Cuántas has acertado? ¡Mira tu nota y dímela en comentarios!",
+  "rangos": [
+    {
+      "rango": "0–1",
+      "nombre": "Vuelta al cole",
+      "imagen": "mochila_3d.png"
+    },
+    {
+      "rango": "2–3",
+      "nombre": "Aprobado raspado",
+      "imagen": "nota_3d.png"
+    },
+    {
+      "rango": "4",
+      "nombre": "Notable",
+      "imagen": "empollon_3d.png"
+    },
+    {
+      "rango": "5/5",
+      "nombre": "Matrícula de honor",
+      "imagen": "birrete_3d.png"
+    }
+  ],
+  "portada": {
+    "arriba": "QUIZ DEL COLE",
+    "titulo": [
+      [
+        "LO SABE HASTA",
+        "w"
+      ],
+      [
+        "UN NIÑO DE 13",
+        "a"
+      ]
+    ],
+    "pregunta": 3,
+    "emoji": "empollon",
+    "emoji2": "libros",
+    "estilo": "sello",
+    "sello": [
+      "¿5/5?",
+      "¡A VER!"
+    ],
+    "pegatina": "¿Y TÚ?",
+    "sub": "¿Y tú|te lo sabes?"
+  },
+  "rangos_rapido": true
+}

@@ -1,0 +1,113 @@
+{
+  "_plantilla": "mascota",
+  "_uso": "Quiz de mascotas (sin respuesta correcta, decorado de perros/gatos/conejos, fotos polaroid, cierre 'parte 2'). Copia a quizzes/mascota_NN.json y usa generar.py + portada.py. Campos opcionales por pregunta: fin [voz, CARTEL], cabecera, etiqueta_voz, pegatina, pregunta_voz.",
+  "modo": "mascota",
+  "tema": "mascotas",
+  "titulo": "¿Cuánto conoces a tu mascota?",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es su comida favorita?",
+      "opciones": [
+        "Pollo",
+        "Pescado",
+        "Su pienso habitual",
+        "Otra comida"
+      ],
+      "imagen": "perro_cara_3d.png",
+      "fin": [
+        "¿Lo sabías seguro?",
+        "¿LO SABÍAS SEGURO?"
+      ]
+    },
+    {
+      "pregunta": "¿Cuál es su mayor miedo?",
+      "opciones": [
+        "Los petardos",
+        "La aspiradora",
+        "Los desconocidos",
+        "No tiene miedo a nada de eso"
+      ],
+      "imagen": "gato_miedo_3d.png",
+      "fin": [
+        "¡Ay, pobrecito!",
+        "¡AY, POBRECITO!"
+      ]
+    },
+    {
+      "pregunta": "¿Dónde prefiere dormir?",
+      "opciones": [
+        "En su propia cama",
+        "En el sofá",
+        "En la cama de su dueño",
+        "Donde esté cómodo"
+      ],
+      "imagen": "conejo_cara_3d.png",
+      "fin": [
+        "¡El rey de la casa!",
+        "¡EL REY DE LA CASA!"
+      ]
+    },
+    {
+      "pregunta": "¿Qué hace cuando te vas de casa?",
+      "opciones": [
+        "Se queda durmiendo",
+        "Se queda mirando la puerta",
+        "Se pone nervioso",
+        "Se entretiene jugando"
+      ],
+      "imagen": "hamster_3d.png",
+      "fin": [
+        "¡Qué penita da!",
+        "¡QUÉ PENITA!"
+      ]
+    },
+    {
+      "pregunta": "¿Cómo reacciona cuando escucha su nombre?",
+      "opciones": [
+        "Viene corriendo",
+        "Mira inmediatamente",
+        "Mueve la cola",
+        "Te ignora completamente"
+      ],
+      "imagen": "caniche_3d.png",
+      "fin": [
+        "¿Viene o pasa de ti?",
+        "¿VIENE O PASA DE TI?"
+      ]
+    },
+    {
+      "pregunta": "Si mañana dejaras de darle comida, premios y juguetes, ¿qué crees que haría?",
+      "pregunta_voz": "¿Tu mascota te quiere de verdad o solo está contigo por interés? Si mañana dejaras de darle comida, premios y juguetes, ¿qué crees que haría?",
+      "opciones": [
+        "Seguiría buscándote porque te quiere",
+        "Se iría con quien le diese comida",
+        "Te ignoraría por completo",
+        "Intentaría llamar tu atención"
+      ],
+      "sin_respuesta": true,
+      "cabecera": "PREGUNTA EXCLUSIVA",
+      "etiqueta_voz": "¡Pregunta exclusiva!",
+      "pegatina": "¿TE QUIERE DE VERDAD… O POR INTERÉS?",
+      "imagen": "gato_3d.png"
+    }
+  ],
+  "portada": {
+    "estilo": "clasica",
+    "arriba": "QUIZ DE MASCOTAS",
+    "titulo": [
+      [
+        "¿CUÁNTO CONOCES",
+        "w"
+      ],
+      [
+        "A TU MASCOTA?",
+        "a"
+      ]
+    ],
+    "pregunta": 5,
+    "emoji": "perro",
+    "emoji2": "gato_amor",
+    "pegatina": "¿TE QUIERE O TE USA?",
+    "sub": "La última pregunta duele…"
+  }
+}
