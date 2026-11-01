@@ -75,6 +75,9 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   de luz que flotan despacio, viñeta y grano suave (SIN rayos que giran ni destellos: marean). No copiar los fondos de los vídeos de
   ejemplo del usuario.
 - Un solo mundo y una sola cámara que viaja por un camino entre etapas.
+- ESCENARIOS DECORADOS DEL TEMA (usuario 01-11-2026: «no una pared azul seca al fondo»): cada etapa en su set dibujado
+  (dormitorio, baño, espacio, consulta, gimnasio…) con muebles y detalles; las habitaciones van seguidas como una casa
+  de muñecas y la cámara pasa de una a otra. Referencia: `animado/tumbado5/`.
 - Personaje: HOMBRE (si el tema lo permite), proporciones de adulto, ojos con blanco y párpado, nariz definida, sin
   coloretes, ropa con sombras. Si tiene barba y pelo: de COLOR DISTINTO (barba castaño rojizo con contorno).
 - El personaje NUNCA está quieto: camina hasta cada etapa (pasos alternos), se balancea, mueve cabeza y brazos, y
@@ -104,6 +107,7 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 2. Las **miniaturas** (`node miniatura/hacer.js`): `miniatura_9x16.png` + recortes exactos `miniatura_tiktok_3x4.png`
    (1080x1440) y `miniatura_instagram_4x5.png` (1080x1350). TODO lo importante (título, personajes, etiquetas,
    marca) dentro de la franja central y 300-1620 px de alto: TikTok e Instagram recortan arriba y abajo (usuario 01-11-2026).
+   AL USUARIO SOLO SE LE ENVÍA `miniatura_9x16.png` (las otras no hacen falta).
 3. En el mensaje, **una descripción para copiar y pegar**:
    - el texto de los subtítulos;
    - una frase que invite a COMPARTIR y a SEGUIR a @mundo.supuesto para más (antes de los hashtags);
