@@ -13,3 +13,18 @@ Y todo empezó… con un día más en la cama.
 📲 Compártelo con quien no sale de la cama los domingos y sigue a @mundo.supuesto para más 🔁
 
 #fyp #curiosidades #salud #sabiasque
+
+
+## YouTube Shorts
+**Título:**
+```
+¿Qué pasaría si estuvieras 5 años tumbado en la cama? 🛏️ #shorts
+```
+**Descripción:**
+```
+Te traen la comida y no tienes que hacer nada… ¿Suena a vacaciones? Mira lo que le pasa a tu cuerpo: músculos, huesos, corazón… y por qué las agencias espaciales pagan a gente por estar tumbada 🚀
+
+🔔 Suscríbete a @mundo.supuesto para más historias de «¿qué pasaría si…?» y compártelo con quien no sale de la cama los domingos.
+
+#shorts #curiosidades #salud #sabiasque
+```

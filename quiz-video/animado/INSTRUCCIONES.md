@@ -11,7 +11,10 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - ESCENARIOS DISTINTOS según lo que se cuenta: no tiene por qué ser la misma escena todo el rato. Ej.: «¿qué pasa si
   te ingresan en el hospital?» → plano del baño cuando va al baño, la habitación, el pasillo, el quirófano… Cada
   etapa en su escenario dibujado, con transiciones con sentido entre ellos.
-- ENTREGA SIEMPRE: MP4 + miniatura para TikTok/Instagram + descripción para copiar y pegar.
+- ENTREGA SIEMPRE (usuario, 01-11-2026): MP4 + `miniatura_9x16.png` + DOS textos para copiar y pegar:
+  1) descripción de TikTok/Instagram (subtítulos + compartir/seguir + #fyp y 3 del tema);
+  2) YouTube Shorts: TÍTULO (≤100 caracteres, con #shorts) + DESCRIPCIÓN corta (gancho + suscríbete/comparte +
+     #shorts y 3 del tema). Guardar ambos en `descripciones/animado_<video>.md`.
 
 ## 1. Cuenta y marca
 - Nombre en TikTok, Instagram, Facebook y YouTube: **@mundo.supuesto**.

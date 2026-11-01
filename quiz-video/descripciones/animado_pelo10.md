@@ -13,3 +13,19 @@ Porque todo empezó… con un solo pelo.
 📲 Compártelo con quien lleva años sin pisar la peluquería y sigue a @mundo.supuesto para más 🔁
 
 #fyp #curiosidades #sabiasque #pelo
+
+
+## YouTube Shorts
+**Título:**
+```
+¿Qué pasaría si no te cortas el pelo en 10 años? 💇‍♂️ #shorts
+```
+**Descripción:**
+```
+¿Cuánto te crecería el pelo en 10 años sin cortarlo? Spoiler: menos de lo que crees… salvo que tengas unos genes únicos 🧬
+Puertas, sopa, la cintura… y un récord de más de 5 metros.
+
+🔔 Suscríbete a @mundo.supuesto para más historias de «¿qué pasaría si…?» y compártelo con quien lleva años sin ir a la peluquería.
+
+#shorts #curiosidades #sabiasque #pelo
+```
