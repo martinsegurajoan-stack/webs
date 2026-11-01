@@ -1,23 +1,14 @@
-# animado_pelo5 — ¿Qué pasaría si no te cortas el pelo en 5 años?
+# Descripción · «¿Qué pasaría si no te cortas el pelo en 5 años?» (copiar y pegar)
 
-## TikTok
-¿Qué pasaría si no te cortas el pelo en 5 años? 💇‍♂️
-Lo del año 4 casi nadie lo sabe 👀 ¿Tú aguantarías? Escribe AGUANTO o CORTO 👇
-#fyp #curiosidades #pelo #sabiasque
+¿Qué pasaría si no te cortas el pelo en cinco años? 💇‍♂️
+Empiezas con un pelo. Bueno… con cien mil. Y cada uno crece algo más de un centímetro al mes.
+Uno. Mes seis: siete centímetros. El flequillo te tapa los ojos. Y ningún peinado aguanta en su sitio.
+Dos. Año dos: treinta centímetros. Los nudos son diarios. Y secarlo ya te lleva media mañana.
+Tres. Año tres: cuarenta y cinco centímetros. Se te engancha en las puertas. En la cremallera de la chaqueta. Y acaba dentro de la sopa.
+Cuatro. Y aquí viene lo que casi nadie sabe. Tu pelo puede dejar de crecer. Cada pelo crece solo de dos a siete años. Depende de tus genes. Por eso hay gente que nunca consigue tenerlo largo. Después se cae, y nace otro nuevo.
+Si tus genes aguantan, a los cinco años llegas a setenta y cinco centímetros. Casi hasta la cintura. Y por el camino habrás perdido entre noventa mil y ciento ochenta mil pelos.
+Porque todo empezó con un solo pelo.
 
-## YouTube Shorts
-Título: ¿Qué pasaría si no te cortas el pelo en 5 años? 💇‍♂️ #shorts
-Descripción: Del primer pelo a la cintura… y un dato del año 4 que casi nadie sabe. ¿AGUANTO o CORTO? Coméntalo 👇
-#fyp #curiosidades #pelo #sabiasque
+📲 Compártelo con ese amigo que no se corta el pelo nunca y sígueme para más «¿Qué pasaría si…?» 🔁
 
-## Instagram
-¿Qué pasaría si no te cortas el pelo en 5 años? 💇‍♂️
-Flequillo en los ojos, nudos, puertas… y lo del año 4 👀 Comenta AGUANTO o CORTO 👇
-#fyp #curiosidades #pelo #sabiasque
-
-## Facebook
-¿Qué pasaría si no te cortas el pelo en 5 años? 💇‍♂️ Lo del año 4 casi nadie lo sabe. ¿Tú aguantarías? Comenta AGUANTO o CORTO 👇
-#fyp #curiosidades #pelo #sabiasque
-
-## X / Twitter
-¿Qué pasaría si no te cortas el pelo en 5 años? Flequillo en los ojos, nudos diarios, el pelo en la sopa… y en el año 4 puede que deje de crecer. ¿Tú aguantarías o cortarías?
+#fyp #curiosidades #sabiasque #pelo

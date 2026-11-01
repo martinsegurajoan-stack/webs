@@ -309,10 +309,21 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
   objetos bien integrados (si algo engancha el pelo, el mechón sale DE la melena y entra en el hueco de verdad).
 - Fondo NEUTRO y fijo, colorido pero apagado, PROPIO (no calcar el de los vídeos de ejemplo del usuario).
 - Un solo mundo y una sola cámara que viaja por un camino entre etapas; la cámara encuadra lo que se cuenta.
-- SUBTÍTULOS: pequeños, serios, ABAJO (encima de la zona segura), frase corta entera, SIN recuadros de color ni
-  palabras resaltadas ni animación.
+- SUBTÍTULOS (captura de referencia del usuario, «Magia desde 0»): ARRIBA (bajo la zona segura), 2 líneas centradas,
+  letra grande de peso medio; las palabras aún no dichas en gris suave, la que se dice se ILUMINA en blanco y negrita
+  (y se queda blanca), y lo importante se marca con un RECUADRO AZUL tipo selección de texto (borde azul fino y dos
+  puntitos en las esquinas). Nada de fondos de color rellenos.
 - Voz GRATIS (Kokoro `em_alex` con `npx hyperframes tts`; pip install kokoro-onnx soundfile). La voz de ElevenLabs
   cuesta créditos: no usarla salvo que el usuario lo pida.
+- CÁMARA ADICTIVA (usuario 01-11-2026): nunca quieta (deriva suave continua), golpes de zoom en palabras fuertes,
+  giros de ángulo (dutch tilt) en viajes y momentos de impacto, zooms naturales con easing; que cuadre en el bucle.
+- FONDO CON VIDA: rayos de luz que giran tras cada estación, manchas de luz que flotan, garabatos/destellos temáticos
+  muy suaves y un tono cálido que respira. Sigue siendo neutro (no cambia de escenario).
+- PERSONAJE: si el tema lo permite, HOMBRE (pidió hombre en pelo5). Si hay barba y pelo, de COLOR DISTINTO
+  (barba castaño rojizo con contorno), que no se mezclen.
+- REVISAR TODOS LOS PLANOS antes de entregar (snapshots cada ~2 s): nada cortado por los bordes, nada que «salga
+  de la nada» (todo objeto/mechón nace de algo visible), carteles que no tapen al personaje, nada que se quede
+  colgado al cambiar de escena, gráficas que no se vean vacías.
 - ENTREGA (solo esto): el MP4 CON subtítulos (nada de versión sin subtítulos, portadas ni otros archivos) + en el
   mensaje UNA descripción para copiar y pegar: el texto de los subtítulos + una frase que invite a COMPARTIR y a
   SEGUIR la cuenta para más + al final 4 hashtags del tema con más clics (buscar cuáles en la web).
