@@ -1,0 +1,4 @@
+.hyperframes/
+salida/work-*
+render*.log
+check.json
