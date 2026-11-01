@@ -288,8 +288,8 @@ H.append(f'<svg style="position:absolute;left:0;top:0" width="{WORLD_W}" height=
 
 # S0: calvo con un pelo → cien mil pelitos
 H.append(pj_at("p0", s0, bald=True, stubble=True))
-r_html, r_n, r_d, r_h = rodillo("rod0", s0 + 230, 1035, "100.000", size=80)
-H.append(f'<div id="c0" class="card" style="left:{s0 + 190}px;top:950px;width:500px;height:215px"><div class="card-top">PELOS EN LA CABEZA</div></div>')
+r_html, r_n, r_d, r_h = rodillo("rod0", s0 + 205, 1035, "100.000", size=80)
+H.append(f'<div id="c0" class="card" style="left:{s0 + 165}px;top:950px;width:500px;height:215px"><div class="card-top">PELOS EN LA CABEZA</div></div>')
 H.append(r_html)
 H.append(f'<div id="regla0" class="regla" style="left:{s0 - 300}px;top:650px;height:420px"></div>')
 H.append(f'<div id="cal0" class="card" style="left:{s0 - 450}px;top:1110px;width:300px"><div class="card-top">CRECE</div><div class="card-big" style="color:{GOOD}">≈1 cm<span style="font-size:44px">/mes</span></div></div>')
@@ -299,7 +299,7 @@ H.append(pj_at("p1", s1, cm=7, beard=0))
 H.append(card("c1", s1 + 170, 1130, "MES 6", "7 cm"))
 H.append(f'<svg id="peine" style="position:absolute;left:{s1 - 260}px;top:600px" width="260" height="90" viewBox="0 0 260 90"><rect x="0" y="0" width="260" height="30" rx="12" fill="#e9d7b5"/>'
          + "".join(f'<rect x="{8 + i * 12}" y="26" width="6" height="56" rx="3" fill="#e9d7b5"/>' for i in range(21)) + "</svg>")
-H.append(f'<div id="x1" class="badge" style="left:{s1 - 330}px;top:1150px;background:{BAD}">✕ NO AGUANTA</div>')
+H.append(f'<div id="x1" class="badge" style="left:{s1 - 450}px;top:550px;background:{BAD}">✕ NO AGUANTA</div>')
 
 # S2: año 2 (nudos, secado)
 H.append(pj_at("p2", s2, cm=30, beard=35))
@@ -370,12 +370,15 @@ H.append(f'<div class="plato" style="left:{s4 + 740 - 380}px;top:1625px"></div>'
 H.append(pj_at("p4", s4 + 740, cm=60, beard=95))
 H.append(f'<svg id="adn" style="position:absolute;left:{s4 + 300}px;top:800px;overflow:visible" width="140" height="380">{"".join(helix)}</svg>')
 H.append(f'<svg id="foliculo" style="position:absolute;left:{s4 + 100}px;top:1190px;overflow:visible" width="300" height="240" viewBox="0 0 300 240">'
-         f'<rect x="0" y="150" width="300" height="90" rx="22" fill="{SKIN}"/><rect x="0" y="150" width="300" height="22" rx="11" fill="#f7d6bd"/>'
-         f'<path d="M150,160 C138,190 140,215 150,228 C160,215 162,190 150,160 Z" fill="#d99a7c"/><circle cx="150" cy="226" r="12" fill="#c98468"/>'
-         f'<path d="M150,150 q-8,-30 0,-60" id="pelo-viejo" stroke="{HAIR}" stroke-width="7" fill="none" stroke-linecap="round"/>'
-         f'<text x="150" y="282" text-anchor="middle" font-size="24" font-family="Inter" font-weight="900" letter-spacing="2" fill="#fff">RAÍZ DEL PELO</text>'
-         f'<path d="M20,190 q20,8 40,0 M90,205 q20,8 40,0 M200,195 q20,8 40,0" stroke="#e8b294" stroke-width="4" fill="none"/>'
-         f'<path id="pelo-nuevo" d="M150,150 q6,-25 0,-50" stroke="{HAIR}" stroke-width="7" fill="none" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/></svg>')
+         f'<defs><linearGradient id="piel-cut" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7d6bd"/><stop offset="0.25" stop-color="{SKIN}"/><stop offset="1" stop-color="#e6a98a"/></linearGradient></defs>'
+         f'<rect x="0" y="150" width="300" height="100" rx="22" fill="url(#piel-cut)"/><rect x="0" y="150" width="300" height="18" rx="9" fill="#fbe1cc"/>'
+         f'<path d="M20,198 q20,8 40,0 M88,212 q20,8 40,0 M200,202 q20,8 40,0 M236,226 q14,6 28,0" stroke="#e8b294" stroke-width="4" fill="none"/>'
+         f'<path d="M150,158 C136,190 138,218 150,232 C162,218 164,190 150,158 Z" fill="#d99a7c"/>'
+         f'<circle id="brillo" cx="150" cy="228" r="20" fill="#fff3c4" opacity="0"/>'
+         f'<circle id="bulbo" cx="150" cy="228" r="12" fill="#c98468"/>'
+         f'<path id="pelo-nuevo" d="M150,228 C150,200 150,175 150,152 C147,128 156,108 150,84" stroke="{HAIR}" stroke-width="7" fill="none" stroke-linecap="butt" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1"/>'
+         f'<path id="pelo-viejo" d="M150,224 C150,200 150,175 150,152 C142,126 156,110 148,88" stroke="{HAIR}" stroke-width="7" fill="none" stroke-linecap="round"/>'
+         f'<text x="150" y="292" text-anchor="middle" font-size="24" font-family="Inter" font-weight="900" letter-spacing="2" fill="#fff">RAÍZ DEL PELO</text></svg>')
 
 # S5: año 5 (75 cm, cinta métrica)
 H.append(pj_at("p5", s5, cm=75, beard=120))
@@ -426,10 +429,10 @@ FX_EV.append(("pop", tc + 0.3))
 J(f'tl.to("#p0-mouthO", {{opacity:0, duration:0.15}}, {P("mil") + 0.3:.2f}); tl.to("#p0-mouth", {{opacity:1, duration:0.15}}, {P("mil") + 0.3:.2f});')
 # 3 · crece ~1 cm al mes: regla + ficha; la cámara se aleja y enseña la estación entera
 tcm = P("centimetro")
-J(f'tl.fromTo("#regla0", {{scaleY:0, opacity:1}}, {{scaleY:1, duration:0.6, ease:"power2.out", transformOrigin:"50% 0%"}}, {P("crece"):.2f});')
+cam(P("crece") - 0.45, s0 + 20, 1000, 0.8, dur=0.7)   # primero se aleja la cámara, luego aparecen la regla y la ficha
+J(f'tl.fromTo("#regla0", {{scaleY:0, opacity:1}}, {{scaleY:1, duration:0.6, ease:"power2.out", transformOrigin:"50% 0%", immediateRender:false}}, {P("crece") + 0.3:.2f});')
 FX_EV.append(("pop", P("crece")))
 pop("#cal0", tcm)
-cam(P("mes", 1) - 0.1, s0 + 20, 1000, 0.8, dur=0.8)
 
 # 4 · UNO — mes 6: viaje por el camino hasta S1
 t = F(5)
@@ -547,8 +550,17 @@ pop("#adn", tg)
 
 J(f'tl.fromTo("#adn", {{scaleX:1}}, {{scaleX:-1, duration:0.9, ease:"sine.inOut", yoyo:true, repeat:5, transformOrigin:"50% 50%"}}, {tg:.2f});')
 pop("#foliculo", P("despues") - 0.2); J(f'tl.to("#adn", {{opacity:0, duration:0.3}}, {P("despues") - 0.4:.2f});')
-J(f'tl.to("#pelo-viejo", {{y:140, x:30, rotation:40, opacity:0, duration:0.9, ease:"power2.in", svgOrigin:"150 150"}}, {P("cae"):.2f});')
-J(f'tl.to("#pelo-nuevo", {{strokeDashoffset:0, duration:0.7, ease:"power2.out"}}, {P("nace"):.2f});')
+tca = P("cae")
+J(f'tl.to("#pelo-viejo", {{y:-95, duration:0.4, ease:"power2.out"}}, {tca - 0.05:.2f});')                    # se suelta: sale de la raíz
+J(f'tl.to("#pelo-viejo", {{x:150, y:40, rotation:75, duration:1.1, ease:"power1.in", svgOrigin:"150 150"}}, {tca + 0.35:.2f});')  # y cae fuera, de lado
+J(f'tl.to("#pelo-viejo", {{opacity:0, duration:0.4}}, {tca + 1.05:.2f});')
+FX_EV.append(("whoosh", tca + 0.35))
+tna = P("nace")
+J(f'tl.fromTo("#brillo", {{opacity:0, attr:{{r:8}}}}, {{opacity:0.9, attr:{{r:30}}, duration:0.35, yoyo:true, repeat:1, immediateRender:false}}, {tna - 0.1:.2f});')
+J(f'tl.to("#bulbo", {{attr:{{r:16}}, duration:0.2, yoyo:true, repeat:1}}, {tna - 0.1:.2f});')
+J('tl.set("#pelo-nuevo", {opacity:0}, 0);')
+J(f'tl.set("#pelo-nuevo", {{opacity:1}}, {tna:.2f}); tl.to("#pelo-nuevo", {{strokeDashoffset:0, duration:1.1, ease:"power2.out"}}, {tna:.2f});')
+FX_EV.append(("pop", tna))
 cam(P("despues") - 0.4, s4 + 250, 1330, 1.8, dur=0.7)
 
 # 9 · año 5: 75 cm, cinta métrica, casi hasta la cintura
@@ -565,7 +577,7 @@ J(f'tl.to("#p5-mouth", {{attr:{{d:"M474,814 Q500,840 526,814"}}, duration:0.3}},
 t = F(23)
 J(f'tl.to("#camino", {{strokeDasharray:"{s6 - s0 + 120} 20000", duration:1.0, ease:"power2.inOut"}}, {t:.2f});')
 cam(t, s6, 980, 0.95, dur=1.0, viaje=True)
-pop("#panel", P("perdido"))
+pop("#panel", F(23) + 0.7)
 tn9 = P("noventa")
 J(f'tl.to("#guion6", {{opacity:1, duration:0.2}}, {tn9 + 0.6:.2f});')
 J(f'tl.to("#rodA", {{opacity:1, duration:0.15}}, {tn9:.2f});'); rodar("rodA", ran, rad_, rah, tn9)
@@ -753,7 +765,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
 .mota{{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff6e0}}
 #vineta{{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 45%, rgba(0,0,0,0) 55%, rgba(18,16,48,0.38) 100%);pointer-events:none}}
 #grano{{position:absolute;left:0;top:0;opacity:0.05;mix-blend-mode:overlay;pointer-events:none}}
-#marca{{position:absolute;left:30px;top:1180px;transform:rotate(-90deg);transform-origin:0 0;font:700 28px Inter;letter-spacing:0.02em;color:#ffffff;opacity:0.32;text-shadow:0 2px 6px rgba(20,18,50,0.35);pointer-events:none}}
+#marca{{position:absolute;left:0;right:0;top:1775px;text-align:center;font:700 28px Inter;letter-spacing:0.02em;color:#ffffff;opacity:0.32;text-shadow:0 2px 6px rgba(20,18,50,0.35);pointer-events:none}}
 #subs{{position:absolute;left:70px;right:70px;top:240px;height:220px}}
 .sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:500 66px Inter;color:rgba(214,216,236,0.62);
   text-shadow:0 3px 16px rgba(20,18,50,0.55);line-height:1.22;letter-spacing:-0.01em}}

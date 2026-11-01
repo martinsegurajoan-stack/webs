@@ -8,8 +8,8 @@ sys.path.insert(0, os.path.join(BASE, "..", ".."))
 from quizvideo.personalidad import align_words   # reparte palabras usando las pausas reales
 from quizvideo import audio
 SR = audio.SR
-GAP = 0.25
-EXTRA = {3: 0.3, 14: 0.6}   # pausas para que el chiste respire
+GAP = 0.12
+EXTRA = {3: 0.25, 14: 0.55}   # pausas para que el chiste respire
 
 def load(p):
     raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", p, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"])
