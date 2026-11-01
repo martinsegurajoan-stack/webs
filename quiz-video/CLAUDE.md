@@ -451,6 +451,14 @@ mejoras v2 (arranque en el fotograma 0 con `cd_inicio`, pausa limpia de «sígue
   amarillo con corona y halo; la perdedora se oscurece). Al revelar: la barra se vacía y se llena hasta el %. Textos
   CORTOS en las tarjetas (2 líneas máx.); la letra se encoge sola. La cuenta atrás va GRANDE encima de la foto (no tapa
   las opciones). Nº1: 59,6 s, ~730 créditos de voz (7 frases).
+- v2 (correcciones del usuario: «la foto de la muerte es horrible, hazla tú», «la portada no me gusta», «decoración, barras
+  y % muy mejorables»): imagen de la muerte HECHA POR CÓDIGO con dibujos 3D (`assets/preferirias/crear_muerte_dibujo.py` →
+  `foto_muerte_dibujo.png`); foto en MARCO BLANCO 3:2 grande (entera dentro, relleno con la misma foto desenfocada);
+  fondo = foto desenfocada + degradado + viñeta + bokeh que sube; cabecera en pastilla con degradado + barra de progreso
+  por segmentos; tarjetas con degradado, brillo, rayas, azulejo blanco con el icono y PANEL del % a la derecha («?» →
+  número grande + «%» pequeño; ganadora en dorado con corona y halo). Insignia VS dorada. Portada: pantalla partida
+  rojo/azul con rayo, título con relieve 3D, dos medallones gigantes («¿CUÁNDO?» / «¿CÓMO?»), VS y pegatina.
+  OJO técnico: dibujar con colores semitransparentes sobre imágenes RGBA abre huecos → usar `over()` (capa aparte).
 
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
 CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,
