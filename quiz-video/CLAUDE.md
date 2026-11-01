@@ -52,14 +52,16 @@ Cada vez que el usuario pida un vídeo (quiz, quiz de parejas, temático…), en
 3. En el mensaje, título + descripción + hashtags para cada plataforma, VÍDEO A VÍDEO (sin mezclar
    vídeos) y en bloques de código para copiar: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER/X
    (desde 31-10-2026 el usuario también sube a su cuenta personal de X: un solo texto de ≤280 caracteres
-   CONTANDO los hashtags; gancho corto + CTA a responder + los 4 hashtags).
+   gancho corto + CTA a responder; sin hashtags, ver regla de HASHTAGS).
    Reglas: TikTok/Instagram/Facebook no tienen campo título → el "título" es la 1ª línea del texto;
    YouTube: título ≤100 caracteres con `#shorts`; siempre `#horadelquiz`;
    nunca revelar respuestas; CTA a comentar la puntuación (parejas: etiquetar a la pareja).
    Guarda esos textos en `descripciones/<video>.md`.
-   HASHTAGS (regla FINAL del usuario, 31-10-2026): MÁXIMO 4 en TODAS las plataformas (TikTok, Shorts,
-   Instagram, Facebook y X), siempre estos: #fyp #viral #test #trending (sustituye a reglas anteriores,
-   incluido «siempre #horadelquiz»).
+   HASHTAGS (regla FINAL del usuario, 01-11-2026; sustituye a todas las anteriores): 4 hashtags SOLO en
+   TikTok, YouTube Shorts, Instagram y Facebook: SIEMPRE #fyp + los 3 hashtags RELACIONADOS CON EL TEMA DEL VÍDEO
+   que más clics/visualizaciones tienen (p. ej. quiz de México → #fyp #mexico #quiz #trivia; juego de palabras →
+   #fyp #juegos #reto #quiz; fútbol → #fyp #futbol #quiz #trivia). Elegir etiquetas populares y conocidas del tema
+   (en minúsculas, sin tildes). En X/Twitter, SIN hashtags (texto ≤280 caracteres con gancho + pregunta).
 
 ## INVENTARIO (estado a 29-10-2026)
 Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
@@ -404,6 +406,11 @@ que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir fr
   móvil), «piedra papel tijera» contra la pantalla, «el dado», «verdad o sorbo», «cadena de palabras».
 
 ## Formato "NO DIGAS LO MISMO QUE YO" (evita decir lo mismo que el narrador o quedas fuera)
+FORMATO GUARDADO POR EL USUARIO (01-11-2026: «guarda este formato con esas mejoras para cuando te pida otro»):
+cuando pida otro → copiar `plantillas-quiz/evita.json` (= `quizzes/evita_01.json` v2) a `quizzes/evita_NN.json`
+(siguiente: 02), cambiar categorías/respuestas (las MÁS típicas que diría la gente) y frases, MANTENER todas las
+mejoras v2 (arranque en el fotograma 0 con `cd_inicio`, pausa limpia de «sígueme» antes de la penúltima ronda, voz
+`[very excited, super happy]` tempo 1,3, final muy alegre) y mejorar un poco el gancho en cada vídeo.
 `quizzes/evita_NN.json` → `generar_evita.py` + `quizvideo/evita.py` → MP4 + portadas solas (`--preview`, `--solo-portada`).
 - PETICIÓN DEL USUARIO: «que empiece el juego nada más comenzar el vídeo, así el espectador no se va». La ronda 1 ES el
   gancho: voz desde el fotograma 0 («¡Rápido! Di una herramienta. ¡Si dices lo mismo que yo, estás fuera!»), título

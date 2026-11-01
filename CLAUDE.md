@@ -5,9 +5,10 @@ Vídeos de quiz de TikTok (@hora.delquiz): si el usuario escribe preguntas de qu
 Con CADA vídeo envía SIEMPRE, aunque no lo pida: el MP4, las 2 portadas (9:16 para Instagram,
 Facebook y YouTube Shorts; 3:4 para TikTok) y título + descripción + hashtags por plataforma
 (sección "ENTREGA OBLIGATORIA" de `quiz-video/CLAUDE.md`).
-Plataformas de los textos: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER/X (≤280 caracteres con hashtags).
+Plataformas de los textos: TikTok, YouTube Shorts, Instagram, Facebook y TWITTER/X (≤280 caracteres, SIN hashtags).
 Banner de X: `quiz-video/banner_twitter.py` → `quiz-video/portadas/twitter_banner_1500x500.png` (1500x500).
-Hashtags: MÁXIMO 4 en TODAS las plataformas: #fyp #viral #test #trending.
+Hashtags (regla del usuario 01-11-2026): 4 SOLO en TikTok, YouTube Shorts, Instagram y Facebook: SIEMPRE #fyp + los 3
+hashtags del TEMA del vídeo que más clics tienen (p. ej. #fyp #mexico #quiz #trivia). En X, sin hashtags.
 
 REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PERMANENTES» en `quiz-video/CLAUDE.md`):
 1. FINAL QUE INCITA A INTERACTUAR: pedir que comenten cuántas han acertado, de qué quieren el siguiente vídeo,
@@ -24,6 +25,8 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   TODO del país (bandera grande al principio y en portada, colores, dibujos, música, acento del país riendo),
   PRIMER FOTOGRAMA COLORIDO DEL PAÍS con la extra bloqueada, y la extra vendida con mucha emoción
   (ver «Modo "mexico"» en `quiz-video/CLAUDE.md`).
+- JUEGO «NO DIGAS LO MISMO QUE YO» (evita decir lo mismo que yo o quedas fuera): plantilla `quiz-video/plantillas-quiz/evita.json`
+  + `generar_evita.py`, con todas las mejoras v2 (ver «NO DIGAS LO MISMO QUE YO» en `quiz-video/CLAUDE.md`).
 - Quiz de VIDEOJUEGOS: modo `gamer` (`quizzes/hora_del_quiz_05.json`), con pantalla de RANGOS al final.
 - VÍDEO PARA BEBER / FIESTA CON AMIGOS (concepto aprobado por el usuario, úsalo siempre): pruebas variadas, plantilla `quiz-video/plantillas-quiz/fiesta.json` +
   `generar_fiesta.py` (ver "FIESTA" en `quiz-video/CLAUDE.md`). Solo cartas: `cartas.json`.
