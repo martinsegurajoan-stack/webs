@@ -101,8 +101,9 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 
 ## 7. Entrega (SIEMPRE, solo esto)
 1. El **MP4 con subtítulos** (no hacer versión sin subtítulos).
-2. La **miniatura 9:16** (`node miniatura/hacer.js` → `miniatura/miniatura_9x16.png`): título con recuadro azul,
-   antes/después del personaje sacado del propio vídeo, marca de agua.
+2. Las **miniaturas** (`node miniatura/hacer.js`): `miniatura_9x16.png` + recortes exactos `miniatura_tiktok_3x4.png`
+   (1080x1440) y `miniatura_instagram_4x5.png` (1080x1350). TODO lo importante (título, personajes, etiquetas,
+   marca) dentro de la franja central y 300-1620 px de alto: TikTok e Instagram recortan arriba y abajo (usuario 01-11-2026).
 3. En el mensaje, **una descripción para copiar y pegar**:
    - el texto de los subtítulos;
    - una frase que invite a COMPARTIR y a SEGUIR a @mundo.supuesto para más (antes de los hashtags);

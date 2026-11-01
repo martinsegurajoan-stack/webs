@@ -16,26 +16,29 @@ const path = require('path');
   .pj{position:absolute;top:0;width:1000px;height:1800px}
   .wrap{position:absolute;width:1000px;height:1800px;transform-origin:0 0}
   .suelo{position:absolute;width:380px;height:70px;border-radius:50%;background:radial-gradient(50% 50% at 50% 50%, rgba(20,18,60,0.35), rgba(20,18,60,0))}
-  h1{position:absolute;left:60px;right:60px;top:250px;text-align:center;color:#fff;font:900 104px/1.08 Inter;letter-spacing:-0.02em;text-shadow:0 6px 24px rgba(20,18,50,0.55)}
+  h1{position:absolute;left:60px;right:60px;top:330px;text-align:center;color:#fff;font:900 104px/1.08 Inter;letter-spacing:-0.02em;text-shadow:0 6px 24px rgba(20,18,50,0.55)}
   .sel{position:relative;display:inline-block;padding:0 12px;color:#ffd24a}
   .sel span{position:relative}
   .sel i{position:absolute;inset:-2px -4px -2px -4px;border:6px solid #4f7dff;border-radius:10px;background:rgba(79,125,255,0.18)}
   .sel b{position:absolute;width:24px;height:24px;border-radius:50%;background:#dfe8ff;border:6px solid #4f7dff}
   .tag{position:absolute;padding:14px 30px;border-radius:24px;font:900 50px Inter;color:#1d2b33;background:#fbf8f2;box-shadow:0 14px 34px rgba(0,0,0,0.3)}
-  #flecha{position:absolute;left:470px;top:1150px}
-  #marca{position:absolute;left:0;right:0;top:1840px;text-align:center;font:700 30px Inter;color:#fff;opacity:0.4}
+  #flecha{position:absolute;left:470px;top:1060px}
+  #marca{position:absolute;left:0;right:0;top:1590px;text-align:center;font:700 30px Inter;color:#fff;opacity:0.4}
   </style></head><body>
   <div id="bg"></div><div id="rayos"></div>
-  <div class="suelo" style="left:90px;top:1660px"></div><div class="suelo" style="left:620px;top:1660px"></div>
-  <div class="wrap" style="left:-160px;top:205px;transform:scale(0.86)">${p0}</div>
-  <div class="wrap" style="left:380px;top:205px;transform:scale(0.86)">${p5}</div>
+  <div class="suelo" style="left:85px;top:1440px"></div><div class="suelo" style="left:625px;top:1440px"></div>
+  <div class="wrap" style="left:-80px;top:285px;transform:scale(0.7)">${p0}</div>
+  <div class="wrap" style="left:460px;top:285px;transform:scale(0.7)">${p5}</div>
   <svg id="flecha" width="140" height="90" viewBox="0 0 140 90"><path d="M10,45 C50,10 90,10 120,40" stroke="#fbf3e6" stroke-width="12" fill="none" stroke-linecap="round"/><path d="M98,22 L124,44 L94,58" stroke="#fbf3e6" stroke-width="12" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  <div class="tag" style="left:150px;top:1710px">DÍA 1</div>
-  <div class="tag" style="left:690px;top:1710px;color:#e5484d">AÑO 10</div>
+  <div class="tag" style="left:165px;top:1500px">DÍA 1</div>
+  <div class="tag" style="left:690px;top:1500px;color:#e5484d">AÑO 10</div>
   <h1>¿Y si no te cortas el pelo en <span class="sel"><i></i><b style="left:-16px;top:-16px"></b><b style="right:-16px;bottom:-14px"></b><span>10 años?</span></span></h1>
   <div id="vin"></div><div id="marca">@mundo.supuesto</div>
   </body></html>`;
   await p.setContent(html); await p.waitForTimeout(400);
   await p.screenshot({ path: dir + '/miniatura/miniatura_9x16.png' });
+  // recortes exactos: TikTok 3:4 (1080x1440) e Instagram 4:5 (1080x1350), centrados
+  await p.screenshot({ path: dir + '/miniatura/miniatura_tiktok_3x4.png', clip: { x: 0, y: 240, width: 1080, height: 1440 } });
+  await p.screenshot({ path: dir + '/miniatura/miniatura_instagram_4x5.png', clip: { x: 0, y: 285, width: 1080, height: 1350 } });
   await b.close();
 })();
