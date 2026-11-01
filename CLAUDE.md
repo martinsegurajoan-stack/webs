@@ -35,6 +35,7 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   (necesita FOTO REAL que manda el usuario). Mejorar la estética un poco en cada vídeo nuevo.
   Chat con guion (`chat_guion`: conversaciones entre usuarios sin repetir, piques sin insultos, cosas random,
   MOD serio que dice la respuesta) y cierre SIEMPRE «¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!».
+- VÍDEO ANIMADO 2D / cuenta @mundo.supuesto: LEE `quiz-video/animado/INSTRUCCIONES.md` (todas las reglas).
 - VÍDEO ANIMADO 2D «¿QUÉ PASARÍA SI…?» (HyperFrames, `quiz-video/animado/`): solo contar la historia, final en bucle,
   subtítulos arriba que se iluminan palabra a palabra con recuadro azul de selección en lo importante, fondo propio, voz gratis; ENTREGAR SOLO el MP4 con subtítulos + descripción para
   copiar (subtítulos + invitar a compartir y seguir + 4 hashtags del tema). Cámara adictiva (zooms, ángulos), fondo con

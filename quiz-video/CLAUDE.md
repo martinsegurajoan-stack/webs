@@ -299,6 +299,7 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
 - Nº1: 90 s, ~2.100 créditos de voz (varias versiones del gancho) + ~1.270 de fotos (6). Tempo final 1,43.
 
 ## Formato "VÍDEO ANIMADO 2D · ¿QUÉ PASARÍA SI…?" (HyperFrames) — REGLAS DEL USUARIO (01-11-2026, SIEMPRE)
+**LEE PRIMERO `animado/INSTRUCCIONES.md`: tiene TODAS las instrucciones del usuario para estos vídeos (manda sobre lo de abajo).**
 Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase → `montar_voz.py` → `gen.py` escribe
 `index.html` de HyperFrames con GSAP → `mezcla.py` → `npx hyperframes render`). Ver `animado/pelo5/COMO-REHACERLO.md`.
 - SOLO CONTAR LA HISTORIA del tema («¿qué pasaría si…?») por etapas, de principio a fin. NADA de llamadas a votar
