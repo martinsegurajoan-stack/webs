@@ -402,6 +402,20 @@ que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir fr
 - Nº1: 119 s, ~1.750 créditos de voz (26 frases). Ideas para el siguiente: «la patata caliente» (pasar el
   móvil), «piedra papel tijera» contra la pantalla, «el dado», «verdad o sorbo», «cadena de palabras».
 
+## Formato "NO DIGAS LO MISMO QUE YO" (evita decir lo mismo que el narrador o quedas fuera)
+`quizzes/evita_NN.json` → `generar_evita.py` + `quizvideo/evita.py` → MP4 + portadas solas (`--preview`, `--solo-portada`).
+- PETICIÓN DEL USUARIO: «que empiece el juego nada más comenzar el vídeo, así el espectador no se va». La ronda 1 ES el
+  gancho: voz desde el fotograma 0 («¡Rápido! Di una herramienta. ¡Si dices lo mismo que yo, estás fuera!»), título
+  «¡NO DIGAS LO MISMO QUE YO!», categoría, dibujo 3D y pegatina «SI COINCIDES CONMIGO… ¡FUERA!».
+- Ronda: «RONDA N DE 8» + tarjeta «DI UN… CATEGORÍA» + dibujo 3D grande → «¡PIENSA UNA!» con anillo y 3-2-1 →
+  tarjeta que gira «YO HE DICHO: PALABRA» + dibujo de la respuesta → sello «¿TAMBIÉN? ¡FUERA!» con cruces y destello.
+  Fondo de color distinto por ronda, rayos, confeti y dibujos de la categoría flotando. Ronda 7 con dos palabras
+  prohibidas; RONDA FINAL oscura con rayos y calaveras (nº1: número del 1 al 10 → «¡El 7! ¡Lo sabía!»).
+- Cierre: «¿En qué ronda te han eliminado?» (chips 1-8) + «¿Qué categoría quieres ahora? ¡Coméntalo y apoya el vídeo!».
+- Dibujos 3D en `assets/evita/` (el usuario eligió dibujos gratis en vez de fotos para este formato).
+- ESTADO nº1 (01-11-2026): diseño hecho; se ACABARON LOS CRÉDITOS de ElevenLabs con 6/17 voces generadas
+  (`--frases-pendientes` lista las 11 que faltan). Montar cuando haya créditos (no mezclar con otra voz).
+
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
 CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,
 referencia `quizzes/streamer_01.json`). REGLA DEL USUARIO: en cada vídeo nuevo MEJORARLA un poco más en
