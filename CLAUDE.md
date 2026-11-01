@@ -45,6 +45,9 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   Cuenta @mundo.supuesto: MARCA DE AGUA «@mundo.supuesto» SIEMPRE (abajo, horizontal, centrada, transparente, pequeña).
   Voz FIJA: ElevenLabs «Juanjo Viral» (30jLfQdV8RTduXvosh02, eleven_v4) SIN risas, personaje animado que camina y
   gesticula, sin enumerar etapas, y enviar SIEMPRE también la MINIATURA 9:16.
+  ESTILO NETFLIX (01-11-2026, para siempre): colores VIVOS, NADA de fondos desenfocados, casa de verdad llena de objetos,
+  planos abiertos, comparaciones dibujadas (edificio de 50 pisos), voz sin susurros (mismo tono), transiciones bonitas (no iris),
+  primer plano HOOK espectacular, hasta 105 s. Ver «0b» en `quiz-video/animado/INSTRUCCIONES.md`.
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.

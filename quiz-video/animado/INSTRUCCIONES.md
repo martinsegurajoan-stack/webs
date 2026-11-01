@@ -22,6 +22,32 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   2) YouTube Shorts: TÍTULO (≤100 caracteres, con #shorts) + DESCRIPCIÓN corta (gancho + suscríbete/comparte +
      #shorts y 3 del tema). Guardar ambos en `descripciones/animado_<video>.md`.
 
+## 0b. ESTILO «PELÍCULA DE NETFLIX» (usuario, 01-11-2026, vídeo de la hormiga — PARA SIEMPRE)
+- **NADA de fondos desenfocados**: el fondo se DECORA con objetos nítidos y dibujados, no se emborrona. Ningún cartel
+  ni objeto del fondo puede verse borroso (p. ej. el cartel «COCINA» al principio).
+- **Colores VIVOS y saturados** en todo el vídeo, como una película de animación profesional de Netflix/Pixar:
+  luz cálida, sombras de color, contraste alto. Nada apagado ni gris.
+- **QUE PAREZCA UNA CASA DE VERDAD**, no «un cuadrado vacío con un grifo»: cada plano lleno de objetos de casa
+  (muebles, electrodomésticos, plantas, cuadros, libros, juguetes, enchufes, cables, zapatillas, alfombras,
+  botes, frutas, imanes en la nevera, ventanas con vistas…). Cuantos más objetos con sentido, mejor.
+- **Planos ABIERTOS**: no acercar tanto la cámara (los planos del agua y del pan estaban demasiado cerca). Alejar
+  para que se vea el sitio entero (la encimera, el fregadero, la cocina…) y el personaje pequeño dentro.
+- **Comparaciones VISUALES**: si se dice «tan alto como un edificio de 50 pisos», se DIBUJA el edificio de 50
+  pisos bien estructurado (plantas contadas, ventanas, azotea) al lado de lo comparado.
+- **Voz con el MISMO TONO todo el rato**: NADA de [whispers] ni susurros (tampoco [dramatically] que baje la voz).
+  Solo [excited]/[curious]/[surprised] con energía constante.
+- **Transiciones bonitas**: el círculo de color (iris) quedó «muy poco estético». Usar transiciones con estilo:
+  barrido diagonal con 2-3 franjas de colores de la marca con sombra, o la cámara viaja por la casa (paneo continuo
+  de una habitación a otra), o un objeto que se acerca y tapa el plano (match cut). Siempre suaves y con sonido bajito.
+- **Momentos divertidos inventados**: al cambiar de tamaño (crecer/encoger) poner una animación graciosa (cinta
+  métrica o regla que sube con números de centímetros, sonido que sube de tono «uiiii», boing al final…).
+- **EL PRIMER PLANO ES EL MÁS IMPORTANTE (HOOK)**: fondo espectacular, colorido, con movimiento y algo sorprendente
+  desde el fotograma 0 (p. ej. zoom desde una casa enorme hasta el personaje diminuto, objetos gigantes alrededor,
+  título grande). Nunca un fondo soso.
+- Duración: si hace falta, hasta **105 s máximo**.
+- Si el usuario dice «si me quedo sin tokens déjalo pendiente»: guardar el estado en `COMO-REHACERLO.md` del
+  proyecto y retomar el trabajo en cuanto se pueda, sin pedir autorización.
+
 ## 1. Cuenta y marca
 - Nombre en TikTok, Instagram, Facebook y YouTube: **@mundo.supuesto**.
 - Foto de perfil: `quiz-video/marca/perfil_mundo_supuesto.png` (planeta coral con anillo en bucle, fondo lila).
@@ -42,14 +68,14 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - Varios ejemplos/escenarios concretos, cada uno con su representación gráfica (la puerta, la sopa…).
 - Un dato sorprendente en el tramo final («lo que casi nadie sabe»).
 - Final en BUCLE: la última frase enlaza con la primera y el último fotograma es igual al primero.
-- Duración 60-80 s.
+- Duración 60-80 s (hasta 105 s si hace falta, ver 0b).
 - Puntuación que dé vida a la voz: «¡…!» en los datos fuertes y «…» para crear intriga.
 
 ## 3. Voz
 - **VOZ FIJA DE ESTE FORMATO (usuario, 01-11-2026: «siempre te pediré con esta voz»):** ElevenLabs
   **«Juanjo Viral – Energetic & Punchy»**, voice_id `30jLfQdV8RTduXvosh02`, modelo `eleven_v4` (si falla,
   `eleven_multilingual_v2`), UNA toma con todo el guion (~900 créditos). Etiquetas solo [curious], [surprised],
-  [excited], [whispers], [dramatically], [warmly]. **PROHIBIDO que se ría**: nada de [laughs], [laughs softly],
+  [excited], [warmly] (NADA de [whispers] ni [dramatically]: mismo tono siempre, ver 0b). **PROHIBIDO que se ría**: nada de [laughs], [laughs softly],
   [amused] ni [mischievously]. Ralentizar con `atempo=0.94` y trocear con `voz_el/partir.py` (revisar los cortes
   con silencedetect y corregirlos a mano en `voz_el/cortes.txt` si alguna frase queda mal). Proyecto: `animado/pelo10b/`.
 - Lo de abajo (Álvaro, Sara, Piper) queda como alternativa SOLO si el usuario lo pide.
@@ -86,7 +112,7 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 
 ## 4. Estilo visual
 - Ilustración 2D cuidada y ADULTA, nada infantil («no un dibujo de niño de 4 años»).
-- Fondo propio, neutro y fijo (no cambia de escenario), colorido pero apagado (lila), CON VIDA pero tranquilo: manchas
+- (ANTIGUO, ver 0b: ahora colores VIVOS y sin desenfoque) Fondo propio, colorido, CON VIDA pero tranquilo: manchas
   de luz que flotan despacio, viñeta y grano suave (SIN rayos que giran ni destellos: marean). No copiar los fondos de los vídeos de
   ejemplo del usuario.
 - Un solo mundo y una sola cámara que viaja por un camino entre etapas.
