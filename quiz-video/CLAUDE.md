@@ -298,6 +298,25 @@ MISMA DINÁMICA Y CALIDAD QUE EL TRIVIAL (petición expresa del usuario), solo c
     cambiando colores, dibujos y expresiones.
 - Nº1: 90 s, ~2.100 créditos de voz (varias versiones del gancho) + ~1.270 de fotos (6). Tempo final 1,43.
 
+## Formato "VÍDEO ANIMADO 2D · ¿QUÉ PASARÍA SI…?" (HyperFrames) — REGLAS DEL USUARIO (01-11-2026, SIEMPRE)
+Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase → `montar_voz.py` → `gen.py` escribe
+`index.html` de HyperFrames con GSAP → `mezcla.py` → `npx hyperframes render`). Ver `animado/pelo5/COMO-REHACERLO.md`.
+- SOLO CONTAR LA HISTORIA del tema («¿qué pasaría si…?») por etapas, de principio a fin. NADA de llamadas a votar
+  («escribe AGUANTO o CORTO» → el usuario no lo quiere). Final en BUCLE: la última frase enlaza con la primera y el
+  último fotograma es igual al primero, sin que se note.
+- Gancho: la pregunta del título desde el fotograma 0, con algo grande moviéndose.
+- Ilustración 2D cuidada (nada de «dibujo de niño de 4 años»): personajes SVG articulados que respiran y parpadean,
+  objetos bien integrados (si algo engancha el pelo, el mechón sale DE la melena y entra en el hueco de verdad).
+- Fondo NEUTRO y fijo, colorido pero apagado, PROPIO (no calcar el de los vídeos de ejemplo del usuario).
+- Un solo mundo y una sola cámara que viaja por un camino entre etapas; la cámara encuadra lo que se cuenta.
+- SUBTÍTULOS: pequeños, serios, ABAJO (encima de la zona segura), frase corta entera, SIN recuadros de color ni
+  palabras resaltadas ni animación.
+- Voz GRATIS (Kokoro `em_alex` con `npx hyperframes tts`; pip install kokoro-onnx soundfile). La voz de ElevenLabs
+  cuesta créditos: no usarla salvo que el usuario lo pida.
+- ENTREGA (solo esto): el MP4 CON subtítulos (nada de versión sin subtítulos, portadas ni otros archivos) + en el
+  mensaje UNA descripción para copiar y pegar: el texto de los subtítulos + una frase que invite a COMPARTIR y a
+  SEGUIR la cuenta para más + al final 4 hashtags del tema con más clics (buscar cuáles en la web).
+
 ## Formato "TEST DE PERSONALIDAD" (no es un quiz: no hay respuesta correcta)
 `quiz_personalidad/contenido.json` → `generar_personalidad.py` + `quizvideo/personalidad.py`
 (reutiliza voz, efectos, música y exportación). Al usuario SOLO se le envía MP4 + 2 portadas + textos.

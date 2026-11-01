@@ -35,6 +35,9 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   (necesita FOTO REAL que manda el usuario). Mejorar la estética un poco en cada vídeo nuevo.
   Chat con guion (`chat_guion`: conversaciones entre usuarios sin repetir, piques sin insultos, cosas random,
   MOD serio que dice la respuesta) y cierre SIEMPRE «¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!».
+- VÍDEO ANIMADO 2D «¿QUÉ PASARÍA SI…?» (HyperFrames, `quiz-video/animado/`): solo contar la historia, final en bucle,
+  subtítulos pequeños y serios abajo, fondo propio, voz gratis; ENTREGAR SOLO el MP4 con subtítulos + descripción para
+  copiar (subtítulos + invitar a compartir y seguir + 4 hashtags del tema). Ver la sección en `quiz-video/CLAUDE.md`.
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.
