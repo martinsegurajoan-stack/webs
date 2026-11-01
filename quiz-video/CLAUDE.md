@@ -411,7 +411,7 @@ que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir fr
 - Ronda: «RONDA N DE 8» + tarjeta «DI UN… CATEGORÍA» + dibujo 3D grande → «¡PIENSA UNA!» con anillo y 3-2-1 →
   tarjeta que gira «YO HE DICHO: PALABRA» + dibujo de la respuesta → sello «¿TAMBIÉN? ¡FUERA!» con cruces y destello.
   Fondo de color distinto por ronda, rayos, confeti y dibujos de la categoría flotando. Ronda 7 con dos palabras
-  prohibidas; RONDA FINAL oscura con rayos y calaveras (nº1: número del 1 al 10 → «¡El 7! ¡Lo sabía!»).
+  prohibidas; RONDA FINAL oscura con rayos y calaveras (nº1: número del 1 al 10 → «¡El 7! ¡Lo sabía!»). Respuestas del nº1 (cambiadas por el usuario): martillo, MARRÓN, LIMÓN, vaca, fútbol, SAXOFÓN, Spiderman o Batman, 7.
 - Cierre: «¿En qué ronda te han eliminado?» (chips 1-8) + «¿Qué categoría quieres ahora? ¡Coméntalo y apoya el vídeo!».
 - Dibujos 3D en `assets/evita/` (el usuario eligió dibujos gratis en vez de fotos para este formato).
 - PAUSA ANTES DE LA PENÚLTIMA RONDA (petición del usuario: «si has llegado hasta aquí sígueme y apoya el vídeo», y
@@ -419,7 +419,12 @@ que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir fr
   Escena `draw_cta` DENTRO del juego: barra de rondas y título siguen, sello verde «✓ RONDA N SUPERADA»,
   «¿SIGUES DENTRO?», aviso compacto tipo notificación (logo + «+» + «¡SÍGUEME! Y APOYA EL VÍDEO» + corazón) y
   «QUEDAN 2 RONDAS» con las siguientes BLOQUEADAS (candado) + «¡SIGUE JUGANDO!». Voz acaba con «¡Quedan dos rondas!».
-- Nº1 (`evita_01`, 01-11-2026): 89,9 s, ~1.250 créditos de voz (18 frases; se recargaron créditos a mitad).
+- v2 (correcciones del usuario): la pausa de seguir con MUY POCO TEXTO (sello «✓ RONDA N SUPERADA», logo gigante
+  con «+», «¡SÍGUEME!» y las rondas que quedan como círculos con candado); voz MUCHO más animada
+  (`[very excited, super happy]`, tempo 1,3); el juego arranca antes (`cd_inicio` 1,5 s en la ronda 1: la cuenta
+  atrás empieza mientras termina la frase); final MUY ALEGRE (lluvia de confeti, globos, trofeo, fondo rosa/amarillo,
+  «¡Enhorabuena, has llegado al final!»).
+- Nº1 (`evita_01`, 01-11-2026): v2 84 s; v1 89,9 s, ~1.250 créditos de voz (18 frases; se recargaron créditos a mitad).
 
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
 CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,

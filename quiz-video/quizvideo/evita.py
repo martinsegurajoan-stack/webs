@@ -82,12 +82,12 @@ def build_timeline(c, voice):
         ev += [("fx", "impact" if k == 0 or final else "whoosh", st), ("fx", "pop", st + 0.25)]
         if k == 0:
             ev.append(("fx", "airhorn", st + 0.05))
-        T = {"cd": v0 + d + 0.15, "cdn": cd}
+        T = {"cd": float(r["cd_inicio"]) if r.get("cd_inicio") else v0 + d + 0.15, "cdn": cd}
         ev += [("fx", "riser", st + T["cd"]), ("music_boost", st + T["cd"], st + T["cd"] + cd)]
         for s in range(cd):
             ts = st + T["cd"] + s
             ev += [("fx", "heart", ts), ("fx", "tick_high" if s >= cd - 1 else "tick", ts), ("fx", "tock", ts + 0.5)]
-        T["rv"] = T["cd"] + cd
+        T["rv"] = max(T["cd"] + cd, v0 + d + 0.1)
         ev += [("fx", "impact", st + T["rv"]), ("fx", "boing", st + T["rv"] + 0.05)]
         sig, d2 = vsay(voice, r["revela_voz"])
         ev.append(("voice", sig, st + T["rv"] + 0.15))
@@ -144,7 +144,7 @@ def _init(state):
         else:
             col = COLS[k % len(COLS)]
             _S["bg"][k] = _gradient(mix(col, WHITE, 0.15), mix(col, (10, 0, 30), 0.65), mix(col, WHITE, 0.5))
-    _S["bg"]["outro"] = _gradient((120, 40, 220), (20, 6, 50), (255, 80, 200))
+    _S["bg"]["outro"] = _gradient((255, 90, 170), (120, 30, 200), (255, 220, 80))
     rnd = random.Random(4)
     _S["conf"] = [(rnd.uniform(0, W), rnd.uniform(0, H), rnd.choice(CONF), rnd.uniform(7, 14), rnd.uniform(60, 150),
                    rnd.uniform(0, 6.28)) for _ in range(46)]
@@ -368,11 +368,24 @@ def draw_ronda(img, d, sc, lt):
 
 
 def draw_outro(img, d, sc, lt):
+    # FIESTA: lluvia de confeti, globos que suben, estrellas y trofeo
+    for j, (vx, vy, col, sz_, ph) in enumerate(_S["burst"]):
+        x = (vx + 1) / 2 * W + 40 * math.sin(lt * 2 + ph)
+        y = ((lt * (200 + sz_ * 12) + j * 97) % (H + 100)) - 50
+        ang = lt * 4 + ph
+        w_ = sz_ * abs(math.cos(ang))
+        d.rectangle((x - w_, y - sz_ * 0.45, x + w_, y + sz_ * 0.45), fill=col + (235,))
+    for j in range(6):
+        x = 120 + j * 170 + 20 * math.sin(lt * 2 + j)
+        y = H + 120 - ((lt * 230 + j * 260) % (H + 300))
+        paste_c(img, spr("globo", 130), x, y, 1.0, 0.95, angle=8 * math.sin(lt * 2 + j))
     a = pop(lt, 0.0, 0.4)
     y = 230 + (1 - a) * -500
     box = (70, y, 1010, y + 420)
     rr(d, (box[0] + 8, box[1] + 14, box[2] + 8, box[3] + 14), 50, (0, 0, 0, 80))
     rr(d, box, 50, WHITE, outline=YEL, width=10)
+    paste_c(img, spr("fiesta", 170), 140, y - 10 + 10 * math.sin(lt * 5), a, angle=-12)
+    paste_c(img, spr("trofeo", 160), 945, y - 10 + 10 * math.sin(lt * 5 + 1), a, angle=10)
     d.text((540, y + 120), "¿EN QUÉ RONDA", font=tfont(96), fill=DARK, anchor="mm")
     d.text((540, y + 235), "TE HAN ELIMINADO?", font=tfont(84), fill=RED, anchor="mm")
     # chips de las rondas botando
@@ -408,12 +421,17 @@ def draw_outro(img, d, sc, lt):
 
 
 def draw_cta(img, d, sc, lt):
-    """Pausa DENTRO del juego (no parece un final): barra de rondas y título siguen, «✓ RONDA N SUPERADA»,
-    «¿SIGUES DENTRO?», aviso de seguir/apoyar y «QUEDAN 2 RONDAS» con las siguientes bloqueadas."""
+    """Pausa DENTRO del juego, limpia y bonita: sello «✓ RONDA N SUPERADA», logo gigante que late con botón «+»,
+    corazones que suben, «¡SÍGUEME!» y las 2 rondas que quedan bloqueadas (sin más texto)."""
     progress(img, d, sc, lt)
     title(img, d, sc, lt)
     k, n = sc["k"], sc["n"]
-    # sello verde «RONDA k SUPERADA»
+    # corazones subiendo detrás
+    for j, (vx, vy, col, sz_, ph) in enumerate(_S["burst"][:18]):
+        x = 540 + vx * 470 + 30 * math.sin(lt * 3 + ph)
+        y = 1350 - ((lt * 300 + j * 75) % 1000)
+        paste_c(img, spr("corazon", int(40 + sz_ * 2)), x, y, 1.0, 0.75)
+    # sello verde
     a = ease_out(min(1, lt / 0.18))
     s_ = 1.6 - 0.6 * a
     lay = Image.new("RGBA", (700, 120), (0, 0, 0, 0))
@@ -422,52 +440,44 @@ def draw_cta(img, d, sc, lt):
     ld.line([(70, 60), (95, 85), (135, 38)], fill=WHITE, width=12)
     ld.text((395, 62), f"RONDA {k} SUPERADA", font=tfont(56), fill=WHITE, anchor="mm")
     lay = lay.resize((int(700 * s_), int(120 * s_)), Image.BILINEAR).rotate(-4, resample=Image.BICUBIC, expand=True)
-    img.alpha_composite(lay, (540 - lay.width // 2, 420 - lay.height // 2))
-    # tarjeta «¿SIGUES DENTRO?»
-    b = pop(lt, 0.15, 0.35)
-    if b > 0:
-        y = 520 + (1 - b) * 250
-        rr(d, (98, y + 14, 998, y + 214), 40, (0, 0, 0, 70))
-        rr(d, (90, y, 990, y + 200), 40, WHITE, outline=YEL, width=10)
-        d.text((540, y + 72), "¿SIGUES DENTRO?", font=tfont(88), fill=RED, anchor="mm")
-        d.text((540, y + 150), "SI HAS LLEGADO HASTA AQUÍ…", font=tfont(46), fill=(110, 100, 130), anchor="mm")
-    # aviso de seguir / apoyar (compacto, como una notificación)
-    c = pop(lt, 0.5, 0.35)
+    img.alpha_composite(lay, (540 - lay.width // 2, 440 - lay.height // 2))
+    # logo gigante con halo y botón +
+    c = ease_out_back(min(1, max(0, (lt - 0.15) / 0.4)))
     if c > 0:
-        y = 800 + (1 - c) * 200
-        rr(d, (98, y + 12, 998, y + 222), 36, (0, 0, 0, 80))
-        rr(d, (90, y, 990, y + 210), 36, (30, 14, 50, 235), outline=(255, 70, 170), width=6)
-        lg = _S["logo"].resize((170, 170), Image.LANCZOS)
-        img.alpha_composite(lg, (115, int(y + 20)))
-        pz = 1 + 0.12 * abs(math.sin(lt * 5))
-        bx, by = 270, y + 170
-        d.ellipse((bx - 30 * pz, by - 30 * pz, bx + 30 * pz, by + 30 * pz), fill=RED, outline=WHITE, width=5)
-        d.line([(bx - 14, by), (bx + 14, by)], fill=WHITE, width=7)
-        d.line([(bx, by - 14), (bx, by + 14)], fill=WHITE, width=7)
-        d.text((330, y + 70), "¡SÍGUEME!", font=tfont(72), fill=YEL, anchor="lm")
-        d.text((330, y + 150), "Y APOYA EL VÍDEO", font=tfont(56), fill=WHITE, anchor="lm")
-        hb = 1 + 0.2 * abs(math.sin(lt * 6))
-        paste_c(img, spr("corazon", int(110 * hb)), 905, y + 105, 1.0)
-    # siguientes rondas bloqueadas
-    e = pop(lt, 0.8, 0.35)
+        pulse = 1 + 0.04 * math.sin(lt * 6)
+        R = 230 * c * pulse
+        g = 0.5 + 0.5 * math.sin(lt * 5)
+        d.ellipse((540 - R - 30, 840 - R - 30, 540 + R + 30, 840 + R + 30), fill=(255, 255, 255, int(60 + 50 * g)))
+        d.ellipse((540 - R - 12, 840 - R - 12, 540 + R + 12, 840 + R + 12), fill=YEL)
+        lg = _S["logo"].resize((int(2 * R), int(2 * R)), Image.LANCZOS)
+        img.alpha_composite(lg, (int(540 - R), int(840 - R)))
+        pz = 1 + 0.15 * abs(math.sin(lt * 5))
+        bx, by = 540 + R * 0.72, 840 + R * 0.72
+        d.ellipse((bx - 55 * pz, by - 55 * pz, bx + 55 * pz, by + 55 * pz), fill=RED, outline=WHITE, width=8)
+        d.line([(bx - 26 * pz, by), (bx + 26 * pz, by)], fill=WHITE, width=11)
+        d.line([(bx, by - 26 * pz), (bx, by + 26 * pz)], fill=WHITE, width=11)
+        paste_c(img, spr("dedo", 180), 540 - R - 70 + 16 * math.sin(lt * 7), 860, c)
+    e = ease_out_back(min(1, max(0, (lt - 0.45) / 0.35)))
     if e > 0:
-        text(d, (540, 1110), f"QUEDAN {n - k} RONDAS", tfont(int(70 * e)), WHITE, 10, DARK, sh=8)
-        for q, (lab, col) in enumerate(((f"RONDA {k + 1}", (60, 110, 255)), ("FINAL", (150, 20, 40)))):
-            x = 330 + q * 420
-            y = 1260 + 10 * math.sin(lt * 4 + q)
-            sh_ = math.sin(lt * 30) * 4 if q == 1 else 0
-            rr(d, (x - 175 + 6 + sh_, y - 95 + 12, x + 175 + 6 + sh_, y + 95 + 12), 30, (0, 0, 0, 80))
-            rr(d, (x - 175 + sh_, y - 95, x + 175 + sh_, y + 95), 30, col, outline=WHITE, width=7)
-            d.text((x + sh_, y - 40), lab, font=tfont(46), fill=WHITE, anchor="mm")
-            d.text((x - 25 + sh_, y + 30), "? ? ?", font=tfont(56), fill=WHITE, anchor="mm")
-            # candado
-            cx_, cy_ = x + 115 + sh_, y + 30
-            d.arc((cx_ - 15, cy_ - 34, cx_ + 15, cy_ - 4), 180, 360, fill=YEL, width=7)
-            d.rounded_rectangle((cx_ - 22, cy_ - 16, cx_ + 22, cy_ + 20), 6, fill=YEL)
-            if q == 1:
-                paste_c(img, spr("calavera", 70), x - 140 + sh_, y - 85, 1.0, angle=-12)
         pulse = 1 + 0.06 * math.sin(lt * 9)
-        pill(d, 540, 1440, "¡SIGUE JUGANDO!", int(48 * pulse * e), YEL, DARK, pad=(30, 14))
+        pill(d, 540, 1170, "¡SÍGUEME!", int(84 * pulse * e), WHITE, RED, pad=(54, 22))
+    # las 2 rondas que quedan, bloqueadas (sin texto)
+    f_ = pop(lt, 0.7, 0.35)
+    if f_ > 0:
+        for q in range(n - k):
+            x = 540 + (q - (n - k - 1) / 2) * 190
+            y = 1360 + 10 * math.sin(lt * 4 + q)
+            last = q == n - k - 1
+            col = (150, 20, 40) if last else (60, 110, 255)
+            r_ = 70 * f_
+            d.ellipse((x - r_, y - r_, x + r_, y + r_), fill=col, outline=WHITE, width=6)
+            if last:
+                paste_c(img, spr("calavera", int(80 * f_)), x, y - 6, 1.0)
+            else:
+                d.text((x, y), str(k + 1 + q), font=tfont(int(70 * f_)), fill=WHITE, anchor="mm")
+            cx_, cy_ = x + 45 * f_, y + 45 * f_
+            d.arc((cx_ - 14, cy_ - 32, cx_ + 14, cy_ - 4), 180, 360, fill=YEL, width=7)
+            d.rounded_rectangle((cx_ - 20, cy_ - 16, cx_ + 20, cy_ + 18), 6, fill=YEL)
 
 
 DRAW = {"ronda": draw_ronda, "outro": draw_outro, "cta": draw_cta}

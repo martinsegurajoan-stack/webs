@@ -1,8 +1,8 @@
 {
   "video": "evita_01",
   "titulo": "No digas lo mismo que yo",
-  "estilo_voz": "[excited, playful]",
-  "tempo": 1.2,
+  "estilo_voz": "[very excited, super happy]",
+  "tempo": 1.3,
   "rondas": [
     {
       "pre": "RÁPIDO, DI UNA…",
@@ -13,12 +13,13 @@
         "pensativo",
         "bocadillo"
       ],
-      "voz": "[excited] ¡Rápido! Di una herramienta. ¡Si dices lo mismo que yo, estás fuera!",
+      "voz": "[very excited, super happy] ¡Rápido, di una herramienta! ¡Si dices lo mismo que yo, fuera!",
       "respuesta": "MARTILLO",
       "iconos_resp": [
         "martillo"
       ],
-      "revela_voz": "¡Martillo! Si has dicho martillo... ¡fuera!"
+      "revela_voz": "¡Martillo! ¿Has dicho martillo? ¡Fuera!",
+      "cd_inicio": 1.5
     },
     {
       "pre": "DI UN…",
@@ -30,11 +31,11 @@
         "pensativo"
       ],
       "voz": "¡Ronda dos! Un color.",
-      "respuesta": "ROJO",
+      "respuesta": "MARRÓN",
       "iconos_resp": [
-        "rojo"
+        "marron"
       ],
-      "revela_voz": "¡Rojo! ¿Has dicho rojo? ¡A la calle!"
+      "revela_voz": "¡Marrón! ¿Has dicho marrón? ¡A la calle!"
     },
     {
       "pre": "DI UNA…",
@@ -46,11 +47,11 @@
         "pensativo"
       ],
       "voz": "¡Ronda tres! Una fruta.",
-      "respuesta": "MANZANA",
+      "respuesta": "LIMÓN",
       "iconos_resp": [
-        "manzana"
+        "limon"
       ],
-      "revela_voz": "¡Manzana! Si dijiste manzana... ¡eliminado!"
+      "revela_voz": "¡Limón! Si dijiste limón... ¡eliminado!"
     },
     {
       "pre": "DI UN ANIMAL DE…",
@@ -94,11 +95,11 @@
         "pensativo"
       ],
       "voz": "¡Ronda seis! Un instrumento musical.",
-      "respuesta": "GUITARRA",
+      "respuesta": "SAXOFÓN",
       "iconos_resp": [
-        "guitarra"
+        "saxofon"
       ],
-      "revela_voz": "¡Guitarra! Si has dicho guitarra... ¡fuera!"
+      "revela_voz": "¡Saxofón! Si has dicho saxofón... ¡fuera!"
     },
     {
       "pre": "DI UN…",
@@ -123,7 +124,7 @@
       "categoria": "1 AL 10",
       "icono": "numeros",
       "segundos": 4,
-      "voz": "[excited] ¡Ronda final, la imposible! Un número del uno al diez.",
+      "voz": "[very excited, super happy] ¡Ronda final, la imposible! Un número del uno al diez.",
       "respuesta": "EL 7",
       "iconos_resp": [
         "siete"
@@ -132,11 +133,11 @@
       "revela_voz": "¡El siete! ¿Has dicho siete? ¡Lo sabía!"
     }
   ],
-  "cierre_voz": "¿En qué ronda te han eliminado? ¿Y qué categoría quieres para la próxima? ¡Coméntalo y apoya el vídeo!",
+  "cierre_voz": "¡Enhorabuena, has llegado al final! ¿En qué ronda te eliminé? ¡Dime qué categoría quieres y apoya el vídeo!",
   "portada": {
     "pegatina": "SI COINCIDES… ¡FUERA!",
     "sub": "¿Aguantas hasta la ronda final?"
   },
-  "cta_voz": "[excited] ¡Sigues dentro! Si has llegado hasta aquí, sígueme y apoya el vídeo. ¡Quedan dos rondas!",
+  "cta_voz": "[very excited, super happy] ¡Ronda superada! Sígueme y apoya el vídeo. ¡Quedan dos!",
   "cta_antes": 6
 }
