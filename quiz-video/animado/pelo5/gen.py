@@ -110,6 +110,8 @@ def beard_path(L):
 MUST = "M460,813 C474,796 494,800 500,807 C506,800 526,796 540,813 C523,808 509,813 500,813 C491,813 477,808 460,813 Z"
 HEAD_D = "M395,765 C395,690 440,642 500,642 C560,642 605,690 605,765 C605,826 590,868 556,890 C536,903 464,903 444,890 C410,868 395,826 395,765 Z"
 
+HEADSC = "translate(500 905) scale(0.86) translate(-500 -905)"
+
 def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
     """SVG del personaje. cm = largo de pelo (None = calvo)."""
     g = []
@@ -125,34 +127,45 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
     g.append(f'<ellipse cx="500" cy="1702" rx="190" ry="26" fill="#000" opacity="0.22"/>')
     # melena de detrás (asoma por los lados)
     if cm and cm >= 25:
-        g.append(f'<path d="M390,760 C370,900 360,1000 352,{bottom - 20} L648,{bottom - 20} C640,1000 630,900 610,760 Z" fill="url(#{pid}-hair)"/>')
+        g.append(f'<g transform="{HEADSC}"><path d="M390,760 C370,900 360,1000 352,{bottom - 20} L648,{bottom - 20} C640,1000 630,900 610,760 Z" fill="url(#{pid}-hair)"/></g>')
     # piernas y zapatos
     g.append(f'<g id="{pid}-legs"><path d="M372,1250 L628,1250 L620,1300 L380,1300 Z" fill="{PANTS}"/>'
-             f'<path d="M385,1290 L490,1290 L482,1680 L400,1680 Z" fill="{PANTS}"/>'
-             f'<path d="M510,1290 L615,1290 L600,1680 L518,1680 Z" fill="#363955"/>'
-             f'<ellipse cx="438" cy="1690" rx="58" ry="20" fill="#f4efe6"/><ellipse cx="562" cy="1690" rx="58" ry="20" fill="#f4efe6"/></g>')
+             f'<g id="{pid}-legL"><path d="M385,1290 L490,1290 L482,1680 L400,1680 Z" fill="{PANTS}"/>'
+             f'<path d="M470,1300 L466,1670" stroke="#2f3250" stroke-width="3" opacity="0.6"/>'
+             f'<path d="M382,1694 C382,1668 410,1660 440,1662 C470,1662 496,1672 496,1694 Z" fill="#f4efe6"/><rect x="380" y="1690" width="118" height="12" rx="6" fill="#cfc6b8"/></g>'
+             f'<g id="{pid}-legR"><path d="M510,1290 L615,1290 L600,1680 L518,1680 Z" fill="#363955"/>'
+             f'<path d="M530,1300 L536,1670" stroke="#2a2d48" stroke-width="3" opacity="0.6"/>'
+             f'<path d="M504,1694 C504,1668 532,1660 562,1662 C592,1662 618,1672 618,1694 Z" fill="#f4efe6"/><rect x="502" y="1690" width="118" height="12" rx="6" fill="#cfc6b8"/></g></g>')
     # cuerpo que respira (torso + brazos + cabeza)
     g.append(f'<g id="{pid}-up">')
     for side, sx, rot in (("L", 356, 1), ("R", 644, -1)):
-        g.append(f'<g id="{pid}-arm{side}">'
+        g.append(f'<g id="{pid}-arm{side}"><g id="{pid}-arm{side}g">'
                  f'<path d="M{sx - 26 * rot},975 C{sx - 48 * rot},1030 {sx - 52 * rot},1090 {sx - 46 * rot},1120 L{sx - 6 * rot},1120 C{sx - 4 * rot},1080 {sx},1030 {sx + 12 * rot},990 Z" fill="url(#{pid}-shirt)"/>'
                  f'<path d="M{sx - 42 * rot},1112 C{sx - 46 * rot},1180 {sx - 40 * rot},1240 {sx - 36 * rot},1262 L{sx - 10 * rot},1262 C{sx - 12 * rot},1230 {sx - 10 * rot},1170 {sx - 8 * rot},1112 Z" fill="{SKIN}"/>'
-                 f'<circle cx="{sx - 24 * rot}" cy="1280" r="27" fill="{SKIN}"/></g>')
+                 f'<circle cx="{sx - 24 * rot}" cy="1280" r="27" fill="{SKIN}"/></g></g>')
     g.append(f'<path d="M350,992 C350,960 396,950 440,946 L560,946 C604,950 650,960 650,992 L628,1270 L372,1270 Z" fill="url(#{pid}-shirt)"/>')
+    g.append(f'<path d="M560,948 C604,952 650,962 650,992 L628,1270 L548,1270 C566,1150 572,1040 560,948 Z" fill="#b5553f" opacity="0.35"/>')
+    g.append(f'<path d="M378,1240 L622,1240" stroke="#b5553f" stroke-width="4" opacity="0.45"/>')
     g.append(f'<path d="M455,952 Q500,985 545,952" stroke="{SHIRT_D}" stroke-width="7" fill="none"/>')
-    g.append(f'<rect x="460" y="866" width="80" height="94" rx="24" fill="{SKIN_D}"/>')
-    # cabeza
-    g.append(f'<g id="{pid}-head">')
+    g.append(f'<rect x="462" y="866" width="76" height="94" rx="22" fill="{SKIN_D}"/>')
+    g.append(f'<ellipse cx="500" cy="906" rx="36" ry="8" fill="#c98b6c" opacity="0.3"/>')
+    # cabeza (algo más pequeña: proporciones de adulto)
+    g.append(f'<g transform="{HEADSC}">')
+    g.append(f'<g id="{pid}-headw"><g id="{pid}-head">')
     g.append(f'<ellipse cx="396" cy="775" rx="18" ry="28" fill="{SKIN_D}"/><ellipse cx="604" cy="775" rx="18" ry="28" fill="{SKIN_D}"/>')
     g.append(f'<path d="{HEAD_D}" fill="url(#{pid}-skin)"/>')
     if bald:
         g.append('<ellipse cx="465" cy="690" rx="34" ry="18" fill="#fff" opacity="0.35" transform="rotate(-20 465 690)"/>')
-    g.append('<circle cx="452" cy="796" r="16" fill="#f08a7a" opacity="0.12"/><circle cx="548" cy="796" r="16" fill="#f08a7a" opacity="0.12"/>')
-    g.append(f'<g id="{pid}-eyes"><ellipse cx="462" cy="742" rx="10" ry="13" fill="#2b2230"/><ellipse cx="538" cy="742" rx="10" ry="13" fill="#2b2230"/>'
-             f'<circle cx="465" cy="737" r="3.5" fill="#fff"/><circle cx="541" cy="737" r="3.5" fill="#fff"/></g>')
-    g.append(f'<g id="{pid}-brows"><path d="M438,714 Q460,701 484,709" stroke="#4a2f22" stroke-width="11" fill="none" stroke-linecap="round"/>'
-             f'<path d="M516,709 Q540,701 562,714" stroke="#4a2f22" stroke-width="11" fill="none" stroke-linecap="round"/></g>')
-    g.append('<path d="M498,760 Q490,784 504,789" stroke="#c98a6c" stroke-width="4" fill="none" stroke-linecap="round"/>')
+    g.append('<path d="M410,800 C420,850 450,880 500,888 C550,880 580,850 590,800 C580,860 545,896 500,898 C455,896 420,860 410,800 Z" fill="#d9967a" opacity="0.35"/>')
+    eye = lambda cx: (f'<ellipse cx="{cx}" cy="744" rx="17" ry="11" fill="#fbf6f0"/>'
+                      f'<circle cx="{cx + 1}" cy="745" r="8.5" fill="#4a3426"/><circle cx="{cx + 1}" cy="745" r="4.2" fill="#15100e"/><circle cx="{cx + 4}" cy="741" r="2.4" fill="#fff"/>'
+                      f'<path d="M{cx - 19},742 Q{cx},727 {cx + 19},742" stroke="#3a2418" stroke-width="4.5" fill="none" stroke-linecap="round"/>'
+                      f'<path d="M{cx - 14},755 Q{cx},761 {cx + 14},755" stroke="#c98a6c" stroke-width="2" fill="none" opacity="0.7"/>')
+    g.append(f'<g id="{pid}-eyes">{eye(462)}{eye(538)}</g>')
+    g.append(f'<g id="{pid}-brows"><path d="M440,718 Q461,707 484,713" stroke="#4a2f22" stroke-width="8" fill="none" stroke-linecap="round"/>'
+             f'<path d="M516,713 Q539,707 560,718" stroke="#4a2f22" stroke-width="8" fill="none" stroke-linecap="round"/></g>')
+    g.append('<path d="M500,752 C497,770 490,782 492,790 C496,796 506,796 512,791" stroke="#b97b5f" stroke-width="4" fill="none" stroke-linecap="round"/>'
+             '<path d="M486,792 Q500,800 514,792" stroke="#d9967a" stroke-width="3" fill="none" opacity="0.6"/>')
     if beard is not None:
         tex = "".join(f'<path d="M{x},{858 + abs(x - 500) * 0.1:.0f} q{(x - 500) * 0.04:.1f},{14 + beard * 0.5:.0f} {(x - 500) * 0.02:.1f},{24 + beard * 0.75:.0f}" stroke="#d48a55" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.55"/>'
                       for x in range(440, 561, 20))
@@ -160,7 +173,7 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
                  f'<path d="{MUST}" fill="#9a5230" stroke="#6e3519" stroke-width="3"/>')
     if stubble:
         g.append(f'<path id="{pid}-beardfade" d="{beard_path(0)}" fill="#a85d34" opacity="0"/>')
-    g.append(f'<path id="{pid}-mouth" d="M478,816 Q500,832 522,816" stroke="#7a3f35" stroke-width="5" fill="none" stroke-linecap="round"/>')
+    g.append(f'<path id="{pid}-mouth" d="M478,816 Q500,832 522,816" stroke="#7a3f35" stroke-width="4.5" fill="none" stroke-linecap="round"/>')
     g.append(f'<ellipse id="{pid}-mouthO" cx="500" cy="822" rx="9" ry="12" fill="#6b2f2a" opacity="0"/>')
     if stubble:   # pelitos que brotan (aparecen al decir «cien mil»)
         pts = []
@@ -176,7 +189,7 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
                        f'stroke="{HAIR}" stroke-width="3" stroke-linecap="round" opacity="0"/>')
         g.append(f'<path id="{pid}-capfade" d="{cap_path(0)}" fill="{HAIR}" opacity="0"/>' + "".join(pts))
     if bald:      # el pelo solitario
-        g.append(f'<path id="{pid}-one" d="M500,642 C494,600 532,592 522,560 C514,538 538,528 544,516" stroke="{HAIR}" stroke-width="5" fill="none" stroke-linecap="round"/>')
+        g.append(f'<path id="{pid}-one" d="M500,650 L500,642 C494,600 532,592 522,560 C514,538 538,528 544,516" stroke="{HAIR}" stroke-width="5" fill="none" stroke-linecap="round"/>')
     if cm:
         v = min(4 + cm * 1.4, 22)
         if 10 <= cm < 25:
@@ -186,10 +199,11 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
         g.append(f'<path d="M430,670 Q500,640 570,668" stroke="{HAIR_HI}" stroke-width="4" fill="none" opacity="0.6"/>')
         if cm < 12:
             g.append(f'<path id="{pid}-fringe" d="{fringe_path(20)}" fill="url(#{pid}-hair)"/>')
-    g.append('</g>')   # head
+    g.append('</g></g>')   # head + headw
     if cm and cm >= 25:
         for sd in ("L", "R"):
             g.append(f'<g id="{pid}-lock{sd}"><path d="{lock_path(sd, bottom)}" fill="url(#{pid}-hair)"/>{strands("lock", sd, bottom)}</g>')
+    g.append('</g>')   # escala cabeza
     g.append('</g>')   # up
     return f'<svg class="pj" id="{pid}" viewBox="0 0 1000 1800" width="1000" height="1800" style="position:absolute;left:{{x}}px;top:0px;overflow:visible">' + "".join(g) + "</svg>"
 
@@ -200,6 +214,9 @@ def vida(pid):
     """Respira y parpadea durante todo el vídeo (nunca congelado)."""
     reps = int(DUR / 1.7)
     J(f'tl.fromTo("#{pid}-up", {{scaleY:1}}, {{scaleY:1.012, duration:0.85, ease:"sine.inOut", yoyo:true, repeat:{reps}, svgOrigin:"500 1270"}}, 0);')
+    for sel, amp, n, org in ((f"{pid}-up", 1.1, 13, "500 1290"), (f"{pid}-headw", 2.2, 17, "500 900"),
+                             (f"{pid}-armL", 2.5, 15, "356 985"), (f"{pid}-armR", -2.5, 14, "644 985")):
+        J(f'tl.to("#{sel}", {{keyframes:{{rotation:[0, {amp}, 0, {-amp}, 0], easeEach:"sine.inOut"}}, duration:{DUR / n:.4f}, ease:"none", repeat:{n - 1}, svgOrigin:"{org}"}}, 0);')
     t = 0.7 + random.uniform(0, 1.2)
     while t < DUR - 0.3:
         J(f'tl.to("#{pid}-eyes", {{scaleY:0.1, duration:0.07, svgOrigin:"500 742", yoyo:true, repeat:1}}, {t:.2f});')
@@ -271,8 +288,8 @@ H.append(f'<svg style="position:absolute;left:0;top:0" width="{WORLD_W}" height=
 
 # S0: calvo con un pelo → cien mil pelitos
 H.append(pj_at("p0", s0, bald=True, stubble=True))
-r_html, r_n, r_d, r_h = rodillo("rod0", s0 + 80, 1035, "100.000", size=80)
-H.append(f'<div id="c0" class="card" style="left:{s0 + 40}px;top:950px;width:500px;height:215px"><div class="card-top">PELOS EN LA CABEZA</div></div>')
+r_html, r_n, r_d, r_h = rodillo("rod0", s0 + 230, 1035, "100.000", size=80)
+H.append(f'<div id="c0" class="card" style="left:{s0 + 190}px;top:950px;width:500px;height:215px"><div class="card-top">PELOS EN LA CABEZA</div></div>')
 H.append(r_html)
 H.append(f'<div id="regla0" class="regla" style="left:{s0 - 300}px;top:650px;height:420px"></div>')
 H.append(f'<div id="cal0" class="card" style="left:{s0 - 450}px;top:1110px;width:300px"><div class="card-top">CRECE</div><div class="card-big" style="color:{GOOD}">≈1 cm<span style="font-size:44px">/mes</span></div></div>')
@@ -318,10 +335,10 @@ H.append(card("c3", s3 + 165, 1150, "AÑO 3", "45 cm"))
 H.append(f'<svg id="zip" style="position:absolute;left:{s3 - 10}px;top:960px" width="20" height="310"><line x1="10" y1="0" x2="10" y2="310" stroke="#d8c7a3" stroke-width="8" stroke-dasharray="6 5"/></svg>')
 H.append(f'<svg id="mechonzip" style="position:absolute;left:{s3 + 12}px;top:985px;overflow:visible" width="10" height="10"><path d="M0,10 C30,0 50,30 90,20 C110,15 125,30 140,40" stroke="#4e3122" stroke-width="10" fill="none" stroke-linecap="round"/></svg>')
 H.append(f'<div id="slider" style="position:absolute;left:{s3 - 16}px;top:1240px;width:32px;height:46px;background:#d9b456;border-radius:6px"></div>')
-H.append(f'<svg id="mesa" style="position:absolute;left:{s3 + 30}px;top:1090px;overflow:visible" width="320" height="610">'
-         '<rect x="140" y="60" width="40" height="532" rx="12" fill="#b9876a"/><ellipse cx="160" cy="598" rx="90" ry="18" fill="#a97a5f"/>'
+H.append(f'<svg id="mesa" style="position:absolute;left:{s3 + 22}px;top:1065px;overflow:visible" width="320" height="610">'
+         '<rect x="140" y="60" width="40" height="557" rx="12" fill="#b9876a"/><ellipse cx="160" cy="623" rx="90" ry="18" fill="#a97a5f"/>'
          '<ellipse cx="160" cy="62" rx="160" ry="34" fill="#c99a7c"/><ellipse cx="160" cy="54" rx="160" ry="32" fill="#e3bb98"/></svg>')
-H.append(f'<svg id="sopa" style="position:absolute;left:{s3 + 70}px;top:1010px;overflow:visible" width="240" height="170" viewBox="0 0 240 170">'
+H.append(f'<svg id="sopa" style="position:absolute;left:{s3 + 62}px;top:985px;overflow:visible" width="240" height="170" viewBox="0 0 240 170">'
          '<path d="M6,70 Q120,205 234,70 Z" fill="#f4ede2"/><path d="M30,110 Q120,170 210,110" stroke="#e07a5f" stroke-width="8" fill="none" opacity="0.6"/>'
          '<ellipse cx="120" cy="70" rx="114" ry="22" fill="#e5a24e"/><ellipse cx="96" cy="66" rx="30" ry="6" fill="#f6c477"/>'
          + "".join(f'<path class="vapor" d="M{80 + i * 40},48 q-14,-25 0,-45 q14,-20 0,-45" stroke="#fff" stroke-width="6" fill="none" opacity="0"/>' for i in range(3))
@@ -367,7 +384,7 @@ H.append(card("c5", s5 - 480, 1080, "AÑO 5", "75 cm", color=GOOD, w=260))
 
 # S6: pelos perdidos + llamada a la acción
 H.append(f'<div id="panel" class="card" style="left:{s6 - 430}px;top:560px;width:860px;height:430px"><div class="card-top">PELOS PERDIDOS EN 5 AÑOS</div>'
-         f'<div style="position:absolute;left:368px;top:150px;font:900 56px Inter;color:#8a8277">–</div>'
+         f'<div id="guion6" style="position:absolute;left:368px;top:150px;font:900 56px Inter;color:#8a8277;opacity:0">–</div>'
          f'<div style="position:absolute;left:0;right:0;top:330px;text-align:center;font:700 40px Inter;color:#8a8277">de 50 a 100 al día · normal</div></div>')
 ra, ran, rad_, rah = rodillo("rodA", s6 - 395, 690, "90.000", size=84)
 rb, rbn, rbd, rbh = rodillo("rodB", s6 - 15, 690, "180.000", size=84, color=BAD)
@@ -393,16 +410,16 @@ J('tl.set(".caen", {opacity:0}, 0);')
 
 # 1 · gancho: arranque potente (golpe de zoom + el pelo solitario hace «boing»)
 J('tl.fromTo("#world", {scale:1.85}, {scale:1.55, duration:0.55, ease:"power3.out"}, 0);')
-J('tl.fromTo("#p0-one", {rotation:-35}, {rotation:0, duration:1.4, ease:"elastic.out(1.2,0.25)", svgOrigin:"500 642"}, 0.05);')
+J('tl.fromTo("#p0-one", {rotation:-28}, {rotation:0, duration:1.4, ease:"elastic.out(1.2,0.25)", svgOrigin:"500 646", immediateRender:false}, 0.05);')
 FX_EV.append(("golpe", 0.0))
-J(f'tl.to("#p0-one", {{rotation:14, duration:0.35, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"500 642"}}, {P("pelo", 1):.2f});')
+J(f'tl.to("#p0-one", {{rotation:14, duration:0.35, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"500 646"}}, {P("pelo", 1):.2f});')
 # 2 · «un pelo» → «cien mil»
-J(f'tl.fromTo("#p0-one", {{scale:1}}, {{scale:1.35, duration:0.3, yoyo:true, repeat:1, svgOrigin:"500 642"}}, {P("pelo", 2):.2f});')
+J(f'tl.fromTo("#p0-one", {{scale:1}}, {{scale:1.35, duration:0.3, yoyo:true, repeat:1, svgOrigin:"500 646"}}, {P("pelo", 2):.2f});')
 J(f'tl.to("#p0-mouthO", {{opacity:1, duration:0.15}}, {P("bueno"):.2f}); tl.to("#p0-mouth", {{opacity:0, duration:0.15}}, {P("bueno"):.2f});')
 tc = P("cien")
 J(f'tl.to(".p0-stub", {{opacity:1, duration:0.12, stagger:{{each:0.004, from:"random"}}}}, {tc:.2f});')
 J(f'tl.to("#p0-capfade", {{opacity:0.55, duration:1.0}}, {tc + 0.2:.2f}); tl.to("#p0-beardfade", {{opacity:0.25, duration:1.0}}, {tc + 0.2:.2f});')
-J(f'tl.to("#world", {{scale:1.15, x:{540 - (s0 + 120) * 1.15:.1f}, y:{960 - 900 * 1.15:.1f}, duration:0.9, ease:"power2.inOut"}}, {tc - 0.1:.2f});')
+J(f'tl.to("#world", {{scale:1.05, x:{540 - (s0 + 200) * 1.05:.1f}, y:{960 - 900 * 1.05:.1f}, duration:0.9, ease:"power2.inOut"}}, {tc - 0.1:.2f});')
 pop("#c0", tc); J(f'tl.to("#rod0", {{opacity:1, duration:0.2}}, {tc:.2f});')
 rodar("rod0", r_n, r_d, r_h, tc)
 FX_EV.append(("pop", tc + 0.3))
@@ -412,7 +429,7 @@ tcm = P("centimetro")
 J(f'tl.fromTo("#regla0", {{scaleY:0, opacity:1}}, {{scaleY:1, duration:0.6, ease:"power2.out", transformOrigin:"50% 0%"}}, {P("crece"):.2f});')
 FX_EV.append(("pop", P("crece")))
 pop("#cal0", tcm)
-cam(P("mes", 1) - 0.1, s0 - 5, 1000, 0.88, dur=0.8)
+cam(P("mes", 1) - 0.1, s0 + 20, 1000, 0.8, dur=0.8)
 
 # 4 · UNO — mes 6: viaje por el camino hasta S1
 t = F(5)
@@ -490,7 +507,7 @@ cam(P("acaba") - 0.3, s3 + 120, 1000, 1.25, dur=0.6)
 cam(tl0 + 0.3, s3 + 120, 1000, 1.55, dur=1.2, ease="sine.inOut")
 pop("#mesa", P("acaba") - 0.2, s0=0.6); pop("#sopa", P("acaba"))
 J(f'tl.to("#p3-head", {{rotation:4, duration:0.7, ease:"power2.inOut", svgOrigin:"500 900"}}, {tl0:.2f});')
-J(f'tl.to("#p3-lockR", {{rotation:-6, scaleY:1.1, duration:0.9, ease:"power2.inOut", svgOrigin:"616 740"}}, {tl0 + 0.1:.2f});')
+J(f'tl.to("#p3-lockR", {{rotation:-7, scaleY:1.16, duration:0.9, ease:"power2.inOut", svgOrigin:"616 740"}}, {tl0 + 0.1:.2f});')
 J(f'tl.to("#p3-lockR", {{rotation:-4.5, duration:0.25, yoyo:true, repeat:3, ease:"sine.inOut", svgOrigin:"616 740"}}, {tl0 + 1.0:.2f});')
 tsp = tl0 + 0.85
 J(f'tl.fromTo("#sopa .gota", {{opacity:1, y:0, x:0}}, {{opacity:0, y:(i) => -50 - i * 12, x:(i) => (i - 2) * 22, duration:0.55, ease:"power2.out", stagger:0.03, immediateRender:false}}, {tsp:.2f});')
@@ -516,7 +533,7 @@ J(f'tl.to("#curva2", {{scaleX:1, duration:0.8, ease:"power1.out", svgOrigin:"480
 J(f'tl.fromTo("#stop", {{scale:0, opacity:0}}, {{scale:1, opacity:1, duration:0.45, ease:"back.out(2)", svgOrigin:"480 140"}}, {P("crecer", 1) + 0.15:.2f});'); FX_EV.append(("pop", P("crecer", 1) + 0.15))
 FX_EV.append(("golpe", P("crecer", 1) + 0.15))
 J(f'tl.fromTo("#world", {{rotation:0}}, {{rotation:0.4, duration:0.06, yoyo:true, repeat:3}}, {P("crecer", 1) + 0.15:.2f});')
-tb = P("dos", 3)
+tb = P("dos", 2)
 cam(tb - 0.4, s4, 1100, 1.0, dur=0.5)
 pop("#barra", tb - 0.3)
 J(f'tl.fromTo("#barfill", {{scaleX:0.28}}, {{scaleX:1, duration:{max(0.6, P("siete", 2) - tb + 0.3):.2f}, ease:"power2.inOut"}}, {tb:.2f});')
@@ -550,6 +567,7 @@ J(f'tl.to("#camino", {{strokeDasharray:"{s6 - s0 + 120} 20000", duration:1.0, ea
 cam(t, s6, 980, 0.95, dur=1.0, viaje=True)
 pop("#panel", P("perdido"))
 tn9 = P("noventa")
+J(f'tl.to("#guion6", {{opacity:1, duration:0.2}}, {tn9 + 0.6:.2f});')
 J(f'tl.to("#rodA", {{opacity:1, duration:0.15}}, {tn9:.2f});'); rodar("rodA", ran, rad_, rah, tn9)
 tc18 = P("ciento")
 J(f'tl.to("#rodB", {{opacity:1, duration:0.15}}, {tc18:.2f});'); rodar("rodB", rbn, rbd, rbh, tc18)
@@ -557,6 +575,55 @@ FX_EV.append(("pop", tn9)); FX_EV.append(("pop", tc18))
 for i in range(44):
     t0 = tn9 + i * 0.07
     J(f'tl.fromTo("#caen{i}", {{opacity:0, y:-80, rotation:0}}, {{opacity:1, y:{600 + (i % 6) * 22}, rotation:{random.choice([-1, 1]) * random.randint(60, 240)}, duration:1.6, ease:"power1.in"}}, {t0:.2f});')
+
+# el personaje CAMINA hasta su sitio en cada etapa y gesticula
+def caminar(pid, t, desde=-420, dur=1.3):
+    J(f'tl.fromTo("#{pid}", {{x:{desde}}}, {{x:0, duration:{dur}, ease:"power1.out", immediateRender:false}}, {t:.2f});')
+    pasos = 4
+    for k in range(pasos):
+        tk = t + k * dur / pasos
+        pie = "legL" if k % 2 == 0 else "legR"
+        J(f'tl.to("#{pid}-{pie}", {{y:-26, duration:{dur / pasos / 2:.3f}, yoyo:true, repeat:1, ease:"sine.inOut"}}, {tk:.2f});')
+        J(f'tl.to("#{pid}-up", {{y:-8, duration:{dur / pasos / 2:.3f}, yoyo:true, repeat:1, ease:"sine.inOut"}}, {tk:.2f});')
+        J(f'tl.to("#{pid}-head", {{x:{6 if k % 2 == 0 else -6}, duration:{dur / pasos / 2:.3f}, yoyo:true, repeat:1, ease:"sine.inOut"}}, {tk:.2f});')
+
+def brazo(pid, lado, rot, t, hold, ida=0.35):
+    org = "356 985" if lado == "L" else "644 985"
+    J(f'tl.to("#{pid}-arm{lado}g", {{rotation:{rot}, duration:{ida}, ease:"back.out(1.4)", svgOrigin:"{org}"}}, {t:.2f});')
+    J(f'tl.to("#{pid}-arm{lado}g", {{rotation:0, duration:0.45, ease:"power2.inOut", svgOrigin:"{org}"}}, {t + hold:.2f});')
+
+def encoger(pid, t, hold=0.8):
+    brazo(pid, "L", 22, t, hold); brazo(pid, "R", -22, t, hold)
+    J(f'tl.to("#{pid}-head", {{rotation:-5, duration:0.3, yoyo:true, repeat:1, repeatDelay:{max(0.1, hold - 0.3):.2f}, svgOrigin:"500 900"}}, {t:.2f});')
+
+caminar("p1", F(5) - 0.1)
+caminar("p2", F(8) - 0.1)
+caminar("p3", F(11) - 0.1)
+caminar("p5", F(21) - 0.1)
+caminar("p4", P("genes") - 0.9, desde=380, dur=1.1)
+# gestos
+J(f'tl.to("#p0-eyes", {{y:-6, duration:0.3}}, {P("empiezas"):.2f}); tl.to("#p0-eyes", {{y:0, duration:0.3}}, {P("bueno"):.2f});')
+encoger("p0", P("cien") + 0.1, hold=1.0)
+tf = P("ojos") + 0.35
+J(f'tl.to("#p1-mouthO", {{opacity:1, scale:0.7, duration:0.12, svgOrigin:"500 822"}}, {tf:.2f}); tl.to("#p1-mouth", {{opacity:0, duration:0.12}}, {tf:.2f});')
+J(f'tl.to("#p1-fringe", {{attr:{{d:"{fringe_path(24)}"}}, duration:0.25, ease:"power2.out"}}, {tf + 0.1:.2f});')
+J(f'tl.to("#p1-fringe", {{attr:{{d:"{fringe_path(56)}"}}, duration:0.5, ease:"bounce.out"}}, {tf + 0.45:.2f});')
+J(f'tl.to("#p1-mouthO", {{opacity:0, duration:0.12}}, {tf + 0.5:.2f}); tl.to("#p1-mouth", {{opacity:1, duration:0.12}}, {tf + 0.5:.2f});')
+encoger("p1", P("aguanta") + 0.1, hold=0.8)
+for k in range(3):
+    J(f'tl.to("#p2-head", {{rotation:4, duration:0.12, yoyo:true, repeat:1, ease:"power2.out", svgOrigin:"500 900"}}, {P("nudos") + 0.45 + k * 0.64:.2f});')
+J(f'tl.to("#p2-head", {{rotation:6, duration:0.4, yoyo:true, repeat:1, repeatDelay:0.8, svgOrigin:"500 900"}}, {P("manana") - 0.2:.2f});')
+J(f'tl.to("#p3-eyes", {{y:7, duration:0.25, yoyo:true, repeat:1, repeatDelay:0.9}}, {P("cremallera"):.2f});')
+encoger("p4", P("nunca"), hold=1.0)
+brazo("p5", "R", -55, P("cintura") - 0.2, 1.4)
+brazo("p0", "R", -158, P("solo", 2) - 0.6, 1.0) if False else None
+
+# las tarjetas flotan suavemente mientras están en pantalla
+for sel, t0, t1 in (("#c0", P("cien"), P("mes", 1)), ("#cal0", P("centimetro"), F(5)), ("#c1", P("siete"), P("flequillo")),
+                    ("#c2", P("treinta"), P("nudos")), ("#c3", P("cuarenta"), P("puertas")), ("#c5", P("setenta"), F(23)),
+                    ("#panel", P("perdido"), DUR - 1), ("#reloj", P("media"), F(11))):
+    reps = max(1, int((t1 - t0) / 1.2))
+    J(f'tl.to("{sel}", {{y:-12, duration:0.6, ease:"sine.inOut", yoyo:true, repeat:{reps}}}, {t0 + 0.5:.2f});')
 
 # ritmo: golpes de zoom y cambios de ángulo en las palabras fuertes
 for w, n in (("seis", 1), ("treinta", 1), ("cuarenta", 1), ("setenta", 1), ("sopa", 1), ("genes", 1), ("cintura", 1), ("ochenta", 1), ("ojos", 1), ("nudos", 1)):
@@ -576,7 +643,7 @@ J(f'tl.to("#camino", {{strokeDasharray:"0 20000", duration:{back:.2f}, ease:"pow
 J(f'tl.to("#world", {{x:{540 - s0 * 1.55:.1f}, y:{960 - 760 * 1.55:.1f}, scale:1.55, duration:{back:.2f}, ease:"power3.inOut"}}, {t:.2f});')
 J(f'tl.to("#lejos", {{x:{(540 - s0 * 1.55) * 0.35:.1f}, duration:{back:.2f}, ease:"power3.inOut"}}, {t:.2f});')
 J(f'tl.to("#world", {{filter:"blur(6px)", duration:{back / 2:.2f}, ease:"sine.in"}}, {t:.2f}); tl.to("#world", {{filter:"blur(0px)", duration:{back / 2 - 0.05:.2f}, ease:"sine.out"}}, {t + back / 2:.2f});')
-J(f'tl.fromTo("#p0-one", {{rotation:-35}}, {{rotation:-35, duration:0.01}}, {DUR - 0.04:.2f});')   # mismo estado que el fotograma 0
+J(f'tl.to("#p0-one", {{rotation:0, scale:1, duration:0.4, svgOrigin:"500 646"}}, {DUR - 0.45:.2f});')   # mismo estado que el fotograma 0
 FX_EV.append(("whoosh", t))
 
 nA = 6
@@ -605,7 +672,7 @@ for i in range(46):
     x = random.uniform(-300, WORLD_W * 0.6)
     y = random.uniform(120, 1500)
     sc = random.uniform(0.7, 1.6)
-    LEJOS.append(f'<svg class="dood" id="dood{i}" style="left:{x:.0f}px;top:{y:.0f}px;opacity:{random.uniform(0.10, 0.22):.2f}" width="60" height="60" viewBox="0 0 60 60" overflow="visible">'
+    LEJOS.append(f'<svg class="dood" id="dood{i}" style="left:{x:.0f}px;top:{y:.0f}px;opacity:{random.uniform(0.05, 0.11):.2f}" width="60" height="60" viewBox="0 0 60 60" overflow="visible">'
                  f'<g transform="scale({sc:.2f})">{random.choice(DOOD)}</g></svg>')
     n = random.choice([3, 4, 5])
     J(f'tl.fromTo("#dood{i}", {{y:0, rotation:0}}, {{y:{random.uniform(-60, -20):.0f}, rotation:{random.choice([-1, 1]) * random.uniform(20, 60):.0f}, duration:{DUR / (2 * n):.4f}, ease:"sine.inOut", yoyo:true, repeat:{2 * n - 1}, immediateRender:false}}, 0);')
@@ -660,7 +727,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
 #lejos{{position:absolute;left:0;top:0;width:{WORLD_W}px;height:1920px}}
 #calido{{position:absolute;inset:0;background:radial-gradient(90% 55% at 30% 30%, rgba(255,170,190,0.45), rgba(255,170,190,0) 70%), radial-gradient(80% 50% at 80% 75%, rgba(120,200,230,0.35), rgba(120,200,230,0) 70%)}}
 .dood{{position:absolute;overflow:visible}}
-.rayos{{position:absolute;width:1600px;height:1600px;border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(255,236,225,0.09) 0deg 7deg, rgba(255,236,225,0) 7deg 20deg);
+.rayos{{position:absolute;width:1600px;height:1600px;border-radius:50%;background:repeating-conic-gradient(from 0deg, rgba(255,236,225,0.05) 0deg 7deg, rgba(255,236,225,0) 7deg 20deg);
   -webkit-mask-image:radial-gradient(circle, #000 12%, rgba(0,0,0,0) 62%);mask-image:radial-gradient(circle, #000 12%, rgba(0,0,0,0) 62%)}}
 .blob{{position:absolute;border-radius:50%;background:#ffd9c7;filter:blur(30px)}}
 #camA,#camB{{position:absolute;left:0;top:0;width:1080px;height:1920px;transform-origin:50% 50%}}
@@ -684,6 +751,8 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
 .reloj{{position:absolute;width:220px;height:220px;border-radius:50%;background:#fbf8f2;border:12px solid #d8cdbb;box-shadow:0 14px 30px rgba(0,0,0,0.25)}}
 .aguja{{position:absolute;left:94px;bottom:98px;width:8px;border-radius:6px;background:#1d2b33;transform-origin:50% 100%}}
 .mota{{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff6e0}}
+#vineta{{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 45%, rgba(0,0,0,0) 55%, rgba(18,16,48,0.38) 100%);pointer-events:none}}
+#grano{{position:absolute;left:0;top:0;opacity:0.05;mix-blend-mode:overlay;pointer-events:none}}
 #marca{{position:absolute;left:30px;top:1180px;transform:rotate(-90deg);transform-origin:0 0;font:700 28px Inter;letter-spacing:0.02em;color:#ffffff;opacity:0.32;text-shadow:0 2px 6px rgba(20,18,50,0.35);pointer-events:none}}
 #subs{{position:absolute;left:70px;right:70px;top:240px;height:220px}}
 .sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:500 66px Inter;color:rgba(214,216,236,0.62);
@@ -707,6 +776,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
   </div>
   </div></div>
   <div id="marca">@mundo.supuesto</div>
+  <div id="vineta"></div><svg id="grano" width="1080" height="1920"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.9 0"/></filter><rect width="1080" height="1920" filter="url(#gr)"/></svg>
   <div id="subs" data-layout-allow-overlap>{"".join(SUBS)}</div>
   <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="{DUR}" data-track-index="5" data-volume="1"></audio>
 </div>

@@ -313,8 +313,16 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
   letra grande de peso medio; las palabras aún no dichas en gris suave, la que se dice se ILUMINA en blanco y negrita
   (y se queda blanca), y lo importante se marca con un RECUADRO AZUL tipo selección de texto (borde azul fino y dos
   puntitos en las esquinas). Nada de fondos de color rellenos.
-- Voz GRATIS (Kokoro `em_alex` con `npx hyperframes tts`; pip install kokoro-onnx soundfile). La voz de ElevenLabs
-  cuesta créditos: no usarla salvo que el usuario lo pida.
+- VOZ (usuario 01-11-2026: la de Kokoro «es horrenda»): NARRADOR ESPAÑOL SERIO de ElevenLabs
+  «Guillermo Brazález (Narración)» voice_id K4nxTLzNhn6Brfsfx5Vj, eleven_multilingual_v2, UNA sola toma
+  (generations_count 1) con TODO el guion en una llamada (~930 créditos reales para ~900 caracteres; el estimador
+  dice más). Avisar del coste antes. Luego `voz_el/partir.py` trocea por frases → voz/lN.wav → `montar_voz.py`.
+  (Voz gratis buena solo si el usuario desbloquea speech.platform.bing.com: es-ES-AlvaroNeural con edge-tts.)
+- GUION: nada de enumerar etapas («Uno. Mes seis…»): decirlo directo («A los seis meses, ya tienes…»).
+- PERSONAJE VIVO Y ADULTO: camina hasta cada etapa (pasos alternos), se balancea, mueve cabeza y brazos todo el rato,
+  y gesticula con lo que se cuenta (encoge hombros, se sopla el flequillo, señala…). Proporciones de adulto, ojos con
+  blanco y párpado, sin coloretes. Gestos en capas distintas del balanceo (armXg / headw) para que no se pisen.
+- Revisar que nada «flote» (p. ej. el primer pelo tiene que nacer del cráneo en todos los fotogramas, también el 0).
 - CUENTA: @mundo.supuesto (TikTok, Instagram, Facebook y YouTube). MARCA DE AGUA SIEMPRE en todos estos vídeos:
   «@mundo.supuesto» en vertical junto al borde izquierdo (#marca en gen.py: Inter 700 28px, blanco, opacidad 0,32),
   pequeña y transparente, fuera de los botones de las apps. En la descripción: «sígueme en @mundo.supuesto».
@@ -327,7 +335,9 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
 - REVISAR TODOS LOS PLANOS antes de entregar (snapshots cada ~2 s): nada cortado por los bordes, nada que «salga
   de la nada» (todo objeto/mechón nace de algo visible), carteles que no tapen al personaje, nada que se quede
   colgado al cambiar de escena, gráficas que no se vean vacías.
-- ENTREGA (solo esto): el MP4 CON subtítulos (nada de versión sin subtítulos, portadas ni otros archivos) + en el
+- MINIATURA: SIEMPRE al acabar (usuario 01-11-2026): portada 9:16 `miniatura/miniatura_9x16.png` con
+  `node miniatura/hacer.js` (personajes sacados del propio vídeo, título con recuadro azul, antes/después).
+- ENTREGA: el MP4 CON subtítulos + la MINIATURA (nada de versión sin subtítulos ni otros archivos) + en el
   mensaje UNA descripción para copiar y pegar: el texto de los subtítulos + una frase que invite a COMPARTIR y a
   SEGUIR la cuenta para más + al final 4 hashtags del tema con más clics (buscar cuáles en la web).
 
