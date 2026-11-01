@@ -89,6 +89,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/streamer_06.mp4` | `quizzes/streamer_06.json` | 89 s | STREAMER: TheGrefg (formato del nº5; extra llamada «EXCLUSIVA» con `extra_nombre`) |
 | `salida/streamer_07.mp4` | `quizzes/streamer_07.json` | 89 s | STREAMER: Plex (foto vertical: `foco` en el centro de la CABEZA, `zoom_cam` 2.0) |
 | `salida/hora_del_quiz_08.mp4` | `quizzes/hora_del_quiz_08.json` | 90 s | Quiz de MÉXICO (modo `mexico`: bandera gigante ondeando en el gancho, papel picado, sarape, voz con acento mexicano y risa) = PLANTILLA DE PAÍS |
+| `salida/evita_01.mp4` | `quizzes/evita_01.json` | 90 s | NO DIGAS LO MISMO QUE YO nº1 (juego desde el fotograma 0, 8 rondas, pausa «¿sigues dentro?» antes de la penúltima) = PLANTILLA |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -413,8 +414,12 @@ que pausen e interactúen. Cambiar pruebas y retos en cada vídeo (no repetir fr
   prohibidas; RONDA FINAL oscura con rayos y calaveras (nº1: número del 1 al 10 → «¡El 7! ¡Lo sabía!»).
 - Cierre: «¿En qué ronda te han eliminado?» (chips 1-8) + «¿Qué categoría quieres ahora? ¡Coméntalo y apoya el vídeo!».
 - Dibujos 3D en `assets/evita/` (el usuario eligió dibujos gratis en vez de fotos para este formato).
-- ESTADO nº1 (01-11-2026): diseño hecho; se ACABARON LOS CRÉDITOS de ElevenLabs con 6/17 voces generadas
-  (`--frases-pendientes` lista las 11 que faltan). Montar cuando haya créditos (no mezclar con otra voz).
+- PAUSA ANTES DE LA PENÚLTIMA RONDA (petición del usuario: «si has llegado hasta aquí sígueme y apoya el vídeo», y
+  corrección: «que no parezca el final, que se sepa que sigues jugando»): `cta_voz` + `cta_antes` (índice de ronda).
+  Escena `draw_cta` DENTRO del juego: barra de rondas y título siguen, sello verde «✓ RONDA N SUPERADA»,
+  «¿SIGUES DENTRO?», aviso compacto tipo notificación (logo + «+» + «¡SÍGUEME! Y APOYA EL VÍDEO» + corazón) y
+  «QUEDAN 2 RONDAS» con las siguientes BLOQUEADAS (candado) + «¡SIGUE JUGANDO!». Voz acaba con «¡Quedan dos rondas!».
+- Nº1 (`evita_01`, 01-11-2026): 89,9 s, ~1.250 créditos de voz (18 frases; se recargaron créditos a mitad).
 
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
 CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,
