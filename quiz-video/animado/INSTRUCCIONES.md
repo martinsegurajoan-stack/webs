@@ -5,6 +5,14 @@ cuenta @mundo.supuesto). Proyecto de referencia: `quiz-video/animado/pelo5/` (c�
 `quiz-video/animado/pelo5/COMO-REHACERLO.md`). Rama: `claude/tiktok-quiz-video-generator-nub6w6`.
 Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 
+## 0. REGLAS GENERALES (usuario, 01-11-2026 — SIEMPRE)
+- Cada vídeo se hace con TODAS las skills instaladas aplicadas al máximo (HyperFrames + registry de transiciones,
+  cámara y tipografía cinética; Remotion como apoyo), y cada vídeo tiene que ser MÁS PROFESIONAL que el anterior.
+- ESCENARIOS DISTINTOS según lo que se cuenta: no tiene por qué ser la misma escena todo el rato. Ej.: «¿qué pasa si
+  te ingresan en el hospital?» → plano del baño cuando va al baño, la habitación, el pasillo, el quirófano… Cada
+  etapa en su escenario dibujado, con transiciones con sentido entre ellos.
+- ENTREGA SIEMPRE: MP4 + miniatura para TikTok/Instagram + descripción para copiar y pegar.
+
 ## 1. Cuenta y marca
 - Nombre en TikTok, Instagram, Facebook y YouTube: **@mundo.supuesto**.
 - Foto de perfil: `quiz-video/marca/perfil_mundo_supuesto.png` (planeta coral con anillo en bucle, fondo lila).
