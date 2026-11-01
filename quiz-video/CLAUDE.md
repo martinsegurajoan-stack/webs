@@ -313,19 +313,18 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
   letra grande de peso medio; las palabras aún no dichas en gris suave, la que se dice se ILUMINA en blanco y negrita
   (y se queda blanca), y lo importante se marca con un RECUADRO AZUL tipo selección de texto (borde azul fino y dos
   puntitos en las esquinas). Nada de fondos de color rellenos.
-- VOZ (usuario 01-11-2026: la de Kokoro «es horrenda»): NARRADOR ESPAÑOL SERIO de ElevenLabs
-  «Guillermo Brazález (Narración)» voice_id K4nxTLzNhn6Brfsfx5Vj, eleven_multilingual_v2, UNA sola toma
-  (generations_count 1) con TODO el guion en una llamada (~930 créditos reales para ~900 caracteres; el estimador
-  dice más). Avisar del coste antes. Luego `voz_el/partir.py` trocea por frases → voz/lN.wav → `montar_voz.py`.
-  (Voz gratis buena solo si el usuario desbloquea speech.platform.bing.com: es-ES-AlvaroNeural con edge-tts.)
+- VOZ: «Sara Martin 3» de ElevenLabs (voice_id gD1IexrzCvsXPHUuT0s3), IDÉNTICA, sin tocar ajustes, eleven_multilingual_v2,
+  UNA toma (generations_count 1) con TODO el guion en una llamada (~940 créditos reales). Tono algo más alegre y
+  enganchante con la puntuación del guion (¡…!, «…» de intriga), nunca cambiando la voz. Avisar del coste antes.
+  Luego `voz_el/partir.py` trocea por frases → voz/lN.wav → `montar_voz.py` (GAP 0,12 s para que tenga ritmo).
 - GUION: nada de enumerar etapas («Uno. Mes seis…»): decirlo directo («A los seis meses, ya tienes…»).
 - PERSONAJE VIVO Y ADULTO: camina hasta cada etapa (pasos alternos), se balancea, mueve cabeza y brazos todo el rato,
   y gesticula con lo que se cuenta (encoge hombros, se sopla el flequillo, señala…). Proporciones de adulto, ojos con
   blanco y párpado, sin coloretes. Gestos en capas distintas del balanceo (armXg / headw) para que no se pisen.
 - Revisar que nada «flote» (p. ej. el primer pelo tiene que nacer del cráneo en todos los fotogramas, también el 0).
 - CUENTA: @mundo.supuesto (TikTok, Instagram, Facebook y YouTube). MARCA DE AGUA SIEMPRE en todos estos vídeos:
-  «@mundo.supuesto» en vertical junto al borde izquierdo (#marca en gen.py: Inter 700 28px, blanco, opacidad 0,32),
-  pequeña y transparente, fuera de los botones de las apps. En la descripción: «sígueme en @mundo.supuesto».
+  «@mundo.supuesto» ABAJO EN HORIZONTAL, centrada (#marca en gen.py: top 1775px, Inter 700 28px, blanco,
+  opacidad 0,32), pequeña y transparente. En la descripción: «sígueme en @mundo.supuesto».
 - CÁMARA ADICTIVA (usuario 01-11-2026): nunca quieta (deriva suave continua), golpes de zoom en palabras fuertes,
   giros de ángulo (dutch tilt) en viajes y momentos de impacto, zooms naturales con easing; que cuadre en el bucle.
 - FONDO CON VIDA: rayos de luz que giran tras cada estación, manchas de luz que flotan, garabatos/destellos temáticos
