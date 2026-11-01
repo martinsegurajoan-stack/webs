@@ -314,7 +314,8 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
   letra grande de peso medio; las palabras aún no dichas en gris suave, la que se dice se ILUMINA en blanco y negrita
   (y se queda blanca), y lo importante se marca con un RECUADRO AZUL tipo selección de texto (borde azul fino y dos
   puntitos en las esquinas). Nada de fondos de color rellenos.
-- VOZ: «Sara Martin 3» de ElevenLabs (voice_id gD1IexrzCvsXPHUuT0s3), IDÉNTICA, sin tocar ajustes, eleven_multilingual_v2,
+- VOZ FIJA (01-11-2026): «Juanjo Viral» 30jLfQdV8RTduXvosh02, eleven_v4, SIN RISAS (ver animado/INSTRUCCIONES.md).
+  Antes: «Sara Martin 3» de ElevenLabs (voice_id gD1IexrzCvsXPHUuT0s3), IDÉNTICA, sin tocar ajustes, eleven_multilingual_v2,
   UNA toma (generations_count 1) con TODO el guion en una llamada (~940 créditos reales). Tono algo más alegre y
   enganchante con la puntuación del guion (¡…!, «…» de intriga), nunca cambiando la voz. Avisar del coste antes.
   Luego `voz_el/partir.py` trocea por frases → voz/lN.wav → `montar_voz.py` (GAP 0,12 s para que tenga ritmo).

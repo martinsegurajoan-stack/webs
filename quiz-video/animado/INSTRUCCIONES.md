@@ -29,6 +29,13 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - Puntuación que dé vida a la voz: «¡…!» en los datos fuertes y «…» para crear intriga.
 
 ## 3. Voz
+- **VOZ FIJA DE ESTE FORMATO (usuario, 01-11-2026: «siempre te pediré con esta voz»):** ElevenLabs
+  **«Juanjo Viral – Energetic & Punchy»**, voice_id `30jLfQdV8RTduXvosh02`, modelo `eleven_v4` (si falla,
+  `eleven_multilingual_v2`), UNA toma con todo el guion (~900 créditos). Etiquetas solo [curious], [surprised],
+  [excited], [whispers], [dramatically], [warmly]. **PROHIBIDO que se ría**: nada de [laughs], [laughs softly],
+  [amused] ni [mischievously]. Ralentizar con `atempo=0.94` y trocear con `voz_el/partir.py` (revisar los cortes
+  con silencedetect y corregirlos a mano en `voz_el/cortes.txt` si alguna frase queda mal). Proyecto: `animado/pelo10b/`.
+- Lo de abajo (Álvaro, Sara, Piper) queda como alternativa SOLO si el usuario lo pide.
 - La voz de Kokoro (em_alex) NO: al usuario le pareció horrible.
 - **Opción gratis (la que quiere probar ahora el usuario):** Microsoft **es-ES-AlvaroNeural** con `edge-tts`
   (`pip install edge-tts`), tono animado: `--rate=+8% --pitch=+2Hz` como punto de partida. Antes de hacer el
@@ -49,6 +56,10 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   estrellitas ni puntos que parpadean. Viajes de cámara suaves (1,2 s) y solo 2 golpes de zoom suaves en todo el vídeo.
 - El bucle final se hace con un CORTE limpio (oscurecido breve) al decir «con un solo pelo», no con un barrido.
 - Duración máxima 80 s. Proyecto de este vídeo: `animado/pelo10/`.
+
+## 3c. Línea de tiempo (HUD)
+- Bajo los subtítulos, una línea «0 · 1 · 3 · 5 · 7 · 10 años» con un punto que avanza y una etiqueta con la etapa
+  («AÑO 3 · 45 cm», «7 AÑOS · SE PARA»…). Se aparta cuando hay una gráfica o un plano grande (récord).
 
 ## 4. Estilo visual
 - Ilustración 2D cuidada y ADULTA, nada infantil («no un dibujo de niño de 4 años»).
