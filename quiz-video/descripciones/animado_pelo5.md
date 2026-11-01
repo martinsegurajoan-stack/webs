@@ -9,6 +9,6 @@ Cuatro. Y aquí viene lo que casi nadie sabe. Tu pelo puede dejar de crecer. Cad
 Si tus genes aguantan, a los cinco años llegas a setenta y cinco centímetros. Casi hasta la cintura. Y por el camino habrás perdido entre noventa mil y ciento ochenta mil pelos.
 Porque todo empezó con un solo pelo.
 
-📲 Compártelo con ese amigo que no se corta el pelo nunca y sígueme para más «¿Qué pasaría si…?» 🔁
+📲 Compártelo con ese amigo que no se corta el pelo nunca y sigue a @mundo.supuesto para más 🔁
 
 #fyp #curiosidades #sabiasque #pelo

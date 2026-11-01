@@ -39,6 +39,7 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   subtítulos arriba que se iluminan palabra a palabra con recuadro azul de selección en lo importante, fondo propio, voz gratis; ENTREGAR SOLO el MP4 con subtítulos + descripción para
   copiar (subtítulos + invitar a compartir y seguir + 4 hashtags del tema). Cámara adictiva (zooms, ángulos), fondo con
   vida, revisar TODOS los planos. Ver la sección en `quiz-video/CLAUDE.md`.
+  Cuenta @mundo.supuesto: MARCA DE AGUA «@mundo.supuesto» SIEMPRE (vertical, borde izquierdo, transparente, pequeña).
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.

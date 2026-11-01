@@ -684,6 +684,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
 .reloj{{position:absolute;width:220px;height:220px;border-radius:50%;background:#fbf8f2;border:12px solid #d8cdbb;box-shadow:0 14px 30px rgba(0,0,0,0.25)}}
 .aguja{{position:absolute;left:94px;bottom:98px;width:8px;border-radius:6px;background:#1d2b33;transform-origin:50% 100%}}
 .mota{{position:absolute;width:10px;height:10px;border-radius:50%;background:#fff6e0}}
+#marca{{position:absolute;left:30px;top:1180px;transform:rotate(-90deg);transform-origin:0 0;font:700 28px Inter;letter-spacing:0.02em;color:#ffffff;opacity:0.32;text-shadow:0 2px 6px rgba(20,18,50,0.35);pointer-events:none}}
 #subs{{position:absolute;left:70px;right:70px;top:240px;height:220px}}
 .sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:500 66px Inter;color:rgba(214,216,236,0.62);
   text-shadow:0 3px 16px rgba(20,18,50,0.55);line-height:1.22;letter-spacing:-0.01em}}
@@ -705,6 +706,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
     {"".join(H)}
   </div>
   </div></div>
+  <div id="marca">@mundo.supuesto</div>
   <div id="subs" data-layout-allow-overlap>{"".join(SUBS)}</div>
   <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="{DUR}" data-track-index="5" data-volume="1"></audio>
 </div>

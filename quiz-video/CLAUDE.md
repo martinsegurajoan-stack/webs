@@ -315,6 +315,9 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
   puntitos en las esquinas). Nada de fondos de color rellenos.
 - Voz GRATIS (Kokoro `em_alex` con `npx hyperframes tts`; pip install kokoro-onnx soundfile). La voz de ElevenLabs
   cuesta créditos: no usarla salvo que el usuario lo pida.
+- CUENTA: @mundo.supuesto (TikTok, Instagram, Facebook y YouTube). MARCA DE AGUA SIEMPRE en todos estos vídeos:
+  «@mundo.supuesto» en vertical junto al borde izquierdo (#marca en gen.py: Inter 700 28px, blanco, opacidad 0,32),
+  pequeña y transparente, fuera de los botones de las apps. En la descripción: «sígueme en @mundo.supuesto».
 - CÁMARA ADICTIVA (usuario 01-11-2026): nunca quieta (deriva suave continua), golpes de zoom en palabras fuertes,
   giros de ángulo (dutch tilt) en viajes y momentos de impacto, zooms naturales con easing; que cuadre en el bucle.
 - FONDO CON VIDA: rayos de luz que giran tras cada estación, manchas de luz que flotan, garabatos/destellos temáticos
