@@ -66,6 +66,13 @@ def build_timeline(c, voice):
     t = 0.0
     n = len(c["rondas"])
     for k, r in enumerate(c["rondas"]):
+        if c.get("cta_voz") and k == int(c.get("cta_antes", n - 2)):
+            # «Si has llegado hasta aquí… ¡sígueme y apoya el vídeo!» antes de la penúltima ronda
+            sig, d = vsay(voice, c["cta_voz"])
+            ev += [("fx", "whoosh", t), ("fx", "pop", t + 0.2), ("voice", sig, t + 0.15), ("fx", "correct", t + 0.15 + d * 0.6)]
+            dur = max(2.8, 0.15 + d + 0.35)
+            scenes.append({"kind": "cta", "start": t, "dur": dur, "k": k, "n": n})
+            t += dur
         st = t
         final = k == n - 1
         cd = r.get("segundos", 4 if final else CD)
@@ -151,7 +158,7 @@ def _init(state):
 # ------------------------------------------------------------------ fondo
 
 def background(sc, lt, t):
-    key = sc["k"] if sc["kind"] == "ronda" else "outro"
+    key = sc["k"] if sc["kind"] in ("ronda", "cta") else "outro"
     img = _S["bg"][key].copy()
     lay = Image.new("RGBA", (W, H), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
@@ -173,8 +180,9 @@ def background(sc, lt, t):
         d.rectangle((x - s, y - s * 0.45, x + s, y + s * 0.45), fill=col + (150,))
     img.alpha_composite(lay)
     # dibujos de la categoría flotando (en la final: calaveras y rayos)
-    if sc["kind"] == "ronda":
-        names = ["calavera", "rayo", "fuego"] if final else sc["r"].get("flotan", [sc["r"]["icono"]])
+    if sc["kind"] in ("ronda", "cta"):
+        r_ = sc.get("r") or _S["c"]["rondas"][sc["k"]]
+        names = ["calavera", "rayo", "fuego"] if final else r_.get("flotan", [r_["icono"]])
         for j, (x0, y0, sz, sp, ph) in enumerate(_S["flo"]):
             im = spr(names[j % len(names)], sz)
             y = (y0 - sp * t) % (H + 200) - 100
@@ -399,7 +407,70 @@ def draw_outro(img, d, sc, lt):
             d.rectangle((x - sz_, y - sz_ * 0.5, x + sz_, y + sz_ * 0.5), fill=col + (230,))
 
 
-DRAW = {"ronda": draw_ronda, "outro": draw_outro}
+def draw_cta(img, d, sc, lt):
+    """Pausa DENTRO del juego (no parece un final): barra de rondas y título siguen, «✓ RONDA N SUPERADA»,
+    «¿SIGUES DENTRO?», aviso de seguir/apoyar y «QUEDAN 2 RONDAS» con las siguientes bloqueadas."""
+    progress(img, d, sc, lt)
+    title(img, d, sc, lt)
+    k, n = sc["k"], sc["n"]
+    # sello verde «RONDA k SUPERADA»
+    a = ease_out(min(1, lt / 0.18))
+    s_ = 1.6 - 0.6 * a
+    lay = Image.new("RGBA", (700, 120), (0, 0, 0, 0))
+    ld = ImageDraw.Draw(lay)
+    ld.rounded_rectangle((6, 6, 694, 114), 30, fill=GREEN, outline=WHITE, width=8)
+    ld.line([(70, 60), (95, 85), (135, 38)], fill=WHITE, width=12)
+    ld.text((395, 62), f"RONDA {k} SUPERADA", font=tfont(56), fill=WHITE, anchor="mm")
+    lay = lay.resize((int(700 * s_), int(120 * s_)), Image.BILINEAR).rotate(-4, resample=Image.BICUBIC, expand=True)
+    img.alpha_composite(lay, (540 - lay.width // 2, 420 - lay.height // 2))
+    # tarjeta «¿SIGUES DENTRO?»
+    b = pop(lt, 0.15, 0.35)
+    if b > 0:
+        y = 520 + (1 - b) * 250
+        rr(d, (98, y + 14, 998, y + 214), 40, (0, 0, 0, 70))
+        rr(d, (90, y, 990, y + 200), 40, WHITE, outline=YEL, width=10)
+        d.text((540, y + 72), "¿SIGUES DENTRO?", font=tfont(88), fill=RED, anchor="mm")
+        d.text((540, y + 150), "SI HAS LLEGADO HASTA AQUÍ…", font=tfont(46), fill=(110, 100, 130), anchor="mm")
+    # aviso de seguir / apoyar (compacto, como una notificación)
+    c = pop(lt, 0.5, 0.35)
+    if c > 0:
+        y = 800 + (1 - c) * 200
+        rr(d, (98, y + 12, 998, y + 222), 36, (0, 0, 0, 80))
+        rr(d, (90, y, 990, y + 210), 36, (30, 14, 50, 235), outline=(255, 70, 170), width=6)
+        lg = _S["logo"].resize((170, 170), Image.LANCZOS)
+        img.alpha_composite(lg, (115, int(y + 20)))
+        pz = 1 + 0.12 * abs(math.sin(lt * 5))
+        bx, by = 270, y + 170
+        d.ellipse((bx - 30 * pz, by - 30 * pz, bx + 30 * pz, by + 30 * pz), fill=RED, outline=WHITE, width=5)
+        d.line([(bx - 14, by), (bx + 14, by)], fill=WHITE, width=7)
+        d.line([(bx, by - 14), (bx, by + 14)], fill=WHITE, width=7)
+        d.text((330, y + 70), "¡SÍGUEME!", font=tfont(72), fill=YEL, anchor="lm")
+        d.text((330, y + 150), "Y APOYA EL VÍDEO", font=tfont(56), fill=WHITE, anchor="lm")
+        hb = 1 + 0.2 * abs(math.sin(lt * 6))
+        paste_c(img, spr("corazon", int(110 * hb)), 905, y + 105, 1.0)
+    # siguientes rondas bloqueadas
+    e = pop(lt, 0.8, 0.35)
+    if e > 0:
+        text(d, (540, 1110), f"QUEDAN {n - k} RONDAS", tfont(int(70 * e)), WHITE, 10, DARK, sh=8)
+        for q, (lab, col) in enumerate(((f"RONDA {k + 1}", (60, 110, 255)), ("FINAL", (150, 20, 40)))):
+            x = 330 + q * 420
+            y = 1260 + 10 * math.sin(lt * 4 + q)
+            sh_ = math.sin(lt * 30) * 4 if q == 1 else 0
+            rr(d, (x - 175 + 6 + sh_, y - 95 + 12, x + 175 + 6 + sh_, y + 95 + 12), 30, (0, 0, 0, 80))
+            rr(d, (x - 175 + sh_, y - 95, x + 175 + sh_, y + 95), 30, col, outline=WHITE, width=7)
+            d.text((x + sh_, y - 40), lab, font=tfont(46), fill=WHITE, anchor="mm")
+            d.text((x - 25 + sh_, y + 30), "? ? ?", font=tfont(56), fill=WHITE, anchor="mm")
+            # candado
+            cx_, cy_ = x + 115 + sh_, y + 30
+            d.arc((cx_ - 15, cy_ - 34, cx_ + 15, cy_ - 4), 180, 360, fill=YEL, width=7)
+            d.rounded_rectangle((cx_ - 22, cy_ - 16, cx_ + 22, cy_ + 20), 6, fill=YEL)
+            if q == 1:
+                paste_c(img, spr("calavera", 70), x - 140 + sh_, y - 85, 1.0, angle=-12)
+        pulse = 1 + 0.06 * math.sin(lt * 9)
+        pill(d, 540, 1440, "¡SIGUE JUGANDO!", int(48 * pulse * e), YEL, DARK, pad=(30, 14))
+
+
+DRAW = {"ronda": draw_ronda, "outro": draw_outro, "cta": draw_cta}
 
 
 def shake(sc, lt):
