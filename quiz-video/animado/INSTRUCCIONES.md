@@ -78,6 +78,12 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - ESCENARIOS DECORADOS DEL TEMA (usuario 01-11-2026: «no una pared azul seca al fondo»): cada etapa en su set dibujado
   (dormitorio, baño, espacio, consulta, gimnasio…) con muebles y detalles; las habitaciones van seguidas como una casa
   de muñecas y la cámara pasa de una a otra. Referencia: `animado/tumbado5/`.
+- LÓGICA DE LOS SITIOS (usuario 01-11-2026: «¿el universo dentro de casa?»): cada cosa en un lugar que tenga sentido.
+  Dentro de casa solo lo que hay en una casa; el espacio se enseña SUBIENDO AL CIELO desde el tejado (nubes, pájaros
+  y aviones que cruzan) y luego el espacio con la Tierra abajo; para cambiar de lugar se usa un corte limpio
+  (`corte()` en tumbado5/gen.py). Nada de planetas pegados a una pared. Revisar también detalles como que la manta
+  se quede plana cuando el personaje se levanta.
+- Técnico: un movimiento de cámara tiene que TERMINAR antes del siguiente corte (si no, arrastra el plano a otro sitio).
 - Personaje: HOMBRE (si el tema lo permite), proporciones de adulto, ojos con blanco y párpado, nariz definida, sin
   coloretes, ropa con sombras. Si tiene barba y pelo: de COLOR DISTINTO (barba castaño rojizo con contorno).
 - El personaje NUNCA está quieto: camina hasta cada etapa (pasos alternos), se balancea, mueve cabeza y brazos, y

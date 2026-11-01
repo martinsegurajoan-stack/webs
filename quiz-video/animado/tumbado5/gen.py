@@ -45,7 +45,7 @@ SKIN, SKIN_D = "#f2c4a2", "#e0a582"
 SHIRT, SHIRT_D = "#e07a5f", "#c4614a"
 PANTS = "#3d405b"
 GOOD, BAD, KEY = "#3fbf7f", "#e5484d", "#f2b84b"
-WORLD_W, WORLD_H = 9000, 1920
+WORLD_W, WORLD_H = 13000, 1920
 FLOOR_Y = 1380
 ST = {"s0": 700, "s1": 2200, "s2": 3700, "s3": 5200, "s4": 6700, "s5": 8200, "s6": 9700}
 
@@ -359,7 +359,7 @@ def cama_tumbado(pid, cx, cy, s=0.62, inclin=0, **kw):
            + personaje(pid, **kw).replace("{x}", "0") +
            '</div></div>'
            # manta por encima del cuerpo (deja ver la cabeza)
-           f'<svg style="position:absolute;left:0;top:0;overflow:visible" width="1" height="1">'
+           f'<svg id="{pid}-cubre" style="position:absolute;left:0;top:0;overflow:visible" width="1" height="1">'
            f'<path id="{pid}-manta" d="M{cx + 40 * s:.0f},{cy - 205 * s:.0f} C{cx + 300 * s:.0f},{cy - 245 * s:.0f} {cx + 600 * s:.0f},{cy - 225 * s:.0f} {cx + 790 * s:.0f},{cy - 175 * s:.0f} '
            f'C{cx + 860 * s:.0f},{cy - 150 * s:.0f} {cx + 880 * s:.0f},{cy - 20 * s:.0f} {pie_x + 10:.0f},{m_top + 110 * s:.0f} L{cx + 10 * s:.0f},{m_top + 110 * s:.0f} '
            f'C{cx - 20 * s:.0f},{cy + 40 * s:.0f} {cx - 10 * s:.0f},{cy - 120 * s:.0f} {cx + 40 * s:.0f},{cy - 205 * s:.0f} Z" fill="url(#manta)"/>'
@@ -428,34 +428,70 @@ H.append(f'''<svg id="inodoro" style="position:absolute;left:{L1 + 640}px;top:12
 <path d="M-20,210 L300,210 C300,330 230,360 170,370 L170,430 L60,430 L60,370 C0,350 -20,300 -20,210 Z" fill="#ffffff"/>
 <ellipse cx="140" cy="212" rx="160" ry="26" fill="#e6e1d8"/></svg>''')
 
-# ---- 2 · ESPACIO + LABORATORIO de la agencia espacial
+# ---- 2 · LABORATORIO de la agencia espacial (estudio de reposo en cama)
 L2 = RL(2)
-estrellas = "".join(f'<circle cx="{random.uniform(10, 740):.0f}" cy="{random.uniform(20, 1900):.0f}" r="{random.choice([2, 2, 3, 4])}" fill="#fff" opacity="{random.uniform(0.4, 0.95):.2f}"/>' for _ in range(120))
-espacio = (f'<rect x="0" y="0" width="750" height="1920" fill="url(#espacioG)"/>{estrellas}'
-           '<circle cx="120" cy="1650" r="330" fill="#3f7fc4"/><path d="M-120,1520 C0,1450 120,1560 220,1480 C300,1420 380,1500 440,1560 L440,1980 L-120,1980 Z" fill="#5fae6e" opacity="0.85"/>'
-           '<circle cx="120" cy="1650" r="330" fill="none" stroke="#9fd3f5" stroke-width="18" opacity="0.4"/>'
-           '<circle cx="600" cy="300" r="70" fill="#e9dccb"/><circle cx="580" cy="280" r="14" fill="#cbbca8"/><circle cx="625" cy="320" r="10" fill="#cbbca8"/>')
-lab = (f'<rect x="750" y="0" width="750" height="{FLOOR}" fill="#eef1f6"/><rect x="750" y="{FLOOR}" width="750" height="{1920 - FLOOR}" fill="#c9ced8"/>'
-       f'<rect x="750" y="{FLOOR - 50}" width="750" height="50" fill="#ffffff"/><rect x="742" y="0" width="16" height="1920" fill="#3d405b"/>'
-       '<rect x="860" y="700" width="560" height="120" rx="18" fill="#1d2b33"/><text x="1140" y="752" text-anchor="middle" font-family="Inter" font-weight="900" font-size="36" fill="#f2b84b">LABORATORIO</text>'
-       '<text x="1140" y="798" text-anchor="middle" font-family="Inter" font-weight="700" font-size="28" fill="#fbf8f2">ESTUDIO DE REPOSO EN CAMA</text>'
-       '<rect x="1230" y="900" width="200" height="140" rx="14" fill="#1d2b33"/><path id="ecg" d="M1245,970 L1290,970 L1305,930 L1320,1010 L1335,970 L1415,970" stroke="#3fbf7f" stroke-width="6" fill="none"/>'
-       '<rect x="1322" y="1040" width="16" height="660" fill="#9aa3b5"/>')
-H.append(f'<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="espacioG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0e2c"/><stop offset="1" stop-color="#232a66"/></linearGradient></defs></svg>')
-H.append(sala(2, espacio + lab, ""))
-ASTRO = f'''<svg id="astro" style="position:absolute;left:{L2 + 280}px;top:640px;overflow:visible" width="10" height="10">
-<rect x="-40" y="140" width="80" height="120" rx="20" fill="#cfd6e4"/><rect x="40" y="130" width="200" height="230" rx="70" fill="#f4f6fb"/>
-<circle cx="140" cy="90" r="95" fill="#f4f6fb"/><ellipse cx="150" cy="95" rx="66" ry="56" fill="#1d2356"/><ellipse cx="130" cy="75" rx="22" ry="14" fill="#9fd3f5" opacity="0.7"/>
-<rect x="-10" y="170" width="70" height="40" rx="20" fill="#f4f6fb" transform="rotate(-30 25 190)"/><rect x="220" y="190" width="80" height="44" rx="22" fill="#f4f6fb" transform="rotate(35 260 212)"/>
-<rect x="70" y="340" width="60" height="120" rx="28" fill="#f4f6fb" transform="rotate(12 100 400)"/><rect x="150" y="340" width="60" height="120" rx="28" fill="#f4f6fb" transform="rotate(-18 180 400)"/>
-<rect x="100" y="190" width="80" height="50" rx="10" fill="#e5484d"/></svg>'''
-H.append(ASTRO)
-H.append(f'<div id="hueso" class="card" style="left:{L2 + 60}px;top:1120px;width:300px;padding:20px 24px"><div class="card-top" style="font-size:26px">TUS HUESOS</div>'
-         f'<svg width="250" height="110" viewBox="0 0 250 110"><path d="M40,40 a22,22 0 1,1 20,-25 L190,15 a22,22 0 1,1 20,25 a22,22 0 1,1 -20,25 L60,65 a22,22 0 1,1 -20,-25 Z" fill="#fbf3e6" stroke="#cbbca8" stroke-width="5"/>'
-         + "".join(f'<circle class="poro" cx="{70 + (i % 6) * 22}" cy="{30 + (i // 6) * 16}" r="5" fill="#cbbca8" opacity="0"/>' for i in range(18))
-         + f'</svg><div style="font:900 34px Inter;color:{BAD}">− CALCIO</div></div>')
-H.append(cama_tumbado("p2", L2 + 1000, 1300, s=0.5, cm=12, beard=10))
-H.append(f'<div id="pago" class="badge" style="left:{L2 + 880}px;top:1000px;background:{GOOD};font-size:50px">€ TE PAGAN</div>')
+H.append(sala(2, '<rect x="700" y="640" width="560" height="120" rx="18" fill="#1d2b33"/><text x="980" y="692" text-anchor="middle" font-family="Inter" font-weight="900" font-size="36" fill="#f2b84b">AGENCIA ESPACIAL</text>'
+              '<text x="980" y="738" text-anchor="middle" font-family="Inter" font-weight="700" font-size="28" fill="#fbf8f2">ESTUDIO DE REPOSO EN CAMA</text>'
+              # póster de un astronauta en la pared
+              '<rect x="110" y="560" width="300" height="400" rx="10" fill="#1d2356"/>' + "".join(f'<circle cx="{130 + (k * 53) % 260}" cy="{580 + (k * 97) % 360}" r="3" fill="#fff"/>' for k in range(22))
+              + '<circle cx="260" cy="1000" r="170" fill="#3f7fc4" clip-path="url(#posterclip)"/><circle cx="300" cy="700" r="46" fill="#f4f6fb"/><ellipse cx="305" cy="702" rx="30" ry="26" fill="#1d2356"/>'
+              '<rect x="270" y="740" width="70" height="90" rx="22" fill="#f4f6fb"/><rect x="110" y="560" width="300" height="400" rx="10" fill="none" stroke="#8a5a3c" stroke-width="14"/>'
+              # monitor de constantes
+              '<rect x="1230" y="900" width="200" height="140" rx="14" fill="#1d2b33"/><path id="ecg" d="M1245,970 L1290,970 L1305,930 L1320,1010 L1335,970 L1415,970" stroke="#3fbf7f" stroke-width="6" fill="none"/>'
+              '<rect x="1322" y="1040" width="16" height="660" fill="#9aa3b5"/>'
+              # carro con material
+              '<rect x="1020" y="1450" width="170" height="20" rx="8" fill="#9aa3b5"/><rect x="1030" y="1470" width="12" height="230" fill="#7c8496"/><rect x="1170" y="1470" width="12" height="230" fill="#7c8496"/>'
+              '<rect x="1050" y="1400" width="40" height="50" rx="6" fill="#e5484d"/><rect x="1100" y="1380" width="50" height="70" rx="8" fill="#dff1fb"/>'
+              + planta(60, 1610), pared_suelo("s2", "#eef1f6", "#dce3ec", "#c9ced8", "#aab1bf", rayas=False, zocalo="#ffffff")))
+H.append('<svg width="0" height="0" style="position:absolute"><defs><clipPath id="posterclip"><rect x="110" y="560" width="300" height="400"/></clipPath>'
+         '<linearGradient id="espacioG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#05071c"/><stop offset="1" stop-color="#1e2560"/></linearGradient>'
+         '<linearGradient id="cieloG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0e2c"/><stop offset="0.28" stop-color="#1e2a6b"/><stop offset="0.52" stop-color="#3f7fd0"/><stop offset="0.8" stop-color="#8cc8f2"/><stop offset="1" stop-color="#d6efff"/></linearGradient>'
+         '</defs></svg>')
+BED2 = (L2 + 500, 1330)
+H.append(cama_tumbado("p2", *BED2, s=0.62, cm=12, beard=10))
+H.append(f'<div id="pago" class="badge" style="left:{L2 + 820}px;top:1060px;background:{GOOD};font-size:50px">€ TE PAGAN</div>')
+H.append(f'<div id="inclina" class="badge" style="left:{L2 + 330}px;top:900px;background:#3d405b;font-size:40px">−6° CABEZA ABAJO</div>')
+
+# ---- CIELO: columna para subir desde el tejado hasta el espacio (fuera de la casa)
+SKX = 9400
+nubes = "".join(f'<g opacity="0.95"><ellipse cx="{cx}" cy="{cy}" rx="150" ry="55" fill="#ffffff"/><ellipse cx="{cx - 90}" cy="{cy + 15}" rx="95" ry="45" fill="#ffffff"/><ellipse cx="{cx + 95}" cy="{cy + 20}" rx="110" ry="42" fill="#f3f8ff"/></g>'
+                for cx, cy in ((260, 900), (1180, 420), (520, -200), (1250, -760), (300, -1350), (1050, -1900), (600, -2450)))
+casas = "".join(f'<rect x="{x}" y="{1920 - h}" width="{w}" height="{h}" fill="{c}"/><path d="M{x - 20},{1920 - h} L{x + w / 2:.0f},{1920 - h - 120} L{x + w + 20},{1920 - h} Z" fill="#8a4e3c"/>'
+                + "".join(f'<rect x="{x + 30 + k * 70}" y="{1920 - h + 60}" width="40" height="50" fill="#ffe7a6"/>' for k in range(max(1, (w - 40) // 70)))
+                for x, w, h, c in ((40, 330, 330, "#e9cbb0"), (420, 420, 420, "#f2d9c2"), (900, 300, 300, "#dcbfa5"), (1240, 240, 360, "#e9cbb0")))
+estrellas_cielo = "".join(f'<circle cx="{random.uniform(0, 1500):.0f}" cy="{random.uniform(-4200, -2600):.0f}" r="{random.choice([2, 2, 3])}" fill="#fff" opacity="{random.uniform(0.4, 0.9):.2f}"/>' for _ in range(90))
+H.append(f'<svg style="position:absolute;left:{SKX}px;top:-4200px;overflow:visible" width="1500" height="6420" viewBox="0 -4200 1500 6420">'
+         f'<rect x="0" y="-4200" width="1500" height="6120" fill="url(#cieloG)"/>{estrellas_cielo}{nubes}{casas}'
+         f'<rect x="0" y="1880" width="1500" height="340" fill="#6aa86b"/></svg>')
+PAJAROS = "".join(f'<path d="M{dx},{dy} q18,-16 36,0 q18,-16 36,0" stroke="#2b2f4a" stroke-width="7" fill="none" stroke-linecap="round"/>' for dx, dy in ((0, 0), (70, 40), (130, -20), (190, 30), (250, 5)))
+H.append(f'<svg id="pajaros" style="position:absolute;left:{SKX - 400}px;top:700px;overflow:visible" width="10" height="10">{PAJAROS}</svg>')
+H.append(f'<svg id="pajaros2" style="position:absolute;left:{SKX + 1700}px;top:-350px;overflow:visible" width="10" height="10">{PAJAROS}</svg>')
+AVION = ('<path d="M-300,22 L-40,22" stroke="#ffffff" stroke-width="10" opacity="0.7" stroke-linecap="round"/>'
+         '<path d="M0,10 L220,0 C250,0 262,14 250,26 L0,34 Z" fill="#f4f6fb"/><path d="M90,20 L40,-60 L80,-60 L150,18 Z" fill="#dfe5ee"/><path d="M90,26 L40,100 L80,100 L150,28 Z" fill="#cfd6e4"/>'
+         '<path d="M10,12 L-20,-40 L10,-40 L40,12 Z" fill="#e5484d"/>' + "".join(f'<circle cx="{60 + k * 26}" cy="16" r="5" fill="#9fd3f5"/>' for k in range(6)))
+H.append(f'<svg id="avion" style="position:absolute;left:{SKX - 500}px;top:-1150px;overflow:visible" width="10" height="10">{AVION}</svg>')
+H.append(f'<svg id="avion2" style="position:absolute;left:{SKX + 1800}px;top:-2050px;overflow:visible" width="10" height="10"><g transform="scale(-0.8,0.8)">{AVION}</g></svg>')
+
+# ---- ESPACIO: la Tierra abajo con su curva, la Luna y el astronauta
+SPX = 11200
+estrellas_esp = "".join(f'<circle cx="{random.uniform(-200, 1700):.0f}" cy="{random.uniform(-200, 1700):.0f}" r="{random.choice([2, 2, 3, 4])}" fill="#fff" opacity="{random.uniform(0.4, 0.95):.2f}"/>' for _ in range(160))
+H.append(f'<svg style="position:absolute;left:{SPX}px;top:0;overflow:visible" width="1500" height="1920" viewBox="0 0 1500 1920">'
+         f'<rect x="-200" y="-300" width="1900" height="2800" fill="url(#espacioG)"/>{estrellas_esp}'
+         '<circle cx="1180" cy="420" r="110" fill="#e9dccb"/><circle cx="1150" cy="390" r="22" fill="#cbbca8"/><circle cx="1215" cy="460" r="16" fill="#cbbca8"/>'
+         '<circle cx="750" cy="3700" r="2050" fill="#9fd3f5" opacity="0.35"/><circle cx="750" cy="3700" r="2000" fill="#3f7fc4"/>'
+         '<path d="M-260,1820 C40,1700 260,1790 520,1720 C760,1660 1000,1760 1240,1700 C1420,1660 1600,1720 1760,1700 L1760,2600 L-260,2600 Z" fill="#5fae6e" opacity="0.9"/>'
+         '<ellipse cx="420" cy="1760" rx="160" ry="30" fill="#ffffff" opacity="0.7"/><ellipse cx="1100" cy="1790" rx="200" ry="34" fill="#ffffff" opacity="0.6"/></svg>')
+H.append(f'<svg id="astro" style="position:absolute;left:{SPX + 600}px;top:620px;overflow:visible" width="10" height="10">'
+         '<rect x="-40" y="140" width="80" height="120" rx="20" fill="#cfd6e4"/><rect x="40" y="130" width="200" height="230" rx="70" fill="#f4f6fb"/>'
+         '<circle cx="140" cy="90" r="95" fill="#f4f6fb"/><ellipse cx="150" cy="95" rx="66" ry="56" fill="#1d2356"/><ellipse cx="130" cy="75" rx="22" ry="14" fill="#9fd3f5" opacity="0.7"/>'
+         '<rect x="-10" y="170" width="70" height="40" rx="20" fill="#f4f6fb" transform="rotate(-30 25 190)"/><rect x="220" y="190" width="80" height="44" rx="22" fill="#f4f6fb" transform="rotate(35 260 212)"/>'
+         '<rect x="70" y="340" width="60" height="120" rx="28" fill="#f4f6fb" transform="rotate(12 100 400)"/><rect x="150" y="340" width="60" height="120" rx="28" fill="#f4f6fb" transform="rotate(-18 180 400)"/>'
+         '<rect x="100" y="190" width="80" height="50" rx="10" fill="#e5484d"/></svg>')
+# tarjeta de los huesos: va en la capa de gráficos (no en el mundo), así acompaña la subida
+OVER = [f'<div id="hueso" class="card" style="left:60px;top:1240px;width:330px;padding:20px 24px"><div class="card-top" style="font-size:26px">TUS HUESOS</div>'
+        f'<svg width="280" height="110" viewBox="0 0 250 110"><path d="M40,40 a22,22 0 1,1 20,-25 L190,15 a22,22 0 1,1 20,25 a22,22 0 1,1 -20,25 L60,65 a22,22 0 1,1 -20,-25 Z" fill="#fbf3e6" stroke="#cbbca8" stroke-width="5"/>'
+        + "".join(f'<circle class="poro" cx="{70 + (i % 6) * 22}" cy="{30 + (i // 6) * 16}" r="5" fill="#cbbca8" opacity="0"/>' for i in range(18))
+        + f'</svg><div style="font:900 34px Inter;color:{BAD}">− CALCIO</div></div>']
 
 # ---- 3 · CONSULTA: corazón y riñón
 L3 = RL(3)
@@ -524,12 +560,19 @@ H.append(f'<svg style="position:absolute;left:0;top:0;overflow:visible" width="1
 for pid in ("p0", "p2", "p4", "p4s", "p5"):
     vida(pid)
 CAMS = {"cama0": (L0 + 660, 1150, 0.95), "cara0": (BED0[0] - 70, 1260, 1.5)}
+def corte(t, x, y, z):
+    """Corte limpio de una escena a otra: oscurece 0,14 s, cambia de plano y vuelve."""
+    J(f'tl.to("#dip", {{opacity:0.6, duration:0.14, ease:"power1.in"}}, {t - 0.14:.2f}); tl.to("#dip", {{opacity:0, duration:0.32}}, {t:.2f});')
+    J(f'tl.set("#world", {{x:{540 - x * z:.1f}, y:{960 - y * z:.1f}, scale:{z}}}, {t:.2f});')
+    J(f'tl.set("#lejos", {{x:{(540 - x * z) * 0.35:.1f}}}, {t:.2f});')
+    FX_EV.append(("whoosh", t - 0.1))
+
 def camk(t, nombre, dur=1.2, viaje=False):
     x, y, z = CAMS[nombre]
     cam(t, x, y, z, dur=dur, viaje=viaje)
 
 J('tl.set("#world", {x:%.1f, y:%.1f, scale:%.2f}, 0);' % (540 - CAMS["cara0"][0] * CAMS["cara0"][2], 960 - CAMS["cara0"][1] * CAMS["cara0"][2], CAMS["cara0"][2]))
-for sel in ["#escaras", "#fuerza", "#hueso", "#pago", "#bocadillo", "#p4s"]:
+for sel in ["#escaras", "#fuerza", "#hueso", "#pago", "#inclina", "#bocadillo", "#p4s"]:
     J(f'tl.set("{sel}", {{opacity:0}}, 0);')
 
 # 1 · gancho: cara en la almohada, la cámara se abre y enseña la cama
@@ -575,28 +618,41 @@ tve = P("venir")
 J(f'tl.to("#ruedas", {{opacity:1, duration:0.2}}, {tve - 0.6:.2f});')
 J(f'tl.to("#inodoro", {{y:-30, duration:0.12, yoyo:true, repeat:1}}, {tve - 0.4:.2f});')
 J(f'tl.to("#inodoro", {{x:-1060, duration:1.8, ease:"power2.inOut"}}, {tve - 0.15:.2f});')
-cam(tve, L0 + 860, 1150, 0.95, dur=1.8, ease="power2.inOut")
+cam(tve, L0 + 860, 1150, 0.95, dur=min(1.8, F(8) - tve - 0.3), ease="power2.inOut")
 J(f'tl.to("#inodoro", {{rotation:-4, duration:0.2, yoyo:true, repeat:5, transformOrigin:"50% 100%"}}, {tve - 0.15:.2f});')
 FX_EV.append(("whoosh", tve + 0.3))
 
-# 8 · un año: huesos como los de un astronauta (espacio)
+# 8 · un año: SUBIMOS AL CIELO (pájaros, aviones) y llegamos al espacio
 t = F(8)
-cam(t, L2 + 380, 1050, 0.95, dur=1.3, viaje=True)
-J(f'tl.fromTo("#astro", {{y:-20, rotation:-6}}, {{y:30, rotation:6, duration:2.2, ease:"sine.inOut", yoyo:true, repeat:5, transformOrigin:"50% 50%", immediateRender:false}}, {t:.2f});')
+corte(t, SKX + 750, 1250, 0.95)
+tas = P("astronauta")
+J(f'tl.to("#world", {{y:{960 - (-2950) * 0.95:.1f}, duration:{tas - 0.45 - t:.2f}, ease:"power1.inOut"}}, {t + 0.05:.2f});')
+J(f'tl.fromTo("#pajaros", {{x:0}}, {{x:2300, duration:3.2, ease:"none", immediateRender:false}}, {t:.2f});')
+J(f'tl.fromTo("#pajaros2", {{x:0}}, {{x:-2400, duration:3.4, ease:"none", immediateRender:false}}, {t + 0.4:.2f});')
+J(f'tl.fromTo("#avion", {{x:0}}, {{x:2600, duration:3.0, ease:"none", immediateRender:false}}, {t + 0.6:.2f});')
+J(f'tl.fromTo("#avion2", {{x:0}}, {{x:-2700, duration:3.0, ease:"none", immediateRender:false}}, {t + 1.0:.2f});')
+FX_EV.append(("whoosh", t + 0.8))
 pop("#hueso", P("huesos"))
 J(f'tl.to("#hueso .poro", {{opacity:1, duration:0.2, stagger:0.08}}, {P("calcio"):.2f});')
-# 9 · las agencias espaciales pagan a voluntarios (laboratorio)
-tag = P("agencias")
-cam(tag - 0.3, L2 + 1120, 1150, 0.95, dur=1.0)
+corte(tas - 0.3, SPX + 750, 1000, 0.95)
+J(f'tl.fromTo("#astro", {{y:-20, rotation:-6}}, {{y:30, rotation:6, duration:2.2, ease:"sine.inOut", yoyo:true, repeat:3, transformOrigin:"50% 50%", immediateRender:false}}, {tas - 0.3:.2f});')
+cam(tas - 0.2, SPX + 750, 1100, 0.85, dur=min(2.4, F(9) - tas - 0.1), ease="sine.inOut")
+# 9 · las agencias espaciales pagan a voluntarios (laboratorio, otra escena)
+t = F(9)
+J(f'tl.to("#hueso", {{opacity:0, x:-40, duration:0.3}}, {t - 0.2:.2f});')
+corte(t, L2 + 700, 1150, 0.95)
 pop("#pago", P("pagan"))
 FX_EV.append(("pop", P("pagan")))
-J(f'tl.to("#ecg", {{x:-30, duration:0.6, ease:"none", repeat:6, yoyo:true}}, {tag:.2f});')
-# 10 · lo más parecido al espacio: se ven las dos mitades
-cam(F(10) - 0.1, L2 + 760, 1000, 0.72, dur=1.4, ease="power2.inOut")
+J(f'tl.to("#ecg", {{x:-30, duration:0.6, ease:"none", repeat:6, yoyo:true}}, {t:.2f});')
+# 10 · lo más parecido al espacio: la cama se inclina 6° cabeza abajo (como en los estudios reales)
+t = F(10)
+J(f'tl.to("#p2-lie", {{rotation:-6, duration:1.0, ease:"power2.inOut", transformOrigin:"{BED2[0] + 200}px {FLOOR}px"}}, {t:.2f});')
+pop("#inclina", t + 0.5)
+cam(t, L2 + 700, 1180, 0.98, dur=1.4, ease="sine.inOut")
 
 # 11 · corazón más pequeño (consulta)
 t = F(11)
-J(f'tl.to(["#hueso", "#pago"], {{opacity:0, duration:0.3}}, {t:.2f});')
+J(f'tl.to(["#pago", "#inclina"], {{opacity:0, duration:0.3}}, {t:.2f});')
 cam(t, L3 + 750, 1060, 0.8, dur=1.3, viaje=True)
 J(f'tl.fromTo("#corazon", {{scale:1}}, {{scale:1.08, duration:0.35, yoyo:true, repeat:9, ease:"sine.inOut", transformOrigin:"50% 50%", immediateRender:false}}, {t:.2f});')
 J(f'tl.to("#corazon", {{scale:0.72, duration:1.0, ease:"power2.inOut", transformOrigin:"50% 50%"}}, {P("pequeno"):.2f});')
@@ -617,6 +673,7 @@ J(f'tl.to("#p4-eyes", {{scaleY:1.25, duration:0.2, svgOrigin:"500 742"}}, {tle:.
 tpi = P("pie")
 J(f'tl.to("#bocadillo", {{opacity:0, duration:0.3}}, {tpi - 0.5:.2f});')
 J(f'tl.to("#p4-rot", {{opacity:0, duration:0.35}}, {tpi - 0.2:.2f});')
+J(f'tl.to("#p4-cubre", {{scaleY:0.45, duration:0.45, ease:"power2.out", transformOrigin:"{BED4[0]}px {BED4[1] + 200}px"}}, {tpi - 0.2:.2f});')
 J(f'tl.fromTo("#p4s", {{opacity:0, y:160, x:-260}}, {{opacity:1, y:0, x:0, duration:0.6, ease:"power2.out", immediateRender:false}}, {tpi - 0.2:.2f});')
 cam(tpi, L4 + 960, 1150, 1.0, dur=0.8)
 J(f'tl.to("#p4s", {{rotation:4, duration:0.45, yoyo:true, repeat:7, ease:"sine.inOut", transformOrigin:"50% 94%"}}, {tpi + 0.5:.2f});')
@@ -810,7 +867,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{TEAL2}}}
     {"".join(H)}
   </div>
   </div></div>
-  {"".join(HUD)}
+  {"".join(HUD)}{"".join(OVER)}
   <div id="marca">@mundo.supuesto</div>
   <div id="vineta"></div><div id="sombra-subs"></div><div id="dip"></div><svg id="grano" width="1080" height="1920"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7"/><feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0.9 0"/></filter><rect width="1080" height="1920" filter="url(#gr)"/></svg>
   <div id="subs" data-layout-allow-overlap>{"".join(SUBS)}</div>
