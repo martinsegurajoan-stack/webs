@@ -6,6 +6,12 @@ cuenta @mundo.supuesto). Proyecto de referencia: `quiz-video/animado/pelo5/` (c�
 Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 
 ## 0. REGLAS GENERALES (usuario, 01-11-2026 — SIEMPRE)
+- **NUNCA generar un vídeo (ni voces, ni renders) sin que el usuario lo pida EXPRESAMENTE por escrito.** Si pregunta,
+  comenta o da un consejo, solo se apunta o se responde: no se rehace nada.
+- TRANSICIONES suaves y decorativas (corrección del vídeo tumbado5: «muy bruscas»): nada de cortes secos con
+  oscurecido. Usar transiciones con forma y estilo (cortina/círculo que se abre, barrido con formas de color, zoom a un
+  objeto que se convierte en la siguiente escena, deslizamiento con desenfoque leve…) de ~0,6-0,9 s, con un SONIDO
+  acorde (whoosh suave, campanita…) que se oiga un pelín pero bajito.
 - Cada vídeo se hace con TODAS las skills instaladas aplicadas al máximo (HyperFrames + registry de transiciones,
   cámara y tipografía cinética; Remotion como apoyo), y cada vídeo tiene que ser MÁS PROFESIONAL que el anterior.
 - ESCENARIOS DISTINTOS según lo que se cuenta: no tiene por qué ser la misma escena todo el rato. Ej.: «¿qué pasa si
