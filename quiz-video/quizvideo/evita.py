@@ -430,7 +430,7 @@ def draw_cta(img, d, sc, lt):
     for j, (vx, vy, col, sz_, ph) in enumerate(_S["burst"][:18]):
         x = 540 + vx * 470 + 30 * math.sin(lt * 3 + ph)
         y = 1350 - ((lt * 300 + j * 75) % 1000)
-        paste_c(img, spr("corazon", int(40 + sz_ * 2)), x, y, 1.0, 0.75)
+        paste_c(img, spr("corazon", max(4, int(40 + sz_ * 2))), x, y, 1.0, 0.75)
     # sello verde
     a = ease_out(min(1, lt / 0.18))
     s_ = 1.6 - 0.6 * a
@@ -443,13 +443,13 @@ def draw_cta(img, d, sc, lt):
     img.alpha_composite(lay, (540 - lay.width // 2, 440 - lay.height // 2))
     # logo gigante con halo y botón +
     c = ease_out_back(min(1, max(0, (lt - 0.15) / 0.4)))
-    if c > 0:
+    if c > 0.03:
         pulse = 1 + 0.04 * math.sin(lt * 6)
         R = 230 * c * pulse
         g = 0.5 + 0.5 * math.sin(lt * 5)
         d.ellipse((540 - R - 30, 840 - R - 30, 540 + R + 30, 840 + R + 30), fill=(255, 255, 255, int(60 + 50 * g)))
         d.ellipse((540 - R - 12, 840 - R - 12, 540 + R + 12, 840 + R + 12), fill=YEL)
-        lg = _S["logo"].resize((int(2 * R), int(2 * R)), Image.LANCZOS)
+        lg = _S["logo"].resize((max(2, int(2 * R)), max(2, int(2 * R))), Image.LANCZOS)
         img.alpha_composite(lg, (int(540 - R), int(840 - R)))
         pz = 1 + 0.15 * abs(math.sin(lt * 5))
         bx, by = 540 + R * 0.72, 840 + R * 0.72
@@ -472,7 +472,7 @@ def draw_cta(img, d, sc, lt):
             r_ = 70 * f_
             d.ellipse((x - r_, y - r_, x + r_, y + r_), fill=col, outline=WHITE, width=6)
             if last:
-                paste_c(img, spr("calavera", int(80 * f_)), x, y - 6, 1.0)
+                paste_c(img, spr("calavera", max(4, int(80 * f_))), x, y - 6, 1.0)
             else:
                 d.text((x, y), str(k + 1 + q), font=tfont(int(70 * f_)), fill=WHITE, anchor="mm")
             cx_, cy_ = x + 45 * f_, y + 45 * f_
