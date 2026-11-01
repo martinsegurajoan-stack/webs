@@ -326,10 +326,8 @@ Proyecto de referencia: `animado/pelo5/` (guion.txt → voz gratis frase a frase
 - CUENTA: @mundo.supuesto (TikTok, Instagram, Facebook y YouTube). MARCA DE AGUA SIEMPRE en todos estos vídeos:
   «@mundo.supuesto» ABAJO EN HORIZONTAL, centrada (#marca en gen.py: top 1775px, Inter 700 28px, blanco,
   opacidad 0,32), pequeña y transparente. En la descripción: «sígueme en @mundo.supuesto».
-- CÁMARA ADICTIVA (usuario 01-11-2026): nunca quieta (deriva suave continua), golpes de zoom en palabras fuertes,
-  giros de ángulo (dutch tilt) en viajes y momentos de impacto, zooms naturales con easing; que cuadre en el bucle.
-- FONDO CON VIDA: rayos de luz que giran tras cada estación, manchas de luz que flotan, garabatos/destellos temáticos
-  muy suaves y un tono cálido que respira. Sigue siendo neutro (no cambia de escenario).
+- CÁMARA: deriva suave y zooms naturales; SIN desenfoque, giros ni destellos al cambiar de etapa (marean, usuario
+  01-11-2026). FONDO tranquilo con manchas de luz y viñeta; sin rayos ni parpadeos. Ver `animado/INSTRUCCIONES.md`.
 - PERSONAJE: si el tema lo permite, HOMBRE (pidió hombre en pelo5). Si hay barba y pelo, de COLOR DISTINTO
   (barba castaño rojizo con contorno), que no se mezclen.
 - REVISAR TODOS LOS PLANOS antes de entregar (snapshots cada ~2 s): nada cortado por los bordes, nada que «salga

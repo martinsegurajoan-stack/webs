@@ -23,7 +23,7 @@ const path = require('path');
   .sel b{position:absolute;width:24px;height:24px;border-radius:50%;background:#dfe8ff;border:6px solid #4f7dff}
   .tag{position:absolute;padding:14px 30px;border-radius:24px;font:900 50px Inter;color:#1d2b33;background:#fbf8f2;box-shadow:0 14px 34px rgba(0,0,0,0.3)}
   #flecha{position:absolute;left:470px;top:1150px}
-  #marca{position:absolute;left:30px;top:1180px;transform:rotate(-90deg);transform-origin:0 0;font:700 28px Inter;color:#fff;opacity:0.35}
+  #marca{position:absolute;left:0;right:0;top:1840px;text-align:center;font:700 30px Inter;color:#fff;opacity:0.4}
   </style></head><body>
   <div id="bg"></div><div id="rayos"></div>
   <div class="suelo" style="left:90px;top:1660px"></div><div class="suelo" style="left:620px;top:1660px"></div>

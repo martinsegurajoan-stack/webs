@@ -41,18 +41,27 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   La narración de Sara del vídeo del pelo ya está guardada en `pelo5/voz_el/narrador.mp3` (no regenerar).
 - La narración NO puede dormir: ritmo vivo, un pelín alegre y adictivo. Pausas entre frases cortas (GAP 0,12 s).
 
+## 3b. Correcciones del usuario (vídeo de 10 años, 01-11-2026)
+- Voz «un poco más lenta»: Sara Martin 3 con `eleven_v4` y ETIQUETAS de emoción por frase ([curious], [excited],
+  [laughs], [whispers], [surprised], [warmly]…) para que SIENTA las exclamaciones; la locución se ralentiza con
+  `ffmpeg -af atempo=0.9` antes de trocearla, y GAP 0,22 s entre frases. (~960 créditos por vídeo).
+- NADA de destellos ni mareos: sin desenfoque ni giro de cámara al cambiar de etapa, sin rayos que giran, sin
+  estrellitas ni puntos que parpadean. Viajes de cámara suaves (1,2 s) y solo 2 golpes de zoom suaves en todo el vídeo.
+- El bucle final se hace con un CORTE limpio (oscurecido breve) al decir «con un solo pelo», no con un barrido.
+- Duración máxima 80 s. Proyecto de este vídeo: `animado/pelo10/`.
+
 ## 4. Estilo visual
 - Ilustración 2D cuidada y ADULTA, nada infantil («no un dibujo de niño de 4 años»).
-- Fondo propio, neutro y fijo (no cambia de escenario), colorido pero apagado (lila), CON VIDA: rayos de luz que
-  giran, manchas de luz que flotan, destellos muy suaves, viñeta y grano suave. No copiar los fondos de los vídeos de
+- Fondo propio, neutro y fijo (no cambia de escenario), colorido pero apagado (lila), CON VIDA pero tranquilo: manchas
+  de luz que flotan despacio, viñeta y grano suave (SIN rayos que giran ni destellos: marean). No copiar los fondos de los vídeos de
   ejemplo del usuario.
 - Un solo mundo y una sola cámara que viaja por un camino entre etapas.
 - Personaje: HOMBRE (si el tema lo permite), proporciones de adulto, ojos con blanco y párpado, nariz definida, sin
   coloretes, ropa con sombras. Si tiene barba y pelo: de COLOR DISTINTO (barba castaño rojizo con contorno).
 - El personaje NUNCA está quieto: camina hasta cada etapa (pasos alternos), se balancea, mueve cabeza y brazos, y
   gesticula con lo que se cuenta (encogerse de hombros, soplarse el flequillo, señalar…).
-- Cámara adictiva: deriva suave continua, golpes de zoom en las palabras fuertes, giros de ángulo en viajes y
-  momentos de impacto, zooms naturales. Todo debe cuadrar en el bucle.
+- Cámara: deriva suave continua y zooms naturales que encuadran lo que se cuenta; impactos solo en 1-2 momentos
+  (portazo, sopa). Nada de giros ni desenfoques en los viajes. Todo debe cuadrar en el bucle.
 - Animaciones con sentido físico: nada sale «de la nada» (un mechón nace de la melena; el pelo que cae sale de la
   raíz y cae hacia fuera; el pelo nuevo nace de la raíz y crece hacia arriba).
 
