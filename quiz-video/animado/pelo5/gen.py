@@ -70,32 +70,35 @@ def fringe_path(drop):
     return " ".join(pts) + " Z"
 
 def lock_path(side, bottom, w0=64, w1=26):
-    """Mechón delantero desde la sien hasta `bottom`, sobre el hombro y el pecho."""
+    """Mechón que nace del casco POR FUERA de la cara y cae sobre el hombro hasta `bottom`."""
     s = -1 if side == "L" else 1
-    xt = FX + s * 96
-    xs = FX + s * 140            # sobre el hombro
-    xb = FX + s * 128
-    mid = (760 + bottom) / 2
-    o = f"M{xt - s * 10},740 C{xt + s * 40},800 {xs + s * 30},{min(mid, 960)} {xb + s * w1 / 2},{bottom - 30} "
-    o += f"L{xb},{bottom + 18} L{xb - s * w1 / 2},{bottom - 30} "
-    o += f"C{xs - s * w0},{min(mid, 960)} {xt - s * 30},{820} {xt - s * 60},740 Z"
-    return o
+    X = lambda d: FX + s * d
+    return (f"M{X(100)},735 C{X(112)},722 {X(124)},726 {X(132)},745 "            # sale del casco
+            f"C{X(158)},780 {X(186)},900 {X(178)},{min(bottom - 40, 1000)} "    # borde exterior hasta el hombro
+            f"C{X(172)},{bottom - 30} {X(158)},{bottom - 6} {X(140)},{bottom + 16} "  # punta
+            f"C{X(126)},{bottom - 10} {X(122)},{bottom - 40} {X(120)},{min(bottom - 60, 980)} "
+            f"C{X(118)},900 {X(114)},820 {X(108)},760 "                            # borde interior: pegado a la mejilla, sin entrar
+            f"C{X(106)},740 {X(103)},738 {X(100)},735 Z")
 
 def side_path(side, bottom):
+    """Melena corta (10-25 cm) que tapa las orejas, por fuera de la cara."""
     s = -1 if side == "L" else 1
-    x0 = FX + s * 100
-    return (f"M{x0 - s * 8},720 C{x0 + s * 30},760 {x0 + s * 26},{bottom - 30} {x0 + s * 8},{bottom} "
-            f"L{x0 - s * 20},{bottom - 10} C{x0 - s * 10},{bottom - 60} {x0 - s * 8},780 {x0 - s * 30},740 Z")
+    X = lambda d: FX + s * d
+    return (f"M{X(96)},680 C{X(122)},670 {X(132)},700 {X(134)},740 "
+            f"C{X(138)},790 {X(132)},{bottom - 20} {X(122)},{bottom + 8} "
+            f"L{X(110)},{bottom - 6} C{X(110)},{bottom - 40} {X(108)},790 {X(104)},740 "
+            f"C{X(102)},710 {X(100)},690 {X(96)},680 Z")
 
-def strands(path_kind, side, bottom, n=9):
-    """Líneas finas de textura dentro de un mechón."""
+def strands(path_kind, side, bottom, n=7):
+    """Líneas finas de textura dentro del mechón."""
     s = -1 if side == "L" else 1
     out = []
     for i in range(n):
         k = (i + 0.5) / n
-        xt = FX + s * (70 + 40 * k)
-        xb = FX + s * (110 + 30 * k)
-        out.append(f'<path d="M{xt:.0f},760 C{xt + s * 40:.0f},860 {xb + s * 20:.0f},{(760 + bottom) / 2:.0f} {xb:.0f},{bottom - 20}" '
+        xt = FX + s * (112 + 16 * k)
+        xm = FX + s * (126 + 40 * k)
+        xb = FX + s * (126 + 32 * k)
+        out.append(f'<path d="M{xt:.0f},760 C{xm:.0f},850 {xm:.0f},{(760 + bottom) / 2:.0f} {xb:.0f},{bottom - 20}" '
                    f'stroke="{HAIR_HI}" stroke-width="2.2" fill="none" opacity="0.45"/>')
     return "".join(out)
 
@@ -271,7 +274,7 @@ H.append(f'<div id="marco" style="position:absolute;left:{s3 - 520}px;top:760px;
 H.append(f'<div id="puerta" style="position:absolute;left:{s3 - 505}px;top:775px;width:240px;height:625px;background:linear-gradient(90deg,#5f7e74,#4d6a61);border-radius:6px;transform-origin:0 50%">'
          f'<div style="position:absolute;right:22px;top:300px;width:22px;height:22px;border-radius:50%;background:#e2c27a"></div></div>')
 H.append(pj_at("p3", s3, cm=45))
-H.append(f'<svg id="tenso" style="position:absolute;left:{s3 - 300}px;top:780px;overflow:visible" width="220" height="80"><path d="M0,40 C70,30 140,50 210,20" stroke="{HAIR}" stroke-width="16" fill="none" stroke-linecap="round"/></svg>')
+H.append(f'<svg id="tenso" style="position:absolute;left:{s3 - 300}px;top:780px;overflow:visible" width="220" height="80"><path d="M0,40 C40,34 80,44 125,30" stroke="{HAIR}" stroke-width="16" fill="none" stroke-linecap="round"/></svg>')
 H.append(card("c3", s3 + 190, 1150, "AÑO 3", "45 cm"))
 H.append(f'<svg id="zip" style="position:absolute;left:{s3 - 10}px;top:960px" width="20" height="310"><line x1="10" y1="0" x2="10" y2="310" stroke="#d8c7a3" stroke-width="8" stroke-dasharray="6 5"/></svg>')
 H.append(f'<div id="slider" style="position:absolute;left:{s3 - 16}px;top:1240px;width:32px;height:46px;background:#d9b456;border-radius:6px"></div>')
