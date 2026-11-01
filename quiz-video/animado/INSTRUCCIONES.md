@@ -68,7 +68,13 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - El bucle final se hace con un CORTE limpio (oscurecido breve) al decir «con un solo pelo», no con un barrido.
 - Duración máxima 80 s. Proyecto de este vídeo: `animado/pelo10/`.
 
-## 3c. Línea de tiempo (HUD)
+## 3c. El paso del tiempo SE ENSEÑA, no se rotula (usuario, 01-11-2026)
+- NO poner la línea de tiempo (HUD) en todos los vídeos: es repetitiva. Usarla solo si de verdad aporta algo.
+- El tiempo se cuenta con detalles visuales dentro de la escena: zoom al reloj de pared y las agujas giran 2 horas;
+  el calendario arranca hojas; la luz de la ventana pasa de día a noche; crece el pelo o la barba; se acumulan platos,
+  polvo o telarañas; una planta se seca… Que se vea editado, visual, fácil de entender y adictivo.
+
+## 3d. Línea de tiempo (HUD) — solo si se usa
 - Bajo los subtítulos, una línea «0 · 1 · 3 · 5 · 7 · 10 años» con un punto que avanza y una etiqueta con la etapa
   («AÑO 3 · 45 cm», «7 AÑOS · SE PARA»…). Se aparta cuando hay una gráfica o un plano grande (récord).
 
