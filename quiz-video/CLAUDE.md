@@ -92,6 +92,7 @@ Vídeos terminados (1080x1920, H.264 + AAC), en `salida/`:
 | `salida/streamer_07.mp4` | `quizzes/streamer_07.json` | 89 s | STREAMER: Plex (foto vertical: `foco` en el centro de la CABEZA, `zoom_cam` 2.0) |
 | `salida/hora_del_quiz_08.mp4` | `quizzes/hora_del_quiz_08.json` | 90 s | Quiz de MÉXICO (modo `mexico`: bandera gigante ondeando en el gancho, papel picado, sarape, voz con acento mexicano y risa) = PLANTILLA DE PAÍS |
 | `salida/evita_01.mp4` | `quizzes/evita_01.json` | 90 s | NO DIGAS LO MISMO QUE YO nº1 (juego desde el fotograma 0, 8 rondas, pausa «¿sigues dentro?» antes de la penúltima) = PLANTILLA |
+| `salida/preferirias_01.mp4` | `quizzes/preferirias_01.json` | 60 s | ¿QUÉ PREFERIRÍAS? nº1 (5 dilemas con % en barras + extra rompeparejas sin %) = PLANTILLA |
 | `salida/streamer_01.mp4` | `quizzes/streamer_01.json` | 84 s | STREAMER nº1: AuronPlay (foto real, estética de directo) = PLANTILLA STREAMER |
 | `quiz_personalidad/hora_del_quiz_personalidad.mp4` | `quiz_personalidad/contenido.json` | 103 s | TEST DE PERSONALIDAD v2 (6 preguntas, reacciones, subtítulos TikTok) = PLANTILLA DE TEST DE PERSONALIDAD |
 Ojo: regenerar `hora_del_quiz_01` con el código actual le aplicaría el estilo nuevo (y gastaría créditos
@@ -432,6 +433,24 @@ mejoras v2 (arranque en el fotograma 0 con `cd_inicio`, pausa limpia de «sígue
   atrás empieza mientras termina la frase); final MUY ALEGRE (lluvia de confeti, globos, trofeo, fondo rosa/amarillo,
   «¡Enhorabuena, has llegado al final!»).
 - Nº1 (`evita_01`, 01-11-2026): v2 84 s; v1 89,9 s, ~1.250 créditos de voz (18 frases; se recargaron créditos a mitad).
+
+## Formato "¿QUÉ PREFERIRÍAS?" (dilemas con % de la gente) — FORMATO GUARDADO
+`quizzes/preferirias_NN.json` (copiar `plantillas-quiz/preferirias.json`, siguiente: 02) → `generar_preferirias.py` +
+`quizvideo/preferirias.py` → MP4 + portadas solas (`--frases-pendientes`, `--preview`, `--solo-portada`). ≤ 60 s.
+- Peticiones del usuario (nº1, 01-11-2026): el juego EMPIEZA EN EL FOTOGRAMA 0 (la pregunta 1 es el gancho); 5 preguntas
+  con % que salen EN BARRAS AL TERMINAR la cuenta atrás (3 s) + EXTRA SIN % en modo suspense («ROMPEPAREJAS», barras que
+  suben y bajan, «¿?», «¡DEFIÉNDELO EN COMENTARIOS!»); voz exagerada `[very excited, dramatic]`, tempo 1,3; subtítulos
+  grandes tipo TikTok; final «¿Y tú qué habrías elegido? ¡Coméntalo y sígueme para más vídeos como este!». SIN parte 2,
+  SIN comentarios falsos, SIN marcador de racha, SIN final con dos salidas.
+- FOTOS que manda el usuario (`assets/preferirias/foto_*.png`, gratis): FOTO DE FONDO GRANDE Y ENTERA (correcciones del
+  usuario: «que estén por el fondo, no tan pequeñas, que no se vean recortadas, que no se corten las cabezas»): la foto se
+  ve completa (contain, nunca se recorta) a todo el ancho en y 280-1000 con bordes difuminados, sobre la misma foto
+  desenfocada a pantalla completa mezclada con el color de la pregunta.
+- BARRAS BONITAS (corrección: «haz las barras más bonitas… si no cabe, baja el tamaño de la letra»): píldoras con borde
+  blanco, sombra, degradado con brillo y rayas animadas, círculo del icono 3D, CHAPA con «?» → el % (la ganadora en
+  amarillo con corona y halo; la perdedora se oscurece). Al revelar: la barra se vacía y se llena hasta el %. Textos
+  CORTOS en las tarjetas (2 líneas máx.); la letra se encoge sola. La cuenta atrás va GRANDE encima de la foto (no tapa
+  las opciones). Nº1: 59,6 s, ~730 créditos de voz (7 frases).
 
 ## Formato "STREAMER" (quiz sobre un streamer, estética de directo) — serie de 5-6 vídeos
 CUANDO EL USUARIO PIDA UN QUIZ DE UN STREAMER (cualquiera) → USAR ESTA PLANTILLA (`plantillas-quiz/streamer.json`,

@@ -30,6 +30,7 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
 - Quiz de VIDEOJUEGOS: modo `gamer` (`quizzes/hora_del_quiz_05.json`), con pantalla de RANGOS al final.
 - VÍDEO PARA BEBER / FIESTA CON AMIGOS (concepto aprobado por el usuario, úsalo siempre): pruebas variadas, plantilla `quiz-video/plantillas-quiz/fiesta.json` +
   `generar_fiesta.py` (ver "FIESTA" en `quiz-video/CLAUDE.md`). Solo cartas: `cartas.json`.
+- «¿QUÉ PREFERIRÍAS?» (dilemas con % en barras, ≤60 s): plantilla `quiz-video/plantillas-quiz/preferirias.json` + `generar_preferirias.py`, foto ENTERA de fondo sin recortar (ver sección en `quiz-video/CLAUDE.md`).
 - QUIZ DE STREAMERS (AuronPlay, etc.): plantilla `quiz-video/plantillas-quiz/streamer.json` + `generar_streamer.py`
   (necesita FOTO REAL que manda el usuario). Mejorar la estética un poco en cada vídeo nuevo.
   Chat con guion (`chat_guion`: conversaciones entre usuarios sin repetir, piques sin insultos, cosas random,
