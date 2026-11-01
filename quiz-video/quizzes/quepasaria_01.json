@@ -1,45 +1,68 @@
 {
   "modo": "quepasaria",
   "video": "quepasaria_01",
-  "titulo": "¿Qué pasaría si no te cortas el pelo durante 5 años?",
-  "voz": {"voice_id": "30jLfQdV8RTduXvosh02", "estilo": ""},
-  "tempo": 1.05,
-  "gancho": {
-    "texto": ["¿Y SI NO TE", "CORTAS EL PELO", "EN 5 AÑOS?"],
-    "pegatina": "LO DEL AÑO 4 NADIE LO SABE"
+  "titulo": "¿Qué pasaría si no te cortas el pelo por 5 años?",
+  "voz": {
+    "voice_id": "qUPtETgSYRhCRb2pfOla",
+    "nombre": "Guillermo Brazález",
+    "estilo": ""
   },
   "clips": [
-    {"texto": "[intrigued] ¿Qué pasaría si no te cortaras el pelo durante cinco años? [suspenseful] Lo que pasa en el año cuatro… casi nadie lo sabe.",
-     "efecto": "preview", "cm": 2, "cm_max": 75, "cara": "sorprendido", "pausa": 0.2},
-    {"texto": "[curious] El pelo crece más o menos un centímetro al mes. El primer mes… nadie se da cuenta.",
-     "etiqueta": "MES 1", "meses": 1, "cm": 3.2, "cara": "normal",
-     "iconos": [{"img": "regla", "texto": "+1 CM|AL MES", "desde": 0.15, "lado": "izq"}]},
-    {"texto": "[amused] Al sexto mes llega la peor fase: el flequillo en los ojos… y nada se queda en su sitio.",
-     "etiqueta": "MES 6", "meses": 6, "cm": 9, "cara": "agobiado",
-     "iconos": [{"img": "sudor", "texto": "FASE|INCÓMODA", "desde": 0.25, "lado": "der"}]},
-    {"texto": "[intrigued] Al primer año ya tienes unos quince centímetros. Te tapa las orejas… y empiezan las puntas abiertas.",
-     "etiqueta": "AÑO 1", "meses": 12, "cm": 17, "cara": "pensativo", "puntas": 0.4,
-     "iconos": [{"img": "tijeras", "texto": "PUNTAS|ABIERTAS", "desde": 0.6, "lado": "izq"}]},
-    {"texto": "[surprised] Año dos: treinta centímetros. Te llega a los hombros, salen nudos por todas partes… y gastas el doble de champú.",
-     "etiqueta": "AÑO 2", "meses": 24, "cm": 32, "cara": "agobiado", "puntas": 0.6,
-     "iconos": [{"img": "nudo", "texto": "NUDOS", "desde": 0.35, "lado": "izq"},
-                {"img": "champu", "texto": "CHAMPÚ|X2", "desde": 0.7, "lado": "der"}]},
-    {"texto": "[suspenseful] Año tres: cuarenta y cinco centímetros. Las puntas ya llevan tres años de sol, roces y lavados… y se ven más finas.",
-     "etiqueta": "AÑO 3", "meses": 36, "cm": 46, "cara": "triste", "puntas": 1.0,
-     "iconos": [{"img": "sol", "texto": "3 AÑOS|DE DESGASTE", "desde": 0.4, "lado": "der"}]},
-    {"texto": "[whispers] Y en el año cuatro pasa algo que casi nadie sabe… [dramatic] tu pelo puede dejar de crecer. Cada pelo solo crece entre dos y siete años, según tu genética… y luego se cae.",
-     "etiqueta": "AÑO 4", "meses": 48, "cm": 58, "cara": "sorprendido", "puntas": 1.0, "efecto": "stop", "stop_en": 0.42,
-     "iconos": [{"img": "adn", "texto": "GENÉTICA|2-7 AÑOS", "desde": 0.55, "lado": "izq", "y": 900}]},
-    {"texto": "[amazed] Si tu genética lo permite, al quinto año llegas a unos setenta y cinco centímetros: casi hasta la cintura.",
-     "etiqueta": "AÑO 5", "meses": 60, "cm": 75, "cara": "feliz", "puntas": 1.0,
-     "iconos": [{"img": "trofeo", "texto": "¡75 CM!", "desde": 0.6, "lado": "izq", "y": 900}]},
-    {"texto": "[intrigued] Ah… y en estos cinco años se te habrán caído entre noventa mil y ciento ochenta mil pelos. [reassuring] Tranquilo: es normal perder entre cincuenta y cien al día.",
-     "etiqueta": "AÑO 5", "meses": 60, "cm": 75, "cara": "sorprendido", "puntas": 1.0, "efecto": "contador",
-     "contador": {"de": 0, "a": 180000, "texto": "PELOS CAÍDOS EN 5 AÑOS"}},
-    {"texto": "[excited] ¿Tú aguantarías cinco años sin cortártelo? Dímelo en comentarios… y sígueme para más «¿qué pasaría si…?».",
-     "etiqueta": "¿Y TÚ?", "meses": 60, "cm": 75, "cara": "feliz", "puntas": 1.0}
+    {
+      "id": "gancho",
+      "texto": "¿Qué pasaría si no te cortas el pelo por cinco años?",
+      "pausa": 0.35
+    },
+    {
+      "id": "inicio",
+      "texto": "Todo empieza aquí. Con un pelo… bueno, con unos cuantos más. El pelo crece más o menos un centímetro al mes, así que el primer mes, nadie se da cuenta.",
+      "pausa": 0.3
+    },
+    {
+      "id": "mes6",
+      "texto": "A los seis meses llega la fase más odiada. El flequillo te tapa los ojos, y ningún peinado se queda en su sitio.",
+      "pausa": 0.3
+    },
+    {
+      "id": "ano1",
+      "texto": "Al año ya tienes unos quince centímetros. Te tapa las orejas, y aparecen las primeras puntas abiertas.",
+      "pausa": 0.3
+    },
+    {
+      "id": "ano2",
+      "texto": "A los dos años, treinta centímetros. Los nudos se vuelven tu rutina: el cepillo se queda atascado… y gastas el doble de champú.",
+      "pausa": 0.3
+    },
+    {
+      "id": "puerta",
+      "texto": "Al tercer año, el pelo se engancha en todo. En las puertas…",
+      "pausa": 0.15
+    },
+    {
+      "id": "sopa",
+      "texto": "…y hasta acaba dentro de la sopa.",
+      "pausa": 0.35
+    },
+    {
+      "id": "ano4",
+      "texto": "Y en el cuarto año pasa algo que casi nadie sabe: puede que tu pelo deje de crecer. Cada pelo solo crece entre dos y siete años, según tu genética. Después se cae, y nace uno nuevo.",
+      "pausa": 0.3
+    },
+    {
+      "id": "ano5",
+      "texto": "Si tu genética lo permite, a los cinco años te llegará casi a la cintura: unos setenta y cinco centímetros.",
+      "pausa": 0.3
+    },
+    {
+      "id": "caida",
+      "texto": "Y por el camino se te habrán caído entre noventa mil y ciento ochenta mil pelos. Tranquilo: perder entre cincuenta y cien al día es normal.",
+      "pausa": 0.3
+    },
+    {
+      "id": "bucle",
+      "texto": "Así que la próxima vez que te preguntes…",
+      "pausa": 0.0
+    }
   ],
-  "cierre": {"titulo": ["¿AGUANTARÍAS", "5 AÑOS?"], "pill": "¡DÍMELO EN COMENTARIOS!"},
-  "portada": {"titulo": ["¿QUÉ PASARÍA SI", "NO TE CORTAS", "EL PELO 5 AÑOS?"], "pegatina": "LO DEL AÑO 4 NADIE LO SABE", "cm": 75, "cara": "sorprendido"},
-  "fuentes": "Crecimiento ~1,25 cm/mes (≈15 cm/año, AAD); fase de crecimiento (anágena) 2-7 años; caída normal 50-100 pelos/día (AAD) → 5 años ≈ 91.000-183.000."
+  "fuentes": "Crecimiento ~1,25 cm/mes ≈ 15 cm/año (American Academy of Dermatology). Fase anágena 2-7 años. Caída normal 50-100 pelos/día (AAD) → 5 años ≈ 91.000-183.000."
 }
