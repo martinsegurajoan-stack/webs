@@ -438,8 +438,10 @@ def camset(t, x, y, z):
     J(f'tl.set("#world", {{x:{540 - x * z:.1f}, y:{960 - y * z:.1f}, scale:{z}}}, {t:.2f});')
 
 def viaje(t, wide, dest, d1=0.9, hold=0.35, d2=1.0):
-    """Viaje por la casa: se abre el plano (se ve la casa) y se acerca al nuevo sitio."""
-    cam(t, *wide, dur=d1, ease="power2.inOut")
+    """Viaje por la casa: se abre un poco el plano (solo la planta en la que estamos) y la cámara
+    se desliza de una habitación a la siguiente, como un travelling; luego se acerca."""
+    zx = 0.72
+    cam(t, wide[0], 1020, zx, dur=d1, ease="power2.inOut")
     cam(t + d1 + hold, *dest, dur=d2, ease="power2.inOut")
     FX_EV.append(("suave", t + 0.1))
 

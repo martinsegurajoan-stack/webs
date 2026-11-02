@@ -34,6 +34,10 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   para que se vea el sitio entero (la encimera, el fregadero, la cocina…) y el personaje pequeño dentro.
 - **Comparaciones VISUALES**: si se dice «tan alto como un edificio de 50 pisos», se DIBUJA el edificio de 50
   pisos bien estructurado (plantas contadas, ventanas, azotea) al lado de lo comparado.
+- **NARRADOR NEUTRO** (usuario, 02-11-2026): nada de exclamaciones ni tono eufórico; un punto neutro y tranquilo todo el
+  vídeo. Guion sin «¡!», sin etiquetas [excited]/[surprised]; como mucho [calm]. Adaptar el diálogo si hace falta.
+- **ALEJAR LA CÁMARA SOLO LO NECESARIO** (02-11-2026): nada de enseñar la casa entera una y otra vez («súper forzado»);
+  al cambiar de habitación basta con ver las dos habitaciones implicadas. La casa entera, como mucho, una vez y solo si aporta.
 - **Voz con el MISMO TONO todo el rato**: NADA de [whispers] ni susurros (tampoco [dramatically] que baje la voz).
   Solo [excited]/[curious]/[surprised] con energía constante.
 - **Transiciones bonitas**: el círculo de color (iris) quedó «muy poco estético». Usar transiciones con estilo:
@@ -90,7 +94,7 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - Un dato sorprendente en el tramo final («lo que casi nadie sabe»).
 - Final en BUCLE: la última frase enlaza con la primera y el último fotograma es igual al primero.
 - Duración 60-80 s (hasta 105 s si hace falta, ver 0b).
-- Puntuación que dé vida a la voz: «¡…!» en los datos fuertes y «…» para crear intriga.
+- (ANTIGUO) Puntuación: ahora el narrador es NEUTRO, sin «¡!» (ver 0b).
 
 ## 3. Voz
 - **VOZ FIJA DE ESTE FORMATO (usuario, 01-11-2026: «siempre te pediré con esta voz»):** ElevenLabs

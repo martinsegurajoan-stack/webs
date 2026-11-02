@@ -393,7 +393,7 @@ J(f'tl.to("#camA", {{rotation:0, duration:{DUR / (4 * nR):.4f}, ease:"sine.in"}}
 LEJOS, MOTAS = [], []
 
 # ------------------------------------------------------------------ subtítulos (arriba, palabra a palabra)
-CLAVE = {"hormiga", "milimetros", "sabanas", "montana", "cocina", "kilometros", "acaros", "hamsteres", "fortisimo", "arroz", "peso", "mesa", "centimetro", "setenta",
+CLAVE = {"hormiga", "milimetros", "sabanas", "montana", "cocina", "kilometros", "acaros", "hamster", "fuerte", "arroz", "peso", "mesa", "centimetro", "setenta",
          "frena", "miga", "roca", "frio", "calor", "comer", "gota", "pegamento", "gato", "cincuenta", "pisos", "sofa", "doce",
          "tamano", "suelo", "mundo"}
 SUBS = []

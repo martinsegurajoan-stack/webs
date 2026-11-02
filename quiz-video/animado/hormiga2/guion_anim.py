@@ -34,10 +34,10 @@ cam(tsh, *C(1080, YB, 4.0), dur=1.0, ease="power3.inOut")
 pose("p0", tsh + 1.1, 40, -40, 110, -110, dur=0.3)      # se mira las manos: ¿¡qué ha pasado!?
 J(f'tl.to("#p0-eyes", {{y:8, duration:0.2}}, {tsh + 1.1:.2f}); tl.to("#p0-eyes", {{y:0, duration:0.2}}, {tsh + 1.9:.2f});')
 # … en tu propia casa: el plano se abre y se ve la casa entera
-cam(P("propia") - 0.35, 1450, 650, 0.3, dur=1.1, ease="power2.inOut")
+cam(P("propia") - 0.35, 1250, 1010, 0.75, dur=1.1, ease="power2.inOut")
 pose("p0", P("propia") - 0.35, 0, 0, 0, 0, dur=0.4, ease="power2.inOut")
 normal("p0", FE(1) + 0.3)
-J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40, scale:2.4, transformOrigin:"50% 100%"}}, {{opacity:1, y:0, scale:2.4, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("casa") + 0.2:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
+J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40, scale:1.0, transformOrigin:"50% 100%"}}, {{opacity:1, y:0, scale:1.0, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("casa") + 0.2:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
 J(f'tl.to("#tuTag", {{y:-30, duration:0.3, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("casa") + 0.6:.2f});')
 FX_EV.append(("pop", P("casa") + 0.2))
 # 2 · mides tres milímetros: mira la regla y se rasca la cabeza
@@ -64,7 +64,7 @@ pose("p0", P("montana"), 140, -140, 72, -72, dur=0.25); pose("p0", P("montana") 
 
 # 4 · viaje al pasillo: camina de perfil por el suelo (10 m = 6 km)
 t = F(4)
-viaje(t, (2700, 650, 0.3), C(3010, FL, 3.6), d1=1.0, hold=0.6, d2=1.1)
+viaje(t, (2400, 0, 0), C(3010, FL, 3.6), d1=1.0, hold=0.6, d2=1.1)
 J(f'tl.set("#p1-w", {{x:-260}}, 0);')
 caminar_perfil("p1", t + 1.4, 260, 3.4, 10)
 cam(t + 2.75, *C(3240, FL, 3.6), dur=2.0, ease="sine.inOut")
@@ -84,7 +84,7 @@ ta = P("acaros")
 cara("p1", ta, "miedo", hold=2.2); cabeza("p1", ta, -4)
 pose("p1", ta, -30, 30, 120, -120, dur=0.3)
 J(f'tl.to("#p1-w", {{x:"-=60", duration:0.5, ease:"power2.out"}}, {ta:.2f});')
-J(f'tl.to(["#acaro1", "#acaro2"], {{x:-60, duration:1.5, ease:"sine.inOut"}}, {P("hamsteres") - 0.4:.2f});')
+J(f'tl.to(["#acaro1", "#acaro2"], {{x:-60, duration:1.5, ease:"sine.inOut"}}, {P("hamster") - 0.4:.2f});')
 pose("p1", FE(6), 0, 0, 0, 0, dur=0.4, ease="power2.inOut"); cabeza("p1", FE(6), 0)
 
 # 7-9 · ¡fortísimo! (saca músculo), levanta el arroz, cae de la mesa y el aire le frena
@@ -92,7 +92,7 @@ t = F(7)
 barrido(t, (5900, 950, 0.5))
 J(f'tl.set("#arroz", {{x:6540, y:{YT - 17}}}, 0);')
 camC(t + 0.6, 6480, YT, 5.0, dur=1.5, ease="power2.inOut")
-tf = P("fortisimo")
+tf = P("fuerte")
 cara("p2", tf, "feliz")
 pose("p2", tf - 0.3, 90, -90, 95, -95, dur=0.3)
 J(f'tl.to(["#p2-foreL", "#p2-foreR"], {{scale:1.0, duration:0.01}}, {tf:.2f}); tl.to("#p2-armLg", {{rotation:82, duration:0.12, yoyo:true, repeat:3, svgOrigin:"356 985"}}, {tf + 0.02:.2f}); tl.to("#p2-armRg", {{rotation:-82, duration:0.12, yoyo:true, repeat:3, svgOrigin:"644 985"}}, {tf + 0.02:.2f});')
@@ -126,7 +126,7 @@ pose("p2", FE(9), 0, 0, 0, 0, dur=0.4, ease="power2.inOut")
 
 # 10-12 · la cocina: entra andando, la miga-roca, FRÍO (cara azul, tiritona) y comer sin parar
 t = F(10)
-viaje(t, (8400, 700, 0.32), C(7700, FL, 3.2), d1=0.9, hold=0.5, d2=1.0)
+viaje(t, (7300, 0, 0), C(7700, FL, 3.2), d1=0.9, hold=0.5, d2=1.0)
 J(f'tl.set("#miga", {{x:7880, y:{FL}}}, 0); tl.set("#p3-w", {{x:-150}}, 0);')
 caminar_perfil("p3", t + 1.3, 150, 1.3, 4)
 tm = P("miga")
@@ -180,7 +180,7 @@ J(f'tl.to("#charco", {{scaleX:1.06, scaleY:0.95, duration:0.3, yoyo:true, repeat
 
 # 14-16 · ¡llega el gato! (entra andando DE PERFIL por la puerta, se para y le mira) · 50 pisos · corre al sofá
 t = F(14)
-viaje(t - 0.2, (11300, 700, 0.32), C(10800, FL, 3.6), d1=0.8, hold=0.25, d2=0.8)
+viaje(t - 0.2, (10200, 0, 0), C(10800, FL, 3.6), d1=0.8, hold=0.25, d2=0.8)
 tga = P("gato")
 J(f'tl.set("#gatoG", {{x:-1200}}, 0); tl.set("#gato", {{opacity:1}}, {tga - 1.4:.2f});')
 gato_andar(tga - 1.4, 1200, 1.8, 6)
