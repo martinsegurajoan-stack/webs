@@ -52,6 +52,9 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   `quiz-video/animado/vox29n/` (leer `PLANTILLA.md`): estilo CLARO y decorativo (tarjetas blancas, nada de libreta literal) para adultos, cronómetro de 60 s,
   color del partido suavizado, narrador neutro, datos reales verificados (buenos y malos) con fuente en pantalla,
   bocetos a tinta solo donde ayudan, miniatura sobria de libreta (`miniatura/hacer.js` lee `partido.json`).
+- «¿QUÉ PASARÍA SI…?» GEOPOLÍTICO en 60 s (p. ej. «¿Y si Marruecos invadiera España?», 02-11-2026): infografía animada
+  con MAPA y cámara, paneles VS con contadores e iconos, notitas con datos y fuente (ni libreta ni 2D). Plantilla
+  `quiz-video/animado/marruecos/` (leer `PLANTILLA.md`).
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.
