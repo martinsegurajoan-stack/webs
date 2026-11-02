@@ -69,3 +69,4 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
   desde la derecha y sale hacia el lado. Referencia: `carta()` en `animado/marruecos2/gen.py`.
 - Revisar en cada escena: banderas/chinchetas que asoman por los bordes, etiquetas cortadas, nombres del mapa que
   asoman bajo los subtítulos en planos cercanos.
+- `P(palabra)` coge la PRIMERA vez que se dice en TODO el guion: antes de usarla, comprobar que no sale antes (pasó con «mar» y «solo»; usar `P("solo", 2)`).
