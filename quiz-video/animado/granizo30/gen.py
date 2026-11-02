@@ -440,19 +440,55 @@ chip("RIESGO DE INUNDACIÓN", P("rios") - 0.3, F(12) - 0.1, 60, 640, RED)
 # ================================================================== 12) EL DATO: el granizo necesita calor
 f12 = F(12); barrido(f12)
 J(f'tl.to("#hud", {{opacity:0, duration:0.3}}, {f12:.2f});')
-e12 = ['<rect width="1080" height="1920" fill="url(#fondoTec)"/>', '<rect width="1080" height="1920" fill="url(#rejilla)" opacity="0.4"/>',
-       '<rect x="0" y="1460" width="1080" height="460" fill="url(#sueloCal)"/>',
-       '<g id="torre12"><g transform="translate(0,280)">' + cb_cloud + '</g></g>',
-       '<g>' + "".join(f'<path class="up12" d="M{x},1450 C{x - 26},1340 {x + 26},1240 {x},1130" stroke="{AMB}" stroke-width="12" fill="none" stroke-linecap="round" stroke-dasharray="40 30"/>' for x in (420, 560, 700)) + '</g>',
-       f'<g><rect x="972" y="1000" width="56" height="400" rx="28" fill="#141c2c" stroke="#5a6e8c" stroke-width="5"/><rect id="merc12" x="986" y="1380" width="28" height="0" rx="14" fill="{RED}"/><circle cx="1000" cy="1430" r="46" fill="{RED}" stroke="#5a6e8c" stroke-width="5"/></g>']
+KM = 66.7                                   # 1 km = 66,7 px; suelo en y=1500
+def yk(km): return 1500 - km * KM
+rr = random.Random(21)
+pf = []
+# torre: muchas pompas solapadas, base ancha que se estrecha un poco y se abre arriba en yunque
+for i in range(140):
+    km = rr.uniform(3.5, 11.3)
+    t = (km - 3.5) / 7.8
+    semi = 250 - 70 * math.sin(t * math.pi) + 40 * t
+    x = 560 + rr.uniform(-semi, semi) * 0.85
+    r = rr.uniform(60, 110) * (1.0 - 0.25 * t)
+    pf.append((x, yk(km), r))
+for i in range(40):                         # yunque: capa aplanada a 11-12,4 km que se extiende a los lados
+    x = 560 + rr.uniform(-400, 400)
+    pf.append((x, yk(rr.uniform(11.4, 12.0)), rr.uniform(50, 80)))
+forma = "".join(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="{r:.0f}"/>' for x, y, r in pf)
+forma += f'<path d="M{560 - 430},{yk(11.7):.0f} C{560 - 280},{yk(12.5):.0f} {560 + 280},{yk(12.6):.0f} {560 + 440},{yk(11.8):.0f} L{560 + 440},{yk(11.3):.0f} L{560 - 430},{yk(11.3):.0f} Z"/>'
+DEFS12 = (f'<clipPath id="cbForma">{forma}</clipPath>'
+          f'<linearGradient id="fundeArriba" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#000"/><stop offset="0.16" stop-color="#fff"/><stop offset="1" stop-color="#fff"/></linearGradient>'
+          f'<mask id="cbRevela" maskUnits="userSpaceOnUse" x="-300" y="0" width="1700" height="1920"><rect id="revela12" x="-300" y="{yk(3.3):.0f}" width="1700" height="900" fill="url(#fundeArriba)"/></mask>')
+nube12 = (f'<g mask="url(#cbRevela)"><g clip-path="url(#cbForma)">'
+          f'<rect x="0" y="{yk(13):.0f}" width="1080" height="{yk(3) - yk(13):.0f}" fill="url(#cbLuz)"/>'
+          f'<rect x="0" y="{yk(13):.0f}" width="1080" height="{yk(3) - yk(13):.0f}" fill="url(#cbAlto)"/>'
+          + "".join(f'<circle cx="{x + r * 0.25:.0f}" cy="{y - r * 0.3:.0f}" r="{r * 0.55:.0f}" fill="#ffffff" opacity="0.18"/>' for x, y, r in pf[::3])
+          + '</g></g>')
+base12 = f'<path d="M{560 - 230},{yk(3.4):.0f} C{560 - 120},{yk(3.25):.0f} {560 + 120},{yk(3.25):.0f} {560 + 230},{yk(3.4):.0f}" stroke="#5f7393" stroke-width="10" fill="none" opacity="0.8"/>'
+burb = "".join(f'<circle class="burb12" cx="{x}" cy="1480" r="{r}" fill="url(#burbuja)"/>' for x, r in ((380, 46), (470, 34), (560, 52), (650, 38), (740, 44), (520, 30), (610, 28)))
+calima = "".join(f'<path class="cal12" d="M{-200 + i * 0},{1470 - i * 14} q60,-12 120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0 t120,0" stroke="#ffcf9a" stroke-width="3" fill="none" opacity="{0.35 - i * 0.06:.2f}"/>' for i in range(5))
+eje = ('<path d="M110,1500 L110,660" stroke="#4a6080" stroke-width="3"/>'
+       + "".join(f'<path d="M104,{yk(k):.0f} L118,{yk(k):.0f}" stroke="#4a6080" stroke-width="3"/><text x="132" y="{yk(k) + 9:.0f}" font-family="Inter" font-weight="700" font-size="26" fill="#8796ad">{k} km</text>' for k in (0, 4, 8, 12))
+       + f'<path d="M100,{yk(4.2):.0f} L1000,{yk(4.2):.0f}" stroke="{ICE}" stroke-width="2" stroke-dasharray="12 10" opacity="0.55"/>'
+       + f'<text x="1000" y="{yk(4.2) - 14:.0f}" text-anchor="end" font-family="Inter" font-weight="800" font-size="28" fill="{ICE}">0 °C</text>'
+       + f'<text x="1000" y="{yk(10) - 14:.0f}" text-anchor="end" font-family="Inter" font-weight="800" font-size="28" fill="{ICE}">−40 °C</text>'
+       + f'<path d="M100,{yk(10):.0f} L1000,{yk(10):.0f}" stroke="{ICE}" stroke-width="2" stroke-dasharray="12 10" opacity="0.4"/>'
+       + f'<text x="1000" y="1460" text-anchor="end" font-family="Inter" font-weight="800" font-size="28" fill="{AMB}">30 °C</text>')
+paisaje = ('<path d="M-200,1500 L1280,1500 L1280,2700 L-200,2700 Z" fill="url(#sueloCal)"/>'
+           '<path d="M0,1500 C200,1488 380,1494 560,1486 C760,1478 900,1492 1080,1484 L1080,1520 L0,1520 Z" fill="#8a4a26" opacity="0.7"/>'
+           + "".join(f'<rect x="{x}" y="{1500 - h}" width="{w}" height="{h}" fill="#3a2418"/>' for x, w, h in ((40, 40, 60), (90, 26, 40), (840, 50, 80), (900, 34, 50), (950, 44, 70))))
+e12 = ['<rect width="1080" height="1920" fill="url(#cieloTarde)"/>', '<circle cx="990" cy="1430" r="60" fill="#ffd27a" opacity="0.95"/><circle cx="990" cy="1430" r="150" fill="#ffd27a" opacity="0.12"/>',
+       eje, paisaje, calima, burb, base12, '<g id="torre12">' + nube12 + '</g>']
 escena("e12", "".join(e12))
 mostrar("e12", f12, F(13) + 0.5)
-camara("e12", f12, F(13) + 0.5, (0, -80, 1.1), (0, 30, 0.98), "sine.inOut")
-J(f'tl.fromTo("#torre12", {{scaleY:0.6, scaleX:0.9}}, {{scaleY:1, scaleX:1, svgOrigin:"560 1440", duration:{FE(12) - f12:.2f}, ease:"power2.out", immediateRender:false}}, {f12:.2f});')
-J(f'tl.set("#torre12", {{scaleY:0.6, scaleX:0.9, svgOrigin:"560 1440"}}, 0);')
-J(f'tl.to("#merc12", {{attr:{{y:1020, height:360}}, duration:1.4, ease:"power2.out"}}, {P("calor") - 0.3:.2f});')
-J(f'tl.fromTo(".up12", {{strokeDashoffset:0}}, {{strokeDashoffset:-210, duration:{F(13) + 0.5 - f12:.2f}, ease:"none", immediateRender:false}}, {f12:.2f});')
-chip("AIRE CALIENTE → TORMENTAS MÁS ALTAS", P("caliente") - 0.3, F(13) + 0.4, 60, 640, AMB)
+camara("e12", f12, F(13) + 0.5, (0, -420, 1.2), (0, 60, 0.97), "power1.inOut")
+J(f'tl.fromTo(".cal12", {{x:0}}, {{x:-120, duration:2.0, repeat:{int((F(13) + 0.5 - f12) / 2) + 1}, ease:"none", immediateRender:false}}, {f12:.2f});')
+J(f'tl.fromTo(".burb12", {{y:0, opacity:0.0, scale:0.6}}, {{y:{yk(3.4) - 1480:.0f}, opacity:0.9, scale:1.2, duration:2.2, stagger:0.35, repeat:{int((F(13) + 0.5 - f12) / 2.6)}, ease:"power1.in", immediateRender:false}}, {f12 + 0.2:.2f});')
+J('tl.set(".burb12", {opacity:0}, 0);')
+dur_c = max(2.5, FE(12) - f12 - 0.6)
+J(f'tl.set("#revela12", {{attr:{{y:{yk(3.1):.0f}, height:{1920 - yk(3.1) + 200:.0f}}}}}, 0); tl.to("#revela12", {{attr:{{y:{yk(13.6):.0f}, height:{1920 - yk(13.6) + 200:.0f}}}, duration:{dur_c:.2f}, ease:"power1.inOut"}}, {f12 + 0.4:.2f});')
+chip("EL AIRE CALIENTE SUBE Y FORMA LA TORMENTA", P("caliente") - 0.3, F(13) + 0.4, 60, 1640, AMB)
 FX.append(("brillo", P("calor")))
 
 # ================================================================== 13) CIERRE EN BUCLE: un día de calor, una sola piedra
@@ -571,6 +607,13 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
     <linearGradient id="panelG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2b4b7a"/><stop offset="0.5" stop-color="#14274a"/><stop offset="1" stop-color="#0c1830"/></linearGradient>
     <linearGradient id="areaRoja" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{RED}" stop-opacity="0.5"/><stop offset="1" stop-color="{RED}" stop-opacity="0"/></linearGradient>
     <linearGradient id="aguaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4f86b8"/><stop offset="1" stop-color="#1c3550"/></linearGradient>
+    <radialGradient id="puff" cx="0.45" cy="0.3" r="0.7"><stop offset="0" stop-color="#ffffff"/><stop offset="0.55" stop-color="#dfe7f2"/><stop offset="1" stop-color="#8a9bb4"/></radialGradient>
+    <linearGradient id="yunqueG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f4f8fd"/><stop offset="1" stop-color="#a9b8cc"/></linearGradient>
+    <radialGradient id="burbuja"><stop offset="0" stop-color="#ffb547" stop-opacity="0.55"/><stop offset="1" stop-color="#ff7a3a" stop-opacity="0"/></radialGradient>
+    <linearGradient id="cieloTarde" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1730"/><stop offset="0.55" stop-color="#2e4a78"/><stop offset="0.85" stop-color="#c47a52"/><stop offset="1" stop-color="#f0b06a"/></linearGradient>
+    <linearGradient id="cbLuz" x1="1" y1="0" x2="0" y2="0"><stop offset="0" stop-color="#fff1dc"/><stop offset="0.45" stop-color="#d8e2ef"/><stop offset="1" stop-color="#6d7f9c"/></linearGradient>
+    <linearGradient id="cbAlto" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.35"/><stop offset="0.7" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#2a3a58" stop-opacity="0.55"/></linearGradient>
+    {DEFS12}
     <linearGradient id="sueloCal" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3a22"/><stop offset="1" stop-color="#2a1610"/></linearGradient>
   </defs></svg>
   {"".join(ESC)}
