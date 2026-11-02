@@ -12,28 +12,31 @@ const path = require('path');
     const tl = window.__timelines.main; tl.seek(4.6);
     for (const s of ['#subs', '#crono', '#grano', '#titulo', '#marca', '#preg', '#regla']) { const e = document.querySelector(s); if (e) e.style.display = 'none'; }
     document.querySelectorAll('#mundo text, .rad').forEach(t => t.style.display = 'none');
-    document.querySelector('#escena').style.filter = 'saturate(0.75) brightness(0.8)';
+    document.querySelector('#escena').style.filter = 'saturate(0.95) brightness(0.92)';
     const ico = (id, col, s, extra = '') => `<svg width="${s}" height="${s}" viewBox="0 0 100 100" style="color:${col};overflow:visible;${extra}"><use href="#i-${id}" fill="currentColor"/></svg>`;
     const es = '<svg width="120" height="80" viewBox="0 0 120 80"><rect width="120" height="80" rx="8" fill="#c60b1e"/><rect y="20" width="120" height="40" fill="#ffc400"/></svg>';
     const ma = '<svg width="120" height="80" viewBox="0 0 120 80"><rect width="120" height="80" rx="8" fill="#c1272d"/><path d="M60,16 L70.6,48.5 L42.9,28.4 L77.1,28.4 L49.4,48.5 Z" fill="none" stroke="#006233" stroke-width="4.8" stroke-linejoin="round"/></svg>';
     const div = document.createElement('div');
     div.innerHTML = `
-      <div style="position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 45%, rgba(0,0,0,0) 40%, rgba(20,10,0,0.55)), linear-gradient(rgba(16,32,58,0.55), rgba(16,32,58,0) 30%, rgba(16,32,58,0) 65%, rgba(16,32,58,0.75));"></div>
+      <div style="position:absolute;inset:0;background:radial-gradient(90% 60% at 50% 45%, rgba(0,0,0,0) 40%, rgba(20,10,0,0.55)), linear-gradient(rgba(255,150,70,0.55), rgba(255,120,80,0.15) 30%, rgba(16,32,58,0) 55%, rgba(16,32,58,0.7));"></div>
       <div style="position:absolute;inset:-100px;mix-blend-mode:screen;background:radial-gradient(30% 22% at 12% 30%, rgba(255,150,60,0.55), rgba(255,150,60,0) 70%), radial-gradient(28% 20% at 92% 72%, rgba(255,70,90,0.45), rgba(255,70,90,0) 70%)"></div>
       <div style="position:absolute;left:0;right:0;top:300px;text-align:center">
         <div style="display:inline-block;font:900 92px Inter;color:#fff;letter-spacing:-2px;text-shadow:0 6px 0 #16203a, 0 12px 0 #0c1426, 0 20px 40px rgba(0,0,0,0.5)">¿Y SI MARRUECOS</div><br>
         <div style="display:inline-block;margin-top:10px;padding:6px 34px 14px;background:#e0483c;border-radius:26px;transform:rotate(-3deg);box-shadow:0 14px 0 #a8261d, 0 26px 50px rgba(0,0,0,0.45);font:900 120px Inter;color:#fff;letter-spacing:-4px;line-height:1">INVADIERA</div><br>
         <div style="display:inline-block;margin-top:18px;font:900 132px Inter;color:#f2b630;letter-spacing:-4px;line-height:1;text-shadow:0 7px 0 #a8650a, 0 14px 0 #6e4206, 0 24px 50px rgba(0,0,0,0.55)">ESPAÑA?</div>
       </div>
+      <svg style="position:absolute;left:325px;top:1215px;z-index:1" width="400" height="400" viewBox="-200 -200 400 400">${Array.from({length:16},(_,i)=>`<path d="M0,0 L${(195*Math.cos(i*Math.PI/8-0.08)).toFixed(0)},${(195*Math.sin(i*Math.PI/8-0.08)).toFixed(0)} L${(195*Math.cos(i*Math.PI/8+0.08)).toFixed(0)},${(195*Math.sin(i*Math.PI/8+0.08)).toFixed(0)} Z" fill="${i%2?'#f2b630':'#e0483c'}" opacity="0.4"/>`).join('')}<circle r="150" fill="url(#halo)"/><defs><radialGradient id="halo"><stop offset="0" stop-color="#fff" stop-opacity="0.8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient></defs></svg>
       <div style="position:absolute;left:400px;top:1290px;width:250px;height:250px;border-radius:50%;background:#fff;box-shadow:0 0 0 12px rgba(255,255,255,0.35), 0 24px 60px rgba(0,0,0,0.45);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;z-index:5">
         <div style="display:flex;gap:10px;transform:scale(0.8)">${ma}${es}</div><div style="font:900 80px Inter;color:#16203a;line-height:1">VS</div></div>
-      ${[[380,850],[620,840],[700,790],[780,820],[860,795],[950,805]].map(([x,y])=>`<div style="position:absolute;left:${x}px;top:${y}px;filter:drop-shadow(0 6px 0 rgba(0,0,0,0.3))">${ico('soldado','#f2b630',70)}</div>`).join('')}
+      ${[[380,850],[700,800],[780,825],[860,800],[950,810]].map(([x,y])=>`<div style="position:absolute;left:${x}px;top:${y}px;filter:drop-shadow(0 6px 0 rgba(0,0,0,0.3))">${ico('soldado','#f2b630',70)}</div>`).join('')}
       <div style="position:absolute;left:470px;top:800px;filter:drop-shadow(0 8px 0 rgba(0,0,0,0.3))">${ico('tanque','#f2b630',120)}</div>
       ${[[470,1170],[550,1200],[720,1300],[800,1270],[880,1300],[350,1450]].map(([x,y])=>`<div style="position:absolute;left:${x}px;top:${y}px;filter:drop-shadow(0 6px 0 rgba(0,0,0,0.3))">${ico('soldado','#e0483c',70)}</div>`).join('')}
       <div style="position:absolute;left:270px;top:1560px;filter:drop-shadow(0 8px 0 rgba(0,0,0,0.3))">${ico('tanque','#e0483c',110)}</div>
       <div style="position:absolute;left:760px;top:1380px;filter:drop-shadow(0 8px 0 rgba(0,0,0,0.3))">${ico('tanque','#e0483c',120)}</div>
       ${[[130,640,-62],[300,700,-62]].map(([x,y,r])=>`<div style="position:absolute;left:${x}px;top:${y}px;transform:rotate(${r}deg);z-index:2"><div style="position:absolute;left:46px;top:96px;width:12px;height:300px;border-radius:6px;background:linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0))"></div>${ico('caza','#16203a',104)}</div>`).join('')}
       <div style="position:absolute;left:830px;top:700px;transform:rotate(62deg) scaleX(-1);z-index:2"><div style="position:absolute;left:46px;top:96px;width:12px;height:300px;border-radius:6px;background:linear-gradient(rgba(255,255,255,0.9),rgba(255,255,255,0))"></div>${ico('caza','#a8261d',104)}</div>
+      <div style="position:absolute;left:590px;top:760px;transform:rotate(-4deg);filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));z-index:3"><div style="position:absolute;left:0;top:0;width:8px;height:150px;background:#3a2a1a;border-radius:4px"></div><div style="position:absolute;left:8px;top:4px;transform:skewY(-6deg)">${es.replace('width="120" height="80"','width="96" height="64"')}</div></div>
+      <div style="position:absolute;left:640px;top:1110px;transform:rotate(4deg);filter:drop-shadow(0 8px 6px rgba(0,0,0,0.35));z-index:3"><div style="position:absolute;left:0;top:0;width:8px;height:150px;background:#3a2a1a;border-radius:4px"></div><div style="position:absolute;left:8px;top:4px;transform:skewY(6deg)">${ma.replace('width="120" height="80"','width="96" height="64"')}</div></div>
       <div style="position:absolute;left:880px;top:1420px;width:160px;height:160px;transform:rotate(10deg);filter:drop-shadow(0 12px 20px rgba(0,0,0,0.45))">
         <svg width="160" height="160" viewBox="0 0 170 170"><rect x="72" y="2" width="26" height="18" rx="4" fill="#16203a"/><circle cx="85" cy="92" r="72" fill="#ffffff" stroke="#16203a" stroke-width="7"/>
         <circle cx="85" cy="92" r="58" fill="none" stroke="#e0483c" stroke-width="14" stroke-dasharray="270 400" transform="rotate(-90 85 92)"/>

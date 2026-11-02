@@ -432,14 +432,15 @@ for (a, b) in ((F(3) - 0.2, FE(4) + 0.1), (F(6) - 0.2, FE(8) + 0.1)):
     J(f'tl.to("#nubes", {{opacity:0, duration:0.2}}, {a:.2f}); tl.to("#nubes", {{opacity:1, duration:0.4}}, {b:.2f});')
 
 # ------------------------------------------------------------------ cuenta atrás de 60 s
+T0 = F(2)                       # el reloj arranca cuando la voz dice «te lo cuento en sesenta segundos»
 for s in range(1, 61):
-    ts = min(s * DUR / 60, DUR - 0.12)
+    ts = min(T0 + s, DUR - 0.12)
     J(f'tl.set("#crono-n", {{innerHTML:"{60 - s}"}}, {ts:.2f});')
     if s < 60:
         FX.append(("tic2" if 60 - s <= 5 else "tic", ts))
         if 60 - s <= 5:
             J(f'tl.fromTo("#crono", {{scale:1.15}}, {{scale:1, duration:0.3, ease:"power2.out", immediateRender:false}}, {ts:.2f});')
-J(f'tl.fromTo("#crono-arc", {{strokeDashoffset:0}}, {{strokeDashoffset:1, duration:{DUR:.2f}, ease:"none", immediateRender:false}}, 0);')
+J(f'tl.fromTo("#crono-arc", {{strokeDashoffset:0}}, {{strokeDashoffset:1, duration:60, ease:"none", immediateRender:false}}, {T0:.2f});')
 
 # ------------------------------------------------------------------ subtítulos karaoke (píldora en la palabra que suena)
 CLAVE = set(norm(w) for w in ["catorce", "marruecos", "cruzarlos", "sesenta", "doscientos", "ciento", "tanques", "mil", "mar", "aire",

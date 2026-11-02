@@ -31,7 +31,7 @@ for i, txt in enumerate(lines, 1):
     if i < len(lines):
         g = GAP + EXTRA.get(i, 0.0)
         out.append(np.zeros(int(g * SR))); t += g
-COLA = 0.6
+COLA = 1.8   # el reloj llega a 0 justo antes del final (60 s desde «te lo cuento en sesenta segundos»)
 out.append(np.zeros(int(COLA * SR))); t += COLA
 sig = np.concatenate(out)
 sig = sig / (np.max(np.abs(sig)) or 1) * 0.9
