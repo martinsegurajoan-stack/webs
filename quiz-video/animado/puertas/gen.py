@@ -389,7 +389,7 @@ camara("e11", f11, F(20), enfoca(540, 1250, 1.0), enfoca(620, 1200, 1.18), "sine
 J(f'tl.to("#frio11", {{opacity:0.92, duration:1.0, ease:"power2.inOut"}}, {tp11:.2f}); tl.to("#pila11", {{opacity:0.25, duration:1.0}}, {tp11:.2f});')
 J(f'tl.to("#fam11", {{opacity:0.45, filter:"blur(6px)", duration:1.4, ease:"power2.inOut"}}, {P("reconocer") - 0.3:.2f}); tl.to("#int11", {{opacity:1, duration:0.6}}, {P("reconocer"):.2f});')
 J(f'tl.to("#ho11", {{x:40, duration:1.2, ease:"sine.inOut"}}, {P("reconocer") - 0.2:.2f});')
-nota("YA NO RECONOCE A SU FAMILIA", P("reconocer") - 0.2, F(20) - 0.1, 60, 520, ICE)
+nota("YA NO RECONOCE A SU FAMILIA", P("reconocer") - 0.2, F(20) - 0.4, 60, 520, ICE)
 FX.append(("golpe2", tp11))
 
 # ================================================================== 12) EL PRECIO II: recupera a su pareja… y olvida los recuerdos (las fotos se borran)
