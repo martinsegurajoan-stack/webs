@@ -52,6 +52,10 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - **PERSONAJE CON ARTICULACIONES** (02-11-2026): codos y rodillas, CAMINA DE PERFIL (no de frente), caras según la
   acción (frío = cara azul + dientes que castañetean + copos; miedo = sudor y piernas que tiemblan; fuerza = músculo
   y rubor…). Animales igual: el gato camina de perfil con 4 patas, cola, parpadeos. Ver `hormiga2/perfil.py` y `gato2.py`.
+- **SUELOS A LA MISMA ALTURA** (usuario, 02-11-2026: «está súper mal hecha la casa»): todas las habitaciones de una
+  planta comparten la MISMA línea de suelo y el mismo grosor; los muebles y personajes se apoyan a la misma profundidad
+  (45 px dentro de la franja del suelo) en TODAS las plantas; alfombras a la misma altura. Nada de escaleras o
+  elementos que salgan de la nada. Revisar siempre con una foto de la casa entera (cámara muy alejada).
 - Lo que va a ser sorpresa (el gato) NO puede verse antes de tiempo en ningún plano abierto.
 - Skill instalada: `svg-character-animation` (pivotes estables, timelines por escenas, poses que se lean).
 - **MINIATURA CURRADÍSIMA** (usuario, 02-11-2026: «es la primera impresión junto al primer segundo del vídeo»):

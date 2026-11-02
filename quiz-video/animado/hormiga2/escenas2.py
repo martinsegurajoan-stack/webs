@@ -179,8 +179,8 @@ b += '<rect x="1760" y="1130" width="12" height="170" fill="#3b2f2f"/><path d="M
 b += '<rect x="1590" y="1255" width="120" height="22" rx="4" fill="#3a86ff"/><rect x="1598" y="1235" width="105" height="22" rx="4" fill="#ff5d8f"/><rect x="1680" y="1200" width="40" height="55" rx="6" fill="#bfe8ff" opacity="0.85"/>'
 b += '<rect x="1585" y="1286" width="70" height="14" rx="4" fill="#222"/>'
 # alfombra, zapatillas, mochila, guitarra y planta grande
-b += '<ellipse cx="1150" cy="1790" rx="620" ry="70" fill="url(#alfombraP)"/><ellipse cx="1150" cy="1790" rx="620" ry="70" fill="none" stroke="#ffffff" stroke-width="12" stroke-dasharray="20 14"/>'
-b += zapatilla(1880, 1770, 0.42, "#3a86ff") + zapatilla(2030, 1785, 0.42, "#3a86ff")
+b += '<ellipse cx="1150" cy="1795" rx="620" ry="60" fill="url(#alfombraP)"/><ellipse cx="1150" cy="1795" rx="620" ry="60" fill="none" stroke="#ffffff" stroke-width="12" stroke-dasharray="20 14"/>'
+b += zapatilla(1880, 1780, 0.42, "#3a86ff") + zapatilla(2030, 1780, 0.42, "#3a86ff")
 b += '<path d="M2210,1745 C2190,1600 2230,1500 2330,1490 C2430,1500 2460,1600 2450,1745 Z" fill="#8338ec"/><rect x="2260" y="1580" width="140" height="90" rx="20" fill="#a66bff"/><path d="M2280,1500 C2290,1440 2380,1440 2390,1500" stroke="#5a22b8" stroke-width="16" fill="none"/>'
 b += maceta(2520, 1620, 0.9, "#ff5d8f")
 # DESPERTADOR GIGANTE encima de la cama (el gancho): rojo, campanas, cara y agujas
@@ -214,7 +214,7 @@ h += zapatilla(3300, 1380, 0.55, "#06d6a0") + zapatilla(3520, 1380, 0.5, "#8338e
 h += '<rect x="4420" y="1450" width="130" height="295" rx="16" fill="#8338ec"/><path d="M4460,1450 L4440,1100 M4510,1450 L4540,1130" stroke="#ff5d8f" stroke-width="14" stroke-linecap="round"/><path d="M4400,1130 C4420,1060 4490,1060 4500,1110" stroke="#ff5d8f" stroke-width="12" fill="none"/>'
 h += maceta(4660, 1600, 0.8, "#3a86ff")
 h += enchufe(3840, 1560) + '<path d="M3875,1630 C3870,1700 3950,1730 4100,1740" stroke="#ffffff" stroke-width="12" fill="none" stroke-linecap="round"/>'
-h += f'<rect x="{x0 + 40}" y="1750" width="{x1 - x0 - 80}" height="70" rx="10" fill="#ef476f"/><rect x="{x0 + 40}" y="1750" width="{x1 - x0 - 80}" height="70" rx="10" fill="none" stroke="#ffd23f" stroke-width="10" stroke-dasharray="30 20"/>'
+h += f'<rect x="{x0 + 40}" y="1760" width="{x1 - x0 - 80}" height="70" rx="10" fill="#ef476f"/><rect x="{x0 + 40}" y="1760" width="{x1 - x0 - 80}" height="70" rx="10" fill="none" stroke="#ffd23f" stroke-width="10" stroke-dasharray="30 20"/>'
 # ZAPATILLA GIGANTE junto al camino (para la escala) y el cartelito «COCINA 5,8 km»
 h += zapatilla(3010, 1800, 0.95, "#ff3b5c")
 h += ('<rect x="2905" y="1665" width="8" height="85" fill="#7a4b2a"/><rect x="2860" y="1640" width="150" height="42" rx="8" fill="#2b2d42"/>'
@@ -249,7 +249,7 @@ d += '<rect x="6080" y="975" width="100" height="72" rx="20" fill="#ffffff"/><re
 d += '<rect x="6210" y="985" width="34" height="62" rx="10" fill="#ffffff"/><rect x="6210" y="985" width="34" height="16" rx="6" fill="#bbb"/><rect x="6250" y="985" width="34" height="62" rx="10" fill="#2b2d42"/>'
 d += '<rect x="6300" y="990" width="70" height="56" rx="10" fill="#ef476f"/><path d="M6370,1000 C6400,1000 6400,1035 6370,1035" stroke="#ef476f" stroke-width="10" fill="none"/>'
 d += "".join(f'<ellipse cx="{x}" cy="1044" rx="12" ry="6" fill="#fffaf0" stroke="#e0d3b0" stroke-width="2" transform="rotate({a} {x} 1044)"/>' for x, a in ((6400, 10), (6420, -15), (6585, 25)))
-d += '<ellipse cx="6000" cy="1800" rx="800" ry="65" fill="#118ab2"/><ellipse cx="6000" cy="1800" rx="800" ry="65" fill="none" stroke="#ffd23f" stroke-width="10"/>'
+d += '<ellipse cx="6000" cy="1795" rx="800" ry="60" fill="#118ab2"/><ellipse cx="6000" cy="1795" rx="800" ry="60" fill="none" stroke="#ffd23f" stroke-width="10"/>'
 d += maceta(4950, 1600, 0.85, "#ffd23f")
 H.append(svg(d))
 H.append(svg('<g id="arroz2"><ellipse cx="0" cy="0" rx="44" ry="17" fill="#fffaf0" stroke="#d9c79a" stroke-width="4"/><path d="M-30,-6 C-10,-12 10,-12 30,-6" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round"/></g>', "arroz"))
@@ -327,7 +327,7 @@ l += '<ellipse cx="11980" cy="1735" rx="40" ry="16" fill="#9a8fb3"/>'
 # lámpara de pie, mesa baja con taza y mando, alfombra y planta grande
 l += '<rect x="12260" y="1100" width="16" height="645" fill="#2b2d42"/><ellipse cx="12268" cy="1745" rx="70" ry="14" fill="#2b2d42"/><path d="M12180,1110 L12360,1110 L12320,980 L12220,980 Z" fill="#ffd23f"/>'
 l += '<ellipse id="luzLamp" cx="12268" cy="1200" rx="300" ry="260" fill="url(#lampG)" opacity="0"/>'
-l += '<ellipse cx="11450" cy="1810" rx="900" ry="70" fill="url(#alfombraP)"/>'
+l += '<ellipse cx="11450" cy="1795" rx="900" ry="60" fill="url(#alfombraP)"/>'
 l += maceta(12780, 1580, 1.1, "#3a86ff")
 H.append(svg(l))
 H.append(f'<div id="noche" style="position:absolute;left:{x0 - 60}px;top:-80px;width:{x1 - x0 + 120}px;height:2000px;background:#120c4a;opacity:0;mix-blend-mode:multiply"></div>')

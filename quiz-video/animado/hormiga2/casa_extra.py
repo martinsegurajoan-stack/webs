@@ -24,9 +24,9 @@ def sala_up(x0, x1, grad, papel=None, op=0.4, suelo="url(#suelo)"):
     s = f'<rect x="{x0}" y="{UT}" width="{w}" height="{UF - UT}" fill="url(#{grad})"/>'
     if papel:
         s += f'<rect x="{x0}" y="{UT}" width="{w}" height="{UF - UT}" fill="url(#{papel})" opacity="{op}"/>'
-    s += (f'<rect x="{x0}" y="{UT}" width="{w}" height="30" fill="#fff6ea"/><rect x="{x0}" y="{UF - 44}" width="{w}" height="44" fill="#fff6ea"/>'
-          f'<rect x="{x0}" y="{UF}" width="{w}" height="170" fill="{suelo}"/><rect x="{x0}" y="{UF}" width="{w}" height="170" fill="url(#tablas)" opacity="0.8"/>'
-          f'<rect x="{x0}" y="{UF}" width="{w}" height="8" fill="#000" opacity="0.12"/>')
+    s += (f'<rect x="{x0}" y="{UT}" width="{w}" height="30" fill="#fff6ea"/><rect x="{x0}" y="{UF - 93}" width="{w}" height="48" fill="#fff6ea"/>'
+          f'<rect x="{x0}" y="{UF - 45}" width="{w}" height="185" fill="{suelo}"/><rect x="{x0}" y="{UF - 45}" width="{w}" height="185" fill="url(#tablas)" opacity="0.8"/>'
+          f'<rect x="{x0}" y="{UF - 45}" width="{w}" height="10" fill="#000" opacity="0.12"/>')
     return s
 
 def tabique_up(x):
@@ -51,7 +51,7 @@ up += ('<rect x="1500" y="-900" width="200" height="230" rx="20" fill="#ffffff"/
 up += ('<rect x="2050" y="-640" width="300" height="60" rx="20" fill="#ffffff"/><rect x="2160" y="-580" width="80" height="350" fill="#f0f4fa"/><path d="M2200,-640 L2200,-720 L2250,-720" stroke="url(#metal)" stroke-width="16" fill="none"/>'
        '<ellipse cx="2200" cy="-1050" rx="170" ry="230" fill="#ffd23f"/><ellipse cx="2200" cy="-1050" rx="145" ry="205" fill="#d9f6ff"/><path d="M2120,-1160 L2180,-1200 M2110,-1100 L2230,-1180" stroke="#ffffff" stroke-width="14" stroke-linecap="round"/>')
 up += '<rect x="1380" y="-1320" width="320" height="16" rx="8" fill="#9fb3c8"/>' + "".join(f'<rect x="{x}" y="-1305" width="90" height="300" rx="14" fill="{c}"/><rect x="{x}" y="-1250" width="90" height="16" fill="#ffffff" opacity="0.6"/>' for x, c in ((1390, "#ff5d8f"), (1490, "#3a86ff"), (1590, "#ffd23f")))
-up += maceta(2480, -340, 0.8, "#ff5d8f") + '<rect x="1450" y="-250" width="400" height="30" rx="14" fill="#ff5d8f"/>'
+up += maceta(2480, -340, 0.8, "#ff5d8f") + '<rect x="1450" y="-205" width="400" height="30" rx="14" fill="#ff5d8f"/>'
 
 # ---------------- HABITACIÓN INFANTIL (2600-4800)
 up += sala_up(2600, 4800, "uNino", "papelBed", 0.35)
@@ -66,7 +66,7 @@ up += '<g id="movil">' + '<path d="M3900,-1770 L3900,-1600 M3760,-1600 L4040,-16
 up += ('<rect x="3820" y="-560" width="380" height="330" rx="20" fill="#ff9f1c"/><rect x="3820" y="-560" width="380" height="50" rx="20" fill="#ffbf5a"/>'
        '<circle cx="3900" cy="-620" r="70" fill="#ef233c"/><path d="M3840,-640 C3880,-600 3930,-600 3960,-640" stroke="#ffffff" stroke-width="10" fill="none"/>'
        '<circle cx="4090" cy="-640" r="60" fill="#c97b45"/><circle cx="4050" cy="-700" r="26" fill="#c97b45"/><circle cx="4130" cy="-700" r="26" fill="#c97b45"/><circle cx="4070" cy="-650" r="6" fill="#2b2d42"/><circle cx="4110" cy="-650" r="6" fill="#2b2d42"/>'
-       '<ellipse cx="3700" cy="-180" rx="420" ry="40" fill="#8ac926"/>'
+       '<ellipse cx="3700" cy="-185" rx="420" ry="36" fill="#8ac926"/>'
        '<path d="M4500,-230 L4500,-500 L4560,-560 L4620,-500 L4620,-230 Z" fill="#ffffff"/><path d="M4500,-500 L4560,-620 L4620,-500 Z" fill="#ef233c"/><circle cx="4560" cy="-420" r="22" fill="#5ac8fa"/>')
 
 # ---------------- DESPACHO (4800-7000)
@@ -102,7 +102,7 @@ up += ('<rect x="7150" y="-950" width="820" height="720" rx="14" fill="#2b2d42"/
        + "".join(f'<circle cx="{x}" cy="-1550" r="80" fill="#1d1e2c"/><circle cx="{x}" cy="-1550" r="28" fill="{c}"/>' for x, c in ((7300, "#ff5d8f"), (7500, "#ffd23f"), (7700, "#06d6a0"))))
 
 # ---------------- SALA DE JUEGOS (9800-12900)
-up += sala_up(9800, 12900, "uJue", None, 0, suelo="#3a2f8f")
+up += sala_up(9800, 12900, "uJue", None, 0)
 up += ('<rect x="9950" y="-1700" width="2800" height="16" rx="8" fill="#ff5d8f"/><rect x="9950" y="-1660" width="2800" height="10" rx="5" fill="#06d6a0" opacity="0.8"/>'
        '<rect x="10500" y="-1330" width="1200" height="660" rx="24" fill="#111"/><rect x="10530" y="-1300" width="1140" height="600" rx="10" fill="#4cc9f0"/>'
        '<rect x="10530" y="-860" width="1140" height="160" fill="#8ac926"/><rect x="10530" y="-880" width="1140" height="30" fill="#5a9216"/>'
@@ -156,7 +156,7 @@ H.append(svg(up))
 # ---------------- SÓTANO (garaje, trastero, lavadero, ping-pong)
 sot = (f'<rect x="-260" y="{BT}" width="13420" height="{BF + 160 - BT}" fill="#5e6b82"/>'
        f'<rect x="0" y="{BT + 40}" width="12900" height="{BF - BT - 40}" fill="url(#bSot)"/><rect x="0" y="{BT + 40}" width="12900" height="{BF - BT - 40}" fill="url(#ladrillo)"/>'
-       f'<rect x="0" y="{BF}" width="12900" height="80" fill="#9aa5b8"/><rect x="0" y="{BF}" width="12900" height="8" fill="#000" opacity="0.15"/>'
+       f'<rect x="0" y="{BF - 45}" width="12900" height="125" fill="#9aa5b8"/><rect x="0" y="{BF - 45}" width="12900" height="10" fill="#000" opacity="0.15"/>'
        + "".join(f'<rect x="{x - 40}" y="{BT + 40}" width="80" height="{BF - BT - 40}" fill="#5e6b82"/>' for x in (3600, 7000, 9800))
        + "".join(f'<path d="M{x},{BT + 40} L{x},{BT + 160}" stroke="#3b2f2f" stroke-width="5"/><circle cx="{x}" cy="{BT + 180}" r="26" fill="#fff3b0"/><circle cx="{x}" cy="{BT + 180}" r="90" fill="#fff3b0" opacity="0.22"/>' for x in (1800, 5300, 8400, 11350)))
 # garaje: coche, bici, herramientas
@@ -197,7 +197,6 @@ sot += ('<rect x="10100" y="2960" width="1500" height="50" rx="10" fill="#118ab2
         '<rect x="11950" y="3150" width="850" height="250" rx="60" fill="#06d6a0"/><rect x="11900" y="3050" width="140" height="350" rx="50" fill="#04a37a"/><rect x="12720" y="3050" width="140" height="350" rx="50" fill="#04a37a"/><rect x="11950" y="3050" width="850" height="140" rx="60" fill="#06d6a0"/>'
         '<path d="M12000,3400 L12000,3480 M12750,3400 L12750,3480" stroke="#3b2f2f" stroke-width="20"/>')
 # escalera que baja del pasillo al sótano
-sot += "".join(f'<rect x="{2600 + i * 62}" y="{BT + 60 + i * 110}" width="240" height="30" fill="#c97b45"/>' for i in range(12))
 H.append(svg(sot))
 # paredes exteriores de toda la casa (con ventanitas a los lados)
 H.append(svg('<rect x="-260" y="-1860" width="260" height="5420" fill="#fff1dc"/><rect x="12900" y="-1860" width="260" height="5420" fill="#fff1dc"/>'
