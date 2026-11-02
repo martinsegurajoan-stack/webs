@@ -1,7 +1,8 @@
 # PLANTILLA «¿Y si gana <PARTIDO>?» en 60 segundos (estilo libreta, adultos)
 
 Formato pedido por el usuario (02-11-2026) para hacer la serie con todos los partidos:
-- Presentación «te lo cuento en 60 segundos» + CRONÓMETRO pequeño contando de 60 a 0 todo el vídeo.
+- Presentación «te lo cuento en 60 segundos» + CRONÓMETRO contando de 60 a 0 todo el vídeo: visible (215 px, esquina
+  de la tarjeta, sin tapar) y AUDIBLE (tic suave cada segundo, más fuerte y con pulso los 5 últimos).
 - ESTILO CLARO Y DECORATIVO (usuario 02-11-2026: «fondo más claro, más blanco, que no sea una libreta literal»):
   fondo blanco roto con puntitos y formas suaves del color del partido, TARJETAS blancas con banda de color arriba y
   cintas decorativas, que se deslizan fuera al cambiar de tema; subtítulos oscuros. Dentro de cada tarjeta: notas escritas a mano que se escriben solas con un boli, títulos

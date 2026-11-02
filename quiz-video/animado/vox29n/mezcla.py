@@ -56,7 +56,7 @@ def lapiz():
     rng = np.random.default_rng(5); n = int(0.5 * SR); t = np.arange(n) / SR
     x = rng.standard_normal(n); x = x - np.convolve(x, np.ones(3) / 3, mode="same")
     return x * (0.5 + 0.5 * np.sin(2 * np.pi * 9 * t)) * np.minimum(1, t * 20) * np.minimum(1, (0.5 - t) * 20) * 0.5
-fx = {"posit": (sfx_golpe(0.5), 0.22), "sello": (sfx_golpe(1.1), 0.32), "pagina": (papel(), 0.22), "lapiz": (lapiz(), 0.06), "baja": (sube(1.0, 1100, 260), 0.32), "sube": (sube(), 0.3), "sube2": (sube(1.2, 420, 1100), 0.32), "boing": (boing(), 0.45), "timbre": (timbre(), 0.13), "suave": (transicion(), 0.16), "brillo": (brillo(), 0.2), "whoosh": (audio.sfx_whoosh(0.6), 0.35), "pop": (audio.sfx_pop(), 0.35), "clic": (audio.sfx_tick(True), 0.6),
+fx = {"tic": (audio.sfx_tick(False), 0.10), "tic2": (audio.sfx_tick(True), 0.22), "posit": (sfx_golpe(0.5), 0.22), "sello": (sfx_golpe(1.1), 0.32), "pagina": (papel(), 0.22), "lapiz": (lapiz(), 0.06), "baja": (sube(1.0, 1100, 260), 0.32), "sube": (sube(), 0.3), "sube2": (sube(1.2, 420, 1100), 0.32), "boing": (boing(), 0.45), "timbre": (timbre(), 0.13), "suave": (transicion(), 0.16), "brillo": (brillo(), 0.2), "whoosh": (audio.sfx_whoosh(0.6), 0.35), "pop": (audio.sfx_pop(), 0.35), "clic": (audio.sfx_tick(True), 0.6),
       "golpe": (sfx_golpe(1.0), 0.55), "portazo": (sfx_golpe(1.5), 0.8)}
 for k, t in json.load(open(os.path.join(BASE, "efectos.json"))):
     s, g = fx[k]

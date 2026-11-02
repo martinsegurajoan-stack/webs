@@ -326,6 +326,10 @@ for (t, d, x0, y0, x1, y1) in PEN:
 for s in range(1, 61):
     ts = min(s * DUR / 60, DUR - 0.12)
     J(f'tl.set("#crono-n", {{innerHTML:"{60 - s}"}}, {ts:.2f});')
+    if s < 60:
+        FX.append(("tic2" if 60 - s <= 5 else "tic", ts))
+        if 60 - s <= 5:
+            J(f'tl.fromTo("#crono", {{scale:1.12}}, {{scale:1, duration:0.3, ease:"power2.out", immediateRender:false}}, {ts:.2f});')
 J(f'tl.fromTo("#crono-arc", {{strokeDashoffset:0}}, {{strokeDashoffset:1, duration:{DUR:.2f}, ease:"none", immediateRender:false}}, 0);')
 J(f'tl.to("#crono", {{rotation:4, duration:0.5, yoyo:true, repeat:{int(DUR / 0.5)}, ease:"sine.inOut"}}, 0);')
 
@@ -406,7 +410,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#f6f7f2}}
 .tx{{position:absolute;white-space:nowrap;line-height:1.1}}
 .sk{{position:absolute;left:0;top:0;overflow:visible}}
 .fuente{{position:absolute;left:{MARG}px;right:300px;top:{NBH - 70}px;font:700 22px Courier;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-#crono{{position:absolute;left:{NBX + NBW - 150}px;top:{NBY - 120}px;width:170px;height:170px}}
+#crono{{position:absolute;left:{NBX + NBW - 190}px;top:{NBY - 175}px;width:215px;height:215px;filter:drop-shadow(0 10px 18px rgba(40,60,30,0.25))}}
 #boli{{position:absolute;left:0;top:0;width:10px;height:10px;overflow:visible}}
 #marca{{position:absolute;left:0;right:0;top:1775px;text-align:center;font:700 28px Inter;color:#1d2433;opacity:0.35;pointer-events:none}}
 #subs{{position:absolute;left:70px;right:70px;top:250px;height:220px}}
@@ -424,9 +428,9 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#f6f7f2}}
     <div id="trasera"></div><div id="trasera2"></div>
     {"".join(f'<div class="pg" id="pg{k}" style="z-index:{100 - k}">{"".join(pg)}<div class="sombra"></div></div>' for k, pg in enumerate(PAGES))}
   </div>
-  <svg id="crono" width="170" height="170" viewBox="0 0 170 170" data-layout-allow-overflow>
-    <rect x="72" y="2" width="26" height="18" rx="4" fill="#2b2b2b"/><circle cx="85" cy="92" r="72" fill="#fbf8f0" stroke="#2b2b2b" stroke-width="7"/>
-    <circle id="crono-arc" cx="85" cy="92" r="58" fill="none" stroke="{COL}" stroke-width="12" pathLength="1" stroke-dasharray="1" transform="rotate(-90 85 92)"/>
+  <svg id="crono" width="215" height="215" viewBox="0 0 170 170" data-layout-allow-overflow>
+    <rect x="72" y="2" width="26" height="18" rx="4" fill="#2b2b2b"/><circle cx="85" cy="92" r="72" fill="#ffffff" stroke="#2b2b2b" stroke-width="6"/>
+    <circle id="crono-arc" cx="85" cy="92" r="58" fill="none" stroke="{COL}" stroke-width="14" pathLength="1" stroke-dasharray="1" transform="rotate(-90 85 92)"/>
     <text id="crono-n" x="85" y="110" text-anchor="middle" font-family="Marker" font-size="50" fill="#2b2b2b">60</text>
   </svg>
   <svg id="boli" width="10" height="10" data-layout-allow-overflow><g transform="rotate(-35)"><rect x="-9" y="-260" width="18" height="230" rx="8" fill="#1b1b1b"/><rect x="-9" y="-200" width="18" height="14" fill="{COL}"/><path d="M-9,-30 L9,-30 L0,0 Z" fill="#c9c9c9"/><circle cx="0" cy="-2" r="2.5" fill="{INK}"/></g></svg>
