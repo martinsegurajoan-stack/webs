@@ -53,7 +53,7 @@ for lon, lat, rx, ry, rot in ((-4.0, 40.6, 1.6, 0.22, -10), (-3.2, 37.1, 1.4, 0.
     MAPA.append(f'<ellipse cx="{x:.0f}" cy="{y:.0f}" rx="{rx * K * CX:.0f}" ry="{ry * K:.0f}" fill="#7a4b1c" opacity="0.10" transform="rotate({rot} {x:.0f} {y:.0f})"/>')
 for txt, lon, lat, col, fs in (("ESPAÑA", -4.0, 39.3, "#a87808", 120), ("MARRUECOS", -7.0, 31.9, "#a3352c", 120), ("PORTUGAL", -8.2, 39.6, "#b4ab99", 70), ("ARGELIA", 1.0, 33.0, "#b4ab99", 70)):
     x, y = W(lon, lat)
-    MAPA.append(f'<text x="{x:.0f}" y="{y:.0f}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="{fs}" letter-spacing="16" fill="{col}" opacity="0.8">{txt}</text>')
+    MAPA.append(f'<text class="pais" x="{x:.0f}" y="{y:.0f}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="{fs}" letter-spacing="16" fill="{col}" opacity="0.8">{txt}</text>')
 for nom in ("Madrid", "Rabat", "Tarifa", "Tánger"):
     x, y = W(*CIUD[nom])
     dy = -26 if nom in ("Madrid", "Tarifa") else 56
@@ -150,49 +150,64 @@ def gira(i, valor, n, t, d=1.1):
         if s % 2 == 0:
             FX.append(("clic", t + s * 0.07))
 
-def carta(cid, titulo, t_in, t_out, es, ma, gana, fondo=""):
-    """Carta VS a pantalla completa. es/ma = dict(valor, txt, icono, iconos, cuando, cols, tam, num)."""
-    h = [f'<div class="vsc" id="{cid}"><div class="mitad izq"></div><div class="mitad der"></div><div class="rayasf"></div>{fondo}'
-         f'<div class="vtit"><span>{titulo}</span></div><div class="vsb">VS</div>']
-    for lado, d, x0, flag, nom in (("es", es, 50, bandera_es(), "ESPAÑA"), ("ma", ma, 560, bandera_ma(), "MARRUECOS")):
+TJ_X, TJ_Y, TJ_W, TJ_H = 70, 690, 940, 800
+def entra_sale(cid, t_in, t_out, entra, sale):
+    J(f'tl.set("#{cid}", {{opacity:0}}, 0); tl.set("#{cid}", {{opacity:1}}, {t_in:.2f}); tl.set("#{cid}", {{opacity:0}}, {t_out + 0.5:.2f});')
+    if entra == "arriba":
+        J(f'tl.fromTo("#{cid}", {{y:1100, rotation:4}}, {{y:0, rotation:0, duration:0.6, ease:"back.out(1.3)", immediateRender:false}}, {t_in:.2f});')
+    else:
+        J(f'tl.fromTo("#{cid}", {{x:1150, rotation:3}}, {{x:0, rotation:0, duration:0.5, ease:"power3.out", immediateRender:false}}, {t_in:.2f});')
+    if sale == "izq":
+        J(f'tl.to("#{cid}", {{x:-1150, rotation:-3, duration:0.45, ease:"power3.in"}}, {t_out:.2f});')
+    else:
+        J(f'tl.to("#{cid}", {{y:1150, rotation:-4, duration:0.5, ease:"power3.in"}}, {t_out:.2f});')
+    FX.append(("whoosh", t_in)); FX.append(("whoosh", t_out))
+
+def cabecera(cid, lado):
+    flag, nom = (bandera_es(), "ESPAÑA") if lado == "es" else (bandera_ma(), "MARRUECOS")
+    return f'<div class="tjcab"><svg width="78" height="52" viewBox="0 0 120 80">{flag}</svg><span>{nom}</span></div>'
+
+def carta(cid, titulo, t_in, t_out, es, ma, gana, unidad="", entra="arriba", sale="izq"):
+    """Tarjeta VS COMPACTA (no ocupa la pantalla): dos columnas claras, VS pequeño entre los nombres, número que
+    rueda solo cuando se dice, iconos del mismo tamaño en las dos columnas y la que gana se ilumina."""
+    h = [f'<div class="tj" id="{cid}"><div class="tjbar"></div><div class="tjt">{titulo}</div><div class="tjvs">VS</div>']
+    for lado, d, x0 in (("es", es, 20), ("ma", ma, 520)):
+        col = ES2 if lado == "es" else MA
         rid = f"{cid}-{lado}-n"
-        r_html, nd = rueda(rid, d["valor"], d.get("num", 104), "#ffffff")
-        h.append(f'<div class="vcol" style="left:{x0}px"><div class="vcab"><svg width="96" height="64" viewBox="0 0 120 80">{flag}</svg>{nom}</div>'
-                 f'<div class="vnum">{r_html}</div><div class="vtxt">{d.get("txt", "")}</div></div>')
-        n_ic, cols, s = d["iconos"], d.get("cols", 4), d.get("tam", 92)
+        r_html, nd = rueda(rid, d["valor"], d.get("num", 88), col)
+        h.append(f'<div class="tjc" id="{cid}-{lado}" style="left:{x0}px"><div class="tjfx"></div>{cabecera(cid, lado)}'
+                 f'<div class="tjn" id="{cid}-{lado}-num">{r_html}</div><div class="tjx">{d.get("txt", "")}</div>')
+        n_ic, cols, sz = d["iconos"], d.get("cols", 5), d.get("tam", 62)
+        ancho = cols * (sz + 8) - 8
         ids = []
         for k in range(n_ic):
             r_, c_ = divmod(k, cols)
-            iid = f"{cid}-{lado}-i{k}"
-            ids.append("#" + iid)
-            h.append(f'<div class="vic" id="{iid}" style="left:{x0 + c_ * (s + 10)}px;top:{1170 + r_ * (s + 8)}px">{svgico(d["icono"], "#ffffff", s)}</div>')
+            iid = f"{cid}-{lado}-i{k}"; ids.append("#" + iid)
+            h.append(f'<div class="vic" id="{iid}" style="left:{(400 - ancho) / 2 + c_ * (sz + 8):.0f}px;top:{300 + r_ * (sz + 6)}px">{svgico(d["icono"], col, sz)}</div>')
         if n_ic == 0:
-            h.append(f'<div class="vcero" id="{cid}-{lado}-cero" style="left:{x0}px">NINGUNO</div>')
-            pop(f"#{cid}-{lado}-cero", d["cuando"] + 0.15, 0.4, "scale:2, opacity:0, rotation:-12")
-            FX.append(("golpe", d["cuando"] + 0.15))
+            h.append(f'<div class="tjcero" id="{cid}-{lado}-cero">NINGUNO</div>')
+            pop(f"#{cid}-{lado}-cero", d["cuando"] + 0.1, 0.4, "scale:1.8, opacity:0, rotation:-10")
+            FX.append(("golpe", d["cuando"] + 0.1))
         else:
-            sx = -700 if lado == "es" else 700
             J(f'tl.set("{",".join(ids)}", {{opacity:0}}, 0);')
-            J(f'tl.fromTo("{",".join(ids)}", {{opacity:1, x:{sx}}}, {{x:0, duration:0.55, stagger:{min(0.07, 1.0 / n_ic):.3f}, ease:"back.out(1.6)", immediateRender:false}}, {d["cuando"] - 0.1:.2f});')
-            J(f'tl.to("{",".join(ids)}", {{keyframes:{{y:[0, -18, 0]}}, duration:0.28, stagger:{min(0.07, 1.0 / n_ic):.3f}, ease:"sine.inOut"}}, {d["cuando"] + 0.35:.2f});')
-            FX.append(("whoosh", d["cuando"] - 0.1))
-        gira(rid, d["valor"], nd, d["cuando"])
+            J(f'tl.fromTo("{",".join(ids)}", {{opacity:0, scale:0, y:30}}, {{opacity:1, scale:1, y:0, duration:0.35, stagger:{min(0.06, 0.9 / n_ic):.3f}, ease:"back.out(2.5)", immediateRender:false}}, {d["cuando"]:.2f});')
+            FX.append(("pop", d["cuando"]))
+        h.append('</div>')
+        J(f'tl.set("#{cid}-{lado}-num", {{opacity:0}}, 0); tl.to("#{cid}-{lado}-num", {{opacity:1, duration:0.15}}, {d["cuando"]:.2f});')
+        gira(rid, d["valor"], nd, d["cuando"], 0.9)
+    if unidad:
+        h.append(f'<div class="tju">{unidad}</div>')
     if gana:
-        x0 = 50 if gana == "es" else 560
-        h.append(f'<div class="vgana" id="{cid}-g" style="left:{x0 + 10}px">VENTAJA</div>')
-        tg = (es if gana == "es" else ma)["cuando"] + 1.0
-        pop(f"#{cid}-g", tg, 0.35, "scale:2.6, opacity:0, rotation:-25", "power4.out")
-        FX.append(("sello", tg)); sacude(tg, 12)
+        pierde = "ma" if gana == "es" else "es"
+        tg = max(es["cuando"], ma["cuando"]) + 0.5
+        h.append(f'<div class="tjg" id="{cid}-g" style="left:{20 if gana == "es" else 520}px">VENTAJA</div>')
+        pop(f"#{cid}-g", tg, 0.35, "scale:2.2, opacity:0, rotation:-15", "back.out(3)")
+        J(f'tl.set("#{cid}-{gana} .tjfx", {{opacity:0}}, 0); tl.to("#{cid}-{gana} .tjfx", {{opacity:1, duration:0.3}}, {tg:.2f}); tl.to("#{cid}-{pierde}", {{opacity:0.45, duration:0.3}}, {tg:.2f});')
+        FX.append(("sello", tg))
     h.append('</div>')
     CARDS.append("".join(h))
-    J(f'tl.set("#{cid}", {{opacity:0}}, 0); tl.set("#{cid}", {{opacity:1}}, {t_in:.2f}); tl.set("#{cid}", {{opacity:0}}, {t_out:.2f});')
-    J(f'tl.fromTo("#{cid} .vtit span", {{scale:2.4, opacity:0}}, {{scale:1, opacity:1, duration:0.4, ease:"power4.out", immediateRender:false}}, {t_in + 0.05:.2f});')
-    J(f'tl.fromTo("#{cid} .izq", {{x:-600}}, {{x:0, duration:0.5, ease:"power3.out", immediateRender:false}}, {t_in:.2f}); tl.fromTo("#{cid} .der", {{x:600}}, {{x:0, duration:0.5, ease:"power3.out", immediateRender:false}}, {t_in:.2f});')
-    J(f'tl.fromTo("#{cid} .vsb", {{scale:0, rotation:-180}}, {{scale:1, rotation:0, duration:0.6, ease:"back.out(2.5)", immediateRender:false}}, {t_in + 0.2:.2f});')
-    J(f'tl.fromTo("#{cid} .rayasf", {{x:0}}, {{x:-170, duration:{t_out - t_in:.2f}, ease:"none", immediateRender:false}}, {t_in:.2f});')
-    J(f'tl.fromTo("#{cid} .vcol", {{y:40, opacity:0}}, {{y:0, opacity:1, duration:0.4, stagger:0.1, ease:"power3.out", immediateRender:false}}, {t_in + 0.15:.2f});')
-    J(f'tl.fromTo("#{cid}", {{scale:1.0}}, {{scale:1.035, duration:{t_out - t_in:.2f}, ease:"none", immediateRender:false}}, {t_in:.2f});')
-    FX.append(("golpe", t_in + 0.05))
+    J(f'tl.fromTo("#{cid} .tjvs", {{scale:0, rotation:-120}}, {{scale:1, rotation:0, duration:0.5, ease:"back.out(2.5)", immediateRender:false}}, {t_in + 0.3:.2f});')
+    entra_sale(cid, t_in, t_out, entra, sale)
 
 # ================================================================== 1) GANCHO: picado al Estrecho
 cam_set(-4.5, 36.5, 0.42, 0)
@@ -244,17 +259,16 @@ FX.append(("sello", P("sesenta")))
 fuera("#sesenta", FE(2) + 0.05)
 J(f'tl.fromTo("#crono", {{scale:0, rotation:-90}}, {{scale:1, rotation:0, duration:0.6, ease:"back.out(2.5)", immediateRender:false}}, {P("sesenta"):.2f}); tl.set("#crono", {{scale:0}}, 0);')
 
-# ================================================================== 3-4) cartas: soldados y tanques
-whip(F(3))
+# ================================================================== 3-4) tarjetas: soldados y tanques
+J(f'tl.to("#velo", {{opacity:1, duration:0.4}}, {F(3) - 0.1:.2f}); tl.to("#velo", {{opacity:0, duration:0.4}}, {FE(4) + 0.2:.2f});')
 riser(P("doscientos"), 0.9)
-carta("c-sold", "SOLDADOS", F(3), F(4), dict(valor="120.000", txt="en activo", icono="soldado", iconos=12, cuando=P("ciento"), cols=4, tam=88),
-      dict(valor="200.000", txt="en activo", icono="soldado", iconos=20, cuando=P("doscientos"), cols=5, tam=78), "ma")
-nota("1 muñeco = 10.000", "Fuente: IISS y Euronews (2026)", F(3) + 0.6, F(4) - 0.05, x=520, y=1610, rot=3)
-whip(F(4), -1)
+carta("c-sold", "SOLDADOS EN ACTIVO", F(3), F(4) - 0.05, dict(valor="120.000", txt="soldados", icono="soldado", iconos=12, cuando=P("ciento")),
+      dict(valor="200.000", txt="soldados", icono="soldado", iconos=20, cuando=P("doscientos")), "ma", "1 muñeco = 10.000 soldados")
+nota("Fuente: IISS y", "Euronews (2026)", F(3) + 0.7, F(4) - 0.05, x=60, y=1530, rot=-3, w=360)
 riser(P("trescientos"), 0.9)
-carta("c-tanq", "TANQUES", F(4), FE(4) + 0.08, dict(valor="298", txt="carros de combate", icono="tanque", iconos=3, cuando=P("frente"), cols=3, tam=130),
-      dict(valor="1.346", txt="carros de combate", icono="tanque", iconos=13, cuando=P("trescientos"), cols=4, tam=100), "ma")
-nota("1 tanque = 100", "Fuente: Global Firepower 2026", F(4) + 0.6, FE(4) + 0.05, x=60, y=1610, rot=-3)
+carta("c-tanq", "TANQUES", F(4), FE(4) + 0.05, dict(valor="298", txt="carros de combate", icono="tanque", iconos=3, cuando=P("frente"), tam=70),
+      dict(valor="1.346", txt="carros de combate", icono="tanque", iconos=13, cuando=P("trescientos"), tam=70), "ma", "1 tanque = 100 tanques", entra="der", sale="abajo")
+nota("Fuente: Global", "Firepower 2026", F(4) + 0.6, FE(4) + 0.05, x=640, y=1530, rot=3, w=360)
 
 # ================================================================== 5) el mar y el aire (mapa 3D)
 f5 = F(5)
@@ -282,53 +296,47 @@ fuera("#manda", FE(5))
 nota("Para invadir hay que", "cruzar 14 km de mar", f5 + 0.3, FE(5), x=60, y=1580, rot=-3)
 J(f'tl.to("{",".join(BAR)}", {{opacity:0, duration:0.3}}, {FE(5) + 0.05:.2f});')
 
-# ================================================================== 6-8) cartas: cazas, submarinos+portaaviones, ranking
-whip(F(6), -1)
+# ================================================================== 6-8) tarjetas: cazas, submarinos, portaaviones, ranking
+J(f'tl.to("#velo", {{opacity:1, duration:0.4}}, {F(6) - 0.1:.2f}); tl.to("#velo", {{opacity:0, duration:0.4}}, {FE(8) + 0.3:.2f});')
 riser(P("treinta"), 0.8)
-carta("c-caz", "CAZAS", F(6), FE(6) + 0.08, dict(valor="136", txt="cazas", icono="caza", iconos=14, cuando=P("treinta"), cols=5, tam=78),
-      dict(valor="84", txt="cazas", icono="caza", iconos=8, cuando=P("ochenta"), cols=5, tam=78), "es")
-nota("1 avión = 10 cazas", "Fuente: Global Firepower 2026", F(6) + 0.5, FE(6) + 0.05, x=520, y=1620, rot=3)
-whip(F(7))
-mar_fondo = '<div class="agua"></div>'
-carta("c-sub", "SUBMARINOS", F(7), P("portaaviones") - 0.1, dict(valor="2", txt="en servicio", icono="submarino", iconos=2, cuando=P("dos"), cols=2, tam=200, num=170),
-      dict(valor="0", txt="submarinos", icono="submarino", iconos=0, cuando=P("ninguno"), num=170), "es", mar_fondo)
-# portaaviones: escena propia
-tp = P("portaaviones") - 0.1
-whip(tp + 0.1, -1)
-CARDS.append(f'<div class="vsc" id="c-port"><div class="mitad izq"></div><div class="mitad der"></div><div class="rayasf"></div><div class="agua"></div>'
-             f'<div class="vtit"><span>PORTAAVIONES</span></div>'
-             f'<div class="vcol" style="left:50px"><div class="vcab"><svg width="96" height="64" viewBox="0 0 120 80">{bandera_es()}</svg>ESPAÑA</div><div class="vnum" style="font-size:170px">1</div></div>'
-             f'<div class="vcol" style="left:560px"><div class="vcab"><svg width="96" height="64" viewBox="0 0 120 80">{bandera_ma()}</svg>MARRUECOS</div><div class="vnum" style="font-size:170px">0</div></div>'
-             f'<div id="port-b" style="position:absolute;left:30px;top:1120px">{svgico("portaaviones", "#ffffff", 480)}</div>'
-             f'<div class="vgana" id="port-nom" style="left:70px;top:1560px;transform:none;background:{NAVY}">«Juan Carlos I»</div>'
-             f'<div class="vcero" id="port-x" style="left:610px;top:1250px">✕ NO TIENE</div></div>')
-J(f'tl.set("#c-port", {{opacity:0}}, 0); tl.set("#c-port", {{opacity:1}}, {tp:.2f}); tl.set("#c-port", {{opacity:0}}, {FE(7) + 0.08:.2f});')
-J(f'tl.fromTo("#c-port .vtit span", {{scale:2.4, opacity:0}}, {{scale:1, opacity:1, duration:0.4, ease:"power4.out", immediateRender:false}}, {tp:.2f});')
-J(f'tl.fromTo("#port-b", {{x:-700}}, {{x:0, duration:1.0, ease:"power3.out", immediateRender:false}}, {tp + 0.1:.2f}); tl.to("#port-b", {{y:-14, duration:0.7, yoyo:true, repeat:5, ease:"sine.inOut"}}, {tp + 1.1:.2f});')
-J(f'tl.fromTo("#c-port .rayasf", {{x:0}}, {{x:-170, duration:{FE(7) - tp:.2f}, ease:"none", immediateRender:false}}, {tp:.2f});')
-pop("#port-nom", tp + 0.8, 0.35); pop("#port-x", P("solo") - 0.05, 0.4, "scale:2.4, opacity:0, rotation:-15", "power4.out")
-FX.append(("whoosh", tp + 0.1)); FX.append(("sello", P("solo"))); sacude(P("solo"), 10)
-# ranking
+carta("c-caz", "AVIONES DE CAZA", F(6), F(7) - 0.05, dict(valor="136", txt="cazas", icono="caza", iconos=14, cuando=P("treinta")),
+      dict(valor="84", txt="cazas", icono="caza", iconos=8, cuando=P("ochenta")), "es", "1 avión = 10 cazas")
+nota("Fuente: Global", "Firepower 2026", F(6) + 0.5, FE(8) + 0.05, x=640, y=1530, rot=3, w=360)
+tp = P("portaaviones") - 0.15
+carta("c-sub", "SUBMARINOS", F(7), tp, dict(valor="2", txt="en servicio", icono="submarino", iconos=2, cuando=P("dos"), cols=2, tam=150),
+      dict(valor="0", txt="submarinos", icono="submarino", iconos=0, cuando=P("ninguno")), "es", "Fuente: Armada y GFP 2026", entra="der", sale="izq")
+# portaaviones (tarjeta compacta propia)
+CARDS.append(f'<div class="tj" id="c-port"><div class="tjbar"></div><div class="tjt">PORTAAVIONES</div><div class="tjvs">VS</div>'
+             f'<div class="tjc" id="c-port-es" style="left:20px"><div class="tjfx"></div>{cabecera("c-port", "es")}<div class="tjn" style="color:{ES2}">1</div><div class="tjx">«Juan Carlos I»</div>'
+             f'<div id="port-b" style="position:absolute;left:40px;top:290px">{svgico("portaaviones", ES2, 320)}</div></div>'
+             f'<div class="tjc" id="c-port-ma" style="left:520px">{cabecera("c-port", "ma")}<div class="tjn" style="color:{MA}">0</div><div class="tjx">no tiene</div>'
+             f'<div class="tjcero" id="port-x">✕</div></div><div class="tjg" id="port-g" style="left:20px">VENTAJA</div></div>')
+J(f'tl.fromTo("#port-b", {{x:-420}}, {{x:0, duration:0.9, ease:"power3.out", immediateRender:false}}, {tp + 0.2:.2f}); tl.to("#port-b", {{y:-10, duration:0.6, yoyo:true, repeat:4, ease:"sine.inOut"}}, {tp + 1.1:.2f});')
+pop("#port-x", P("solo") - 0.05, 0.35, "scale:2.2, opacity:0, rotation:-15")
+pop("#port-g", P("solo") + 0.3, 0.35, "scale:2.2, opacity:0, rotation:-15", "back.out(3)")
+J(f'tl.set("#c-port-es .tjfx", {{opacity:0}}, 0); tl.to("#c-port-es .tjfx", {{opacity:1, duration:0.3}}, {P("solo") + 0.3:.2f}); tl.to("#c-port-ma", {{opacity:0.45, duration:0.3}}, {P("solo") + 0.3:.2f});')
+J(f'tl.fromTo("#c-port .tjvs", {{scale:0}}, {{scale:1, duration:0.5, ease:"back.out(2.5)", immediateRender:false}}, {tp + 0.3:.2f});')
+FX.append(("sello", P("solo")))
+entra_sale("c-port", tp, FE(7) + 0.05, "der", "izq")
+# ranking (tarjeta compacta: ventana de 5 filas que se desplaza)
 f8 = F(8)
-whip(f8)
 filas = []
 for n in range(1, 66):
     cls = " es" if n == 18 else (" ma" if n == 56 else "")
     lab = "ESPAÑA" if n == 18 else ("MARRUECOS" if n == 56 else "")
     filas.append(f'<div class="fila{cls}"><b>{n}.º</b><span>{lab}</span></div>')
-CARDS.append(f'<div class="vsc rk" id="c-rank"><div class="rkfondo"></div><div class="rktop"></div><div class="vtit"><span>RANKING MUNDIAL</span></div>'
+CARDS.append(f'<div class="tj" id="c-rank"><div class="tjbar"></div><div class="tjt">RANKING MILITAR MUNDIAL</div>'
              f'<div class="rkvent"><div class="rkstrip" id="rkstrip">{"".join(filas)}</div></div><div class="rkmarco"></div>'
-             f'<div class="rkfuente">Global Firepower 2026 · 145 países</div></div>')
-J(f'tl.set("#c-rank", {{opacity:0}}, 0); tl.set("#c-rank", {{opacity:1}}, {f8:.2f}); tl.set("#c-rank", {{opacity:0}}, {FE(8) + 0.08:.2f});')
-J(f'tl.fromTo("#c-rank .vtit span", {{scale:2.4, opacity:0}}, {{scale:1, opacity:1, duration:0.4, ease:"power4.out", immediateRender:false}}, {f8:.2f});')
-ROW = 120
-def fila_y(n): return -(n - 1) * ROW + 2 * ROW     # deja la fila n en el centro de la ventana (5 filas)
+             f'<div class="tju">Global Firepower 2026 · 145 países</div></div>')
+ROW = 96
+def fila_y(n): return -(n - 1) * ROW + 2 * ROW
 J(f'tl.fromTo("#rkstrip", {{y:{fila_y(1)}}}, {{y:{fila_y(18)}, duration:{P("dieciocho") - f8:.2f}, ease:"power2.inOut", immediateRender:false}}, {f8:.2f});')
 J(f'tl.to("#rkstrip", {{y:{fila_y(56)}, duration:0.9, ease:"power3.inOut"}}, {P("cincuenta") - 0.9:.2f});')
 for w_ in ("dieciocho", "cincuenta"):
-    FX.append(("golpe", P(w_))); punch(P(w_), 1.04)
-for s in range(int((FE(8) - f8) / 0.12)):
-    FX.append(("clic", f8 + s * 0.12))
+    FX.append(("golpe", P(w_)))
+for s_ in range(int((FE(8) - f8) / 0.12)):
+    FX.append(("clic", f8 + s_ * 0.12))
+entra_sale("c-rank", f8, FE(8) + 0.05, "der", "abajo")
 
 # ================================================================== 9-10) Ceuta y Melilla, OTAN y UE
 f9 = F(9)
@@ -407,6 +415,10 @@ pop("#final", f13, 0.55, "scale:0.5, opacity:0, rotation:-6")
 J(f'tl.to("#final .dedo", {{y:14, duration:0.35, yoyo:true, repeat:{max(1, int((DUR - f13) / 0.35) - 1)}, ease:"sine.inOut"}}, {f13 + 0.4:.2f});')
 FX.append(("brillo", f13)); leak(f13, 1.4)
 
+# nombres de país solo en los planos generales (en los cercanos asomaban por arriba, bajo los subtítulos)
+J(f'tl.to(".pais", {{opacity:0, duration:0.3}}, 0.7); tl.to(".pais", {{opacity:0.8, duration:0.4}}, {F(2) + 0.6:.2f}); tl.to(".pais, .pin", {{opacity:0, duration:0.3}}, {F(3):.2f}); tl.to(".pin", {{opacity:1, duration:0.4}}, {F(13) + 0.6:.2f}); tl.to(".pais", {{opacity:0.8, duration:0.5}}, {F(13):.2f});')
+# Ceuta y Melilla: fuera las etiquetas en la escena del comercio (tapaban los barcos y Melilla salía cortada)
+J(f'tl.to("#m-ceuta .etq, #m-melilla .etq", {{opacity:0, duration:0.3}}, {F(12) - 0.1:.2f});')
 # vida: nubes en parallax, oleaje, grano que parpadea, chinchetas
 J(f'tl.to("#nubes", {{x:-420, duration:{DUR:.2f}, ease:"none"}}, 0);')
 J(f'tl.to("#olas", {{x:-200, duration:{DUR:.2f}, ease:"none"}}, 0);')
@@ -474,6 +486,21 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#f8f4ea}}
 #nubes{{position:absolute;left:0;top:0;overflow:visible;pointer-events:none}}
 #cielo{{position:absolute;left:0;right:0;top:0;height:560px;background:linear-gradient(#fdf8ee 58%, rgba(253,248,238,0));pointer-events:none}}
 .vsc{{position:absolute;inset:0;overflow:hidden;z-index:12;background:#fff}}
+.tj{{position:absolute;left:{TJ_X}px;top:{TJ_Y}px;width:{TJ_W}px;height:{TJ_H}px;background:#ffffff;border-radius:40px;box-shadow:0 30px 70px rgba(20,30,60,0.35);overflow:hidden;z-index:14}}
+.tjbar{{position:absolute;left:0;right:0;top:0;height:14px;background:linear-gradient(90deg,{ES} 0 50%,{MA} 50% 100%)}}
+.tjt{{position:absolute;left:0;right:0;top:40px;text-align:center;font:900 54px Inter;color:{NAVY};letter-spacing:1px}}
+.tjvs{{position:absolute;left:{TJ_W / 2 - 38:.0f}px;top:140px;width:76px;height:76px;border-radius:50%;background:{NAVY};color:#fff;font:900 30px Inter;display:flex;align-items:center;justify-content:center;z-index:3}}
+.tjc{{position:absolute;top:140px;width:400px;height:{TJ_H - 212}px;text-align:center}}
+.tjfx{{position:absolute;inset:-6px;border-radius:30px;background:rgba(46,170,90,0.10);border:5px solid {GRN};opacity:0}}
+.tjcab{{position:relative;display:flex;align-items:center;justify-content:center;gap:12px;height:110px;font:900 34px Inter;color:{NAVY}}}
+.tjcab svg{{border-radius:6px;box-shadow:0 4px 10px rgba(0,0,0,0.2)}}
+.tjn{{position:relative;font:900 88px Inter;letter-spacing:-3px;line-height:1;height:92px}}
+.tjx{{position:relative;margin-top:8px;font:800 28px Inter;color:#7a8296}}
+.tjcero{{position:absolute;left:60px;right:60px;top:320px;padding:18px;border:6px dashed #c9ced8;border-radius:26px;font:900 54px Inter;color:#b0b6c4}}
+.tjg{{position:absolute;top:118px;width:400px;text-align:left;padding-left:26px;font:900 26px Inter;color:#fff;letter-spacing:2px;z-index:4;transform:rotate(-6deg);transform-origin:20% 50%}}
+.tjg::before{{content:"";position:absolute;left:10px;width:178px;top:-6px;bottom:-6px;border-radius:12px;background:{GRN};z-index:-1;box-shadow:0 6px 0 rgba(0,0,0,0.15)}}
+.tju{{position:absolute;left:0;right:0;bottom:22px;text-align:center;font:700 26px Inter;color:#98a0b0}}
+#velo{{position:absolute;inset:0;background:rgba(250,246,236,0.5);opacity:0;pointer-events:none;z-index:11}}
 .mitad{{position:absolute;top:0;bottom:0;left:0;width:100%}}
 .mitad.izq{{background:linear-gradient(160deg,{ES},{ES2});clip-path:polygon(0 0,57.5% 0,41.5% 100%,0 100%)}}
 .mitad.der{{background:linear-gradient(200deg,{MA},{MA2});clip-path:polygon(58.5% 0,100% 0,100% 100%,42.5% 100%)}}
@@ -495,10 +522,10 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#f8f4ea}}
 .vsc.rk{{background:linear-gradient(#22345f,{NAVY})}}
 .rktop{{position:absolute;left:0;right:0;top:0;height:500px;background:linear-gradient(#fdf8ee 70%, rgba(253,248,238,0))}}
 .rkfondo{{position:absolute;inset:0;background:repeating-linear-gradient(90deg, rgba(255,255,255,0.04) 0 2px, transparent 2px 90px)}}
-.rkvent{{position:absolute;left:90px;right:90px;top:760px;height:{5 * 120}px;overflow:hidden;-webkit-mask:linear-gradient(transparent, #000 25%, #000 75%, transparent)}}
-.fila{{height:120px;display:flex;align-items:center;gap:40px;padding:0 50px;font:900 66px Inter;color:rgba(255,255,255,0.35);border-bottom:2px solid rgba(255,255,255,0.08)}}
+.rkvent{{position:absolute;left:40px;right:40px;top:150px;height:{5 * 96}px;overflow:hidden;-webkit-mask:linear-gradient(transparent, #000 25%, #000 75%, transparent)}}
+.fila{{height:96px;display:flex;align-items:center;gap:40px;padding:0 40px;font:900 52px Inter;color:#c3c8d3;border-bottom:2px solid #eef0f4}}
 .fila b{{width:200px}} .fila.es{{color:#fff;background:linear-gradient(90deg,{ES},{ES2});border-radius:24px}} .fila.ma{{color:#fff;background:linear-gradient(90deg,{MA},{MA2});border-radius:24px}}
-.rkmarco{{position:absolute;left:70px;right:70px;top:{760 + 2 * 120 - 10}px;height:140px;border:6px solid #fff;border-radius:30px;box-shadow:0 0 40px rgba(255,255,255,0.4)}}
+.rkmarco{{position:absolute;left:24px;right:24px;top:{150 + 2 * 96 - 8}px;height:112px;border:6px solid {NAVY};border-radius:26px}}
 .rkfuente{{position:absolute;left:0;right:0;top:1460px;text-align:center;font:800 34px Inter;color:#9fb0d6}}
 .nota{{position:absolute;padding:22px 26px 20px;background:linear-gradient(160deg,#fff6a8,#ffe76b);box-shadow:0 18px 34px rgba(0,0,0,0.3);border-radius:4px;z-index:30}}
 .nota::before{{content:"";position:absolute;left:38%;top:-16px;width:110px;height:34px;background:rgba(255,255,255,0.55);transform:rotate(-3deg)}}
@@ -539,7 +566,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#f8f4ea}}
   <div id="todo" data-layout-allow-overflow data-layout-ignore>
     <div id="escena"><div id="mesa"><svg id="mundo" width="10" height="10" data-layout-allow-overflow data-layout-ignore>{"".join(MAPA)}{"".join(MOV)}</svg></div></div>
     <svg id="nubes" width="2200" height="1920">{nubes}</svg>
-    <div id="cielo"></div>
+    <div id="cielo"></div><div id="velo"></div>
     {"".join(CARDS)}
     {"".join(OVR)}
   </div>

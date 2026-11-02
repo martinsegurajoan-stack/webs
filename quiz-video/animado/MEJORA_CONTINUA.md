@@ -62,3 +62,10 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
 - Pegatina/nota con el dato gancho («solo 14 km de mar»), franja inferior con los temas, destellos de luz.
 - Contraste alto, nada de solapes, todo dentro de 300-1620 px. Referencia: `animado/marruecos2/miniatura/hacer.js`.
 - Tras el render, COMPRIMIR siempre (el grano dispara el peso: 207 MB): `ffmpeg -i video-FINAL.mp4 -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p -movflags +faststart -c:a copy` (GitHub no admite >100 MB).
+- COMPARATIVAS (usuario, 02-11-2026): el VS NO ocupa toda la pantalla. Tarjeta blanca COMPACTA sobre el mapa (velo
+  suave detrás): título arriba, dos columnas claras (bandera + nombre), VS pequeño entre los nombres SIN tapar nada,
+  número que rueda solo cuando se dice, iconos del mismo tamaño en las dos columnas, la que gana con recuadro verde y
+  pestaña «VENTAJA» junto al nombre, la que pierde se apaga; unidad («1 muñeco = 10.000») abajo. Entra desde abajo o
+  desde la derecha y sale hacia el lado. Referencia: `carta()` en `animado/marruecos2/gen.py`.
+- Revisar en cada escena: banderas/chinchetas que asoman por los bordes, etiquetas cortadas, nombres del mapa que
+  asoman bajo los subtítulos en planos cercanos.
