@@ -48,6 +48,10 @@ REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PER
   ESTILO NETFLIX (01-11-2026, para siempre): colores VIVOS, NADA de fondos desenfocados, casa de verdad llena de objetos,
   planos abiertos, comparaciones dibujadas (edificio de 50 pisos), voz sin susurros (mismo tono), transiciones bonitas (no iris),
   primer plano HOOK espectacular, hasta 105 s. Ver «0b» en `quiz-video/animado/INSTRUCCIONES.md`.
+- VÍDEO POLÍTICO «¿Y SI GANA <PARTIDO>?» EN 60 s (serie de partidos, @mundo.supuesto, 02-11-2026): plantilla
+  `quiz-video/animado/vox29n/` (leer `PLANTILLA.md`): estilo LIBRETA profesional para adultos, cronómetro de 60 s,
+  color del partido suavizado, narrador neutro, datos reales verificados (buenos y malos) con fuente en pantalla,
+  bocetos a tinta solo donde ayudan, miniatura sobria de libreta (`miniatura/hacer.js` lee `partido.json`).
 - Proyecto: carpeta `quiz-video/`, en la rama `claude/tiktok-quiz-video-generator-nub6w6`
   (si estás en `main` y no ves `quiz-video/`, cambia a esa rama).
 - Vídeos: `quiz-video/salida/*.mp4`. Contenido de cada vídeo: `quiz-video/quizzes/*.json`.
