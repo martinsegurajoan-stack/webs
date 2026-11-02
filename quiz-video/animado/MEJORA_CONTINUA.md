@@ -1,4 +1,6 @@
-# MEJORA CONTINUA — regla del usuario (02-11-2026), OBLIGATORIA en TODOS los vídeos
+# MEJORA CONTINUA — regla del usuario (02-11-2026), OBLIGATORIA en TODOS los vídeos Y PORTADAS
+
+> «Estas mejoras aplícalas siempre. También en portadas.» (usuario, 02-11-2026)
 
 > «Cada vídeo tiene que ser mejor que el anterior. Siento que estamos estancados. Más visual, que se vea mejor todo.
 > El siguiente vídeo que te pida, mejóramelo por 1000.»
@@ -52,3 +54,10 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
   posición; números con punto de miles → columnas de dígitos (no `innerHTML` con «89.300», GSAP lo hace 89,3).
 - Referencia de nivel: `animado/marruecos2/` (mapa 3D inclinado, nubes en parallax, cartas VS a pantalla completa con
   números que ruedan, barridos, sellos con sacudida, ranking que se desplaza, grano, viñeta, destellos, karaoke).
+
+## PORTADAS / MINIATURAS (siempre, mismo nivel que el vídeo)
+- PÓSTER, no captura: fondo sacado del vídeo pero apagado (saturate 0.75, brightness 0.8) + viñeta y degradado.
+- Título gigante con RELIEVE (sombras apiladas tipo 3D), una palabra en caja de color inclinada, colores del tema.
+- Elemento central fuerte (medallón VS con banderas, personaje, objeto) + 2 siluetas grandes que lo enmarquen.
+- Pegatina/nota con el dato gancho («solo 14 km de mar»), franja inferior con los temas, destellos de luz.
+- Contraste alto, nada de solapes, todo dentro de 300-1620 px. Referencia: `animado/marruecos2/miniatura/hacer.js`.
