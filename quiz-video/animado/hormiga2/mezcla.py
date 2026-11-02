@@ -46,7 +46,7 @@ def timbre(d=1.6):
     t = np.arange(int(d * SR)) / SR
     gate = (np.sin(2 * np.pi * 18 * t) > 0).astype(float)
     return gate * np.minimum(1, (d - t) * 6) * (0.5 * np.sin(2 * np.pi * 2350 * t) + 0.35 * np.sin(2 * np.pi * 3100 * t))
-fx = {"sube": (sube(), 0.3), "sube2": (sube(1.2, 420, 1100), 0.32), "boing": (boing(), 0.45), "timbre": (timbre(), 0.13), "suave": (transicion(), 0.16), "brillo": (brillo(), 0.2), "whoosh": (audio.sfx_whoosh(0.6), 0.35), "pop": (audio.sfx_pop(), 0.35), "clic": (audio.sfx_tick(True), 0.6),
+fx = {"baja": (sube(1.0, 1100, 260), 0.32), "sube": (sube(), 0.3), "sube2": (sube(1.2, 420, 1100), 0.32), "boing": (boing(), 0.45), "timbre": (timbre(), 0.13), "suave": (transicion(), 0.16), "brillo": (brillo(), 0.2), "whoosh": (audio.sfx_whoosh(0.6), 0.35), "pop": (audio.sfx_pop(), 0.35), "clic": (audio.sfx_tick(True), 0.6),
       "golpe": (sfx_golpe(1.0), 0.55), "portazo": (sfx_golpe(1.5), 0.8)}
 for k, t in json.load(open(os.path.join(BASE, "efectos.json"))):
     s, g = fx[k]

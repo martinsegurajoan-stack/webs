@@ -193,6 +193,7 @@ DESP = ('<g id="despG"><rect x="1166" y="1150" width="20" height="40" fill="#3b2
         '<rect x="1240" y="930" width="20" height="22" rx="4" fill="#3b2f2f"/></g>')
 H.append(svg(b))
 H.append(svg(DESP, "desp"))
+H.append(svg('<g id="encoge" opacity="0">' + ''.join(f'<path d="M{1080 + 60 * math.cos(math.radians(a)):.0f},{1140 + 60 * math.sin(math.radians(a)):.0f} L{1080 + 120 * math.cos(math.radians(a)):.0f},{1140 + 120 * math.sin(math.radians(a)):.0f}" stroke="#ffd23f" stroke-width="10" stroke-linecap="round"/>' for a in range(0, 360, 45)) + '</g>'))
 H.append(svg('<g id="ring" opacity="0">' + "".join(f'<path d="M{1250 + 140 * math.cos(math.radians(a))},{1040 + 140 * math.sin(math.radians(a))} L{1250 + 175 * math.cos(math.radians(a))},{1040 + 175 * math.sin(math.radians(a))}" stroke="#ffd23f" stroke-width="10" stroke-linecap="round"/>'
                                                 for a in (-150, -120, -60, -30, 200, -20 + 360, 160)) + '</g>'))
 

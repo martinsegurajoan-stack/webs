@@ -52,6 +52,9 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - **PERSONAJE CON ARTICULACIONES** (02-11-2026): codos y rodillas, CAMINA DE PERFIL (no de frente), caras según la
   acción (frío = cara azul + dientes que castañetean + copos; miedo = sudor y piernas que tiemblan; fuerza = músculo
   y rubor…). Animales igual: el gato camina de perfil con 4 patas, cola, parpadeos. Ver `hormiga2/perfil.py` y `gato2.py`.
+- **NADA de empezar con un zoom a un objeto** (usuario, 02-11-2026, «algo mejor que un zoom completo a un reloj»):
+  el primer segundo tiene que tener una ACCIÓN sorprendente del propio tema (p. ej. en la hormiga: te desperezas a
+  tamaño normal y ENCOGES girando con «fiuuu» y pop, y el plano se abre a la casa entera). Inventar algo así siempre.
 - **SUELOS A LA MISMA ALTURA** (usuario, 02-11-2026: «está súper mal hecha la casa»): todas las habitaciones de una
   planta comparten la MISMA línea de suelo y el mismo grosor; los muebles y personajes se apoyan a la misma profundidad
   (45 px dentro de la franja del suelo) en TODAS las plantas; alfombras a la misma altura. Nada de escaleras o

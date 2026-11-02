@@ -1,29 +1,47 @@
 # ================================================================== GUION → ANIMACIÓN (v3: más vida, articulaciones y caras)
 def hook_estado(t):
-    """Fotograma del gancho (también el del bucle final): manos en las orejas por el despertador, cara de susto."""
-    J(f'tl.set("#p0-armLg", {{rotation:155, svgOrigin:"356 985"}}, {t:.2f}); tl.set("#p0-armRg", {{rotation:-155, svgOrigin:"644 985"}}, {t:.2f});')
-    J(f'tl.set("#p0-foreL", {{rotation:-95, svgOrigin:"331 1116"}}, {t:.2f}); tl.set("#p0-foreR", {{rotation:95, svgOrigin:"669 1116"}}, {t:.2f});')
-    J(f'tl.set("#p0-eyes", {{scaleY:1.4, svgOrigin:"500 742"}}, {t:.2f}); tl.set("#p0-mouthO", {{opacity:1}}, {t:.2f}); tl.set("#p0-mouth", {{opacity:0}}, {t:.2f}); tl.set("#p0-brows", {{y:-16}}, {t:.2f});')
-    J(f'tl.set("#p0-w", {{x:0}}, {t:.2f}); tl.set("#ring", {{opacity:1}}, {t:.2f});')
+    """Fotograma 0 (y el del bucle): te desperezas DE PIE sobre la cama, a tamaño normal; el despertador suena."""
+    J(f'tl.set("#p0-w", {{x:0, scale:1, transformOrigin:"500px 1702px"}}, {t:.2f});')
+    J(f'tl.set("#p0-armLg", {{rotation:165, svgOrigin:"356 985"}}, {t:.2f}); tl.set("#p0-armRg", {{rotation:-165, svgOrigin:"644 985"}}, {t:.2f});')
+    J(f'tl.set("#p0-foreL", {{rotation:-25, svgOrigin:"331 1116"}}, {t:.2f}); tl.set("#p0-foreR", {{rotation:25, svgOrigin:"669 1116"}}, {t:.2f});')
+    J(f'tl.set("#p0-eyes", {{scaleY:0.12, svgOrigin:"500 742"}}, {t:.2f}); tl.set("#p0-mouthO", {{opacity:1, scale:1.5, svgOrigin:"500 822"}}, {t:.2f}); tl.set("#p0-mouth", {{opacity:0}}, {t:.2f}); tl.set("#p0-brows", {{y:-6}}, {t:.2f});')
+    J(f'tl.set("#ring", {{opacity:1}}, {t:.2f}); tl.set("#tuTag", {{opacity:0}}, {t:.2f});')
 
-# 1 · GANCHO
-HOOK = (1160, YB - 125, 4.8)
+# 1 · GANCHO: de tamaño normal… y ¡ENCOGES! delante de la cámara; luego se abre el plano: estás en TU casa
+HOOK = (1080, 470, 1.05)
 camset(0, *HOOK)
 hook_estado(0)
-J(f'tl.to("#p0-headw", {{keyframes:{{rotation:[0, -9, 0, 9, 0]}}, duration:0.5, repeat:5, svgOrigin:"500 900"}}, 0.05);')
+J('tl.to("#p0-up", {scaleY:1.05, duration:0.45, yoyo:true, repeat:1, ease:"sine.inOut", svgOrigin:"500 1290"}, 0.05);')
+J('tl.to("#p0-headw", {keyframes:{rotation:[0, -6, 0, 6, 0]}, duration:0.9, svgOrigin:"500 900"}, 0.05);')
 J(f'tl.to("#desp", {{keyframes:{{x:[0, -5, 5, -5, 5, 0]}}, duration:0.24, repeat:{int(4.0 / 0.24)}, ease:"none"}}, 0);')
 J(f'tl.to("#campL", {{keyframes:{{rotation:[0, -14, 0, 14, 0]}}, duration:0.16, repeat:{int(4.0 / 0.16)}, ease:"none", svgOrigin:"1183 960"}}, 0);')
 J(f'tl.to("#campR", {{keyframes:{{rotation:[0, 14, 0, -14, 0]}}, duration:0.16, repeat:{int(4.0 / 0.16)}, ease:"none", svgOrigin:"1317 960"}}, 0);')
 J(f'tl.to("#ring", {{keyframes:{{scale:[1, 1.15, 1]}}, duration:0.3, repeat:{int(4.0 / 0.3)}, svgOrigin:"1250 1040"}}, 0); tl.to("#ring", {{opacity:0, duration:0.2}}, 4.0);')
-FX_EV.append(("timbre", 0.0)); FX_EV.append(("timbre", 1.7))
-pose("p0", 3.6, 0, 0, 0, 0, dur=0.5, ease="power2.inOut")
-normal("p0", 3.8)
-cam(P("tamano") - 0.1, 1450, 650, 0.3, dur=2.2, ease="power2.inOut")
-J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40, scale:2.4, transformOrigin:"50% 100%"}}, {{opacity:1, y:0, scale:2.4, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("hormiga") + 0.1:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
-J(f'tl.to("#tuTag", {{y:-30, duration:0.3, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("hormiga") + 0.6:.2f});')
-FX_EV.append(("pop", P("hormiga") + 0.1))
+FX_EV.append(("timbre", 0.0))
+# abre los ojos de golpe al oír «despertaras»
+tde = P("despertaras")
+J(f'tl.to("#p0-eyes", {{scaleY:1.4, duration:0.12, svgOrigin:"500 742"}}, {tde:.2f}); tl.to("#p0-mouthO", {{scale:1, duration:0.15, svgOrigin:"500 822"}}, {tde:.2f}); tl.to("#p0-brows", {{y:-16, duration:0.15}}, {tde:.2f});')
+pose("p0", tde, 120, -120, 40, -40, dur=0.25)
+# ¡ENCOGE! (con «fiuuu» que baja y un pop), la cámara se lanza hacia él
+tsh = P("tamano") - 0.05
+J(f'tl.to("#p0-w", {{keyframes:{{scale:[1, 1.08, 0.3, {S_MINI * 0.8:.3f}, {S_MINI}], easeEach:"power2.inOut"}}, duration:1.0, transformOrigin:"500px 1702px"}}, {tsh:.2f});')
+J(f'tl.to("#p0", {{rotation:720, duration:0.95, ease:"power2.inOut", transformOrigin:"50% 62%"}}, {tsh:.2f}); tl.set("#p0", {{rotation:0}}, {tsh + 0.96:.2f});')
+pose("p0", tsh, 150, -150, -60, 60, dur=0.2)
+J(f'tl.to(["#p0-foreL", "#p0-foreR"], {{rotation:"+=40", duration:0.12, yoyo:true, repeat:5}}, {tsh + 0.1:.2f});')
+FX_EV.append(("baja", tsh)); FX_EV.append(("pop", tsh + 1.0))
+J(f'tl.set("#encoge", {{opacity:1, scale:0.2}}, {tsh + 0.95:.2f}); tl.to("#encoge", {{scale:1.6, opacity:0, duration:0.6, ease:"power2.out", svgOrigin:"1080 1140"}}, {tsh + 0.95:.2f});')
+cam(tsh, *C(1080, YB, 4.0), dur=1.0, ease="power3.inOut")
+pose("p0", tsh + 1.1, 40, -40, 110, -110, dur=0.3)      # se mira las manos: ¿¡qué ha pasado!?
+J(f'tl.to("#p0-eyes", {{y:8, duration:0.2}}, {tsh + 1.1:.2f}); tl.to("#p0-eyes", {{y:0, duration:0.2}}, {tsh + 1.9:.2f});')
+# … en tu propia casa: el plano se abre y se ve la casa entera
+cam(P("propia") - 0.35, 1450, 650, 0.3, dur=1.1, ease="power2.inOut")
+pose("p0", P("propia") - 0.35, 0, 0, 0, 0, dur=0.4, ease="power2.inOut")
+normal("p0", FE(1) + 0.3)
+J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40, scale:2.4, transformOrigin:"50% 100%"}}, {{opacity:1, y:0, scale:2.4, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("casa") + 0.2:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
+J(f'tl.to("#tuTag", {{y:-30, duration:0.3, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("casa") + 0.6:.2f});')
+FX_EV.append(("pop", P("casa") + 0.2))
 # 2 · mides tres milímetros: mira la regla y se rasca la cabeza
-camC(F(2) - 0.1, 1110, YB, 5.2, dur=1.0)
+camC(F(2) + 0.25, 1110, YB, 5.2, dur=0.9)
 J(f'tl.fromTo("#regla", {{opacity:0, y:40}}, {{opacity:1, y:0, duration:0.45, ease:"back.out(1.8)", immediateRender:false}}, {P("mides"):.2f}); tl.to("#regla", {{opacity:0, duration:0.3}}, {F(3) + 0.3:.2f});')
 FX_EV.append(("pop", P("mides")))
 cabeza("p0", P("mides") + 0.1, 12)
@@ -238,4 +256,4 @@ J(f'tl.fromTo("#wipe", {{x:1900}}, {{x:-4300, duration:1.0, ease:"sine.inOut", i
 camset(tcut, *HOOK)
 FX_EV.append(("suave", tcut - 0.5))
 hook_estado(tcut)
-J(f'tl.set("#p0-headw", {{rotation:0}}, {tcut:.2f});')
+J(f'tl.set("#p0-headw", {{rotation:0}}, {tcut:.2f}); tl.set("#p0-eyes", {{y:0}}, {tcut:.2f}); tl.set("#p0", {{rotation:0}}, {tcut:.2f});')
