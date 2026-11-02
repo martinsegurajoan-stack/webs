@@ -569,6 +569,7 @@ J(f'tl.to("#miga", {{scale:0.72, duration:2.0, ease:"power1.inOut", svgOrigin:"0
 t = F(13)
 barrido(t, (9000, 950, 0.62))
 J(f'tl.set("#gota", {{x:8930, y:900, scale:0.2}}, 0); tl.set("#charco", {{x:8930, y:{YC}}}, 0);')
+J('tl.set(["#charco2", "#vaho2"], {opacity:1}, 0);')
 camC(t + 0.6, 8940, YC, 2.6, dur=1.2, ease="power2.inOut")
 tgo = P("gota")
 J(f'tl.to("#gota", {{scale:1, duration:0.6, ease:"sine.out"}}, {tgo - 0.4:.2f}); tl.to("#gota", {{y:{YC - 58}, duration:0.5, ease:"power2.in"}}, {tgo + 0.4:.2f});')
