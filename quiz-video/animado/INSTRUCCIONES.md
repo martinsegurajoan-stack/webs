@@ -70,6 +70,8 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   con expresión exagerada, el objeto/peligro gigante, título enorme de 2-4 palabras con contorno y sombra, colores
   vivos y contraste alto, flechas/círculos que guíen la mirada, profundidad (primer plano, plano medio, fondo).
   Todo lo importante dentro de 300-1620 px de alto.
+  SIN SATURAR (usuario, 02-11-2026: «un pelín más sencilla, se satura con tanto color»): fondo apagado y desaturado,
+  solo los protagonistas a todo color, título blanco + un color, y como mucho un aro y una etiqueta sencillos.
 - Si el usuario dice «si me quedo sin tokens déjalo pendiente»: guardar el estado en `COMO-REHACERLO.md` del
   proyecto y retomar el trabajo en cuanto se pueda, sin pedir autorización.
 
