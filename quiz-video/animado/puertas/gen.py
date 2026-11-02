@@ -48,9 +48,11 @@ def enfoca(px, py, s):
     """Cámara (transform-origin en el centro 540,960) que deja el punto (px,py) en el centro con zoom s."""
     return (round(-s * (px - 540)), round(-s * (py - 960)), s)
 def nota(txt, t, t_out, x, y, color=AMB, sub=""):
+    """Nota COMPACTA (píldora pequeña) que entra deslizándose y se va sola en ~2,6 s. Nunca sobre personajes."""
     i = nid("nt")
-    OVR.append(f'<div class="nota" id="{i}" style="left:{x}px;top:{y}px;--c:{color}"><div class="ct">{txt}</div>' + (f'<div class="cs">{sub}</div>' if sub else "") + '</div>')
-    pop(f"#{i}", t, 0.45, "opacity:0, x:-30"); fuera(f"#{i}", t_out)
+    OVR.append(f'<div class="nota" id="{i}" style="left:{x}px;top:{y}px;--c:{color}"><b></b><span class="ct">{txt}</span>' + (f'<span class="cs">{sub}</span>' if sub else "") + '</div>')
+    J(f'tl.set("#{i}", {{opacity:0}}, 0); tl.fromTo("#{i}", {{opacity:0, x:-24, filter:"blur(6px)"}}, {{opacity:1, x:0, filter:"blur(0px)", duration:0.35, ease:"power3.out", immediateRender:false}}, {t:.2f});')
+    J(f'tl.to("#{i}", {{opacity:0, x:12, filter:"blur(4px)", duration:0.3, ease:"power2.in"}}, {min(t_out, t + 2.6):.2f});')
     return i
 def luz(t, col="#ffe2b0", d=0.55):
     """Transición de luz cálida (la luz de la puerta lo llena todo y se abre al siguiente plano)."""
@@ -71,27 +73,46 @@ for k, (a, b, c) in PAL.items():
     grad_lin(f"hueco_{k}", ((0, a, 1), (0.55, b, 1), (1, c, 1)))
     grad_rad(f"halo_{k}", ((0, b, 0.55), (0.45, c, 0.22), (1, c, 0)))
     grad_lin(f"cono_{k}", ((0, b, 0.55), (1, c, 0)))
-def puerta(pid, cx, suelo, w, h, pal="oro", abre=0.0, marco="#0d1016", hoja="#141821", haz=1.0, num=""):
-    """Puerta exenta y realista: halo, cono de luz en el suelo, marco con bisel, hueco luminoso y hoja (abre: 0..1)."""
+def puerta(pid, cx, suelo, w, h, pal="oro", abre=0.0, marco="#0d1016", hoja="#141821", haz=1.0, num="", interior="", en_hoja=""):
+    """Puerta exenta y realista (el MISMO modelo en todo el vídeo): halo, cono de luz, marco con bisel, hueco luminoso
+    (o lo que hay al otro lado: interior) y hoja. abre>0 → hoja entreabierta en perspectiva (gira hacia cámara).
+    Para animar la apertura se usa abre=0 y se tweenea .hoja con scaleX (transformOrigin 0% 0%)."""
     x0, y0 = cx - w / 2, suelo - h
     fr = max(10, w * 0.07)
+    hx, hy, hw, hh = x0 + fr, y0 + fr, w - 2 * fr, h - fr
     s = [f'<g id="{pid}">',
          f'<ellipse class="halo" cx="{cx}" cy="{suelo - h * 0.45:.0f}" rx="{w * 2.3:.0f}" ry="{h * 1.05:.0f}" fill="url(#halo_{pal})" opacity="{haz:.2f}"/>',
-         f'<path class="cono" d="M{x0 + fr:.0f},{suelo} L{x0 + w - fr:.0f},{suelo} L{cx + w * 2.6:.0f},{suelo + h * 0.55:.0f} L{cx - w * 2.6:.0f},{suelo + h * 0.55:.0f} Z" fill="url(#cono_{pal})" opacity="{0.85 * haz:.2f}"/>',
+         f'<path class="cono" d="M{hx:.0f},{suelo} L{hx + hw:.0f},{suelo} L{cx + w * 2.6:.0f},{suelo + h * 0.55:.0f} L{cx - w * 2.6:.0f},{suelo + h * 0.55:.0f} Z" fill="url(#cono_{pal})" opacity="{0.85 * haz:.2f}"/>',
          f'<rect x="{x0 - 4:.0f}" y="{y0 - 4:.0f}" width="{w + 8:.0f}" height="{h + 4:.0f}" fill="#000" opacity="0.5"/>',
          f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="{marco}"/>',
-         f'<path d="M{x0:.0f},{y0:.0f} L{x0 + w:.0f},{y0:.0f} L{x0 + w - fr:.0f},{y0 + fr:.0f} L{x0 + fr:.0f},{y0 + fr:.0f} Z" fill="#ffffff" opacity="0.06"/>',
-         f'<rect class="hueco" x="{x0 + fr:.0f}" y="{y0 + fr:.0f}" width="{w - 2 * fr:.0f}" height="{h - fr:.0f}" fill="url(#hueco_{pal})"/>',
-         f'<g class="hoja" transform="translate({x0 + fr:.1f},0) scale({1 - abre * 0.82:.3f},1) translate({-(x0 + fr):.1f},0)">'
-         f'<rect x="{x0 + fr:.0f}" y="{y0 + fr:.0f}" width="{w - 2 * fr:.0f}" height="{h - fr:.0f}" fill="{hoja}"/>'
-         f'<rect x="{x0 + fr + (w - 2 * fr) * 0.14:.0f}" y="{y0 + fr + h * 0.07:.0f}" width="{(w - 2 * fr) * 0.72:.0f}" height="{h * 0.36:.0f}" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="3"/>'
-         f'<rect x="{x0 + fr + (w - 2 * fr) * 0.14:.0f}" y="{y0 + fr + h * 0.5:.0f}" width="{(w - 2 * fr) * 0.72:.0f}" height="{h * 0.38:.0f}" fill="none" stroke="#ffffff" stroke-opacity="0.06" stroke-width="3"/>'
-         f'<circle cx="{x0 + w - fr - (w - 2 * fr) * 0.12:.0f}" cy="{y0 + h * 0.55:.0f}" r="{max(3, w * 0.025):.1f}" fill="#c9a24a"/>'
-         + (f'<text x="{cx:.0f}" y="{y0 + h * 0.22:.0f}" text-anchor="middle" font-family="Georgia" font-size="{w * 0.12:.0f}" fill="#c9a24a">{num}</text>' if num else "")
-         + f'<rect class="filo" x="{x0 + w - fr - 4:.0f}" y="{y0 + fr:.0f}" width="4" height="{h - fr:.0f}" fill="url(#hueco_{pal})" opacity="0.9"/></g>',
-         f'<rect x="{x0 + fr:.0f}" y="{suelo - 3:.0f}" width="{w - 2 * fr:.0f}" height="3" fill="url(#hueco_{pal})"/>',
-         '</g>']
+         f'<path d="M{x0:.0f},{y0:.0f} L{x0 + w:.0f},{y0:.0f} L{x0 + w - fr:.0f},{y0 + fr:.0f} L{x0 + fr:.0f},{y0 + fr:.0f} Z" fill="#ffffff" opacity="0.07"/>',
+         f'<path d="M{x0 + w:.0f},{y0:.0f} L{x0 + w:.0f},{suelo} L{x0 + w - fr:.0f},{suelo} L{x0 + w - fr:.0f},{y0 + fr:.0f} Z" fill="#000" opacity="0.25"/>',
+         f'<rect class="hueco" x="{hx:.0f}" y="{hy:.0f}" width="{hw:.0f}" height="{hh:.0f}" fill="url(#hueco_{pal})"/>']
+    if interior:
+        DEFS.append(f'<clipPath id="{pid}_c"><rect x="{hx:.0f}" y="{hy:.0f}" width="{hw:.0f}" height="{hh:.0f}"/></clipPath>')
+        s.append(f'<g clip-path="url(#{pid}_c)">{interior}</g>')
+    pan = lambda X, Y, W, H: f'<rect x="{X:.0f}" y="{Y:.0f}" width="{W:.0f}" height="{H:.0f}" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="3"/><rect x="{X + 3:.0f}" y="{Y + 3:.0f}" width="{W - 6:.0f}" height="{H - 6:.0f}" fill="none" stroke="#000" stroke-opacity="0.35" stroke-width="2"/>'
+    if abre > 0:                                     # hoja entreabierta en perspectiva: el canto libre se acerca a cámara
+        th = math.radians(abre * 78)
+        xf = hx + hw * math.cos(th)
+        e = h * 0.07 * math.sin(th)
+        ty = lambda u: (hy - e * u, suelo + e * 0.6 * u)
+        P = lambda u, v: (hx + (xf - hx) * u, ty(u)[0] + (ty(u)[1] - ty(u)[0]) * v)
+        quad = lambda u0, u1, v0, v1: " ".join(f"{x:.0f},{y:.0f}" for x, y in (P(u0, v0), P(u1, v0), P(u1, v1), P(u0, v1)))
+        s.append(f'<g class="hoja"><polygon points="{quad(0, 1, 0, 1)}" fill="{hoja}"/><polygon points="{quad(0, 1, 0, 1)}" fill="url(#hojaSombra)"/>'
+                 f'<polygon points="{quad(0.14, 0.86, 0.07, 0.43)}" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="3"/>'
+                 f'<polygon points="{quad(0.14, 0.86, 0.5, 0.88)}" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="3"/>'
+                 f'<circle cx="{P(0.88, 0.55)[0]:.0f}" cy="{P(0.88, 0.55)[1]:.0f}" r="{max(3, w * 0.03):.1f}" fill="#c9a24a"/>'
+                 f'<polygon points="{xf:.0f},{ty(1)[0]:.0f} {xf + max(6, w * 0.035):.0f},{ty(1)[0] + 4:.0f} {xf + max(6, w * 0.035):.0f},{ty(1)[1] - 2:.0f} {xf:.0f},{ty(1)[1]:.0f}" fill="url(#hueco_{pal})" opacity="0.95"/></g>')
+    else:
+        s.append(f'<g class="hoja"><rect x="{hx:.0f}" y="{hy:.0f}" width="{hw:.0f}" height="{hh:.0f}" fill="{hoja}"/>'
+                 + pan(hx + hw * 0.14, hy + h * 0.07, hw * 0.72, h * 0.36) + pan(hx + hw * 0.14, hy + h * 0.5, hw * 0.72, h * 0.38)
+                 + f'<circle cx="{hx + hw * 0.88:.0f}" cy="{y0 + h * 0.55:.0f}" r="{max(3, w * 0.025):.1f}" fill="#c9a24a"/>'
+                 + (f'<text x="{cx:.0f}" y="{y0 + h * 0.22:.0f}" text-anchor="middle" font-family="Georgia" font-size="{w * 0.12:.0f}" fill="#c9a24a">{num}</text>' if num else "")
+                 + en_hoja + f'<rect class="filo" x="{hx + hw - 4:.0f}" y="{hy:.0f}" width="4" height="{hh:.0f}" fill="url(#hueco_{pal})" opacity="0.9"/></g>')
+    s.append(f'<rect x="{hx:.0f}" y="{suelo - 3:.0f}" width="{hw:.0f}" height="3" fill="url(#hueco_{pal})"/></g>')
     return "".join(s)
+grad_lin("hojaSombra", ((0, "#000000", 0.55), (1, "#000000", 0.0)), 0, 0, 1, 0)
 def persona(x, suelo, h=300, col=SIL, rim=None, brazo=0, cls="", pid="", pose="pie", lado=1):
     """Silueta humana sin rasgos (de espaldas o de perfil), con borde de luz opcional."""
     k = h / 300
@@ -273,44 +294,56 @@ camara("e5", f5, F(9), (-100, -260, 1.3), (-1700, -300, 1.36), "sine.inOut")
 J(f'tl.to("#e5 .hoja", {{scaleX:0.2, transformOrigin:"0% 0%", duration:0.6, stagger:0.12, ease:"power2.inOut"}}, {P("diferente") - 0.7:.2f});')
 FX.append(("puertas", P("diferente") - 0.7))
 
-# ================================================================== 6) DINERO: la puerta dorada se abre a una sala llena de dinero
+# ================================================================== 6) DINERO: LA MISMA puerta se abre y al otro lado hay una sala llena de dinero
 f6 = F(9)
-fajos = "".join(f'<g transform="translate({x:.0f},{y:.0f}) rotate({a:.0f})"><rect x="-34" y="-14" width="68" height="28" rx="3" fill="#c9cfa4"/><rect x="-34" y="-14" width="68" height="28" rx="3" fill="none" stroke="#8b9168" stroke-width="2"/><rect x="-8" y="-14" width="16" height="28" fill="#d8a84a"/></g>'
-                for x, y, a in [(random.Random(i).uniform(160, 920), 1180 + random.Random(i + 50).uniform(0, 300) + abs(random.Random(i).uniform(160, 920) - 540) * 0.25, random.Random(i + 9).uniform(-25, 25)) for i in range(150)])
-monedas = "".join(f'<ellipse cx="{random.Random(i + 300).uniform(150, 930):.0f}" cy="{1320 + random.Random(i + 400).uniform(0, 200):.0f}" rx="13" ry="6" fill="#ffcf5a" stroke="#b88a22" stroke-width="2"/>' for i in range(120))
-volando = "".join(f'<g class="bill6" transform="translate({random.Random(i + 600).uniform(100, 980):.0f},{random.Random(i + 700).uniform(500, 1100):.0f})"><rect x="-30" y="-12" width="60" height="24" rx="2" fill="#d8dcb4" opacity="0.9"/></g>' for i in range(22))
-e6 = ['<rect width="1080" height="1920" fill="url(#oroFondo)"/>', '<path d="M540,300 L-200,1920 L1280,1920 Z" fill="url(#rayos6)" opacity="0.5"/>',
-      f'<g id="pila6">{fajos}{monedas}</g>', f'<g id="vol6">{volando}</g>',
-      '<path d="M0,0 L250,0 L250,1920 L0,1920 Z M830,0 L1080,0 L1080,1920 L830,1920 Z" fill="#1a1006"/>',
-      '<path d="M250,0 L250,1920 M830,0 L830,1920" stroke="#d8a84a" stroke-width="12"/>',
-      '<g id="hojaI6"><rect x="250" y="0" width="290" height="1920" fill="#3a2410"/><rect x="290" y="200" width="210" height="600" fill="none" stroke="#d8a84a" stroke-width="6"/><rect x="290" y="900" width="210" height="700" fill="none" stroke="#d8a84a" stroke-width="6"/></g>',
-      '<g id="hojaD6"><rect x="540" y="0" width="290" height="1920" fill="#3a2410"/><rect x="580" y="200" width="210" height="600" fill="none" stroke="#d8a84a" stroke-width="6"/><rect x="580" y="900" width="210" height="700" fill="none" stroke="#d8a84a" stroke-width="6"/></g>',
-      persona(540, 1820, 640, rim="#ffd27a", pid="hom6"), polvo("pv6", 120, 250, 830, 300, 1600, "#fff1c0", 6, 2.4)]
-grad_lin("oroFondo", ((0, "#fff3d0", 1), (0.5, "#ffc65a", 1), (1, "#a8620e", 1)))
+C6, S6, W6, H6 = 540, 1460, 380, 820
+hx6, hy6, hw6 = C6 - W6 / 2 + W6 * 0.07, S6 - H6 + W6 * 0.07, W6 * 0.86
+r6 = random.Random(61)
+def fajo(x, y, s=1.0):
+    return (f'<g transform="translate({x:.0f},{y:.0f}) scale({s:.2f})"><rect x="-30" y="-9" width="60" height="18" rx="2" fill="#cfd5ad"/><rect x="-30" y="-9" width="60" height="5" fill="#e7ecc6"/>'
+            f'<rect x="-30" y="-9" width="60" height="18" rx="2" fill="none" stroke="#8b9168" stroke-width="1.5"/><rect x="-6" y="-9" width="12" height="18" fill="#d8a84a"/></g>')
+pilas = ""
+for j_ in range(7):                                   # pilas ordenadas de fajos, de fondo a primer plano
+    y = S6 - 300 + j_ * 46; sc = 0.55 + j_ * 0.12
+    for i_ in range(-4, 5):
+        x = C6 + i_ * 70 * sc + r6.uniform(-6, 6)
+        for k_ in range(r6.randint(2, 5)):
+            pilas += fajo(x, y - k_ * 13 * sc, sc)
+monedas6 = "".join(f'<ellipse cx="{r6.uniform(hx6, hx6 + hw6):.0f}" cy="{S6 - r6.uniform(0, 70):.0f}" rx="9" ry="4" fill="#ffcf5a" stroke="#b88a22" stroke-width="1.5"/>' for _ in range(90))
+volando6 = "".join(f'<g class="bill6" transform="translate({r6.uniform(hx6, hx6 + hw6):.0f},{r6.uniform(hy6, S6 - 400):.0f})"><rect x="-22" y="-8" width="44" height="16" rx="2" fill="#dfe3bd" opacity="0.92"/></g>' for _ in range(18))
+interior6 = (f'<rect x="{hx6:.0f}" y="{hy6:.0f}" width="{hw6:.0f}" height="{H6:.0f}" fill="url(#oroFondo)"/>'
+             f'<path d="M{C6},{hy6:.0f} L{hx6 - 60:.0f},{S6} L{hx6 + hw6 + 60:.0f},{S6} Z" fill="url(#rayos6)" opacity="0.45"/>'
+             f'<rect x="{hx6:.0f}" y="{S6 - 330:.0f}" width="{hw6:.0f}" height="330" fill="#b7782a" opacity="0.35"/>' + pilas + monedas6 + volando6)
+e6 = ['<rect width="1080" height="1920" fill="#06080c"/>', '<rect x="0" y="1460" width="1080" height="460" fill="url(#suelo)"/>',
+      '<rect x="0" y="0" width="1080" height="1460" fill="url(#muro)"/>',
+      puerta("p6", C6, S6, W6, H6, "oro", interior=interior6),
+      persona(540, 1760, 560, rim="#ffd27a", pid="hom6"), polvo("pv6", 120, 250, 830, 600, 1600, "#fff1c0", 6, 2.4)]
+grad_lin("oroFondo", ((0, "#fff3d0", 1), (0.45, "#ffc65a", 1), (1, "#a8620e", 1)))
 grad_lin("rayos6", ((0, "#ffffff", 0.9), (1, "#ffffff", 0)))
 escena("e6", "".join(e6))
 mostrar("e6", f6, F(10))
-camara("e6", f6, F(10), (0, 0, 1.0), (0, -40, 1.12), "power2.out")
-J(f'tl.fromTo("#hojaI6", {{scaleX:1}}, {{scaleX:0.08, svgOrigin:"250 0", duration:1.0, ease:"power3.inOut", immediateRender:false}}, {f6 + 0.1:.2f}); tl.fromTo("#hojaD6", {{scaleX:1}}, {{scaleX:0.08, svgOrigin:"830 0", duration:1.0, ease:"power3.inOut", immediateRender:false}}, {f6 + 0.1:.2f});')
-J(f'tl.fromTo(".bill6", {{y:-200, rotation:0}}, {{y:900, rotation:(i) => (i % 2 ? 1 : -1) * (120 + i * 13), duration:2.6, stagger:0.06, ease:"none", immediateRender:false}}, {f6 + 0.4:.2f});')
-J(f'tl.fromTo("#hom6", {{y:0}}, {{y:-20, duration:{F(10) - f6:.2f}, ease:"sine.inOut", immediateRender:false}}, {f6:.2f});')
+camara("e6", f6, F(10), enfoca(540, 1150, 1.0), enfoca(540, 1110, 1.2), "sine.inOut")
+J(f'tl.fromTo("#p6 .hoja", {{scaleX:1}}, {{scaleX:0.14, transformOrigin:"0% 0%", duration:1.2, ease:"power3.inOut", immediateRender:false}}, {f6 + 0.05:.2f});')
+J(f'tl.fromTo("#p6 .halo, #p6 .cono", {{opacity:0.25}}, {{opacity:1, duration:1.2, immediateRender:false}}, {f6 + 0.05:.2f});')
+J(f'tl.fromTo(".bill6", {{y:-120, rotation:0}}, {{y:420, rotation:(i) => (i % 2 ? 1 : -1) * (90 + i * 11), duration:2.8, stagger:0.08, ease:"none", immediateRender:false}}, {f6 + 0.6:.2f});')
+J(f'tl.fromTo("#hom6", {{y:0, scale:1}}, {{y:-70, scale:0.86, svgOrigin:"540 1760", duration:{F(10) - f6 - 0.6:.2f}, ease:"power1.inOut", immediateRender:false}}, {f6 + 0.6:.2f});')
 mover_polvo("pv6", f6, F(10), -160, 10)
 FX.append(("puertaAbre", f6 + 0.05)); FX.append(("monedas", P("dinero") - 0.2))
 
-# ================================================================== 7) REENCUENTRO: dos siluetas se abrazan en el umbral (sin caras)
+# ================================================================== 7) REENCUENTRO: abrazo bien construido en el umbral (sin solaparse)
 f7 = F(10)
-e7 = ['<rect width="1080" height="1920" fill="#06080c"/>', '<rect x="0" y="1460" width="1080" height="460" fill="url(#suelo)"/>',
-      puerta("p7", 540, 1460, 420, 900, "oro", abre=0.85),
-      f'<g id="abr7">{persona(500, 1500, 560, rim="#ffd27a", pid="a7")}{persona(600, 1495, 600, rim="#fff1d6", pid="b7", lado=-1)}</g>',
+e7 = ['<rect width="1080" height="1920" fill="#06080c"/>', '<rect x="0" y="0" width="1080" height="1460" fill="url(#muro)"/>', '<rect x="0" y="1460" width="1080" height="460" fill="url(#suelo)"/>',
+      puerta("p7", 540, 1460, 420, 900, "oro", abre=0.7),
+      persona(470, 1500, 560, rim="#ffd27a", pid="a7"), persona(612, 1495, 590, rim="#fff1d6", pid="b7", lado=-1),
       polvo("pv7", 140, 200, 880, 500, 1500, "#ffe2b0", 12, 2.2)]
 escena("e7", "".join(e7))
 mostrar("e7", f7, F(11))
-camara("e7", f7, F(11), enfoca(540, 1150, 1.05), enfoca(550, 1130, 1.22), "sine.inOut")
-J(f'tl.fromTo("#b7", {{x:120, opacity:0.0}}, {{x:0, opacity:1, duration:1.1, ease:"power2.out", immediateRender:false}}, {f7 + 0.1:.2f}); tl.fromTo("#a7", {{x:-60}}, {{x:0, duration:1.0, ease:"power2.out", immediateRender:false}}, {f7 + 0.4:.2f});')
-J(f'tl.to("#b7", {{x:-48, duration:0.8, ease:"power2.inOut"}}, {f7 + 1.2:.2f}); tl.to("#a7", {{x:20, duration:0.8, ease:"power2.inOut"}}, {f7 + 1.2:.2f});')
+camara("e7", f7, F(11), enfoca(540, 1150, 1.05), enfoca(545, 1130, 1.22), "sine.inOut")
+J(f'tl.fromTo("#b7", {{x:110, opacity:0}}, {{x:0, opacity:1, duration:1.0, ease:"power2.out", immediateRender:false}}, {f7 + 0.05:.2f});')
+J(f'tl.to("#a7 .brazo, #b7 .brazo", {{rotation:-58, duration:0.55, ease:"power2.out"}}, {f7 + 0.95:.2f}); tl.set("#a7 .brazo, #b7 .brazo", {{rotation:0}}, 0);')
 mover_polvo("pv7", f7, F(11), -120, 15)
 
-# ================================================================== 8) LA VIDA SOÑADA: al otro lado, sol, mar y una villa
+# ================================================================== 8) LA VIDA SOÑADA: la puerta se abre y al otro lado hay sol, mar y una villa
 f8 = F(11)
 vista = ('<rect x="330" y="560" width="420" height="900" fill="url(#cieloDia)"/><circle cx="640" cy="760" r="60" fill="#fff4d0"/><circle cx="640" cy="760" r="130" fill="#fff4d0" opacity="0.25"/>'
          '<rect x="330" y="1020" width="420" height="160" fill="#2f8fc8"/><rect x="330" y="1020" width="420" height="8" fill="#bfe8ff" opacity="0.8"/>'
@@ -319,18 +352,22 @@ vista = ('<rect x="330" y="560" width="420" height="900" fill="url(#cieloDia)"/>
          '<path d="M700,1180 C700,1060 690,980 705,900" stroke="#5a3a22" stroke-width="12" fill="none"/>'
          + "".join(f'<path d="M705,900 q{a},-20 {b},{c}" stroke="#2f8a3a" stroke-width="14" fill="none" stroke-linecap="round"/>' for a, b, c in ((-60, -110, 30), (60, 110, 30), (-20, -80, -40), (30, 90, -30))))
 DEFS.append('<clipPath id="hueco8"><rect x="330" y="560" width="420" height="900"/></clipPath>')
+hoja8 = ('<g id="hoja8"><rect x="330" y="560" width="420" height="900" fill="#141821"/>'
+         '<rect x="389" y="623" width="302" height="324" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="3"/><rect x="389" y="1010" width="302" height="342" fill="none" stroke="#ffffff" stroke-opacity="0.07" stroke-width="3"/>'
+         '<circle cx="700" cy="1055" r="9" fill="#c9a24a"/><rect x="746" y="560" width="4" height="900" fill="#fff4d0" opacity="0.9"/></g>')
 e8 = ['<rect width="1080" height="1920" fill="#05090d"/>', '<polygon points="0,0 330,560 330,1460 0,1920" fill="#081016"/><polygon points="1080,0 750,560 750,1460 1080,1920" fill="#091218"/>',
       '<polygon points="0,1920 330,1460 750,1460 1080,1920" fill="#0b1218"/>',
-      f'<g clip-path="url(#hueco8)">{vista}</g>', '<rect x="310" y="540" width="460" height="920" fill="none" stroke="#10161e" stroke-width="40"/>',
-      '<polygon points="330,1460 750,1460 1080,1920 0,1920" fill="url(#luzDia)" opacity="0.6"/>',
+      f'<g clip-path="url(#hueco8)">{vista}{hoja8}</g>', '<rect x="310" y="540" width="460" height="920" fill="none" stroke="#10161e" stroke-width="40"/>',
+      '<polygon id="luz8" points="330,1460 750,1460 1080,1920 0,1920" fill="url(#luzDia)" opacity="0"/>',
       persona(300, 1880, 760, rim="#fff1c0", pid="jov8", lado=1)]
 grad_lin("cieloDia", ((0, "#4aa6e8", 1), (1, "#cfeeff", 1)))
 grad_lin("luzDia", ((0, "#fff4d0", 0.8), (1, "#fff4d0", 0)))
 escena("e8", "".join(e8))
 mostrar("e8", f8, F(12))
 camara("e8", f8, F(12), enfoca(540, 1100, 1.15), enfoca(540, 1010, 1.0), "sine.out")
+J(f'tl.fromTo("#hoja8", {{scaleX:1}}, {{scaleX:0.1, transformOrigin:"0% 0%", duration:1.4, ease:"power3.inOut", immediateRender:false}}, {f8 + 0.15:.2f}); tl.to("#luz8", {{opacity:0.6, duration:1.2}}, {f8 + 0.3:.2f});')
 J(f'tl.fromTo("#jov8", {{x:-120}}, {{x:0, duration:2.2, ease:"power2.out", immediateRender:false}}, {f8:.2f});')
-FX.append(("olas", f8 + 0.2))
+FX.append(("puertaAbre", f8 + 0.15)); FX.append(("olas", f8 + 0.8))
 
 # ================================================================== 9) LA REGLA: la luz se vuelve roja; quien cruza desaparece
 f9 = F(12)
@@ -368,7 +405,7 @@ mostrar("e10", f10, F(19))
 camara("e10", f10, F(19), (0, 0, 1.0), (0, -60, 1.25), "sine.inOut")
 J(f'tl.set(".pu10", {{opacity:0}}, 0); tl.to(".pu10", {{opacity:1, duration:0.2, stagger:{{each:0.03, from:"random"}}}}, {f10 + 0.2:.2f});')
 J(f'tl.to(".ge10", {{attr:{{cx:(i, el) => el.dataset.x, cy:(i, el) => el.dataset.y}}, opacity:0, duration:2.2, stagger:{{each:0.02, from:"random"}}, ease:"power1.in"}}, {P("cruzar") - 0.6:.2f});')
-OVR.append(f'<div id="cnt10" class="nota" style="left:60px;top:500px;--c:{ORO}"><div class="cs">PERSONAS QUE HAN CRUZADO</div><div class="cn"><span id="cntn">0</span></div></div>')
+OVR.append(f'<div id="cnt10" class="nota" style="left:60px;top:500px;--c:{ORO}"><b></b><span class="cs">HAN CRUZADO</span><span class="cn" id="cntn">0</span></div>')
 pop("#cnt10", P("millones") - 0.3, 0.4, "opacity:0, x:-30"); fuera("#cnt10", F(19) - 0.15)
 J(f'tl.fromTo(window.__cnt = {{v:0}}, {{v:0}}, {{v:48200000, duration:{F(19) - P("millones"):.2f}, ease:"power2.in", immediateRender:false, onUpdate:() => document.getElementById("cntn").textContent = Math.round(window.__cnt.v).toString().replace(/\\B(?=(\\d{{3}})+(?!\\d))/g, ".")}}, {P("millones"):.2f});')
 nota("MILLONARIOS", P("millonarios") - 0.3, F(17) + 1.6, 60, 650, ORO)
@@ -376,20 +413,33 @@ nota("REENCUENTROS", P("recuperan") - 0.2, F(19) - 0.15, 60, 750, "#ffb0a0")
 nota("PRIMERAS CONSECUENCIAS", P("consecuencias") - 0.4, F(19) - 0.15, 60, 850, RED)
 FX.append(("pulso", f10)); FX.append(("golpe", P("consecuencias") - 0.3))
 
-# ================================================================== 11) EL PRECIO I: dinero… pero ya no reconoce a su familia (cálido → frío)
+# ================================================================== 11) EL PRECIO I: un salón de lujo con el dinero… y ya no reconoce a su familia (cálido → frío)
 f11 = F(19); tp11 = P("pero", 5)
-e11 = ['<rect width="1080" height="1920" fill="#0a0806"/>', '<rect id="frio11" width="1080" height="1920" fill="#06101a" opacity="0"/>',
-       '<rect x="0" y="1500" width="1080" height="420" fill="#120c06"/>', f'<g id="pila11">{fajos}</g>',
-       '<g id="fam11">' + persona(250, 1640, 520, rim="#ffd27a", pid="mu11", lado=1) + persona(370, 1650, 330, rim="#ffd27a", pid="ni11", lado=1) + '</g>',
-       persona(800, 1660, 600, rim="#ffd27a", pid="ho11", lado=-1),
-       '<g id="int11" opacity="0">' + "".join(f'<text x="{x}" y="{y}" font-family="Georgia" font-size="{s}" fill="#9fdcff" opacity="0.7">?</text>' for x, y, s in ((230, 1000, 90), (360, 1180, 70), (290, 1090, 50))) + '</g>']
+r11 = random.Random(11)
+DEFS.append('<clipPath id="ven11"><rect x="560" y="430" width="440" height="860"/></clipPath>')
+mesa = '<rect x="300" y="1430" width="480" height="22" rx="4" fill="#2a1c10"/><rect x="330" y="1452" width="16" height="120" fill="#1a1109"/><rect x="734" y="1452" width="16" height="120" fill="#1a1109"/>'
+pilas11 = "".join(fajo(340 + i_ * 70, 1420 - k_ * 13, 1.0) for i_ in range(7) for k_ in range(r11.randint(3, 6)))
+e11 = ['<rect width="1080" height="1920" fill="url(#salon11)"/>',
+       '<g clip-path="url(#ven11)"><rect x="560" y="430" width="440" height="860" fill="url(#noche)"/>' + skyline(19, 1290, 0.75, "#081018", "#0b1520", 0.3, 440, 560) + '</g>',
+       '<rect x="560" y="430" width="440" height="860" fill="none" stroke="#2a1d12" stroke-width="18"/><path d="M780,430 L780,1290 M560,860 L1000,860" stroke="#2a1d12" stroke-width="10"/>',
+       '<circle cx="280" cy="470" r="150" fill="url(#halo_oro)" opacity="0.8"/><path d="M280,300 L280,420" stroke="#3a2a18" stroke-width="4"/>'
+       + "".join(f'<path d="M{280 + dx},430 l0,{L}" stroke="#ffe7b0" stroke-width="3" opacity="0.8"/>' for dx, L in ((-40, 50), (-20, 70), (0, 80), (20, 70), (40, 50))),
+       '<rect x="40" y="1200" width="400" height="160" rx="26" fill="#1c140c"/><rect x="40" y="1150" width="400" height="80" rx="24" fill="#22180e"/>',
+       '<rect x="0" y="1560" width="1080" height="360" fill="#0f0a06"/><rect x="0" y="1560" width="1080" height="360" fill="url(#reflejo11)"/>',
+       mesa, f'<g id="pila11">{pilas11}</g>',
+       '<rect id="frio11" width="1080" height="1920" fill="#06101a" opacity="0" style="mix-blend-mode:color"/>',
+       '<rect id="frio11b" width="1080" height="1920" fill="#0a1a2a" opacity="0"/>',
+       '<g id="fam11">' + persona(170, 1720, 560, rim="#ffd27a", pid="mu11", lado=1) + persona(300, 1730, 340, rim="#ffd27a", pid="ni11", lado=1) + '</g>',
+       persona(880, 1740, 620, rim="#ffd27a", pid="ho11", lado=-1)]
+grad_lin("salon11", ((0, "#1a1209", 1), (1, "#0a0704", 1)))
+grad_lin("reflejo11", ((0, "#ffcf7a", 0.12), (1, "#ffcf7a", 0)))
 escena("e11", "".join(e11))
 mostrar("e11", f11, F(20))
-camara("e11", f11, F(20), enfoca(540, 1250, 1.0), enfoca(620, 1200, 1.18), "sine.inOut")
-J(f'tl.to("#frio11", {{opacity:0.92, duration:1.0, ease:"power2.inOut"}}, {tp11:.2f}); tl.to("#pila11", {{opacity:0.25, duration:1.0}}, {tp11:.2f});')
-J(f'tl.to("#fam11", {{opacity:0.45, filter:"blur(6px)", duration:1.4, ease:"power2.inOut"}}, {P("reconocer") - 0.3:.2f}); tl.to("#int11", {{opacity:1, duration:0.6}}, {P("reconocer"):.2f});')
-J(f'tl.to("#ho11", {{x:40, duration:1.2, ease:"sine.inOut"}}, {P("reconocer") - 0.2:.2f});')
-nota("YA NO RECONOCE A SU FAMILIA", P("reconocer") - 0.2, F(20) - 0.4, 60, 520, ICE)
+camara("e11", f11, F(20), enfoca(540, 1250, 1.0), enfoca(600, 1230, 1.12), "sine.inOut")
+J(f'tl.to("#frio11", {{opacity:0.75, duration:1.0, ease:"power2.inOut"}}, {tp11:.2f}); tl.to("#frio11b", {{opacity:0.45, duration:1.0}}, {tp11:.2f}); tl.to("#pila11", {{opacity:0.35, duration:1.0}}, {tp11:.2f});')
+J(f'tl.to("#fam11", {{opacity:0.4, filter:"blur(7px)", duration:1.4, ease:"power2.inOut"}}, {P("reconocer") - 0.3:.2f});')
+J(f'tl.to("#ho11", {{x:30, duration:1.2, ease:"sine.inOut"}}, {P("reconocer") - 0.2:.2f});')
+nota("YA NO RECONOCE A SU FAMILIA", P("reconocer") - 0.2, F(20) - 0.4, 60, 500, ICE)
 FX.append(("golpe2", tp11))
 
 # ================================================================== 12) EL PRECIO II: recupera a su pareja… y olvida los recuerdos (las fotos se borran)
@@ -410,7 +460,7 @@ mostrar("e12", f12, F(21))
 camara("e12", f12, F(21), enfoca(540, 1000, 1.08), enfoca(540, 1060, 1.0), "sine.inOut")
 J(f'tl.to(".borra12", {{opacity:1, duration:0.5, stagger:0.28, ease:"power2.in"}}, {P("olvida") - 0.1:.2f}); tl.to("#frio12", {{opacity:0.9, duration:1.0}}, {P("pero", 6) - 0.1:.2f});')
 J(f'tl.to("#ella12", {{x:90, duration:1.6, ease:"sine.inOut"}}, {P("olvida"):.2f});')
-nota("OLVIDA TODOS SUS RECUERDOS", P("recuerdos") - 0.3, F(21) - 0.1, 60, 1180, ICE)
+nota("OLVIDA TODOS SUS RECUERDOS", P("recuerdos") - 0.3, F(21) - 0.1, 60, 1110, ICE)
 FX.append(("borrar", P("olvida")))
 
 # ================================================================== 13) LOS GOBIERNOS: cordón policial, focos… y la puerta no se rompe
@@ -453,7 +503,7 @@ for k in range(4):
       f'tl.fromTo("#rep14", {{y:-120, scale:0.7, opacity:0}}, {{y:0, scale:1, opacity:1, duration:0.6, ease:"power2.out", immediateRender:false}}, {t0 + 0.9:.2f});')
     FX.append(("cruce", t0 + 0.6))
 J(f'tl.to("#osc14", {{opacity:0.85, duration:{F(26) - f14:.2f}, ease:"power1.in"}}, {f14:.2f});')
-OVR.append(f'<div id="pre14" class="nota" style="left:60px;top:500px;width:520px;--c:{RED}"><div class="cs">CRUCE <span id="cr14">1</span></div><div class="cs">PRECIO</div><div class="barra"><i id="br14"></i></div></div>')
+OVR.append(f'<div id="pre14" class="nota" style="left:60px;top:500px;--c:{RED}"><b></b><span class="ct">CRUCE <span id="cr14">1</span></span><span class="cs">PRECIO</span><div class="barra" style="width:200px;margin:0"><i id="br14"></i></div></div>')
 pop("#pre14", f14 + 0.3, 0.4, "opacity:0, x:-30"); fuera("#pre14", F(26) - 0.1)
 for k in range(4):
     t0 = f14 + 0.4 + k * 1.75 + 0.75
@@ -475,34 +525,32 @@ J(f'tl.to("#e15-cam", {{scale:9, y:{-9 * (1190 - 960)}, x:0, duration:{F(28) - P
 FX.append(("apagado", P("desaparecen") - 0.1)); FX.append(("whoosh", F(28) - 0.6))
 luz(F(28), "#ffe2b0", 0.4)
 
-# ================================================================== 16-18) LA TUYA: delante de ti; el mensaje se graba en la puerta; se abre… y negro
-f16 = F(28); tmsg = P("ella", 2)
+# ================================================================== 16-18) LA TUYA: delante de ti; zoom a la puerta y el mensaje se graba en la madera; se abre… y negro
+f16 = F(28); tmsg = P("ella", 2); ta = P("abre")
 DX, DY, DW, DH = 540, 1500, 420, 960
 mensaje = ("Puedes recuperar", "todo lo que", "has perdido…", "pero tendrás", "que entregar algo", "que todavía", "conservas.")
-lineas = "".join(f'<text class="msg" x="{DX}" y="{DY - DH + 230 + k * 74}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="50" fill="#ffd9a0">{t}</text>' for k, t in enumerate(mensaje))
-e16 = ['<rect width="1080" height="1920" fill="#030406"/>', '<polygon points="0,1500 1080,1500 1080,1920 0,1920" fill="#06080b"/>',
+grabado = "".join(f'<g class="lin16" id="ln{k}"><text x="{DX + 1.5}" y="{688 + k * 44 + 2}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="27" fill="#000" opacity="0.75">{t}</text>'
+                  f'<text x="{DX}" y="{688 + k * 44}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="27" fill="url(#brasa)" filter="url(#brillo)">{t}</text></g>' for k, t in enumerate(mensaje))
+grad_lin("brasa", ((0, "#fff0c8", 1), (0.5, "#ffb85c", 1), (1, "#ff7a2a", 1)))
+e16 = ['<rect width="1080" height="1920" fill="#030406"/>', '<rect x="0" y="0" width="1080" height="1500" fill="url(#muro)"/>', '<polygon points="0,1500 1080,1500 1080,1920 0,1920" fill="#06080b"/>',
        '<rect id="haz16" x="0" y="1500" width="1080" height="420" fill="url(#haz16g)" opacity="0.25"/>',
-       f'<g id="pu16">' + puerta("p16", DX, DY, DW, DH, "oro", haz=0.55, marco="#0c0d10", hoja="#17130f") + '</g>',
-       f'<g id="msg16" filter="url(#brillo)">{lineas}</g>',
+       '<g id="pu16">' + puerta("p16", DX, DY, DW, DH, "oro", haz=0.55, marco="#0c0d10", hoja="#17130f", en_hoja=grabado) + '</g>',
        persona(300, 1980, 900, col="#020304", rim="#ffb14a", pid="tu16"), polvo("pv16", 90, 200, 900, 600, 1700, "#ffe2b0", 31, 1.8)]
 grad_lin("haz16g", ((0, "#ffd27a", 0.7), (1, "#ffd27a", 0)))
-DEFS.append('<filter id="brillo" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>')
+DEFS.append('<filter id="brillo" x="-20%" y="-40%" width="140%" height="180%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>')
 escena("e16", "".join(e16))
 mostrar("e16", f16, DUR)
-camara("e16", f16, tmsg, enfoca(540, 1160, 0.9), enfoca(540, 1120, 1.0), "sine.out")
-J(f'tl.to("#e16-cam", {{x:0, y:{-1.25 * (1010 - 960):.0f}, scale:1.25, duration:{P("detras", 2) - tmsg:.2f}, ease:"sine.inOut"}}, {tmsg:.2f});')
-J(f'tl.fromTo("#tu16", {{x:-200, opacity:0}}, {{x:0, opacity:1, duration:1.4, ease:"power2.out", immediateRender:false}}, {P("delante", 3) - 0.6:.2f});')
+camara("e16", f16, tmsg - 0.4, enfoca(540, 1160, 0.92), enfoca(540, 1120, 1.0), "sine.out")
+J(f'tl.to("#e16-cam", {{x:{enfoca(540, 818, 2.45)[0]}, y:{enfoca(540, 818, 2.45)[1]}, scale:2.45, duration:1.3, ease:"power2.inOut"}}, {tmsg - 0.4:.2f});')
+J(f'tl.to("#e16-cam", {{x:{enfoca(540, 812, 2.6)[0]}, y:{enfoca(540, 812, 2.6)[1]}, scale:2.6, duration:{ta - 0.9 - tmsg - 0.9:.2f}, ease:"none"}}, {tmsg + 0.9:.2f});')
+J(f'tl.to("#e16-cam", {{x:{enfoca(540, 1090, 1.12)[0]}, y:{enfoca(540, 1090, 1.12)[1]}, scale:1.12, duration:1.5, ease:"power2.inOut"}}, {ta - 0.9:.2f});')
+J(f'tl.fromTo("#tu16", {{x:-40}}, {{x:0, duration:{tmsg - f16:.2f}, ease:"sine.out", immediateRender:false}}, {f16:.2f});')
 J(f'tl.fromTo("#p16 .filo, #p16 .hueco", {{opacity:0.6}}, {{opacity:1, duration:0.3, yoyo:true, repeat:{int((tmsg - f16) / 0.6)}, ease:"sine.inOut", immediateRender:false}}, {f16:.2f});')
+J('tl.set(".lin16", {clipPath:"inset(0% 100% 0% 0%)"}, 0);')
 for k, w in enumerate(("puedes", "todo", "perdido", "pero", "entregar", "todavia", "conservas")):
-    try:
-        tw = P(w, {"pero": 8, "todo": 2, "entregar": 2, "puedes": 3, "todavia": 2, "perdido": 2}.get(w, 1))
-    except KeyError:
-        tw = tmsg + 0.5 + k * 0.7
-    J(f'tl.fromTo("#msg16 .msg:nth-child({k + 1})", {{opacity:0, y:8}}, {{opacity:1, y:0, duration:0.6, ease:"power2.out", immediateRender:false}}, {tw - 0.1:.2f});')
-J('tl.set("#msg16 .msg", {opacity:0}, 0);')
+    tw = P(w, {"pero": 8, "todo": 2, "entregar": 2, "puedes": 3, "todavia": 2, "perdido": 2}.get(w, 1))
+    J(f'tl.to("#ln{k}", {{clipPath:"inset(0% 0% 0% 0%)", duration:0.7, ease:"none"}}, {tw - 0.2:.2f});')
 FX.append(("grabado", tmsg + 0.4))
-ta = P("abre")
-J(f'tl.to("#msg16", {{opacity:0, duration:0.6}}, {ta - 0.3:.2f});')
 J(f'tl.to("#p16 .hoja", {{scaleX:0.16, transformOrigin:"0% 0%", duration:{P("detras", 2) - ta + 0.3:.2f}, ease:"power1.in"}}, {ta:.2f}); tl.to("#haz16", {{opacity:1, duration:{P("detras", 2) - ta:.2f}, ease:"power1.in"}}, {ta:.2f});')
 FX.append(("chirrido", ta - 0.1))
 tc = P("detras", 2) + 0.45
@@ -554,9 +602,9 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
 #reloj{{position:absolute;left:0;right:0;top:600px;text-align:center;z-index:20;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,0.6)}}
 #reloj .rk{{font:800 46px Inter;letter-spacing:12px;color:rgba(255,255,255,0.75)}}
 #reloj .rn{{font:300 170px Inter;letter-spacing:-4px;font-variant-numeric:tabular-nums;line-height:1}}
-.nota{{position:absolute;z-index:32;padding:14px 22px 16px;border-radius:12px;color:#fff;background:linear-gradient(135deg, rgba(255,255,255,0.18), rgba(255,255,255,0.05));backdrop-filter:blur(16px) saturate(1.4);-webkit-backdrop-filter:blur(16px) saturate(1.4);border:1px solid rgba(255,255,255,0.3);border-left:6px solid var(--c);box-shadow:0 10px 40px rgba(0,0,0,0.25);text-shadow:0 2px 10px rgba(0,0,0,0.4)}}
-.nota .ct{{font:900 38px Inter;letter-spacing:3px;color:#fff}} .nota .cs{{font:700 24px Inter;letter-spacing:3px;color:rgba(255,255,255,0.78);margin-top:4px}}
-.nota .cn{{font:900 84px Inter;letter-spacing:-2px;font-variant-numeric:tabular-nums;line-height:1.05;color:var(--c)}}
+.nota{{position:absolute;z-index:32;display:flex;align-items:center;gap:12px;padding:9px 18px 10px 14px;border-radius:40px;color:#fff;background:linear-gradient(135deg, rgba(14,20,34,0.55), rgba(14,20,34,0.3));backdrop-filter:blur(14px) saturate(1.4);-webkit-backdrop-filter:blur(14px) saturate(1.4);border:1px solid rgba(255,255,255,0.22);box-shadow:0 8px 30px rgba(0,0,0,0.25);text-shadow:0 2px 8px rgba(0,0,0,0.4);white-space:nowrap}}
+.nota b{{width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 12px var(--c);flex:none}} .nota .ct{{font:800 28px Inter;letter-spacing:2px}} .nota .cs{{font:600 20px Inter;color:rgba(255,255,255,0.7);letter-spacing:1px}}
+.nota .cn{{font:900 44px Inter;letter-spacing:-2px;font-variant-numeric:tabular-nums;line-height:1.05;color:var(--c)}}
 .barra{{height:16px;border-radius:8px;background:rgba(255,255,255,0.15);margin-top:10px;overflow:hidden}} .barra i{{display:block;height:100%;background:linear-gradient(90deg,#ff8a6a,{RED});transform-origin:0 50%}}
 #luz{{position:absolute;inset:-100px;z-index:58;opacity:0;pointer-events:none}}
 #negro{{position:absolute;inset:0;z-index:58;opacity:0;background:#000;pointer-events:none}}

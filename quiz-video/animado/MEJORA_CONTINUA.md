@@ -107,3 +107,12 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
 - Revisar TODOS los planos con snapshots (cada ~2 s) y mirar cada fotograma como lo miraría el usuario: encuadres
   (que el protagonista esté en plano), textos que no se partan, nada tapado, nada ridículo.
 - No enviar hasta que todo lo anterior esté bien. Mejor tardar más que gastar una corrección.
+- NOTAS (usuario, 02-11-2026, NORMA PRINCIPAL): las notas/recuadros NUNCA tapan a un personaje ni lo importante del plano.
+  Siempre COMPACTAS (píldora pequeña, ~28 px), dinámicas (entran deslizándose y se van solas en ~2,5 s) y colocadas en
+  zonas vacías. Menos estorbo, más práctico.
+- CONTINUIDAD DE OBJETOS: si un objeto protagonista se repite (p. ej. la puerta), SIEMPRE el mismo diseño en todos los
+  planos; nada de versiones «cutres» distintas. Puertas entreabiertas en perspectiva (la hoja gira hacia cámara), nunca
+  «media puerta» plana. Si una puerta se abre en la historia, se VE la animación de apertura.
+- PERSONAJES: revisar que las siluetas no se solapen/choquen (abrazos bien construidos), que nadie aparezca, desaparezca
+  y reaparezca sin motivo. Textos escritos SOBRE objetos (una puerta, un papel): zoom al objeto y texto integrado
+  (grabado/quemado en la superficie), nunca letras flotando.
