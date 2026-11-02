@@ -144,8 +144,9 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
     for side, sx, rot in (("L", 356, 1), ("R", 644, -1)):
         g.append(f'<g id="{pid}-arm{side}"><g id="{pid}-arm{side}g">'
                  f'<path d="M{sx - 26 * rot},975 C{sx - 48 * rot},1030 {sx - 52 * rot},1090 {sx - 46 * rot},1120 L{sx - 6 * rot},1120 C{sx - 4 * rot},1080 {sx},1030 {sx + 12 * rot},990 Z" fill="url(#{pid}-shirt)"/>'
+                 f'<g id="{pid}-fore{side}"><circle cx="{sx - 25 * rot}" cy="1116" r="18" fill="{SKIN}"/>'
                  f'<path d="M{sx - 42 * rot},1112 C{sx - 46 * rot},1180 {sx - 40 * rot},1240 {sx - 36 * rot},1262 L{sx - 10 * rot},1262 C{sx - 12 * rot},1230 {sx - 10 * rot},1170 {sx - 8 * rot},1112 Z" fill="{SKIN}"/>'
-                 f'<circle cx="{sx - 24 * rot}" cy="1280" r="27" fill="{SKIN}"/></g></g>')
+                 f'<circle cx="{sx - 24 * rot}" cy="1280" r="27" fill="{SKIN}"/></g></g></g>')
     g.append(f'<path d="M350,992 C350,960 396,950 440,946 L560,946 C604,950 650,960 650,992 L628,1270 L372,1270 Z" fill="url(#{pid}-shirt)"/>')
     g.append(f'<path d="M560,948 C604,952 650,962 650,992 L628,1270 L548,1270 C566,1150 572,1040 560,948 Z" fill="#b5553f" opacity="0.35"/>')
     g.append(f'<path d="M378,1240 L622,1240" stroke="#b5553f" stroke-width="4" opacity="0.45"/>')
@@ -157,6 +158,8 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
     g.append(f'<g id="{pid}-headw"><g id="{pid}-head">')
     g.append(f'<ellipse cx="396" cy="775" rx="18" ry="28" fill="{SKIN_D}"/><ellipse cx="604" cy="775" rx="18" ry="28" fill="{SKIN_D}"/>')
     g.append(f'<path d="{HEAD_D}" fill="url(#{pid}-skin)"/>')
+    g.append(f'<path id="{pid}-azul" d="{HEAD_D}" fill="#7cc8ff" opacity="0"/>')
+    g.append(f'<g id="{pid}-rubor" opacity="0"><ellipse cx="438" cy="790" rx="26" ry="14" fill="#ff6b6b" opacity="0.6"/><ellipse cx="562" cy="790" rx="26" ry="14" fill="#ff6b6b" opacity="0.6"/></g>')
     if bald:
         g.append('<ellipse cx="465" cy="690" rx="34" ry="18" fill="#fff" opacity="0.35" transform="rotate(-20 465 690)"/>')
     g.append('<path d="M410,800 C420,850 450,880 500,888 C550,880 580,850 590,800 C580,860 545,896 500,898 C455,896 420,860 410,800 Z" fill="#d9967a" opacity="0.35"/>')
@@ -178,6 +181,8 @@ def personaje(pid, cm=None, bald=False, stubble=False, beard=None):
         g.append(f'<path id="{pid}-beardfade" d="{beard_path(0)}" fill="#a85d34" opacity="0"/>')
     g.append(f'<path id="{pid}-mouth" d="M478,816 Q500,832 522,816" stroke="#7a3f35" stroke-width="4.5" fill="none" stroke-linecap="round"/>')
     g.append(f'<ellipse id="{pid}-mouthO" cx="500" cy="822" rx="9" ry="12" fill="#6b2f2a" opacity="0"/>')
+    g.append(f'<g id="{pid}-dientes" opacity="0"><rect x="478" y="810" width="44" height="20" rx="6" fill="#ffffff" stroke="#7a3f35" stroke-width="3"/><path d="M478,820 L522,820 M489,810 L489,830 M500,810 L500,830 M511,810 L511,830" stroke="#7a3f35" stroke-width="2"/></g>')
+    g.append(f'<path id="{pid}-sudor" d="M606,690 C616,708 622,720 622,730 C622,742 612,748 604,748 C596,748 588,742 588,730 C588,720 596,708 606,690 Z" fill="#8fd8ff" stroke="#3a9ad9" stroke-width="3" opacity="0"/>')
     if stubble:   # pelitos que brotan (aparecen al decir «cien mil»)
         pts = []
         for i in range(260):
@@ -218,7 +223,8 @@ def vida(pid):
     reps = int(DUR / 1.7)
     J(f'tl.fromTo("#{pid}-up", {{scaleY:1}}, {{scaleY:1.012, duration:0.85, ease:"sine.inOut", yoyo:true, repeat:{reps}, svgOrigin:"500 1270"}}, 0);')
     for sel, amp, n, org in ((f"{pid}-up", 1.1, 13, "500 1290"), (f"{pid}-headw", 2.2, 17, "500 900"),
-                             (f"{pid}-armL", 2.5, 15, "356 985"), (f"{pid}-armR", -2.5, 14, "644 985")):
+                             (f"{pid}-armL", 4, 15, "356 985"), (f"{pid}-armR", -4, 14, "644 985"),
+                             (f"{pid}-foreL", 7, 11, "331 1116"), (f"{pid}-foreR", -7, 12, "669 1116"), (f"{pid}-brows", 1.5, 9, "500 715")):
         J(f'tl.to("#{sel}", {{keyframes:{{rotation:[0, {amp}, 0, {-amp}, 0], easeEach:"sine.inOut"}}, duration:{DUR / n:.4f}, ease:"none", repeat:{n - 1}, svgOrigin:"{org}"}}, 0);')
     t = 0.7 + random.uniform(0, 1.2)
     while t < DUR - 0.3:

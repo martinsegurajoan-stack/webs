@@ -3,6 +3,8 @@
 # Se ejecuta dentro de gen.py (usa J, cam, pop, personaje, vida, P, F, FE, DUR, FX_EV, H, OVER).
 H.clear()
 OVER = []
+exec(open(os.path.join(BASE, 'perfil.py'), encoding='utf-8').read())
+exec(open(os.path.join(BASE, 'gato2.py'), encoding='utf-8').read())
 FL = 1745                  # línea de los pies en el suelo
 S_MINI = 0.085             # tamaño del personaje diminuto
 WORLD_W = 13400
@@ -340,7 +342,7 @@ H.append(svg("".join(tabique(R[k][1]) for k in ("bed", "hall", "din", "kit"))))
 # ------------------------------------------------------------------ personajes diminutos
 def mini(pid, x, yf, s=S_MINI):
     J(f'tl.set("#{pid}-w", {{scale:{s}, transformOrigin:"500px 1702px"}}, 0);')
-    return f'<div id="{pid}-w" style="position:absolute;left:{x - 500}px;top:{yf - 1702}px;width:1000px;height:1800px">' + personaje(pid, cm=7).replace("{x}", "0") + '</div>'
+    return f'<div id="{pid}-w" style="position:absolute;left:{x - 500}px;top:{yf - 1702}px;width:1000px;height:1800px">' + personaje(pid, cm=7).replace("{x}", "0") + perfil(pid) + '</div>'
 
 # ácaros (bolas de polvo con patas)
 def acaro2(aid, x, y, s=1.0):
@@ -395,16 +397,16 @@ H.append(mini("p1", 3250, FL))
 H.append(mini("p2", 6480, YT))
 H.append(mini("p3", 7700, FL))
 H.append(mini("p4", 8930, YC))
-H.append(GATO)
+H.append(gato_svg())
 H.append(mini("p5", 10800, FL))
-H.append(svg(edificio(10640, FL, 620, 150), "edif"))
+H.append(svg(edificio(11000, FL, 780, 160), "edif"))
 # cinta métrica (crecer) y hormiga real
 cm_px = 1000 / 175.0
 cinta = (f'<rect x="-46" y="-1060" width="92" height="1060" rx="10" fill="#ffd23f"/><rect x="-46" y="-1060" width="14" height="1060" fill="#ffb627"/>'
          + "".join(f'<line x1="{-46 + (0 if c % 10 else 0)}" y1="{-c * cm_px:.1f}" x2="{-46 + (40 if c % 10 == 0 else (26 if c % 5 == 0 else 14))}" y2="{-c * cm_px:.1f}" stroke="#2b2d42" stroke-width="{4 if c % 10 == 0 else 2}"/>' for c in range(0, 181))
-         + "".join(f'<text x="2" y="{-c * cm_px + 9:.1f}" font-family="Inter" font-weight="900" font-size="22" fill="#2b2d42">{c}</text>' for c in range(10, 181, 10)))
+)
 H.append(f'<svg id="cinta" style="position:absolute;left:11330px;top:{FL}px;overflow:visible" width="1" height="1"><g id="cintaG">{cinta}</g></svg>')
-H.append(f'<div id="medida" class="badge" style="left:11230px;top:{FL - 260}px;background:#06d6a0;font-size:44px;opacity:0">1 cm</div>')
+
 H.append(f'<svg id="hormiga" style="position:absolute;left:11760px;top:{FL + 4}px;overflow:visible" width="10" height="10">'
          '<ellipse cx="0" cy="0" rx="9" ry="7" fill="#1d1b26"/><ellipse cx="14" cy="-1" rx="6" ry="5" fill="#1d1b26"/><ellipse cx="-14" cy="0" rx="11" ry="8" fill="#1d1b26"/>'
          '<path d="M-6,4 l-8,9 M2,5 l0,10 M8,4 l8,9 M-6,-4 l-8,-9 M2,-5 l0,-10 M8,-4 l8,-9 M18,-4 l8,-10 M18,-4 l10,-4" stroke="#1d1b26" stroke-width="2"/></svg>')
@@ -471,182 +473,7 @@ def sorpresa(pid, t, hold=None):
 def sonrisa(pid, t):
     J(f'tl.to("#{pid}-mouth", {{attr:{{d:"M474,814 Q500,842 526,814"}}, duration:0.25}}, {t:.2f});')
 
-# ================================================================== GUION → ANIMACIÓN
-# 1 · GANCHO: primer plano con el despertador gigante sonando detrás… y el plano se abre: estás en TU casa
-HOOK = (1160, YB - 125, 4.8)
-camset(0, *HOOK)
-sorpresa("p0", 0, hold=FE(1) + 0.2)
-J(f'tl.to("#desp", {{keyframes:{{x:[0, -5, 5, -5, 5, 0]}}, duration:0.24, repeat:{int(4.0 / 0.24)}, ease:"none"}}, 0);')
-J(f'tl.to("#campL", {{keyframes:{{rotation:[0, -14, 0, 14, 0]}}, duration:0.16, repeat:{int(4.0 / 0.16)}, ease:"none", svgOrigin:"1183 960"}}, 0);')
-J(f'tl.to("#campR", {{keyframes:{{rotation:[0, 14, 0, -14, 0]}}, duration:0.16, repeat:{int(4.0 / 0.16)}, ease:"none", svgOrigin:"1317 960"}}, 0);')
-J(f'tl.set("#ring", {{opacity:1}}, 0); tl.to("#ring", {{keyframes:{{scale:[1, 1.15, 1]}}, duration:0.3, repeat:{int(4.0 / 0.3)}, svgOrigin:"1250 1040"}}, 0); tl.to("#ring", {{opacity:0, duration:0.2}}, 4.0);')
-FX_EV.append(("timbre", 0.0)); FX_EV.append(("timbre", 1.7))
-J(f'tl.to("#p0-headw", {{rotation:-10, duration:0.3, svgOrigin:"500 900"}}, 0.6); tl.to("#p0-headw", {{rotation:6, duration:0.4, svgOrigin:"500 900"}}, 1.6); tl.to("#p0-headw", {{rotation:0, duration:0.3, svgOrigin:"500 900"}}, 2.4);')
-brazos("p0", 0.15, 40, -40, 1.6)
-tcasa = P("casa")
-cam(P("tamano") - 0.1, 1300, 900, 0.62, dur=2.2, ease="power2.inOut")
-J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40}}, {{opacity:1, y:0, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("hormiga") + 0.1:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
-J(f'tl.to("#tuTag", {{y:-30, duration:0.3, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("hormiga") + 0.6:.2f});')
-FX_EV.append(("pop", P("hormiga") + 0.1))
-# 2 · mides tres milímetros (regla)
-camC(F(2) - 0.1, 1110, YB, 5.2, dur=1.0)
-J(f'tl.fromTo("#regla", {{opacity:0, y:40}}, {{opacity:1, y:0, duration:0.45, ease:"back.out(1.8)", immediateRender:false}}, {P("mides"):.2f}); tl.to("#regla", {{opacity:0, duration:0.3}}, {F(3) + 0.3:.2f});')
-FX_EV.append(("pop", P("mides")))
-J(f'tl.to("#p0-headw", {{rotation:12, duration:0.3, yoyo:true, repeat:1, repeatDelay:0.6, svgOrigin:"500 900"}}, {P("milimetros"):.2f});')
-# 3 · la cama es un desierto… y el despertador, una montaña que suena
-cam(F(3), 1180, 1120, 1.25, dur=1.8, ease="sine.inOut")
-andar("p0", F(3) + 0.3, -120, 1.8, 6)
-J(f'tl.to("#desp", {{keyframes:{{x:[0, -5, 5, -5, 5, 0]}}, duration:0.24, repeat:7, ease:"none"}}, {P("montana") - 0.1:.2f});')
-J(f'tl.to("#campL", {{keyframes:{{rotation:[0, -14, 0, 14, 0]}}, duration:0.16, repeat:10, ease:"none", svgOrigin:"1183 960"}}, {P("montana") - 0.1:.2f}); tl.to("#campR", {{keyframes:{{rotation:[0, 14, 0, -14, 0]}}, duration:0.16, repeat:10, ease:"none", svgOrigin:"1317 960"}}, {P("montana") - 0.1:.2f});')
-J(f'tl.set("#ring", {{opacity:1}}, {P("montana") - 0.1:.2f}); tl.to("#ring", {{opacity:0, duration:0.2}}, {P("montana") + 1.6:.2f});')
-FX_EV.append(("timbre", P("montana") - 0.1))
-sorpresa("p0", P("montana"), hold=1.2)
-J(f'tl.to("#p0-headw", {{rotation:14, duration:0.3, svgOrigin:"500 900"}}, {P("montana"):.2f}); tl.to("#p0-headw", {{rotation:0, duration:0.4, svgOrigin:"500 900"}}, {P("montana") + 1.2:.2f});')
-
-# 4 · viaje al pasillo: 10 m = 6 km (se ve la casa entera y bajas al suelo del pasillo)
-t = F(4)
-viaje(t, (2300, 900, 0.36), C(3010, FL, 3.6), d1=1.0, hold=0.6, d2=1.1)
-andar("p1", t + 1.4, 260, 3.4, 12)
-J(f'tl.set("#p1-w", {{x:-260}}, 0);')
-cam(t + 2.75, *C(3240, FL, 3.6), dur=2.0, ease="sine.inOut")
-# 5-6 · el polvo se mueve… ¡son ácaros!
-tpo = P("polvo")
-J(f'tl.fromTo("#acaro1", {{opacity:0, x:120}}, {{opacity:1, x:0, duration:1.2, ease:"power2.out", immediateRender:false}}, {tpo:.2f}); tl.fromTo("#acaro2", {{opacity:0, x:140}}, {{opacity:1, x:0, duration:1.4, ease:"power2.out", immediateRender:false}}, {tpo + 0.3:.2f});')
-J(f'tl.set(["#acaro1", "#acaro2"], {{opacity:0}}, 0);')
-J(f'tl.to("#acaro1 .patas, #acaro2 .patas", {{y:-6, duration:0.12, yoyo:true, repeat:30, ease:"sine.inOut"}}, {tpo:.2f});')
-cam(tpo - 0.2, 3340, FL - 130, 2.4, dur=1.2, ease="power2.inOut")
-sorpresa("p1", P("acaros"))
-J(f'tl.to("#p1-w", {{x:"-=60", duration:0.5, ease:"power2.out"}}, {P("acaros"):.2f});')
-J(f'tl.to(["#acaro1", "#acaro2"], {{x:-60, duration:1.5, ease:"sine.inOut"}}, {P("hamsteres") - 0.4:.2f});')
-
-# 7-9 · eres fortísimo: grano de arroz sobre la mesa del comedor; caes y el aire te frena
-t = F(7)
-barrido(t, (5900, 950, 0.5))
-J(f'tl.set("#arroz", {{x:6540, y:{YT - 17}}}, 0);')
-camC(t + 0.6, 6480, YT, 5.0, dur=1.5, ease="power2.inOut")
-sonrisa("p2", P("fortisimo"))
-tle = P("levantas")
-brazos("p2", tle - 0.2, 150, -150, None)
-J(f'tl.to("#arroz", {{x:6480, y:{YT - 112}, duration:0.6, ease:"back.out(1.5)"}}, {tle - 0.2:.2f});')
-J(f'tl.to("#arroz", {{y:"-=14", duration:0.35, yoyo:true, repeat:5, ease:"sine.inOut"}}, {tle + 0.5:.2f});')
-FX_EV.append(("pop", tle))
-tme = P("mesa")
-J(f'tl.to("#arroz", {{x:6420, y:{YT - 17}, duration:0.4, ease:"power2.in"}}, {tme - 1.0:.2f});')
-brazos("p2", tme - 1.0, 0, 0, None)
-andar("p2", tme - 0.8, 110, 0.7, 3)
-J(f'tl.to("#p2-w", {{y:{FL - YT}, rotation:18, duration:2.3, ease:"sine.inOut"}}, {tme:.2f}); tl.to("#p2-w", {{rotation:0, duration:0.3}}, {tme + 2.3:.2f});')
-J(f'tl.set("#aire", {{x:6590, y:{YT - 60}}}, 0); tl.to("#aire", {{opacity:1, duration:0.2}}, {tme + 0.3:.2f}); tl.to("#aire", {{y:{FL - 120}, duration:2.0, ease:"sine.inOut"}}, {tme + 0.2:.2f}); tl.to("#aire", {{opacity:0, duration:0.3}}, {tme + 2.1:.2f});')
-J(f'tl.set("#aire2", {{opacity:1}}, 0);')
-cam(tme - 0.2, 6560, 1380, 1.25, dur=1.0, ease="power2.inOut")
-cam(tme + 1.4, *C(6590, FL, 4.0), dur=1.0, ease="power2.inOut")
-FX_EV.append(("whoosh", tme))
-sonrisa("p2", P("frena"))
-brazos("p2", tme + 0.1, 120, -120, 2.2)
-
-# 10-12 · la cocina: miga = roca de 3 m, frío y comer sin parar
-t = F(10)
-viaje(t, (8300, 1100, 0.52), C(7700, FL, 3.2), d1=0.9, hold=0.5, d2=1.0)
-J(f'tl.set("#miga", {{x:7880, y:{FL}}}, 0);')
-sorpresa("p3", P("miga"), hold=1.0)
-J(f'tl.to("#p3-headw", {{rotation:12, duration:0.4, svgOrigin:"500 900"}}, {P("roca"):.2f}); tl.to("#p3-headw", {{rotation:0, duration:0.4, svgOrigin:"500 900"}}, {P("roca") + 1.2:.2f});')
-tfr = P("frio")
-J(f'tl.fromTo("#termo", {{opacity:0, scale:0.4}}, {{opacity:1, scale:1, duration:0.4, ease:"back.out(1.8)", immediateRender:false}}, {tfr:.2f}); tl.to("#termo", {{opacity:0, duration:0.3}}, {F(12) - 0.2:.2f});')
-J(f'tl.fromTo("#mercurio", {{attr:{{y:10, height:74}}}}, {{attr:{{y:66, height:18}}, duration:1.6, ease:"power2.inOut", immediateRender:false}}, {tfr + 0.3:.2f});')
-FX_EV.append(("pop", tfr))
-cam(tfr - 0.1, 7860, FL - 200, 2.4, dur=1.0, ease="power2.inOut")
-J(f'tl.to("#p3-up", {{x:6, duration:0.06, yoyo:true, repeat:40, ease:"none"}}, {tfr + 0.2:.2f});')
-J(f'tl.set("#vaho", {{x:7712, y:{FL - 80}}}, 0); tl.fromTo("#vaho", {{opacity:0, scale:0.4}}, {{opacity:0.9, scale:1, duration:0.6, repeat:3, repeatDelay:0.4, immediateRender:false}}, {tfr + 0.4:.2f}); tl.to("#vaho", {{opacity:0, duration:0.2}}, {F(12):.2f});')
-brazos("p3", tfr + 0.2, -30, 30, 2.6)
-tco = P("comer")
-camC(tco - 0.3, 7760, FL, 3.6, dur=0.8)
-for k in range(5):
-    tk = tco + 0.1 + k * 0.42
-    J(f'tl.to("#p3-armRg", {{rotation:-70, duration:0.18, yoyo:true, repeat:1, svgOrigin:"644 985"}}, {tk:.2f});')
-    J(f'tl.to("#p3-mouth", {{attr:{{d:"M484,818 Q500,836 516,818"}}, duration:0.1, yoyo:true, repeat:1}}, {tk + 0.2:.2f});')
-J(f'tl.to("#miga", {{scale:0.72, duration:2.0, ease:"power1.inOut", svgOrigin:"0 0"}}, {tco:.2f});')
-
-# 13 · la gota del grifo (en la encimera)
-t = F(13)
-barrido(t, (9000, 950, 0.62))
-J(f'tl.set("#gota", {{x:8930, y:900, scale:0.2}}, 0); tl.set("#charco", {{x:8930, y:{YC}}}, 0);')
-J('tl.set(["#charco2", "#vaho2"], {opacity:1}, 0);')
-camC(t + 0.6, 8940, YC, 2.6, dur=1.2, ease="power2.inOut")
-tgo = P("gota")
-J(f'tl.to("#gota", {{scale:1, duration:0.6, ease:"sine.out"}}, {tgo - 0.4:.2f}); tl.to("#gota", {{y:{YC - 58}, duration:0.5, ease:"power2.in"}}, {tgo + 0.4:.2f});')
-J(f'tl.to("#gota", {{opacity:0, duration:0.05}}, {tgo + 0.9:.2f}); tl.fromTo("#charco", {{opacity:0, scaleY:0.2}}, {{opacity:1, scaleY:1, duration:0.4, ease:"back.out(1.6)", immediateRender:false, svgOrigin:"0 0"}}, {tgo + 0.9:.2f});')
-FX_EV.append(("pop", tgo + 0.9))
-camC(tgo + 0.7, 8930, YC, 4.6, dur=0.9)
-sorpresa("p4", tgo + 0.3)
-J(f'tl.to("#p4-armLg", {{rotation:70, duration:0.3, yoyo:true, repeat:7, svgOrigin:"356 985"}}, {tgo + 1.1:.2f}); tl.to("#p4-armRg", {{rotation:-70, duration:0.3, yoyo:true, repeat:7, svgOrigin:"644 985"}}, {tgo + 1.1:.2f});')
-J(f'tl.to("#charco", {{scaleX:1.06, scaleY:0.95, duration:0.3, yoyo:true, repeat:7, svgOrigin:"0 0"}}, {tgo + 1.2:.2f});')
-
-# 14-16 · ¡llega el gato! (como un edificio de 50 pisos) y corres bajo el sofá
-t = F(14)
-viaje(t - 0.2, (11200, 1000, 0.42), C(10800, FL, 3.6), d1=0.8, hold=0.25, d2=0.8)
-J(f'tl.set("#gatoG", {{x:-900}}, 0);')
-tga = P("gato")
-J(f'tl.to("#gatoG", {{x:0, duration:1.1, ease:"power2.out"}}, {tga - 1.0:.2f});')
-J(f'tl.to("#gatoG", {{y:-12, duration:0.18, yoyo:true, repeat:5, ease:"sine.inOut"}}, {tga - 0.5:.2f});')
-FX_EV.append(("golpe", tga + 0.5))
-cam(tga - 0.1, 10560, 1330, 1.12, dur=1.2, ease="power2.inOut")
-sorpresa("p5", tga + 0.4)
-J(f'tl.to("#p5-w", {{x:"+=30", duration:0.4}}, {tga + 0.4:.2f});')
-J(f'tl.to("#cola", {{keyframes:{{rotation:[0, 10, 0, -8, 0]}}, duration:1.6, repeat:4, svgOrigin:"150 1700"}}, {tga:.2f});')
-ted = P("edificio")
-J(f'tl.set("#edif", {{opacity:0}}, 0); tl.fromTo("#edif", {{opacity:0, scaleY:0}}, {{opacity:1, scaleY:1, duration:1.0, ease:"power3.out", svgOrigin:"10715 {FL}", immediateRender:false}}, {ted - 0.3:.2f});')
-J(f'tl.to("#edif", {{opacity:0, duration:0.3}}, {F(16) - 0.15:.2f});')
-FX_EV.append(("sube", ted - 0.3))
-J(f'tl.to("#gato .pup", {{attr:{{rx:30}}, duration:0.4}}, {P("cincuenta"):.2f});')
-tco2 = P("corres")
-camC(tco2 - 0.2, 11150, FL, 3.4, dur=1.0)
-andar("p5", tco2, 420, 1.5, 10)
-J(f'tl.to("#gatoG", {{x:220, duration:0.6, ease:"power2.in"}}, {tco2 + 0.6:.2f});')
-FX_EV.append(("whoosh", tco2))
-J(f'tl.to("#p5-eyes", {{scaleY:1, duration:0.2, svgOrigin:"500 742"}}, {tco2 + 1.5:.2f}); tl.to("#p5-mouthO", {{opacity:0, duration:0.2}}, {tco2 + 1.5:.2f}); tl.to("#p5-mouth", {{opacity:1, duration:0.2}}, {tco2 + 1.5:.2f});')
-
-# 17 · medianoche: el reloj de pared marca las 12 (se hace de noche) y empiezas a crecer
-t = F(17)
-cam(t - 0.1, 11600, 760, 2.5, dur=1.2, ease="power2.inOut")
-J(f'tl.to("#gatoG", {{x:-1400, duration:0.1}}, {t + 0.5:.2f});')
-J(f'tl.set("#aguH", {{rotation:-80, svgOrigin:"11600 640"}}, 0); tl.set("#aguM", {{rotation:-200, svgOrigin:"11600 640"}}, 0);')
-tdo = P("doce")
-J(f'tl.to("#aguH", {{rotation:0, duration:{tdo - t:.2f}, ease:"power2.inOut", svgOrigin:"11600 640"}}, {t:.2f}); tl.to("#aguM", {{rotation:0, duration:{tdo - t:.2f}, ease:"power2.inOut", svgOrigin:"11600 640"}}, {t:.2f});')
-J(f'tl.to("#noche", {{opacity:0.55, duration:{tdo - t:.2f}, ease:"sine.inOut"}}, {t:.2f}); tl.to("#ventNoche", {{opacity:1, duration:{tdo - t:.2f}}}, {t:.2f}); tl.to("#luzLamp", {{opacity:1, duration:0.4}}, {tdo:.2f});')
-FX_EV.append(("clic", tdo)); FX_EV.append(("brillo", tdo + 0.1))
-tcr = P("crecer")
-camC(tcr - 0.4, 11560, FL, 3.4, dur=0.9)
-J(f'tl.set("#p5-w", {{x:760}}, {tcr - 0.5:.2f});')   # sale de debajo del sofá
-# 18 · creces: 1 cm, 10, 50… 1,75 m (cinta métrica que sube y «uiii»)
-J(f'tl.set("#cinta", {{opacity:0}}, 0); tl.set("#cintaG", {{scaleY:0.085, svgOrigin:"0 0"}}, 0);')
-J(f'tl.to("#cinta", {{opacity:1, duration:0.3}}, {tcr:.2f});')
-etapas = [("centimetro", 0.16, "1 cm", "sube"), ("diez", 0.3, "10 cm", "sube"), ("cincuenta", 0.56, "50 cm", "sube"), ("metro", 1.0, "1,75 m", "sube2")]
-zs = {0.16: 2.4, 0.3: 1.6, 0.56: 1.05, 1.0: 0.85}
-for w, sc, txt, fxk in etapas:
-    tw = P(w, 2) if w in ("cincuenta", "diez") else P(w)
-    dd = 0.9 if sc < 1 else 1.2
-    J(f'tl.to("#p5-w", {{scale:{sc}, duration:{dd}, ease:"back.out(1.6)"}}, {tw - 0.1:.2f});')
-    J(f'tl.to("#cintaG", {{scaleY:{max(sc, 0.085)}, duration:{dd}, ease:"back.out(1.6)", svgOrigin:"0 0"}}, {tw - 0.1:.2f});')
-    J(f'tl.set("#medida", {{innerHTML:"{txt}"}}, {tw:.2f}); tl.fromTo("#medida", {{opacity:0, scale:0.5, y:{-1060 * sc + 120:.0f}}}, {{opacity:1, scale:1, y:{-1060 * sc + 120:.0f}, duration:0.3, ease:"back.out(2)", immediateRender:false}}, {tw:.2f});')
-    hh = 1060 * sc
-    cam(tw - 0.1, 11560, FL - hh / 2 - 150 / zs[sc], zs[sc], dur=dd, ease="power2.inOut")
-    FX_EV.append((fxk, tw - 0.1))
-FX_EV.append(("boing", P("metro") + 1.1))
-sonrisa("p5", P("metro") + 0.6)
-brazos("p5", P("cinco") + 0.1, 150, -150, 1.4)
-# 19 · miras el suelo de otra manera… ahí abajo hay todo un mundo (y bucle)
-t19 = F(19)
-J(f'tl.to(["#medida", "#cinta"], {{opacity:0, duration:0.4}}, {t19 + 0.2:.2f});')
-J(f'tl.to("#p5-eyes", {{y:9, duration:0.3}}, {P("suelo") - 0.2:.2f}); tl.to("#p5-headw", {{rotation:-9, duration:0.4, svgOrigin:"500 900"}}, {P("suelo") - 0.2:.2f});')
-J(f'tl.fromTo("#hormiga", {{x:-260}}, {{x:120, duration:{DUR - t19:.2f}, ease:"none", immediateRender:false}}, {t19:.2f});')
-J(f'tl.to("#hormiga path", {{y:2, duration:0.08, yoyo:true, repeat:{int((DUR - t19) / 0.08)}}}, {t19:.2f});')
-cam(P("porque") - 0.1, 11840, FL - 20, 7.0, dur=1.6, ease="power2.inOut")
-tcut = DUR - 0.55
-J(f'tl.fromTo("#wipe", {{x:1900}}, {{x:-4300, duration:1.0, ease:"sine.inOut", immediateRender:false}}, {tcut - 0.5:.2f});')
-camset(tcut, *HOOK)
-FX_EV.append(("suave", tcut - 0.5))
-J(f'tl.set("#p0-w", {{x:0}}, {tcut:.2f}); tl.set("#p0-eyes", {{scaleY:1.35, svgOrigin:"500 742"}}, {tcut:.2f}); tl.set("#p0-mouthO", {{opacity:1}}, {tcut:.2f}); tl.set("#p0-mouth", {{opacity:0}}, {tcut:.2f});')
-J(f'tl.set("#ring", {{opacity:1}}, {tcut:.2f});')
-J(f'tl.set("#p0-armLg", {{rotation:40, svgOrigin:"356 985"}}, {tcut:.2f}); tl.set("#p0-armRg", {{rotation:-40, svgOrigin:"644 985"}}, {tcut:.2f});')
+exec(open(os.path.join(BASE, 'guion_anim.py'), encoding='utf-8').read())
 
 # franjas de la transición (fuera del mundo, en pantalla)
 OVER.append('<div id="wipe" style="position:absolute;left:0;top:-300px;width:3200px;height:2600px;pointer-events:none">'

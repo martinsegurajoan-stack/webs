@@ -10,15 +10,15 @@ const path = require('path');
   await p.evaluate(() => {
     const tl = window.__timelines.main; tl.seek(59.9);
     for (const s of ['#subs', '#marca', '#sombra-subs', '#wipe', '#vineta']) { const e = document.querySelector(s); if (e) e.style.display = 'none'; }
-    const z = 1.05, cx = 10575, cy = 1135;
+    const z = 0.9, cx = 10680, cy = 1056;
     gsap.set('#world', { x: 540 - cx * z, y: 960 - cy * z, scale: z });
     gsap.set('#camA', { scale: 1, rotation: 0 }); gsap.set('#camB', { scale: 1, rotation: 0 });
-    gsap.set('#edif', { x: 150, opacity: 1, scaleY: 1 });
-    gsap.set('#p5-w', { x: -95, scale: 0.22 });
+    gsap.set('#edif', { x: 0, opacity: 1, scaleY: 1 });
+    gsap.set('#p5-w', { x: -40, scale: 0.24 }); gsap.set('#p5', { opacity: 1 }); gsap.set('#p5-perf', { opacity: 0 });
     gsap.set('#p5-eyes', { scaleY: 1.35, svgOrigin: '500 742' }); gsap.set('#p5-mouthO', { opacity: 1 }); gsap.set('#p5-mouth', { opacity: 0 });
     gsap.set('#p5-armLg', { rotation: 150, svgOrigin: '356 985' }); gsap.set('#p5-armRg', { rotation: -150, svgOrigin: '644 985' });
-    gsap.set('#gatoG', { x: 0, y: 0 });
-    gsap.set('#gato .pup', { attr: { rx: 30 } });
+    gsap.set('#gato', { opacity: 1 }); gsap.set('#gatoG', { x: 0, y: 0 }); gsap.set('#gCab', { rotation: 14, svgOrigin: '330 -540' });
+    gsap.set('.gPup', { attr: { rx: 30 } });
   });
   await p.waitForTimeout(400);
   await p.screenshot({ path: dir + '/miniatura/_fondo.png' });
