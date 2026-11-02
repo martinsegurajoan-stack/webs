@@ -1,1 +1,1519 @@
-{"duracion": 86.5, "frases": [{"n": 1, "texto": "¿Qué pasaría si mañana empezara a granizar y no parara durante treinta días seguidos?", "ini": 0, "fin": 5.332}, {"n": 2, "texto": "Normalmente, una granizada dura solo unos minutos. Cada piedra sube y baja dentro de una nube de tormenta y gana capas de hielo hasta que pesa demasiado.", "ini": 5.482, "fin": 15.078}, {"n": 3, "texto": "El primer día, las calles amanecen blancas y los tejados suenan como tambores. Los coches aparcados acaban llenos de abolladuras.", "ini": 15.228, "fin": 23.32}, {"n": 4, "texto": "Al tercer día, el campo ya está perdido. En 2025, las tormentas dañaron más de un millón de hectáreas de cultivo en España.", "ini": 23.47, "fin": 31.185}, {"n": 5, "texto": "Sin fruta ni verdura nueva, los precios del supermercado se disparan.", "ini": 31.335, "fin": 35.663}, {"n": 6, "texto": "A la semana, se rompen las claraboyas y las placas solares, y los aviones se quedan en tierra.", "ini": 35.813, "fin": 41.709}, {"n": 7, "texto": "Y si las piedras crecen, el peligro cambia. Las más grandes pueden caer a más de ciento sesenta kilómetros por hora.", "ini": 41.859, "fin": 49.135}, {"n": 8, "texto": "El récord es de veinte centímetros y casi un kilo, en Dakota del Sur.", "ini": 49.285, "fin": 53.613}, {"n": 9, "texto": "A las dos semanas, el hielo se acumula. En Guadalajara, en México, una sola granizada dejó más de un metro de hielo en las calles.", "ini": 53.763, "fin": 61.917}, {"n": 10, "texto": "Imagina treinta días así: puertas bloqueadas, colegios cerrados y coches enterrados.", "ini": 62.067, "fin": 67.336}, {"n": 11, "texto": "Pero lo peor llega cuando para. Todo ese hielo se derrite a la vez y las calles se convierten en ríos.", "ini": 67.486, "fin": 73.883}, {"n": 12, "texto": "Lo que casi nadie sabe es que el granizo necesita calor: el aire caliente empuja las tormentas hacia arriba.", "ini": 74.033, "fin": 80.808}, {"n": 13, "texto": "Así que todo empezaría un día de calor, con una sola piedra cayendo del cielo.", "ini": 80.958, "fin": 85.85}], "palabras": [{"w": "¿Qué", "ini": 0, "fin": 0.31, "frase": 1}, {"w": "pasaría", "ini": 0.31, "fin": 0.806, "frase": 1}, {"w": "si", "ini": 0.806, "fin": 0.992, "frase": 1}, {"w": "mañana", "ini": 0.992, "fin": 1.426, "frase": 1}, {"w": "empezara", "ini": 1.426, "fin": 1.984, "frase": 1}, {"w": "a", "ini": 1.984, "fin": 2.108, "frase": 1}, {"w": "granizar", "ini": 2.108, "fin": 2.666, "frase": 1}, {"w": "y", "ini": 2.666, "fin": 2.79, "frase": 1}, {"w": "no", "ini": 2.79, "fin": 2.976, "frase": 1}, {"w": "parara", "ini": 2.976, "fin": 3.41, "frase": 1}, {"w": "durante", "ini": 3.41, "fin": 3.906, "frase": 1}, {"w": "treinta", "ini": 3.906, "fin": 4.402, "frase": 1}, {"w": "días", "ini": 4.402, "fin": 4.712, "frase": 1}, {"w": "seguidos?", "ini": 4.712, "fin": 5.332, "frase": 1}, {"w": "Normalmente,", "ini": 5.482, "fin": 6.292, "frase": 2}, {"w": "una", "ini": 6.292, "fin": 6.541, "frase": 2}, {"w": "granizada", "ini": 6.541, "fin": 7.164, "frase": 2}, {"w": "dura", "ini": 7.164, "fin": 7.476, "frase": 2}, {"w": "solo", "ini": 7.476, "fin": 7.787, "frase": 2}, {"w": "unos", "ini": 7.787, "fin": 8.099, "frase": 2}, {"w": "minutos.", "ini": 8.099, "fin": 8.66, "frase": 2}, {"w": "Cada", "ini": 8.66, "fin": 8.971, "frase": 2}, {"w": "piedra", "ini": 8.971, "fin": 9.407, "frase": 2}, {"w": "sube", "ini": 9.407, "fin": 9.719, "frase": 2}, {"w": "y", "ini": 9.719, "fin": 9.844, "frase": 2}, {"w": "baja", "ini": 9.844, "fin": 10.155, "frase": 2}, {"w": "dentro", "ini": 10.155, "fin": 10.591, "frase": 2}, {"w": "de", "ini": 10.591, "fin": 10.778, "frase": 2}, {"w": "una", "ini": 10.778, "fin": 11.028, "frase": 2}, {"w": "nube", "ini": 11.028, "fin": 11.339, "frase": 2}, {"w": "de", "ini": 11.339, "fin": 11.526, "frase": 2}, {"w": "tormenta", "ini": 11.526, "fin": 12.087, "frase": 2}, {"w": "y", "ini": 12.087, "fin": 12.212, "frase": 2}, {"w": "gana", "ini": 12.212, "fin": 12.523, "frase": 2}, {"w": "capas", "ini": 12.523, "fin": 12.897, "frase": 2}, {"w": "de", "ini": 12.897, "fin": 13.084, "frase": 2}, {"w": "hielo", "ini": 13.084, "fin": 13.458, "frase": 2}, {"w": "hasta", "ini": 13.458, "fin": 13.832, "frase": 2}, {"w": "que", "ini": 13.832, "fin": 14.081, "frase": 2}, {"w": "pesa", "ini": 14.081, "fin": 14.393, "frase": 2}, {"w": "demasiado.", "ini": 14.393, "fin": 15.078, "frase": 2}, {"w": "El", "ini": 15.228, "fin": 15.415, "frase": 3}, {"w": "primer", "ini": 15.415, "fin": 15.851, "frase": 3}, {"w": "día,", "ini": 15.851, "fin": 16.162, "frase": 3}, {"w": "las", "ini": 16.162, "fin": 16.411, "frase": 3}, {"w": "calles", "ini": 16.411, "fin": 16.847, "frase": 3}, {"w": "amanecen", "ini": 16.847, "fin": 17.407, "frase": 3}, {"w": "blancas", "ini": 17.407, "fin": 17.905, "frase": 3}, {"w": "y", "ini": 17.905, "fin": 18.029, "frase": 3}, {"w": "los", "ini": 18.029, "fin": 18.278, "frase": 3}, {"w": "tejados", "ini": 18.278, "fin": 18.776, "frase": 3}, {"w": "suenan", "ini": 18.776, "fin": 19.212, "frase": 3}, {"w": "como", "ini": 19.212, "fin": 19.523, "frase": 3}, {"w": "tambores.", "ini": 19.523, "fin": 20.145, "frase": 3}, {"w": "Los", "ini": 20.145, "fin": 20.394, "frase": 3}, {"w": "coches", "ini": 20.394, "fin": 20.83, "frase": 3}, {"w": "aparcados", "ini": 20.83, "fin": 21.452, "frase": 3}, {"w": "acaban", "ini": 21.452, "fin": 21.888, "frase": 3}, {"w": "llenos", "ini": 21.888, "fin": 22.324, "frase": 3}, {"w": "de", "ini": 22.324, "fin": 22.511, "frase": 3}, {"w": "abolladuras.", "ini": 22.511, "fin": 23.32, "frase": 3}, {"w": "Al", "ini": 23.47, "fin": 23.656, "frase": 4}, {"w": "tercer", "ini": 23.656, "fin": 24.092, "frase": 4}, {"w": "día,", "ini": 24.092, "fin": 24.403, "frase": 4}, {"w": "el", "ini": 24.403, "fin": 24.59, "frase": 4}, {"w": "campo", "ini": 24.59, "fin": 24.963, "frase": 4}, {"w": "ya", "ini": 24.963, "fin": 25.15, "frase": 4}, {"w": "está", "ini": 25.15, "fin": 25.461, "frase": 4}, {"w": "perdido.", "ini": 25.461, "fin": 26.021, "frase": 4}, {"w": "En", "ini": 26.021, "fin": 26.207, "frase": 4}, {"w": "2025,", "ini": 26.207, "fin": 26.581, "frase": 4}, {"w": "las", "ini": 26.581, "fin": 26.829, "frase": 4}, {"w": "tormentas", "ini": 26.829, "fin": 27.452, "frase": 4}, {"w": "dañaron", "ini": 27.452, "fin": 27.949, "frase": 4}, {"w": "más", "ini": 27.949, "fin": 28.198, "frase": 4}, {"w": "de", "ini": 28.198, "fin": 28.385, "frase": 4}, {"w": "un", "ini": 28.385, "fin": 28.572, "frase": 4}, {"w": "millón", "ini": 28.572, "fin": 29.007, "frase": 4}, {"w": "de", "ini": 29.007, "fin": 29.194, "frase": 4}, {"w": "hectáreas", "ini": 29.194, "fin": 29.816, "frase": 4}, {"w": "de", "ini": 29.816, "fin": 30.003, "frase": 4}, {"w": "cultivo", "ini": 30.003, "fin": 30.5, "frase": 4}, {"w": "en", "ini": 30.5, "fin": 30.687, "frase": 4}, {"w": "España.", "ini": 30.687, "fin": 31.185, "frase": 4}, {"w": "Sin", "ini": 31.335, "fin": 31.582, "frase": 5}, {"w": "fruta", "ini": 31.582, "fin": 31.953, "frase": 5}, {"w": "ni", "ini": 31.953, "fin": 32.138, "frase": 5}, {"w": "verdura", "ini": 32.138, "fin": 32.633, "frase": 5}, {"w": "nueva,", "ini": 32.633, "fin": 33.066, "frase": 5}, {"w": "los", "ini": 33.066, "fin": 33.313, "frase": 5}, {"w": "precios", "ini": 33.313, "fin": 33.808, "frase": 5}, {"w": "del", "ini": 33.808, "fin": 34.055, "frase": 5}, {"w": "supermercado", "ini": 34.055, "fin": 34.859, "frase": 5}, {"w": "se", "ini": 34.859, "fin": 35.044, "frase": 5}, {"w": "disparan.", "ini": 35.044, "fin": 35.663, "frase": 5}, {"w": "A", "ini": 35.813, "fin": 35.937, "frase": 6}, {"w": "la", "ini": 35.937, "fin": 36.123, "frase": 6}, {"w": "semana,", "ini": 36.123, "fin": 36.619, "frase": 6}, {"w": "se", "ini": 36.619, "fin": 36.806, "frase": 6}, {"w": "rompen", "ini": 36.806, "fin": 37.24, "frase": 6}, {"w": "las", "ini": 37.24, "fin": 37.488, "frase": 6}, {"w": "claraboyas", "ini": 37.488, "fin": 38.171, "frase": 6}, {"w": "y", "ini": 38.171, "fin": 38.295, "frase": 6}, {"w": "las", "ini": 38.295, "fin": 38.543, "frase": 6}, {"w": "placas", "ini": 38.543, "fin": 38.978, "frase": 6}, {"w": "solares,", "ini": 38.978, "fin": 39.536, "frase": 6}, {"w": "y", "ini": 39.536, "fin": 39.661, "frase": 6}, {"w": "los", "ini": 39.661, "fin": 39.909, "frase": 6}, {"w": "aviones", "ini": 39.909, "fin": 40.405, "frase": 6}, {"w": "se", "ini": 40.405, "fin": 40.592, "frase": 6}, {"w": "quedan", "ini": 40.592, "fin": 41.026, "frase": 6}, {"w": "en", "ini": 41.026, "fin": 41.212, "frase": 6}, {"w": "tierra.", "ini": 41.212, "fin": 41.709, "frase": 6}, {"w": "Y", "ini": 41.859, "fin": 41.983, "frase": 7}, {"w": "si", "ini": 41.983, "fin": 42.17, "frase": 7}, {"w": "las", "ini": 42.17, "fin": 42.418, "frase": 7}, {"w": "piedras", "ini": 42.418, "fin": 42.916, "frase": 7}, {"w": "crecen,", "ini": 42.916, "fin": 43.413, "frase": 7}, {"w": "el", "ini": 43.413, "fin": 43.6, "frase": 7}, {"w": "peligro", "ini": 43.6, "fin": 44.097, "frase": 7}, {"w": "cambia.", "ini": 44.097, "fin": 44.595, "frase": 7}, {"w": "Las", "ini": 44.595, "fin": 44.844, "frase": 7}, {"w": "más", "ini": 44.844, "fin": 45.092, "frase": 7}, {"w": "grandes", "ini": 45.092, "fin": 45.59, "frase": 7}, {"w": "pueden", "ini": 45.59, "fin": 46.025, "frase": 7}, {"w": "caer", "ini": 46.025, "fin": 46.336, "frase": 7}, {"w": "a", "ini": 46.336, "fin": 46.461, "frase": 7}, {"w": "más", "ini": 46.461, "fin": 46.709, "frase": 7}, {"w": "de", "ini": 46.709, "fin": 46.896, "frase": 7}, {"w": "ciento", "ini": 46.896, "fin": 47.331, "frase": 7}, {"w": "sesenta", "ini": 47.331, "fin": 47.829, "frase": 7}, {"w": "kilómetros", "ini": 47.829, "fin": 48.513, "frase": 7}, {"w": "por", "ini": 48.513, "fin": 48.762, "frase": 7}, {"w": "hora.", "ini": 48.762, "fin": 49.135, "frase": 7}, {"w": "El", "ini": 49.285, "fin": 49.47, "frase": 8}, {"w": "récord", "ini": 49.47, "fin": 49.903, "frase": 8}, {"w": "es", "ini": 49.903, "fin": 50.088, "frase": 8}, {"w": "de", "ini": 50.088, "fin": 50.274, "frase": 8}, {"w": "veinte", "ini": 50.274, "fin": 50.707, "frase": 8}, {"w": "centímetros", "ini": 50.707, "fin": 51.449, "frase": 8}, {"w": "y", "ini": 51.449, "fin": 51.572, "frase": 8}, {"w": "casi", "ini": 51.572, "fin": 51.881, "frase": 8}, {"w": "un", "ini": 51.881, "fin": 52.067, "frase": 8}, {"w": "kilo,", "ini": 52.067, "fin": 52.438, "frase": 8}, {"w": "en", "ini": 52.438, "fin": 52.623, "frase": 8}, {"w": "Dakota", "ini": 52.623, "fin": 53.056, "frase": 8}, {"w": "del", "ini": 53.056, "fin": 53.303, "frase": 8}, {"w": "Sur.", "ini": 53.303, "fin": 53.613, "frase": 8}, {"w": "A", "ini": 53.763, "fin": 53.887, "frase": 9}, {"w": "las", "ini": 53.887, "fin": 54.136, "frase": 9}, {"w": "dos", "ini": 54.136, "fin": 54.385, "frase": 9}, {"w": "semanas,", "ini": 54.385, "fin": 54.945, "frase": 9}, {"w": "el", "ini": 54.945, "fin": 55.132, "frase": 9}, {"w": "hielo", "ini": 55.132, "fin": 55.505, "frase": 9}, {"w": "se", "ini": 55.505, "fin": 55.692, "frase": 9}, {"w": "acumula.", "ini": 55.692, "fin": 56.252, "frase": 9}, {"w": "En", "ini": 56.252, "fin": 56.439, "frase": 9}, {"w": "Guadalajara,", "ini": 56.439, "fin": 57.248, "frase": 9}, {"w": "en", "ini": 57.248, "fin": 57.435, "frase": 9}, {"w": "México,", "ini": 57.435, "fin": 57.933, "frase": 9}, {"w": "una", "ini": 57.933, "fin": 58.182, "frase": 9}, {"w": "sola", "ini": 58.182, "fin": 58.493, "frase": 9}, {"w": "granizada", "ini": 58.493, "fin": 59.116, "frase": 9}, {"w": "dejó", "ini": 59.116, "fin": 59.427, "frase": 9}, {"w": "más", "ini": 59.427, "fin": 59.676, "frase": 9}, {"w": "de", "ini": 59.676, "fin": 59.863, "frase": 9}, {"w": "un", "ini": 59.863, "fin": 60.049, "frase": 9}, {"w": "metro", "ini": 60.049, "fin": 60.423, "frase": 9}, {"w": "de", "ini": 60.423, "fin": 60.61, "frase": 9}, {"w": "hielo", "ini": 60.61, "fin": 60.983, "frase": 9}, {"w": "en", "ini": 60.983, "fin": 61.17, "frase": 9}, {"w": "las", "ini": 61.17, "fin": 61.419, "frase": 9}, {"w": "calles.", "ini": 61.419, "fin": 61.917, "frase": 9}, {"w": "Imagina", "ini": 62.067, "fin": 62.563, "frase": 10}, {"w": "treinta", "ini": 62.563, "fin": 63.058, "frase": 10}, {"w": "días", "ini": 63.058, "fin": 63.368, "frase": 10}, {"w": "así:", "ini": 63.368, "fin": 63.678, "frase": 10}, {"w": "puertas", "ini": 63.678, "fin": 64.174, "frase": 10}, {"w": "bloqueadas,", "ini": 64.174, "fin": 64.918, "frase": 10}, {"w": "colegios", "ini": 64.918, "fin": 65.476, "frase": 10}, {"w": "cerrados", "ini": 65.476, "fin": 66.034, "frase": 10}, {"w": "y", "ini": 66.034, "fin": 66.158, "frase": 10}, {"w": "coches", "ini": 66.158, "fin": 66.592, "frase": 10}, {"w": "enterrados.", "ini": 66.592, "fin": 67.336, "frase": 10}, {"w": "Pero", "ini": 67.486, "fin": 67.796, "frase": 11}, {"w": "lo", "ini": 67.796, "fin": 67.982, "frase": 11}, {"w": "peor", "ini": 67.982, "fin": 68.293, "frase": 11}, {"w": "llega", "ini": 68.293, "fin": 68.666, "frase": 11}, {"w": "cuando", "ini": 68.666, "fin": 69.101, "frase": 11}, {"w": "para.", "ini": 69.101, "fin": 69.473, "frase": 11}, {"w": "Todo", "ini": 69.473, "fin": 69.784, "frase": 11}, {"w": "ese", "ini": 69.784, "fin": 70.032, "frase": 11}, {"w": "hielo", "ini": 70.032, "fin": 70.405, "frase": 11}, {"w": "se", "ini": 70.405, "fin": 70.591, "frase": 11}, {"w": "derrite", "ini": 70.591, "fin": 71.088, "frase": 11}, {"w": "a", "ini": 71.088, "fin": 71.212, "frase": 11}, {"w": "la", "ini": 71.212, "fin": 71.399, "frase": 11}, {"w": "vez", "ini": 71.399, "fin": 71.647, "frase": 11}, {"w": "y", "ini": 71.647, "fin": 71.771, "frase": 11}, {"w": "las", "ini": 71.771, "fin": 72.02, "frase": 11}, {"w": "calles", "ini": 72.02, "fin": 72.455, "frase": 11}, {"w": "se", "ini": 72.455, "fin": 72.641, "frase": 11}, {"w": "convierten", "ini": 72.641, "fin": 73.324, "frase": 11}, {"w": "en", "ini": 73.324, "fin": 73.511, "frase": 11}, {"w": "ríos.", "ini": 73.511, "fin": 73.883, "frase": 11}, {"w": "Lo", "ini": 74.033, "fin": 74.22, "frase": 12}, {"w": "que", "ini": 74.22, "fin": 74.468, "frase": 12}, {"w": "casi", "ini": 74.468, "fin": 74.779, "frase": 12}, {"w": "nadie", "ini": 74.779, "fin": 75.152, "frase": 12}, {"w": "sabe", "ini": 75.152, "fin": 75.463, "frase": 12}, {"w": "es", "ini": 75.463, "fin": 75.649, "frase": 12}, {"w": "que", "ini": 75.649, "fin": 75.898, "frase": 12}, {"w": "el", "ini": 75.898, "fin": 76.084, "frase": 12}, {"w": "granizo", "ini": 76.084, "fin": 76.581, "frase": 12}, {"w": "necesita", "ini": 76.581, "fin": 77.141, "frase": 12}, {"w": "calor:", "ini": 77.141, "fin": 77.576, "frase": 12}, {"w": "el", "ini": 77.576, "fin": 77.762, "frase": 12}, {"w": "aire", "ini": 77.762, "fin": 78.073, "frase": 12}, {"w": "caliente", "ini": 78.073, "fin": 78.632, "frase": 12}, {"w": "empuja", "ini": 78.632, "fin": 79.067, "frase": 12}, {"w": "las", "ini": 79.067, "fin": 79.316, "frase": 12}, {"w": "tormentas", "ini": 79.316, "fin": 79.937, "frase": 12}, {"w": "hacia", "ini": 79.937, "fin": 80.31, "frase": 12}, {"w": "arriba.", "ini": 80.31, "fin": 80.808, "frase": 12}, {"w": "Así", "ini": 80.958, "fin": 81.205, "frase": 13}, {"w": "que", "ini": 81.205, "fin": 81.453, "frase": 13}, {"w": "todo", "ini": 81.453, "fin": 81.763, "frase": 13}, {"w": "empezaría", "ini": 81.763, "fin": 82.382, "frase": 13}, {"w": "un", "ini": 82.382, "fin": 82.568, "frase": 13}, {"w": "día", "ini": 82.568, "fin": 82.815, "frase": 13}, {"w": "de", "ini": 82.815, "fin": 83.001, "frase": 13}, {"w": "calor,", "ini": 83.001, "fin": 83.435, "frase": 13}, {"w": "con", "ini": 83.435, "fin": 83.682, "frase": 13}, {"w": "una", "ini": 83.682, "fin": 83.93, "frase": 13}, {"w": "sola", "ini": 83.93, "fin": 84.24, "frase": 13}, {"w": "piedra", "ini": 84.24, "fin": 84.673, "frase": 13}, {"w": "cayendo", "ini": 84.673, "fin": 85.169, "frase": 13}, {"w": "del", "ini": 85.169, "fin": 85.416, "frase": 13}, {"w": "cielo.", "ini": 85.416, "fin": 85.85, "frase": 13}]}
+{
+ "duracion": 84.215,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si mañana empezara a granizar y no parara durante treinta días seguidos?",
+   "ini": 0.0,
+   "fin": 5.309
+  },
+  {
+   "n": 2,
+   "texto": "Normalmente, una granizada dura solo unos minutos. Cada piedra sube y baja dentro de una nube de tormenta y gana capas de hielo hasta que pesa demasiado.",
+   "ini": 5.579,
+   "fin": 14.719
+  },
+  {
+   "n": 3,
+   "texto": "El primer día, las calles amanecen blancas y los tejados suenan como tambores. Los coches aparcados acaban llenos de abolladuras.",
+   "ini": 14.839,
+   "fin": 22.465
+  },
+  {
+   "n": 4,
+   "texto": "Al tercer día, el campo ya está perdido. En 2025, las tormentas dañaron más de un millón de hectáreas de cultivo en España.",
+   "ini": 22.685,
+   "fin": 30.845
+  },
+  {
+   "n": 5,
+   "texto": "Sin fruta ni verdura nueva, los precios del supermercado se disparan.",
+   "ini": 30.965,
+   "fin": 34.862
+  },
+  {
+   "n": 6,
+   "texto": "A la semana, se rompen las claraboyas y las placas solares, y los aviones se quedan en tierra.",
+   "ini": 34.982,
+   "fin": 40.218
+  },
+  {
+   "n": 7,
+   "texto": "Y si las piedras crecen, el peligro cambia. Las más grandes pueden caer a más de ciento sesenta kilómetros por hora.",
+   "ini": 40.338,
+   "fin": 47.275
+  },
+  {
+   "n": 8,
+   "texto": "El récord es de veinte centímetros y casi un kilo, en Dakota del Sur.",
+   "ini": 47.395,
+   "fin": 51.469
+  },
+  {
+   "n": 9,
+   "texto": "A las dos semanas, el hielo se acumula. En Guadalajara, en México, una sola granizada dejó más de un metro de hielo en las calles.",
+   "ini": 51.589,
+   "fin": 59.522
+  },
+  {
+   "n": 10,
+   "texto": "Imagina treinta días así: puertas bloqueadas, colegios cerrados y coches enterrados.",
+   "ini": 59.642,
+   "fin": 65.451
+  },
+  {
+   "n": 11,
+   "texto": "Pero lo peor llega cuando para. Todo ese hielo se derrite a la vez y las calles se convierten en ríos.",
+   "ini": 65.571,
+   "fin": 72.091
+  },
+  {
+   "n": 12,
+   "texto": "Lo que casi nadie sabe es que el granizo necesita calor: el aire caliente empuja las tormentas hacia arriba.",
+   "ini": 72.211,
+   "fin": 78.538
+  },
+  {
+   "n": 13,
+   "texto": "Así que todo empezaría un día de calor, con una sola piedra cayendo del cielo.",
+   "ini": 78.658,
+   "fin": 83.715
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.309,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.309,
+   "fin": 0.802,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.802,
+   "fin": 0.988,
+   "frase": 1
+  },
+  {
+   "w": "mañana",
+   "ini": 0.988,
+   "fin": 1.42,
+   "frase": 1
+  },
+  {
+   "w": "empezara",
+   "ini": 1.42,
+   "fin": 1.975,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 1.975,
+   "fin": 2.099,
+   "frase": 1
+  },
+  {
+   "w": "granizar",
+   "ini": 2.099,
+   "fin": 2.654,
+   "frase": 1
+  },
+  {
+   "w": "y",
+   "ini": 2.654,
+   "fin": 2.778,
+   "frase": 1
+  },
+  {
+   "w": "no",
+   "ini": 2.778,
+   "fin": 2.963,
+   "frase": 1
+  },
+  {
+   "w": "parara",
+   "ini": 2.963,
+   "fin": 3.395,
+   "frase": 1
+  },
+  {
+   "w": "durante",
+   "ini": 3.395,
+   "fin": 3.889,
+   "frase": 1
+  },
+  {
+   "w": "treinta",
+   "ini": 3.889,
+   "fin": 4.383,
+   "frase": 1
+  },
+  {
+   "w": "días",
+   "ini": 4.383,
+   "fin": 4.691,
+   "frase": 1
+  },
+  {
+   "w": "seguidos?",
+   "ini": 4.691,
+   "fin": 5.309,
+   "frase": 1
+  },
+  {
+   "w": "Normalmente,",
+   "ini": 5.579,
+   "fin": 6.369,
+   "frase": 2
+  },
+  {
+   "w": "una",
+   "ini": 6.509,
+   "fin": 6.716,
+   "frase": 2
+  },
+  {
+   "w": "granizada",
+   "ini": 6.716,
+   "fin": 7.234,
+   "frase": 2
+  },
+  {
+   "w": "dura",
+   "ini": 7.234,
+   "fin": 7.494,
+   "frase": 2
+  },
+  {
+   "w": "solo",
+   "ini": 7.494,
+   "fin": 7.753,
+   "frase": 2
+  },
+  {
+   "w": "unos",
+   "ini": 7.753,
+   "fin": 8.012,
+   "frase": 2
+  },
+  {
+   "w": "minutos.",
+   "ini": 8.012,
+   "fin": 8.479,
+   "frase": 2
+  },
+  {
+   "w": "Cada",
+   "ini": 9.019,
+   "fin": 9.295,
+   "frase": 2
+  },
+  {
+   "w": "piedra",
+   "ini": 9.295,
+   "fin": 9.683,
+   "frase": 2
+  },
+  {
+   "w": "sube",
+   "ini": 9.683,
+   "fin": 9.959,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 9.959,
+   "fin": 10.07,
+   "frase": 2
+  },
+  {
+   "w": "baja",
+   "ini": 10.07,
+   "fin": 10.347,
+   "frase": 2
+  },
+  {
+   "w": "dentro",
+   "ini": 10.347,
+   "fin": 10.734,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 10.734,
+   "fin": 10.9,
+   "frase": 2
+  },
+  {
+   "w": "una",
+   "ini": 10.9,
+   "fin": 11.122,
+   "frase": 2
+  },
+  {
+   "w": "nube",
+   "ini": 11.122,
+   "fin": 11.398,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 11.398,
+   "fin": 11.564,
+   "frase": 2
+  },
+  {
+   "w": "tormenta",
+   "ini": 11.564,
+   "fin": 12.062,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 12.062,
+   "fin": 12.173,
+   "frase": 2
+  },
+  {
+   "w": "gana",
+   "ini": 12.173,
+   "fin": 12.45,
+   "frase": 2
+  },
+  {
+   "w": "capas",
+   "ini": 12.45,
+   "fin": 12.782,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 12.782,
+   "fin": 12.948,
+   "frase": 2
+  },
+  {
+   "w": "hielo",
+   "ini": 12.948,
+   "fin": 13.28,
+   "frase": 2
+  },
+  {
+   "w": "hasta",
+   "ini": 13.28,
+   "fin": 13.612,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 13.612,
+   "fin": 13.833,
+   "frase": 2
+  },
+  {
+   "w": "pesa",
+   "ini": 13.833,
+   "fin": 14.11,
+   "frase": 2
+  },
+  {
+   "w": "demasiado.",
+   "ini": 14.11,
+   "fin": 14.719,
+   "frase": 2
+  },
+  {
+   "w": "El",
+   "ini": 14.839,
+   "fin": 14.987,
+   "frase": 3
+  },
+  {
+   "w": "primer",
+   "ini": 14.987,
+   "fin": 15.332,
+   "frase": 3
+  },
+  {
+   "w": "día,",
+   "ini": 15.332,
+   "fin": 15.579,
+   "frase": 3
+  },
+  {
+   "w": "las",
+   "ini": 15.749,
+   "fin": 15.971,
+   "frase": 3
+  },
+  {
+   "w": "calles",
+   "ini": 15.971,
+   "fin": 16.359,
+   "frase": 3
+  },
+  {
+   "w": "amanecen",
+   "ini": 16.359,
+   "fin": 16.858,
+   "frase": 3
+  },
+  {
+   "w": "blancas",
+   "ini": 16.858,
+   "fin": 17.302,
+   "frase": 3
+  },
+  {
+   "w": "y",
+   "ini": 17.302,
+   "fin": 17.413,
+   "frase": 3
+  },
+  {
+   "w": "los",
+   "ini": 17.413,
+   "fin": 17.635,
+   "frase": 3
+  },
+  {
+   "w": "tejados",
+   "ini": 17.635,
+   "fin": 18.078,
+   "frase": 3
+  },
+  {
+   "w": "suenan",
+   "ini": 18.078,
+   "fin": 18.467,
+   "frase": 3
+  },
+  {
+   "w": "como",
+   "ini": 18.467,
+   "fin": 18.744,
+   "frase": 3
+  },
+  {
+   "w": "tambores.",
+   "ini": 18.744,
+   "fin": 19.299,
+   "frase": 3
+  },
+  {
+   "w": "Los",
+   "ini": 19.719,
+   "fin": 19.934,
+   "frase": 3
+  },
+  {
+   "w": "coches",
+   "ini": 19.934,
+   "fin": 20.311,
+   "frase": 3
+  },
+  {
+   "w": "aparcados",
+   "ini": 20.311,
+   "fin": 20.849,
+   "frase": 3
+  },
+  {
+   "w": "acaban",
+   "ini": 20.849,
+   "fin": 21.226,
+   "frase": 3
+  },
+  {
+   "w": "llenos",
+   "ini": 21.226,
+   "fin": 21.603,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 21.603,
+   "fin": 21.765,
+   "frase": 3
+  },
+  {
+   "w": "abolladuras.",
+   "ini": 21.765,
+   "fin": 22.465,
+   "frase": 3
+  },
+  {
+   "w": "Al",
+   "ini": 22.685,
+   "fin": 22.837,
+   "frase": 4
+  },
+  {
+   "w": "tercer",
+   "ini": 22.837,
+   "fin": 23.191,
+   "frase": 4
+  },
+  {
+   "w": "día,",
+   "ini": 23.191,
+   "fin": 23.445,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 23.595,
+   "fin": 23.781,
+   "frase": 4
+  },
+  {
+   "w": "campo",
+   "ini": 23.781,
+   "fin": 24.155,
+   "frase": 4
+  },
+  {
+   "w": "ya",
+   "ini": 24.155,
+   "fin": 24.342,
+   "frase": 4
+  },
+  {
+   "w": "está",
+   "ini": 24.342,
+   "fin": 24.654,
+   "frase": 4
+  },
+  {
+   "w": "perdido.",
+   "ini": 24.654,
+   "fin": 25.215,
+   "frase": 4
+  },
+  {
+   "w": "En",
+   "ini": 25.655,
+   "fin": 26.048,
+   "frase": 4
+  },
+  {
+   "w": "2025,",
+   "ini": 26.048,
+   "fin": 26.835,
+   "frase": 4
+  },
+  {
+   "w": "las",
+   "ini": 27.025,
+   "fin": 27.231,
+   "frase": 4
+  },
+  {
+   "w": "tormentas",
+   "ini": 27.231,
+   "fin": 27.747,
+   "frase": 4
+  },
+  {
+   "w": "dañaron",
+   "ini": 27.747,
+   "fin": 28.16,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 28.16,
+   "fin": 28.367,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 28.367,
+   "fin": 28.522,
+   "frase": 4
+  },
+  {
+   "w": "un",
+   "ini": 28.522,
+   "fin": 28.677,
+   "frase": 4
+  },
+  {
+   "w": "millón",
+   "ini": 28.677,
+   "fin": 29.038,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 29.038,
+   "fin": 29.193,
+   "frase": 4
+  },
+  {
+   "w": "hectáreas",
+   "ini": 29.193,
+   "fin": 29.709,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 29.709,
+   "fin": 29.864,
+   "frase": 4
+  },
+  {
+   "w": "cultivo",
+   "ini": 29.864,
+   "fin": 30.277,
+   "frase": 4
+  },
+  {
+   "w": "en",
+   "ini": 30.277,
+   "fin": 30.432,
+   "frase": 4
+  },
+  {
+   "w": "España.",
+   "ini": 30.432,
+   "fin": 30.845,
+   "frase": 4
+  },
+  {
+   "w": "Sin",
+   "ini": 30.965,
+   "fin": 31.168,
+   "frase": 5
+  },
+  {
+   "w": "fruta",
+   "ini": 31.168,
+   "fin": 31.472,
+   "frase": 5
+  },
+  {
+   "w": "ni",
+   "ini": 31.472,
+   "fin": 31.624,
+   "frase": 5
+  },
+  {
+   "w": "verdura",
+   "ini": 31.624,
+   "fin": 32.03,
+   "frase": 5
+  },
+  {
+   "w": "nueva,",
+   "ini": 32.03,
+   "fin": 32.385,
+   "frase": 5
+  },
+  {
+   "w": "los",
+   "ini": 32.615,
+   "fin": 32.829,
+   "frase": 5
+  },
+  {
+   "w": "precios",
+   "ini": 32.829,
+   "fin": 33.257,
+   "frase": 5
+  },
+  {
+   "w": "del",
+   "ini": 33.257,
+   "fin": 33.471,
+   "frase": 5
+  },
+  {
+   "w": "supermercado",
+   "ini": 33.471,
+   "fin": 34.166,
+   "frase": 5
+  },
+  {
+   "w": "se",
+   "ini": 34.166,
+   "fin": 34.327,
+   "frase": 5
+  },
+  {
+   "w": "disparan.",
+   "ini": 34.327,
+   "fin": 34.862,
+   "frase": 5
+  },
+  {
+   "w": "A",
+   "ini": 34.982,
+   "fin": 35.079,
+   "frase": 6
+  },
+  {
+   "w": "la",
+   "ini": 35.079,
+   "fin": 35.224,
+   "frase": 6
+  },
+  {
+   "w": "semana,",
+   "ini": 35.224,
+   "fin": 35.612,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 35.682,
+   "fin": 35.83,
+   "frase": 6
+  },
+  {
+   "w": "rompen",
+   "ini": 35.83,
+   "fin": 36.175,
+   "frase": 6
+  },
+  {
+   "w": "las",
+   "ini": 36.175,
+   "fin": 36.373,
+   "frase": 6
+  },
+  {
+   "w": "claraboyas",
+   "ini": 36.373,
+   "fin": 36.916,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 36.916,
+   "fin": 37.015,
+   "frase": 6
+  },
+  {
+   "w": "las",
+   "ini": 37.015,
+   "fin": 37.212,
+   "frase": 6
+  },
+  {
+   "w": "placas",
+   "ini": 37.212,
+   "fin": 37.558,
+   "frase": 6
+  },
+  {
+   "w": "solares,",
+   "ini": 37.558,
+   "fin": 38.002,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 38.292,
+   "fin": 38.402,
+   "frase": 6
+  },
+  {
+   "w": "los",
+   "ini": 38.402,
+   "fin": 38.622,
+   "frase": 6
+  },
+  {
+   "w": "aviones",
+   "ini": 38.622,
+   "fin": 39.062,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 39.062,
+   "fin": 39.227,
+   "frase": 6
+  },
+  {
+   "w": "quedan",
+   "ini": 39.227,
+   "fin": 39.612,
+   "frase": 6
+  },
+  {
+   "w": "en",
+   "ini": 39.612,
+   "fin": 39.777,
+   "frase": 6
+  },
+  {
+   "w": "tierra.",
+   "ini": 39.777,
+   "fin": 40.218,
+   "frase": 6
+  },
+  {
+   "w": "Y",
+   "ini": 40.338,
+   "fin": 40.442,
+   "frase": 7
+  },
+  {
+   "w": "si",
+   "ini": 40.442,
+   "fin": 40.598,
+   "frase": 7
+  },
+  {
+   "w": "las",
+   "ini": 40.598,
+   "fin": 40.806,
+   "frase": 7
+  },
+  {
+   "w": "piedras",
+   "ini": 40.806,
+   "fin": 41.222,
+   "frase": 7
+  },
+  {
+   "w": "crecen,",
+   "ini": 41.222,
+   "fin": 41.638,
+   "frase": 7
+  },
+  {
+   "w": "el",
+   "ini": 41.818,
+   "fin": 41.996,
+   "frase": 7
+  },
+  {
+   "w": "peligro",
+   "ini": 41.996,
+   "fin": 42.472,
+   "frase": 7
+  },
+  {
+   "w": "cambia.",
+   "ini": 42.472,
+   "fin": 42.948,
+   "frase": 7
+  },
+  {
+   "w": "Las",
+   "ini": 43.328,
+   "fin": 43.544,
+   "frase": 7
+  },
+  {
+   "w": "más",
+   "ini": 43.544,
+   "fin": 43.76,
+   "frase": 7
+  },
+  {
+   "w": "grandes",
+   "ini": 43.76,
+   "fin": 44.193,
+   "frase": 7
+  },
+  {
+   "w": "pueden",
+   "ini": 44.193,
+   "fin": 44.571,
+   "frase": 7
+  },
+  {
+   "w": "caer",
+   "ini": 44.571,
+   "fin": 44.842,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 44.842,
+   "fin": 44.95,
+   "frase": 7
+  },
+  {
+   "w": "más",
+   "ini": 44.95,
+   "fin": 45.166,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 45.166,
+   "fin": 45.328,
+   "frase": 7
+  },
+  {
+   "w": "ciento",
+   "ini": 45.328,
+   "fin": 45.707,
+   "frase": 7
+  },
+  {
+   "w": "sesenta",
+   "ini": 45.707,
+   "fin": 46.14,
+   "frase": 7
+  },
+  {
+   "w": "kilómetros",
+   "ini": 46.14,
+   "fin": 46.734,
+   "frase": 7
+  },
+  {
+   "w": "por",
+   "ini": 46.734,
+   "fin": 46.951,
+   "frase": 7
+  },
+  {
+   "w": "hora.",
+   "ini": 46.951,
+   "fin": 47.275,
+   "frase": 7
+  },
+  {
+   "w": "El",
+   "ini": 47.395,
+   "fin": 47.568,
+   "frase": 8
+  },
+  {
+   "w": "récord",
+   "ini": 47.568,
+   "fin": 47.972,
+   "frase": 8
+  },
+  {
+   "w": "es",
+   "ini": 47.972,
+   "fin": 48.145,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 48.145,
+   "fin": 48.317,
+   "frase": 8
+  },
+  {
+   "w": "veinte",
+   "ini": 48.317,
+   "fin": 48.721,
+   "frase": 8
+  },
+  {
+   "w": "centímetros",
+   "ini": 48.721,
+   "fin": 49.413,
+   "frase": 8
+  },
+  {
+   "w": "y",
+   "ini": 49.413,
+   "fin": 49.528,
+   "frase": 8
+  },
+  {
+   "w": "casi",
+   "ini": 49.528,
+   "fin": 49.816,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 49.816,
+   "fin": 49.989,
+   "frase": 8
+  },
+  {
+   "w": "kilo,",
+   "ini": 49.989,
+   "fin": 50.335,
+   "frase": 8
+  },
+  {
+   "w": "en",
+   "ini": 50.505,
+   "fin": 50.657,
+   "frase": 8
+  },
+  {
+   "w": "Dakota",
+   "ini": 50.657,
+   "fin": 51.013,
+   "frase": 8
+  },
+  {
+   "w": "del",
+   "ini": 51.013,
+   "fin": 51.216,
+   "frase": 8
+  },
+  {
+   "w": "Sur.",
+   "ini": 51.216,
+   "fin": 51.469,
+   "frase": 8
+  },
+  {
+   "w": "A",
+   "ini": 51.589,
+   "fin": 51.68,
+   "frase": 9
+  },
+  {
+   "w": "las",
+   "ini": 51.68,
+   "fin": 51.861,
+   "frase": 9
+  },
+  {
+   "w": "dos",
+   "ini": 51.861,
+   "fin": 52.042,
+   "frase": 9
+  },
+  {
+   "w": "semanas,",
+   "ini": 52.042,
+   "fin": 52.449,
+   "frase": 9
+  },
+  {
+   "w": "el",
+   "ini": 52.669,
+   "fin": 52.831,
+   "frase": 9
+  },
+  {
+   "w": "hielo",
+   "ini": 52.831,
+   "fin": 53.154,
+   "frase": 9
+  },
+  {
+   "w": "se",
+   "ini": 53.154,
+   "fin": 53.315,
+   "frase": 9
+  },
+  {
+   "w": "acumula.",
+   "ini": 53.315,
+   "fin": 53.799,
+   "frase": 9
+  },
+  {
+   "w": "En",
+   "ini": 54.209,
+   "fin": 54.354,
+   "frase": 9
+  },
+  {
+   "w": "Guadalajara,",
+   "ini": 54.354,
+   "fin": 54.979,
+   "frase": 9
+  },
+  {
+   "w": "en",
+   "ini": 55.099,
+   "fin": 55.268,
+   "frase": 9
+  },
+  {
+   "w": "México,",
+   "ini": 55.268,
+   "fin": 55.719,
+   "frase": 9
+  },
+  {
+   "w": "una",
+   "ini": 55.989,
+   "fin": 56.21,
+   "frase": 9
+  },
+  {
+   "w": "sola",
+   "ini": 56.21,
+   "fin": 56.486,
+   "frase": 9
+  },
+  {
+   "w": "granizada",
+   "ini": 56.486,
+   "fin": 57.038,
+   "frase": 9
+  },
+  {
+   "w": "dejó",
+   "ini": 57.038,
+   "fin": 57.314,
+   "frase": 9
+  },
+  {
+   "w": "más",
+   "ini": 57.314,
+   "fin": 57.535,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 57.535,
+   "fin": 57.7,
+   "frase": 9
+  },
+  {
+   "w": "un",
+   "ini": 57.7,
+   "fin": 57.866,
+   "frase": 9
+  },
+  {
+   "w": "metro",
+   "ini": 57.866,
+   "fin": 58.197,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 58.197,
+   "fin": 58.363,
+   "frase": 9
+  },
+  {
+   "w": "hielo",
+   "ini": 58.363,
+   "fin": 58.694,
+   "frase": 9
+  },
+  {
+   "w": "en",
+   "ini": 58.694,
+   "fin": 58.86,
+   "frase": 9
+  },
+  {
+   "w": "las",
+   "ini": 58.86,
+   "fin": 59.08,
+   "frase": 9
+  },
+  {
+   "w": "calles.",
+   "ini": 59.08,
+   "fin": 59.522,
+   "frase": 9
+  },
+  {
+   "w": "Imagina",
+   "ini": 59.642,
+   "fin": 60.159,
+   "frase": 10
+  },
+  {
+   "w": "treinta",
+   "ini": 60.159,
+   "fin": 60.676,
+   "frase": 10
+  },
+  {
+   "w": "días",
+   "ini": 60.676,
+   "fin": 60.999,
+   "frase": 10
+  },
+  {
+   "w": "así:",
+   "ini": 60.999,
+   "fin": 61.322,
+   "frase": 10
+  },
+  {
+   "w": "puertas",
+   "ini": 61.762,
+   "fin": 62.174,
+   "frase": 10
+  },
+  {
+   "w": "bloqueadas,",
+   "ini": 62.174,
+   "fin": 62.792,
+   "frase": 10
+  },
+  {
+   "w": "colegios",
+   "ini": 62.982,
+   "fin": 63.552,
+   "frase": 10
+  },
+  {
+   "w": "cerrados",
+   "ini": 63.552,
+   "fin": 64.122,
+   "frase": 10
+  },
+  {
+   "w": "y",
+   "ini": 64.122,
+   "fin": 64.248,
+   "frase": 10
+  },
+  {
+   "w": "coches",
+   "ini": 64.248,
+   "fin": 64.691,
+   "frase": 10
+  },
+  {
+   "w": "enterrados.",
+   "ini": 64.691,
+   "fin": 65.451,
+   "frase": 10
+  },
+  {
+   "w": "Pero",
+   "ini": 65.571,
+   "fin": 65.88,
+   "frase": 11
+  },
+  {
+   "w": "lo",
+   "ini": 65.88,
+   "fin": 66.066,
+   "frase": 11
+  },
+  {
+   "w": "peor",
+   "ini": 66.066,
+   "fin": 66.375,
+   "frase": 11
+  },
+  {
+   "w": "llega",
+   "ini": 66.375,
+   "fin": 66.747,
+   "frase": 11
+  },
+  {
+   "w": "cuando",
+   "ini": 66.747,
+   "fin": 67.18,
+   "frase": 11
+  },
+  {
+   "w": "para.",
+   "ini": 67.18,
+   "fin": 67.551,
+   "frase": 11
+  },
+  {
+   "w": "Todo",
+   "ini": 68.121,
+   "fin": 68.401,
+   "frase": 11
+  },
+  {
+   "w": "ese",
+   "ini": 68.401,
+   "fin": 68.624,
+   "frase": 11
+  },
+  {
+   "w": "hielo",
+   "ini": 68.624,
+   "fin": 68.96,
+   "frase": 11
+  },
+  {
+   "w": "se",
+   "ini": 68.96,
+   "fin": 69.127,
+   "frase": 11
+  },
+  {
+   "w": "derrite",
+   "ini": 69.127,
+   "fin": 69.575,
+   "frase": 11
+  },
+  {
+   "w": "a",
+   "ini": 69.575,
+   "fin": 69.687,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 69.687,
+   "fin": 69.854,
+   "frase": 11
+  },
+  {
+   "w": "vez",
+   "ini": 69.854,
+   "fin": 70.078,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 70.078,
+   "fin": 70.19,
+   "frase": 11
+  },
+  {
+   "w": "las",
+   "ini": 70.19,
+   "fin": 70.413,
+   "frase": 11
+  },
+  {
+   "w": "calles",
+   "ini": 70.413,
+   "fin": 70.805,
+   "frase": 11
+  },
+  {
+   "w": "se",
+   "ini": 70.805,
+   "fin": 70.972,
+   "frase": 11
+  },
+  {
+   "w": "convierten",
+   "ini": 70.972,
+   "fin": 71.587,
+   "frase": 11
+  },
+  {
+   "w": "en",
+   "ini": 71.587,
+   "fin": 71.755,
+   "frase": 11
+  },
+  {
+   "w": "ríos.",
+   "ini": 71.755,
+   "fin": 72.091,
+   "frase": 11
+  },
+  {
+   "w": "Lo",
+   "ini": 72.211,
+   "fin": 72.372,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 72.372,
+   "fin": 72.588,
+   "frase": 12
+  },
+  {
+   "w": "casi",
+   "ini": 72.588,
+   "fin": 72.857,
+   "frase": 12
+  },
+  {
+   "w": "nadie",
+   "ini": 72.857,
+   "fin": 73.18,
+   "frase": 12
+  },
+  {
+   "w": "sabe",
+   "ini": 73.18,
+   "fin": 73.449,
+   "frase": 12
+  },
+  {
+   "w": "es",
+   "ini": 73.449,
+   "fin": 73.611,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 73.611,
+   "fin": 73.826,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 73.826,
+   "fin": 73.988,
+   "frase": 12
+  },
+  {
+   "w": "granizo",
+   "ini": 73.988,
+   "fin": 74.419,
+   "frase": 12
+  },
+  {
+   "w": "necesita",
+   "ini": 74.419,
+   "fin": 74.904,
+   "frase": 12
+  },
+  {
+   "w": "calor:",
+   "ini": 74.904,
+   "fin": 75.281,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 75.661,
+   "fin": 75.827,
+   "frase": 12
+  },
+  {
+   "w": "aire",
+   "ini": 75.827,
+   "fin": 76.103,
+   "frase": 12
+  },
+  {
+   "w": "caliente",
+   "ini": 76.103,
+   "fin": 76.601,
+   "frase": 12
+  },
+  {
+   "w": "empuja",
+   "ini": 76.601,
+   "fin": 76.989,
+   "frase": 12
+  },
+  {
+   "w": "las",
+   "ini": 76.989,
+   "fin": 77.21,
+   "frase": 12
+  },
+  {
+   "w": "tormentas",
+   "ini": 77.21,
+   "fin": 77.763,
+   "frase": 12
+  },
+  {
+   "w": "hacia",
+   "ini": 77.763,
+   "fin": 78.095,
+   "frase": 12
+  },
+  {
+   "w": "arriba.",
+   "ini": 78.095,
+   "fin": 78.538,
+   "frase": 12
+  },
+  {
+   "w": "Así",
+   "ini": 78.658,
+   "fin": 78.899,
+   "frase": 13
+  },
+  {
+   "w": "que",
+   "ini": 78.899,
+   "fin": 79.14,
+   "frase": 13
+  },
+  {
+   "w": "todo",
+   "ini": 79.14,
+   "fin": 79.441,
+   "frase": 13
+  },
+  {
+   "w": "empezaría",
+   "ini": 79.441,
+   "fin": 80.044,
+   "frase": 13
+  },
+  {
+   "w": "un",
+   "ini": 80.044,
+   "fin": 80.225,
+   "frase": 13
+  },
+  {
+   "w": "día",
+   "ini": 80.225,
+   "fin": 80.466,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 80.466,
+   "fin": 80.646,
+   "frase": 13
+  },
+  {
+   "w": "calor,",
+   "ini": 80.646,
+   "fin": 81.068,
+   "frase": 13
+  },
+  {
+   "w": "con",
+   "ini": 81.418,
+   "fin": 81.654,
+   "frase": 13
+  },
+  {
+   "w": "una",
+   "ini": 81.654,
+   "fin": 81.889,
+   "frase": 13
+  },
+  {
+   "w": "sola",
+   "ini": 81.889,
+   "fin": 82.184,
+   "frase": 13
+  },
+  {
+   "w": "piedra",
+   "ini": 82.184,
+   "fin": 82.596,
+   "frase": 13
+  },
+  {
+   "w": "cayendo",
+   "ini": 82.596,
+   "fin": 83.067,
+   "frase": 13
+  },
+  {
+   "w": "del",
+   "ini": 83.067,
+   "fin": 83.303,
+   "frase": 13
+  },
+  {
+   "w": "cielo.",
+   "ini": 83.303,
+   "fin": 83.715,
+   "frase": 13
+  }
+ ]
+}

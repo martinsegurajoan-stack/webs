@@ -395,7 +395,7 @@ e7 = ['<rect width="1080" height="1920" fill="url(#cieloAzul)"/>', '<rect x="0" 
       + "".join(f'<path d="M{80 + i * 44},{1300} l0,{24 if i % 5 else 40}" stroke="#1b2340" stroke-width="4"/>' for i in range(22))]
 xcur = 90
 for k, (nom, cm, col) in enumerate(tam):
-    r = max(10, cm * 8.3)
+    r = max(10, cm * 7.4)
     cx = xcur + r
     e7.append(f'<g class="bola" id="bola{k}"><circle cx="{cx:.0f}" cy="{1250 - r:.0f}" r="{r:.0f}" fill="{col}" stroke="#1b2340" stroke-width="4"/>'
               + (f'<circle cx="{cx - r * 0.3:.0f}" cy="{1250 - r * 1.3:.0f}" r="{r * 0.3:.0f}" fill="#ffffff" opacity="0.7"/>' if nom == "récord" else "")
@@ -467,8 +467,7 @@ e9 = ['<rect width="1080" height="1920" fill="url(#cieloSol)"/>', '<circle id="s
       '<g id="agua9" opacity="0"><rect x="0" y="1460" width="1080" height="500" fill="#3f9ad8"/>'
       + "".join(f'<path class="ola" d="M{x},{1480 + (x // 90 % 3) * 70} q30,-18 60,0 q30,18 60,0" stroke="#bfe3f7" stroke-width="6" fill="none"/>' for x in range(-60, 1100, 140)) + '</g>',
       f'<g id="coche9">{coche("c9", 300, 1430, RED, 0.9)}</g>',
-      f'<g transform="translate(560,980) scale(0.26)">{persona("p9")}</g>',
-      '<rect x="540" y="1440" width="300" height="20" fill="#5a3b26"/>']
+      f'<g transform="translate(560,980) scale(0.26)">{persona("p9")}</g>']
 escena("e9", "".join(e9), "#ffe2a8")
 mostrar("e9", f11, F(12), 1.06)
 J(f'tl.fromTo("#sol9", {{y:200, scale:0.6}}, {{y:0, scale:1, transformOrigin:"50% 50%", duration:1.0, ease:"power2.out", immediateRender:false}}, {P("para") - 0.4:.2f});')
@@ -492,7 +491,6 @@ escena("e10", "".join(e10), "#ffe2a8")
 mostrar("e10", f12, F(13) + 0.6, 1.06)
 J(f'tl.to("#mercurio", {{attr:{{y:1040, height:340}}, duration:1.2, ease:"power2.out"}}, {P("calor") - 0.3:.2f});')
 J(f'tl.fromTo("#flechas10 path", {{y:40, opacity:0.2}}, {{y:-60, opacity:1, duration:0.9, stagger:0.15, repeat:{int((FE(12) - f12) / 0.9)}, ease:"none", immediateRender:false}}, {P("caliente") - 0.3:.2f});')
-J(f'tl.fromTo("#torre", {{scale:0.7}}, {{scale:1.15, transformOrigin:"600px 1300px", duration:{FE(12) - P("caliente"):.2f}, ease:"power2.out", immediateRender:false}}, {P("caliente"):.2f});')
 FX.append(("sube2", P("caliente") - 0.2)); FX.append(("brillo", P("calor")))
 vida("p10", f12, F(13) + 0.6); cara("p10", P("sabe"), "sorpresa")
 # frase 13: vuelve la calle del principio (bucle) — la misma composición del fotograma 0
@@ -501,7 +499,7 @@ J(f'tl.set("#e1", {{opacity:1}}, {f13 + 0.6:.2f}); tl.set("#e1-cam", {{scale:1.6
 barrido(f13 + 0.6)
 J(f'tl.set("#coche1 .grieta, #coche1 .abolla, #p1-agujeros, #suelo1", {{opacity:0}}, {f13 + 0.6:.2f}); tl.set("#p1-bocaO", {{opacity:0}}, {f13 + 0.6:.2f}); tl.set("#p1-boca", {{opacity:1}}, {f13 + 0.6:.2f});')
 J(f'tl.set("#g1", {{opacity:0}}, {f13 + 0.6:.2f}); tl.set("#g1", {{opacity:1}}, {DUR - 0.25:.2f});')
-J(f'tl.fromTo("#piedraG", {{y:-260, x:0, rotation:0, opacity:1}}, {{y:-60, duration:{DUR - f13 - 0.7:.2f}, ease:"power2.in", immediateRender:false}}, {f13 + 0.7:.2f});')
+J(f'tl.fromTo("#piedraG", {{y:-260, x:0, rotation:0, opacity:1}}, {{y:260, duration:{DUR - f13 - 0.7:.2f}, ease:"power2.in", immediateRender:false}}, {f13 + 0.7:.2f});')
 J(f'tl.to("#e1-cam", {{scale:1.6, duration:0.2}}, {f13 + 0.6:.2f});')
 J(f'tl.set("#titulo", {{opacity:1, y:0}}, {DUR - 0.3:.2f});')
 
