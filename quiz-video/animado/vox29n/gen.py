@@ -206,7 +206,7 @@ def boceto(nombre, ox, oy, t, pg):
                (f"M{ox + 550},{oy + 250} L{ox + 590},{oy + 245} L{ox + 590},{oy + 290} L{ox + 550},{oy + 290}", INK2, 6),
                (wob_ellipse(ox + 340, oy + 60, 34, 34, 3), "#c9a227", 6)]
         FILL.append(f'<circle cx="{ox + 480}" cy="{oy + 230}" r="8" fill="{INK2}"/><text x="{ox + 327}" y="{oy + 75}" font-family="Caveat" font-size="40" font-weight="700" fill="#c9a227">€</text>')
-        FILL.append(f'<text x="{ox + 600}" y="{oy + 120}" font-family="Marker" font-size="54" fill="{c}">+ IPC</text>')
+        FILL.append(f'<text x="{ox + 600}" y="{oy + 120}" font-family="Marker" font-size="54" fill="{c}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "+ IPC"}</text>')
     elif nombre == "empresa":
         P_ += [(f"M{ox + 200},{oy + 450} L{ox + 200},{oy + 80} L{ox + 420},{oy + 80} L{ox + 420},{oy + 450}", INK2, 7),
                (f"M{ox + 120},{oy + 450} L{ox + 520},{oy + 450}", INK2, 7)]
@@ -219,7 +219,41 @@ def boceto(nombre, ox, oy, t, pg):
         P_ += [(f"M{ox + 120},{oy + 160} L{ox + 300},{oy + 160} C{ox + 300},{oy + 120} {ox + 360},{oy + 120} {ox + 360},{oy + 160} L{ox + 360},{oy + 400} L{ox + 120},{oy + 400} Z", c, 7),
                (f"M{ox + 420},{oy + 160} L{ox + 640},{oy + 160} L{ox + 640},{oy + 400} L{ox + 420},{oy + 400} L{ox + 420},{oy + 300} C{ox + 380},{oy + 300} {ox + 380},{oy + 240} {ox + 420},{oy + 240} Z", "#8a8f99", 7),
                (f"M{ox + 370},{oy + 120} L{ox + 410},{oy + 80} M{ox + 410},{oy + 120} L{ox + 370},{oy + 80}", RED, 6)]
-        FILL.append(f'<text x="{ox + 150}" y="{oy + 300}" font-family="Marker" font-size="44" fill="{c}">PSOE</text><text x="{ox + 450}" y="{oy + 300}" font-family="Marker" font-size="44" fill="#8a8f99">SOCIOS</text>')
+        FILL.append(f'<text x="{ox + 240}" y="{oy + 300}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">{CFG.get("puzle", ["PARTIDO", "SOCIOS"])[0]}</text><text x="{ox + 530}" y="{oy + 300}" text-anchor="middle" font-family="Marker" font-size="44" fill="#8a8f99">{CFG.get("puzle", ["PARTIDO", "SOCIOS"])[1]}</text>')
+    elif nombre == "puerta":
+        P_ += [(f"M{ox + 200},{oy + 450} L{ox + 200},{oy + 80} L{ox + 420},{oy + 80} L{ox + 420},{oy + 450}", INK2, 7),
+               (f"M{ox + 230},{oy + 110} L{ox + 390},{oy + 110} L{ox + 390},{oy + 450} L{ox + 230},{oy + 450} Z", INK2, 5),
+               (wob_ellipse(ox + 365, oy + 280, 12, 12, 2), INK2, 5),
+               (f"M{ox + 520},{oy + 260} C{ox + 520},{oy + 170} {ox + 640},{oy + 170} {ox + 640},{oy + 260}", c, 8),
+               (f"M{ox + 500},{oy + 260} L{ox + 660},{oy + 260} L{ox + 660},{oy + 380} L{ox + 500},{oy + 380} Z", c, 8)]
+        FILL.append(f'<rect x="{ox + 500}" y="{oy + 260}" width="160" height="120" fill="{COL2}"/><text x="{ox + 580}" y="{oy + 340}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">48 h</text>')
+    elif nombre == "pasaporte":
+        P_ += [(f"M{ox + 200},{oy + 70} L{ox + 460},{oy + 70} L{ox + 460},{oy + 430} L{ox + 200},{oy + 430} Z", c, 7),
+               (wob_ellipse(ox + 330, oy + 210, 70, 70, 3), c, 5),
+               (f"M{ox + 260},{oy + 320} L{ox + 400},{oy + 320} M{ox + 280},{oy + 360} L{ox + 380},{oy + 360}", c, 5)]
+        for k_ in range(5):
+            x_ = ox + 560 + (k_ % 3) * 60; y_ = oy + 140 + (k_ // 3) * 80
+            FILL.append(f'<path d="M{x_},{y_ - 22} L{x_ + 7},{y_ - 7} L{x_ + 23},{y_ - 7} L{x_ + 10},{y_ + 4} L{x_ + 15},{y_ + 20} L{x_},{y_ + 10} L{x_ - 15},{y_ + 20} L{x_ - 10},{y_ + 4} L{x_ - 23},{y_ - 7} L{x_ - 7},{y_ - 7} Z" fill="#e0b000"/>')
+        FILL.append(f'<text x="{ox + 560}" y="{oy + 330}" font-family="Caveat" font-size="46" font-weight="700" fill="{INK}">puntos</text>')
+    elif nombre == "mapa_cat":
+        m = json.load(open(os.path.join(BASE, "espana.json")))
+        VX, VY, VW, VH = 240, -10, 380, 320
+        W_, H_ = 600, 505
+        regs = "".join(f'<path d="{l["path"]}" fill="{c if l["id"] == "catalonia" else "#f1f1ee"}" stroke="{INK2}" stroke-width="1.6"/>' for l in m["locations"] if l["id"] != "canary-islands")
+        FILL.append(f'<svg x="{ox + 30}" y="{oy}" width="{W_}" height="{H_}" viewBox="{VX} {VY} {VW} {VH}" overflow="visible">{regs}</svg>')
+        cx_, cy_ = ox + 30 + (556 - VX) * W_ / VW, oy + (72 - VY) * H_ / VH
+        P_.append((wob_ellipse(cx_, cy_, 95, 80, 4), RED, 6))
+        FILL.append(f'<text x="{cx_ - 30:.0f}" y="{cy_ - 105:.0f}" font-family="Marker" font-size="46" fill="{c}">48</text>')
+    elif nombre == "tren":
+        P_ += [(f"M{ox + 120},{oy + 380} L{ox + 120},{oy + 170} C{ox + 120},{oy + 120} {ox + 160},{oy + 100} {ox + 210},{oy + 100} L{ox + 560},{oy + 100} C{ox + 620},{oy + 100} {ox + 660},{oy + 160} {ox + 660},{oy + 240} L{ox + 660},{oy + 380} Z", INK2, 7),
+               (f"M{ox + 60},{oy + 450} L{ox + 720},{oy + 450}", INK2, 7)]
+        for k_ in range(4):
+            x_ = ox + 150 + k_ * 115
+            FILL.append(f'<rect x="{x_}" y="{oy + 140}" width="90" height="80" rx="10" fill="{COL2}" stroke="{INK2}" stroke-width="4"/>')
+        FILL.append(f'<rect x="{ox + 120}" y="{oy + 270}" width="540" height="22" fill="{c}"/>')
+        for x_ in (ox + 200, ox + 330, ox + 460, ox + 590):
+            P_.append((wob_ellipse(x_, oy + 400, 34, 34, x_ % 7), INK2, 6))
+        FILL.append(f'<text x="{ox + 390}" y="{oy + 80}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">RODALIES</text>')
     elif nombre == "balanza":
         P_ += [(f"M{ox + 330},{oy + 80} L{ox + 330},{oy + 430} M{ox + 230},{oy + 430} L{ox + 430},{oy + 430}", INK2, 7),
                (f"M{ox + 110},{oy + 150} L{ox + 550},{oy + 110}", INK2, 7),
@@ -229,7 +263,7 @@ def boceto(nombre, ox, oy, t, pg):
         P_ += [(f"M{ox + 160},{oy + 200} L{ox + 500},{oy + 200} L{ox + 500},{oy + 440} L{ox + 160},{oy + 440} Z", INK2, 7),
                (f"M{ox + 140},{oy + 200} L{ox + 520},{oy + 200} M{ox + 270},{oy + 200} L{ox + 390},{oy + 200}", INK2, 9),
                (f"M{ox + 290},{oy + 60} L{ox + 380},{oy + 60} L{ox + 380},{oy + 190} L{ox + 290},{oy + 190} Z", c, 6)]
-        FILL.append(f'<text x="{ox + 240}" y="{oy + 345}" font-family="Marker" font-size="64" fill="{INK2}">29-N</text>')
+        FILL.append(f'<text x="{ox + 330}" y="{oy + 345}" text-anchor="middle" font-family="Marker" font-size="{64 if len(ETIQ[0]) <= 5 else 48}" fill="{INK2}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "29-N"}</text>')
     # html del boceto
     gid = nid("bk")
     paths = "".join(f'<path class="tz" d="{d}" pathLength="1" stroke="{col}" stroke-width="{w}" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1"/>' for d, col, w in P_)
