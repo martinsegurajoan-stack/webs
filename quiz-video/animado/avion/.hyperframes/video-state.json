@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "03444e02-0219-4ab1-acef-3872fc0d3927",
-  "currentRevision": "84b46641-393d-4dd8-bdac-d2edcc1cbfa3",
+  "currentRevision": "155ffbca-bd98-4f5c-9502-f1c954e4c5e2",
   "pendingChanges": false,
   "files": {
     "assets/fonts/Caveat-700-latin.woff2": {
@@ -37,16 +37,16 @@
       "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/0d/0d48cbeb645a181657aa7a24697ef0875f7d7f303b5464b524fa8281754db8dd"
     },
     "gen.py": {
-      "hash": "bb7732c8457f83f5d427546858e49c9747c48eef63ba941f14772f018ff16957",
-      "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/bb/bb7732c8457f83f5d427546858e49c9747c48eef63ba941f14772f018ff16957"
+      "hash": "51caadb6585a3da793955fb7a7e3d6ec297a581396cadb859c5270fc1d04ca18",
+      "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/51/51caadb6585a3da793955fb7a7e3d6ec297a581396cadb859c5270fc1d04ca18"
     },
     "guion.txt": {
       "hash": "0f407c528ac7255f888a506ae3f92e6e498841b245c475f8fb31787e26248303",
       "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/0f/0f407c528ac7255f888a506ae3f92e6e498841b245c475f8fb31787e26248303"
     },
     "index.html": {
-      "hash": "22f011192e79a4736c691f931a9632cacbecc85ced67238570530a36838bad89",
-      "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/22/22f011192e79a4736c691f931a9632cacbecc85ced67238570530a36838bad89"
+      "hash": "f88d358901622dd362d01ece965e57ececd750a4e2cbcf42aa9691c741764be4",
+      "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/f8/f88d358901622dd362d01ece965e57ececd750a4e2cbcf42aa9691c741764be4"
     },
     "montar_voz.py": {
       "hash": "fa6c85e3f1ba7774624e4cd6a082058a26213d091cff8c40a09fd008d5f88696",
@@ -141,8 +141,8 @@
       "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/2d/2de56b5f010948dee093ab370b02863cdab211c120611a846912b878f726a2ff"
     },
     "miniatura/hacer.js": {
-      "hash": "3fd9d824aacaf9210a7685e96305d2b8c359986e1e8b4fef021ef434c9697504",
-      "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/3f/3fd9d824aacaf9210a7685e96305d2b8c359986e1e8b4fef021ef434c9697504"
+      "hash": "79599954ee4e1a0637f209f7ee487d18660d9cf02a46d3539238fd65ae0f52b1",
+      "content": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/79/79599954ee4e1a0637f209f7ee487d18660d9cf02a46d3539238fd65ae0f52b1"
     },
     "miniatura/miniatura_9x16.png": {
       "hash": "00f5fa2546782526598d9dd9664f7d2ad73d39dad7577fa70290922a95c53f5d",
@@ -383,6 +383,48 @@
           "after": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       }
+    },
+    "64d2bcf6-cada-4405-8b0c-f95fb9a3e3dc": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793654530475,
+      "endedAt": 1793654530495,
+      "files": {
+        "gen.py": {
+          "before": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/bb/bb7732c8457f83f5d427546858e49c9747c48eef63ba941f14772f018ff16957",
+          "after": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/51/51caadb6585a3da793955fb7a7e3d6ec297a581396cadb859c5270fc1d04ca18"
+        },
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/22/22f011192e79a4736c691f931a9632cacbecc85ced67238570530a36838bad89",
+          "after": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/f8/f88d358901622dd362d01ece965e57ececd750a4e2cbcf42aa9691c741764be4"
+        },
+        "miniatura/hacer.js": {
+          "before": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/3f/3fd9d824aacaf9210a7685e96305d2b8c359986e1e8b4fef021ef434c9697504",
+          "after": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/79/79599954ee4e1a0637f209f7ee487d18660d9cf02a46d3539238fd65ae0f52b1"
+        },
+        "render.log": {
+          "before": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "after": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/62/62294a39f9ad8de43d351ff88c4cb9346dae1bfb605d23fdf0163e3ffe06b6d1"
+        }
+      }
+    },
+    "155ffbca-bd98-4f5c-9502-f1c954e4c5e2": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1793654560215,
+      "endedAt": 1793654560217,
+      "files": {
+        "render.log": {
+          "before": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/62/62294a39f9ad8de43d351ff88c4cb9346dae1bfb605d23fdf0163e3ffe06b6d1",
+          "after": "/root/.cache/hyperframes/history/03444e02-0219-4ab1-acef-3872fc0d3927/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
     }
   },
   "checks": {
@@ -392,8 +434,8 @@
   },
   "snapshots": {
     "latest": {
-      "revision": "985404be-e80a-4b9d-85ef-5a82f3414783",
-      "id": "21dad14d-47d6-4754-a475-9191605dc398-0"
+      "revision": "64d2bcf6-cada-4405-8b0c-f95fb9a3e3dc",
+      "id": "2a26e9f8-92be-4690-ab43-ecfe293793fd-2"
     },
     "revisions": {
       "a7d60182-588e-4931-a0c9-921025925dd6": [
@@ -943,6 +985,68 @@
           "inputScope": "local-project-files",
           "attribution": "recorded-revision"
         }
+      ],
+      "64d2bcf6-cada-4405-8b0c-f95fb9a3e3dc": [
+        {
+          "scope": "full",
+          "id": "2a26e9f8-92be-4690-ab43-ecfe293793fd-0",
+          "image": "/tmp/claude-0/-home-user-webs/b9c94113-8174-53b5-814c-230f760302ff/scratchpad/av6/frame-00-at-12.2s.png",
+          "time": 12.2,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793654550901,
+          "contentHash": "7fbecf8453922d2b86515f5f9e6806fa5f8912e44e35df36f5c17f0c4bf9ebda",
+          "revision": "64d2bcf6-cada-4405-8b0c-f95fb9a3e3dc",
+          "inputFingerprint": "0da84b7770ac3aaa139d662f6a094a01d3940b5f0653fa8fbe8655fe1187bd2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "2a26e9f8-92be-4690-ab43-ecfe293793fd-1",
+          "image": "/tmp/claude-0/-home-user-webs/b9c94113-8174-53b5-814c-230f760302ff/scratchpad/av6/frame-01-at-23s.png",
+          "time": 23,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793654550902,
+          "contentHash": "65a768967534be513fddefdc6f4c191bd5e75a6b0736ad51d5a922f177e4197d",
+          "revision": "64d2bcf6-cada-4405-8b0c-f95fb9a3e3dc",
+          "inputFingerprint": "0da84b7770ac3aaa139d662f6a094a01d3940b5f0653fa8fbe8655fe1187bd2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        },
+        {
+          "scope": "full",
+          "id": "2a26e9f8-92be-4690-ab43-ecfe293793fd-2",
+          "image": "/tmp/claude-0/-home-user-webs/b9c94113-8174-53b5-814c-230f760302ff/scratchpad/av6/frame-02-at-38.8s.png",
+          "time": 38.8,
+          "metadata": {
+            "width": 1080,
+            "height": 1920,
+            "zoomScale": 1,
+            "browserGpuMode": "auto",
+            "warnings": [],
+            "partial": false
+          },
+          "createdAt": 1793654550902,
+          "contentHash": "b03e6f6471f90bf060af856f796471ce1dbd99cc4e2c4ac6aee2dadedefe2d41",
+          "revision": "64d2bcf6-cada-4405-8b0c-f95fb9a3e3dc",
+          "inputFingerprint": "0da84b7770ac3aaa139d662f6a094a01d3940b5f0653fa8fbe8655fe1187bd2e",
+          "inputScope": "local-project-files",
+          "attribution": "recorded-revision"
+        }
       ]
     },
     "unversioned": [
@@ -1347,5 +1451,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "d8fe2e4a-4dd8-434c-bbbb-ce50e6049019",
+      "completedAt": 1793654301651,
+      "output": "/home/user/webs/quiz-video/animado/avion/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
