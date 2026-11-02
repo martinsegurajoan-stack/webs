@@ -45,6 +45,11 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   desde el fotograma 0 (p. ej. zoom desde una casa enorme hasta el personaje diminuto, objetos gigantes alrededor,
   título grande). Nunca un fondo soso.
 - Duración: si hace falta, hasta **105 s máximo**.
+- **MINIATURA CURRADÍSIMA** (usuario, 02-11-2026: «es la primera impresión junto al primer segundo del vídeo»):
+  diseñarla aparte como un póster de película: escena dibujada a propósito (no solo dos capturas), personaje grande
+  con expresión exagerada, el objeto/peligro gigante, título enorme de 2-4 palabras con contorno y sombra, colores
+  vivos y contraste alto, flechas/círculos que guíen la mirada, profundidad (primer plano, plano medio, fondo).
+  Todo lo importante dentro de 300-1620 px de alto.
 - Si el usuario dice «si me quedo sin tokens déjalo pendiente»: guardar el estado en `COMO-REHACERLO.md` del
   proyecto y retomar el trabajo en cuanto se pueda, sin pedir autorización.
 
