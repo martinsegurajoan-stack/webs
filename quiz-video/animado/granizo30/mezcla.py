@@ -109,7 +109,22 @@ for k, t in sorted(json.load(open(os.path.join(BASE, "efectos.json"))), key=lamb
         ult["_"] = t
     s, g = fx[k]
     mix.add_fx(s, t, g * FX_GAIN)
-music = audio.music(dur, style="pop", bpm=92, seed=30)
+def ambiente(d):
+    """Base documental: acordes graves muy suaves (Re menor) con pulso lento, sin percusión."""
+    t = np.arange(int(d * SR)) / SR
+    out = np.zeros_like(t)
+    acordes = ((146.8, 174.6, 220.0), (116.5, 146.8, 174.6), (130.8, 164.8, 196.0), (110.0, 138.6, 164.8))
+    blo = 8.0
+    for i in range(int(d / blo) + 1):
+        a0, a1 = i * blo, min(d, (i + 1) * blo + 1.5)
+        m = (t >= a0) & (t < a1)
+        tt = t[m] - a0
+        env = np.minimum(1, tt / 2.0) * np.minimum(1, (a1 - a0 - tt) / 2.0)
+        for f in acordes[i % 4]:
+            out[m] += env * (0.5 * np.sin(2 * np.pi * f * tt) + 0.2 * np.sin(2 * np.pi * f * 2 * tt + 0.3)) / 3
+    out += 0.25 * np.sin(2 * np.pi * 55 * t) * (0.5 + 0.5 * np.sin(2 * np.pi * 0.5 * t)) ** 2
+    return out / (np.max(np.abs(out)) or 1)
+music = ambiente(dur)
 vozv = mix.voice / (np.max(np.abs(mix.voice)) or 1) * 0.9
 env = np.convolve(np.abs(vozv), np.ones(int(0.05 * SR)) / int(0.05 * SR), mode="same")
 env = np.clip(env * 14, 0, 1)
@@ -117,7 +132,7 @@ env = np.convolve(env, np.ones(int(0.2 * SR)) / int(0.2 * SR), mode="same")
 fxs = mix.fx * (1.0 - 0.55 * env)                 # los efectos se apartan cuando habla la voz
 fxs = np.tanh(fxs * 2.5) / 2.5                     # limitador suave: ningún golpe por encima de la voz
 mus = np.zeros_like(vozv); mus[:min(len(mus), len(music))] = music[:len(mus)]
-mus = mus * 0.07 * (1.0 - 0.6 * env)
+mus = mus * 0.09 * (1.0 - 0.5 * env)
 out = vozv + fxs + mus
 out = out / (np.max(np.abs(out)) or 1) * 0.95
 import sys

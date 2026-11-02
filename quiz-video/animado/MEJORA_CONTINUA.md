@@ -80,3 +80,13 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
 - Sin ráfagas: como mucho un clic cada 0,22 s, un tic por segundo, y nunca dos golpes a la vez (separación 0,15 s).
 - Final: loudnorm −14 LUFS + `alimiter=limit=0.85` + pcm_s16le. Comprobar con `volumedetect` (pico ≤ −1 dB) y que
   la voz quede 15-20 dB por encima de efectos y música (`python3 mezcla.py --stems`). Referencia: `animado/marruecos2/mezcla.py`.
+
+## ESTILO SERIO Y PROFESIONAL (usuario, 02-11-2026, vídeo del granizo: «no lo quiero tan de dibujos, es para un niño de 5 años»)
+- Nada de dibujos infantiles ni onomatopeyas escritas («TUM TUM»): estética de DOCUMENTAL / informe (fondos oscuros de
+  cine, siluetas de ciudad con luces, objetos realistas con degradado y brillo, diagramas técnicos, mapas reales,
+  paneles de datos, gráficas). Música ambiental grave, no pop.
+- PERSONAJE SOLO SI PINTA ALGO: nada de meterlo en todas las escenas (p. ej. junto a las bolas de tamaños). Por defecto, sin personaje.
+- CÁMARA: un movimiento con intención por plano (push-in, travelling, tilt), eased; nunca planos quietos.
+- MONTAJE: cortes secos por defecto; como mucho 3 transiciones en todo el vídeo, solo en cambios de bloque.
+- FÍSICA: lo que se acumula crece DESDE EL SUELO (el hielo no puede flotar ni dejar ver el suelo debajo).
+- Referencia: `animado/granizo30/gen.py` (v2) y su miniatura.
