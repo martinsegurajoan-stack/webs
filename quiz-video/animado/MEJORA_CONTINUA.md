@@ -5,6 +5,9 @@
 > «Cada vídeo tiene que ser mejor que el anterior. Siento que estamos estancados. Más visual, que se vea mejor todo.
 > El siguiente vídeo que te pida, mejóramelo por 1000.»
 
+## DURACIÓN: MÍNIMO 61 s (usuario, 02-11-2026: monetización, nunca menos de 60 s)
+- Guion de ~180-200 palabras; atempo de la voz ≤ 1,10. Si queda corto, bajar atempo o añadir escenas. Verificar con ffprobe.
+
 ## Antes de empezar cualquier vídeo nuevo
 1. Mira el último vídeo del mismo tipo (hoja de fotogramas) y escribe 5 mejoras CONCRETAS que vas a hacer.
    Díselas al usuario en una línea al entregar («Mejoras respecto al anterior: …»).

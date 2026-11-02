@@ -10,6 +10,10 @@ Banner de X: `quiz-video/banner_twitter.py` → `quiz-video/portadas/twitter_ban
 Hashtags (regla del usuario 01-11-2026): 4 SOLO en TikTok, YouTube Shorts, Instagram y Facebook: SIEMPRE #fyp + los 3
 hashtags del TEMA del vídeo que más clics tienen (p. ej. #fyp #mexico #quiz #trivia). En X, sin hashtags.
 
+DURACIÓN MÍNIMA (usuario, 02-11-2026, OBLIGATORIO): TODOS los vídeos de 61 SEGUNDOS O MÁS (nunca menos de 60 s;
+es para cobrar por visitas, piden mínimo un minuto). Si la voz se queda corta, bajar la aceleración (atempo) o alargar
+el guion/escenas; comprobar con ffprobe antes de entregar.
+
 MEJORA CONTINUA (usuario, 02-11-2026, OBLIGATORIO, también en PORTADAS): CADA VÍDEO MEJOR QUE EL ANTERIOR («el siguiente, mejorado por 1000»).
 Antes de cualquier vídeo, LEE `quiz-video/animado/MEJORA_CONTINUA.md` (5 mejoras concretas, KIT de efectos en
 `quiz-video/animado/kit/`, nivel mínimo de calidad y control de fotogramas) y di al entregar qué has mejorado.

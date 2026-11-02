@@ -1,1098 +1,1098 @@
 {
- "duracion": 57.495,
+ "duracion": 62.543,
  "frases": [
   {
    "n": 1,
    "texto": "Entre España y Marruecos hay solo catorce kilómetros de mar. ¿Qué pasaría si Marruecos decidiera cruzarlos?",
    "ini": 0.0,
-   "fin": 5.762
+   "fin": 6.295
   },
   {
    "n": 2,
    "texto": "Te lo cuento en sesenta segundos, con datos reales.",
-   "ini": 6.032,
-   "fin": 8.693
+   "ini": 6.565,
+   "fin": 9.467
   },
   {
    "n": 3,
    "texto": "Soldados: Marruecos tiene unos doscientos mil. España, unos ciento veinte mil.",
-   "ini": 8.813,
-   "fin": 13.446
+   "ini": 9.587,
+   "fin": 14.621
   },
   {
    "n": 4,
    "texto": "Tanques: también gana Marruecos, con más de mil trescientos, frente a menos de trescientos.",
-   "ini": 13.666,
-   "fin": 18.384
+   "ini": 14.841,
+   "fin": 19.99
   },
   {
    "n": 5,
    "texto": "Pero para invadir hay que cruzar el mar, y en el mar y en el aire manda España.",
-   "ini": 18.504,
-   "fin": 22.676
+   "ini": 20.11,
+   "fin": 24.669
   },
   {
    "n": 6,
    "texto": "Cazas: ciento treinta y seis contra ochenta y cuatro.",
-   "ini": 22.796,
-   "fin": 25.501
+   "ini": 24.789,
+   "fin": 27.743
   },
   {
    "n": 7,
    "texto": "Submarinos: España tiene dos; Marruecos, ninguno. Y portaaviones, solo España.",
-   "ini": 25.621,
-   "fin": 30.824
+   "ini": 27.863,
+   "fin": 33.547
   },
   {
    "n": 8,
    "texto": "En el ranking mundial, España es la número dieciocho; Marruecos, la cincuenta y seis.",
-   "ini": 30.944,
-   "fin": 35.449
+   "ini": 33.667,
+   "fin": 38.581
   },
   {
    "n": 9,
    "texto": "El punto débil: Ceuta y Melilla. Están en África, y la OTAN no las cubre automáticamente.",
-   "ini": 35.569,
-   "fin": 40.704
+   "ini": 38.701,
+   "fin": 44.304
   },
   {
    "n": 10,
    "texto": "La Unión Europea, en cambio, sí obliga a sus socios a ayudar.",
-   "ini": 40.824,
-   "fin": 43.881
+   "ini": 44.424,
+   "fin": 47.756
   },
   {
    "n": 11,
    "texto": "Los análisis coinciden: cruzar el Estrecho sería casi imposible, y la tensión estaría en Ceuta y Melilla.",
-   "ini": 44.001,
-   "fin": 49.751
+   "ini": 47.876,
+   "fin": 54.171
   },
   {
    "n": 12,
    "texto": "Además, una guerra así no la gana nadie: España es su primer socio comercial.",
-   "ini": 49.871,
-   "fin": 54.367
+   "ini": 54.291,
+   "fin": 59.203
   },
   {
    "n": 13,
    "texto": "¿Tú qué crees que pasaría? Te leo en comentarios.",
-   "ini": 54.487,
-   "fin": 56.895
+   "ini": 59.323,
+   "fin": 61.943
   }
  ],
  "palabras": [
   {
    "w": "Entre",
    "ini": 0.0,
-   "fin": 0.298,
+   "fin": 0.327,
    "frase": 1
   },
   {
    "w": "España",
-   "ini": 0.298,
-   "fin": 0.646,
+   "ini": 0.327,
+   "fin": 0.708,
    "frase": 1
   },
   {
    "w": "y",
-   "ini": 0.646,
-   "fin": 0.745,
+   "ini": 0.708,
+   "fin": 0.816,
    "frase": 1
   },
   {
    "w": "Marruecos",
-   "ini": 0.745,
-   "fin": 1.242,
+   "ini": 0.816,
+   "fin": 1.361,
    "frase": 1
   },
   {
    "w": "hay",
-   "ini": 1.242,
-   "fin": 1.44,
+   "ini": 1.361,
+   "fin": 1.578,
    "frase": 1
   },
   {
    "w": "solo",
-   "ini": 1.44,
-   "fin": 1.689,
+   "ini": 1.578,
+   "fin": 1.85,
    "frase": 1
   },
   {
    "w": "catorce",
-   "ini": 1.689,
-   "fin": 2.086,
+   "ini": 1.85,
+   "fin": 2.286,
    "frase": 1
   },
   {
    "w": "kilómetros",
-   "ini": 2.086,
-   "fin": 2.633,
+   "ini": 2.286,
+   "fin": 2.885,
    "frase": 1
   },
   {
    "w": "de",
-   "ini": 2.633,
-   "fin": 2.782,
+   "ini": 2.885,
+   "fin": 3.048,
    "frase": 1
   },
   {
    "w": "mar.",
-   "ini": 2.782,
-   "fin": 3.03,
+   "ini": 3.048,
+   "fin": 3.32,
    "frase": 1
   },
   {
    "w": "¿Qué",
-   "ini": 3.58,
-   "fin": 3.812,
+   "ini": 3.91,
+   "fin": 4.164,
    "frase": 1
   },
   {
    "w": "pasaría",
-   "ini": 3.812,
-   "fin": 4.184,
+   "ini": 4.164,
+   "fin": 4.57,
    "frase": 1
   },
   {
    "w": "si",
-   "ini": 4.184,
-   "fin": 4.323,
+   "ini": 4.57,
+   "fin": 4.722,
    "frase": 1
   },
   {
    "w": "Marruecos",
-   "ini": 4.323,
-   "fin": 4.787,
+   "ini": 4.722,
+   "fin": 5.229,
    "frase": 1
   },
   {
    "w": "decidiera",
-   "ini": 4.787,
-   "fin": 5.251,
+   "ini": 5.229,
+   "fin": 5.737,
    "frase": 1
   },
   {
    "w": "cruzarlos?",
-   "ini": 5.251,
-   "fin": 5.762,
+   "ini": 5.737,
+   "fin": 6.295,
    "frase": 1
   },
   {
    "w": "Te",
-   "ini": 6.032,
-   "fin": 6.163,
+   "ini": 6.565,
+   "fin": 6.708,
    "frase": 2
   },
   {
    "w": "lo",
-   "ini": 6.163,
-   "fin": 6.295,
+   "ini": 6.708,
+   "fin": 6.852,
    "frase": 2
   },
   {
    "w": "cuento",
-   "ini": 6.295,
-   "fin": 6.602,
+   "ini": 6.852,
+   "fin": 7.188,
    "frase": 2
   },
   {
    "w": "en",
-   "ini": 6.602,
-   "fin": 6.733,
+   "ini": 7.188,
+   "fin": 7.332,
    "frase": 2
   },
   {
    "w": "sesenta",
-   "ini": 6.733,
-   "fin": 7.084,
+   "ini": 7.332,
+   "fin": 7.715,
    "frase": 2
   },
   {
    "w": "segundos,",
-   "ini": 7.084,
-   "fin": 7.522,
+   "ini": 7.715,
+   "fin": 8.195,
    "frase": 2
   },
   {
    "w": "con",
-   "ini": 7.762,
-   "fin": 7.969,
+   "ini": 8.445,
+   "fin": 8.672,
    "frase": 2
   },
   {
    "w": "datos",
-   "ini": 7.969,
-   "fin": 8.279,
+   "ini": 8.672,
+   "fin": 9.012,
    "frase": 2
   },
   {
    "w": "reales.",
-   "ini": 8.279,
-   "fin": 8.693,
+   "ini": 9.012,
+   "fin": 9.467,
    "frase": 2
   },
   {
    "w": "Soldados:",
-   "ini": 8.813,
-   "fin": 9.323,
+   "ini": 9.587,
+   "fin": 10.127,
    "frase": 3
   },
   {
    "w": "Marruecos",
-   "ini": 9.693,
-   "fin": 10.137,
+   "ini": 10.537,
+   "fin": 11.015,
    "frase": 3
   },
   {
    "w": "tiene",
-   "ini": 10.137,
-   "fin": 10.403,
+   "ini": 11.015,
+   "fin": 11.302,
    "frase": 3
   },
   {
    "w": "unos",
-   "ini": 10.403,
-   "fin": 10.624,
+   "ini": 11.302,
+   "fin": 11.541,
    "frase": 3
   },
   {
    "w": "doscientos",
-   "ini": 10.624,
-   "fin": 11.112,
+   "ini": 11.541,
+   "fin": 12.068,
    "frase": 3
   },
   {
    "w": "mil.",
-   "ini": 11.112,
-   "fin": 11.333,
+   "ini": 12.068,
+   "fin": 12.307,
    "frase": 3
   },
   {
    "w": "España,",
-   "ini": 11.693,
-   "fin": 12.133,
+   "ini": 12.717,
+   "fin": 13.207,
    "frase": 3
   },
   {
    "w": "unos",
-   "ini": 12.233,
-   "fin": 12.486,
+   "ini": 13.317,
+   "fin": 13.589,
    "frase": 3
   },
   {
    "w": "ciento",
-   "ini": 12.486,
-   "fin": 12.84,
+   "ini": 13.589,
+   "fin": 13.969,
    "frase": 3
   },
   {
    "w": "veinte",
-   "ini": 12.84,
-   "fin": 13.193,
+   "ini": 13.969,
+   "fin": 14.35,
    "frase": 3
   },
   {
    "w": "mil.",
-   "ini": 13.193,
-   "fin": 13.446,
+   "ini": 14.35,
+   "fin": 14.621,
    "frase": 3
   },
   {
    "w": "Tanques:",
-   "ini": 13.666,
-   "fin": 14.046,
+   "ini": 14.841,
+   "fin": 15.251,
    "frase": 4
   },
   {
    "w": "también",
-   "ini": 14.426,
-   "fin": 14.692,
+   "ini": 15.661,
+   "fin": 15.955,
    "frase": 4
   },
   {
    "w": "gana",
-   "ini": 14.692,
-   "fin": 14.859,
+   "ini": 15.955,
+   "fin": 16.138,
    "frase": 4
   },
   {
    "w": "Marruecos,",
-   "ini": 14.859,
-   "fin": 15.226,
+   "ini": 16.138,
+   "fin": 16.541,
    "frase": 4
   },
   {
    "w": "con",
-   "ini": 15.306,
-   "fin": 15.521,
+   "ini": 16.631,
+   "fin": 16.868,
    "frase": 4
   },
   {
    "w": "más",
-   "ini": 15.521,
-   "fin": 15.737,
+   "ini": 16.868,
+   "fin": 17.106,
    "frase": 4
   },
   {
    "w": "de",
-   "ini": 15.737,
-   "fin": 15.899,
+   "ini": 17.106,
+   "fin": 17.283,
    "frase": 4
   },
   {
    "w": "mil",
-   "ini": 15.899,
-   "fin": 16.115,
+   "ini": 17.283,
+   "fin": 17.521,
    "frase": 4
   },
   {
    "w": "trescientos,",
-   "ini": 16.115,
-   "fin": 16.816,
+   "ini": 17.521,
+   "fin": 18.291,
    "frase": 4
   },
   {
    "w": "frente",
-   "ini": 16.976,
-   "fin": 17.294,
+   "ini": 18.461,
+   "fin": 18.807,
    "frase": 4
   },
   {
    "w": "a",
-   "ini": 17.294,
-   "fin": 17.384,
+   "ini": 18.807,
+   "fin": 18.905,
    "frase": 4
   },
   {
    "w": "menos",
-   "ini": 17.384,
-   "fin": 17.657,
+   "ini": 18.905,
+   "fin": 19.201,
    "frase": 4
   },
   {
    "w": "de",
-   "ini": 17.657,
-   "fin": 17.793,
+   "ini": 19.201,
+   "fin": 19.349,
    "frase": 4
   },
   {
    "w": "trescientos.",
-   "ini": 17.793,
-   "fin": 18.384,
+   "ini": 19.349,
+   "fin": 19.99,
    "frase": 4
   },
   {
    "w": "Pero",
-   "ini": 18.504,
-   "fin": 18.72,
+   "ini": 20.11,
+   "fin": 20.346,
    "frase": 5
   },
   {
    "w": "para",
-   "ini": 18.72,
-   "fin": 18.935,
+   "ini": 20.346,
+   "fin": 20.581,
    "frase": 5
   },
   {
    "w": "invadir",
-   "ini": 18.935,
-   "fin": 19.281,
+   "ini": 20.581,
+   "fin": 20.958,
    "frase": 5
   },
   {
    "w": "hay",
-   "ini": 19.281,
-   "fin": 19.453,
+   "ini": 20.958,
+   "fin": 21.146,
    "frase": 5
   },
   {
    "w": "que",
-   "ini": 19.453,
-   "fin": 19.626,
+   "ini": 21.146,
+   "fin": 21.334,
    "frase": 5
   },
   {
    "w": "cruzar",
-   "ini": 19.626,
-   "fin": 19.928,
+   "ini": 21.334,
+   "fin": 21.664,
    "frase": 5
   },
   {
    "w": "el",
-   "ini": 19.928,
-   "fin": 20.058,
+   "ini": 21.664,
+   "fin": 21.805,
    "frase": 5
   },
   {
    "w": "mar,",
-   "ini": 20.058,
-   "fin": 20.274,
+   "ini": 21.805,
+   "fin": 22.04,
    "frase": 5
   },
   {
    "w": "y",
-   "ini": 20.574,
-   "fin": 20.682,
+   "ini": 22.36,
+   "fin": 22.479,
    "frase": 5
   },
   {
    "w": "en",
-   "ini": 20.682,
-   "fin": 20.843,
+   "ini": 22.479,
+   "fin": 22.656,
    "frase": 5
   },
   {
    "w": "el",
-   "ini": 20.843,
-   "fin": 21.005,
+   "ini": 22.656,
+   "fin": 22.834,
    "frase": 5
   },
   {
    "w": "mar",
-   "ini": 21.005,
-   "fin": 21.221,
+   "ini": 22.834,
+   "fin": 23.071,
    "frase": 5
   },
   {
    "w": "y",
-   "ini": 21.221,
-   "fin": 21.328,
+   "ini": 23.071,
+   "fin": 23.189,
    "frase": 5
   },
   {
    "w": "en",
-   "ini": 21.328,
-   "fin": 21.49,
+   "ini": 23.189,
+   "fin": 23.367,
    "frase": 5
   },
   {
    "w": "el",
-   "ini": 21.49,
-   "fin": 21.652,
+   "ini": 23.367,
+   "fin": 23.544,
    "frase": 5
   },
   {
    "w": "aire",
-   "ini": 21.652,
-   "fin": 21.921,
+   "ini": 23.544,
+   "fin": 23.84,
    "frase": 5
   },
   {
    "w": "manda",
-   "ini": 21.921,
-   "fin": 22.245,
+   "ini": 23.84,
+   "fin": 24.195,
    "frase": 5
   },
   {
    "w": "España.",
-   "ini": 22.245,
-   "fin": 22.676,
+   "ini": 24.195,
+   "fin": 24.669,
    "frase": 5
   },
   {
    "w": "Cazas:",
-   "ini": 22.796,
-   "fin": 22.926,
+   "ini": 24.789,
+   "fin": 24.929,
    "frase": 6
   },
   {
    "w": "ciento",
-   "ini": 23.016,
-   "fin": 23.386,
+   "ini": 25.019,
+   "fin": 25.425,
    "frase": 6
   },
   {
    "w": "treinta",
-   "ini": 23.386,
-   "fin": 23.809,
+   "ini": 25.425,
+   "fin": 25.888,
    "frase": 6
   },
   {
    "w": "y",
-   "ini": 23.809,
-   "fin": 23.915,
+   "ini": 25.888,
+   "fin": 26.004,
    "frase": 6
   },
   {
    "w": "seis",
-   "ini": 23.915,
-   "fin": 24.179,
+   "ini": 26.004,
+   "fin": 26.294,
    "frase": 6
   },
   {
    "w": "contra",
-   "ini": 24.179,
-   "fin": 24.549,
+   "ini": 26.294,
+   "fin": 26.7,
    "frase": 6
   },
   {
    "w": "ochenta",
-   "ini": 24.549,
-   "fin": 24.972,
+   "ini": 26.7,
+   "fin": 27.163,
    "frase": 6
   },
   {
    "w": "y",
-   "ini": 24.972,
-   "fin": 25.078,
+   "ini": 27.163,
+   "fin": 27.279,
    "frase": 6
   },
   {
    "w": "cuatro.",
-   "ini": 25.078,
-   "fin": 25.501,
+   "ini": 27.279,
+   "fin": 27.743,
    "frase": 6
   },
   {
    "w": "Submarinos:",
-   "ini": 25.621,
-   "fin": 26.201,
+   "ini": 27.863,
+   "fin": 28.513,
    "frase": 7
   },
   {
    "w": "España",
-   "ini": 26.551,
-   "fin": 26.854,
+   "ini": 28.863,
+   "fin": 29.205,
    "frase": 7
   },
   {
    "w": "tiene",
-   "ini": 26.854,
-   "fin": 27.114,
+   "ini": 29.205,
+   "fin": 29.498,
    "frase": 7
   },
   {
    "w": "dos;",
-   "ini": 27.114,
-   "fin": 27.331,
+   "ini": 29.498,
+   "fin": 29.743,
    "frase": 7
   },
   {
    "w": "Marruecos,",
-   "ini": 27.631,
-   "fin": 28.111,
+   "ini": 30.053,
+   "fin": 30.553,
    "frase": 7
   },
   {
    "w": "ninguno.",
-   "ini": 28.291,
-   "fin": 28.791,
+   "ini": 30.793,
+   "fin": 31.353,
    "frase": 7
   },
   {
    "w": "Y",
-   "ini": 29.091,
-   "fin": 29.177,
+   "ini": 31.653,
+   "fin": 31.745,
    "frase": 7
   },
   {
    "w": "portaaviones,",
-   "ini": 29.177,
-   "fin": 29.781,
+   "ini": 31.745,
+   "fin": 32.393,
    "frase": 7
   },
   {
    "w": "solo",
-   "ini": 30.031,
-   "fin": 30.336,
+   "ini": 32.683,
+   "fin": 33.015,
    "frase": 7
   },
   {
    "w": "España.",
-   "ini": 30.336,
-   "fin": 30.824,
+   "ini": 33.015,
+   "fin": 33.547,
    "frase": 7
   },
   {
    "w": "En",
-   "ini": 30.944,
-   "fin": 31.07,
+   "ini": 33.667,
+   "fin": 33.806,
    "frase": 8
   },
   {
    "w": "el",
-   "ini": 31.07,
-   "fin": 31.197,
+   "ini": 33.806,
+   "fin": 33.944,
    "frase": 8
   },
   {
    "w": "ranking",
-   "ini": 31.197,
-   "fin": 31.534,
+   "ini": 33.944,
+   "fin": 34.313,
    "frase": 8
   },
   {
    "w": "mundial,",
-   "ini": 31.534,
-   "fin": 31.914,
+   "ini": 34.313,
+   "fin": 34.727,
    "frase": 8
   },
   {
    "w": "España",
-   "ini": 31.984,
-   "fin": 32.334,
+   "ini": 34.797,
+   "fin": 35.181,
    "frase": 8
   },
   {
    "w": "es",
-   "ini": 32.334,
-   "fin": 32.484,
+   "ini": 35.181,
+   "fin": 35.346,
    "frase": 8
   },
   {
    "w": "la",
-   "ini": 32.484,
-   "fin": 32.634,
+   "ini": 35.346,
+   "fin": 35.51,
    "frase": 8
   },
   {
    "w": "número",
-   "ini": 32.634,
-   "fin": 32.984,
+   "ini": 35.51,
+   "fin": 35.894,
    "frase": 8
   },
   {
    "w": "dieciocho;",
-   "ini": 32.984,
-   "fin": 33.534,
+   "ini": 35.894,
+   "fin": 36.497,
    "frase": 8
   },
   {
    "w": "Marruecos,",
-   "ini": 33.734,
-   "fin": 34.504,
+   "ini": 36.727,
+   "fin": 37.557,
    "frase": 8
   },
   {
    "w": "la",
-   "ini": 34.584,
-   "fin": 34.707,
+   "ini": 37.637,
+   "fin": 37.772,
    "frase": 8
   },
   {
    "w": "cincuenta",
-   "ini": 34.707,
-   "fin": 35.119,
+   "ini": 37.772,
+   "fin": 38.221,
    "frase": 8
   },
   {
    "w": "y",
-   "ini": 35.119,
-   "fin": 35.202,
+   "ini": 38.221,
+   "fin": 38.311,
    "frase": 8
   },
   {
    "w": "seis.",
-   "ini": 35.202,
-   "fin": 35.449,
+   "ini": 38.311,
+   "fin": 38.581,
    "frase": 8
   },
   {
    "w": "El",
-   "ini": 35.569,
-   "fin": 35.715,
+   "ini": 38.701,
+   "fin": 38.862,
    "frase": 9
   },
   {
    "w": "punto",
-   "ini": 35.715,
-   "fin": 36.008,
+   "ini": 38.862,
+   "fin": 39.184,
    "frase": 9
   },
   {
    "w": "débil:",
-   "ini": 36.008,
-   "fin": 36.349,
+   "ini": 39.184,
+   "fin": 39.561,
    "frase": 9
   },
   {
    "w": "Ceuta",
-   "ini": 36.709,
-   "fin": 36.974,
+   "ini": 39.931,
+   "fin": 40.227,
    "frase": 9
   },
   {
    "w": "y",
-   "ini": 36.974,
-   "fin": 37.062,
+   "ini": 40.227,
+   "fin": 40.326,
    "frase": 9
   },
   {
    "w": "Melilla.",
-   "ini": 37.062,
-   "fin": 37.459,
+   "ini": 40.326,
+   "fin": 40.771,
    "frase": 9
   },
   {
    "w": "Están",
-   "ini": 37.829,
-   "fin": 38.03,
+   "ini": 41.161,
+   "fin": 41.379,
    "frase": 9
   },
   {
    "w": "en",
-   "ini": 38.03,
-   "fin": 38.131,
+   "ini": 41.379,
+   "fin": 41.489,
    "frase": 9
   },
   {
    "w": "África,",
-   "ini": 38.131,
-   "fin": 38.399,
+   "ini": 41.489,
+   "fin": 41.781,
    "frase": 9
   },
   {
    "w": "y",
-   "ini": 38.469,
-   "fin": 38.581,
+   "ini": 41.861,
+   "fin": 41.983,
    "frase": 9
   },
   {
    "w": "la",
-   "ini": 38.581,
-   "fin": 38.748,
+   "ini": 41.983,
+   "fin": 42.166,
    "frase": 9
   },
   {
    "w": "OTAN",
-   "ini": 38.748,
-   "fin": 39.028,
+   "ini": 42.166,
+   "fin": 42.471,
    "frase": 9
   },
   {
    "w": "no",
-   "ini": 39.028,
-   "fin": 39.195,
+   "ini": 42.471,
+   "fin": 42.655,
    "frase": 9
   },
   {
    "w": "las",
-   "ini": 39.195,
-   "fin": 39.419,
+   "ini": 42.655,
+   "fin": 42.899,
    "frase": 9
   },
   {
    "w": "cubre",
-   "ini": 39.419,
-   "fin": 39.754,
+   "ini": 42.899,
+   "fin": 43.265,
    "frase": 9
   },
   {
    "w": "automáticamente.",
-   "ini": 39.754,
-   "fin": 40.704,
+   "ini": 43.265,
+   "fin": 44.304,
    "frase": 9
   },
   {
    "w": "La",
-   "ini": 40.824,
-   "fin": 40.972,
+   "ini": 44.424,
+   "fin": 44.66,
    "frase": 10
   },
   {
    "w": "Unión",
-   "ini": 40.972,
-   "fin": 41.268,
+   "ini": 44.66,
+   "fin": 45.134,
    "frase": 10
   },
   {
    "w": "Europea,",
-   "ini": 41.268,
-   "fin": 41.711,
+   "ini": 45.134,
+   "fin": 45.844,
    "frase": 10
   },
   {
    "w": "en",
-   "ini": 41.711,
-   "fin": 41.859,
+   "ini": 45.914,
+   "fin": 46.039,
    "frase": 10
   },
   {
    "w": "cambio,",
-   "ini": 41.859,
-   "fin": 42.254,
+   "ini": 46.039,
+   "fin": 46.374,
    "frase": 10
   },
   {
    "w": "sí",
-   "ini": 42.254,
-   "fin": 42.402,
+   "ini": 46.374,
+   "fin": 46.5,
    "frase": 10
   },
   {
    "w": "obliga",
-   "ini": 42.402,
-   "fin": 42.747,
+   "ini": 46.5,
+   "fin": 46.793,
    "frase": 10
   },
   {
    "w": "a",
-   "ini": 42.747,
-   "fin": 42.845,
+   "ini": 46.793,
+   "fin": 46.877,
    "frase": 10
   },
   {
    "w": "sus",
-   "ini": 42.845,
-   "fin": 43.043,
+   "ini": 46.877,
+   "fin": 47.044,
    "frase": 10
   },
   {
    "w": "socios",
-   "ini": 43.043,
-   "fin": 43.388,
+   "ini": 47.044,
+   "fin": 47.337,
    "frase": 10
   },
   {
    "w": "a",
-   "ini": 43.388,
-   "fin": 43.486,
+   "ini": 47.337,
+   "fin": 47.421,
    "frase": 10
   },
   {
    "w": "ayudar.",
-   "ini": 43.486,
-   "fin": 43.881,
+   "ini": 47.421,
+   "fin": 47.756,
    "frase": 10
   },
   {
    "w": "Los",
-   "ini": 44.001,
-   "fin": 44.181,
+   "ini": 47.876,
+   "fin": 48.074,
    "frase": 11
   },
   {
    "w": "análisis",
-   "ini": 44.181,
-   "fin": 44.586,
+   "ini": 48.074,
+   "fin": 48.52,
    "frase": 11
   },
   {
    "w": "coinciden:",
-   "ini": 44.586,
-   "fin": 45.081,
+   "ini": 48.52,
+   "fin": 49.066,
    "frase": 11
   },
   {
    "w": "cruzar",
-   "ini": 45.411,
-   "fin": 45.764,
+   "ini": 49.426,
+   "fin": 49.813,
    "frase": 11
   },
   {
    "w": "el",
-   "ini": 45.764,
-   "fin": 45.916,
+   "ini": 49.813,
+   "fin": 49.979,
    "frase": 11
   },
   {
    "w": "Estrecho",
-   "ini": 45.916,
-   "fin": 46.37,
+   "ini": 49.979,
+   "fin": 50.478,
    "frase": 11
   },
   {
    "w": "sería",
-   "ini": 46.37,
-   "fin": 46.673,
+   "ini": 50.478,
+   "fin": 50.81,
    "frase": 11
   },
   {
    "w": "casi",
-   "ini": 46.673,
-   "fin": 46.925,
+   "ini": 50.81,
+   "fin": 51.087,
    "frase": 11
   },
   {
    "w": "imposible,",
-   "ini": 46.925,
-   "fin": 47.481,
+   "ini": 51.087,
+   "fin": 51.696,
    "frase": 11
   },
   {
    "w": "y",
-   "ini": 47.711,
-   "fin": 47.81,
+   "ini": 51.936,
+   "fin": 52.045,
    "frase": 11
   },
   {
    "w": "la",
-   "ini": 47.81,
-   "fin": 47.96,
+   "ini": 52.045,
+   "fin": 52.208,
    "frase": 11
   },
   {
    "w": "tensión",
-   "ini": 47.96,
-   "fin": 48.358,
+   "ini": 52.208,
+   "fin": 52.645,
    "frase": 11
   },
   {
    "w": "estaría",
-   "ini": 48.358,
-   "fin": 48.756,
+   "ini": 52.645,
+   "fin": 53.081,
    "frase": 11
   },
   {
    "w": "en",
-   "ini": 48.756,
-   "fin": 48.905,
+   "ini": 53.081,
+   "fin": 53.244,
    "frase": 11
   },
   {
    "w": "Ceuta",
-   "ini": 48.905,
-   "fin": 49.204,
+   "ini": 53.244,
+   "fin": 53.572,
    "frase": 11
   },
   {
    "w": "y",
-   "ini": 49.204,
-   "fin": 49.303,
+   "ini": 53.572,
+   "fin": 53.681,
    "frase": 11
   },
   {
    "w": "Melilla.",
-   "ini": 49.303,
-   "fin": 49.751,
+   "ini": 53.681,
+   "fin": 54.171,
    "frase": 11
   },
   {
    "w": "Además,",
-   "ini": 49.871,
-   "fin": 50.308,
+   "ini": 54.291,
+   "fin": 54.811,
    "frase": 12
   },
   {
    "w": "una",
-   "ini": 50.308,
-   "fin": 50.527,
+   "ini": 54.881,
+   "fin": 55.108,
    "frase": 12
   },
   {
    "w": "guerra",
-   "ini": 50.527,
-   "fin": 50.909,
+   "ini": 55.108,
+   "fin": 55.505,
    "frase": 12
   },
   {
    "w": "así",
-   "ini": 50.909,
-   "fin": 51.128,
+   "ini": 55.505,
+   "fin": 55.731,
    "frase": 12
   },
   {
    "w": "no",
-   "ini": 51.128,
-   "fin": 51.292,
+   "ini": 55.731,
+   "fin": 55.901,
    "frase": 12
   },
   {
    "w": "la",
-   "ini": 51.292,
-   "fin": 51.456,
+   "ini": 55.901,
+   "fin": 56.071,
    "frase": 12
   },
   {
    "w": "gana",
-   "ini": 51.456,
-   "fin": 51.729,
+   "ini": 56.071,
+   "fin": 56.355,
    "frase": 12
   },
   {
    "w": "nadie:",
-   "ini": 51.729,
-   "fin": 52.111,
+   "ini": 56.355,
+   "fin": 56.751,
    "frase": 12
   },
   {
    "w": "España",
-   "ini": 52.391,
-   "fin": 52.765,
+   "ini": 57.041,
+   "fin": 57.45,
    "frase": 12
   },
   {
    "w": "es",
-   "ini": 52.765,
-   "fin": 52.925,
+   "ini": 57.45,
+   "fin": 57.626,
    "frase": 12
   },
   {
    "w": "su",
-   "ini": 52.925,
-   "fin": 53.086,
+   "ini": 57.626,
+   "fin": 57.801,
    "frase": 12
   },
   {
    "w": "primer",
-   "ini": 53.086,
-   "fin": 53.459,
+   "ini": 57.801,
+   "fin": 58.21,
    "frase": 12
   },
   {
    "w": "socio",
-   "ini": 53.459,
-   "fin": 53.78,
+   "ini": 58.21,
+   "fin": 58.56,
    "frase": 12
   },
   {
    "w": "comercial.",
-   "ini": 53.78,
-   "fin": 54.367,
+   "ini": 58.56,
+   "fin": 59.203,
    "frase": 12
   },
   {
    "w": "¿Tú",
-   "ini": 54.487,
-   "fin": 54.631,
+   "ini": 59.323,
+   "fin": 59.478,
    "frase": 13
   },
   {
    "w": "qué",
-   "ini": 54.631,
-   "fin": 54.775,
+   "ini": 59.478,
+   "fin": 59.634,
    "frase": 13
   },
   {
    "w": "crees",
-   "ini": 54.775,
-   "fin": 54.99,
+   "ini": 59.634,
+   "fin": 59.867,
    "frase": 13
   },
   {
    "w": "que",
-   "ini": 54.99,
-   "fin": 55.134,
+   "ini": 59.867,
+   "fin": 60.023,
    "frase": 13
   },
   {
    "w": "pasaría?",
-   "ini": 55.134,
-   "fin": 55.457,
+   "ini": 60.023,
+   "fin": 60.373,
    "frase": 13
   },
   {
    "w": "Te",
-   "ini": 55.817,
-   "fin": 55.958,
+   "ini": 60.773,
+   "fin": 60.925,
    "frase": 13
   },
   {
    "w": "leo",
-   "ini": 55.958,
-   "fin": 56.145,
+   "ini": 60.925,
+   "fin": 61.129,
    "frase": 13
   },
   {
    "w": "en",
-   "ini": 56.145,
-   "fin": 56.286,
+   "ini": 61.129,
+   "fin": 61.282,
    "frase": 13
   },
   {
    "w": "comentarios.",
-   "ini": 56.286,
-   "fin": 56.895,
+   "ini": 61.282,
+   "fin": 61.943,
    "frase": 13
   }
  ]
