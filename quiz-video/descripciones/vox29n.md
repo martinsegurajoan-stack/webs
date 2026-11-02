@@ -19,3 +19,7 @@ Impuestos, vivienda, inmigración, aborto, autonomías y Europa: lo que propone 
 Datos: encuestas oct–nov 2026, programa de Vox, Seguridad Social. Escenario hipotético.
 
 #shorts #elecciones #vox #politica
+
+## Versión corta
+¿Y si gana Vox el 29-N? Impuestos, vivienda, inmigración, aborto y Europa en 60 segundos ⏱️ ¿Tú qué crees que pasaría? Sígueme en @mundo.supuesto para ver el resto de partidos.
+#fyp #elecciones #vox #politica

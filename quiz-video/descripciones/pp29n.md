@@ -19,3 +19,7 @@ Vivienda, okupación, impuestos, pensiones, inmigración y pactos: lo que propon
 Datos: encuestas oct. 2026 y compromisos del PP. Escenario hipotético.
 
 #shorts #elecciones #pp #politica
+
+## Versión corta
+¿Y si gana el PP el 29-N? Vivienda, okupación, impuestos, pensiones y pactos en 60 segundos ⏱️ ¿Tú qué crees que pasaría? Sígueme en @mundo.supuesto para ver el resto de partidos.
+#fyp #elecciones #pp #politica

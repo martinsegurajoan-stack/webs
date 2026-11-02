@@ -19,3 +19,7 @@ Vivienda, jornada de 36 horas, salario mínimo, pensiones, impuestos y pactos: l
 Datos: encuestas oct–nov 2026, BOE, propuestas del PSOE. Escenario hipotético.
 
 #shorts #elecciones #psoe #politica
+
+## Versión corta
+¿Y si gana el PSOE el 29-N? Vivienda, jornada de 36 h, salario mínimo, pensiones y pactos en 60 segundos ⏱️ ¿Tú qué crees que pasaría? Sígueme en @mundo.supuesto para ver el resto de partidos.
+#fyp #elecciones #psoe #politica
