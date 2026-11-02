@@ -124,7 +124,7 @@ def boceto(nombre, ox, oy, t, pg):
             FILL.append(f'<circle class="esc{"P" if idx < CFG.get("escanos_encuestas", 65) else ""}" cx="{x:.0f}" cy="{y:.0f}" r="8" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
         P_.append((wob(ox + 330, oy + 100, ox + 330, oy + 370, 3), RED, 5))
         FILL.append(f'<text x="{ox + 345}" y="{oy + 120}" font-family="Caveat" font-size="44" font-weight="700" fill="{RED}">176</text>')
-        FILL.append(f'<text x="{ox + 200}" y="{oy + 420}" font-family="Caveat" font-size="40" font-weight="700" fill="{c}">≈ {CFG.get("escanos_encuestas", 65)} escaños (encuestas)</text>')
+        FILL.append(f'<text x="{ox + 200}" y="{oy + 420}" font-family="Caveat" font-size="40" font-weight="700" fill="{c}">≈ {CFG.get("escanos_encuestas", 65)} {"escaño" if CFG.get("escanos_encuestas", 65) == 1 else "escaños"} (encuestas)</text>')
     elif nombre == "cartera":
         P_ += [(f"M{ox + 120},{oy + 150} L{ox + 470},{oy + 150} C{ox + 500},{oy + 150} {ox + 510},{oy + 170} {ox + 510},{oy + 200} L{ox + 510},{oy + 380} C{ox + 510},{oy + 410} {ox + 490},{oy + 420} {ox + 460},{oy + 420} L{ox + 140},{oy + 420} C{ox + 110},{oy + 420} {ox + 100},{oy + 400} {ox + 100},{oy + 370} Z", INK2, 6),
                (f"M{ox + 400},{oy + 250} L{ox + 530},{oy + 250} L{ox + 530},{oy + 320} L{ox + 400},{oy + 320} Z", INK2, 6),
@@ -206,7 +206,11 @@ def boceto(nombre, ox, oy, t, pg):
                (f"M{ox + 550},{oy + 250} L{ox + 590},{oy + 245} L{ox + 590},{oy + 290} L{ox + 550},{oy + 290}", INK2, 6),
                (wob_ellipse(ox + 340, oy + 60, 34, 34, 3), "#c9a227", 6)]
         FILL.append(f'<circle cx="{ox + 480}" cy="{oy + 230}" r="8" fill="{INK2}"/><text x="{ox + 327}" y="{oy + 75}" font-family="Caveat" font-size="40" font-weight="700" fill="#c9a227">€</text>')
-        FILL.append(f'<text x="{ox + 600}" y="{oy + 120}" font-family="Marker" font-size="54" fill="{c}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "+ IPC"}</text>')
+        _e = ETIQ[0] if ETIQ[0] != "IVA 0%" else "+ IPC"
+        if len(_e) <= 7:
+            FILL.append(f'<text x="{ox + 600}" y="{oy + 120}" font-family="Marker" font-size="54" fill="{c}">{_e}</text>')
+        else:   # etiqueta larga: arriba, a la derecha de la moneda (no se sale de la tarjeta)
+            FILL.append(f'<text x="{ox + 400}" y="{oy + 80}" font-family="Marker" font-size="54" fill="{c}">{_e}</text>')
     elif nombre == "empresa":
         P_ += [(f"M{ox + 200},{oy + 450} L{ox + 200},{oy + 80} L{ox + 420},{oy + 80} L{ox + 420},{oy + 450}", INK2, 7),
                (f"M{ox + 120},{oy + 450} L{ox + 520},{oy + 450}", INK2, 7)]
@@ -226,7 +230,7 @@ def boceto(nombre, ox, oy, t, pg):
                (wob_ellipse(ox + 365, oy + 280, 12, 12, 2), INK2, 5),
                (f"M{ox + 520},{oy + 260} C{ox + 520},{oy + 170} {ox + 640},{oy + 170} {ox + 640},{oy + 260}", c, 8),
                (f"M{ox + 500},{oy + 260} L{ox + 660},{oy + 260} L{ox + 660},{oy + 380} L{ox + 500},{oy + 380} Z", c, 8)]
-        FILL.append(f'<rect x="{ox + 500}" y="{oy + 260}" width="160" height="120" fill="{COL2}"/><text x="{ox + 580}" y="{oy + 340}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">48 h</text>')
+        FILL.append(f'<rect x="{ox + 500}" y="{oy + 260}" width="160" height="120" fill="{COL2}"/><text x="{ox + 580}" y="{oy + 340}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "48 h"}</text>')
     elif nombre == "pasaporte":
         P_ += [(f"M{ox + 200},{oy + 70} L{ox + 460},{oy + 70} L{ox + 460},{oy + 430} L{ox + 200},{oy + 430} Z", c, 7),
                (wob_ellipse(ox + 330, oy + 210, 70, 70, 3), c, 5),
@@ -234,7 +238,7 @@ def boceto(nombre, ox, oy, t, pg):
         for k_ in range(5):
             x_ = ox + 560 + (k_ % 3) * 60; y_ = oy + 140 + (k_ // 3) * 80
             FILL.append(f'<path d="M{x_},{y_ - 22} L{x_ + 7},{y_ - 7} L{x_ + 23},{y_ - 7} L{x_ + 10},{y_ + 4} L{x_ + 15},{y_ + 20} L{x_},{y_ + 10} L{x_ - 15},{y_ + 20} L{x_ - 10},{y_ + 4} L{x_ - 23},{y_ - 7} L{x_ - 7},{y_ - 7} Z" fill="#e0b000"/>')
-        FILL.append(f'<text x="{ox + 560}" y="{oy + 330}" font-family="Caveat" font-size="46" font-weight="700" fill="{INK}">puntos</text>')
+        FILL.append(f'<text x="{ox + 560}" y="{oy + 330}" font-family="Caveat" font-size="46" font-weight="700" fill="{INK}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "puntos"}</text>')
     elif nombre == "mapa_cat":
         m = json.load(open(os.path.join(BASE, "espana.json")))
         VX, VY, VW, VH = 240, -10, 380, 320
@@ -254,6 +258,17 @@ def boceto(nombre, ox, oy, t, pg):
         for x_ in (ox + 200, ox + 330, ox + 460, ox + 590):
             P_.append((wob_ellipse(x_, oy + 400, 34, 34, x_ % 7), INK2, 6))
         FILL.append(f'<text x="{ox + 390}" y="{oy + 80}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">RODALIES</text>')
+    elif nombre == "carcel":
+        # edificio de prisión con rejas y candado
+        P_ += [(f"M{ox + 110},{oy + 440} L{ox + 110},{oy + 150} L{ox + 550},{oy + 150} L{ox + 550},{oy + 440}", INK2, 7),
+               (f"M{ox + 80},{oy + 440} L{ox + 580},{oy + 440} M{ox + 90},{oy + 150} L{ox + 570},{oy + 150} L{ox + 540},{oy + 100} L{ox + 120},{oy + 100} Z", INK2, 7)]
+        for k_ in range(3):
+            x_ = ox + 150 + k_ * 135
+            FILL.append(f'<rect x="{x_}" y="{oy + 200}" width="100" height="150" fill="{COL2}" stroke="{INK2}" stroke-width="4"/>')
+            P_.append(("".join(f"M{x_ + 20 + b * 30},{oy + 200} L{x_ + 20 + b * 30},{oy + 350} " for b in range(3)), INK2, 6))
+        P_ += [(f"M{ox + 615},{oy + 250} C{ox + 615},{oy + 190} {ox + 695},{oy + 190} {ox + 695},{oy + 250}", c, 8),
+               (f"M{ox + 595},{oy + 250} L{ox + 715},{oy + 250} L{ox + 715},{oy + 350} L{ox + 595},{oy + 350} Z", c, 8)]
+        FILL.append(f'<rect x="{ox + 595}" y="{oy + 250}" width="120" height="100" fill="{COL2}"/><circle cx="{ox + 655}" cy="{oy + 295}" r="12" fill="{c}"/><rect x="{ox + 650}" y="{oy + 300}" width="10" height="30" fill="{c}"/>')
     elif nombre == "balanza":
         P_ += [(f"M{ox + 330},{oy + 80} L{ox + 330},{oy + 430} M{ox + 230},{oy + 430} L{ox + 430},{oy + 430}", INK2, 7),
                (f"M{ox + 110},{oy + 150} L{ox + 550},{oy + 110}", INK2, 7),

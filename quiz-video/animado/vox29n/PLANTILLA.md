@@ -8,7 +8,7 @@ Formato pedido por el usuario (02-11-2026) para hacer la serie con todos los par
   cintas decorativas, que se deslizan fuera al cambiar de tema; subtítulos oscuros. Dentro de cada tarjeta: notas escritas a mano que se escriben solas con un boli, títulos
   en rotulador del COLOR DEL PARTIDO (suavizado, que se vea pero sin saturar), subrayados, círculos y tachones a mano,
   bocetos a tinta solo donde ayudan (cartera, casa, tarta, mujer embarazada, mapa, edificio, Europa, balanza, urna,
-  hemiciclo), pasar página de libreta de espiral con sonido de papel, fuente de los datos en cada página.
+  hemiciclo, cárcel con rejas y candado `carcel`; `etiqueta` de la página cambia el texto de casa, hucha, urna, pasaporte y puerta), pasar página de libreta de espiral con sonido de papel, fuente de los datos en cada página.
 - Narrador neutro (Juanjo, [calm]), palabras sencillas, datos reales y verificados (buenos y malos), ≤ 60 s.
 - Miniatura sobria: hoja de libreta con logo, «¿Y SI GANA / PARTIDO?» en el color del partido, «29-N» rodeado y
   cronómetro «60s».
