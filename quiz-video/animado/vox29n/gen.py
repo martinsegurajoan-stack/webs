@@ -57,6 +57,8 @@ def wob_ellipse(cx, cy, rx, ry, seed=0):
 
 # ------------------------------------------------------------------ páginas
 PAGES = []      # html de cada página
+HEMI = []
+RECORTES = []
 PEN = []        # (t0, dur, x0, y0, x1, y1) recorridos del bolígrafo en coords de página
 NID = [0]
 def nid(p="e"):
@@ -106,15 +108,22 @@ def boceto(nombre, ox, oy, t, pg):
     FILL = []    # rellenos suaves que aparecen después
     c = COL
     if nombre == "hemiciclo":
-        for k in range(6):
-            r = 150 + k * 32
-            n = 9 + k * 3
+        filas, total = 9, 350
+        radios = [120 + i * 26 for i in range(filas)]
+        cuenta = [round(total * r / sum(radios)) for r in radios]
+        cuenta[-1] += total - sum(cuenta)
+        seats = []
+        for r, n in zip(radios, cuenta):
             for j in range(n):
                 a = math.pi - j / (n - 1) * math.pi
-                x, y = ox + 300 + r * math.cos(a), oy + 300 - r * math.sin(a)
-                FILL.append(f'<circle cx="{x:.0f}" cy="{y:.0f}" r="10" fill="{c if j < n * 0.18 else "#ffffff"}" stroke="{INK}" stroke-width="3"/>')
-        P_.append((wob(ox + 300, oy + 60, ox + 300, oy + 310, 3), RED, 5))
-        FILL.append(f'<text x="{ox + 320}" y="{oy + 80}" font-family="Caveat" font-size="44" font-weight="700" fill="{RED}">176</text>')
+                seats.append((a, ox + 330 + r * math.cos(a), oy + 360 - r * math.sin(a)))
+        seats.sort(key=lambda s_: -s_[0])
+        HEMI.extend(range(len(seats)))
+        for idx, (a, x, y) in enumerate(seats):
+            FILL.append(f'<circle class="esc{"P" if idx < 65 else ""}" cx="{x:.0f}" cy="{y:.0f}" r="8" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
+        P_.append((wob(ox + 330, oy + 100, ox + 330, oy + 370, 3), RED, 5))
+        FILL.append(f'<text x="{ox + 345}" y="{oy + 120}" font-family="Caveat" font-size="44" font-weight="700" fill="{RED}">176</text>')
+        FILL.append(f'<text x="{ox + 200}" y="{oy + 420}" font-family="Caveat" font-size="40" font-weight="700" fill="{c}">≈ 65 escaños (encuestas)</text>')
     elif nombre == "cartera":
         P_ += [(f"M{ox + 120},{oy + 150} L{ox + 470},{oy + 150} C{ox + 500},{oy + 150} {ox + 510},{oy + 170} {ox + 510},{oy + 200} L{ox + 510},{oy + 380} C{ox + 510},{oy + 410} {ox + 490},{oy + 420} {ox + 460},{oy + 420} L{ox + 140},{oy + 420} C{ox + 110},{oy + 420} {ox + 100},{oy + 400} {ox + 100},{oy + 370} Z", INK2, 6),
                (f"M{ox + 400},{oy + 250} L{ox + 530},{oy + 250} L{ox + 530},{oy + 320} L{ox + 400},{oy + 320} Z", INK2, 6),
@@ -198,7 +207,7 @@ def boceto(nombre, ox, oy, t, pg):
         draw_on(f"#{gid} .tz", t, 0.45, stagger=0.18)
     J(f'tl.set("#{gid} .relleno", {{opacity:0}}, 0); tl.to("#{gid} .relleno", {{opacity:1, duration:0.5}}, {t + 0.3:.2f});')
     if nombre == "hemiciclo":
-        J(f'tl.from("#{gid} .relleno circle", {{scale:0, transformOrigin:"50% 50%", duration:0.2, stagger:0.006, immediateRender:false}}, {t:.2f});')
+        J(f'tl.to("#{gid} .escP", {{attr:{{fill:"{COL}"}}, duration:0.05, stagger:0.025}}, {t + 0.5:.2f});')
     PEN.append((t, 0.45 + 0.18 * max(0, len(P_) - 1), ox + 120, oy + 120, ox + 500, oy + 380))
 
 # ------------------------------------------------------------------ construir páginas
@@ -210,7 +219,7 @@ for k, pdata in enumerate(paginas):
     P_START.append(t0)
     pg = []
     # papel: rayas, margen, agujeros de la espiral
-    pg.append('<div class="papel"></div>')
+    pg.append(f'<div class="papel {pdata.get("papel", "")}"></div>')
     if pdata.get("tipo") == "portada":
         c = CFG["portada"]
         pg.append(f'<img src="{CFG["logo"]}" style="position:absolute;left:{480 - 150}px;top:110px;width:300px;opacity:0.95" id="logoP"/>')
@@ -244,10 +253,26 @@ for k, pdata in enumerate(paginas):
             y += 100 if not nota.get("grande") else 120
         bt = P(pdata["boceto_cuando"]) if pdata.get("boceto_cuando") else t0 + 0.8
         boceto(pdata["boceto"], 150, max(y + 10, 560), max(bt, t0 + 0.7), pg)
+        if pdata.get("posit"):
+            po = pdata["posit"]; pid_ = nid("po"); rr = rnd.choice([-6, -4, 4, 6])
+            fs_ = min(66, int(250 / max(1, len(po["txt"]) * 0.58)))
+            pg.append(f'<div id="{pid_}" class="posit" style="left:600px;top:{max(y + 40, 590)}px"><div class="pt" style="font-size:{fs_}px">{po["txt"]}</div><div class="ps">{po["sub"]}</div></div>')
+            tp = P(po["cuando"]) + 0.1
+            J(f'tl.set("#{pid_}", {{opacity:0, y:-360, rotation:-28, scale:1.35}}, 0); tl.to("#{pid_}", {{opacity:1, y:0, rotation:{rr}, scale:1, duration:0.45, ease:"back.out(1.6)"}}, {tp:.2f});')
+            J(f'tl.to("#cam", {{scale:"+=0.025", duration:0.12, yoyo:true, repeat:1, ease:"power2.out"}}, {tp + 0.4:.2f});')
+            FX.append(("posit", tp + 0.38))
+        if pdata.get("sello"):
+            sid = nid("se")
+            pg.append(f'<div id="{sid}" class="sello">{pdata["sello"]}</div>')
+            ts_ = t0 + 0.75
+            J(f'tl.set("#{sid}", {{opacity:0, scale:2.2, rotation:-14}}, 0); tl.to("#{sid}", {{opacity:0.85, scale:1, rotation:-12, duration:0.22, ease:"power3.in"}}, {ts_:.2f});')
+            FX.append(("sello", ts_ + 0.2))
         if pdata.get("fuente"):
             fid = nid("fu")
             pg.append(f'<div id="{fid}" class="fuente">{pdata["fuente"]}</div>')
             J(f'tl.set("#{fid}", {{opacity:0}}, 0); tl.to("#{fid}", {{opacity:1, duration:0.4}}, {t0 + 0.8:.2f});')
+    if pdata.get("recorte"):
+        RECORTES.append(pdata["recorte"])
     PAGES.append(pg)
 
 # pasar página (la de arriba se levanta hacia arriba, como una libreta de espiral)
@@ -256,6 +281,33 @@ for k in range(NP - 1):
     J(f'tl.to("#pg{k}", {{rotationX:105, duration:0.5, ease:"power2.in", transformOrigin:"50% 0%"}}, {tf:.2f}); tl.set("#pg{k}", {{opacity:0}}, {tf + 0.5:.2f});')
     J(f'tl.fromTo("#pg{k} .sombra", {{opacity:0}}, {{opacity:0.35, duration:0.5, immediateRender:false}}, {tf:.2f});')
     FX.append(("pagina", tf))
+
+# recortes (gráfico impreso o ficha de prensa) que entran sobre la mesa y salen
+OVR = []
+for i, rc in enumerate(RECORTES):
+    rid = f"rc{i}"
+    ta = P(rc["cuando"]) - 0.2
+    if rc["tipo"] == "grafico":
+        mx = max(v for _, v in rc["barras"]) * 1.25
+        barras = "".join(f'<div class="rb"><div class="rl">{l}</div><div class="rbar"><i id="{rid}b{j}" style="width:{v / mx * 100:.0f}%;background:{COL if j == len(rc["barras"]) - 1 else "#9aa3ad"}"></i><span>{str(v).replace(".", ",")} %</span></div></div>' for j, (l, v) in enumerate(rc["barras"]))
+        cuerpo = f'<div class="rt">{rc["titular"]}</div>{barras}<div class="rp">{rc["pie"]}</div>'
+        for j in range(len(rc["barras"])):
+            J(f'tl.from("#{rid}b{j}", {{scaleX:0, transformOrigin:"0 50%", duration:0.6, ease:"power2.out", immediateRender:false}}, {ta + 0.35 + j * 0.25:.2f});')
+    else:
+        cuerpo = (f'<div class="rs">{rc["seccion"]}</div><div class="rh">{rc["titular"]}</div><div class="rx">{rc["texto"]}</div><div class="rp">{rc["pie"]}</div>')
+    OVR.append(f'<div id="{rid}" class="recorte {rc["tipo"]}">{cuerpo}</div>')
+    J(f'tl.set("#{rid}", {{opacity:0, y:900, rotation:8}}, 0); tl.to("#{rid}", {{opacity:1, y:0, rotation:-3, duration:0.45, ease:"power3.out"}}, {ta:.2f});')
+    J(f'tl.to("#{rid}", {{x:1200, rotation:10, duration:0.4, ease:"power2.in"}}, {ta + rc["dur"]:.2f}); tl.set("#{rid}", {{opacity:0}}, {ta + rc["dur"] + 0.4:.2f});')
+    J(f'tl.to("#libreta, #espiral", {{filter:"brightness(0.7)", duration:0.3}}, {ta:.2f}); tl.to("#libreta, #espiral", {{filter:"brightness(1)", duration:0.3}}, {ta + rc["dur"]:.2f});')
+    FX.append(("pagina", ta)); FX.append(("pagina", ta + rc["dur"]))
+
+# cámara que respira: empuje lento por página
+J('tl.set("#cam", {transformOrigin:"540px 1150px"}, 0);')
+for k in range(NP):
+    ta = P_START[k]; tb = P_START[k + 1] if k + 1 < NP else DUR
+    J(f'tl.fromTo("#cam", {{scale:1.0, x:0, y:0}}, {{scale:1.06, x:{(-1) ** k * 14}, y:-20, duration:{tb - ta:.2f}, ease:"sine.inOut", immediateRender:false}}, {ta:.2f});')
+# vapor del café
+J(f'tl.to(".vapor", {{y:-60, opacity:0, duration:2.2, stagger:{{each:0.7, repeat:{int(DUR / 2.2)}}}, ease:"sine.out"}}, 0);')
 
 # boli: va a cada trazo y lo sigue
 PEN.sort()
@@ -308,7 +360,15 @@ mesa = (f'<svg width="1080" height="1920" style="position:absolute;left:0;top:0"
         '<rect width="1080" height="1920" fill="url(#mad)"/>'
         + "".join(f'<path d="M0,{y} C300,{y + rnd.uniform(-20, 20):.0f} 700,{y + rnd.uniform(-20, 20):.0f} 1080,{y + rnd.uniform(-10, 10):.0f}" stroke="#4a3528" stroke-width="{rnd.uniform(2, 5):.1f}" fill="none" opacity="0.5"/>' for y in range(40, 1920, 46))
         + '<circle cx="960" cy="1840" r="120" fill="none" stroke="#5a3e2c" stroke-width="10" opacity="0.5"/>'
-        f'<rect x="-40" y="420" width="180" height="150" rx="6" fill="{COL2}" transform="rotate(-8 50 495)" opacity="0.9"/>'
+        '<radialGradient id="flexo" cx="0.15" cy="0.12" r="0.9"><stop offset="0" stop-color="#ffd9a0" stop-opacity="0.35"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>'
+        '<rect width="1080" height="1920" fill="url(#flexo)"/>'
+        # taza de café (vista de lado) arriba a la izquierda
+        '<rect x="20" y="420" width="120" height="120" rx="18" fill="#f2efe8"/><path d="M140,445 C190,445 190,515 140,515" stroke="#f2efe8" stroke-width="14" fill="none"/>'
+        '<rect x="20" y="420" width="120" height="22" rx="10" fill="#6b4226"/><ellipse cx="80" cy="545" rx="80" ry="10" fill="#000" opacity="0.3"/>'
+        + "".join(f'<path class="vapor" d="M{x},410 C{x - 14},385 {x + 14},365 {x},340" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.45"/>' for x in (55, 80, 105))
+        # gafas abajo a la derecha
+        + '<g transform="translate(820 1800) rotate(-12)"><circle cx="0" cy="0" r="52" fill="#ffffff" fill-opacity="0.08" stroke="#1b1b1b" stroke-width="9"/><circle cx="130" cy="0" r="52" fill="#ffffff" fill-opacity="0.08" stroke="#1b1b1b" stroke-width="9"/>'
+        '<path d="M52,-6 C70,-22 60,-22 78,-6" stroke="#1b1b1b" stroke-width="8" fill="none"/><path d="M182,-8 L260,-40" stroke="#1b1b1b" stroke-width="8"/></g>'
         '</svg>')
 
 html = f"""<!doctype html>
@@ -329,6 +389,24 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#24180f}}
   linear-gradient(90deg, transparent {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 19}px, transparent {MARG - 19}px),
   repeating-linear-gradient(180deg, #fbf8f0 0px, #fbf8f0 99px, rgba(80,120,190,0.28) 99px, rgba(80,120,190,0.28) 101px);
   background-color:#fbf8f0}}
+  .papel.cuadricula{{background:
+  linear-gradient(90deg, transparent {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 19}px, transparent {MARG - 19}px),
+  repeating-linear-gradient(90deg, transparent 0 49px, rgba(80,120,190,0.18) 49px 50px), repeating-linear-gradient(180deg, transparent 0 49px, rgba(80,120,190,0.18) 49px 50px);background-color:#f8f8f4}}
+.posit{{position:absolute;width:300px;height:250px;background:linear-gradient(160deg,#fff6a8,#ffe76b);box-shadow:0 18px 30px rgba(0,0,0,0.28);padding:28px 22px;text-align:center;border-radius:2px}}
+.posit::before{{content:"";position:absolute;left:0;right:0;top:0;height:34px;background:rgba(0,0,0,0.05)}}
+.pt{{font-family:Marker;font-size:66px;color:#222;line-height:1.1;white-space:nowrap}}
+.ps{{font-family:Caveat;font-weight:700;font-size:40px;color:{INK};margin-top:10px}}
+.sello{{position:absolute;right:50px;top:{NBH - 190}px;padding:6px 20px;border:6px solid #c0392b;color:#c0392b;font:900 40px Courier;letter-spacing:4px;border-radius:10px}}
+  .recorte{{position:absolute;left:110px;top:720px;width:860px;padding:44px 50px;background:#fbfaf6;box-shadow:0 30px 60px rgba(0,0,0,0.5);border-radius:4px}}
+.recorte.periodico{{background:#f1ede2;border-top:10px double #222}}
+.rt{{font-family:Marker;font-size:58px;color:#222;margin-bottom:26px}}
+.rb{{margin:18px 0}} .rl{{font:700 34px Courier;color:#444;margin-bottom:8px}}
+.rbar{{position:relative;height:70px;background:#ecebe6;border-radius:6px}} .rbar i{{position:absolute;left:0;top:0;bottom:0;border-radius:6px}}
+.rbar span{{position:absolute;right:16px;top:8px;font-family:Marker;font-size:46px;color:#222}}
+.rs{{font:700 30px Courier;letter-spacing:6px;color:{COL};border-bottom:3px solid #222;padding-bottom:8px;margin-bottom:18px}}
+.rh{{font:900 76px Georgia, serif;line-height:1.05;color:#111;margin-bottom:20px}}
+.rx{{font:400 40px Georgia, serif;line-height:1.3;color:#333}}
+.rp{{font:700 24px Courier;color:#888;margin-top:24px}}
 .sombra{{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}}
 .tx{{position:absolute;white-space:nowrap;line-height:1.1}}
 .sk{{position:absolute;left:0;top:0;overflow:visible}}
@@ -346,6 +424,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#24180f}}
 </style></head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{DUR}" data-width="1080" data-height="1920">
+  <div id="cam" style="position:absolute;left:0;top:0;width:1080px;height:1920px" data-layout-allow-overflow data-layout-ignore>
   {mesa}
   <div id="libreta" data-layout-allow-overflow data-layout-ignore>
     <div id="trasera"></div>
@@ -358,6 +437,8 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#24180f}}
     <text id="crono-n" x="85" y="110" text-anchor="middle" font-family="Marker" font-size="50" fill="#2b2b2b">60</text>
   </svg>
   <svg id="boli" width="10" height="10" data-layout-allow-overflow><g transform="rotate(-35)"><rect x="-9" y="-260" width="18" height="230" rx="8" fill="#1b1b1b"/><rect x="-9" y="-200" width="18" height="14" fill="{COL}"/><path d="M-9,-30 L9,-30 L0,0 Z" fill="#c9c9c9"/><circle cx="0" cy="-2" r="2.5" fill="{INK}"/></g></svg>
+  </div>
+  {"".join(OVR)}
   <div id="marca">@mundo.supuesto</div>
   <div id="subs" data-layout-allow-overlap>{"".join(SUBS)}</div>
   <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="{DUR}" data-track-index="5" data-volume="1"></audio>
