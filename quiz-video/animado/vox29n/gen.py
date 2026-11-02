@@ -58,6 +58,7 @@ def wob_ellipse(cx, cy, rx, ry, seed=0):
 # ------------------------------------------------------------------ páginas
 PAGES = []      # html de cada página
 HEMI = []
+ETIQ = ['IVA 0%']
 RECORTES = []
 PEN = []        # (t0, dur, x0, y0, x1, y1) recorridos del bolígrafo en coords de página
 NID = [0]
@@ -120,10 +121,10 @@ def boceto(nombre, ox, oy, t, pg):
         seats.sort(key=lambda s_: -s_[0])
         HEMI.extend(range(len(seats)))
         for idx, (a, x, y) in enumerate(seats):
-            FILL.append(f'<circle class="esc{"P" if idx < 65 else ""}" cx="{x:.0f}" cy="{y:.0f}" r="8" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
+            FILL.append(f'<circle class="esc{"P" if idx < CFG.get("escanos_encuestas", 65) else ""}" cx="{x:.0f}" cy="{y:.0f}" r="8" fill="#ffffff" stroke="{INK}" stroke-width="2"/>')
         P_.append((wob(ox + 330, oy + 100, ox + 330, oy + 370, 3), RED, 5))
         FILL.append(f'<text x="{ox + 345}" y="{oy + 120}" font-family="Caveat" font-size="44" font-weight="700" fill="{RED}">176</text>')
-        FILL.append(f'<text x="{ox + 200}" y="{oy + 420}" font-family="Caveat" font-size="40" font-weight="700" fill="{c}">≈ 65 escaños (encuestas)</text>')
+        FILL.append(f'<text x="{ox + 200}" y="{oy + 420}" font-family="Caveat" font-size="40" font-weight="700" fill="{c}">≈ {CFG.get("escanos_encuestas", 65)} escaños (encuestas)</text>')
     elif nombre == "cartera":
         P_ += [(f"M{ox + 120},{oy + 150} L{ox + 470},{oy + 150} C{ox + 500},{oy + 150} {ox + 510},{oy + 170} {ox + 510},{oy + 200} L{ox + 510},{oy + 380} C{ox + 510},{oy + 410} {ox + 490},{oy + 420} {ox + 460},{oy + 420} L{ox + 140},{oy + 420} C{ox + 110},{oy + 420} {ox + 100},{oy + 400} {ox + 100},{oy + 370} Z", INK2, 6),
                (f"M{ox + 400},{oy + 250} L{ox + 530},{oy + 250} L{ox + 530},{oy + 320} L{ox + 400},{oy + 320} Z", INK2, 6),
@@ -137,7 +138,7 @@ def boceto(nombre, ox, oy, t, pg):
                (f"M{ox + 290},{oy + 420} L{ox + 290},{oy + 320} L{ox + 370},{oy + 320} L{ox + 370},{oy + 420}", INK2, 5),
                (f"M{ox + 210},{oy + 260} L{ox + 260},{oy + 260} L{ox + 260},{oy + 300} L{ox + 210},{oy + 300} Z M{ox + 400},{oy + 260} L{ox + 450},{oy + 260} L{ox + 450},{oy + 300} L{ox + 400},{oy + 300} Z", INK2, 5),
                (f"M{ox + 520},{oy + 130} L{ox + 680},{oy + 130} L{ox + 700},{oy + 170} L{ox + 680},{oy + 210} L{ox + 520},{oy + 210} Z", c, 6)]
-        FILL.append(f'<text x="{ox + 545}" y="{oy + 188}" font-family="Marker" font-size="46" fill="{c}">IVA 0%</text>')
+        FILL.append(f'<text x="{ox + 610}" y="{oy + 188}" text-anchor="middle" font-family="Marker" font-size="{46 if len(ETIQ[0]) <= 7 else 30}" fill="{c}">{ETIQ[0]}</text>')
     elif nombre == "tarta":
         cx, cy, r = ox + 330, oy + 260, 150
         P_.append((wob_ellipse(cx, cy, r, r, 3), INK2, 6))
@@ -189,6 +190,36 @@ def boceto(nombre, ox, oy, t, pg):
         P_ += [(f"M{ox + 420},{oy + 200} L{ox + 470},{oy + 260} L{ox + 440},{oy + 270} L{ox + 500},{oy + 340}", RED, 8)]
         P_.append((wob_ellipse(ox + 600, oy + 260, 110, 110, 6), c, 6))
         FILL.append(f'<text x="{ox + 555}" y="{oy + 280}" font-family="Marker" font-size="52" fill="{c}">ES</text>')
+    elif nombre == "reloj":
+        cx, cy = ox + 330, oy + 260
+        P_.append((wob_ellipse(cx, cy, 170, 170, 7), INK2, 7))
+        for h in range(12):
+            a_ = h / 12 * 2 * math.pi
+            P_.append((f"M{cx + 140 * math.sin(a_):.0f},{cy - 140 * math.cos(a_):.0f} L{cx + 158 * math.sin(a_):.0f},{cy - 158 * math.cos(a_):.0f}", INK2, 5))
+        P_ += [(f"M{cx},{cy} L{cx},{cy - 110}", INK2, 8), (f"M{cx},{cy} L{cx + 80},{cy + 30}", c, 8)]
+        FILL.append(f'<text x="{cx + 200}" y="{cy - 60}" font-family="Marker" font-size="70" fill="{c}">36 h</text>')
+        FILL.append(f'<text x="{cx + 200}" y="{cy + 10}" font-family="Caveat" font-size="44" font-weight="700" fill="{INK}">a la semana</text>')
+    elif nombre == "hucha":
+        P_ += [(f"M{ox + 150},{oy + 260} C{ox + 150},{oy + 140} {ox + 300},{oy + 110} {ox + 400},{oy + 130} C{ox + 500},{oy + 150} {ox + 560},{oy + 220} {ox + 550},{oy + 290} C{ox + 540},{oy + 370} {ox + 460},{oy + 400} {ox + 340},{oy + 400} C{ox + 220},{oy + 400} {ox + 150},{oy + 360} {ox + 150},{oy + 260} Z", INK2, 7),
+               (f"M{ox + 210},{oy + 390} L{ox + 210},{oy + 450} M{ox + 470},{oy + 390} L{ox + 470},{oy + 450}", INK2, 7),
+               (f"M{ox + 300},{oy + 140} L{ox + 380},{oy + 140}", INK2, 9),
+               (f"M{ox + 550},{oy + 250} L{ox + 590},{oy + 245} L{ox + 590},{oy + 290} L{ox + 550},{oy + 290}", INK2, 6),
+               (wob_ellipse(ox + 340, oy + 60, 34, 34, 3), "#c9a227", 6)]
+        FILL.append(f'<circle cx="{ox + 480}" cy="{oy + 230}" r="8" fill="{INK2}"/><text x="{ox + 327}" y="{oy + 75}" font-family="Caveat" font-size="40" font-weight="700" fill="#c9a227">€</text>')
+        FILL.append(f'<text x="{ox + 600}" y="{oy + 120}" font-family="Marker" font-size="54" fill="{c}">+ IPC</text>')
+    elif nombre == "empresa":
+        P_ += [(f"M{ox + 200},{oy + 450} L{ox + 200},{oy + 80} L{ox + 420},{oy + 80} L{ox + 420},{oy + 450}", INK2, 7),
+               (f"M{ox + 120},{oy + 450} L{ox + 520},{oy + 450}", INK2, 7)]
+        for r_ in range(6):
+            for c_ in range(3):
+                FILL.append(f'<rect x="{ox + 225 + c_ * 65}" y="{oy + 110 + r_ * 55}" width="40" height="34" fill="{COL2}" stroke="{INK2}" stroke-width="3"/>')
+        P_.append((wob_ellipse(ox + 580, oy + 200, 90, 90, 5), c, 6))
+        FILL.append(f'<text x="{ox + 530}" y="{oy + 225}" font-family="Marker" font-size="62" fill="{c}">x40</text>')
+    elif nombre == "puzle":
+        P_ += [(f"M{ox + 120},{oy + 160} L{ox + 300},{oy + 160} C{ox + 300},{oy + 120} {ox + 360},{oy + 120} {ox + 360},{oy + 160} L{ox + 360},{oy + 400} L{ox + 120},{oy + 400} Z", c, 7),
+               (f"M{ox + 420},{oy + 160} L{ox + 640},{oy + 160} L{ox + 640},{oy + 400} L{ox + 420},{oy + 400} L{ox + 420},{oy + 300} C{ox + 380},{oy + 300} {ox + 380},{oy + 240} {ox + 420},{oy + 240} Z", "#8a8f99", 7),
+               (f"M{ox + 370},{oy + 120} L{ox + 410},{oy + 80} M{ox + 410},{oy + 120} L{ox + 370},{oy + 80}", RED, 6)]
+        FILL.append(f'<text x="{ox + 150}" y="{oy + 300}" font-family="Marker" font-size="44" fill="{c}">PSOE</text><text x="{ox + 450}" y="{oy + 300}" font-family="Marker" font-size="44" fill="#8a8f99">SOCIOS</text>')
     elif nombre == "balanza":
         P_ += [(f"M{ox + 330},{oy + 80} L{ox + 330},{oy + 430} M{ox + 230},{oy + 430} L{ox + 430},{oy + 430}", INK2, 7),
                (f"M{ox + 110},{oy + 150} L{ox + 550},{oy + 110}", INK2, 7),
@@ -252,6 +283,7 @@ for k, pdata in enumerate(paginas):
                 linea(pg, wob(MARG + 5, y + size * 0.55, MARG + 15 + wn, y + size * 0.5, 3, 6, j + 40), P(nota["tacha"]) - 0.1, 0.3, RED, 7)
             y += 100 if not nota.get("grande") else 120
         bt = P(pdata["boceto_cuando"]) if pdata.get("boceto_cuando") else t0 + 0.8
+        ETIQ[0] = pdata.get("etiqueta", "IVA 0%")
         boceto(pdata["boceto"], 150, max(y + 10, 560), max(bt, t0 + 0.7), pg)
         if pdata.get("posit"):
             po = pdata["posit"]; pid_ = nid("po"); rr = rnd.choice([-6, -4, 4, 6])
@@ -360,7 +392,7 @@ for k, ch in enumerate(chunks):
 
 # ------------------------------------------------------------------ mesa (fondo) con detalles
 mesa = (f'<svg width="1080" height="1920" style="position:absolute;left:0;top:0">'
-        f'<defs><linearGradient id="fondoC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcfcf9"/><stop offset="1" stop-color="#eef3ea"/></linearGradient>'
+        f'<defs><linearGradient id="fondoC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcfcf9"/><stop offset="1" stop-color="#f3f3ef"/></linearGradient>'
         '<pattern id="puntos" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="19" cy="19" r="2.4" fill="#c9cfc4"/></pattern></defs>'
         '<rect width="1080" height="1920" fill="url(#fondoC)"/><rect width="1080" height="1920" fill="url(#puntos)" opacity="0.55"/>'
         f'<circle class="deco" cx="980" cy="420" r="260" fill="{COL2}"/><circle class="deco" cx="80" cy="1650" r="300" fill="{COL2}"/>'
