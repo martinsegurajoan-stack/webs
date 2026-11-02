@@ -116,3 +116,8 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
 - PERSONAJES: revisar que las siluetas no se solapen/choquen (abrazos bien construidos), que nadie aparezca, desaparezca
   y reaparezca sin motivo. Textos escritos SOBRE objetos (una puerta, un papel): zoom al objeto y texto integrado
   (grabado/quemado en la superficie), nunca letras flotando.
+- DOPAMINA (usuario, 02-11-2026, SIEMPRE): edición adictiva y decorada en TODOS los planos, también los que el usuario no
+  ha visto: cada plano con vida (detalles que se mueven, objetos, luz, partículas, expresiones), ideas visuales bonitas,
+  ritmo y sorpresa. Revisar cada rincón de cada plano (≈10 vistazos) antes de enviar. Personajes CON CARA y expresiones
+  (nada de maniquíes ni siluetas negras en vídeos luminosos), manos con dedos, interfaces (móvil/banco) cuidadas y fondos
+  llenos (ciudad, barrio, playa…), nunca vacíos.
