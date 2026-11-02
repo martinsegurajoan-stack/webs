@@ -14,6 +14,9 @@ DURACIÓN MÍNIMA (usuario, 02-11-2026, OBLIGATORIO): TODOS los vídeos de 61 SE
 es para cobrar por visitas, piden mínimo un minuto). Si la voz se queda corta, bajar la aceleración (atempo) o alargar
 el guion/escenas; comprobar con ffprobe antes de entregar.
 
+SKILLS DE VÍDEO (02-11-2026): 16 skills de edición/postproducción en `.claude/skills/` (FFmpeg, ritmo, beat-sync, bucle,
+mezcla, subtítulos, cámara, motion design). Qué usar en cada caso y cómo no chocan: `.claude/skills/GUIA-SKILLS-VIDEO.md`.
+
 MEJORA CONTINUA (usuario, 02-11-2026, OBLIGATORIO, también en PORTADAS): CADA VÍDEO MEJOR QUE EL ANTERIOR («el siguiente, mejorado por 1000»).
 Antes de cualquier vídeo, LEE `quiz-video/animado/MEJORA_CONTINUA.md` (5 mejoras concretas, KIT de efectos en
 `quiz-video/animado/kit/`, nivel mínimo de calidad y control de fotogramas) y di al entregar qué has mejorado.
