@@ -1,5 +1,0 @@
-[INFO] [Compiler] Fetched 11 font face(s) for "Inter" from Google Fonts (cached to /root/.cache/hyperframes/fonts/inter)
-[INFO] [Compiler] Fetched 10 font face(s) for "JetBrains Mono" from Google Fonts (cached to /root/.cache/hyperframes/fonts/jetbrains-mono)
-[INFO] [Compiler] Injected deterministic @font-face rules for 2 requested font families
-[hyperframes] browserGpuMode probe → software (WebGL unavailable)
-[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, beginframe, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
