@@ -21,6 +21,9 @@ MEJORA CONTINUA (usuario, 02-11-2026, OBLIGATORIO, también en PORTADAS): CADA V
 Antes de cualquier vídeo, LEE `quiz-video/animado/MEJORA_CONTINUA.md` (5 mejoras concretas, KIT de efectos en
 `quiz-video/animado/kit/`, nivel mínimo de calidad y control de fotogramas) y di al entregar qué has mejorado.
 
+CERO CORRECCIONES (usuario, 02-11-2026, OBLIGATORIO): no enviar ningún vídeo rápido y mal hecho; anticiparse a sus correcciones.
+Lo que más le importa: ESTÉTICA, GANCHO y GUION. Lista de comprobación en «CERO CORRECCIONES» de `quiz-video/animado/MEJORA_CONTINUA.md`.
+
 REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PERMANENTES» en `quiz-video/CLAUDE.md`):
 1. FINAL QUE INCITA A INTERACTUAR: pedir que comenten cuántas han acertado, de qué quieren el siguiente vídeo,
    que apoyen el vídeo… (voz + carteles muy animados).

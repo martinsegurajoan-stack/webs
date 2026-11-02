@@ -90,3 +90,20 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
 - MONTAJE: cortes secos por defecto; como mucho 3 transiciones en todo el vídeo, solo en cambios de bloque.
 - FÍSICA: lo que se acumula crece DESDE EL SUELO (el hielo no puede flotar ni dejar ver el suelo debajo).
 - Referencia: `animado/granizo30/gen.py` (v2) y su miniatura.
+
+## CERO CORRECCIONES (usuario, 02-11-2026, OBLIGATORIO)
+«No me envíes el vídeo rápido y mal hecho, no importa si tardas más. Tienes que anticiparte a mis correcciones.»
+Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de enviar NADA, revisar con esta lista
+(son correcciones reales que ya hizo; si alguna falla, arreglarla antes de entregar):
+- GUION: directo, con tensión y pegadizo; nada de explicaciones largas ni ejemplos/casos de relleno; cada frase suma.
+  Gancho sin pregunta, contundente, desde el fotograma 0 (texto grande + voz).
+- NOTAS EN PANTALLA: en cristal translúcido (desenfoque + borde fino + color de acento) que case con el fondo.
+  PROHIBIDO cuadros negros/opacos grandes sobre fondos de color. Decorar solo lo importante.
+- DIBUJOS: calidad alta (degradados, volumen, luz). Nada que parezca diagrama simple o «de niño». Si un plano puede ser 3D
+  real (avión, motor, ala, cabina), hacerlo 3D; los esquemas 2D, con fondo del mismo mundo (cielo, paisaje), no fondo plano.
+- SONIDO: efectos pocos y MUY bajos, de fondo (FX_GAIN ≈ 0,16). La voz manda. Nada de golpes fuertes.
+- FÍSICA Y REALISMO: nada flota, los impactos estallan de verdad (trozos con parábola, polvo, rebote), los vehículos
+  se mueven con sentido (arrancan, derrapan), las nubes crecen y se mueven.
+- Revisar TODOS los planos con snapshots (cada ~2 s) y mirar cada fotograma como lo miraría el usuario: encuadres
+  (que el protagonista esté en plano), textos que no se partan, nada tapado, nada ridículo.
+- No enviar hasta que todo lo anterior esté bien. Mejor tardar más que gastar una corrección.
