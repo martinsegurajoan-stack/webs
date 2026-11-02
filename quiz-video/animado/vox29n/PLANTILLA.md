@@ -2,7 +2,9 @@
 
 Formato pedido por el usuario (02-11-2026) para hacer la serie con todos los partidos:
 - Presentación «te lo cuento en 60 segundos» + CRONÓMETRO pequeño contando de 60 a 0 todo el vídeo.
-- Estilo profesional de LIBRETA sobre una mesa: notas escritas a mano que se escriben solas con un boli, títulos
+- ESTILO CLARO Y DECORATIVO (usuario 02-11-2026: «fondo más claro, más blanco, que no sea una libreta literal»):
+  fondo blanco roto con puntitos y formas suaves del color del partido, TARJETAS blancas con banda de color arriba y
+  cintas decorativas, que se deslizan fuera al cambiar de tema; subtítulos oscuros. Dentro de cada tarjeta: notas escritas a mano que se escriben solas con un boli, títulos
   en rotulador del COLOR DEL PARTIDO (suavizado, que se vea pero sin saturar), subrayados, círculos y tachones a mano,
   bocetos a tinta solo donde ayudan (cartera, casa, tarta, mujer embarazada, mapa, edificio, Europa, balanza, urna,
   hemiciclo), pasar página de libreta de espiral con sonido de papel, fuente de los datos en cada página.

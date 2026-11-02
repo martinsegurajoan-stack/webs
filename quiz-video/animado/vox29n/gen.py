@@ -219,7 +219,7 @@ for k, pdata in enumerate(paginas):
     P_START.append(t0)
     pg = []
     # papel: rayas, margen, agujeros de la espiral
-    pg.append(f'<div class="papel {pdata.get("papel", "")}"></div>')
+    pg.append(f'<div class="papel {pdata.get("papel", "")}"></div><div class="cinta" style="left:{60 + (k * 37) % 120}px;transform:rotate(-4deg)"></div><div class="cinta" style="right:{60 + (k * 53) % 90}px;transform:rotate(5deg)"></div>')
     if pdata.get("tipo") == "portada":
         c = CFG["portada"]
         pg.append(f'<img src="{CFG["logo"]}" style="position:absolute;left:{480 - 150}px;top:110px;width:300px;opacity:0.95" id="logoP"/>')
@@ -278,8 +278,8 @@ for k, pdata in enumerate(paginas):
 # pasar página (la de arriba se levanta hacia arriba, como una libreta de espiral)
 for k in range(NP - 1):
     tf = P_START[k + 1] - 0.45
-    J(f'tl.to("#pg{k}", {{rotationX:105, duration:0.5, ease:"power2.in", transformOrigin:"50% 0%"}}, {tf:.2f}); tl.set("#pg{k}", {{opacity:0}}, {tf + 0.5:.2f});')
-    J(f'tl.fromTo("#pg{k} .sombra", {{opacity:0}}, {{opacity:0.35, duration:0.5, immediateRender:false}}, {tf:.2f});')
+    J(f'tl.to("#pg{k}", {{x:{-1250 if k % 2 == 0 else 1250}, y:-60, rotation:{-9 if k % 2 == 0 else 9}, duration:0.5, ease:"power2.in"}}, {tf:.2f}); tl.set("#pg{k}", {{opacity:0}}, {tf + 0.5:.2f});')
+    J(f'tl.fromTo("#pg{k} .sombra", {{opacity:0}}, {{opacity:0.0, duration:0.5, immediateRender:false}}, {tf:.2f});')
     FX.append(("pagina", tf))
 
 # recortes (gráfico impreso o ficha de prensa) que entran sobre la mesa y salen
@@ -298,7 +298,7 @@ for i, rc in enumerate(RECORTES):
     OVR.append(f'<div id="{rid}" class="recorte {rc["tipo"]}">{cuerpo}</div>')
     J(f'tl.set("#{rid}", {{opacity:0, y:900, rotation:8}}, 0); tl.to("#{rid}", {{opacity:1, y:0, rotation:-3, duration:0.45, ease:"power3.out"}}, {ta:.2f});')
     J(f'tl.to("#{rid}", {{x:1200, rotation:10, duration:0.4, ease:"power2.in"}}, {ta + rc["dur"]:.2f}); tl.set("#{rid}", {{opacity:0}}, {ta + rc["dur"] + 0.4:.2f});')
-    J(f'tl.to("#libreta, #espiral", {{filter:"brightness(0.7)", duration:0.3}}, {ta:.2f}); tl.to("#libreta, #espiral", {{filter:"brightness(1)", duration:0.3}}, {ta + rc["dur"]:.2f});')
+    J(f'tl.to("#libreta, #espiral", {{filter:"brightness(0.93)", duration:0.3}}, {ta:.2f}); tl.to("#libreta, #espiral", {{filter:"brightness(1)", duration:0.3}}, {ta + rc["dur"]:.2f});')
     FX.append(("pagina", ta)); FX.append(("pagina", ta + rc["dur"]))
 
 # cámara que respira: empuje lento por página
@@ -307,7 +307,7 @@ for k in range(NP):
     ta = P_START[k]; tb = P_START[k + 1] if k + 1 < NP else DUR
     J(f'tl.fromTo("#cam", {{scale:1.0, x:0, y:0}}, {{scale:1.06, x:{(-1) ** k * 14}, y:-20, duration:{tb - ta:.2f}, ease:"sine.inOut", immediateRender:false}}, {ta:.2f});')
 # vapor del café
-J(f'tl.to(".vapor", {{y:-60, opacity:0, duration:2.2, stagger:{{each:0.7, repeat:{int(DUR / 2.2)}}}, ease:"sine.out"}}, 0);')
+J(f'tl.to(".deco", {{y:"+=30", x:"+=12", duration:{DUR / 3:.2f}, yoyo:true, repeat:2, ease:"sine.inOut", stagger:0.6}}, 0);')
 
 # boli: va a cada trazo y lo sigue
 PEN.sort()
@@ -351,24 +351,20 @@ for k, ch in enumerate(chunks):
             J(f'tl.to("#{wid} .hl, #{wid} .d1, #{wid} .d2", {{opacity:1, duration:0.06}}, {p["ini"]:.2f});')
         else:
             spans.append(f'<span id="{wid}" class="sw">{p["w"]}</span>')
-        J(f'tl.to("#{wid}", {{color:"#ffffff", fontWeight:800, duration:0.06}}, {p["ini"]:.2f});')
+        J(f'tl.to("#{wid}", {{color:"#1d2433", fontWeight:800, duration:0.06}}, {p["ini"]:.2f});')
     SUBS.append(f'<div id="sub{k}" class="clip sub" data-start="{max(0, st):.3f}" data-duration="{max(0.2, en - max(0, st)):.3f}" data-track-index="3">{" ".join(spans)}</div>')
 
 # ------------------------------------------------------------------ mesa (fondo) con detalles
 mesa = (f'<svg width="1080" height="1920" style="position:absolute;left:0;top:0">'
-        '<defs><linearGradient id="mad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b2a20"/><stop offset="1" stop-color="#24180f"/></linearGradient></defs>'
-        '<rect width="1080" height="1920" fill="url(#mad)"/>'
-        + "".join(f'<path d="M0,{y} C300,{y + rnd.uniform(-20, 20):.0f} 700,{y + rnd.uniform(-20, 20):.0f} 1080,{y + rnd.uniform(-10, 10):.0f}" stroke="#4a3528" stroke-width="{rnd.uniform(2, 5):.1f}" fill="none" opacity="0.5"/>' for y in range(40, 1920, 46))
-        + '<circle cx="960" cy="1840" r="120" fill="none" stroke="#5a3e2c" stroke-width="10" opacity="0.5"/>'
-        '<radialGradient id="flexo" cx="0.15" cy="0.12" r="0.9"><stop offset="0" stop-color="#ffd9a0" stop-opacity="0.35"/><stop offset="1" stop-color="#ffd9a0" stop-opacity="0"/></radialGradient>'
-        '<rect width="1080" height="1920" fill="url(#flexo)"/>'
-        # taza de café (vista de lado) arriba a la izquierda
-        '<rect x="20" y="420" width="120" height="120" rx="18" fill="#f2efe8"/><path d="M140,445 C190,445 190,515 140,515" stroke="#f2efe8" stroke-width="14" fill="none"/>'
-        '<rect x="20" y="420" width="120" height="22" rx="10" fill="#6b4226"/><ellipse cx="80" cy="545" rx="80" ry="10" fill="#000" opacity="0.3"/>'
-        + "".join(f'<path class="vapor" d="M{x},410 C{x - 14},385 {x + 14},365 {x},340" stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" opacity="0.45"/>' for x in (55, 80, 105))
-        # gafas abajo a la derecha
-        + '<g transform="translate(820 1800) rotate(-12)"><circle cx="0" cy="0" r="52" fill="#ffffff" fill-opacity="0.08" stroke="#1b1b1b" stroke-width="9"/><circle cx="130" cy="0" r="52" fill="#ffffff" fill-opacity="0.08" stroke="#1b1b1b" stroke-width="9"/>'
-        '<path d="M52,-6 C70,-22 60,-22 78,-6" stroke="#1b1b1b" stroke-width="8" fill="none"/><path d="M182,-8 L260,-40" stroke="#1b1b1b" stroke-width="8"/></g>'
+        f'<defs><linearGradient id="fondoC" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fcfcf9"/><stop offset="1" stop-color="#eef3ea"/></linearGradient>'
+        '<pattern id="puntos" width="38" height="38" patternUnits="userSpaceOnUse"><circle cx="19" cy="19" r="2.4" fill="#c9cfc4"/></pattern></defs>'
+        '<rect width="1080" height="1920" fill="url(#fondoC)"/><rect width="1080" height="1920" fill="url(#puntos)" opacity="0.55"/>'
+        f'<circle class="deco" cx="980" cy="420" r="260" fill="{COL2}"/><circle class="deco" cx="80" cy="1650" r="300" fill="{COL2}"/>'
+        f'<circle class="deco" cx="120" cy="560" r="120" fill="none" stroke="{COL}" stroke-width="4" opacity="0.35"/>'
+        f'<circle class="deco" cx="990" cy="1700" r="90" fill="none" stroke="{COL}" stroke-width="4" opacity="0.35"/>'
+        + "".join(f'<path class="deco" d="M{x - 14},{y} L{x + 14},{y} M{x},{y - 14} L{x},{y + 14}" stroke="{c}" stroke-width="5" stroke-linecap="round"/>' for x, y, c in ((70, 470, COL), (1010, 1180, "#c0392b"), (40, 1180, "#e0b000"), (1030, 640, "#8aa0b8"), (980, 1850, COL)))
+        + "".join(f'<rect x="{x}" y="1870" width="60" height="50" fill="{COL}" opacity="0.18" transform="skewX(-30)"/>' for x in range(0, 1300, 120))
+        + f'<text x="540" y="1250" text-anchor="middle" font-family="Marker" font-size="560" fill="{COL}" opacity="0.05" transform="rotate(-12 540 1100)">29N</text>'
         '</svg>')
 
 html = f"""<!doctype html>
@@ -380,25 +376,24 @@ html = f"""<!doctype html>
 @font-face{{font-family:"Marker";src:url("assets/fonts/permanent-marker-400.woff2") format("woff2")}}
 @font-face{{font-family:"Courier";src:url("assets/fonts/courier-prime-700.woff2") format("woff2");font-weight:700}}
 *{{margin:0;padding:0;box-sizing:border-box}}
-html,body{{width:1080px;height:1920px;overflow:hidden;background:#24180f}}
+html,body{{width:1080px;height:1920px;overflow:hidden;background:#f6f7f2}}
 #root{{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif}}
 #libreta{{position:absolute;left:{NBX}px;top:{NBY}px;width:{NBW}px;height:{NBH}px;perspective:2600px}}
-#trasera{{position:absolute;left:10px;top:14px;width:{NBW}px;height:{NBH}px;background:#d9d2c2;border-radius:10px;box-shadow:0 30px 60px rgba(0,0,0,0.55)}}
-.pg{{position:absolute;left:0;top:0;width:{NBW}px;height:{NBH}px;border-radius:8px;overflow:hidden;backface-visibility:hidden}}
-.papel{{position:absolute;inset:0;background:
-  linear-gradient(90deg, transparent {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 19}px, transparent {MARG - 19}px),
-  repeating-linear-gradient(180deg, #fbf8f0 0px, #fbf8f0 99px, rgba(80,120,190,0.28) 99px, rgba(80,120,190,0.28) 101px);
-  background-color:#fbf8f0}}
-  .papel.cuadricula{{background:
-  linear-gradient(90deg, transparent {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 22}px, rgba(214,69,65,0.55) {MARG - 19}px, transparent {MARG - 19}px),
-  repeating-linear-gradient(90deg, transparent 0 49px, rgba(80,120,190,0.18) 49px 50px), repeating-linear-gradient(180deg, transparent 0 49px, rgba(80,120,190,0.18) 49px 50px);background-color:#f8f8f4}}
+#trasera{{position:absolute;left:0;top:0;width:{NBW}px;height:{NBH}px;background:{COL2};border-radius:34px;transform:rotate(3deg);box-shadow:0 20px 40px rgba(40,60,30,0.12)}}
+#trasera2{{position:absolute;left:0;top:0;width:{NBW}px;height:{NBH}px;background:#ffffff;border-radius:34px;transform:rotate(-2deg);box-shadow:0 20px 40px rgba(40,60,30,0.12)}}
+.pg{{position:absolute;left:0;top:0;width:{NBW}px;height:{NBH}px;border-radius:34px;overflow:hidden;box-shadow:0 26px 50px rgba(40,60,30,0.16)}}
+.papel{{position:absolute;inset:0;background:#ffffff}}
+.papel::before{{content:"";position:absolute;left:0;right:0;top:0;height:18px;background:{COL}}}
+.papel::after{{content:"";position:absolute;inset:18px 0 0 0;background:radial-gradient(circle, rgba(150,160,150,0.22) 2px, transparent 2.5px) 0 0/34px 34px}}
+.papel.cuadricula::after{{background:repeating-linear-gradient(90deg, transparent 0 49px, rgba(100,171,76,0.10) 49px 50px), repeating-linear-gradient(180deg, transparent 0 49px, rgba(100,171,76,0.10) 49px 50px)}}
+.cinta{{position:absolute;top:-6px;width:170px;height:52px;background:{COL};opacity:0.35}}
 .posit{{position:absolute;width:300px;height:250px;background:linear-gradient(160deg,#fff6a8,#ffe76b);box-shadow:0 18px 30px rgba(0,0,0,0.28);padding:28px 22px;text-align:center;border-radius:2px}}
 .posit::before{{content:"";position:absolute;left:0;right:0;top:0;height:34px;background:rgba(0,0,0,0.05)}}
 .pt{{font-family:Marker;font-size:66px;color:#222;line-height:1.1;white-space:nowrap}}
 .ps{{font-family:Caveat;font-weight:700;font-size:40px;color:{INK};margin-top:10px}}
-.sello{{position:absolute;right:50px;top:{NBH - 190}px;padding:6px 20px;border:6px solid #c0392b;color:#c0392b;font:900 40px Courier;letter-spacing:4px;border-radius:10px}}
-  .recorte{{position:absolute;left:110px;top:720px;width:860px;padding:44px 50px;background:#fbfaf6;box-shadow:0 30px 60px rgba(0,0,0,0.5);border-radius:4px}}
-.recorte.periodico{{background:#f1ede2;border-top:10px double #222}}
+.sello{{position:absolute;right:46px;top:{NBH - 132}px;padding:4px 16px;border:5px solid #c0392b;color:#c0392b;font:900 30px Courier;letter-spacing:4px;border-radius:10px}}
+  .recorte{{position:absolute;left:110px;top:720px;width:860px;padding:44px 50px;background:#ffffff;box-shadow:0 30px 70px rgba(40,60,30,0.25);border-radius:28px;border-left:16px solid {COL}}}
+.recorte.periodico{{background:#fbfaf6}}
 .rt{{font-family:Marker;font-size:58px;color:#222;margin-bottom:26px}}
 .rb{{margin:18px 0}} .rl{{font:700 34px Courier;color:#444;margin-bottom:8px}}
 .rbar{{position:relative;height:70px;background:#ecebe6;border-radius:6px}} .rbar i{{position:absolute;left:0;top:0;bottom:0;border-radius:6px}}
@@ -410,13 +405,12 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#24180f}}
 .sombra{{position:absolute;inset:0;background:#000;opacity:0;pointer-events:none}}
 .tx{{position:absolute;white-space:nowrap;line-height:1.1}}
 .sk{{position:absolute;left:0;top:0;overflow:visible}}
-.fuente{{position:absolute;left:{MARG}px;right:40px;top:{NBH - 70}px;font:700 22px Courier;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-#espiral{{position:absolute;left:{NBX}px;top:{NBY - 34}px;width:{NBW}px;height:70px}}
+.fuente{{position:absolute;left:{MARG}px;right:300px;top:{NBH - 70}px;font:700 22px Courier;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
 #crono{{position:absolute;left:{NBX + NBW - 150}px;top:{NBY - 120}px;width:170px;height:170px}}
 #boli{{position:absolute;left:0;top:0;width:10px;height:10px;overflow:visible}}
-#marca{{position:absolute;left:0;right:0;top:1775px;text-align:center;font:700 28px Inter;color:#ffffff;opacity:0.32;pointer-events:none}}
+#marca{{position:absolute;left:0;right:0;top:1775px;text-align:center;font:700 28px Inter;color:#1d2433;opacity:0.35;pointer-events:none}}
 #subs{{position:absolute;left:70px;right:70px;top:250px;height:220px}}
-.sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:500 62px Inter;color:rgba(230,224,214,0.55);text-shadow:0 3px 14px rgba(0,0,0,0.6);line-height:1.22}}
+.sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:500 62px Inter;color:rgba(40,48,40,0.32);line-height:1.22}}
 .sw{{display:inline-block;position:relative;padding:0 6px;margin:0 1px}}
 .key .hl{{position:absolute;inset:-4px -2px -2px -2px;border:4px solid {COL};border-radius:6px;background:{COL}33;opacity:0}}
 .key b{{position:absolute;width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid {COL};opacity:0}}
@@ -427,10 +421,9 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#24180f}}
   <div id="cam" style="position:absolute;left:0;top:0;width:1080px;height:1920px" data-layout-allow-overflow data-layout-ignore>
   {mesa}
   <div id="libreta" data-layout-allow-overflow data-layout-ignore>
-    <div id="trasera"></div>
+    <div id="trasera"></div><div id="trasera2"></div>
     {"".join(f'<div class="pg" id="pg{k}" style="z-index:{100 - k}">{"".join(pg)}<div class="sombra"></div></div>' for k, pg in enumerate(PAGES))}
   </div>
-  <svg id="espiral" width="{NBW}" height="70">{"".join(f'<rect x="{30 + i * 44}" y="6" width="14" height="58" rx="7" fill="#9aa0a8" stroke="#5d636b" stroke-width="3"/>' for i in range(21))}</svg>
   <svg id="crono" width="170" height="170" viewBox="0 0 170 170" data-layout-allow-overflow>
     <rect x="72" y="2" width="26" height="18" rx="4" fill="#2b2b2b"/><circle cx="85" cy="92" r="72" fill="#fbf8f0" stroke="#2b2b2b" stroke-width="7"/>
     <circle id="crono-arc" cx="85" cy="92" r="58" fill="none" stroke="{COL}" stroke-width="12" pathLength="1" stroke-dasharray="1" transform="rotate(-90 85 92)"/>

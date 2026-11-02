@@ -12,11 +12,10 @@ const fs = require('fs');
   @font-face{font-family:Caveat;src:url('${f('Caveat-700-latin.woff2')}');font-weight:700}
   @font-face{font-family:Marker;src:url('${f('permanent-marker-400.woff2')}')}
   @font-face{font-family:Courier;src:url('${f('courier-prime-700.woff2')}');font-weight:700}
-  *{margin:0;padding:0;box-sizing:border-box} body{width:1080px;height:1920px;overflow:hidden;background:#2a1d14}
-  #mesa{position:absolute;inset:0;background:linear-gradient(#3b2a20,#24180f)}
-  #hoja{position:absolute;left:90px;top:300px;width:900px;height:1300px;transform:rotate(-2deg);border-radius:10px;box-shadow:0 40px 80px rgba(0,0,0,0.55);
-    background:linear-gradient(90deg, transparent 98px, rgba(214,69,65,0.5) 98px, rgba(214,69,65,0.5) 101px, transparent 101px),
-    repeating-linear-gradient(180deg,#fbf8f0 0,#fbf8f0 99px,rgba(80,120,190,0.25) 99px,rgba(80,120,190,0.25) 101px);background-color:#fbf8f0}
+  *{margin:0;padding:0;box-sizing:border-box} body{width:1080px;height:1920px;overflow:hidden;background:#f6f7f2}
+  #mesa{position:absolute;inset:0;background:radial-gradient(circle at 85% 18%, ${C2} 0 230px, transparent 231px), radial-gradient(circle at 10% 88%, ${C2} 0 260px, transparent 261px), radial-gradient(circle, rgba(150,160,150,0.35) 2.4px, transparent 3px) 0 0/38px 38px, linear-gradient(#fcfcf9,#eef3ea)}
+  #hoja{position:absolute;left:90px;top:300px;width:900px;height:1300px;transform:rotate(-2deg);border-radius:34px;box-shadow:0 30px 60px rgba(40,60,30,0.18);background:#ffffff;overflow:hidden;border-top:20px solid ${C}}
+  .cinta{position:absolute;width:190px;height:56px;background:${C};opacity:0.35}
   #esp{position:absolute;left:110px;top:262px;transform:rotate(-2deg)}
   #logo{position:absolute;left:330px;top:120px;width:260px}
   .m{position:absolute;font-family:Marker;white-space:nowrap}
@@ -26,7 +25,7 @@ const fs = require('fs');
   #fecha{left:150px;top:760px;font-size:120px;color:#c0392b}
   #crono{position:absolute;right:40px;top:740px}
   #fuente{position:absolute;left:150px;top:1215px;font:700 24px Courier;color:#888}
-  #marca{position:absolute;left:0;right:0;top:1640px;text-align:center;font:800 30px Inter;color:#fff;opacity:0.6}
+  #marca{position:absolute;left:0;right:0;top:1640px;text-align:center;font:800 30px Inter;color:#1d2433;opacity:0.45}
   </style></head><body><div id="mesa"></div>
   <div id="hoja">
     <img id="logo" src="file://${dir}/${cfg.logo}">
@@ -41,7 +40,7 @@ const fs = require('fs');
       <circle cx="85" cy="92" r="58" fill="none" stroke="${C}" stroke-width="12" stroke-dasharray="270 400" transform="rotate(-90 85 92)"/><text x="85" y="110" text-anchor="middle" font-family="Marker" font-size="46" fill="#2b2b2b">60s</text></svg>
     <div id="fuente">Datos: encuestas y propuestas públicas · 29-N 2026</div>
   </div>
-  <svg id="esp" width="900" height="70">${Array.from({length: 19}, (_, i) => `<rect x="${30 + i * 45}" y="6" width="14" height="58" rx="7" fill="#9aa0a8" stroke="#5d636b" stroke-width="3"/>`).join('')}</svg>
+  <div class="cinta" style="left:150px;top:282px;transform:rotate(-5deg)"></div><div class="cinta" style="left:760px;top:270px;transform:rotate(4deg)"></div>
   <div id="marca">@mundo.supuesto</div></body></html>`;
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   fs.writeFileSync(dir + '/miniatura/_mini.html', html); await p.goto('file://' + dir + '/miniatura/_mini.html'); await p.waitForTimeout(1200);
