@@ -141,6 +141,8 @@ def rueda(i, valor, size, col):
     h.append('</span>')
     return "".join(h), k
 def gira(i, valor, n, t, d=1.1):
+    if valor.strip("0") == "":      # un «0» solo aparece; si rueda parece que pasa por 6, 7…
+        return
     k = 0
     for ch in valor:
         if ch.isdigit():
