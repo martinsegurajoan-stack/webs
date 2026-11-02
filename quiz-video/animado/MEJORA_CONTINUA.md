@@ -40,3 +40,15 @@ caption-neon-glow, caption-highlight, caption-particle-burst, particle-text-diss
 number-wheel, number-pop-in, rgb-glitch-text, blur-in, bottom-up-letters, tilt-card.
 Uso: bloque → copiar `compositions/<n>.html` al proyecto y montarlo con `data-composition-src`; componente → copiar
 su HTML/estilo/script a la escena (ver el comentario de cada archivo).
+
+## Aprendido investigando edición profesional (02-11-2026)
+- Interrupción de patrón cada 2-4 s (punch-in, corte, cambio de ángulo, gráfico que salta); el gancho para el scroll y
+  las siguientes interrupciones mantienen. Cada efecto con un propósito, no por poner.
+- Movimiento: easing SIEMPRE (nada lineal salvo derivas), anticipación (pequeño gesto contrario antes), rebote
+  al llegar (back/elastic), acción escalonada (stagger) y capas con parallax.
+- Sonido: el whoosh dura lo mismo que el movimiento y acaba en golpe; el riser llega a su pico justo en el corte o
+  la revelación; golpe en cada aparición; música por debajo de la voz (−6 a −12 dB cuando suenan efectos).
+- Técnico HyperFrames/GSAP: en elementos SVG con `transform="translate(...)"` usar y:"-=N" (relativo) o GSAP pisa la
+  posición; números con punto de miles → columnas de dígitos (no `innerHTML` con «89.300», GSAP lo hace 89,3).
+- Referencia de nivel: `animado/marruecos2/` (mapa 3D inclinado, nubes en parallax, cartas VS a pantalla completa con
+  números que ruedan, barridos, sellos con sacudida, ranking que se desplaza, grano, viñeta, destellos, karaoke).
