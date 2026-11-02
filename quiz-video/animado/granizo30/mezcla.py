@@ -93,8 +93,30 @@ def agua_fx(d=3.0):
     rng = np.random.default_rng(6); n = int(d * SR); t = np.arange(n) / SR
     x = rng.standard_normal(n); x = np.convolve(x, np.ones(30) / 30, mode="same")
     return x * 4 * np.minimum(1, t) * np.minimum(1, (d - t) * 2)
+def arranque_fx():
+    """Arranque flojito: motor de arranque (zumbido a pulsos) y el motor que coge ralentí."""
+    n = int(1.5 * SR); t = np.arange(n) / SR
+    st = (t < 0.45) * (0.5 + 0.5 * np.sin(2 * np.pi * 11 * t)) * np.sin(2 * np.pi * 210 * t) * 0.35
+    rpm = np.where(t < 0.45, 0, 1) * (1 + 0.6 * np.exp(-(t - 0.45) * 5) * (t >= 0.45))
+    ph = 2 * np.pi * np.cumsum(38 * rpm) / SR
+    mot = (np.sin(ph) + 0.5 * np.sin(2 * ph) + 0.3 * np.sin(3 * ph)) * (t >= 0.45) * np.minimum(1, (t - 0.45).clip(0) * 8)
+    return (st + mot * 0.6) * np.minimum(1, (1.5 - t) * 3)
+def derrape_fx(d=0.9):
+    rng = np.random.default_rng(31); n = int(d * SR); t = np.arange(n) / SR
+    x = rng.standard_normal(n); x = np.convolve(x, np.ones(3) / 3, mode="same") - np.convolve(x, np.ones(25) / 25, mode="same")
+    tono = np.sin(2 * np.pi * np.cumsum(1700 + 120 * np.sin(2 * np.pi * 7 * t)) / SR)
+    return (x * 0.6 + tono * 0.25) * np.minimum(1, t * 10) * np.exp(-t * 2.2)
+def impacto_fx():
+    """Golpe seco + hielo que se rompe en trozos (tintineo)."""
+    rng = np.random.default_rng(17); n = int(1.2 * SR); t = np.arange(n) / SR
+    out = np.sin(2 * np.pi * (90 - 40 * t) * t) * np.exp(-t * 14) * 0.9
+    out += rng.standard_normal(n) * np.exp(-t * 30) * 0.5
+    for _ in range(26):
+        i = int(rng.uniform(0.02, 0.7) * SR); f = rng.uniform(2800, 6500); tt = np.arange(1500) / SR
+        out[i:i + 1500] += np.sin(2 * np.pi * f * tt) * np.exp(-tt * 260) * rng.uniform(0.15, 0.45)
+    return out
 fx = {"tic": (audio.sfx_tick(False), 0.10), "tic2": (audio.sfx_tick(True), 0.22), "posit": (sfx_golpe(0.5), 0.22), "sello": (sfx_golpe(1.1), 0.32), "pagina": (papel(), 0.22), "lapiz": (lapiz(), 0.06), "baja": (sube(1.0, 1100, 260), 0.32), "sube": (sube(), 0.3), "sube2": (sube(1.2, 420, 1100), 0.32), "boing": (boing(), 0.45), "timbre": (timbre(), 0.13), "suave": (transicion(), 0.16), "brillo": (brillo(), 0.2), "whoosh": (audio.sfx_whoosh(0.6), 0.35), "pop": (audio.sfx_pop(), 0.35), "clic": (audio.sfx_tick(True), 0.6),
-      "golpe": (sfx_golpe(1.0), 0.55), "portazo": (sfx_golpe(1.5), 0.8), "riser": (riser(), 0.22), "granizo": (granizo_fx(), 0.35), "crack": (crack_fx(), 0.3), "trueno": (trueno_fx(), 0.5), "tambor": (tambor_fx(), 0.6), "agua": (agua_fx(), 0.35), "boom": (boom(), 0.7)}
+      "golpe": (sfx_golpe(1.0), 0.55), "portazo": (sfx_golpe(1.5), 0.8), "riser": (riser(), 0.22), "granizo": (granizo_fx(), 0.35), "crack": (crack_fx(), 0.3), "trueno": (trueno_fx(), 0.5), "tambor": (tambor_fx(), 0.6), "agua": (agua_fx(), 0.35), "boom": (boom(), 0.7), "arranque": (arranque_fx(), 0.35), "derrape": (derrape_fx(), 0.22), "impacto": (impacto_fx(), 0.9)}
 # --- MEZCLA LIMPIA (usuario, 02-11-2026: «no hagas tanto ruido… no se te oye»): la VOZ manda siempre.
 FX_GAIN = 0.35                       # todos los efectos mucho más bajos
 DENSO = {"clic", "lapiz", "tic", "tic2"}
