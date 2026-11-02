@@ -4,34 +4,34 @@
 [hyperframes] browserGpuMode probe → software (WebGL unavailable)
 [BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, beginframe, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
 [initSession:beginframe] warmup loop started (0ms)
-[initSession:beginframe] page.goto start (0ms)
-[Browser:WARN] Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation
-[initSession:beginframe] page.goto complete (316ms)
-[initSession:beginframe] GSAP proxy flush complete (330ms)
-[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
-[initSession:beginframe] pollHfReady complete (1058ms)
-[initSession:beginframe] pollSubCompositionTimelines complete (ready) (1065ms)
-[initSession:beginframe] applyVideoMetadataHints complete (1065ms)
-[initSession:beginframe] media + fonts + tailwind ready (1070ms)
-[initSession:beginframe] static-frame dedup: disabled (capture mode beginframe, not screenshot) (1128ms)
-[Browser:WARN] [.WebGL-0xc54001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Browser:WARN] [.WebGL-0xc54001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Browser:WARN] [.WebGL-0xc54001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Browser:WARN] [.WebGL-0xc54001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
-[WARN] [Render] Measured slow frame capture during auto-worker calibration. {"renderJobId":"f07319b4-7736-470c-bcfe-450156144f7e","multiplier":5.37,"p95Ms":3222,"sampledFrames":[0,683,1367,2051,2734]}
-[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, beginframe, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
-[initSession:beginframe] warmup loop started (1ms)
 [initSession:beginframe] page.goto start (1ms)
 [Browser:WARN] Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation
-[initSession:beginframe] page.goto complete (357ms)
-[initSession:beginframe] GSAP proxy flush complete (375ms)
+[initSession:beginframe] page.goto complete (333ms)
+[initSession:beginframe] GSAP proxy flush complete (351ms)
 [HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
-[initSession:beginframe] pollHfReady complete (984ms)
-[initSession:beginframe] pollSubCompositionTimelines complete (ready) (989ms)
-[initSession:beginframe] applyVideoMetadataHints complete (989ms)
-[initSession:beginframe] media + fonts + tailwind ready (992ms)
-[initSession:beginframe] static-frame dedup: disabled (capture mode beginframe, not screenshot) (1019ms)
-[Browser:WARN] [.WebGL-0x3e44001af400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Browser:WARN] [.WebGL-0x3e44001af400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Browser:WARN] [.WebGL-0x3e44001af400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
-[Browser:WARN] [.WebGL-0x3e44001af400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[initSession:beginframe] pollHfReady complete (1181ms)
+[initSession:beginframe] pollSubCompositionTimelines complete (ready) (1188ms)
+[initSession:beginframe] applyVideoMetadataHints complete (1188ms)
+[initSession:beginframe] media + fonts + tailwind ready (1192ms)
+[initSession:beginframe] static-frame dedup: disabled (capture mode beginframe, not screenshot) (1255ms)
+[Browser:WARN] [.WebGL-0x1edc001a3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x1edc001a3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x1edc001a3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x1edc001a3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[WARN] [Render] Measured slow frame capture during auto-worker calibration. {"renderJobId":"ecb612dc-ad6f-4304-b7b7-45498c362a83","multiplier":5.56,"p95Ms":3337,"sampledFrames":[0,553,1107,1661,2214]}
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, beginframe, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
+[initSession:beginframe] warmup loop started (0ms)
+[initSession:beginframe] page.goto start (0ms)
+[Browser:WARN] Scripts "build/three.js" and "build/three.min.js" are deprecated with r150+, and will be removed with r160. Please use ES Modules or alternatives: https://threejs.org/docs/index.html#manual/en/introduction/Installation
+[initSession:beginframe] page.goto complete (262ms)
+[initSession:beginframe] GSAP proxy flush complete (280ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:beginframe] pollHfReady complete (1056ms)
+[initSession:beginframe] pollSubCompositionTimelines complete (ready) (1060ms)
+[initSession:beginframe] applyVideoMetadataHints complete (1060ms)
+[initSession:beginframe] media + fonts + tailwind ready (1063ms)
+[initSession:beginframe] static-frame dedup: disabled (capture mode beginframe, not screenshot) (1094ms)
+[Browser:WARN] [.WebGL-0x1594001ae800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x1594001ae800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x1594001ae800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x1594001ae800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)

@@ -16,8 +16,8 @@ const path = require('path');
       <div style="position:absolute;left:60px;right:60px;top:300px;color:#fff;font-family:Inter">
         <div style="font:800 60px Inter;letter-spacing:3px;color:#ffd9b8">¿Y SI UN AVIÓN PIERDE</div>
         <div style="font:900 150px Inter;letter-spacing:-6px;line-height:0.95;text-shadow:0 8px 30px rgba(0,0,0,0.5)">LOS DOS<br><span style="color:#ff5a52">MOTORES?</span></div></div>
-      <div style="position:absolute;left:60px;top:1330px;width:560px;padding:18px 24px;background:rgba(9,15,28,0.9);border-left:7px solid #ff5a52;border-radius:8px;font-family:'Courier New',monospace;color:#fff">
-        <div style="font:800 22px Inter;letter-spacing:5px;color:#8796ad;margin-bottom:6px">AVISO · 11.000 m</div>
+      <div style="position:absolute;left:60px;top:1330px;width:560px;padding:18px 24px;background:linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,0.4);border-left:7px solid #ff5a52;border-radius:12px;text-shadow:0 2px 10px rgba(0,0,0,0.35);font-family:'Courier New',monospace;color:#fff">
+        <div style="font:800 22px Inter;letter-spacing:5px;color:rgba(255,255,255,0.8);margin-bottom:6px">AVISO · 11.000 m</div>
         <div style="font:800 42px 'Courier New';display:flex"><span>MOTOR 1</span><span style="margin-left:auto;color:#ff5a52">APAGADO</span></div>
         <div style="font:800 42px 'Courier New';display:flex"><span>MOTOR 2</span><span style="margin-left:auto;color:#ff5a52">APAGADO</span></div></div>
       <div style="position:absolute;left:0;right:0;top:1640px;text-align:center;font:700 30px Inter;color:#fff;opacity:0.7">@mundo.supuesto</div>`;

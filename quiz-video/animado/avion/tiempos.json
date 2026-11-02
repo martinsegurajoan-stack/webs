@@ -1,1590 +1,1326 @@
 {
- "duracion": 91.147,
+ "duracion": 73.823,
  "frases": [
   {
    "n": 1,
-   "texto": "A once mil metros de altura, los dos motores de este avión acaban de apagarse. Y ahora, cada segundo cuenta.",
+   "texto": "A once mil metros, los dos motores de este avión acaban de apagarse. Y ahora, cada segundo cuenta.",
    "ini": 0.0,
-   "fin": 7.256
+   "fin": 8.384
   },
   {
    "n": 2,
-   "texto": "Pero el avión no cae como una piedra. Sin motores, se convierte en un planeador.",
-   "ini": 7.526,
-   "fin": 12.761
+   "texto": "Saltan todas las alarmas. Pero el avión no cae como una piedra: sin motores, se convierte en un planeador gigante.",
+   "ini": 8.654,
+   "fin": 13.844
   },
   {
    "n": 3,
-   "texto": "Mientras mantenga velocidad, el aire sigue pasando por las alas, y las alas siguen generando sustentación.",
-   "ini": 12.881,
-   "fin": 19.074
+   "texto": "Mientras el aire siga pasando rápido por las alas, el avión sigue volando.",
+   "ini": 13.964,
+   "fin": 17.998
   },
   {
    "n": 4,
-   "texto": "El precio es la altura: para no perder velocidad, el morro baja y el avión desciende poco a poco.",
-   "ini": 19.294,
-   "fin": 25.668
+   "texto": "Pero esa velocidad tiene un precio: para no perderla, el morro baja… y el suelo se acerca.",
+   "ini": 18.218,
+   "fin": 23.857
   },
   {
    "n": 5,
-   "texto": "Según el modelo y el peso, un avión comercial puede avanzar más de quince kilómetros por cada kilómetro que baja.",
-   "ini": 25.788,
-   "fin": 32.167
+   "texto": "Según el avión, cada kilómetro de altura puede dar más de quince kilómetros de vuelo. Ese es todo el margen que tienen.",
+   "ini": 23.977,
+   "fin": 30.589
   },
   {
    "n": 6,
-   "texto": "En cabina, los pilotos fijan la velocidad de mejor planeo, declaran emergencia y buscan dónde aterrizar.",
-   "ini": 32.287,
-   "fin": 38.584
+   "texto": "En cabina no hay gritos: velocidad de planeo, llamada de emergencia… y a buscar dónde aterrizar.",
+   "ini": 30.709,
+   "fin": 36.262
   },
   {
    "n": 7,
-   "texto": "A la vez, siguen la lista de emergencia para intentar encender los motores, con el aire que los hace girar o con la unidad auxiliar, si está disponible.",
-   "ini": 38.704,
-   "fin": 46.875
+   "texto": "Intentan encender los motores otra vez. Nada. Lo vuelven a intentar.",
+   "ini": 36.382,
+   "fin": 40.756
   },
   {
    "n": 8,
-   "texto": "Y si se pierde la energía, bajo el avión aparece una pequeña hélice: la RAT, la turbina de emergencia.",
-   "ini": 46.995,
-   "fin": 53.752
+   "texto": "Si el avión se queda sin energía, por debajo aparece una pequeña hélice: la RAT, la turbina de emergencia.",
+   "ini": 40.876,
+   "fin": 47.339
   },
   {
    "n": 9,
-   "texto": "En muchos aviones, gira con el viento y da energía a los mandos y a los instrumentos esenciales. Pero no arranca los motores.",
-   "ini": 53.872,
-   "fin": 61.104
+   "texto": "Gira con el viento y mantiene vivos los mandos y las pantallas esenciales. Pero no puede arrancar los motores.",
+   "ini": 47.459,
+   "fin": 53.61
   },
   {
    "n": 10,
-   "texto": "Si no vuelven, toca aterrizar sin motores. Hay una sola oportunidad: un aeropuerto cercano, un campo… o el agua.",
-   "ini": 61.224,
-   "fin": 69.69
+   "texto": "Ahora solo queda una salida: aterrizar sin motores. Y sin segunda oportunidad.",
+   "ini": 53.73,
+   "fin": 59.042
   },
   {
    "n": 11,
-   "texto": "En dos mil uno, un Airbus A330 planeó unos diecinueve minutos sin motores y aterrizó en las Azores. Sobrevivieron todos.",
-   "ini": 69.81,
-   "fin": 76.561
+   "texto": "Una pista, un campo… o el agua.",
+   "ini": 59.162,
+   "fin": 61.863
   },
   {
    "n": 12,
-   "texto": "Y en dos mil nueve, otro avión amerizó en el río Hudson. Las ciento cincuenta y cinco personas a bordo sobrevivieron.",
-   "ini": 76.681,
-   "fin": 85.093
+   "texto": "El tren baja por su propio peso, las ruedas tocan el suelo… y el avión frena.",
+   "ini": 61.983,
+   "fin": 66.981
   },
   {
    "n": 13,
-   "texto": "Por eso, cuando los dos motores se apagan a once mil metros… cada segundo cuenta.",
-   "ini": 85.213,
-   "fin": 90.647
+   "texto": "Todo empezó a once mil metros, cuando los dos motores se apagaron. Porque aquí, cada segundo cuenta.",
+   "ini": 67.101,
+   "fin": 73.323
   }
  ],
  "palabras": [
   {
    "w": "A",
    "ini": 0.0,
-   "fin": 0.107,
+   "fin": 0.156,
    "frase": 1
   },
   {
    "w": "once",
-   "ini": 0.107,
-   "fin": 0.374,
+   "ini": 0.156,
+   "fin": 0.545,
    "frase": 1
   },
   {
    "w": "mil",
-   "ini": 0.374,
-   "fin": 0.588,
+   "ini": 0.545,
+   "fin": 0.857,
    "frase": 1
   },
   {
-   "w": "metros",
-   "ini": 0.588,
-   "fin": 0.962,
-   "frase": 1
-  },
-  {
-   "w": "de",
-   "ini": 0.962,
-   "fin": 1.122,
-   "frase": 1
-  },
-  {
-   "w": "altura,",
-   "ini": 1.122,
-   "fin": 1.55,
+   "w": "metros,",
+   "ini": 0.857,
+   "fin": 1.48,
    "frase": 1
   },
   {
    "w": "los",
-   "ini": 1.79,
-   "fin": 2.088,
+   "ini": 1.62,
+   "fin": 1.954,
    "frase": 1
   },
   {
    "w": "dos",
-   "ini": 2.088,
-   "fin": 2.387,
+   "ini": 1.954,
+   "fin": 2.289,
    "frase": 1
   },
   {
    "w": "motores",
-   "ini": 2.387,
-   "fin": 2.984,
+   "ini": 2.289,
+   "fin": 2.958,
    "frase": 1
   },
   {
    "w": "de",
-   "ini": 2.984,
-   "fin": 3.207,
+   "ini": 2.958,
+   "fin": 3.208,
    "frase": 1
   },
   {
    "w": "este",
-   "ini": 3.207,
-   "fin": 3.58,
+   "ini": 3.208,
+   "fin": 3.626,
    "frase": 1
   },
   {
    "w": "avión",
-   "ini": 3.58,
-   "fin": 4.028,
+   "ini": 3.626,
+   "fin": 4.128,
    "frase": 1
   },
   {
    "w": "acaban",
-   "ini": 4.028,
-   "fin": 4.55,
+   "ini": 4.128,
+   "fin": 4.713,
    "frase": 1
   },
   {
    "w": "de",
-   "ini": 4.55,
-   "fin": 4.774,
+   "ini": 4.713,
+   "fin": 4.964,
    "frase": 1
   },
   {
    "w": "apagarse.",
-   "ini": 4.774,
-   "fin": 5.52,
+   "ini": 4.964,
+   "fin": 5.8,
    "frase": 1
   },
   {
    "w": "Y",
-   "ini": 5.96,
-   "fin": 6.131,
+   "ini": 5.89,
+   "fin": 5.968,
    "frase": 1
   },
   {
    "w": "ahora,",
-   "ini": 6.131,
-   "fin": 6.73,
+   "ini": 5.968,
+   "fin": 6.24,
    "frase": 1
   },
   {
    "w": "cada",
-   "ini": 6.8,
-   "fin": 6.909,
+   "ini": 6.78,
+   "fin": 7.162,
    "frase": 1
   },
   {
    "w": "segundo",
-   "ini": 6.909,
-   "fin": 7.083,
+   "ini": 7.162,
+   "fin": 7.773,
    "frase": 1
   },
   {
    "w": "cuenta.",
-   "ini": 7.083,
-   "fin": 7.256,
+   "ini": 7.773,
+   "fin": 8.384,
    "frase": 1
   },
   {
+   "w": "Saltan",
+   "ini": 8.654,
+   "fin": 8.94,
+   "frase": 2
+  },
+  {
+   "w": "todas",
+   "ini": 8.94,
+   "fin": 9.184,
+   "frase": 2
+  },
+  {
+   "w": "las",
+   "ini": 9.184,
+   "fin": 9.347,
+   "frase": 2
+  },
+  {
+   "w": "alarmas.",
+   "ini": 9.347,
+   "fin": 9.714,
+   "frase": 2
+  },
+  {
    "w": "Pero",
-   "ini": 7.526,
-   "fin": 7.815,
+   "ini": 9.784,
+   "fin": 10.012,
    "frase": 2
   },
   {
    "w": "el",
-   "ini": 7.815,
-   "fin": 7.987,
+   "ini": 10.012,
+   "fin": 10.148,
    "frase": 2
   },
   {
    "w": "avión",
-   "ini": 7.987,
-   "fin": 8.333,
+   "ini": 10.148,
+   "fin": 10.422,
    "frase": 2
   },
   {
    "w": "no",
-   "ini": 8.333,
-   "fin": 8.506,
+   "ini": 10.422,
+   "fin": 10.558,
    "frase": 2
   },
   {
    "w": "cae",
-   "ini": 8.506,
-   "fin": 8.737,
+   "ini": 10.558,
+   "fin": 10.74,
    "frase": 2
   },
   {
    "w": "como",
-   "ini": 8.737,
-   "fin": 9.025,
+   "ini": 10.74,
+   "fin": 10.968,
    "frase": 2
   },
   {
    "w": "una",
-   "ini": 9.025,
-   "fin": 9.255,
+   "ini": 10.968,
+   "fin": 11.15,
    "frase": 2
   },
   {
-   "w": "piedra.",
-   "ini": 9.255,
-   "fin": 9.716,
+   "w": "piedra:",
+   "ini": 11.15,
+   "fin": 11.514,
    "frase": 2
   },
   {
-   "w": "Sin",
-   "ini": 10.156,
-   "fin": 10.378,
+   "w": "sin",
+   "ini": 11.784,
+   "fin": 11.926,
    "frase": 2
   },
   {
    "w": "motores,",
-   "ini": 10.378,
-   "fin": 10.876,
+   "ini": 11.926,
+   "fin": 12.244,
    "frase": 2
   },
   {
    "w": "se",
-   "ini": 11.046,
-   "fin": 11.218,
+   "ini": 12.314,
+   "fin": 12.435,
    "frase": 2
   },
   {
    "w": "convierte",
-   "ini": 11.218,
-   "fin": 11.789,
+   "ini": 12.435,
+   "fin": 12.838,
    "frase": 2
   },
   {
    "w": "en",
-   "ini": 11.789,
-   "fin": 11.961,
+   "ini": 12.838,
+   "fin": 12.958,
    "frase": 2
   },
   {
    "w": "un",
-   "ini": 11.961,
-   "fin": 12.132,
+   "ini": 12.958,
+   "fin": 13.079,
    "frase": 2
   },
   {
-   "w": "planeador.",
-   "ini": 12.132,
-   "fin": 12.761,
+   "w": "planeador",
+   "ini": 13.079,
+   "fin": 13.482,
+   "frase": 2
+  },
+  {
+   "w": "gigante.",
+   "ini": 13.482,
+   "fin": 13.844,
    "frase": 2
   },
   {
    "w": "Mientras",
-   "ini": 12.881,
-   "fin": 13.312,
-   "frase": 3
-  },
-  {
-   "w": "mantenga",
-   "ini": 13.312,
-   "fin": 13.743,
-   "frase": 3
-  },
-  {
-   "w": "velocidad,",
-   "ini": 13.743,
-   "fin": 14.271,
+   "ini": 13.964,
+   "fin": 14.404,
    "frase": 3
   },
   {
    "w": "el",
-   "ini": 14.481,
-   "fin": 14.636,
+   "ini": 14.404,
+   "fin": 14.55,
    "frase": 3
   },
   {
    "w": "aire",
-   "ini": 14.636,
-   "fin": 14.894,
+   "ini": 14.55,
+   "fin": 14.794,
    "frase": 3
   },
   {
-   "w": "sigue",
-   "ini": 14.894,
-   "fin": 15.204,
+   "w": "siga",
+   "ini": 14.794,
+   "fin": 15.038,
    "frase": 3
   },
   {
    "w": "pasando",
-   "ini": 15.204,
-   "fin": 15.617,
+   "ini": 15.038,
+   "fin": 15.429,
+   "frase": 3
+  },
+  {
+   "w": "rápido",
+   "ini": 15.429,
+   "fin": 15.771,
    "frase": 3
   },
   {
    "w": "por",
-   "ini": 15.617,
-   "fin": 15.824,
+   "ini": 15.771,
+   "fin": 15.966,
    "frase": 3
   },
   {
    "w": "las",
-   "ini": 15.824,
-   "fin": 16.031,
+   "ini": 15.966,
+   "fin": 16.161,
    "frase": 3
   },
   {
    "w": "alas,",
-   "ini": 16.031,
-   "fin": 16.341,
+   "ini": 16.161,
+   "fin": 16.454,
    "frase": 3
   },
   {
-   "w": "y",
-   "ini": 16.571,
-   "fin": 16.69,
+   "w": "el",
+   "ini": 16.624,
+   "fin": 16.796,
    "frase": 3
   },
   {
-   "w": "las",
-   "ini": 16.69,
-   "fin": 16.928,
+   "w": "avión",
+   "ini": 16.796,
+   "fin": 17.139,
    "frase": 3
   },
   {
-   "w": "alas",
-   "ini": 16.928,
-   "fin": 17.226,
+   "w": "sigue",
+   "ini": 17.139,
+   "fin": 17.483,
    "frase": 3
   },
   {
-   "w": "siguen",
-   "ini": 17.226,
-   "fin": 17.644,
+   "w": "volando.",
+   "ini": 17.483,
+   "fin": 17.998,
    "frase": 3
   },
   {
-   "w": "generando",
-   "ini": 17.644,
-   "fin": 18.24,
-   "frase": 3
-  },
-  {
-   "w": "sustentación.",
-   "ini": 18.24,
-   "fin": 19.074,
-   "frase": 3
-  },
-  {
-   "w": "El",
-   "ini": 19.294,
-   "fin": 19.487,
+   "w": "Pero",
+   "ini": 18.218,
+   "fin": 18.456,
    "frase": 4
   },
   {
-   "w": "precio",
-   "ini": 19.487,
-   "fin": 19.936,
+   "w": "esa",
+   "ini": 18.456,
+   "fin": 18.648,
    "frase": 4
   },
   {
-   "w": "es",
-   "ini": 19.936,
-   "fin": 20.129,
+   "w": "velocidad",
+   "ini": 18.648,
+   "fin": 19.125,
    "frase": 4
   },
   {
-   "w": "la",
-   "ini": 20.129,
-   "fin": 20.321,
+   "w": "tiene",
+   "ini": 19.125,
+   "fin": 19.412,
    "frase": 4
   },
   {
-   "w": "altura:",
-   "ini": 20.321,
-   "fin": 20.834,
+   "w": "un",
+   "ini": 19.412,
+   "fin": 19.555,
+   "frase": 4
+  },
+  {
+   "w": "precio:",
+   "ini": 19.555,
+   "fin": 19.938,
    "frase": 4
   },
   {
    "w": "para",
-   "ini": 21.264,
-   "fin": 21.495,
+   "ini": 20.318,
+   "fin": 20.545,
    "frase": 4
   },
   {
    "w": "no",
-   "ini": 21.495,
-   "fin": 21.634,
+   "ini": 20.545,
+   "fin": 20.682,
    "frase": 4
   },
   {
-   "w": "perder",
-   "ini": 21.634,
-   "fin": 21.957,
-   "frase": 4
-  },
-  {
-   "w": "velocidad,",
-   "ini": 21.957,
-   "fin": 22.464,
+   "w": "perderla,",
+   "ini": 20.682,
+   "fin": 21.138,
    "frase": 4
   },
   {
    "w": "el",
-   "ini": 22.594,
-   "fin": 22.786,
+   "ini": 21.288,
+   "fin": 21.456,
    "frase": 4
   },
   {
    "w": "morro",
-   "ini": 22.786,
-   "fin": 23.171,
+   "ini": 21.456,
+   "fin": 21.792,
    "frase": 4
   },
   {
-   "w": "baja",
-   "ini": 23.171,
-   "fin": 23.491,
+   "w": "baja…",
+   "ini": 21.792,
+   "fin": 22.128,
    "frase": 4
   },
   {
    "w": "y",
-   "ini": 23.491,
-   "fin": 23.619,
+   "ini": 22.498,
+   "fin": 22.621,
    "frase": 4
   },
   {
    "w": "el",
-   "ini": 23.619,
-   "fin": 23.811,
+   "ini": 22.621,
+   "fin": 22.807,
    "frase": 4
   },
   {
-   "w": "avión",
-   "ini": 23.811,
-   "fin": 24.195,
+   "w": "suelo",
+   "ini": 22.807,
+   "fin": 23.178,
    "frase": 4
   },
   {
-   "w": "desciende",
-   "ini": 24.195,
-   "fin": 24.835,
+   "w": "se",
+   "ini": 23.178,
+   "fin": 23.363,
    "frase": 4
   },
   {
-   "w": "poco",
-   "ini": 24.835,
-   "fin": 25.155,
-   "frase": 4
-  },
-  {
-   "w": "a",
-   "ini": 25.155,
-   "fin": 25.283,
-   "frase": 4
-  },
-  {
-   "w": "poco.",
-   "ini": 25.283,
-   "fin": 25.668,
+   "w": "acerca.",
+   "ini": 23.363,
+   "fin": 23.857,
    "frase": 4
   },
   {
    "w": "Según",
-   "ini": 25.788,
-   "fin": 26.11,
+   "ini": 23.977,
+   "fin": 24.296,
    "frase": 5
   },
   {
    "w": "el",
-   "ini": 26.11,
-   "fin": 26.271,
+   "ini": 24.296,
+   "fin": 24.456,
    "frase": 5
   },
   {
-   "w": "modelo",
-   "ini": 26.271,
-   "fin": 26.647,
-   "frase": 5
-  },
-  {
-   "w": "y",
-   "ini": 26.647,
-   "fin": 26.754,
-   "frase": 5
-  },
-  {
-   "w": "el",
-   "ini": 26.754,
-   "fin": 26.915,
-   "frase": 5
-  },
-  {
-   "w": "peso,",
-   "ini": 26.915,
-   "fin": 27.238,
-   "frase": 5
-  },
-  {
-   "w": "un",
-   "ini": 27.428,
-   "fin": 27.591,
-   "frase": 5
-  },
-  {
-   "w": "avión",
-   "ini": 27.591,
-   "fin": 27.918,
-   "frase": 5
-  },
-  {
-   "w": "comercial",
-   "ini": 27.918,
-   "fin": 28.463,
-   "frase": 5
-  },
-  {
-   "w": "puede",
-   "ini": 28.463,
-   "fin": 28.79,
-   "frase": 5
-  },
-  {
-   "w": "avanzar",
-   "ini": 28.79,
-   "fin": 29.225,
-   "frase": 5
-  },
-  {
-   "w": "más",
-   "ini": 29.225,
-   "fin": 29.443,
-   "frase": 5
-  },
-  {
-   "w": "de",
-   "ini": 29.443,
-   "fin": 29.607,
-   "frase": 5
-  },
-  {
-   "w": "quince",
-   "ini": 29.607,
-   "fin": 29.988,
-   "frase": 5
-  },
-  {
-   "w": "kilómetros",
-   "ini": 29.988,
-   "fin": 30.587,
-   "frase": 5
-  },
-  {
-   "w": "por",
-   "ini": 30.587,
-   "fin": 30.805,
+   "w": "avión,",
+   "ini": 24.456,
+   "fin": 24.827,
    "frase": 5
   },
   {
    "w": "cada",
-   "ini": 30.805,
-   "fin": 31.078,
+   "ini": 24.947,
+   "fin": 25.187,
    "frase": 5
   },
   {
    "w": "kilómetro",
-   "ini": 31.078,
-   "fin": 31.623,
+   "ini": 25.187,
+   "fin": 25.667,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 25.667,
+   "fin": 25.811,
+   "frase": 5
+  },
+  {
+   "w": "altura",
+   "ini": 25.811,
+   "fin": 26.147,
+   "frase": 5
+  },
+  {
+   "w": "puede",
+   "ini": 26.147,
+   "fin": 26.435,
+   "frase": 5
+  },
+  {
+   "w": "dar",
+   "ini": 26.435,
+   "fin": 26.627,
+   "frase": 5
+  },
+  {
+   "w": "más",
+   "ini": 26.627,
+   "fin": 26.819,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 26.819,
+   "fin": 26.963,
+   "frase": 5
+  },
+  {
+   "w": "quince",
+   "ini": 26.963,
+   "fin": 27.299,
+   "frase": 5
+  },
+  {
+   "w": "kilómetros",
+   "ini": 27.299,
+   "fin": 27.827,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 27.827,
+   "fin": 27.971,
+   "frase": 5
+  },
+  {
+   "w": "vuelo.",
+   "ini": 27.971,
+   "fin": 28.307,
+   "frase": 5
+  },
+  {
+   "w": "Ese",
+   "ini": 28.707,
+   "fin": 28.929,
+   "frase": 5
+  },
+  {
+   "w": "es",
+   "ini": 28.929,
+   "fin": 29.095,
+   "frase": 5
+  },
+  {
+   "w": "todo",
+   "ini": 29.095,
+   "fin": 29.372,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 29.372,
+   "fin": 29.538,
+   "frase": 5
+  },
+  {
+   "w": "margen",
+   "ini": 29.538,
+   "fin": 29.925,
    "frase": 5
   },
   {
    "w": "que",
-   "ini": 31.623,
-   "fin": 31.841,
+   "ini": 29.925,
+   "fin": 30.147,
    "frase": 5
   },
   {
-   "w": "baja.",
-   "ini": 31.841,
-   "fin": 32.167,
+   "w": "tienen.",
+   "ini": 30.147,
+   "fin": 30.589,
    "frase": 5
   },
   {
    "w": "En",
-   "ini": 32.287,
-   "fin": 32.454,
+   "ini": 30.709,
+   "fin": 30.858,
    "frase": 6
   },
   {
-   "w": "cabina,",
-   "ini": 32.454,
-   "fin": 32.897,
+   "w": "cabina",
+   "ini": 30.858,
+   "fin": 31.205,
    "frase": 6
   },
   {
-   "w": "los",
-   "ini": 33.027,
-   "fin": 33.263,
+   "w": "no",
+   "ini": 31.205,
+   "fin": 31.354,
    "frase": 6
   },
   {
-   "w": "pilotos",
-   "ini": 33.263,
-   "fin": 33.735,
+   "w": "hay",
+   "ini": 31.354,
+   "fin": 31.552,
    "frase": 6
   },
   {
-   "w": "fijan",
-   "ini": 33.735,
-   "fin": 34.089,
-   "frase": 6
-  },
-  {
-   "w": "la",
-   "ini": 34.089,
-   "fin": 34.266,
+   "w": "gritos:",
+   "ini": 31.552,
+   "fin": 31.949,
    "frase": 6
   },
   {
    "w": "velocidad",
-   "ini": 34.266,
-   "fin": 34.855,
+   "ini": 32.229,
+   "fin": 32.32,
    "frase": 6
   },
   {
    "w": "de",
-   "ini": 34.855,
-   "fin": 35.032,
-   "frase": 6
-  },
-  {
-   "w": "mejor",
-   "ini": 35.032,
-   "fin": 35.386,
+   "ini": 32.32,
+   "fin": 32.347,
    "frase": 6
   },
   {
    "w": "planeo,",
-   "ini": 35.386,
-   "fin": 35.857,
+   "ini": 32.347,
+   "fin": 32.419,
    "frase": 6
   },
   {
-   "w": "declaran",
-   "ini": 35.927,
-   "fin": 36.447,
+   "w": "llamada",
+   "ini": 32.509,
+   "fin": 33.198,
    "frase": 6
   },
   {
-   "w": "emergencia",
-   "ini": 36.447,
-   "fin": 37.082,
+   "w": "de",
+   "ini": 33.198,
+   "fin": 33.456,
+   "frase": 6
+  },
+  {
+   "w": "emergencia…",
+   "ini": 33.456,
+   "fin": 34.489,
    "frase": 6
   },
   {
    "w": "y",
-   "ini": 37.082,
-   "fin": 37.198,
+   "ini": 34.669,
+   "fin": 34.783,
    "frase": 6
   },
   {
-   "w": "buscan",
-   "ini": 37.198,
-   "fin": 37.602,
+   "w": "a",
+   "ini": 34.783,
+   "fin": 34.897,
+   "frase": 6
+  },
+  {
+   "w": "buscar",
+   "ini": 34.897,
+   "fin": 35.295,
    "frase": 6
   },
   {
    "w": "dónde",
-   "ini": 37.602,
-   "fin": 37.948,
+   "ini": 35.295,
+   "fin": 35.636,
    "frase": 6
   },
   {
    "w": "aterrizar.",
-   "ini": 37.948,
-   "fin": 38.584,
+   "ini": 35.636,
+   "fin": 36.262,
    "frase": 6
   },
   {
-   "w": "A",
-   "ini": 38.704,
-   "fin": 38.788,
-   "frase": 7
-  },
-  {
-   "w": "la",
-   "ini": 38.788,
-   "fin": 38.914,
-   "frase": 7
-  },
-  {
-   "w": "vez,",
-   "ini": 38.914,
-   "fin": 39.124,
-   "frase": 7
-  },
-  {
-   "w": "siguen",
-   "ini": 39.364,
-   "fin": 39.716,
-   "frase": 7
-  },
-  {
-   "w": "la",
-   "ini": 39.716,
-   "fin": 39.867,
-   "frase": 7
-  },
-  {
-   "w": "lista",
-   "ini": 39.867,
-   "fin": 40.168,
-   "frase": 7
-  },
-  {
-   "w": "de",
-   "ini": 40.168,
-   "fin": 40.319,
-   "frase": 7
-  },
-  {
-   "w": "emergencia",
-   "ini": 40.319,
-   "fin": 40.873,
-   "frase": 7
-  },
-  {
-   "w": "para",
-   "ini": 40.873,
-   "fin": 41.124,
-   "frase": 7
-  },
-  {
-   "w": "intentar",
-   "ini": 41.124,
-   "fin": 41.577,
+   "w": "Intentan",
+   "ini": 36.382,
+   "fin": 36.787,
    "frase": 7
   },
   {
    "w": "encender",
-   "ini": 41.577,
-   "fin": 42.03,
+   "ini": 36.787,
+   "fin": 37.192,
    "frase": 7
   },
   {
    "w": "los",
-   "ini": 42.03,
-   "fin": 42.231,
+   "ini": 37.192,
+   "fin": 37.372,
    "frase": 7
   },
   {
-   "w": "motores,",
-   "ini": 42.231,
-   "fin": 42.684,
+   "w": "motores",
+   "ini": 37.372,
+   "fin": 37.732,
    "frase": 7
   },
   {
-   "w": "con",
-   "ini": 42.944,
-   "fin": 43.139,
+   "w": "otra",
+   "ini": 37.732,
+   "fin": 37.957,
    "frase": 7
   },
   {
-   "w": "el",
-   "ini": 43.139,
-   "fin": 43.285,
+   "w": "vez.",
+   "ini": 37.957,
+   "fin": 38.182,
    "frase": 7
   },
   {
-   "w": "aire",
-   "ini": 43.285,
-   "fin": 43.529,
+   "w": "Nada.",
+   "ini": 38.802,
+   "fin": 39.152,
    "frase": 7
   },
   {
-   "w": "que",
-   "ini": 43.529,
-   "fin": 43.724,
+   "w": "Lo",
+   "ini": 39.652,
+   "fin": 39.796,
    "frase": 7
   },
   {
-   "w": "los",
-   "ini": 43.724,
-   "fin": 43.919,
+   "w": "vuelven",
+   "ini": 39.796,
+   "fin": 40.18,
    "frase": 7
   },
   {
-   "w": "hace",
-   "ini": 43.919,
-   "fin": 44.163,
+   "w": "a",
+   "ini": 40.18,
+   "fin": 40.276,
    "frase": 7
   },
   {
-   "w": "girar",
-   "ini": 44.163,
-   "fin": 44.455,
+   "w": "intentar.",
+   "ini": 40.276,
+   "fin": 40.756,
    "frase": 7
   },
   {
-   "w": "o",
-   "ini": 44.455,
-   "fin": 44.553,
-   "frase": 7
-  },
-  {
-   "w": "con",
-   "ini": 44.553,
-   "fin": 44.748,
-   "frase": 7
-  },
-  {
-   "w": "la",
-   "ini": 44.748,
-   "fin": 44.894,
-   "frase": 7
-  },
-  {
-   "w": "unidad",
-   "ini": 44.894,
-   "fin": 45.236,
-   "frase": 7
-  },
-  {
-   "w": "auxiliar,",
-   "ini": 45.236,
-   "fin": 45.724,
-   "frase": 7
-  },
-  {
-   "w": "si",
-   "ini": 45.904,
-   "fin": 46.049,
-   "frase": 7
-  },
-  {
-   "w": "está",
-   "ini": 46.049,
-   "fin": 46.292,
-   "frase": 7
-  },
-  {
-   "w": "disponible.",
-   "ini": 46.292,
-   "fin": 46.875,
-   "frase": 7
-  },
-  {
-   "w": "Y",
-   "ini": 46.995,
-   "fin": 47.097,
+   "w": "Si",
+   "ini": 40.876,
+   "fin": 41.024,
    "frase": 8
   },
   {
-   "w": "si",
-   "ini": 47.097,
-   "fin": 47.249,
+   "w": "el",
+   "ini": 41.024,
+   "fin": 41.171,
+   "frase": 8
+  },
+  {
+   "w": "avión",
+   "ini": 41.171,
+   "fin": 41.466,
    "frase": 8
   },
   {
    "w": "se",
-   "ini": 47.249,
-   "fin": 47.401,
+   "ini": 41.466,
+   "fin": 41.613,
    "frase": 8
   },
   {
-   "w": "pierde",
-   "ini": 47.401,
-   "fin": 47.756,
+   "w": "queda",
+   "ini": 41.613,
+   "fin": 41.908,
    "frase": 8
   },
   {
-   "w": "la",
-   "ini": 47.756,
-   "fin": 47.909,
+   "w": "sin",
+   "ini": 41.908,
+   "fin": 42.104,
    "frase": 8
   },
   {
    "w": "energía,",
-   "ini": 47.909,
-   "fin": 48.365,
+   "ini": 42.104,
+   "fin": 42.546,
    "frase": 8
   },
   {
-   "w": "bajo",
-   "ini": 48.525,
-   "fin": 48.809,
+   "w": "por",
+   "ini": 42.666,
+   "fin": 42.841,
    "frase": 8
   },
   {
-   "w": "el",
-   "ini": 48.809,
-   "fin": 48.979,
-   "frase": 8
-  },
-  {
-   "w": "avión",
-   "ini": 48.979,
-   "fin": 49.319,
+   "w": "debajo",
+   "ini": 42.841,
+   "fin": 43.146,
    "frase": 8
   },
   {
    "w": "aparece",
-   "ini": 49.319,
-   "fin": 49.772,
+   "ini": 43.146,
+   "fin": 43.495,
    "frase": 8
   },
   {
    "w": "una",
-   "ini": 49.772,
-   "fin": 49.999,
+   "ini": 43.495,
+   "fin": 43.67,
    "frase": 8
   },
   {
    "w": "pequeña",
-   "ini": 49.999,
-   "fin": 50.452,
+   "ini": 43.67,
+   "fin": 44.019,
    "frase": 8
   },
   {
    "w": "hélice:",
-   "ini": 50.452,
-   "fin": 50.905,
+   "ini": 44.019,
+   "fin": 44.368,
    "frase": 8
   },
   {
    "w": "la",
-   "ini": 51.275,
-   "fin": 51.455,
+   "ini": 44.368,
+   "fin": 44.498,
    "frase": 8
   },
   {
    "w": "RAT,",
-   "ini": 51.455,
-   "fin": 51.755,
+   "ini": 44.498,
+   "fin": 44.716,
    "frase": 8
   },
   {
    "w": "la",
-   "ini": 52.155,
-   "fin": 52.34,
+   "ini": 45.026,
+   "fin": 45.293,
    "frase": 8
   },
   {
    "w": "turbina",
-   "ini": 52.34,
-   "fin": 52.831,
+   "ini": 45.293,
+   "fin": 46.005,
    "frase": 8
   },
   {
    "w": "de",
-   "ini": 52.831,
-   "fin": 53.015,
+   "ini": 46.005,
+   "fin": 46.271,
    "frase": 8
   },
   {
    "w": "emergencia.",
-   "ini": 53.015,
-   "fin": 53.752,
+   "ini": 46.271,
+   "fin": 47.339,
    "frase": 8
   },
   {
-   "w": "En",
-   "ini": 53.872,
-   "fin": 54.022,
-   "frase": 9
-  },
-  {
-   "w": "muchos",
-   "ini": 54.022,
-   "fin": 54.372,
-   "frase": 9
-  },
-  {
-   "w": "aviones,",
-   "ini": 54.372,
-   "fin": 54.822,
-   "frase": 9
-  },
-  {
-   "w": "gira",
-   "ini": 54.922,
-   "fin": 55.188,
+   "w": "Gira",
+   "ini": 47.459,
+   "fin": 47.714,
    "frase": 9
   },
   {
    "w": "con",
-   "ini": 55.188,
-   "fin": 55.4,
+   "ini": 47.714,
+   "fin": 47.918,
    "frase": 9
   },
   {
    "w": "el",
-   "ini": 55.4,
-   "fin": 55.559,
+   "ini": 47.918,
+   "fin": 48.071,
    "frase": 9
   },
   {
    "w": "viento",
-   "ini": 55.559,
-   "fin": 55.931,
+   "ini": 48.071,
+   "fin": 48.429,
    "frase": 9
   },
   {
    "w": "y",
-   "ini": 55.931,
-   "fin": 56.037,
+   "ini": 48.429,
+   "fin": 48.531,
    "frase": 9
   },
   {
-   "w": "da",
-   "ini": 56.037,
-   "fin": 56.196,
+   "w": "mantiene",
+   "ini": 48.531,
+   "fin": 48.991,
    "frase": 9
   },
   {
-   "w": "energía",
-   "ini": 56.196,
-   "fin": 56.621,
-   "frase": 9
-  },
-  {
-   "w": "a",
-   "ini": 56.621,
-   "fin": 56.727,
+   "w": "vivos",
+   "ini": 48.991,
+   "fin": 49.297,
    "frase": 9
   },
   {
    "w": "los",
-   "ini": 56.727,
-   "fin": 56.939,
+   "ini": 49.297,
+   "fin": 49.501,
    "frase": 9
   },
   {
    "w": "mandos",
-   "ini": 56.939,
-   "fin": 57.311,
+   "ini": 49.501,
+   "fin": 49.859,
    "frase": 9
   },
   {
    "w": "y",
-   "ini": 57.311,
-   "fin": 57.417,
+   "ini": 49.859,
+   "fin": 49.961,
    "frase": 9
   },
   {
-   "w": "a",
-   "ini": 57.417,
-   "fin": 57.523,
+   "w": "las",
+   "ini": 49.961,
+   "fin": 50.165,
    "frase": 9
   },
   {
-   "w": "los",
-   "ini": 57.523,
-   "fin": 57.735,
-   "frase": 9
-  },
-  {
-   "w": "instrumentos",
-   "ini": 57.735,
-   "fin": 58.425,
+   "w": "pantallas",
+   "ini": 50.165,
+   "fin": 50.676,
    "frase": 9
   },
   {
    "w": "esenciales.",
-   "ini": 58.425,
-   "fin": 59.062,
+   "ini": 50.676,
+   "fin": 51.289,
    "frase": 9
   },
   {
    "w": "Pero",
-   "ini": 59.332,
-   "fin": 59.638,
+   "ini": 51.589,
+   "fin": 51.869,
    "frase": 9
   },
   {
    "w": "no",
-   "ini": 59.638,
-   "fin": 59.821,
+   "ini": 51.869,
+   "fin": 52.038,
    "frase": 9
   },
   {
-   "w": "arranca",
-   "ini": 59.821,
-   "fin": 60.31,
+   "w": "puede",
+   "ini": 52.038,
+   "fin": 52.375,
+   "frase": 9
+  },
+  {
+   "w": "arrancar",
+   "ini": 52.375,
+   "fin": 52.88,
    "frase": 9
   },
   {
    "w": "los",
-   "ini": 60.31,
-   "fin": 60.554,
+   "ini": 52.88,
+   "fin": 53.105,
    "frase": 9
   },
   {
    "w": "motores.",
-   "ini": 60.554,
-   "fin": 61.104,
+   "ini": 53.105,
+   "fin": 53.61,
    "frase": 9
   },
   {
-   "w": "Si",
-   "ini": 61.224,
-   "fin": 61.376,
+   "w": "Ahora",
+   "ini": 53.73,
+   "fin": 54.1,
    "frase": 10
   },
   {
-   "w": "no",
-   "ini": 61.376,
-   "fin": 61.528,
+   "w": "solo",
+   "ini": 54.1,
+   "fin": 54.409,
    "frase": 10
   },
   {
-   "w": "vuelven,",
-   "ini": 61.528,
-   "fin": 61.984,
-   "frase": 10
-  },
-  {
-   "w": "toca",
-   "ini": 62.264,
-   "fin": 62.666,
-   "frase": 10
-  },
-  {
-   "w": "aterrizar",
-   "ini": 62.666,
-   "fin": 63.47,
-   "frase": 10
-  },
-  {
-   "w": "sin",
-   "ini": 63.47,
-   "fin": 63.791,
-   "frase": 10
-  },
-  {
-   "w": "motores.",
-   "ini": 63.791,
-   "fin": 64.514,
-   "frase": 10
-  },
-  {
-   "w": "Hay",
-   "ini": 64.684,
-   "fin": 64.88,
+   "w": "queda",
+   "ini": 54.409,
+   "fin": 54.779,
    "frase": 10
   },
   {
    "w": "una",
-   "ini": 64.88,
-   "fin": 65.075,
+   "ini": 54.779,
+   "fin": 55.026,
    "frase": 10
   },
   {
-   "w": "sola",
-   "ini": 65.075,
-   "fin": 65.319,
+   "w": "salida:",
+   "ini": 55.026,
+   "fin": 55.52,
    "frase": 10
   },
   {
-   "w": "oportunidad:",
-   "ini": 65.319,
-   "fin": 65.954,
+   "w": "aterrizar",
+   "ini": 55.88,
+   "fin": 56.467,
    "frase": 10
-  },
-  {
-   "w": "un",
-   "ini": 66.454,
-   "fin": 66.679,
-   "frase": 10
-  },
-  {
-   "w": "aeropuerto",
-   "ini": 66.679,
-   "fin": 67.501,
-   "frase": 10
-  },
-  {
-   "w": "cercano,",
-   "ini": 67.501,
-   "fin": 68.174,
-   "frase": 10
-  },
-  {
-   "w": "un",
-   "ini": 68.254,
-   "fin": 68.368,
-   "frase": 10
-  },
-  {
-   "w": "campo…",
-   "ini": 68.368,
-   "fin": 68.634,
-   "frase": 10
-  },
-  {
-   "w": "o",
-   "ini": 69.044,
-   "fin": 69.162,
-   "frase": 10
-  },
-  {
-   "w": "el",
-   "ini": 69.162,
-   "fin": 69.338,
-   "frase": 10
-  },
-  {
-   "w": "agua.",
-   "ini": 69.338,
-   "fin": 69.69,
-   "frase": 10
-  },
-  {
-   "w": "En",
-   "ini": 69.81,
-   "fin": 69.964,
-   "frase": 11
-  },
-  {
-   "w": "dos",
-   "ini": 69.964,
-   "fin": 70.169,
-   "frase": 11
-  },
-  {
-   "w": "mil",
-   "ini": 70.169,
-   "fin": 70.374,
-   "frase": 11
-  },
-  {
-   "w": "uno,",
-   "ini": 70.374,
-   "fin": 70.63,
-   "frase": 11
-  },
-  {
-   "w": "un",
-   "ini": 70.76,
-   "fin": 70.928,
-   "frase": 11
-  },
-  {
-   "w": "Airbus",
-   "ini": 70.928,
-   "fin": 71.32,
-   "frase": 11
-  },
-  {
-   "w": "A330",
-   "ini": 71.32,
-   "fin": 71.599,
-   "frase": 11
-  },
-  {
-   "w": "planeó",
-   "ini": 71.599,
-   "fin": 71.991,
-   "frase": 11
-  },
-  {
-   "w": "unos",
-   "ini": 71.991,
-   "fin": 72.271,
-   "frase": 11
-  },
-  {
-   "w": "diecinueve",
-   "ini": 72.271,
-   "fin": 72.886,
-   "frase": 11
-  },
-  {
-   "w": "minutos",
-   "ini": 72.886,
-   "fin": 73.334,
-   "frase": 11
   },
   {
    "w": "sin",
-   "ini": 73.334,
-   "fin": 73.558,
-   "frase": 11
+   "ini": 56.467,
+   "fin": 56.702,
+   "frase": 10
   },
   {
-   "w": "motores",
-   "ini": 73.558,
-   "fin": 74.005,
-   "frase": 11
-  },
-  {
-   "w": "y",
-   "ini": 74.005,
-   "fin": 74.117,
-   "frase": 11
-  },
-  {
-   "w": "aterrizó",
-   "ini": 74.117,
-   "fin": 74.621,
-   "frase": 11
-  },
-  {
-   "w": "en",
-   "ini": 74.621,
-   "fin": 74.789,
-   "frase": 11
-  },
-  {
-   "w": "las",
-   "ini": 74.789,
-   "fin": 75.013,
-   "frase": 11
-  },
-  {
-   "w": "Azores.",
-   "ini": 75.013,
-   "fin": 75.46,
-   "frase": 11
-  },
-  {
-   "w": "Sobrevivieron",
-   "ini": 75.56,
-   "fin": 76.227,
-   "frase": 11
-  },
-  {
-   "w": "todos.",
-   "ini": 76.227,
-   "fin": 76.561,
-   "frase": 11
+   "w": "motores.",
+   "ini": 56.702,
+   "fin": 57.23,
+   "frase": 10
   },
   {
    "w": "Y",
-   "ini": 76.681,
-   "fin": 76.811,
+   "ini": 57.55,
+   "fin": 57.661,
+   "frase": 10
+  },
+  {
+   "w": "sin",
+   "ini": 57.661,
+   "fin": 57.882,
+   "frase": 10
+  },
+  {
+   "w": "segunda",
+   "ini": 57.882,
+   "fin": 58.324,
+   "frase": 10
+  },
+  {
+   "w": "oportunidad.",
+   "ini": 58.324,
+   "fin": 59.042,
+   "frase": 10
+  },
+  {
+   "w": "Una",
+   "ini": 59.162,
+   "fin": 59.41,
+   "frase": 11
+  },
+  {
+   "w": "pista,",
+   "ini": 59.41,
+   "fin": 59.842,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 60.182,
+   "fin": 60.377,
+   "frase": 11
+  },
+  {
+   "w": "campo…",
+   "ini": 60.377,
+   "fin": 60.832,
+   "frase": 11
+  },
+  {
+   "w": "o",
+   "ini": 61.202,
+   "fin": 61.323,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 61.323,
+   "fin": 61.503,
+   "frase": 11
+  },
+  {
+   "w": "agua.",
+   "ini": 61.503,
+   "fin": 61.863,
+   "frase": 11
+  },
+  {
+   "w": "El",
+   "ini": 61.983,
+   "fin": 62.143,
    "frase": 12
   },
   {
-   "w": "en",
-   "ini": 76.811,
-   "fin": 77.006,
+   "w": "tren",
+   "ini": 62.143,
+   "fin": 62.41,
    "frase": 12
   },
   {
-   "w": "dos",
-   "ini": 77.006,
-   "fin": 77.266,
+   "w": "baja",
+   "ini": 62.41,
+   "fin": 62.677,
    "frase": 12
   },
   {
-   "w": "mil",
-   "ini": 77.266,
-   "fin": 77.526,
+   "w": "por",
+   "ini": 62.677,
+   "fin": 62.89,
    "frase": 12
   },
   {
-   "w": "nueve,",
-   "ini": 77.526,
-   "fin": 77.981,
+   "w": "su",
+   "ini": 62.89,
+   "fin": 63.05,
    "frase": 12
   },
   {
-   "w": "otro",
-   "ini": 78.321,
-   "fin": 78.696,
+   "w": "propio",
+   "ini": 63.05,
+   "fin": 63.423,
+   "frase": 12
+  },
+  {
+   "w": "peso,",
+   "ini": 63.423,
+   "fin": 63.743,
+   "frase": 12
+  },
+  {
+   "w": "las",
+   "ini": 63.983,
+   "fin": 64.203,
+   "frase": 12
+  },
+  {
+   "w": "ruedas",
+   "ini": 64.203,
+   "fin": 64.586,
+   "frase": 12
+  },
+  {
+   "w": "tocan",
+   "ini": 64.586,
+   "fin": 64.915,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 64.915,
+   "fin": 65.08,
+   "frase": 12
+  },
+  {
+   "w": "suelo…",
+   "ini": 65.08,
+   "fin": 65.463,
+   "frase": 12
+  },
+  {
+   "w": "y",
+   "ini": 65.773,
+   "fin": 65.907,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 65.907,
+   "fin": 66.109,
    "frase": 12
   },
   {
    "w": "avión",
-   "ini": 78.696,
-   "fin": 79.147,
+   "ini": 66.109,
+   "fin": 66.511,
    "frase": 12
   },
   {
-   "w": "amerizó",
-   "ini": 79.147,
-   "fin": 79.748,
+   "w": "frena.",
+   "ini": 66.511,
+   "fin": 66.981,
    "frase": 12
   },
   {
-   "w": "en",
-   "ini": 79.748,
-   "fin": 79.974,
-   "frase": 12
-  },
-  {
-   "w": "el",
-   "ini": 79.974,
-   "fin": 80.199,
-   "frase": 12
-  },
-  {
-   "w": "río",
-   "ini": 80.199,
-   "fin": 80.5,
-   "frase": 12
-  },
-  {
-   "w": "Hudson.",
-   "ini": 80.5,
-   "fin": 81.101,
-   "frase": 12
-  },
-  {
-   "w": "Las",
-   "ini": 81.171,
-   "fin": 81.428,
-   "frase": 12
-  },
-  {
-   "w": "ciento",
-   "ini": 81.428,
-   "fin": 81.878,
-   "frase": 12
-  },
-  {
-   "w": "cincuenta",
-   "ini": 81.878,
-   "fin": 82.521,
-   "frase": 12
-  },
-  {
-   "w": "y",
-   "ini": 82.521,
-   "fin": 82.65,
-   "frase": 12
-  },
-  {
-   "w": "cinco",
-   "ini": 82.65,
-   "fin": 83.035,
-   "frase": 12
-  },
-  {
-   "w": "personas",
-   "ini": 83.035,
-   "fin": 83.614,
-   "frase": 12
-  },
-  {
-   "w": "a",
-   "ini": 83.614,
-   "fin": 83.743,
-   "frase": 12
-  },
-  {
-   "w": "bordo",
-   "ini": 83.743,
-   "fin": 84.128,
-   "frase": 12
-  },
-  {
-   "w": "sobrevivieron.",
-   "ini": 84.128,
-   "fin": 85.093,
-   "frase": 12
-  },
-  {
-   "w": "Por",
-   "ini": 85.213,
-   "fin": 85.444,
+   "w": "Todo",
+   "ini": 67.101,
+   "fin": 67.386,
    "frase": 13
   },
   {
-   "w": "eso,",
-   "ini": 85.444,
-   "fin": 85.733,
-   "frase": 13
-  },
-  {
-   "w": "cuando",
-   "ini": 85.893,
-   "fin": 86.262,
-   "frase": 13
-  },
-  {
-   "w": "los",
-   "ini": 86.262,
-   "fin": 86.472,
-   "frase": 13
-  },
-  {
-   "w": "dos",
-   "ini": 86.472,
-   "fin": 86.683,
-   "frase": 13
-  },
-  {
-   "w": "motores",
-   "ini": 86.683,
-   "fin": 87.105,
-   "frase": 13
-  },
-  {
-   "w": "se",
-   "ini": 87.105,
-   "fin": 87.263,
-   "frase": 13
-  },
-  {
-   "w": "apagan",
-   "ini": 87.263,
-   "fin": 87.632,
+   "w": "empezó",
+   "ini": 67.386,
+   "fin": 67.786,
    "frase": 13
   },
   {
    "w": "a",
-   "ini": 87.632,
-   "fin": 87.737,
+   "ini": 67.786,
+   "fin": 67.9,
    "frase": 13
   },
   {
    "w": "once",
-   "ini": 87.737,
-   "fin": 88.001,
+   "ini": 67.9,
+   "fin": 68.185,
    "frase": 13
   },
   {
    "w": "mil",
-   "ini": 88.001,
-   "fin": 88.211,
+   "ini": 68.185,
+   "fin": 68.414,
    "frase": 13
   },
   {
-   "w": "metros…",
-   "ini": 88.211,
-   "fin": 88.633,
+   "w": "metros,",
+   "ini": 68.414,
+   "fin": 68.871,
+   "frase": 13
+  },
+  {
+   "w": "cuando",
+   "ini": 68.991,
+   "fin": 69.403,
+   "frase": 13
+  },
+  {
+   "w": "los",
+   "ini": 69.403,
+   "fin": 69.638,
+   "frase": 13
+  },
+  {
+   "w": "dos",
+   "ini": 69.638,
+   "fin": 69.874,
+   "frase": 13
+  },
+  {
+   "w": "motores",
+   "ini": 69.874,
+   "fin": 70.345,
+   "frase": 13
+  },
+  {
+   "w": "se",
+   "ini": 70.345,
+   "fin": 70.522,
+   "frase": 13
+  },
+  {
+   "w": "apagaron.",
+   "ini": 70.522,
+   "fin": 71.111,
+   "frase": 13
+  },
+  {
+   "w": "Porque",
+   "ini": 71.211,
+   "fin": 71.404,
+   "frase": 13
+  },
+  {
+   "w": "aquí,",
+   "ini": 71.404,
+   "fin": 71.571,
    "frase": 13
   },
   {
    "w": "cada",
-   "ini": 89.283,
-   "fin": 89.608,
+   "ini": 71.971,
+   "fin": 72.293,
    "frase": 13
   },
   {
    "w": "segundo",
-   "ini": 89.608,
-   "fin": 90.127,
+   "ini": 72.293,
+   "fin": 72.808,
    "frase": 13
   },
   {
    "w": "cuenta.",
-   "ini": 90.127,
-   "fin": 90.647,
+   "ini": 72.808,
+   "fin": 73.323,
    "frase": 13
   }
  ]

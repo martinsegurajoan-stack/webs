@@ -161,7 +161,7 @@ fx = {"tic": (audio.sfx_tick(False), 0.10), "clic": (audio.sfx_tick(True), 0.6),
       "sube": (sube(), 0.25), "riser": (riser(), 0.22), "apagado": (apagado_fx(), 0.55), "aviso": (aviso_fx(), 0.3), "radio": (radio_fx(), 0.35),
       "intento": (intento_fx(), 0.35), "clunk": (clunk_fx(), 0.7), "helice": (helice_fx(), 0.3), "toma": (toma_fx(), 0.8), "splash": (splash_fx(), 0.6), "caida": (caida_fx(), 0.35)}
 # --- MEZCLA LIMPIA (usuario, 02-11-2026: «no hagas tanto ruido… no se te oye»): la VOZ manda siempre.
-FX_GAIN = 0.35                       # todos los efectos mucho más bajos
+FX_GAIN = 0.16                       # todos los efectos mucho más bajos
 DENSO = {"clic", "lapiz", "tic", "tic2"}
 ult = {}
 for k, t in sorted(json.load(open(os.path.join(BASE, "efectos.json"))), key=lambda e: e[1]):

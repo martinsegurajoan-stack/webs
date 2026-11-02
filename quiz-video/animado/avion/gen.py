@@ -43,7 +43,7 @@ def camara(eid, t0, t1, desde, hasta, ease="sine.inOut"):
     J(f'tl.fromTo("#{eid}-cam", {{x:{x0}, y:{y0}, scale:{s0}}}, {{x:{x1}, y:{y1}, scale:{s1}, duration:{t1 - t0:.2f}, ease:"{ease}", immediateRender:false}}, {t0:.2f});')
 def chip(txt, t, t_out, x, y, color=ICE):
     i = nid("ch")
-    OVR.append(f'<div class="chip" id="{i}" style="left:{x}px;top:{y}px;border-color:{color}"><b style="background:{color}"></b>{txt}</div>')
+    OVR.append(f'<div class="chip" id="{i}" style="left:{x}px;top:{y}px;border-left:6px solid {color}"><b style="background:{color};color:{color}"></b>{txt}</div>')
     pop(f"#{i}", t, 0.4, "opacity:0, x:-30"); fuera(f"#{i}", t_out)
 def fuente(txt, t, t_out):
     i = nid("fu")
@@ -57,228 +57,173 @@ FONDO = '<rect width="1080" height="1920" fill="url(#fondoTec)"/><rect width="10
 
 # tiempos clave para el motor 3D
 K = {f"p{i}": F(i) for i in range(1, 14)}
-K.update(fin=DUR, apagado=P("motores") + 0.2, piedra=P("piedra"), morro=P("morro"), rat=P("aparece"), gira=P("aeropuerto"), toma=P("aterrizo"), amera=P("amerizo"))
-# altímetro del HUD (solo en los planos 3D de crucero): pares (t, metros)
-ALT = [(0, 11000), (K["apagado"], 11000), (F(3), 10850), (F(4), 10850), (F(5), 10300), (F(8), 7400), (F(9), 7100)]
+K.update(fin=DUR, apagado=P("motores") + 0.2, piedra=P("piedra"), morro=P("morro"), intento1=P("encender") + 0.2, intento2=P("vuelven") + 0.2,
+         rat=P("aparece"), tren=P("tren"), toca=P("tocan") + 0.1)
+ALT = [(0, 11000), (K["apagado"], 11000), (F(3), 10900), (F(4), 10800), (F(5), 10300), (F(8), 6400), (F(9), 6200), (F(10), 2600), (F(11), 1500)]
+CIELO = '<rect width="1080" height="1920" fill="url(#cieloOc)"/>'
 
-# ================================================================== 1) GANCHO (3D) — rótulo grande desde el fotograma 0
+# ================================================================== 1) GANCHO (3D): rótulo grande desde el fotograma 0
 OVR.append('<div id="gancho"><div class="g0">A</div><div class="g1">11.000 m</div><div class="g2">DE ALTURA</div></div>')
 J('tl.fromTo("#gancho", {scale:1.12}, {scale:1, duration:0.6, ease:"power3.out", immediateRender:false}, 0);')
 J(f'tl.to("#gancho", {{opacity:0, y:-30, duration:0.35, ease:"power2.in"}}, {P("ahora") - 0.1:.2f});')
-OVR.append('<div id="ecam" class="panel"><div class="et">AVISO</div>'
+OVR.append(f'<div id="ecam" class="nota" style="left:60px;top:1330px;width:540px;--c:{RED}"><div class="nt">AVISO</div>'
            '<div class="er" id="er1"><i></i>MOTOR 1 <span>APAGADO</span></div><div class="er" id="er2"><i></i>MOTOR 2 <span>APAGADO</span></div></div>')
 pop("#ecam", P("apagarse") - 0.3, 0.3, "opacity:0, x:-30")
 J(f'tl.set("#er1, #er2", {{opacity:0}}, 0); tl.set("#er1", {{opacity:1}}, {P("apagarse") - 0.2:.2f}); tl.set("#er2", {{opacity:1}}, {P("apagarse") + 0.1:.2f});')
 J(f'tl.fromTo("#ecam .er i", {{opacity:1}}, {{opacity:0.25, duration:0.25, yoyo:true, repeat:9, ease:"none", immediateRender:false}}, {P("apagarse"):.2f});')
 fuera("#ecam", F(2) - 0.05)
-FX.append(("apagado", K["apagado"])); FX.append(("aviso", P("apagarse") - 0.2))
-OVR.append(f'<div id="cuenta" class="panel"><div class="ct">CADA SEGUNDO CUENTA</div></div>')
+FX.append(("apagado", K["apagado"]))
+OVR.append(f'<div id="cuenta" class="nota" style="left:60px;top:1560px;--c:{AMB}"><div class="ct">CADA SEGUNDO CUENTA</div></div>')
 pop("#cuenta", P("segundo") - 0.1, 0.3, "opacity:0, scale:1.15"); fuera("#cuenta", F(2) - 0.05)
-
-# HUD de altitud (planos 3D 2, 4 y 8)
-OVR.append('<div id="hud"><div class="hl">ALTITUD</div><div class="hn"><span id="hudn">11.000</span><small> m</small></div><div class="hs">SIN MOTORES</div></div>')
+OVR.append('<div id="hud" class="nota" style="--c:#9fdcff"><div class="nt">ALTITUD</div><div class="hn"><span id="hudn">11.000</span><small> m</small></div><div class="hs">SIN MOTORES</div></div>')
 J('tl.set("#hud", {opacity:0}, 0);')
-for a, b in ((F(2), F(3)), (F(4), F(5)), (F(8), F(9))):
+for a, b in ((F(2), F(3)), (F(4), F(5)), (F(8), F(9)), (F(10), F(11))):
     J(f'tl.set("#hud", {{opacity:1}}, {a:.2f}); tl.set("#hud", {{opacity:0}}, {b:.2f});')
 
-# ================================================================== 2) NO CAE COMO UNA PIEDRA (3D)
-chip("TRAYECTORIA DE PLANEO", P("planeador") - 0.9, F(3) - 0.1, 60, 1360, ICE)
-chip("UNA PIEDRA CAERÍA RECTA", P("piedra") - 0.2, F(3) - 0.1, 60, 1444, RED)
-FX.append(("caida", P("piedra")))
+# ================================================================== 2) ALARMAS + NO CAE (3D)
+OVR.append('<div id="alarma"></div>')
+J(f'tl.set("#alarma", {{opacity:0}}, 0); tl.to("#alarma", {{opacity:1, duration:0.18, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("alarmas") - 0.6:.2f});')
+FX.append(("aviso", P("alarmas") - 0.6))
+chip("UNA PIEDRA CAERÍA RECTA", P("piedra") - 0.3, F(3) - 0.1, 60, 1380, RED)
+chip("EL AVIÓN PLANEA", P("planeador") - 0.3, F(3) - 0.1, 60, 1470, ICE)
 
-# ================================================================== 3) SUSTENTACIÓN: corte del ala con flujo de aire (2D)
-f3 = F(3); niebla(f3)
-perfil = "M160,1050 C210,940 430,900 610,930 C770,958 880,1018 930,1052 C860,1064 610,1084 410,1080 C260,1076 185,1066 160,1050 Z"
-lineas = []
-for k in (-4, -3, -2, -1, 1, 2, 3, 4):
-    y0 = 1050 + k * 92
-    if k < 0:
-        A = 150 / abs(k) ** 0.7
-        d = f"M-200,{y0} L120,{y0} C330,{y0 - A} 760,{y0 - A * 0.75} 980,{y0} L1300,{y0}"
-        lineas.append(f'<path class="fl3a" d="{d}" stroke="{ICE}" stroke-width="5" fill="none" stroke-dasharray="46 34" opacity="{0.95 - 0.12 * abs(k):.2f}"/>')
-    else:
-        A = 44 / k
-        d = f"M-200,{y0} L120,{y0} C330,{y0 + A} 760,{y0 + A} 980,{y0} L1300,{y0}"
-        lineas.append(f'<path class="fl3b" d="{d}" stroke="#7aa6cc" stroke-width="5" fill="none" stroke-dasharray="46 34" opacity="{0.9 - 0.12 * k:.2f}"/>')
-e3 = [FONDO, "".join(lineas),
-      f'<g transform="rotate(-6 545 1050)"><path d="{perfil}" fill="url(#alaG)" stroke="#e9f1fb" stroke-width="4"/><path d="M200,1040 C400,960 700,960 900,1046" stroke="#ffffff" stroke-width="3" opacity="0.25" fill="none"/></g>',
-      f'<g id="sus3"><path d="M545,1000 L545,560" stroke="{GRN}" stroke-width="22" stroke-linecap="round"/><path d="M490,610 L545,520 L600,610 Z" fill="{GRN}"/></g>',
-      f'<text id="sust3" x="580" y="600" font-family="Inter" font-weight="900" font-size="46" fill="{GRN}">SUSTENTACIÓN</text>',
-      f'<g id="pr3a" opacity="0"><text x="830" y="790" text-anchor="end" font-family="Inter" font-weight="800" font-size="32" fill="{ICE}">aire más rápido</text><text x="830" y="830" text-anchor="end" font-family="Inter" font-weight="700" font-size="28" fill="{MUTED}">menos presión</text></g>',
-      f'<g id="pr3b" opacity="0"><text x="830" y="1310" text-anchor="end" font-family="Inter" font-weight="800" font-size="32" fill="#7aa6cc">aire más lento</text><text x="830" y="1350" text-anchor="end" font-family="Inter" font-weight="700" font-size="28" fill="{MUTED}">más presión</text></g>']
-escena("e3", "".join(e3))
-mostrar("e3", f3, F(4))
-camara("e3", f3, F(4), (0, 0, 1.0), (0, -20, 1.06))
-J(f'tl.fromTo(".fl3a", {{strokeDashoffset:0}}, {{strokeDashoffset:-1600, duration:{F(4) - f3:.2f}, ease:"none", immediateRender:false}}, {f3:.2f});')
-J(f'tl.fromTo(".fl3b", {{strokeDashoffset:0}}, {{strokeDashoffset:-900, duration:{F(4) - f3:.2f}, ease:"none", immediateRender:false}}, {f3:.2f});')
-J(f'tl.to("#pr3a", {{opacity:1, duration:0.4}}, {P("alas") - 0.2:.2f}); tl.to("#pr3b", {{opacity:1, duration:0.4}}, {P("alas") + 0.3:.2f});')
-J(f'tl.set("#sus3, #sust3", {{opacity:0}}, 0); tl.fromTo("#sus3", {{opacity:1, scaleY:0}}, {{scaleY:1, svgOrigin:"545 1000", duration:0.8, ease:"back.out(1.5)", immediateRender:false}}, {P("generando") - 0.2:.2f}); tl.to("#sust3", {{opacity:1, duration:0.3}}, {P("sustentacion") - 0.1:.2f});')
-FX.append(("sube", P("generando") - 0.2))
-OVR.append(f'<div id="vel3" class="panel vel"><div class="pt">VELOCIDAD</div><div class="vb"><i id="vb3"></i></div><div class="vs">suficiente → el ala sustenta</div></div>')
-pop("#vel3", P("velocidad") - 0.3, 0.4, "opacity:0, x:-30")
-J(f'tl.fromTo("#vb3", {{scaleX:0}}, {{scaleX:0.78, transformOrigin:"0 50%", duration:1.0, ease:"power3.out", immediateRender:false}}, {P("velocidad"):.2f});')
-fuera("#vel3", F(4) - 0.1)
+# ================================================================== 3) SOBRE EL ALA (3D, líneas de flujo)
+chip("AIRE RÁPIDO SOBRE EL ALA", P("rapido") - 0.3, F(4) - 0.1, 60, 1380, ICE)
+chip("= SUSTENTACIÓN", P("volando") - 0.3, F(4) - 0.1, 60, 1470, GRN)
 
 # ================================================================== 4) EL MORRO BAJA (3D)
-chip("EL MORRO BAJA PARA NO PERDER VELOCIDAD", P("morro") - 0.3, F(5) - 0.1, 60, 1360, AMB)
-chip("SE CAMBIA ALTURA POR VELOCIDAD", P("precio") - 0.2, F(5) - 0.1, 60, 1444, ICE)
+chip("EL MORRO BAJA PARA NO PERDER VELOCIDAD", P("morro") - 0.3, F(5) - 0.1, 60, 1380, AMB)
+chip("EL SUELO SE ACERCA", P("suelo") - 0.2, F(5) - 0.1, 60, 1470, RED)
 
-# ================================================================== 5) FINURA: 1 km de bajada = más de 15 km de avance (2D)
-f5 = F(5)
-avion2d = '<path d="M0,0 L-70,-6 L-84,-30 L-74,-30 L-52,-8 L-10,-8 L-34,-40 L-18,-40 L22,-8 L60,-6 Q78,0 60,6 L-70,6 Z" fill="#e9f1fb"/>'
-regla = "".join(f'<path d="M{100 + i * 60},1000 L{100 + i * 60},{1016 if i % 5 else 1030}" stroke="#4a6080" stroke-width="3"/>' for i in range(16))
-regla += "".join(f'<text x="{100 + i * 60}" y="1070" text-anchor="middle" font-family="Inter" font-weight="800" font-size="28" fill="{MUTED}">{i} km</text>' for i in (0, 5, 10, 15))
-e5 = [FONDO, '<path d="M60,1000 L1040,1000" stroke="#4a6080" stroke-width="3"/>', regla,
-      f'<path id="glide5" d="M100,880 L1000,940" stroke="{ICE}" stroke-width="6" stroke-dasharray="1" pathLength="1" style="stroke-dashoffset:1"/>',
-      f'<g id="av5" transform="translate(100,880) rotate(4)">{avion2d}</g>',
-      f'<g id="km5" opacity="0"><path d="M1030,880 L1030,940 M1018,880 L1042,880 M1018,940 L1042,940" stroke="{AMB}" stroke-width="5"/><text x="1010" y="860" text-anchor="end" font-family="Inter" font-weight="900" font-size="40" fill="{AMB}">1 km ↓</text></g>',
-      f'<g id="mapa5" opacity="0"><circle cx="540" cy="1420" r="250" fill="#0e1a2e" stroke="#2b3d5c" stroke-width="3"/>'
-      f'<circle id="alc5" cx="540" cy="1420" r="230" fill="{ICE}" fill-opacity="0.10" stroke="{ICE}" stroke-width="4" stroke-dasharray="14 10"/>'
-      f'<g transform="translate(540,1420) rotate(-90) scale(0.55)">{avion2d}</g>'
-      + "".join(f'<g><circle cx="{x}" cy="{y}" r="11" fill="{GRN}"/><path d="M{x - 18},{y} L{x + 18},{y}" stroke="#0e1a2e" stroke-width="4"/></g>' for x, y in ((420, 1300), (690, 1510), (610, 1260)))
-      + f'<text x="540" y="1710" text-anchor="middle" font-family="Inter" font-weight="800" font-size="30" fill="#c9d8ea">alcance planeando</text></g>']
+# ================================================================== 5) EL MARGEN: 1 km de altura ≈ +15 km de vuelo (2D cinematográfico)
+f5 = F(5); niebla(f5)
+avion2d = ('<path d="M-90,0 C-90,-8 -80,-12 -60,-12 L70,-12 C88,-12 98,-6 102,0 C98,6 88,9 70,9 L-60,9 C-78,9 -86,5 -90,0 Z" fill="url(#fusG)"/>'
+           '<path d="M-66,-12 L-92,-48 L-78,-48 L-48,-12 Z" fill="#1d3a6e"/><path d="M-82,-2 L-104,-2 L-100,4 L-80,4 Z" fill="#cfd6df"/>'
+           '<path d="M18,3 L-16,18 L-2,18 L34,3 Z" fill="#cfd6df"/><rect x="0" y="9" width="26" height="9" rx="4.5" fill="#e9eef4"/>'
+           + "".join(f'<circle cx="{x}" cy="-4" r="1.6" fill="#1a2230"/>' for x in range(-50, 66, 7)) + '<path d="M80,-7 L90,-7 L93,-3 L82,-3 Z" fill="#1a2230"/>')
+montes = ('<path d="M0,1250 L120,1180 L220,1220 L340,1150 L470,1215 L600,1160 L720,1225 L860,1170 L1000,1230 L1080,1200 L1080,1920 L0,1920 Z" fill="#3a2a3c"/>'
+          '<path d="M0,1300 L160,1260 L300,1290 L460,1250 L640,1300 L800,1262 L960,1295 L1080,1270 L1080,1920 L0,1920 Z" fill="#251c2a"/>')
+regla = "".join(f'<path d="M{100 + i * 58},1330 L{100 + i * 58},{1346 if i % 5 else 1362}" stroke="#ffffff" stroke-opacity="0.7" stroke-width="3"/>' for i in range(16))
+regla += "".join(f'<text x="{100 + i * 58}" y="1400" text-anchor="middle" font-family="Inter" font-weight="800" font-size="28" fill="#ffffff" fill-opacity="0.8">{i} km</text>' for i in (0, 5, 10, 15))
+e5 = [CIELO, '<circle cx="860" cy="1150" r="70" fill="#ffd9a8" opacity="0.9"/><circle cx="860" cy="1150" r="190" fill="#ffd9a8" opacity="0.15"/>',
+      "".join(f'<ellipse cx="{x}" cy="{y}" rx="{rx}" ry="{ry}" fill="#ffe1cf" opacity="{o}"/>' for x, y, rx, ry, o in ((160, 980, 220, 26, 0.35), (700, 1040, 300, 30, 0.3), (420, 1110, 260, 22, 0.25))),
+      montes, '<path d="M70,1330 L1010,1330" stroke="#ffffff" stroke-opacity="0.6" stroke-width="3"/>', regla,
+      f'<path d="M100,740 L970,800" stroke="{ICE}" stroke-width="14" opacity="0.25" stroke-linecap="round"/>',
+      f'<path id="glide5" d="M100,740 L970,800" stroke="#ffffff" stroke-width="5" stroke-dasharray="1" pathLength="1" style="stroke-dashoffset:1"/>',
+      f'<g id="av5" transform="translate(100,740) rotate(4) scale(1.3)">{avion2d}</g>',
+      f'<g id="km5" opacity="0"><path d="M1010,740 L1010,800 M996,740 L1024,740 M996,800 L1024,800" stroke="{AMB}" stroke-width="5"/><text x="990" y="716" text-anchor="end" font-family="Inter" font-weight="900" font-size="42" fill="{AMB}">1 km de altura</text></g>',
+      f'<rect x="100" y="1300" width="870" height="12" rx="6" fill="#ffffff" opacity="0.15"/><rect id="mar5" x="100" y="1300" width="870" height="12" rx="6" fill="{AMB}"/>']
 escena("e5", "".join(e5))
 mostrar("e5", f5, F(6))
 camara("e5", f5, F(6), (0, 30, 1.0), (0, -10, 1.04))
-J(f'tl.to("#glide5", {{strokeDashoffset:0, duration:2.6, ease:"power1.inOut"}}, {P("avanzar") - 0.3:.2f}); tl.to("#av5", {{x:900, y:60, duration:2.6, ease:"power1.inOut"}}, {P("avanzar") - 0.3:.2f});')
-J(f'tl.to("#km5", {{opacity:1, duration:0.3}}, {P("kilometro") - 0.3:.2f});')
-OVR.append('<div id="fin5" class="dato"><div class="dk">FINURA DE PLANEO</div><div class="dn"><span>+15 km</span><small> por cada km de altura</small></div><div class="ds">Orientativo: depende del modelo, el peso y el viento</div></div>')
+J(f'tl.to("#km5", {{opacity:1, duration:0.3}}, {P("altura") - 0.3:.2f});')
+J(f'tl.to("#glide5", {{strokeDashoffset:0, duration:2.4, ease:"power1.inOut"}}, {P("quince") - 0.6:.2f}); tl.to("#av5", {{x:870, y:60, duration:2.4, ease:"power1.inOut"}}, {P("quince") - 0.6:.2f});')
+J(f'tl.fromTo("#mar5", {{scaleX:0}}, {{scaleX:1, transformOrigin:"0 50%", duration:2.4, ease:"power1.inOut", immediateRender:false}}, {P("quince") - 0.6:.2f}); tl.to("#mar5", {{fill:"{RED}", duration:0.5}}, {P("margen") - 0.2:.2f});')
+OVR.append(f'<div id="fin5" class="nota" style="left:60px;right:60px;top:1470px;--c:{ICE}"><div class="nt">SEGÚN EL AVIÓN</div><div class="dn">+15 km <small>por cada km de altura</small></div></div>')
 pop("#fin5", P("quince") - 0.3, 0.45)
-FX.append(("golpe", P("quince") - 0.1))
-J(f'tl.fromTo("#mapa5", {{opacity:0, scale:0.85}}, {{opacity:1, scale:1, svgOrigin:"540 1420", duration:0.5, ease:"power3.out", immediateRender:false}}, {P("baja", 2) - 0.2:.2f}); tl.fromTo("#alc5", {{scale:0}}, {{scale:1, svgOrigin:"540 1420", duration:1.0, ease:"power2.out", immediateRender:false}}, {P("baja", 2):.2f});')
-J(f'tl.to("#fin5", {{y:-760, duration:0.5, ease:"power2.inOut"}}, {P("baja", 2) - 0.3:.2f});')
-fuera("#fin5", F(6) - 0.1)
+OVR.append(f'<div id="mg5" class="nota" style="left:60px;top:560px;--c:{RED}"><div class="ct" style="color:#fff">TODO SU MARGEN</div></div>')
+pop("#mg5", P("margen") - 0.3, 0.35, "opacity:0, x:-30")
+fuera("#fin5", F(6) - 0.1); fuera("#mg5", F(6) - 0.1)
 
-# ================================================================== 6) CABINA: velocidad de planeo, MAYDAY, buscar dónde (2D)
+# ================================================================== 6) CABINA (3D fuera + panel 2D encima)
 f6 = F(6); niebla(f6)
-nub6 = "".join(f'<ellipse class="nb6" cx="{x}" cy="{y}" rx="{rx}" ry="{ry}" fill="#ffe4d2" opacity="{o}"/>' for x, y, rx, ry, o in
-               ((100, 760, 260, 40, 0.55), (520, 790, 320, 46, 0.6), (930, 770, 280, 40, 0.5), (300, 820, 360, 50, 0.7), (800, 830, 340, 52, 0.7), (1300, 800, 300, 44, 0.55)))
-pfd = (f'<g transform="translate(70,1180)"><rect width="440" height="420" rx="10" fill="#05070b" stroke="#2a3240" stroke-width="5"/>'
-       f'<clipPath id="pfdC"><rect x="10" y="10" width="420" height="400" rx="6"/></clipPath><g clip-path="url(#pfdC)"><g id="hor6"><rect x="-200" y="-300" width="840" height="510" fill="#2c6fb8"/><rect x="-200" y="210" width="840" height="510" fill="#7a4a24"/><path d="M-200,210 L640,210" stroke="#fff" stroke-width="3"/></g>'
-       f'<path d="M150,210 L200,210 M240,210 L290,210" stroke="{AMB}" stroke-width="8"/><circle cx="220" cy="210" r="6" fill="{AMB}"/>'
-       f'<rect x="10" y="10" width="78" height="400" fill="#000" opacity="0.55"/><rect x="352" y="10" width="78" height="400" fill="#000" opacity="0.55"/>'
-       f'<text x="48" y="218" text-anchor="middle" font-family="Courier New" font-weight="700" font-size="26" fill="{GRN}">VEL</text>'
-       f'<text id="alt6" x="391" y="218" text-anchor="middle" font-family="Courier New" font-weight="700" font-size="24" fill="#fff">8600</text>'
-       f'<path d="M352,195 L430,195 L430,230 L352,230 Z" fill="none" stroke="#fff" stroke-width="2"/></g>'
-       f'<text x="220" y="450" text-anchor="middle" font-family="Inter" font-weight="800" font-size="24" fill="{MUTED}">VELOCIDAD DE MEJOR PLANEO</text></g>')
-nd = (f'<g transform="translate(570,1180)"><rect width="440" height="420" rx="10" fill="#05070b" stroke="#2a3240" stroke-width="5"/>'
-      + "".join(f'<path d="M{220 - r},{380} A{r},{r} 0 0 1 {220 + r},380" stroke="#3a4a60" stroke-width="2" fill="none"/>' for r in (110, 220, 330))
-      + f'<path d="M220,380 L220,60" stroke="{GRN}" stroke-width="2" stroke-dasharray="8 6"/><path d="M205,385 L220,350 L235,385 Z" fill="#fff"/>'
-      + "".join(f'<g class="apt6"><circle cx="{x}" cy="{y}" r="13" fill="none" stroke="#c78bff" stroke-width="4"/><text x="{x + 20}" y="{y + 8}" font-family="Courier New" font-weight="700" font-size="22" fill="#c78bff">{n}</text></g>' for x, y, n in ((120, 170, "APT1"), (330, 120, "APT2"), (300, 260, "APT3")))
-      + f'<text x="220" y="450" text-anchor="middle" font-family="Inter" font-weight="800" font-size="24" fill="{MUTED}">MAPA: AEROPUERTOS CERCANOS</text></g>')
-e6 = ['<rect width="1080" height="1920" fill="#0b0e14"/>', '<rect x="0" y="300" width="1080" height="640" fill="url(#cieloCab)"/>',
-      '<g id="mundo6">' + nub6 + '</g>',
-      '<path d="M0,300 L1080,300 L1080,380 L760,360 L540,420 L320,360 L0,380 Z" fill="#1a1f28"/><path d="M520,420 L560,420 L600,940 L480,940 Z" fill="#1a1f28"/>'
-      '<path d="M0,380 L320,360 L480,940 L0,940 Z" fill="none" stroke="#2a313d" stroke-width="18"/><path d="M1080,380 L760,360 L600,940 L1080,940 Z" fill="none" stroke="#2a313d" stroke-width="18"/>',
-      '<rect x="0" y="930" width="1080" height="150" fill="#1d222b"/><rect x="0" y="930" width="1080" height="10" fill="#2b313c"/>',
-      f'<g id="mc6"><rect x="80" y="975" width="170" height="70" rx="8" fill="#3a2a10"/><text x="165" y="1020" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="#5a4318">AVISO</text></g>',
-      f'<g id="mw6"><rect x="830" y="975" width="170" height="70" rx="8" fill="#3a1414"/><text x="915" y="1020" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="#5a2020">ALARMA</text></g>',
-      f'<rect id="mcl6" x="80" y="975" width="170" height="70" rx="8" fill="{AMB}" opacity="0"/><rect id="mwl6" x="830" y="975" width="170" height="70" rx="8" fill="{RED}" opacity="0"/>',
-      '<rect x="0" y="1080" width="1080" height="840" fill="#232933"/>', pfd, nd,
-      f'<g transform="translate(330,1650)"><rect width="420" height="110" rx="10" fill="#05070b" stroke="#2a3240" stroke-width="5"/><text x="30" y="70" font-family="Courier New" font-weight="700" font-size="28" fill="{MUTED}">TRANSPONDEDOR</text>'
-      f'<text id="sq6" x="390" y="72" text-anchor="end" font-family="Courier New" font-weight="700" font-size="44" fill="{GRN}">2000</text><text id="sq6b" x="390" y="72" text-anchor="end" font-family="Courier New" font-weight="700" font-size="44" fill="{AMB}" opacity="0">7700</text></g>']
+def pantalla(x, y, w, h, cuerpo, rot=""):
+    return (f'<g transform="translate({x},{y})"><rect x="-16" y="-16" width="{w + 32}" height="{h + 32}" rx="14" fill="#15181d" stroke="#3a414c" stroke-width="2"/>'
+            + "".join(f'<circle cx="{cx}" cy="{cy}" r="4" fill="#4a525e"/>' for cx, cy in ((-6, -6), (w + 6, -6), (-6, h + 6), (w + 6, h + 6)))
+            + f'<clipPath id="c{x}{y}"><rect width="{w}" height="{h}" rx="6"/></clipPath><g clip-path="url(#c{x}{y})"><rect width="{w}" height="{h}" fill="#04060a"/>{cuerpo}</g>'
+            f'<rect width="{w}" height="{h}" rx="6" fill="url(#vidrioP)"/></g>')
+cinta_v = "".join(f'<text x="58" y="{230 - k * 44}" text-anchor="end" font-family="Courier New" font-weight="700" font-size="26" fill="#e6f0ff">{220 + k * 10}</text>' for k in range(-6, 7))
+cinta_a = "".join(f'<text x="386" y="{230 - k * 44}" text-anchor="end" font-family="Courier New" font-weight="700" font-size="24" fill="#e6f0ff">{8000 + k * 100}</text>' for k in range(-30, 31))
+pfd = (f'<g id="hor6"><rect x="-300" y="-400" width="1040" height="620" fill="url(#pfdCielo)"/><rect x="-300" y="220" width="1040" height="620" fill="url(#pfdTierra)"/><path d="M-300,220 L740,220" stroke="#fff" stroke-width="3"/>'
+       + "".join(f'<path d="M{220 - w},{220 - k * 40} L{220 + w},{220 - k * 40}" stroke="#fff" stroke-width="2" opacity="0.8"/>' for k, w in ((1, 30), (2, 55), (3, 30), (-1, 30), (-2, 55))) + '</g>'
+       f'<path d="M150,220 L196,220 L196,232 M290,220 L244,220 L244,232" stroke="{AMB}" stroke-width="7" fill="none"/><rect x="214" y="214" width="12" height="12" fill="{AMB}"/>'
+       f'<rect x="0" y="0" width="76" height="440" fill="#1b2230" opacity="0.85"/><g id="cv6">{cinta_v}</g><rect x="0" y="204" width="76" height="36" fill="none" stroke="#fff" stroke-width="2"/>'
+       f'<path id="bug6" d="M76,206 L92,222 L76,238 Z" fill="#ff4fd8"/>'
+       f'<rect x="324" y="0" width="76" height="440" fill="#1b2230" opacity="0.85"/><g id="ca6">{cinta_a}</g><rect x="318" y="204" width="82" height="36" fill="#04060a" stroke="#fff" stroke-width="2"/>')
+nd = ("".join(f'<path d="M{220 - r},400 A{r},{r} 0 0 1 {220 + r},400" stroke="#56657c" stroke-width="2" fill="none" stroke-dasharray="6 6"/>' for r in (120, 240, 360))
+      + '<path d="M60,90 A230,230 0 0 1 380,90" stroke="#e6f0ff" stroke-width="2" fill="none"/>'
+      + "".join(f'<path d="M{220 + 230 * math.sin(math.radians(a)):.0f},{320 - 230 * math.cos(math.radians(a)):.0f} L{220 + 244 * math.sin(math.radians(a)):.0f},{320 - 244 * math.cos(math.radians(a)):.0f}" stroke="#e6f0ff" stroke-width="2"/>' for a in range(-40, 41, 10))
+      + f'<path d="M220,400 L220,60" stroke="{GRN}" stroke-width="2" stroke-dasharray="8 6"/><path d="M204,410 L220,372 L236,410 Z" fill="#ffd34a"/>'
+      + "".join(f'<g class="apt6"><circle cx="{x}" cy="{y}" r="12" fill="none" stroke="#ff4fd8" stroke-width="4"/><text x="{x + 18}" y="{y + 8}" font-family="Courier New" font-weight="700" font-size="20" fill="#ff4fd8">{n}</text></g>' for x, y, n in ((110, 180, "LPLA"), (330, 130, "LPPD"), (300, 270, "LPHR")))
+      + '<text x="16" y="32" font-family="Courier New" font-weight="700" font-size="20" fill="#e6f0ff">GS 230  TAS 240</text>')
+ecam = (f'<text x="24" y="46" font-family="Courier New" font-weight="700" font-size="30" fill="{AMB}">MOTOR 1 APAGADO</text><text x="24" y="90" font-family="Courier New" font-weight="700" font-size="30" fill="{AMB}">MOTOR 2 APAGADO</text>'
+        f'<text x="24" y="140" font-family="Courier New" font-weight="700" font-size="24" fill="#7fd6ff">- VELOCIDAD DE PLANEO</text><text x="24" y="176" font-family="Courier New" font-weight="700" font-size="24" fill="#7fd6ff">- REENCENDIDO ..........</text>')
+e6 = ['<path d="M0,0 L1080,0 L1080,240 L0,240 Z" fill="#14171c"/>',
+      '<path d="M0,240 L470,268 L520,860 L0,860 Z M610,860 L560,268 L1080,240 L1080,860 Z" fill="url(#vidrioC)"/>',
+      '<path d="M0,0 L1080,0 L1080,240 L560,268 L520,268 L0,240 Z" fill="#191c22"/><path d="M470,268 L520,268 L560,860 L520,860 Z M520,268 L560,268 L610,860 L560,860 Z" fill="#1d2128"/>',
+      '<path d="M0,240 L470,268 L520,860" stroke="#2b3038" stroke-width="22" fill="none"/><path d="M1080,240 L560,268 L560,860" stroke="#2b3038" stroke-width="22" fill="none"/>',
+      '<path d="M0,860 C300,820 780,820 1080,860 L1080,1000 L0,1000 Z" fill="#20242b"/><path d="M0,862 C300,822 780,822 1080,862" stroke="#3a414c" stroke-width="4" fill="none"/>',
+      '<rect x="300" y="890" width="480" height="70" rx="8" fill="#15181d" stroke="#3a414c" stroke-width="2"/>'
+      + "".join(f'<text x="{340 + k * 120}" y="937" font-family="Courier New" font-weight="700" font-size="26" fill="#ffb547">{v}</text>' for k, v in enumerate(("SPD", "HDG", "ALT", "V/S"))),
+      f'<rect id="mcl6" x="70" y="895" width="170" height="60" rx="8" fill="#3a2a10"/><text x="155" y="934" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="#1d1408">CAUTION</text>',
+      f'<rect id="mwl6" x="840" y="895" width="170" height="60" rx="8" fill="#3a1414"/><text x="925" y="934" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="#1d0a0a">WARNING</text>',
+      '<rect x="0" y="1000" width="1080" height="920" fill="url(#panelG)"/>',
+      pantalla(50, 1060, 440, 440, pfd), pantalla(590, 1060, 440, 440, nd), pantalla(240, 1580, 600, 200, ecam)]
 escena("e6", "".join(e6))
 mostrar("e6", f6, F(7))
-camara("e6", f6, F(7), (0, 0, 1.0), (0, -60, 1.1))
-J(f'tl.fromTo("#mundo6", {{x:0, rotation:0}}, {{x:-420, rotation:-3, svgOrigin:"540 800", duration:{F(7) - f6:.2f}, ease:"none", immediateRender:false}}, {f6:.2f});')
-J(f'tl.fromTo("#hor6", {{y:0, rotation:0}}, {{y:28, rotation:3, svgOrigin:"220 210", duration:{F(7) - f6:.2f}, ease:"sine.inOut", immediateRender:false}}, {f6:.2f});')
-J(f'tl.to("#mcl6", {{opacity:0.9, duration:0.3, yoyo:true, repeat:{int((F(7) - f6) / 0.6)}, ease:"none"}}, {f6:.2f}); tl.to("#mwl6", {{opacity:0.85, duration:0.3, yoyo:true, repeat:5, ease:"none"}}, {f6 + 0.15:.2f});')
-J(f'tl.set("#sq6", {{opacity:0}}, {P("emergencia") - 0.2:.2f}); tl.set("#sq6b", {{opacity:1}}, {P("emergencia") - 0.2:.2f});')
-J(f'tl.fromTo(".apt6", {{opacity:0.25}}, {{opacity:1, duration:0.2, stagger:0.2, immediateRender:false}}, {P("buscan") - 0.1:.2f}); tl.set(".apt6", {{opacity:0.25}}, 0);')
-OVR.append(f'<div id="may6" class="panel radio"><div class="pt">RADIO</div><div class="rm">MAYDAY · MAYDAY · MAYDAY</div><div class="rs">emergencia declarada · código 7700</div></div>')
-pop("#may6", P("declaran") - 0.3, 0.35, "opacity:0, x:-30"); fuera("#may6", F(7) - 0.1)
-FX.append(("radio", P("declaran") - 0.3)); FX.append(("aviso", f6 + 0.1))
-chip("1 · VELOCIDAD DE MEJOR PLANEO", P("fijan") - 0.2, F(7) - 0.1, 60, 470, GRN)
+J(f'tl.fromTo("#hor6", {{y:0, rotation:0}}, {{y:34, rotation:2.5, svgOrigin:"220 220", duration:{F(7) - f6:.2f}, ease:"sine.inOut", immediateRender:false}}, {f6:.2f});')
+J(f'tl.fromTo("#ca6", {{y:0}}, {{y:{44 * 9}, duration:{F(7) - f6:.2f}, ease:"none", immediateRender:false}}, {f6:.2f});')
+J(f'tl.fromTo("#cv6", {{y:0}}, {{y:8, duration:0.8, yoyo:true, repeat:{int((F(7) - f6) / 0.8)}, ease:"sine.inOut", immediateRender:false}}, {f6:.2f});')
+J(f'tl.to("#mcl6", {{fill:"{AMB}", duration:0.3, yoyo:true, repeat:{int((F(7) - f6) / 0.6)}, ease:"none"}}, {f6:.2f}); tl.to("#mwl6", {{fill:"{RED}", duration:0.3, yoyo:true, repeat:7, ease:"none"}}, {f6 + 0.15:.2f});')
+J(f'tl.fromTo("#bug6", {{scale:1}}, {{scale:1.6, svgOrigin:"80 222", duration:0.25, yoyo:true, repeat:3, immediateRender:false}}, {P("velocidad", 2) - 0.1:.2f});')
+J(f'tl.fromTo(".apt6", {{opacity:0.25}}, {{opacity:1, duration:0.2, stagger:0.2, immediateRender:false}}, {P("buscar") - 0.1:.2f}); tl.set(".apt6", {{opacity:0.25}}, 0);')
+chip("VELOCIDAD DE PLANEO", P("velocidad", 2) - 0.2, F(7) - 0.1, 40, 560, GRN)
+OVR.append(f'<div id="may6" class="nota" style="left:40px;top:650px;--c:{RED}"><div class="nt">RADIO</div><div class="rm">MAYDAY MAYDAY</div><div class="rs">emergencia · 7700</div></div>')
+pop("#may6", P("llamada") - 0.2, 0.35, "opacity:0, x:-30"); fuera("#may6", F(7) - 0.1)
+FX.append(("radio", P("llamada") - 0.2))
 
-# ================================================================== 7) LISTA DE EMERGENCIA + INTENTO DE REENCENDIDO (2D)
-f7 = F(7); tm = P("con") - 0.2
-items = (("VELOCIDAD DE MEJOR PLANEO", P("vez")), ("EMERGENCIA DECLARADA", P("siguen", 2) + 0.2), ("REENCENDIDO MOTOR 1", P("intentar")), ("REENCENDIDO MOTOR 2", P("encender")))
-e7 = [FONDO, '<rect x="70" y="560" width="940" height="760" rx="16" fill="#f4efe2"/><rect x="70" y="560" width="940" height="110" rx="16" fill="#c0392b"/><rect x="70" y="640" width="940" height="30" fill="#c0392b"/>',
-      '<text x="110" y="632" font-family="Inter" font-weight="900" font-size="40" fill="#fff">FALLO DE LOS DOS MOTORES</text>']
-for k, (txt, t) in enumerate(items):
-    y = 760 + k * 130
-    e7.append(f'<g><text x="120" y="{y}" font-family="Courier New" font-weight="700" font-size="38" fill="#1a1a1a">{k + 1}. {txt}</text>'
-              f'<path d="M120,{y + 30} L960,{y + 30}" stroke="#c9c1ad" stroke-width="2" stroke-dasharray="6 6"/>'
-              f'<path id="ok7_{k}" d="M900,{y - 22} L920,{y} L960,{y - 44}" stroke="{"#1e9e5a" if k < 2 else "#c97a10"}" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" style="stroke-dashoffset:1"/></g>')
-e7.append('<text x="120" y="1290" font-family="Inter" font-weight="700" font-size="26" fill="#6a6252">Lista orientativa · cada fabricante tiene la suya</text>')
-escena("e7", "".join(e7))
-mostrar("e7", f7, tm)
-camara("e7", f7, tm, (0, 20, 1.0), (0, -10, 1.04))
-for k, (txt, t) in enumerate(items):
-    J(f'tl.to("#ok7_{k}", {{strokeDashoffset:0, duration:0.3, ease:"power2.out"}}, {t:.2f});'); FX.append(("clic", t))
-# corte del motor: el aire lo hace girar (molinete) o arranque con la APU; chispa que no prende
-aspas = "".join(f'<path d="M0,0 L{230 * math.cos(math.radians(a)):.0f},{230 * math.sin(math.radians(a)):.0f}" stroke="#9fb3cf" stroke-width="22" stroke-linecap="round"/>' for a in range(0, 360, 20))
-e7b = [FONDO,
-       f'<g transform="translate(540,920)"><circle r="290" fill="#0c1424" stroke="#c9d8ea" stroke-width="10"/><circle r="262" fill="none" stroke="#2b3d5c" stroke-width="4"/>'
-       f'<g id="fan7">{aspas}</g><circle r="70" fill="#c9d8ea"/><circle r="70" fill="url(#brillo)"/></g>',
-       "".join(f'<path class="aire7" d="M{-60},{720 + k * 80} L170,{720 + k * 80}" stroke="{ICE}" stroke-width="7" stroke-dasharray="30 22" stroke-linecap="round"/>' for k in range(6)),
-       f'<g id="apu7" opacity="0"><rect x="640" y="1300" width="360" height="130" rx="12" fill="#13213a" stroke="{AMB}" stroke-width="4"/><text x="820" y="1355" text-anchor="middle" font-family="Inter" font-weight="900" font-size="34" fill="{AMB}">APU</text>'
-       f'<text x="820" y="1400" text-anchor="middle" font-family="Inter" font-weight="700" font-size="26" fill="#c9d8ea">unidad auxiliar</text><path id="apuL7" d="M820,1300 C820,1230 700,1230 650,1180" stroke="{AMB}" stroke-width="7" fill="none" stroke-dasharray="20 14"/></g>',
-       f'<g id="chis7" opacity="0"><path d="M540,920 l-30,-50 l20,0 l-20,-50 l45,65 l-22,0 l30,40 Z" fill="#ffe27a"/></g>']
-escena("e7b", "".join(e7b))
-mostrar("e7b", tm, F(8))
-camara("e7b", tm, F(8), (0, 0, 1.06), (0, 0, 1.0))
-J(f'tl.fromTo("#fan7", {{rotation:0}}, {{rotation:540, svgOrigin:"0 0", duration:{F(8) - tm:.2f}, ease:"none", immediateRender:false}}, {tm:.2f});')
-J(f'tl.fromTo(".aire7", {{strokeDashoffset:0}}, {{strokeDashoffset:-260, duration:{F(8) - tm:.2f}, ease:"none", immediateRender:false}}, {tm:.2f});')
-J(f'tl.to("#apu7", {{opacity:1, duration:0.35}}, {P("unidad") - 0.2:.2f}); tl.fromTo("#apuL7", {{strokeDashoffset:0}}, {{strokeDashoffset:-170, duration:2, ease:"none", immediateRender:false}}, {P("unidad"):.2f});')
-J(f'tl.to("#chis7", {{opacity:1, duration:0.05, yoyo:true, repeat:5}}, {P("disponible") - 0.2:.2f});')
-chip("① EL AIRE HACE GIRAR EL MOTOR", P("aire", 2) - 0.3, F(8) - 0.1, 60, 470, ICE)
-chip("② ARRANQUE CON LA APU, SI ESTÁ DISPONIBLE", P("unidad") - 0.2, F(8) - 0.1, 60, 1540, AMB)
-FX.append(("intento", P("disponible") - 0.3))
+# ================================================================== 7) INTENTOS DE ENCENDIDO (3D, el motor por detrás)
+OVR.append(f'<div id="re7" class="nota" style="left:60px;top:1380px;width:760px;--c:{AMB}"><div class="nt">REENCENDIDO</div>'
+           f'<div class="er" id="r71"><i style="background:{AMB}"></i>INTENTO 1 <span id="r71s">…</span></div><div class="er" id="r72"><i style="background:{AMB}"></i>INTENTO 2 <span id="r72s">…</span></div></div>')
+pop("#re7", P("encender") - 0.3, 0.35, "opacity:0, x:-30"); fuera("#re7", F(8) - 0.1)
+J(f'tl.set("#r72", {{opacity:0}}, 0); tl.set("#r72", {{opacity:1}}, {K["intento2"] - 0.2:.2f});')
+J(f'tl.set("#r71s", {{innerHTML:"SIN RESPUESTA"}}, {P("nada") - 0.1:.2f}); tl.set("#r71s", {{innerHTML:"…"}}, 0); tl.set("#r72s", {{innerHTML:"SIN RESPUESTA"}}, {F(8) - 0.5:.2f}); tl.set("#r72s", {{innerHTML:"…"}}, 0);')
+FX.append(("intento", K["intento1"])); FX.append(("intento", K["intento2"]))
 
-# ================================================================== 8) LA RAT (3D, desde abajo)
-chip("RAT · TURBINA DE EMERGENCIA", P("rat") - 0.2, F(9) - 0.1, 60, 1360, AMB)
+# ================================================================== 8) LA RAT (3D)
+chip("RAT · TURBINA DE EMERGENCIA", P("rat") - 0.3, F(9) - 0.1, 60, 1380, AMB)
 FX.append(("clunk", P("aparece") + 0.05)); FX.append(("helice", P("aparece") + 0.6))
 
-# ================================================================== 9) QUÉ HACE LA RAT (2D)
+# ================================================================== 9) QUÉ HACE LA RAT (2D, plano técnico)
 f9 = F(9)
-sil = ('<path d="M540,480 C565,480 575,520 575,560 L575,1440 L540,1520 L505,1440 L505,560 C505,520 515,480 540,480 Z" fill="#c9d8ea"/>'
-       '<path d="M505,900 L90,1160 L90,1210 L505,1060 Z M575,900 L990,1160 L990,1210 L575,1060 Z" fill="#c9d8ea"/>'
-       '<path d="M505,1380 L380,1470 L380,1500 L505,1460 Z M575,1380 L700,1470 L700,1500 L575,1460 Z" fill="#c9d8ea"/>'
-       '<rect x="300" y="1000" width="44" height="120" rx="18" fill="#8796ad"/><rect x="736" y="1000" width="44" height="120" rx="18" fill="#8796ad"/>')
-e9 = [FONDO, sil,
-      f'<g id="ratp9"><circle cx="600" cy="1080" r="20" fill="{AMB}"/><path id="hel9" d="M600,1050 L600,1110" stroke="#fff" stroke-width="6" stroke-linecap="round"/></g>',
-      f'<path class="en9" d="M600,1080 C620,1300 380,1400 230,1560" stroke="{AMB}" stroke-width="8" fill="none" stroke-dasharray="22 16"/>',
-      f'<path class="en9" d="M600,1080 C680,1300 760,1400 850,1560" stroke="{AMB}" stroke-width="8" fill="none" stroke-dasharray="22 16"/>',
-      f'<g id="no9" opacity="0"><path d="M600,1080 C520,1060 420,1060 344,1060" stroke="{RED}" stroke-width="7" fill="none" stroke-dasharray="14 10"/><path d="M600,1080 C660,1060 700,1060 736,1060" stroke="{RED}" stroke-width="7" fill="none" stroke-dasharray="14 10"/>'
-      f'<path d="M296,1000 L348,1052 M348,1000 L296,1052 M732,1000 L784,1052 M784,1000 L732,1052" stroke="{RED}" stroke-width="12" stroke-linecap="round"/></g>']
+sil = ('<path d="M540,470 C566,470 580,520 580,580 L580,1430 C580,1470 560,1520 540,1540 C520,1520 500,1470 500,1430 L500,580 C500,520 514,470 540,470 Z" fill="url(#fusT)"/>'
+       '<path d="M500,880 L110,1150 L110,1196 L500,1050 Z M580,880 L970,1150 L970,1196 L580,1050 Z" fill="url(#alaT)"/>'
+       '<path d="M500,1400 L370,1490 L370,1516 L500,1470 Z M580,1400 L710,1490 L710,1516 L580,1470 Z" fill="url(#alaT)"/>'
+       '<rect x="306" y="980" width="46" height="130" rx="20" fill="#9aa8ba"/><rect x="728" y="980" width="46" height="130" rx="20" fill="#9aa8ba"/>'
+       '<path d="M528,500 L552,500 L556,520 L524,520 Z" fill="#1a2230"/>')
+e9 = ['<rect width="1080" height="1920" fill="url(#cieloAz)"/>', '<rect width="1080" height="1920" fill="url(#rejilla)" opacity="0.35"/>', sil,
+      f'<circle cx="610" cy="1090" r="46" fill="{AMB}" opacity="0.25"/><circle cx="610" cy="1090" r="20" fill="{AMB}"/><path id="hel9" d="M610,1058 L610,1122" stroke="#fff" stroke-width="7" stroke-linecap="round"/>',
+      f'<path class="en9" d="M610,1090 C640,900 580,700 548,540" stroke="{AMB}" stroke-width="18" opacity="0.25" fill="none"/>',
+      f'<path class="en9 en9b" d="M610,1090 C640,900 580,700 548,540" stroke="#ffd690" stroke-width="7" fill="none" stroke-dasharray="20 16"/>',
+      f'<g id="no9" opacity="0"><path d="M610,1090 L352,1045 M610,1090 L728,1045" stroke="{RED}" stroke-width="6" stroke-dasharray="12 10"/>'
+      f'<path d="M300,1020 L358,1078 M358,1020 L300,1078 M722,1020 L780,1078 M780,1020 L722,1078" stroke="{RED}" stroke-width="12" stroke-linecap="round"/></g>']
 escena("e9", "".join(e9))
 mostrar("e9", f9, F(10))
 camara("e9", f9, F(10), (0, -20, 1.0), (0, 10, 1.05))
-J(f'tl.fromTo("#hel9", {{rotation:0}}, {{rotation:{int((F(10) - f9) * 900)}, svgOrigin:"600 1080", duration:{F(10) - f9:.2f}, ease:"none", immediateRender:false}}, {f9:.2f});')
-J(f'tl.set(".en9", {{opacity:0}}, 0); tl.to(".en9", {{opacity:1, duration:0.3, stagger:0.4}}, {P("energia", 2) - 0.2:.2f}); tl.fromTo(".en9", {{strokeDashoffset:0}}, {{strokeDashoffset:-380, duration:{F(10) - f9:.2f}, ease:"none", immediateRender:false}}, {f9:.2f});')
-OVR.append(f'<div id="bx9a" class="panel caja" style="left:60px;top:1540px;border-color:{AMB}"><div class="cn">MANDOS DE VUELO</div><div class="cs">presión hidráulica</div></div>')
-OVR.append(f'<div id="bx9b" class="panel caja" style="left:600px;top:1540px;border-color:{AMB}"><div class="cn">INSTRUMENTOS</div><div class="cs">electricidad esencial</div></div>')
-pop("#bx9a", P("mandos") - 0.2, 0.35); pop("#bx9b", P("instrumentos") - 0.2, 0.35)
+J(f'tl.fromTo("#hel9", {{rotation:0}}, {{rotation:{int((F(10) - f9) * 900)}, svgOrigin:"610 1090", duration:{F(10) - f9:.2f}, ease:"none", immediateRender:false}}, {f9:.2f});')
+J(f'tl.set(".en9", {{opacity:0}}, 0); tl.to(".en9", {{opacity:1, duration:0.4}}, {P("mantiene") - 0.2:.2f}); tl.fromTo(".en9b", {{strokeDashoffset:0}}, {{strokeDashoffset:-400, duration:{F(10) - f9:.2f}, ease:"none", immediateRender:false}}, {f9:.2f});')
+OVR.append(f'<div id="bx9a" class="nota" style="left:620px;top:470px;--c:{AMB}"><div class="ct" style="color:#fff">MANDOS</div></div>')
+OVR.append(f'<div id="bx9b" class="nota" style="left:620px;top:560px;--c:{AMB}"><div class="ct" style="color:#fff">PANTALLAS</div></div>')
+pop("#bx9a", P("mandos") - 0.2, 0.35, "opacity:0, x:30"); pop("#bx9b", P("pantallas") - 0.2, 0.35, "opacity:0, x:30")
 fuera("#bx9a", F(10) - 0.1); fuera("#bx9b", F(10) - 0.1)
-J(f'tl.to("#no9", {{opacity:1, duration:0.3}}, {P("arranca") - 0.3:.2f});')
-chip("NO ARRANCA LOS MOTORES", P("arranca") - 0.3, F(10) - 0.1, 60, 470, RED)
-fuente("Varía según el modelo de avión", P("muchos"), F(10) - 0.1)
-FX.append(("golpe", P("arranca") - 0.2))
+J(f'tl.to("#no9", {{opacity:1, duration:0.3}}, {P("arrancar") - 0.3:.2f});')
+chip("NO PUEDE ARRANCAR LOS MOTORES", P("arrancar") - 0.3, F(10) - 0.1, 60, 1590, RED)
+fuente("Varía según el modelo de avión", P("gira"), F(10) - 0.1)
 
-# ================================================================== 10) DÓNDE ATERRIZAR (3D, mapa desde arriba)
-f10 = F(10); niebla(f10)
-for k, (txt, wd, pos, col) in enumerate((("AEROPUERTO", "aeropuerto", (-700, 0, -1500), GRN), ("CAMPO", "campo", (-300, 0, 1600), AMB), ("AGUA", "agua", (2100, 0, 200), ICE))):
-    OVR.append(f'<div class="marca3d" id="mk{k}" data-p="{pos[0]},{pos[1]},{pos[2]}" style="border-color:{col};color:{col}"><i style="border-color:{col}"></i><span>{txt}</span></div>')
-    J(f'tl.set("#mk{k}", {{opacity:0}}, 0); tl.fromTo("#mk{k}", {{opacity:0, scale:0.6}}, {{opacity:1, scale:1, duration:0.35, ease:"back.out(2)", immediateRender:false}}, {P(wd) - 0.15:.2f}); tl.set("#mk{k}", {{opacity:0}}, {F(11):.2f});')
-    FX.append(("tic", P(wd) - 0.15))
-chip("UNA SOLA OPORTUNIDAD", P("oportunidad") - 0.3, F(11) - 0.1, 60, 470, RED)
+# ================================================================== 10) DESCENSO ENTRE NUBES (3D)
+chip("SIN SEGUNDA OPORTUNIDAD", P("oportunidad") - 0.3, F(11) - 0.1, 60, 1380, RED)
 
-# ================================================================== 11) AZORES 2001 (3D)
-OVR.append('<div id="az11" class="dato"><div class="dk">VUELO 236 DE AIR TRANSAT · 2001</div><div class="dn" style="font-size:84px">≈19 min planeando</div>'
-           '<div class="ds">Airbus A330 · Azores (Portugal) · 306 a bordo: sobrevivieron todos</div></div>')
-pop("#az11", P("airbus") - 0.2, 0.45); fuera("#az11", F(12) - 0.1)
-fuente("Fuente: GPIAA, informe oficial del accidente (Portugal)", P("airbus"), F(12) - 0.1)
-FX.append(("toma", K["toma"]))
-# ================================================================== 12) HUDSON 2009 (3D)
-OVR.append('<div id="hu12" class="dato"><div class="dk">VUELO 1549 DE US AIRWAYS · 2009</div><div class="dn" style="font-size:84px">155 de 155</div>'
-           '<div class="ds">Airbus A320 · río Hudson (Nueva York) · sobrevivieron todos</div></div>')
-pop("#hu12", P("hudson") - 0.2, 0.45); fuera("#hu12", F(13) - 0.1)
-fuente("Fuente: NTSB, informe oficial del accidente (EE. UU.)", P("hudson"), F(13) - 0.1)
-FX.append(("splash", K["amera"]))
-# ================================================================== 13) CIERRE EN BUCLE (3D): vuelve al encuadre del principio
+# ================================================================== 11) PISTA, CAMPO O AGUA (3D, mapa)
+f11 = F(11); niebla(f11)
+for k, (txt, wd, pos, col) in enumerate((("PISTA", "pista", (-700, 0, -1500), GRN), ("CAMPO", "campo", (-300, 0, 1600), AMB), ("AGUA", "agua", (2100, 0, 200), ICE))):
+    OVR.append(f'<div class="marca3d" id="mk{k}" data-p="{pos[0]},{pos[1]},{pos[2]}" style="--c:{col}"><i></i><span>{txt}</span></div>')
+    J(f'tl.set("#mk{k}", {{opacity:0}}, 0); tl.fromTo("#mk{k}", {{opacity:0, scale:0.6}}, {{opacity:1, scale:1, duration:0.35, ease:"back.out(2)", immediateRender:false}}, {P(wd) - 0.15:.2f}); tl.set("#mk{k}", {{opacity:0}}, {F(12):.2f});')
+
+# ================================================================== 12) ATERRIZAJE (3D)
+chip("EL TREN CAE POR SU PROPIO PESO", P("tren") - 0.3, F(13) - 0.1, 60, 1380, ICE)
+FX.append(("toma", K["toca"]))
+# ================================================================== 13) CIERRE EN BUCLE (3D)
 J(f'tl.set("#gancho", {{opacity:1, y:0, scale:1}}, {DUR - 0.3:.2f});')
-
 # ------------------------------------------------------------------ subtítulos habituales (arriba, palabra a palabra, recuadro azul)
 CLAVE = set(norm(w) for w in ["once", "motores", "apagarse", "segundo", "piedra", "planeador", "velocidad", "sustentacion", "altura", "morro", "quince",
                                "kilometros", "emergencia", "aterrizar", "encender", "auxiliar", "rat", "turbina", "mandos", "instrumentos", "arranca",
@@ -322,6 +267,14 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
 #gl{{position:absolute;left:0;top:0;width:1080px;height:1920px;z-index:1}}
 .esc{{position:absolute;inset:0;overflow:hidden;z-index:5;background:{BG}}}
 .cam{{position:absolute;inset:0;transform-origin:50% 50%}}
+.nota{{position:absolute;z-index:32;padding:14px 22px 16px;border-radius:12px;color:#fff;background:linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.07));backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,0.35);border-left:6px solid var(--c);box-shadow:0 10px 40px rgba(0,0,0,0.22);text-shadow:0 2px 10px rgba(0,0,0,0.35)}}
+.nota .nt{{font:800 22px Inter;letter-spacing:5px;color:rgba(255,255,255,0.75);margin-bottom:4px}} .nota .ct{{font:900 40px Inter;letter-spacing:2px;color:var(--c)}}
+.nota .dn{{font:900 96px Inter;letter-spacing:-3px;line-height:1.02}} .nota .dn small{{font:800 32px Inter;letter-spacing:0;opacity:0.85}}
+.nota .rm{{font:900 40px "Courier New", monospace;margin-top:4px}} .nota .rs{{font:700 24px Inter;opacity:0.8;margin-top:2px}}
+.er{{display:flex;align-items:center;gap:14px;font:800 38px "Courier New", monospace;color:#fff;padding:4px 0}} .er span{{color:var(--c);margin-left:auto}} .er i{{width:16px;height:16px;border-radius:50%;background:{RED};box-shadow:0 0 16px {RED}}}
+#hud{{left:60px;top:470px;width:300px}} #hud .hn{{font:900 64px Inter;line-height:1;letter-spacing:-2px;font-variant-numeric:tabular-nums}} #hud .hn small{{font:800 30px Inter;opacity:0.7}} #hud .hs{{margin-top:6px;font:800 20px Inter;letter-spacing:4px;color:#ffb0aa}}
+#alarma{{position:absolute;inset:0;z-index:54;pointer-events:none;background:radial-gradient(90% 70% at 50% 50%, rgba(255,40,30,0) 50%, rgba(255,40,30,0.55))}}
+#e6{{background:transparent}}
 #gancho{{position:absolute;left:0;right:0;top:640px;text-align:center;z-index:20;color:#fff;text-shadow:0 6px 30px rgba(0,0,0,0.55)}}
 #gancho .g0{{font:800 54px Inter;letter-spacing:6px;color:#e6edf6}} #gancho .g1{{font:900 190px Inter;letter-spacing:-8px;line-height:0.95}} #gancho .g2{{font:800 54px Inter;letter-spacing:8px;color:#e6edf6}}
 #ecam{{left:60px;top:1330px;width:520px;padding:18px 24px;border-left:6px solid {RED}}}
@@ -331,8 +284,8 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
 #hud{{position:absolute;left:60px;top:470px;width:300px;padding:12px 18px 14px;border-left:5px solid {ICE};background:rgba(7,12,22,0.62);z-index:40;color:{INK}}}
 #hud .hl{{font:800 22px Inter;letter-spacing:6px;color:{MUTED}}} #hud .hn{{font:900 64px Inter;line-height:1;letter-spacing:-2px;font-variant-numeric:tabular-nums}} #hud .hn small{{font:800 30px Inter;color:{MUTED}}}
 #hud .hs{{margin-top:6px;font:800 20px Inter;letter-spacing:4px;color:{RED}}}
-.chip{{position:absolute;z-index:35;display:flex;align-items:center;gap:14px;padding:14px 22px;background:rgba(7,12,22,0.82);border:2px solid;border-radius:6px;font:800 30px Inter;letter-spacing:1px;color:{INK}}}
-.chip b{{width:12px;height:12px;border-radius:50%}}
+.chip{{position:absolute;z-index:35;display:flex;align-items:center;gap:14px;padding:13px 22px;border-radius:12px;font:800 30px Inter;letter-spacing:1px;color:#fff;background:linear-gradient(135deg, rgba(255,255,255,0.20), rgba(255,255,255,0.07));backdrop-filter:blur(16px) saturate(1.5);-webkit-backdrop-filter:blur(16px) saturate(1.5);border:1px solid rgba(255,255,255,0.35);box-shadow:0 10px 40px rgba(0,0,0,0.2);text-shadow:0 2px 10px rgba(0,0,0,0.35)}}
+.chip b{{width:14px;height:14px;border-radius:50%;box-shadow:0 0 12px currentColor}}
 .fuente{{position:absolute;left:60px;right:60px;top:1712px;z-index:35;font:600 24px Inter;color:{MUTED};letter-spacing:0.5px}}
 .panel{{position:absolute;z-index:30;background:rgba(9,15,28,0.88);border:1px solid #2b3d5c;border-radius:10px;color:{INK}}}
 .pt{{font:800 22px Inter;letter-spacing:4px;color:{MUTED}}}
@@ -343,9 +296,9 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
 .ds{{font:600 26px Inter;color:{MUTED};margin-top:6px}}
 .radio{{left:60px;top:560px;width:620px;padding:18px 24px;border-left:6px solid {RED}}} .rm{{font:900 42px "Courier New", monospace;color:#fff;margin-top:6px}} .rs{{font:700 24px Inter;color:{MUTED};margin-top:4px}}
 .caja{{width:420px;padding:18px 22px;border:3px solid}} .cn{{font:900 34px Inter}} .cs{{font:700 24px Inter;color:{MUTED}}}
-.marca3d{{position:absolute;left:0;top:0;z-index:30;display:flex;align-items:center;gap:12px;font:900 32px Inter;letter-spacing:2px;transform-origin:0 50%;white-space:nowrap}}
-.marca3d i{{display:block;width:60px;height:60px;border-radius:50%;border:5px solid;margin-left:-30px;box-shadow:0 0 22px rgba(255,255,255,0.25)}}
-.marca3d span{{background:rgba(7,12,22,0.8);padding:6px 14px;border-radius:6px}}
+.marca3d{{position:absolute;left:0;top:0;z-index:30;display:flex;align-items:center;gap:14px;font:900 32px Inter;letter-spacing:3px;color:#fff;white-space:nowrap;text-shadow:0 2px 10px rgba(0,0,0,0.5)}}
+.marca3d i{{display:block;width:64px;height:64px;border-radius:50%;border:5px solid var(--c);margin-left:-32px;box-shadow:0 0 0 8px rgba(255,255,255,0.12), 0 0 30px var(--c)}}
+.marca3d span{{padding:8px 16px;border-radius:10px;background:linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.08));backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,0.35);border-left:6px solid var(--c)}}
 #niebla{{position:absolute;inset:-200px;z-index:58;opacity:0;pointer-events:none;background:radial-gradient(50% 40% at 30% 40%, #ffffff, rgba(255,255,255,0.85) 60%, rgba(230,236,244,0.95)), #f0f4f8}}
 #grano{{position:absolute;inset:0;z-index:57;pointer-events:none;opacity:0.06;background:url(assets/grano.png);mix-blend-mode:overlay}}
 #vineta{{position:absolute;inset:0;z-index:56;pointer-events:none;background:radial-gradient(110% 80% at 50% 50%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.5))}}
@@ -361,6 +314,16 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
   <svg width="0" height="0" style="position:absolute"><defs>
     <radialGradient id="fondoTec" cx="0.5" cy="0.4" r="0.9"><stop offset="0" stop-color="#13213a"/><stop offset="1" stop-color="{BG}"/></radialGradient>
     <pattern id="rejilla" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60,0 L0,0 0,60" fill="none" stroke="#1b2a44" stroke-width="1.5"/></pattern>
+    <linearGradient id="cieloOc" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2f5a"/><stop offset="0.55" stop-color="#c46a52"/><stop offset="0.72" stop-color="#f0a46c"/><stop offset="1" stop-color="#f6c79e"/></linearGradient>
+    <linearGradient id="cieloAz" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d1a33"/><stop offset="1" stop-color="#22385e"/></linearGradient>
+    <linearGradient id="fusG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#b8c2ce"/></linearGradient>
+    <linearGradient id="fusT" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9fb0c4"/><stop offset="0.5" stop-color="#f2f6fa"/><stop offset="1" stop-color="#9fb0c4"/></linearGradient>
+    <linearGradient id="alaT" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6edf5"/><stop offset="1" stop-color="#a9b8ca"/></linearGradient>
+    <linearGradient id="vidrioP" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.10"/><stop offset="0.4" stop-color="#ffffff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="vidrioC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity="0.08"/><stop offset="0.5" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#ffffff" stop-opacity="0.05"/></linearGradient>
+    <linearGradient id="pfdCielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f5fb0"/><stop offset="1" stop-color="#4c93e0"/></linearGradient>
+    <linearGradient id="pfdTierra" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a5a2a"/><stop offset="1" stop-color="#5a3216"/></linearGradient>
+    <linearGradient id="panelG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2e333b"/><stop offset="1" stop-color="#181b20"/></linearGradient>
     <linearGradient id="alaG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#dfe7f2"/><stop offset="1" stop-color="#7d8ea8"/></linearGradient>
     <linearGradient id="cieloCab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1b2f5a"/><stop offset="0.7" stop-color="#e79c6a"/><stop offset="1" stop-color="#f3c39a"/></linearGradient>
     <radialGradient id="brillo" cx="0.35" cy="0.35" r="0.7"><stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/></radialGradient>

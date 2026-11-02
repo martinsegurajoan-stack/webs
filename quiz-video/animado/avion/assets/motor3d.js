@@ -52,7 +52,7 @@ function paleta(n) {
 function lienzo(w, h, f) { const c = document.createElement('canvas'); c.width = w; c.height = h; f(c.getContext('2d'), w, h); const t = new THREE.CanvasTexture(c); t.colorSpace = THREE.SRGBColorSpace; t.anisotropy = 8; return t; }
 const texNube = lienzo(256, 256, (g, w, h) => { const r = rng(7);
   for (let i = 0; i < 46; i++) { const x = 128 + (r() - 0.5) * 130, y = 140 + (r() - 0.5) * 70 - Math.abs(x - 128) * 0.25, s = 26 + r() * 46;
-    const gr = g.createRadialGradient(x, y - s * 0.2, 0, x, y, s); gr.addColorStop(0, 'rgba(255,255,255,0.55)'); gr.addColorStop(0.6, 'rgba(240,240,245,0.25)'); gr.addColorStop(1, 'rgba(220,225,235,0)');
+    const gr = g.createRadialGradient(x, y - s * 0.2, 0, x, y, s); gr.addColorStop(0, 'rgba(255,255,255,0.8)'); gr.addColorStop(0.6, 'rgba(240,240,245,0.35)'); gr.addColorStop(1, 'rgba(220,225,235,0)');
     g.fillStyle = gr; g.beginPath(); g.arc(x, y, s, 0, 7); g.fill(); } });
 const nubeMat = new THREE.SpriteMaterial({ map: texNube, transparent: true, depthWrite: false, fog: true });
 const texHumo = lienzo(128, 128, (g) => { const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(90,90,96,0.55)'); gr.addColorStop(1, 'rgba(90,90,96,0)'); g.fillStyle = gr; g.fillRect(0, 0, 128, 128); });
@@ -71,7 +71,9 @@ const texFus = lienzo(2048, 1024, (g, w, h) => {
   for (const [u0, u1] of [[0.9, 0.99], [0.51, 0.6]]) { g.beginPath(); g.moveTo(w * u0, h * (1 - 0.955)); g.lineTo(w * u1, h * (1 - 0.955)); g.lineTo(w * (u1 - 0.01), h * (1 - 0.935)); g.lineTo(w * (u0 + 0.01), h * (1 - 0.935)); g.fill(); }
   g.fillRect(w * 0.66, h * (1 - 0.96), w * 0.18, h * 0.02);
 });
-const blanco = new THREE.MeshStandardMaterial({ color: '#f1f3f6', metalness: 0.15, roughness: 0.35, envMapIntensity: 0.9 });
+const blanco = new THREE.MeshPhysicalMaterial({ color: '#f1f3f6', metalness: 0.1, roughness: 0.3, clearcoat: 1, clearcoatRoughness: 0.12, envMapIntensity: 1.0 });
+const alaMat = new THREE.MeshPhysicalMaterial({ color: '#e4e8ee', metalness: 0.08, roughness: 0.42, clearcoat: 0.5, clearcoatRoughness: 0.25, envMapIntensity: 0.45 });
+const tita = new THREE.MeshStandardMaterial({ color: '#a7b0bb', metalness: 0.95, roughness: 0.18 });
 const gris = new THREE.MeshStandardMaterial({ color: '#b9c0ca', metalness: 0.6, roughness: 0.35 });
 const oscuro = new THREE.MeshStandardMaterial({ color: '#15191f', metalness: 0.4, roughness: 0.55 });
 const azul = new THREE.MeshStandardMaterial({ color: '#1d3a6e', metalness: 0.2, roughness: 0.4 });
@@ -107,16 +109,18 @@ function avion() {
   const p = gf.attributes.position;
   for (let i = 0; i < p.count; i++) { const x = p.getX(i); if (x < -12) p.setY(i, p.getY(i) + Math.pow((-12 - x) / 18, 1.7) * 1.9); if (x > 24) p.setY(i, p.getY(i) - Math.pow((x - 24) / 6, 2) * 0.5); }
   gf.computeVertexNormals();
-  const fus = new THREE.Mesh(gf, new THREE.MeshStandardMaterial({ map: texFus, metalness: 0.15, roughness: 0.32 })); A.add(fus);
+  const fus = new THREE.Mesh(gf, new THREE.MeshPhysicalMaterial({ map: texFus, metalness: 0.08, roughness: 0.28, clearcoat: 1, clearcoatRoughness: 0.1 })); A.add(fus);
   // carenado ala-fuselaje
   const car = new THREE.Mesh(new THREE.SphereGeometry(1, 32, 16), blanco); car.scale.set(9, 1.4, 2.9); car.position.set(1, -2.1, 0); A.add(car);
   for (const s of [1, -1]) {
-    const ala = loft([secH(7, -1.4, 2.6 * s, 10.5, 0.13), secH(1.5, -0.9, 10 * s, 7.2, 0.115), secH(-9.4, 1.1, 28.6 * s, 2.6, 0.1)], blanco); A.add(ala);
+    const ala = loft([secH(7, -1.4, 2.6 * s, 10.5, 0.13), secH(1.5, -0.9, 10 * s, 7.2, 0.115), secH(-9.4, 1.1, 28.6 * s, 2.6, 0.1)], alaMat); A.add(ala);
+    const bA = loft([secH(7.05, -1.38, 2.7 * s, 0.5, 0.14), secH(1.55, -0.88, 10 * s, 0.4, 0.14), secH(-9.35, 1.12, 28.5 * s, 0.25, 0.14)], tita); A.add(bA);
+    for (const [zz, xx, yy] of [[6.5, -4.6, -1.55], [13.5, -6.9, -1.0], [20, -9.6, -0.35]]) { const f = new THREE.Mesh(new THREE.SphereGeometry(1, 20, 10), alaMat); f.scale.set(2.6, 0.38, 0.34); f.position.set(xx, yy, zz * s); A.add(f); }
     const wl = loft([secV(-9.2, 1.0, 28.7 * s, 2.6, 0.08), secV(-11.4, 4.2, 29.4 * s, 1.2, 0.08)], azul); A.add(wl);
-    const hs = loft([secH(-22.2, 1.7, 1.0 * s, 5.4, 0.1), secH(-28.8, 2.4, 9.8 * s, 2.0, 0.09)], blanco); A.add(hs);
+    const hs = loft([secH(-22.2, 1.7, 1.0 * s, 5.4, 0.1), secH(-28.8, 2.4, 9.8 * s, 2.0, 0.09)], alaMat); A.add(hs);
     // motor
     const M = new THREE.Group(); M.position.set(9.5, -3.6, 10.2 * s); A.add(M);
-    const np = [[1.62, 0], [1.68, -0.3], [1.72, -1.4], [1.6, -3.4], [1.25, -5.0], [0.95, -5.6]].map(([r, x]) => new THREE.Vector2(r, x));
+    const np = [[1.6, 0.05], [1.7, -0.25], [1.76, -0.9], [1.74, -2.0], [1.62, -3.4], [1.4, -4.6], [1.18, -5.4]].map(([r, x]) => new THREE.Vector2(r, x));
     const ng = new THREE.LatheGeometry(np, 48); ng.rotateZ(-Math.PI / 2); M.add(new THREE.Mesh(ng, blanco));
     const lip = new THREE.Mesh(new THREE.TorusGeometry(1.58, 0.1, 12, 48), metal); lip.rotation.y = Math.PI / 2; lip.position.x = 0.02; M.add(lip);
     const inner = new THREE.LatheGeometry([[1.5, 0.05], [1.45, -0.9]].map(([r, x]) => new THREE.Vector2(r, x)), 48); inner.rotateZ(-Math.PI / 2);
@@ -124,12 +128,16 @@ function avion() {
     const fan = new THREE.Group(); fan.position.x = -0.6; M.add(fan);
     const spin = new THREE.Mesh(new THREE.ConeGeometry(0.42, 0.9, 32), metal); spin.rotation.z = -Math.PI / 2; spin.position.x = 0.35; fan.add(spin);
     const bm = new THREE.MeshStandardMaterial({ color: '#3a4049', metalness: 0.85, roughness: 0.3 });
-    for (let i = 0; i < 22; i++) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.06, 1.15, 0.32), bm); b.position.set(0, 0.92, 0); b.rotation.y = 0.55;
+    for (let i = 0; i < 24; i++) { const b = new THREE.Mesh(new THREE.BoxGeometry(0.05, 1.2, 0.46), tita); b.position.set(0, 0.9, 0); b.rotation.y = 0.62;
       const piv = new THREE.Group(); piv.rotation.x = i / 22 * Math.PI * 2; piv.add(b); fan.add(piv); }
     const disco = new THREE.Mesh(new THREE.CircleGeometry(1.48, 48), new THREE.MeshStandardMaterial({ color: '#0d1014', roughness: 0.9 })); disco.rotation.y = Math.PI / 2; disco.position.x = -0.15; fan.add(disco);
-    const tob = new THREE.Mesh(new THREE.ConeGeometry(0.75, 1.6, 32), oscuro); tob.rotation.z = Math.PI / 2; tob.position.x = -6.2; M.add(tob);
-    const pil = new THREE.Mesh(new THREE.BoxGeometry(5.2, 1.6, 0.45), blanco); pil.position.set(-2.2, 1.35, 0); M.add(pil);
-    M.userData = { fan, s }; A.userData['motor' + (s > 0 ? 'D' : 'I')] = M;
+    const tobera = new THREE.LatheGeometry([[1.12, -5.3], [1.0, -6.1], [0.88, -6.6]].map(([r, x]) => new THREE.Vector2(r, x)), 40); tobera.rotateZ(-Math.PI / 2); M.add(new THREE.Mesh(tobera, tita));
+    const tob = new THREE.Mesh(new THREE.ConeGeometry(0.6, 1.9, 32), gris); tob.rotation.z = Math.PI / 2; tob.position.x = -7.2; M.add(tob);
+    const fondo = new THREE.Mesh(new THREE.CircleGeometry(0.78, 32), new THREE.MeshStandardMaterial({ color: '#3a3d42', metalness: 0.6, roughness: 0.5 })); fondo.rotation.y = -Math.PI / 2; fondo.position.x = -6.2; M.add(fondo);
+    const brasa = new THREE.Mesh(new THREE.CircleGeometry(0.76, 32), new THREE.MeshBasicMaterial({ color: '#ff8a2a', transparent: true, opacity: 0 })); brasa.rotation.y = -Math.PI / 2; brasa.position.x = -6.25; M.add(brasa); M.userData.brasa = brasa;
+    const anillo = new THREE.Mesh(new THREE.TorusGeometry(1.72, 0.04, 8, 48), azul); anillo.rotation.y = Math.PI / 2; anillo.position.x = -1.2; M.add(anillo);
+    A.add(loft([secV(9.8, -2.1, 10.2 * s, 7.2, 0.09), secV(8.6, -1.05, 10.2 * s, 7.6, 0.09)], blanco));
+    M.userData.fan = fan; M.userData.s = s; A.userData['motor' + (s > 0 ? 'D' : 'I')] = M;
   }
   const vt = loft([secV(-19.5, 2.4, 0, 9.5, 0.1), secV(-27.5, 12.5, 0, 3.6, 0.09)], azul); A.add(vt);
   const vtb = loft([secV(-23.6, 7.5, 0.02, 2.4, 0.11), secV(-27.0, 11.5, 0.02, 1.4, 0.11)], new THREE.MeshStandardMaterial({ color: '#3e7ac0', roughness: 0.4 })); A.add(vtb);
@@ -157,7 +165,7 @@ const avi = avion(); scene.add(avi);
 const nubes = new THREE.Group(); scene.add(nubes);
 const manto = new THREE.Mesh(new THREE.PlaneGeometry(200000, 200000), new THREE.MeshBasicMaterial({ color: '#e8c3ad', fog: true })); manto.rotation.x = -Math.PI / 2; nubes.add(manto);
 const NUB = []; { const r = rng(11); for (let i = 0; i < 700; i++) { const s = new THREE.Sprite(nubeMat); const sc = 2200 + r() * 3000; s.scale.set(sc, sc * 0.55, 1); s.userData = { x: (r() - 0.5) * 60000, z: (r() - 0.5) * 60000, y: -2600 - r() * 700 }; nubes.add(s); NUB.push(s); } }
-function ponNubes(t, vel, dy) { manto.position.y = -2650 + dy; manto.material.color.set(PAL[palAct].nube).multiplyScalar(0.93); const L = 60000; for (const s of NUB) { const u = s.userData; let x = ((u.x - vel * t) % L + L * 1.5) % L - L / 2; s.position.set(x, u.y + dy, u.z); } }
+function ponNubes(t, vel, dy) { manto.position.y = -2650 + dy; manto.material.color.set(PAL[palAct].nube).multiplyScalar(0.8); const L = 60000; for (const s of NUB) { const u = s.userData; let x = ((u.x - vel * t) % L + L * 1.5) % L - L / 2; s.position.set(x, u.y + dy, u.z); } }
 const humoMat = new THREE.SpriteMaterial({ map: texHumo, transparent: true, depthWrite: false });
 const HUMO = []; for (let i = 0; i < 70; i++) { const s = new THREE.Sprite(humoMat.clone()); scene.add(s); HUMO.push(s); }
 const sprayMat = new THREE.SpriteMaterial({ map: texSpray, transparent: true, depthWrite: false });
@@ -213,51 +221,70 @@ function mira(p, l, fov) { cam.position.set(...p); cam.lookAt(...l); if (fov) { 
 function visibles(o) { nubes.visible = !!o.nubes; suelo.visible = !!o.mapa; agua.visible = !!o.agua; aeropuerto.visible = !!o.pista; ciudad.visible = !!o.ciudad; tray.visible = !!o.tray; roca.visible = !!o.roca; sky.visible = true; }
 window.proyecta = (x, y, z) => { const v = V3(x, y, z).project(cam); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H, v.z]; };
 
-// ------------------------------------------------------------------ PLANOS
+// ------------------------------------------------------------------ líneas de flujo sobre el ala (plano 3)
+const NFL = 320, flG = new THREE.BufferGeometry(); flG.setAttribute('position', new THREE.Float32BufferAttribute(new Float32Array(NFL * 6), 3));
+const flujo = new THREE.LineSegments(flG, new THREE.LineBasicMaterial({ color: '#6fd0ff', transparent: true, opacity: 1 })); scene.add(flujo);
+const FL = []; { const r = rng(31); for (let i = 0; i < NFL; i++) FL.push({ z: 4 + r() * 20, h: 0.15 + r() * 1.3, ph: r(), arriba: i < 250 }); }
+function alaEn(z) { const f = (z - 2.6) / 26; return { xle: lerp(7, -9.4, f), c: lerp(10.5, 2.6, f), y: lerp(-1.4, 1.1, f) }; }
+function ponFlujo(t) { const p = flG.attributes.position.array;
+  FL.forEach((L, i) => { const A = alaEn(L.z); const vel = L.arriba ? 0.55 : 0.33; const u = ((t * vel + L.ph) % 1) * 1.8 - 0.4;
+    const pt = (uu) => { const cu = clamp(uu, 0, 1); const esp = (L.arriba ? 1 : -0.45) * 0.13 * A.c * 1.2 * Math.sqrt(cu) * (1 - cu) + (L.arriba ? 1 : -1) * L.h * (1 - 0.5 * Math.sin(Math.PI * cu)) ;
+      return [A.xle - uu * A.c, A.y + esp + (L.arriba ? 0.25 : -0.25) + 0.02 * A.c * Math.sin(Math.PI * cu), L.z]; };
+    const a = pt(u), b = pt(u - (L.arriba ? 0.16 : 0.08)); p.set(a, i * 6); p.set(b, i * 6 + 3); });
+  flG.attributes.position.needsUpdate = true; }
+// ------------------------------------------------------------------ PLANOS (guion v2)
+function crucero(t, dy, vel) { paleta('ocaso'); visibles({ nubes: 1 }); ocultaParticulas(); ponNubes(t, vel || 230, dy || 0); avi.visible = true; flujo.visible = false; }
+function tren(k) { const T = avi.userData.tren; T.visible = k > 0.001; T.position.y = lerp(2.4, 0, k); T.rotation.z = lerp(-0.5, 0, k); }
 const PLANOS = [
-  // 1 y 13: crucero al atardecer sobre el mar de nubes; cámara junto al motor derecho que se aleja
-  { a: K.p1, b: K.p2, f(t) { paleta('ocaso'); visibles({ nubes: 1 }); ocultaParticulas(); ponNubes(t, 230, 0);
-      estadoAvion({ roll: 0.02 * Math.sin(t * 0.7), pitch: 0.035 }); fanes(t, giroFan(t, K.apagado));
+  // 1: crucero al atardecer, cámara junto al motor derecho: se apaga (el ventilador se frena, sale humo) y la cámara se aleja
+  { a: K.p1, b: K.p2, f(t) { crucero(t); estadoAvion({ roll: 0.02 * Math.sin(t * 0.7), pitch: 0.035 }); fanes(t, giroFan(t, K.apagado));
       humo(t, K.apagado + 0.15, K.p2, 'motorD'); humo(t, K.apagado + 0.5, K.p2, 'motorI');
       const k = ease(prog(t, 0, K.p2)); mira([lerp(16, 34, k), lerp(-1.5, 6, k), lerp(24, 92, k)], [lerp(6, -2, k), lerp(-3, -1, k), lerp(10, 4, k)], lerp(36, 40, k)); } },
-  { a: K.p13, b: K.fin + 1, f(t) { paleta('ocaso'); visibles({ nubes: 1 }); ocultaParticulas(); ponNubes(t, 230, 0);
-      estadoAvion({ roll: 0.02 * Math.sin(t * 0.7), pitch: 0.035 }); fanes(t, giroFan(t, null));
+  // 13: vuelve al encuadre del principio (bucle)
+  { a: K.p13, b: K.fin + 1, f(t) { crucero(t); estadoAvion({ roll: 0.02 * Math.sin(t * 0.7), pitch: 0.035 }); fanes(t, giroFan(t, null));
       const k = ease(prog(t, K.p13, K.fin)); mira([lerp(34, 16, k), lerp(6, -1.5, k), lerp(92, 24, k)], [lerp(-2, 6, k), lerp(-1, -3, k), lerp(4, 10, k)], lerp(40, 36, k)); } },
-  // 2: plano lateral abierto: la piedra cae recta, el avión sigue una trayectoria larga y suave
-  { a: K.p2, b: K.p3, f(t) { paleta('ocaso'); visibles({ nubes: 1, tray: 1, roca: 1 }); ocultaParticulas(); ponNubes(t, 60, 0);
-      const k = prog(t, K.p2, K.p3); const x = -110 + k * 220; estadoAvion({ pos: [x, -x / 16 - 16, 0], pitch: -0.06 }); fanes(t, 0);
+  // 2: plano lateral abierto: la piedra cae recta, el avión sigue planeando
+  { a: K.p2, b: K.p3, f(t) { crucero(t, 0, 60); visibles({ nubes: 1, tray: 1, roca: 1 });
+      const k = prog(t, K.p2, K.p3); const x = -110 + k * 220; estadoAvion({ pos: [x, -x / 16 - 16, 0], pitch: -0.06 }); fanes(t, 0.4 * t);
       tray.position.set(-110, 110 / 16 - 16, 0); trayG.setDrawRange(0, Math.floor(clamp((t - K.p2 - 0.3) / 3.5, 0, 1) * 200));
-      const tr = Math.max(0, t - K.piedra); roca.position.set(-100, 110 / 16 - 22 - 4.9 * tr * tr * 14, 0); roca.rotation.set(tr * 2, tr * 1.3, 0); roca.visible = t > K.p2 + 0.2;
+      const tr = Math.max(0, t - K.piedra); roca.position.set(-100, 110 / 16 - 22 - 4.9 * tr * tr * 14, 0); roca.rotation.set(tr * 2, tr * 1.3, 0); roca.visible = t > K.piedra - 0.6;
       mira([lerp(-30, 30, k), 20, 760], [lerp(-30, 30, k), -40, 0], 40); } },
-  // 4: travelling lateral: el morro baja y el avión desciende entre las cimas de las nubes
-  { a: K.p4, b: K.p5, f(t) { paleta('ocaso'); visibles({ nubes: 1 }); ocultaParticulas(); const k = prog(t, K.p4, K.p5); ponNubes(t, 230, lerp(0, 2400, ease(k)));
-      const pit = -0.075 * ease(prog(t, K.morro - 0.4, K.morro + 0.8)); estadoAvion({ pitch: 0.03 + pit }); fanes(t, 0);
+  // 3: sobre el ala: el aire corre rápido por encima (líneas de flujo) y el avión sigue volando
+  { a: K.p3, b: K.p4, f(t) { crucero(t); flujo.visible = true; ponFlujo(t); estadoAvion({ pitch: 0.02 }); fanes(t, 0.4 * t);
+      const k = ease(prog(t, K.p3, K.p4)); mira([lerp(-12, -8, k), lerp(3.4, 2.8, k), lerp(5, 7, k)], [lerp(2, 4, k), -0.2, lerp(17, 21, k)], 50); } },
+  // 4: travelling lateral: el morro baja, las nubes suben (el suelo se acerca)
+  { a: K.p4, b: K.p5, f(t) { const k = prog(t, K.p4, K.p5); crucero(t, lerp(0, 2400, ease(k)));
+      const pit = -0.08 * ease(prog(t, K.morro - 0.4, K.morro + 0.8)); estadoAvion({ pitch: 0.03 + pit }); fanes(t, 0.4 * t);
       mira([lerp(-8, 8, k), lerp(4, 0, k), 120], [lerp(-4, 4, k), -2, 0], 34); } },
-  // 8: desde abajo: se abre la trampilla y sale la RAT con la hélice girando
-  { a: K.p8, b: K.p9, f(t) { paleta('ocaso'); visibles({ nubes: 1 }); ocultaParticulas(); ponNubes(t, 230, 2200);
-      const r = eout(prog(t, K.rat, K.rat + 1.1)); estadoAvion({ pitch: -0.04, rat: r }); fanes(t, 0);
+  // 6: desde la cabina: las nubes se acercan mientras planean (el panel se dibuja encima en 2D)
+  { a: K.p6, b: K.p7, f(t) { const k = prog(t, K.p6, K.p7); crucero(t, lerp(1800, 2500, k), 230); avi.visible = false;
+      cam.up.set(Math.sin(0.03 * Math.sin(t * 0.6)), 1, 0); mira([27.5, 1.4, 0], [400, lerp(-60, -75, k), 6 * Math.sin(t * 0.3)], 58); cam.up.set(0, 1, 0); } },
+  // 7: el motor por detrás: el ventilador gira con el aire; dos intentos de encendido (brillo naranja) que se apagan
+  { a: K.p7, b: K.p8, f(t) { crucero(t, 2500); estadoAvion({ pitch: -0.03 }); fanes(t, 2.2 * t);
+      for (const m of ['motorD', 'motorI']) { const b = avi.userData[m].userData.brasa; const g = (a) => Math.max(0, Math.sin(Math.PI * clamp((t - a) / 0.9, 0, 1))) * (0.6 + 0.4 * Math.sin(t * 60)); b.material.opacity = 0.9 * Math.max(g(K.intento1), g(K.intento2)); }
+      const k = ease(prog(t, K.p7, K.p8)); mira([lerp(-14, -11, k), lerp(-2.2, -3, k), lerp(16, 13.5, k)], [3, -3.6, 10.2], 36); } },
+  // 8: desde abajo: se abre la trampilla y sale la RAT
+  { a: K.p8, b: K.p9, f(t) { crucero(t, 2200);
+      const r = eout(prog(t, K.rat, K.rat + 1.1)); estadoAvion({ pitch: -0.04, rat: r }); fanes(t, 2.2 * t);
       avi.userData.helice.rotation.x = -Math.max(0, t - K.rat - 0.6) * 22 * clamp((t - K.rat - 0.6) / 1.2, 0, 1);
       const k = ease(prog(t, K.p8, K.p9)); const ang = lerp(-0.7, 0.6, k); mira([3.5 + 11 * Math.cos(ang), -9, 1.9 + 11 * Math.sin(ang)], [3.6, -3.6, 1.9], 44); } },
-  // 10: mapa desde arriba: tres opciones y el avión gira hacia la pista
-  { a: K.p10, b: K.p11, f(t) { paleta('gris'); visibles({ mapa: 1 }); ocultaParticulas(); const k = prog(t, K.p10, K.p11);
-      const q = ease(prog(t, K.p10 + 0.3, K.p11)); const A0 = [2600, 2600], B0 = [1300, 300], C0 = [-200, -700];
+  // 10: cámara de persecución: atraviesan la capa de nubes y aparece el suelo
+  { a: K.p10, b: K.p11, f(t) { const k = prog(t, K.p10, K.p11); paleta('gris'); visibles({ nubes: 1, mapa: 1 }); ocultaParticulas(); avi.visible = true; flujo.visible = false;
+      ponNubes(t, 230, lerp(2300, 3400, ease(k))); suelo.scale.set(5, 1, 5); suelo.position.y = lerp(-2600, -1300, ease(k)); estadoAvion({ pitch: -0.07, roll: 0.05 * Math.sin(t * 0.5) }); fanes(t, 2.2 * t);
+      avi.userData.rat.visible = true; avi.userData.rat.rotation.z = 0; avi.userData.helice.rotation.x = -t * 22;
+      mira([lerp(-75, -60, k), lerp(14, 9, k), lerp(-18, -10, k)], [10, -5, 0], 40); } },
+  // 11: mapa desde arriba: pista, campo o agua; el avión gira hacia la pista
+  { a: K.p11, b: K.p12, f(t) { paleta('gris'); visibles({ mapa: 1 }); ocultaParticulas(); avi.visible = true; flujo.visible = false; suelo.position.y = 0; const k = prog(t, K.p11, K.p12);
+      const q = ease(prog(t, K.p11, K.p12 + 0.6)); const A0 = [2600, 2600], B0 = [1300, 300], C0 = [-200, -700];
       const bz = (j) => (1 - q) * (1 - q) * A0[j] + 2 * (1 - q) * q * B0[j] + q * q * C0[j]; const dz = (j) => 2 * (1 - q) * (B0[j] - A0[j]) + 2 * q * (C0[j] - B0[j]);
-      const yaw = Math.atan2(-dz(1), dz(0)); const curva = Math.sin(Math.PI * q);
-      estadoAvion({ pos: [bz(0), 900, bz(1)], yaw, roll: 0.35 * curva, pitch: -0.05 }); avi.scale.setScalar(7); fanes(t, 0);
-      mira([lerp(1700, 1000, k), lerp(8500, 6000, k), lerp(2600, 1500, k)], [lerp(600, 100, k), 0, lerp(300, -300, k)], 42); } },
-  // 11: Azores 2001: aproximación sobre el mar y toma con humo de neumáticos (alba)
-  { a: K.p11, b: K.p12, f(t) { paleta('alba'); visibles({ agua: 1, pista: 1 }); ocultaParticulas(); const td = K.toma; const dtt = t - td;
-      let x, y; if (dtt < 0) { x = 1700 + dtt * 75; y = Math.max(5.2, -dtt * 75 / 18 + 5.2 + Math.max(0, -dtt) * 0.0); } else { x = 1700 + 75 * dtt - 12 * dtt * dtt; y = 5.2; }
-      x = 1700 + (dtt < 0 ? dtt * 75 : 75 * dtt - 9 * dtt * dtt); estadoAvion({ pos: [x - 1700 + 0, y, 0], pitch: dtt < 0 ? 0.06 : lerp(0.06, 0, clamp(dtt / 1.2, 0, 1)), tren: 1 }); avi.scale.setScalar(1); fanes(t, 0);
-      aeropuerto.position.set(-1700 + 1000, 0, 0);
-      humoRuedas(t, td);
-      const k = ease(prog(t, K.p11, K.p12)); mira([lerp(-160, 60, k), 3, 70], [avi.position.x, avi.position.y + 1, 0], 34); } },
-  // 12: Hudson 2009: amerizaje con cortina de agua y el avión flotando
-  { a: K.p12, b: K.p13, f(t) { paleta('gris'); visibles({ agua: 1, ciudad: 1 }); ocultaParticulas(); const ta = K.amera, d = t - ta;
-      let x, y, pit; if (d < 0) { x = d * 70; y = Math.max(2.4, -d * 70 / 14 + 2.4); pit = 0.09; } else { x = 70 * (1 - Math.exp(-1.1 * d)) / 1.1; y = lerp(2.4, 1.6, clamp(d / 1.5, 0, 1)) + 0.15 * Math.sin(d * 2.2) * clamp(d - 1.5, 0, 1); pit = lerp(0.09, 0.02, clamp(d / 1.2, 0, 1)); }
-      estadoAvion({ pos: [x, y, 0], pitch: pit, roll: 0.01 * Math.sin(t) }); avi.scale.setScalar(1); fanes(t, 0);
-      spray(t, ta);
-      const k = ease(prog(t, K.p12, K.p13)); mira([avi.position.x * 0.6 - 40, 8, 120], [avi.position.x * 0.85, 3, -10], 36); } },
+      estadoAvion({ pos: [bz(0), 900, bz(1)], yaw: Math.atan2(-dz(1), dz(0)), roll: 0.35 * Math.sin(Math.PI * q), pitch: -0.05 }); avi.scale.setScalar(7); fanes(t, 0);
+      mira([lerp(1700, 1200, k), lerp(8500, 7000, k), lerp(2600, 1900, k)], [lerp(600, 300, k), 0, lerp(300, 0, k)], 42); } },
+  // 12: aterrizaje: el tren cae por su peso, toca la pista con humo de neumáticos y frena
+  { a: K.p12, b: K.p13, f(t) { paleta('alba'); visibles({ agua: 1, pista: 1 }); ocultaParticulas(); avi.visible = true; flujo.visible = false; const td = K.toca, d = t - td;
+      const x = d < 0 ? d * 70 : 70 * d - 14 * d * d; const y = d < 0 ? 5.2 - d * 70 / 18 : 5.2;
+      estadoAvion({ pos: [Math.min(x, 70 * 2.5 - 14 * 6.25), y, 0], pitch: d < 0 ? 0.07 : lerp(0.07, 0, clamp(d / 1.1, 0, 1)), tren: 1 }); fanes(t, 0);
+      tren(eout(prog(t, K.tren - 0.1, K.tren + 1.0))); aeropuerto.position.set(-700, 0, 0); humoRuedas(t, td);
+      const k = ease(prog(t, K.p12, K.p13)); mira([lerp(-150, 40, k), 3, 64], [avi.position.x, avi.position.y + 1, 0], 34); } },
 ];
 function humo(t, t0, t1, motor) { const M = avi.userData[motor]; const base = V3(-6.6, 0, 0); M.updateWorldMatrix(true, false); const w = base.clone().applyMatrix4(M.matrixWorld);
   for (let i = 0; i < 30; i++) { const s = HUMO[i + (motor === 'motorD' ? 0 : 30)]; const te = t0 + i * 0.07; const a = t - te;
@@ -273,7 +300,7 @@ window.render3d = function (t) {
   const P = PLANOS.find(p => t >= p.a && t < p.b);
   canvas.style.visibility = P ? 'visible' : 'hidden';
   if (!P) return;
-  avi.scale.setScalar(1); aeropuerto.position.set(0, 0, 0);
+  avi.scale.setScalar(1); avi.visible = true; aeropuerto.position.set(0, 0, 0); suelo.position.y = 0; suelo.scale.set(1, 1, 1); flujo.visible = false; tren(1); for (const m of ['motorD', 'motorI']) avi.userData[m].userData.brasa.material.opacity = 0;
   P.f(t);
   R.render(scene, cam);
 };
