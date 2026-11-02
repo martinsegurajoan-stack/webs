@@ -1,3 +1,5 @@
+**LEE TAMBIÉN `MEJORA_CONTINUA.md` (regla del usuario 02-11-2026: cada vídeo mejor que el anterior, kit de efectos en `kit/`).**
+
 # Vídeos animados 2D de @mundo.supuesto — TODAS las instrucciones del usuario
 
 Léelo entero antes de hacer un vídeo de este estilo («¿Qué pasaría si…?» y cualquier historia animada para la

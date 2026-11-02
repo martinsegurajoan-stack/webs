@@ -10,6 +10,10 @@ Banner de X: `quiz-video/banner_twitter.py` → `quiz-video/portadas/twitter_ban
 Hashtags (regla del usuario 01-11-2026): 4 SOLO en TikTok, YouTube Shorts, Instagram y Facebook: SIEMPRE #fyp + los 3
 hashtags del TEMA del vídeo que más clics tienen (p. ej. #fyp #mexico #quiz #trivia). En X, sin hashtags.
 
+MEJORA CONTINUA (usuario, 02-11-2026, OBLIGATORIO): CADA VÍDEO MEJOR QUE EL ANTERIOR («el siguiente, mejorado por 1000»).
+Antes de cualquier vídeo, LEE `quiz-video/animado/MEJORA_CONTINUA.md` (5 mejoras concretas, KIT de efectos en
+`quiz-video/animado/kit/`, nivel mínimo de calidad y control de fotogramas) y di al entregar qué has mejorado.
+
 REGLAS PERMANENTES PARA TODOS LOS QUIZZES (usuario, 31-10-2026; ver «REGLAS PERMANENTES» en `quiz-video/CLAUDE.md`):
 1. FINAL QUE INCITA A INTERACTUAR: pedir que comenten cuántas han acertado, de qué quieren el siguiente vídeo,
    que apoyen el vídeo… (voz + carteles muy animados).
