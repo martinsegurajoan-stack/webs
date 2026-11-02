@@ -44,19 +44,14 @@ DEF = ('<svg width="0" height="0" style="position:absolute"><defs>'
 H.append(DEF)
 
 # ------------------------------------------------------------------ exterior: cielo, tejado y terreno (se ven en los planos abiertos)
-H.append(svg('<rect x="-3000" y="-6000" width="19400" height="5950" fill="url(#cielo)"/>'
+H.append(svg('<rect x="-5000" y="-9000" width="23000" height="8950" fill="url(#cielo)"/>'
              + "".join(f'<g opacity="0.95"><ellipse cx="{x}" cy="{y}" rx="{r}" ry="{r * 0.42:.0f}" fill="#ffffff"/><ellipse cx="{x + r * 0.5:.0f}" cy="{y - r * 0.2:.0f}" rx="{r * 0.6:.0f}" ry="{r * 0.4:.0f}" fill="#ffffff"/></g>'
-                       for x, y, r in ((-800, -1500, 380), (1800, -2300, 300), (4200, -1700, 420), (7600, -2400, 340), (10400, -1600, 400), (13600, -2200, 360), (900, -3300, 260), (9000, -3400, 300)))
-             + '<circle cx="12000" cy="-2900" r="320" fill="#ffe066"/><circle cx="12000" cy="-2900" r="420" fill="#ffe066" opacity="0.25"/>'
-             # tejado de tejas
-             + '<path d="M-260,-40 L6450,-1250 L13160,-40 Z" fill="#e2483d"/><path d="M-260,-40 L6450,-1250 L13160,-40" stroke="#b5302a" stroke-width="40" fill="none"/>'
-             + "".join(f'<path d="M{-260 + i * 270},-40 L{6450 + (i * 270 - 6710) * 0.15:.0f},{-1250 + abs(i * 270 - 6710) * 0.0}" stroke="#c93a31" stroke-width="10" opacity="0.0"/>' for i in range(0))
-             + "".join(f'<path d="M{6450 - (6710) * k:.0f},{-1250 + 1210 * k:.0f} L{6450 + 6710 * k:.0f},{-1250 + 1210 * k:.0f}" stroke="#ff6b5b" stroke-width="12" opacity="0.6"/>' for k in (0.2, 0.4, 0.6, 0.8))
-             + '<rect x="9300" y="-1000" width="300" height="560" fill="#b5302a"/><rect x="9270" y="-1040" width="360" height="70" fill="#8e2420"/>'
+                       for x, y, r in ((-2600, -2400, 380), (1800, -4300, 300), (4200, -4700, 420), (7600, -4400, 340), (11400, -4000, 400), (15600, -2600, 360), (-900, -4900, 260), (14000, -5200, 300)))
+             + '<circle cx="15200" cy="-4300" r="320" fill="#ffe066"/><circle cx="15200" cy="-4300" r="420" fill="#ffe066" opacity="0.25"/>'
              # forjado del techo y del suelo
              + '<rect x="-260" y="-60" width="13420" height="60" fill="#fff1dc"/><rect x="-260" y="1880" width="13420" height="90" fill="#efe0c8"/>'
-             + '<rect x="-3000" y="1970" width="19400" height="4000" fill="#7a4b2a"/><rect x="-3000" y="1970" width="19400" height="60" fill="#4fc36b"/>'
-             + "".join(f'<ellipse cx="{x}" cy="{2200 + (x * 7) % 400}" rx="{40 + x % 50}" ry="22" fill="#5e391f"/>' for x in range(-2600, 16000, 420))
+             + '<rect x="-5000" y="1970" width="23000" height="5000" fill="#7a4b2a"/>'
+             + "".join(f'<ellipse cx="{x}" cy="{2200 + (x * 7) % 400}" rx="{40 + x % 50}" ry="22" fill="#5e391f"/>' for x in range(-4600, 17600, 420))
              # paredes exteriores
              + '<rect x="-260" y="-60" width="260" height="2030" fill="#fff1dc"/><rect x="12900" y="-60" width="260" height="2030" fill="#fff1dc"/>'))
 
@@ -152,6 +147,8 @@ def zapatilla(x, y, s=1.0, c="#ff3b5c"):
 def enchufe(x, y):
     return (f'<rect x="{x}" y="{y}" width="70" height="70" rx="12" fill="#ffffff"/><circle cx="{x + 35}" cy="{y + 35}" r="22" fill="#eee"/>'
             f'<circle cx="{x + 27}" cy="{y + 35}" r="5" fill="#555"/><circle cx="{x + 43}" cy="{y + 35}" r="5" fill="#555"/>')
+
+exec(open(os.path.join(BASE, 'casa_extra.py'), encoding='utf-8').read())
 
 # ================================================================== DORMITORIO (0-2600)
 x0, x1 = R["bed"]

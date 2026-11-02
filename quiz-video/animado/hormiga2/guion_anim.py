@@ -18,8 +18,8 @@ J(f'tl.to("#ring", {{keyframes:{{scale:[1, 1.15, 1]}}, duration:0.3, repeat:{int
 FX_EV.append(("timbre", 0.0)); FX_EV.append(("timbre", 1.7))
 pose("p0", 3.6, 0, 0, 0, 0, dur=0.5, ease="power2.inOut")
 normal("p0", 3.8)
-cam(P("tamano") - 0.1, 1300, 900, 0.62, dur=2.2, ease="power2.inOut")
-J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40}}, {{opacity:1, y:0, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("hormiga") + 0.1:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
+cam(P("tamano") - 0.1, 1450, 650, 0.3, dur=2.2, ease="power2.inOut")
+J(f'tl.fromTo("#tuTag", {{opacity:0, y:-40, scale:2.4, transformOrigin:"50% 100%"}}, {{opacity:1, y:0, scale:2.4, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("hormiga") + 0.1:.2f}); tl.to("#tuTag", {{opacity:0, duration:0.3}}, {F(2) + 0.2:.2f});')
 J(f'tl.to("#tuTag", {{y:-30, duration:0.3, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("hormiga") + 0.6:.2f});')
 FX_EV.append(("pop", P("hormiga") + 0.1))
 # 2 · mides tres milímetros: mira la regla y se rasca la cabeza
@@ -46,7 +46,7 @@ pose("p0", P("montana"), 140, -140, 72, -72, dur=0.25); pose("p0", P("montana") 
 
 # 4 · viaje al pasillo: camina de perfil por el suelo (10 m = 6 km)
 t = F(4)
-viaje(t, (2300, 900, 0.36), C(3010, FL, 3.6), d1=1.0, hold=0.6, d2=1.1)
+viaje(t, (2700, 650, 0.3), C(3010, FL, 3.6), d1=1.0, hold=0.6, d2=1.1)
 J(f'tl.set("#p1-w", {{x:-260}}, 0);')
 caminar_perfil("p1", t + 1.4, 260, 3.4, 10)
 cam(t + 2.75, *C(3240, FL, 3.6), dur=2.0, ease="sine.inOut")
@@ -108,7 +108,7 @@ pose("p2", FE(9), 0, 0, 0, 0, dur=0.4, ease="power2.inOut")
 
 # 10-12 · la cocina: entra andando, la miga-roca, FRÍO (cara azul, tiritona) y comer sin parar
 t = F(10)
-viaje(t, (8300, 1100, 0.52), C(7700, FL, 3.2), d1=0.9, hold=0.5, d2=1.0)
+viaje(t, (8400, 700, 0.32), C(7700, FL, 3.2), d1=0.9, hold=0.5, d2=1.0)
 J(f'tl.set("#miga", {{x:7880, y:{FL}}}, 0); tl.set("#p3-w", {{x:-150}}, 0);')
 caminar_perfil("p3", t + 1.3, 150, 1.3, 4)
 tm = P("miga")
@@ -162,7 +162,7 @@ J(f'tl.to("#charco", {{scaleX:1.06, scaleY:0.95, duration:0.3, yoyo:true, repeat
 
 # 14-16 · ¡llega el gato! (entra andando DE PERFIL por la puerta, se para y le mira) · 50 pisos · corre al sofá
 t = F(14)
-viaje(t - 0.2, (11200, 1000, 0.42), C(10800, FL, 3.6), d1=0.8, hold=0.25, d2=0.8)
+viaje(t - 0.2, (11300, 700, 0.32), C(10800, FL, 3.6), d1=0.8, hold=0.25, d2=0.8)
 tga = P("gato")
 J(f'tl.set("#gatoG", {{x:-1200}}, 0); tl.set("#gato", {{opacity:1}}, {tga - 1.4:.2f});')
 gato_andar(tga - 1.4, 1200, 1.8, 6)

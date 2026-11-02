@@ -45,6 +45,15 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   desde el fotograma 0 (p. ej. zoom desde una casa enorme hasta el personaje diminuto, objetos gigantes alrededor,
   título grande). Nunca un fondo soso.
 - Duración: si hace falta, hasta **105 s máximo**.
+- **CASA COMPLETA EN LOS PLANOS ABIERTOS** (usuario, 02-11-2026): al alejar la cámara se ve la casa entera en corte,
+  con planta de arriba (baño, cuarto infantil, despacho, música, juegos), BUHARDILLA bajo el tejado de tejas (ventana
+  redonda, baúl, cajas, caballito…), chimenea con humo, SÓTANO (garaje con coche, trastero, lavadero, ping-pong) y
+  jardines a los lados (árboles, valla, caseta del perro, columpio, globo y pájaros). Referencia: `hormiga2/casa_extra.py`.
+- **PERSONAJE CON ARTICULACIONES** (02-11-2026): codos y rodillas, CAMINA DE PERFIL (no de frente), caras según la
+  acción (frío = cara azul + dientes que castañetean + copos; miedo = sudor y piernas que tiemblan; fuerza = músculo
+  y rubor…). Animales igual: el gato camina de perfil con 4 patas, cola, parpadeos. Ver `hormiga2/perfil.py` y `gato2.py`.
+- Lo que va a ser sorpresa (el gato) NO puede verse antes de tiempo en ningún plano abierto.
+- Skill instalada: `svg-character-animation` (pivotes estables, timelines por escenas, poses que se lean).
 - **MINIATURA CURRADÍSIMA** (usuario, 02-11-2026: «es la primera impresión junto al primer segundo del vídeo»):
   diseñarla aparte como un póster de película: escena dibujada a propósito (no solo dos capturas), personaje grande
   con expresión exagerada, el objeto/peligro gigante, título enorme de 2-4 palabras con contorno y sombra, colores
