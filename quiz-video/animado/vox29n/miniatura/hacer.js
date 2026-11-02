@@ -13,14 +13,14 @@ const fs = require('fs');
   @font-face{font-family:Marker;src:url('${f('permanent-marker-400.woff2')}')}
   @font-face{font-family:Courier;src:url('${f('courier-prime-700.woff2')}');font-weight:700}
   *{margin:0;padding:0;box-sizing:border-box} body{width:1080px;height:1920px;overflow:hidden;background:#f6f7f2}
-  #mesa{position:absolute;inset:0;background:radial-gradient(circle at 85% 18%, ${C2} 0 230px, transparent 231px), radial-gradient(circle at 10% 88%, ${C2} 0 260px, transparent 261px), radial-gradient(circle, rgba(150,160,150,0.35) 2.4px, transparent 3px) 0 0/38px 38px, linear-gradient(#fcfcf9,#eef3ea)}
+  #mesa{position:absolute;inset:0;background:radial-gradient(circle at 85% 18%, ${C2} 0 230px, transparent 231px), radial-gradient(circle at 10% 88%, ${C2} 0 260px, transparent 261px), radial-gradient(circle, rgba(150,160,150,0.35) 2.4px, transparent 3px) 0 0/38px 38px, linear-gradient(#fcfcf9,#f3f3ef)}
   #hoja{position:absolute;left:90px;top:300px;width:900px;height:1300px;transform:rotate(-2deg);border-radius:34px;box-shadow:0 30px 60px rgba(40,60,30,0.18);background:#ffffff;overflow:hidden;border-top:20px solid ${C}}
   .cinta{position:absolute;width:190px;height:56px;background:${C};opacity:0.35}
   #esp{position:absolute;left:110px;top:262px;transform:rotate(-2deg)}
   #logo{position:absolute;left:330px;top:120px;width:260px}
   .m{position:absolute;font-family:Marker;white-space:nowrap}
   #l1{left:140px;top:300px;font-size:120px;color:#222}
-  #l2{left:140px;top:450px;font-size:${Math.min(210, Math.floor(700 / (P.linea2.length * 0.62)))}px;color:${C}}
+  #l2{left:140px;top:450px;font-size:${Math.min(210, Math.floor(700 / (P.linea2.length * 0.72)))}px;color:${C}}
   #sub{position:absolute;left:150px;top:975px;font:700 70px Caveat;color:#1f3a7a;white-space:nowrap}
   #fecha{left:150px;top:760px;font-size:120px;color:#c0392b}
   #crono{position:absolute;right:40px;top:740px}

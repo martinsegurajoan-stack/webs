@@ -7,7 +7,13 @@ st = [float(x) for x in re.findall(r'silence_start: ([0-9.]+)', out)]; en = [flo
 x, sr = sf.read('voz_el/narrador.wav'); T = len(x) / sr
 gaps = [(a, b) for a, b in zip(st, en) if a > 0.2 and b < T - 0.3]
 N = len(lines)
-ch = [len(re.sub(r'[^\wáéíóúñü]', '', l)) for l in lines]
+import json, os
+FORZAR = json.load(open('voz_el/cortes.json')) if os.path.exists('voz_el/cortes.json') else {}   # {"línea": segundo donde acaba}
+def _hablado(l):   # las cifras se dicen con muchas más letras de las que ocupan («29» = veintinueve)
+    l = re.sub(r'\b(19|20)\d\d\b', 'dosmilveintitres', l)
+    l = re.sub(r'\d+', lambda m: 'x' * (5 * len(m.group())), l)
+    return l
+ch = [len(re.sub(r'[^\wáéíóúñü]', '', _hablado(l))) for l in lines]
 cuts = [0.0] + [(a + b) / 2 for a, b in gaps] + [T]
 glen = [0] + [b - a for a, b in gaps] + [0]
 K = len(cuts)
@@ -23,6 +29,7 @@ for i in range(1, N + 1):
             if dp[i - 1][p] >= INF: continue
             e = rate * ch[i - 1]
             c = dp[i - 1][p] + ((habla(p, j) - e) / e) ** 2 - 1.5 * glen[j]
+            if str(i) in FORZAR and abs(cuts[j] - FORZAR[str(i)]) > 0.3: c += 1e6   # corte fijado a mano
             if c < dp[i][j]: dp[i][j] = c; bk[i][j] = p
 j = K - 1; seq = []
 for i in range(N, 0, -1):

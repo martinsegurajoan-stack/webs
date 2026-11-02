@@ -218,7 +218,8 @@ def boceto(nombre, ox, oy, t, pg):
             for c_ in range(3):
                 FILL.append(f'<rect x="{ox + 225 + c_ * 65}" y="{oy + 110 + r_ * 55}" width="40" height="34" fill="{COL2}" stroke="{INK2}" stroke-width="3"/>')
         P_.append((wob_ellipse(ox + 580, oy + 200, 90, 90, 5), c, 6))
-        FILL.append(f'<text x="{ox + 530}" y="{oy + 225}" font-family="Marker" font-size="62" fill="{c}">x40</text>')
+        _e = ETIQ[0] if ETIQ[0] != "IVA 0%" else "x40"
+        FILL.append(f'<text x="{ox + 580}" y="{oy + 222}" text-anchor="middle" font-family="Marker" font-size="{62 if len(_e) <= 3 else 34}" fill="{c}">{_e}</text>')
     elif nombre == "puzle":
         P_ += [(f"M{ox + 120},{oy + 160} L{ox + 300},{oy + 160} C{ox + 300},{oy + 120} {ox + 360},{oy + 120} {ox + 360},{oy + 160} L{ox + 360},{oy + 400} L{ox + 120},{oy + 400} Z", c, 7),
                (f"M{ox + 420},{oy + 160} L{ox + 640},{oy + 160} L{ox + 640},{oy + 400} L{ox + 420},{oy + 400} L{ox + 420},{oy + 300} C{ox + 380},{oy + 300} {ox + 380},{oy + 240} {ox + 420},{oy + 240} Z", "#8a8f99", 7),
@@ -230,7 +231,7 @@ def boceto(nombre, ox, oy, t, pg):
                (wob_ellipse(ox + 365, oy + 280, 12, 12, 2), INK2, 5),
                (f"M{ox + 520},{oy + 260} C{ox + 520},{oy + 170} {ox + 640},{oy + 170} {ox + 640},{oy + 260}", c, 8),
                (f"M{ox + 500},{oy + 260} L{ox + 660},{oy + 260} L{ox + 660},{oy + 380} L{ox + 500},{oy + 380} Z", c, 8)]
-        FILL.append(f'<rect x="{ox + 500}" y="{oy + 260}" width="160" height="120" fill="{COL2}"/><text x="{ox + 580}" y="{oy + 340}" text-anchor="middle" font-family="Marker" font-size="44" fill="{c}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "48 h"}</text>')
+        FILL.append(f'<rect x="{ox + 500}" y="{oy + 260}" width="160" height="120" fill="{COL2}"/><text x="{ox + 580}" y="{oy + 340}" text-anchor="middle" font-family="Marker" font-size="{44 if len(ETIQ[0]) <= 5 or ETIQ[0] == "IVA 0%" else 32}" fill="{c}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "48 h"}</text>')
     elif nombre == "pasaporte":
         P_ += [(f"M{ox + 200},{oy + 70} L{ox + 460},{oy + 70} L{ox + 460},{oy + 430} L{ox + 200},{oy + 430} Z", c, 7),
                (wob_ellipse(ox + 330, oy + 210, 70, 70, 3), c, 5),
@@ -269,6 +270,16 @@ def boceto(nombre, ox, oy, t, pg):
         P_ += [(f"M{ox + 615},{oy + 250} C{ox + 615},{oy + 190} {ox + 695},{oy + 190} {ox + 695},{oy + 250}", c, 8),
                (f"M{ox + 595},{oy + 250} L{ox + 715},{oy + 250} L{ox + 715},{oy + 350} L{ox + 595},{oy + 350} Z", c, 8)]
         FILL.append(f'<rect x="{ox + 595}" y="{oy + 250}" width="120" height="100" fill="{COL2}"/><circle cx="{ox + 655}" cy="{oy + 295}" r="12" fill="{c}"/><rect x="{ox + 650}" y="{oy + 300}" width="10" height="30" fill="{c}"/>')
+    elif nombre == "maleta":
+        # maleta de turista con ruedas + señal de prohibido
+        P_ += [(f"M{ox + 170},{oy + 160} L{ox + 430},{oy + 160} C{ox + 455},{oy + 160} {ox + 470},{oy + 175} {ox + 470},{oy + 200} L{ox + 470},{oy + 400} C{ox + 470},{oy + 425} {ox + 455},{oy + 440} {ox + 430},{oy + 440} L{ox + 170},{oy + 440} C{ox + 145},{oy + 440} {ox + 130},{oy + 425} {ox + 130},{oy + 400} L{ox + 130},{oy + 200} C{ox + 130},{oy + 175} {ox + 145},{oy + 160} {ox + 170},{oy + 160} Z", INK2, 7),
+               (f"M{ox + 250},{oy + 160} L{ox + 250},{oy + 90} L{ox + 350},{oy + 90} L{ox + 350},{oy + 160}", INK2, 7),
+               (f"M{ox + 220},{oy + 180} L{ox + 220},{oy + 420} M{ox + 380},{oy + 180} L{ox + 380},{oy + 420}", INK2, 5),
+               (wob_ellipse(ox + 180, oy + 465, 22, 22, 2), INK2, 5), (wob_ellipse(ox + 420, oy + 465, 22, 22, 3), INK2, 5),
+               (wob_ellipse(ox + 610, oy + 270, 105, 105, 5), RED, 9),
+               (f"M{ox + 538},{oy + 345} L{ox + 682},{oy + 195}", RED, 9)]
+        FILL.append(f'<rect x="{ox + 255}" y="{oy + 260}" width="90" height="60" rx="8" fill="{COL2}" stroke="{c}" stroke-width="4"/>')
+        FILL.append(f'<text x="{ox + 610}" y="{oy + 285}" text-anchor="middle" font-family="Marker" font-size="40" fill="{INK2}">{ETIQ[0] if ETIQ[0] != "IVA 0%" else "NUEVAS"}</text>')
     elif nombre == "balanza":
         P_ += [(f"M{ox + 330},{oy + 80} L{ox + 330},{oy + 430} M{ox + 230},{oy + 430} L{ox + 430},{oy + 430}", INK2, 7),
                (f"M{ox + 110},{oy + 150} L{ox + 550},{oy + 110}", INK2, 7),
@@ -305,7 +316,7 @@ for k, pdata in enumerate(paginas):
         pg.append(f'<img src="{CFG["logo"]}" style="position:absolute;left:{480 - 150}px;top:110px;width:300px;opacity:0.95" id="logoP"/>')
         J('tl.set("#logoP", {opacity:0, y:20}, 0); tl.to("#logoP", {opacity:1, y:0, duration:0.5, ease:"power2.out"}, 0.05);')
         escribe(pg, MARG + 30, 330, c["linea1"], 0.1, size=110, font="marker", color=INK2, dur=0.7)
-        w2, _ = escribe(pg, MARG + 30, 470, c["linea2"], 0.75, size=150, font="marker", color=COL, dur=0.5)
+        w2, _ = escribe(pg, MARG + 30, 470, c["linea2"], 0.75, size=150 if len(c["linea2"]) <= 6 else 124, font="marker", color=COL, dur=0.5)
         linea(pg, wob(MARG + 30, 655, MARG + 60 + w2, 650, 5, 8, 3), 1.25, 0.4, COL, 10)
         escribe(pg, MARG + 40, 720, c["fecha"], P("elecciones"), size=96, font="marker", color=RED, dur=0.5)
         linea(pg, wob_ellipse(MARG + 165, 772, 170, 75, 11), P("noviembre"), 0.5, RED, 6)
