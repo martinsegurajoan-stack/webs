@@ -61,3 +61,4 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
 - Elemento central fuerte (medallón VS con banderas, personaje, objeto) + 2 siluetas grandes que lo enmarquen.
 - Pegatina/nota con el dato gancho («solo 14 km de mar»), franja inferior con los temas, destellos de luz.
 - Contraste alto, nada de solapes, todo dentro de 300-1620 px. Referencia: `animado/marruecos2/miniatura/hacer.js`.
+- Tras el render, COMPRIMIR siempre (el grano dispara el peso: 207 MB): `ffmpeg -i video-FINAL.mp4 -c:v libx264 -preset slow -crf 20 -pix_fmt yuv420p -movflags +faststart -c:a copy` (GitHub no admite >100 MB).
