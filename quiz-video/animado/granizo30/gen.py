@@ -58,6 +58,9 @@ def granizo(gid, n=90, w=1080, h=1920, rmin=6, rmax=13, slant=60, seed=1):
             f'<g class="granmov">{capa}<g transform="translate(0,-{h})">{capa}</g></g></svg>')
 def caer(gid, t0, t1, vel=1.1, slant=60):
     n = max(1, int((t1 - t0) / vel))
+    tt = t0
+    while tt < t1 - 0.5:              # repiqueteo suave del granizo mientras cae (muy bajito)
+        FX.append(("granizo", tt)); tt += 2.3
     J(f'tl.fromTo("#{gid} .granmov", {{y:0, x:0}}, {{y:1920, x:{-slant}, duration:{vel}, repeat:{n}, ease:"none", immediateRender:false}}, {t0:.2f});')
 
 # ------------------------------------------------------------------ personaje (hombre adulto, de frente, articulado)
@@ -227,7 +230,7 @@ mostrar("e1", 0, F(2) - 0.05, None)
 caer("g1", 0, F(2), 0.9, 80)
 J(f'tl.fromTo("#e1-cam", {{scale:1.6}}, {{scale:1.0, duration:1.6, ease:"power3.inOut", immediateRender:false}}, 0.5); tl.to("#e1-cam", {{scale:1.08, duration:{F(2) - 2.1:.2f}, ease:"sine.inOut"}}, 2.1);')
 J('tl.set("#e1-cam", {transformOrigin:"760px 1500px", scale:1.6}, 0);')
-FX.append(("golpe", 0.0)); FX.append(("granizo", 0.0))
+
 # la primera piedra GIGANTE rompe el parabrisas en el fotograma 0
 OVR.append('<svg id="piedraG" width="200" height="200" style="position:absolute;left:770px;top:-200px;overflow:visible;z-index:9"><circle cx="100" cy="100" r="70" fill="#f4fbff" stroke="#9fd2ee" stroke-width="6"/><circle cx="76" cy="76" r="22" fill="#fff"/><path d="M60,120 q40,20 80,-10" stroke="#cfe9f7" stroke-width="6" fill="none"/></svg>')
 J('tl.fromTo("#piedraG", {y:-60}, {y:1580, duration:0.35, ease:"power2.in", immediateRender:false}, 0); tl.to("#piedraG", {y:1420, x:220, rotation:180, duration:0.45, ease:"power2.out"}, 0.35); tl.to("#piedraG", {opacity:0, duration:0.2}, 0.8);')

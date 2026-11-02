@@ -72,14 +72,40 @@ def boom(d=2.0):
     return (x * 5 + sub) * np.exp(-t * 2.4) * np.minimum(1, t * 300) * 0.6
 fx = {"tic": (audio.sfx_tick(False), 0.10), "tic2": (audio.sfx_tick(True), 0.22), "posit": (sfx_golpe(0.5), 0.22), "sello": (sfx_golpe(1.1), 0.32), "pagina": (papel(), 0.22), "lapiz": (lapiz(), 0.06), "baja": (sube(1.0, 1100, 260), 0.32), "sube": (sube(), 0.3), "sube2": (sube(1.2, 420, 1100), 0.32), "boing": (boing(), 0.45), "timbre": (timbre(), 0.13), "suave": (transicion(), 0.16), "brillo": (brillo(), 0.2), "whoosh": (audio.sfx_whoosh(0.6), 0.35), "pop": (audio.sfx_pop(), 0.35), "clic": (audio.sfx_tick(True), 0.6),
       "golpe": (sfx_golpe(1.0), 0.55), "portazo": (sfx_golpe(1.5), 0.8), "riser": (riser(), 0.22), "boom": (boom(), 0.7)}
-for k, t in json.load(open(os.path.join(BASE, "efectos.json"))):
+# --- MEZCLA LIMPIA (usuario, 02-11-2026: «no hagas tanto ruido… no se te oye»): la VOZ manda siempre.
+FX_GAIN = 0.35                       # todos los efectos mucho más bajos
+DENSO = {"clic", "lapiz", "tic", "tic2"}
+ult = {}
+for k, t in sorted(json.load(open(os.path.join(BASE, "efectos.json"))), key=lambda e: e[1]):
+    if k in DENSO and t - ult.get(k, -9) < (0.9 if k in ("tic", "tic2") else 0.22):
+        continue                     # nada de ráfagas de clics
+    if k not in DENSO and t - ult.get("_", -9) < 0.15:
+        continue                     # no se amontonan dos golpes a la vez
+    ult[k] = t
+    if k not in DENSO:
+        ult["_"] = t
     s, g = fx[k]
-    mix.add_fx(s, t, g)
+    mix.add_fx(s, t, g * FX_GAIN)
 music = audio.music(dur, style="pop", bpm=100, seed=21)
-out = mix.render(music, music_gain=0.08)
+vozv = mix.voice / (np.max(np.abs(mix.voice)) or 1) * 0.9
+env = np.convolve(np.abs(vozv), np.ones(int(0.05 * SR)) / int(0.05 * SR), mode="same")
+env = np.clip(env * 14, 0, 1)
+env = np.convolve(env, np.ones(int(0.2 * SR)) / int(0.2 * SR), mode="same")
+fxs = mix.fx * (1.0 - 0.55 * env)                 # los efectos se apartan cuando habla la voz
+fxs = np.tanh(fxs * 2.5) / 2.5                     # limitador suave: ningún golpe por encima de la voz
+mus = np.zeros_like(vozv); mus[:min(len(mus), len(music))] = music[:len(mus)]
+mus = mus * 0.07 * (1.0 - 0.6 * env)
+out = vozv + fxs + mus
+out = out / (np.max(np.abs(out)) or 1) * 0.95
+import sys
+if "--stems" in sys.argv:
+    for nom, sig in (("voz", vozv), ("fx", fxs), ("mus", mus)):
+        for a, b in ((0, 1), (1, 3), (20, 25)):
+            seg = sig[int(a * SR):int(b * SR)]
+            print(nom, a, b, round(20 * np.log10(np.sqrt(np.mean(seg ** 2)) + 1e-9), 1))
 tmp = os.path.join(BASE, "assets", "mezcla_bruta.wav")
 audio.write_wav(tmp, out)
-subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11",
-                       "-ar", "44100", os.path.join(BASE, "assets", "mezcla.wav")])
+subprocess.check_call(["ffmpeg", "-y", "-loglevel", "error", "-i", tmp, "-af", "loudnorm=I=-14:TP=-1.5:LRA=11,aresample=44100,alimiter=limit=0.85:level=false",
+                       "-ar", "44100", "-c:a", "pcm_s16le", os.path.join(BASE, "assets", "mezcla.wav")])
 os.remove(tmp)
 print("mezcla.wav", round(dur, 2), "s")

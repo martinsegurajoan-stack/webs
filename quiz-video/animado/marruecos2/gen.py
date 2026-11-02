@@ -217,7 +217,7 @@ cam(-5.5, 35.98, 1.45, 0.0, 1.25, "power3.inOut", tilt=34)
 cam(-5.5, 35.98, 1.25, 1.25, FE(1) - 1.25, "sine.inOut")
 J('tl.fromTo("#todo", {rotation:-2}, {rotation:0, duration:1.25, ease:"power3.inOut", immediateRender:false}, 0);')
 sacude(1.2, 18); leak(0.05, 1.4)
-FX.append(("boom", 0.0)); FX.append(("whoosh", 0.05)); FX.append(("golpe", 1.2))
+FX.append(("suave", 0.05)); FX.append(("pop", 1.2))
 # regla de 14 km
 xa, ya = W(-5.61, 36.01); xb, yb = W(-5.42, 35.915)
 MAPA.append(f'<g id="regla"><path id="regla-l" d="M{xa:.0f},{ya:.0f} L{xb:.0f},{yb:.0f}" stroke="{NAVY}" stroke-width="8" stroke-dasharray="1" pathLength="1" fill="none" style="stroke-dashoffset:1"/>'
@@ -245,7 +245,6 @@ OVR.append('<div id="titulo"><div class="t1">¿Y SI <span>MARRUECOS</span></div>
 J('tl.fromTo("#titulo .t1", {scale:1.22, y:-20}, {scale:1, y:0, duration:0.38, ease:"power4.out", immediateRender:false}, 0);')
 J('tl.fromTo("#titulo .t2", {scale:1.22, y:20}, {scale:1, y:0, duration:0.38, ease:"power4.out", immediateRender:false}, 0.0);')
 J(f'tl.to("#titulo", {{y:-10, duration:0.8, yoyo:true, repeat:{int(F(2) / 0.8)}, ease:"sine.inOut"}}, 0.5);')
-FX.append(("golpe", 0.12))
 J(f'tl.to("#titulo", {{opacity:0, y:-200, scale:0.85, duration:0.4, ease:"power3.in"}}, {F(2) + 0.3:.2f});')
 J(f'tl.to("{",".join(LAN)}, #preg, #regla, .rad", {{opacity:0, duration:0.4}}, {F(2) + 0.2:.2f});')
 
@@ -383,7 +382,7 @@ te = P("estrecho") - 0.5
 J(f'tl.set("{",".join(FLE)}", {{opacity:1}}, {te:.2f}); tl.to("{",".join(FLE)}", {{strokeDashoffset:0, duration:0.6, stagger:0.15, ease:"power2.out"}}, {te:.2f});')
 OVR.append('<div id="imposible" class="sello2">CASI IMPOSIBLE</div>')
 pop("#imposible", P("imposible"), 0.35, "scale:3, opacity:0, rotation:-30", "power4.out")
-FX.append(("boom", P("imposible"))); sacude(P("imposible"), 22); flash(P("imposible"), 0.5)
+FX.append(("sello", P("imposible"))); sacude(P("imposible"), 22); flash(P("imposible"), 0.5)
 J(f'tl.to("{",".join(FLE)}", {{opacity:0, duration:0.25}}, {P("imposible") + 0.05:.2f});')
 J(f'tl.to("#imposible", {{opacity:0, duration:0.3}}, {P("tension") - 0.1:.2f});')
 J(f'tl.fromTo("#m-ceuta, #m-melilla", {{scale:1}}, {{scale:1.6, transformOrigin:"50% 50%", duration:0.35, yoyo:true, repeat:3, ease:"sine.inOut", immediateRender:false}}, {P("tension"):.2f});')

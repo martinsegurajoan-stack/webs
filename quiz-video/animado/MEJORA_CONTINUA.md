@@ -73,3 +73,10 @@ su HTML/estilo/script a la escena (ver el comentario de cada archivo).
 - Revisar en cada escena: banderas/chinchetas que asoman por los bordes, etiquetas cortadas, nombres del mapa que
   asoman bajo los subtítulos en planos cercanos.
 - `P(palabra)` coge la PRIMERA vez que se dice en TODO el guion: antes de usarla, comprobar que no sale antes (pasó con «mar» y «solo»; usar `P("solo", 2)`).
+
+## SONIDO (usuario, 02-11-2026: «no hagas tanto ruido… empiezas con un sonido fortísimo y no se te oye»)
+- LA VOZ MANDA SIEMPRE: efectos ×0,35, se apartan (−55 %) mientras habla la voz, limitador suave (tanh) y música al 7 %.
+- NADA de golpes fuertes ni «boom» al empezar: el primer segundo solo voz + un whoosh suave.
+- Sin ráfagas: como mucho un clic cada 0,22 s, un tic por segundo, y nunca dos golpes a la vez (separación 0,15 s).
+- Final: loudnorm −14 LUFS + `alimiter=limit=0.85` + pcm_s16le. Comprobar con `volumedetect` (pico ≤ −1 dB) y que
+  la voz quede 15-20 dB por encima de efectos y música (`python3 mezcla.py --stems`). Referencia: `animado/marruecos2/mezcla.py`.
