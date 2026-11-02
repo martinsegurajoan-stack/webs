@@ -1,0 +1,151 @@
+{
+  "modo": "niveles",
+  "video": "niveles_01",
+  "titulo": "¿Hasta qué nivel llegas?",
+  "gancho": {
+    "voz": "[excited] ¡El último nivel es casi imposible! ¿Hasta dónde llegas tú?",
+    "texto": [
+      "¿HASTA QUÉ",
+      "NIVEL LLEGAS?"
+    ]
+  },
+  "rondas": [
+    {
+      "tipo": "secuencia",
+      "nombre": "CALENTAMIENTO",
+      "dificultad": "FÁCIL",
+      "anuncio": "Nivel uno: calentamiento.",
+      "pregunta": "¿Qué número sigue?",
+      "voz": "¿Qué número sigue?",
+      "serie": [
+        "2",
+        "4",
+        "8",
+        "16"
+      ],
+      "salto": "×2",
+      "opciones": [
+        "24",
+        "30",
+        "32",
+        "36"
+      ],
+      "correcta": "C",
+      "respuesta_voz": "¡La C, treinta y dos! Cada número es el doble."
+    },
+    {
+      "tipo": "busca",
+      "nombre": "OJO DE HALCÓN",
+      "dificultad": "MEDIA",
+      "anuncio": "Nivel dos: ojo de halcón.",
+      "pregunta": "Encuentra el número diferente",
+      "voz": "Encuentra el número diferente.",
+      "filas": [
+        "8888888888",
+        "8888888888",
+        "8888888883",
+        "8888888888"
+      ],
+      "opciones": [
+        "Fila A",
+        "Fila B",
+        "Fila C",
+        "Fila D"
+      ],
+      "correcta": "C",
+      "respuesta_voz": "¡La C! El tres se escondía en la tercera fila."
+    },
+    {
+      "tipo": "logica",
+      "nombre": "LÓGICA PURA",
+      "dificultad": "DIFÍCIL",
+      "anuncio": "Nivel tres: lógica pura.",
+      "pregunta": "Un hombre tiene 4 hijas y cada hija tiene un hermano. ¿Cuántos hijos tiene en total?",
+      "voz": "Un hombre tiene cuatro hijas, y cada hija tiene un hermano. ¿Cuántos hijos tiene en total?",
+      "imagen": "cerebro_3d.png",
+      "opciones": [
+        "4",
+        "5",
+        "8",
+        "9"
+      ],
+      "correcta": "B",
+      "explicacion": "4 hijas + 1 hijo = 5",
+      "respuesta_voz": "¡La B, cinco! Las cuatro hijas tienen el mismo hermano."
+    },
+    {
+      "tipo": "memoria",
+      "nombre": "MEMORIA",
+      "dificultad": "MUY DIFÍCIL",
+      "anuncio": "Nivel cuatro: memoria.",
+      "memoriza": "¡Memoriza los números!",
+      "memoriza_voz": "Memoriza estos números… ¡Cinco segundos!",
+      "numeros": [
+        "7",
+        "3",
+        "9",
+        "2",
+        "6",
+        "4"
+      ],
+      "posicion": 4,
+      "pregunta": "¿Qué número estaba en la 4ª posición?",
+      "voz": "¿Qué número estaba en la cuarta posición?",
+      "opciones": [
+        "9",
+        "2",
+        "6",
+        "4"
+      ],
+      "correcta": "B",
+      "respuesta_voz": "¡La B, el dos!"
+    },
+    {
+      "tipo": "acertijo",
+      "nombre": "EL ACERTIJO FINAL",
+      "dificultad": "EXPERTO",
+      "anuncio": "Nivel cinco: el acertijo final.",
+      "pregunta": "Dos cuerdas tardan 60 min en quemarse, pero a ritmo irregular. ¿Cómo mides 45 min?",
+      "voz": "Dos cuerdas tardan una hora en quemarse, pero a ritmo irregular. ¿Cómo mides cuarenta y cinco minutos?",
+      "opciones": [
+        "Quemar una entera y luego media de la otra",
+        "Encender las dos a la vez por un extremo",
+        "Una por ambos extremos y otra por uno; luego, el otro extremo de la 2ª",
+        "Doblarlas y quemarlas por el centro"
+      ],
+      "correcta": "C",
+      "explicacion": "30 min + 15 min = 45 min",
+      "respuesta_voz": "¡La C! Media hora la primera, y quince minutos más la segunda."
+    },
+    {
+      "tipo": "reloj",
+      "extra": true,
+      "nombre": "IMPOSIBLE",
+      "dificultad": "SOLO GENIOS",
+      "anuncio": "[whispers] Nivel imposible… solo para genios.",
+      "pregunta": "Un reloj marca las 3:15. ¿Qué ángulo forman exactamente las agujas?",
+      "voz": "Un reloj marca las tres y cuarto. ¿Qué ángulo forman exactamente las agujas?",
+      "hora": [
+        3,
+        15
+      ],
+      "opciones": [
+        "0°",
+        "7,5°",
+        "15°",
+        "22,5°"
+      ],
+      "correcta": "B",
+      "fuente": "Minutero en 90°, horaria en 90° + 15/60·30° = 97,5° → 7,5°. No se revela: va a comentarios.",
+      "respuesta_voz": "¡Escríbelo en los comentarios si te lo sabes!"
+    }
+  ],
+  "cierre_voz": "¿Hasta qué nivel has llegado? ¡Dímelo en comentarios!",
+  "portada": {
+    "titulo": [
+      "¿HASTA QUÉ",
+      "NIVEL LLEGAS?"
+    ],
+    "pegatina": "EL ÚLTIMO ES CASI IMPOSIBLE"
+  }
+}

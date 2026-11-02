@@ -1,0 +1,121 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>html,body{margin:0;background:#000;overflow:hidden}canvas{display:block}</style>
+</head><body>
+<script type="module">
+import * as THREE from './three.module.min.js';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { crearPersonaje, poser } from './personaje.js';
+
+const W = 1080, H = 1920;
+const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(1);
+renderer.setSize(W, H);
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+
+const scene = new THREE.Scene();
+const pmrem = new THREE.PMREMGenerator(renderer);
+scene.environment = pmrem.fromScene(new RoomEnvironment(renderer), 0.04).texture;
+
+// Fondo: esfera con degradado + manchas suaves (textura dibujada en canvas)
+function fondoTex(c1, c2, c3) {
+  const cv = document.createElement('canvas'); cv.width = 512; cv.height = 1024;
+  const g = cv.getContext('2d');
+  const lg = g.createLinearGradient(0, 0, 0, 1024);
+  lg.addColorStop(0, c1); lg.addColorStop(0.55, c2); lg.addColorStop(1, c3);
+  g.fillStyle = lg; g.fillRect(0, 0, 512, 1024);
+  for (let i = 0; i < 260; i++) {           // textura tipo pintura (como "nubes")
+    const x = Math.random() * 512, y = Math.random() * 1024, r = 20 + Math.random() * 90;
+    const rg = g.createRadialGradient(x, y, 0, x, y, r);
+    const a = 0.03 + Math.random() * 0.05;
+    rg.addColorStop(0, `rgba(255,255,255,${a})`); rg.addColorStop(1, 'rgba(255,255,255,0)');
+    g.fillStyle = rg; g.fillRect(x - r, y - r, r * 2, r * 2);
+  }
+  const t = new THREE.CanvasTexture(cv); t.colorSpace = THREE.SRGBColorSpace; return t;
+}
+const bgMat = new THREE.MeshBasicMaterial({ side: THREE.BackSide, map: fondoTex('#2a1f4a', '#3a2a5c', '#120c22') });
+const bg = new THREE.Mesh(new THREE.SphereGeometry(40, 48, 32), bgMat); scene.add(bg);
+
+// Suelo que recibe sombra (invisible salvo la sombra)
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: 0.35 }));
+floor.rotation.x = -Math.PI / 2; floor.position.y = -3.0; floor.receiveShadow = true; scene.add(floor);
+// pared trasera con sombra
+const wall = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: 0.25 }));
+wall.position.z = -2.2; wall.receiveShadow = true; scene.add(wall);
+
+// Luces: principal cálida, relleno frío y contraluz de color (rim)
+const key = new THREE.DirectionalLight(0xfff1e0, 2.4); key.position.set(2.5, 3.5, 4);
+key.castShadow = true; key.shadow.mapSize.set(1024, 1024); key.shadow.radius = 6;
+key.shadow.camera.left = -4; key.shadow.camera.right = 4; key.shadow.camera.top = 4; key.shadow.camera.bottom = -5;
+scene.add(key);
+const fill = new THREE.DirectionalLight(0x9db8ff, 0.7); fill.position.set(-3, 1, 2); scene.add(fill);
+const rim = new THREE.DirectionalLight(0xff5fd2, 2.2); rim.position.set(-2, 2.5, -3); scene.add(rim);
+const rim2 = new THREE.DirectionalLight(0x49e3ff, 1.6); rim2.position.set(2.5, 1.5, -3); scene.add(rim2);
+scene.add(new THREE.AmbientLight(0x6a5a9a, 0.35));
+
+const pj = crearPersonaje(); scene.add(pj);
+
+// Partículas brillantes (bokeh 3D)
+const ptsGeo = new THREE.BufferGeometry(); const N = 140; const arr = new Float32Array(N * 3);
+for (let i = 0; i < N; i++) { arr[i * 3] = (Math.random() - 0.5) * 9; arr[i * 3 + 1] = (Math.random() - 0.5) * 12; arr[i * 3 + 2] = -1.5 - Math.random() * 4; }
+ptsGeo.setAttribute('position', new THREE.BufferAttribute(arr, 3));
+const dot = (() => { const c = document.createElement('canvas'); c.width = c.height = 64; const g = c.getContext('2d');
+  const r = g.createRadialGradient(32, 32, 0, 32, 32, 32); r.addColorStop(0, 'rgba(255,255,255,1)'); r.addColorStop(1, 'rgba(255,255,255,0)');
+  g.fillStyle = r; g.fillRect(0, 0, 64, 64); return new THREE.CanvasTexture(c); })();
+const pts = new THREE.Points(ptsGeo, new THREE.PointsMaterial({ size: 0.12, map: dot, transparent: true, opacity: 0.55,
+  depthWrite: false, color: 0xc9b6ff, blending: THREE.AdditiveBlending }));
+scene.add(pts);
+
+// Objetos 3D (emojis 3D como paneles que flotan y giran) — se cargan bajo demanda
+const loader = new THREE.TextureLoader(); const texs = {};
+function tex(name) { if (!texs[name]) { texs[name] = loader.load(`../assets/quepasaria/${name}.png`); texs[name].colorSpace = THREE.SRGBColorSpace; } return texs[name]; }
+const props = []; for (let i = 0; i < 4; i++) { const m = new THREE.Mesh(new THREE.PlaneGeometry(1, 1),
+  new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false })); m.visible = false; scene.add(m); props.push(m); }
+
+// Regla 3D (cinta métrica) a la derecha del personaje
+const regla = new THREE.Group(); scene.add(regla);
+const tape = new THREE.Mesh(new THREE.BoxGeometry(0.22, 4.0, 0.04), new THREE.MeshPhysicalMaterial({ color: 0xffd23f, roughness: 0.4, clearcoat: 0.6 }));
+tape.position.y = -1.6; regla.add(tape);
+for (let k = 0; k <= 80; k += 5) { const tk = new THREE.Mesh(new THREE.BoxGeometry(k % 10 ? 0.07 : 0.13, 0.012, 0.05), new THREE.MeshBasicMaterial({ color: 0x1b1030 }));
+  tk.position.set(-0.07 + (k % 10 ? -0.03 : 0), 0.2 - k * 0.045, 0.03); regla.add(tk); }
+const marker = new THREE.Mesh(new THREE.SphereGeometry(0.07, 20, 16), new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0x49e3ff, emissiveIntensity: 2 }));
+regla.add(marker);
+regla.position.set(1.75, 0.05, 0.2);
+
+const camera = new THREE.PerspectiveCamera(30, W / H, 0.1, 100);
+
+window.listo = Promise.all(['tijeras', 'champu', 'nudo', 'sol', 'adn', 'regla', 'sudor', 'trofeo', 'reloj_arena', 'peine', 'asombro', 'boom', 'prohibido', 'calendario']
+  .map(n => new Promise(r => { const tx = loader.load(`../assets/quepasaria/${n}.png`, r, undefined, r); tx.colorSpace = THREE.SRGBColorSpace; texs[n] = tx; })));
+
+// Pinta un fotograma a partir del estado que manda Python
+window.pintar = (s) => {
+  poser(pj, s);
+  const c = s.cam || {};
+  camera.position.set(c.x ?? 0, c.y ?? -0.6, c.z ?? 9.5);
+  camera.fov = c.fov ?? 30; camera.updateProjectionMatrix();
+  camera.lookAt(c.tx ?? 0, c.ty ?? -0.9, c.tz ?? 0);
+  pj.rotation.y = s.giro ?? 0;
+  regla.visible = !!s.regla;
+  marker.position.set(-0.2, 0.2 - (s.cm || 0) * 0.045, 0.06);
+  pts.rotation.y = s.t * 0.03; pts.position.y = (s.t * 0.12) % 2;
+  bgMat.color.setHSL(s.hue ?? 0.72, 0.0, 1);
+  props.forEach((m, i) => {
+    const p = (s.props || [])[i];
+    m.visible = !!p;
+    if (!p) return;
+    m.material.map = tex(p.img); m.material.opacity = p.a ?? 1; m.material.needsUpdate = true;
+    m.position.set(p.x, p.y, p.z ?? 1.2); m.scale.setScalar(p.s ?? 0.9);
+    m.rotation.set(0, p.ry ?? 0, p.rz ?? 0); m.lookAt(camera.position); m.rotateZ(p.rz ?? 0);
+  });
+  if (s.flash) renderer.toneMappingExposure = 1.05 + s.flash; else renderer.toneMappingExposure = 1.05;
+  renderer.render(scene, camera);
+  return true;
+};
+window.ok = true;
+</script>
+</body></html>

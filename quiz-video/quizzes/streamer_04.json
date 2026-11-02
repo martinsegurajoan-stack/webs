@@ -1,0 +1,558 @@
+{
+  "modo": "streamer",
+  "video": "streamer_04",
+  "nombre": "elRubius",
+  "titulo": "¿Cuánto sabes de elRubius?",
+  "foto": "assets/streamers/rubius.jpg",
+  "foco": [
+    680,
+    770
+  ],
+  "zoom_cam": 1.25,
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DE RUBIUS",
+    "SABRÁN LA ÚLTIMA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡La última del Rubius no la acierta ni Mangel!",
+    "texto": [
+      "QUIZ DE",
+      "RUBIUS"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE"
+  },
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el nombre completo de elRubius?",
+      "pregunta_voz": "¿Cuál es el nombre completo del Rubius?",
+      "opciones": [
+        "Rubén García Gundersen",
+        "Rubén Doblas Gundersen",
+        "Rubén Doblas González",
+        "Rubén Gundersen López"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Rubén Doblas Gundersen",
+      "fuente": "Rubén Doblas Gundersen (madre noruega)."
+    },
+    {
+      "pregunta": "¿En qué localidad nació elRubius?",
+      "pregunta_voz": "¿En qué localidad nació el Rubius?",
+      "opciones": [
+        "Madrid",
+        "Bergen",
+        "Mijas (Málaga)",
+        "Marbella"
+      ],
+      "correcta": "C",
+      "opcion_voz": "Mijas, en Málaga",
+      "fuente": "Nació en Mijas (Málaga) el 13-02-1990."
+    },
+    {
+      "pregunta": "¿En qué año creó su primer canal de YouTube?",
+      "opciones": [
+        "2005",
+        "2006",
+        "2008",
+        "2010"
+      ],
+      "correcta": "B",
+      "opcion_voz": "En 2006",
+      "fuente": "Canal elrubius en 2006; elrubiusOMG en 2011."
+    },
+    {
+      "pregunta": "¿Con qué famoso youtuber español empezó a colaborar en sus inicios?",
+      "pregunta_voz": "¿Con qué youtuber español empezó a colaborar en sus inicios?",
+      "opciones": [
+        "Vegetta777",
+        "Willyrex",
+        "Mangel",
+        "Alexby11"
+      ],
+      "correcta": "C",
+      "opcion_voz": "Mangel",
+      "fuente": "Mangel, su compañero desde los inicios."
+    },
+    {
+      "pregunta": "¿Cómo se llama el cómic de elRubius que luego tuvo serie animada?",
+      "pregunta_voz": "¿Cómo se llama el cómic del Rubius que luego tuvo serie animada?",
+      "opciones": [
+        "Escuela de Gamers",
+        "Virtual Hero",
+        "Rubius Adventures",
+        "Gamer World"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Virtual Hero",
+      "fuente": "Virtual Hero (cómic 2015, serie de Movistar+ 2018)."
+    },
+    {
+      "pregunta": "¿En qué año anunció elRubius que se mudaba a Andorra?",
+      "pregunta_voz": "¿En qué año anunció el Rubius que se mudaba a Andorra?",
+      "opciones": [
+        "2018",
+        "2019",
+        "2021",
+        "2022"
+      ],
+      "correcta": "C",
+      "sin_respuesta": true,
+      "fuente": "Lo anunció en enero de 2021. No se revela."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "siguiente_voz": "[excited] ¿Y quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!",
+  "siguiente": [
+    "¡QUE SEA ILLOJUAN!",
+    "¡¡THE GREFG!!",
+    "SPREEN PORFA",
+    "¡RIVERS YA!",
+    "¡VEGETTA!",
+    "¡¡QUACKITY!!"
+  ],
+  "portada": {
+    "titulo": [
+      "QUIZ DE",
+      "RUBIUS"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  },
+  "chat_mod": "dato_serio",
+  "chat_guion": [
+    {
+      "antes": [
+        [
+          "pepitogamer",
+          "RUBIUS EN LA CASA"
+        ],
+        [
+          "lauritaa_",
+          "holaaa chat"
+        ],
+        [
+          "kevin_23",
+          "esta me la sé fijo"
+        ],
+        [
+          "sara.xd",
+          "@kevin_23 eso dijiste ayer"
+        ],
+        [
+          "kevin_23",
+          "@sara.xd y acerté!!"
+        ],
+        [
+          "sara.xd",
+          "@kevin_23 acertaste 1 de 6"
+        ],
+        [
+          "kevin_23",
+          "@sara.xd ya no te hablo"
+        ],
+        [
+          "mr_tostada",
+          "mi perro tiene canal de Twitch"
+        ],
+        [
+          "noob_master",
+          "nombre completo?? ni el mío"
+        ],
+        [
+          "abuela_gamer",
+          "hola soy la abuela de Kevin"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA VETE"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 qué genio tiene el niño"
+        ]
+      ],
+      "serio": [
+        "dato_serio",
+        "Doblas Gundersen: madre noruega"
+      ],
+      "despues": [
+        [
+          "abuela_gamer",
+          "@kevin_23 has fallado cariño"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer QUE NO HE FALLADO"
+        ],
+        [
+          "yoquese_",
+          "GG"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "pepitogamer",
+          "segunda y ya sudo"
+        ],
+        [
+          "mr_tostada",
+          "mi gato está viendo esto"
+        ],
+        [
+          "lauritaa_",
+          "@mr_tostada saluda al gato"
+        ],
+        [
+          "mr_tostada",
+          "@lauritaa_ dice miau"
+        ],
+        [
+          "burlao_oficial",
+          "esta es facilísima"
+        ],
+        [
+          "sara.xd",
+          "@burlao_oficial pues dila"
+        ],
+        [
+          "burlao_oficial",
+          "@sara.xd no quiero presumir"
+        ],
+        [
+          "sara.xd",
+          "@burlao_oficial no la sabes"
+        ],
+        [
+          "burlao_oficial",
+          "@sara.xd ME OFENDES"
+        ],
+        [
+          "pato_feliz",
+          "estoy haciendo macarrones"
+        ],
+        [
+          "elcrack99",
+          "yo nací en Cuenca, dato inútil"
+        ],
+        [
+          "lucia.gamer",
+          "@elcrack99 gracias por tanto"
+        ]
+      ],
+      "serio": [
+        "dato_serio",
+        "Nació en Mijas (Málaga), en 1990"
+      ],
+      "despues": [
+        [
+          "noob_master",
+          "@dato_serio gracias profe"
+        ],
+        [
+          "pato_feliz",
+          "se me han pasado los macarrones"
+        ],
+        [
+          "lauritaa_",
+          "F por los macarrones"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "kevin_23",
+          "esta la vi en un vídeo"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin a cenar"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ESTOY EN UN QUIZ"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 la cena se enfría"
+        ],
+        [
+          "yoquese_",
+          "yo en esa época llevaba chupete"
+        ],
+        [
+          "lucia.gamer",
+          "@yoquese_ yo ni existía"
+        ],
+        [
+          "sara.xd",
+          "dudo entre dos"
+        ],
+        [
+          "elcrack99",
+          "@sara.xd decide ya que no llegas"
+        ],
+        [
+          "sara.xd",
+          "@elcrack99 no me metas presión"
+        ],
+        [
+          "elcrack99",
+          "@sara.xd 3 segundos SARA"
+        ],
+        [
+          "mr_tostada",
+          "le he puesto nombre a mi tostadora"
+        ],
+        [
+          "burlao_oficial",
+          "@mr_tostada cómo se llama"
+        ]
+      ],
+      "serio": [
+        "dato_serio",
+        "En 2006. elrubiusOMG llegó en 2011"
+      ],
+      "despues": [
+        [
+          "mr_tostada",
+          "@burlao_oficial se llama Paco"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin la tortilla"
+        ],
+        [
+          "kevin_23",
+          "VOY ABUELA"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "pepitogamer",
+          "esta es para fans de antes"
+        ],
+        [
+          "noob_master",
+          "@pepitogamer fan desde Minecraft"
+        ],
+        [
+          "pepitogamer",
+          "@noob_master yo desde antes"
+        ],
+        [
+          "noob_master",
+          "@pepitogamer demuéstralo"
+        ],
+        [
+          "pepitogamer",
+          "@noob_master no tengo que demostrar na"
+        ],
+        [
+          "lauritaa_",
+          "chicos no os peleéis"
+        ],
+        [
+          "burlao_oficial",
+          "que se peleen, me renta"
+        ],
+        [
+          "lauritaa_",
+          "@burlao_oficial no ayudas"
+        ],
+        [
+          "pato_feliz",
+          "mi vecino canta ópera a las 3"
+        ],
+        [
+          "yoquese_",
+          "esta la falla mucha gente"
+        ],
+        [
+          "mr_tostada",
+          "mi tostadora tampoco lo sabe"
+        ],
+        [
+          "lucia.gamer",
+          "no me acuerdo de nada"
+        ]
+      ],
+      "serio": [
+        "dato_serio",
+        "Mangel, su compi de siempre"
+      ],
+      "despues": [
+        [
+          "noob_master",
+          "@pepitogamer perdón por lo de antes"
+        ],
+        [
+          "pepitogamer",
+          "@noob_master perdonado bro"
+        ],
+        [
+          "burlao_oficial",
+          "noooo ya no hay pelea"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "sara.xd",
+          "esta la sé por mi primo"
+        ],
+        [
+          "elcrack99",
+          "@sara.xd tu primo lo sabe todo"
+        ],
+        [
+          "sara.xd",
+          "@elcrack99 mi primo es un crack"
+        ],
+        [
+          "kevin_23",
+          "hay una que suena inventada"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin te he guardado tortilla"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer GRACIAS ABUELA"
+        ],
+        [
+          "mr_tostada",
+          "cuánto tarda en hervir el agua?"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada unos 10 min creo"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz gracias desconocido"
+        ],
+        [
+          "lucia.gamer",
+          "me está gustando el quiz"
+        ],
+        [
+          "yoquese_",
+          "el cómic lo tenía mi hermano"
+        ],
+        [
+          "lauritaa_",
+          "@yoquese_ me lo prestas?"
+        ]
+      ],
+      "serio": [
+        "dato_serio",
+        "Virtual Hero: cómic y luego serie"
+      ],
+      "despues": [
+        [
+          "yoquese_",
+          "@lauritaa_ si aciertas la extra"
+        ],
+        [
+          "lucia.gamer",
+          "que viene la extra..."
+        ],
+        [
+          "noob_master",
+          "modo pánico activado"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "burlao_oficial",
+          "LA EXTRA LA EXTRA"
+        ],
+        [
+          "pepitogamer",
+          "esta es imposible"
+        ],
+        [
+          "sara.xd",
+          "@pepitogamer para ti todas"
+        ],
+        [
+          "pepitogamer",
+          "@sara.xd estoy dolido"
+        ],
+        [
+          "sara.xd",
+          "@pepitogamer era broma jajaja"
+        ],
+        [
+          "elcrack99",
+          "mi abuela juega mejor que yo"
+        ],
+        [
+          "abuela_gamer",
+          "@elcrack99 no me nombres"
+        ],
+        [
+          "kevin_23",
+          "ABUELA QUÉ HACES AQUÍ"
+        ],
+        [
+          "lucia.gamer",
+          "esta no la sabe nadie"
+        ],
+        [
+          "noob_master",
+          "@lucia.gamer yo sí, creo"
+        ],
+        [
+          "lauritaa_",
+          "se habló muchísimo de eso"
+        ],
+        [
+          "mr_tostada",
+          "me he comprado un jabalí"
+        ]
+      ],
+      "serio": [
+        "dato_serio",
+        "me la sé pero a comentarios"
+      ],
+      "despues": [
+        [
+          "burlao_oficial",
+          "@dato_serio NOOO dilaaa"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada cómo se llama el jabalí"
+        ],
+        [
+          "yoquese_",
+          "lo pongo en comentarios"
+        ]
+      ]
+    }
+  ],
+  "chat": [
+    "RUBIUS EL MEJOR",
+    "fan desde los 12",
+    "mi infancia entera",
+    "OMG OMG OMG",
+    "el de los vídeos de Skyrim",
+    "hola desde México"
+  ],
+  "chat_random": [
+    "mi abuelo tiene TikTok",
+    "he soñado con una vaca",
+    "mi pez se llama Rubén",
+    "estoy en el bus",
+    "alguien quiere croquetas"
+  ]
+}

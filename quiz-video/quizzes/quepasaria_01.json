@@ -1,0 +1,68 @@
+{
+  "modo": "quepasaria",
+  "video": "quepasaria_01",
+  "titulo": "¿Qué pasaría si no te cortas el pelo por 5 años?",
+  "voz": {
+    "voice_id": "qUPtETgSYRhCRb2pfOla",
+    "nombre": "Guillermo Brazález",
+    "estilo": ""
+  },
+  "clips": [
+    {
+      "id": "gancho",
+      "texto": "¿Qué pasaría si no te cortas el pelo por cinco años?",
+      "pausa": 0.35
+    },
+    {
+      "id": "inicio",
+      "texto": "Todo empieza aquí. Con un pelo… bueno, con unos cuantos más. El pelo crece más o menos un centímetro al mes, así que el primer mes, nadie se da cuenta.",
+      "pausa": 0.3
+    },
+    {
+      "id": "mes6",
+      "texto": "A los seis meses llega la fase más odiada. El flequillo te tapa los ojos, y ningún peinado se queda en su sitio.",
+      "pausa": 0.3
+    },
+    {
+      "id": "ano1",
+      "texto": "Al año ya tienes unos quince centímetros. Te tapa las orejas, y aparecen las primeras puntas abiertas.",
+      "pausa": 0.3
+    },
+    {
+      "id": "ano2",
+      "texto": "A los dos años, treinta centímetros. Los nudos se vuelven tu rutina: el cepillo se queda atascado… y gastas el doble de champú.",
+      "pausa": 0.3
+    },
+    {
+      "id": "puerta",
+      "texto": "Al tercer año, el pelo se engancha en todo. En las puertas…",
+      "pausa": 0.15
+    },
+    {
+      "id": "sopa",
+      "texto": "…y hasta acaba dentro de la sopa.",
+      "pausa": 0.35
+    },
+    {
+      "id": "ano4",
+      "texto": "Y en el cuarto año pasa algo que casi nadie sabe: puede que tu pelo deje de crecer. Cada pelo solo crece entre dos y siete años, según tu genética. Después se cae, y nace uno nuevo.",
+      "pausa": 0.3
+    },
+    {
+      "id": "ano5",
+      "texto": "Si tu genética lo permite, a los cinco años te llegará casi a la cintura: unos setenta y cinco centímetros.",
+      "pausa": 0.3
+    },
+    {
+      "id": "caida",
+      "texto": "Y por el camino se te habrán caído entre noventa mil y ciento ochenta mil pelos. Tranquilo: perder entre cincuenta y cien al día es normal.",
+      "pausa": 0.3
+    },
+    {
+      "id": "bucle",
+      "texto": "Así que la próxima vez que te preguntes…",
+      "pausa": 0.0
+    }
+  ],
+  "fuentes": "Crecimiento ~1,25 cm/mes ≈ 15 cm/año (American Academy of Dermatology). Fase anágena 2-7 años. Caída normal 50-100 pelos/día (AAD) → 5 años ≈ 91.000-183.000."
+}

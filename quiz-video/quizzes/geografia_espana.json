@@ -1,0 +1,31 @@
+{
+  "tema": "geografía de España",
+  "titulo": "¿Cuánto sabes de geografía de España?",
+  "dificultad": "media",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el río más largo que discurre íntegramente por España?",
+      "opciones": ["Tajo", "Duero", "Guadalquivir", "Ebro"],
+      "correcta": "D",
+      "fuente": "El Tajo es más largo, pero cruza Portugal; el Ebro (unos 930 km) es el más largo solo en España."
+    },
+    {
+      "pregunta": "¿Cuál es la montaña más alta de España?",
+      "opciones": ["Mulhacén", "Aneto", "Teide", "Veleta"],
+      "correcta": "C",
+      "fuente": "Teide, 3.715 m (Tenerife). Mulhacén, 3.479 m, es el más alto de la Península."
+    },
+    {
+      "pregunta": "¿Cuántas comunidades autónomas tiene España?",
+      "opciones": ["17", "15", "16", "19"],
+      "correcta": "A",
+      "fuente": "17 comunidades autónomas y 2 ciudades autónomas (Ceuta y Melilla)."
+    },
+    {
+      "pregunta": "¿En qué provincia está Mérida, la capital de Extremadura?",
+      "opciones": ["Cáceres", "Badajoz", "Huelva", "Toledo"],
+      "correcta": "B",
+      "fuente": "Mérida pertenece a la provincia de Badajoz."
+    }
+  ]
+}

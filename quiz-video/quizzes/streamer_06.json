@@ -1,0 +1,602 @@
+{
+  "modo": "streamer",
+  "video": "streamer_06",
+  "nombre": "TheGrefg",
+  "nombre_cam": "TheGrefg",
+  "titulo": "¿Cuánto sabes de TheGrefg?",
+  "foto": "assets/streamers/thegrefg.jpg",
+  "foco": [
+    848,
+    470
+  ],
+  "zoom_cam": 1.7,
+  "tempo": 1.25,
+  "extra_nombre": "EXCLUSIVA",
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DE TheGrefg",
+    "SABRÁN LA ÚLTIMA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡Solo los fans de verdad llegan hasta el final!",
+    "texto": [
+      "QUIZ DE",
+      "TheGrefg"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE",
+    "teaser": {
+      "voz": "[excited] ¿Sabes qué aparece siempre en los directos del Grefg?",
+      "pregunta": "¿Qué aparece siempre en los directos de TheGrefg?",
+      "reto": "¿LLEGAS HASTA AQUÍ?"
+    }
+  },
+  "extra_intro_voz": "[whispers] Y ahora... la pregunta exclusiva. [excited] ¡Solo para fans de verdad!",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el nombre real de TheGrefg?",
+      "pregunta_voz": "¿Cuál es el nombre real del Grefg?",
+      "opciones": [
+        "David García Martínez",
+        "David Cánovas Martínez",
+        "David González Cánovas",
+        "Daniel Cánovas Martín"
+      ],
+      "correcta": "B",
+      "opcion_voz": "David Cánovas Martínez",
+      "encuesta": [
+        27,
+        22,
+        33,
+        18
+      ],
+      "fuente": "David Cánovas Martínez."
+    },
+    {
+      "pregunta": "¿En qué localidad nació TheGrefg?",
+      "pregunta_voz": "¿En qué localidad nació el Grefg?",
+      "opciones": [
+        "Murcia capital",
+        "Cartagena",
+        "Alhama de Murcia",
+        "Lorca"
+      ],
+      "correcta": "C",
+      "opcion_voz": "Alhama de Murcia",
+      "encuesta": [
+        34,
+        21,
+        26,
+        19
+      ],
+      "fuente": "Alhama de Murcia (1997)."
+    },
+    {
+      "pregunta": "¿Qué videojuego protagonizaba muchos de sus primeros vídeos?",
+      "opciones": [
+        "FIFA",
+        "Call of Duty",
+        "GTA V",
+        "Fortnite"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Call of Duty",
+      "encuesta": [
+        18,
+        29,
+        15,
+        38
+      ],
+      "fuente": "Dato del usuario."
+    },
+    {
+      "pregunta": "¿Cómo se llama el equipo de la Kings League que preside?",
+      "opciones": [
+        "Porcinos FC",
+        "Saiyans FC",
+        "Ultimate Móstoles",
+        "Aniquiladores FC"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Saiyans FC",
+      "encuesta": [
+        21,
+        44,
+        23,
+        12
+      ],
+      "fuente": "Saiyans FC."
+    },
+    {
+      "pregunta": "¿Cómo se llaman los premios creados por TheGrefg?",
+      "pregunta_voz": "¿Cómo se llaman los premios creados por el Grefg?",
+      "opciones": [
+        "Premios Stream",
+        "Premios Creator",
+        "Premios ESLAND",
+        "Premios Twitch"
+      ],
+      "correcta": "C",
+      "opcion_voz": "Los premios ESLAND",
+      "encuesta": [
+        14,
+        17,
+        55,
+        14
+      ],
+      "fuente": "Premios ESLAND (2021)."
+    },
+    {
+      "pregunta": "¿Qué elemento es famoso por aparecer constantemente en los directos de TheGrefg?",
+      "pregunta_voz": "¿Qué elemento aparece constantemente en los directos del Grefg?",
+      "opciones": [
+        "Una ruleta",
+        "Un contador de cuenta atrás",
+        "Un cronómetro de ajedrez",
+        "Una máquina tragaperras"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "encuesta": [
+        26,
+        30,
+        18,
+        26
+      ],
+      "fuente": "Dato del usuario. No se revela."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "final_voz": "[excited] ¡Y ahora decides tú! ¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!",
+  "siguiente": [
+    "ILLOJUAN",
+    "SPREEN",
+    "VEGETTA777",
+    "PERXITAA"
+  ],
+  "siguiente_escribe": [
+    "que sea Illojuan!!",
+    "SPREEN YAAA",
+    "Vegetta777 porfa",
+    "Perxitaa o me enfado",
+    "Willyrex!!"
+  ],
+  "portada": {
+    "titulo": [
+      "QUIZ DE",
+      "TheGrefg"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  },
+  "chat_mod": "profe_serio",
+  "chat_guion": [
+    {
+      "antes": [
+        [
+          "saiyan_loco",
+          "GREFG EN LA CASA"
+        ],
+        [
+          "lauritaa_",
+          "holaaa desde Murcia"
+        ],
+        [
+          "kevin_23",
+          "esta me la sé seguro"
+        ],
+        [
+          "sara.xd",
+          "@kevin_23 como todas las semanas"
+        ],
+        [
+          "kevin_23",
+          "@sara.xd esta vez va en serio"
+        ],
+        [
+          "sara.xd",
+          "@kevin_23 eso dijiste en el de Rubius"
+        ],
+        [
+          "pato_feliz",
+          "me he comido un yogur caducado"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz rip pato"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada sigo vivo de momento"
+        ],
+        [
+          "abuela_gamer",
+          "hola soy la abuela de Kevin"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer OTRA VEZ NO"
+        ],
+        [
+          "elcrack99",
+          "dudo entre dos"
+        ]
+      ],
+      "serio": [
+        "profe_serio",
+        "David Cánovas Martínez, apuntad"
+      ],
+      "despues": [
+        [
+          "abuela_gamer",
+          "@kevin_23 has fallado mi vida"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer que no lo digas aquí"
+        ],
+        [
+          "saiyan_loco",
+          "GG"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "burlao_oficial",
+          "murcianos presentes??"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial aquí uno de Cuenca"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master Cuenca no cuenta"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial ME HAS OFENDIDO"
+        ],
+        [
+          "lucia.gamer",
+          "no empecéis otra vez"
+        ],
+        [
+          "yoquese_",
+          "esta es dificililla"
+        ],
+        [
+          "mr_tostada",
+          "mi tostadora es de Murcia"
+        ],
+        [
+          "sara.xd",
+          "@mr_tostada tu tostadora viaja más que yo"
+        ],
+        [
+          "pepitogamer",
+          "dudo entre tres jajaja"
+        ],
+        [
+          "saiyan_loco",
+          "esta la sabe cualquier saiyan"
+        ],
+        [
+          "elcrack99",
+          "@saiyan_loco pues yo no soy saiyan"
+        ],
+        [
+          "saiyan_loco",
+          "@elcrack99 todavía"
+        ]
+      ],
+      "serio": [
+        "profe_serio",
+        "Nació en Alhama de Murcia"
+      ],
+      "despues": [
+        [
+          "noob_master",
+          "@burlao_oficial perdón por gritar"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master Cuenca sí cuenta"
+        ],
+        [
+          "lauritaa_",
+          "qué bonito todo"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "pepitogamer",
+          "sus primeros vídeos eran top"
+        ],
+        [
+          "lauritaa_",
+          "yo lo veo desde pequeña"
+        ],
+        [
+          "kevin_23",
+          "esta es facilísima"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 la trampa es evidente"
+        ],
+        [
+          "kevin_23",
+          "@elcrack99 qué trampa??"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 ya lo verás"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin baja a cenar"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ESTOY CONCENTRADO"
+        ],
+        [
+          "pato_feliz",
+          "he soñado que era una gamba"
+        ],
+        [
+          "lucia.gamer",
+          "@pato_feliz qué tipo de gamba"
+        ],
+        [
+          "pato_feliz",
+          "@lucia.gamer una gamba feliz"
+        ],
+        [
+          "yoquese_",
+          "no me acuerdo de nada"
+        ]
+      ],
+      "serio": [
+        "profe_serio",
+        "Call of Duty, sus inicios"
+      ],
+      "despues": [
+        [
+          "kevin_23",
+          "vale era trampa"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 te lo dije"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin la cena"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "saiyan_loco",
+          "SAIYANS GANG"
+        ],
+        [
+          "mr_tostada",
+          "yo soy de los porcinos"
+        ],
+        [
+          "saiyan_loco",
+          "@mr_tostada te perdono por hoy"
+        ],
+        [
+          "mr_tostada",
+          "@saiyan_loco qué generoso"
+        ],
+        [
+          "sara.xd",
+          "esta la sé por mi hermano"
+        ],
+        [
+          "noob_master",
+          "la Kings League me encanta"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master a mí me da ansiedad"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial ansiedad buena"
+        ],
+        [
+          "pepitogamer",
+          "acabo de ver una paloma con gorro"
+        ],
+        [
+          "yoquese_",
+          "@pepitogamer las palomas de Madrid son así"
+        ],
+        [
+          "lucia.gamer",
+          "venga que ya casi"
+        ],
+        [
+          "pato_feliz",
+          "yo voto con el corazón"
+        ]
+      ],
+      "serio": [
+        "profe_serio",
+        "Saiyans FC, de TheGrefg"
+      ],
+      "despues": [
+        [
+          "saiyan_loco",
+          "SAIYANS SAIYANS SAIYANS"
+        ],
+        [
+          "mr_tostada",
+          "@saiyan_loco vale, me uno"
+        ],
+        [
+          "sara.xd",
+          "traidor jajaja"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "lauritaa_",
+          "esta me la sé fijo"
+        ],
+        [
+          "kevin_23",
+          "yo también por fin"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 ya era hora cariño"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA QUE NO"
+        ],
+        [
+          "elcrack99",
+          "esta es regalada"
+        ],
+        [
+          "noob_master",
+          "@elcrack99 nunca digas regalada"
+        ],
+        [
+          "elcrack99",
+          "@noob_master ME GAFAS SIEMPRE"
+        ],
+        [
+          "noob_master",
+          "@elcrack99 yo no gafo, aviso"
+        ],
+        [
+          "mr_tostada",
+          "le he puesto pajarita a mi gato"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada foto ya"
+        ],
+        [
+          "yoquese_",
+          "casi llegamos a la exclusiva"
+        ],
+        [
+          "pepitogamer",
+          "qué nervios"
+        ]
+      ],
+      "serio": [
+        "profe_serio",
+        "Los ESLAND, desde 2021"
+      ],
+      "despues": [
+        [
+          "kevin_23",
+          "ACERTÉ ABUELA"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 estoy orgullosa"
+        ],
+        [
+          "lucia.gamer",
+          "que viene la exclusivaaa"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "burlao_oficial",
+          "LA EXCLUSIVA"
+        ],
+        [
+          "pepitogamer",
+          "esta es imposible"
+        ],
+        [
+          "sara.xd",
+          "@pepitogamer dijiste lo mismo antes"
+        ],
+        [
+          "pepitogamer",
+          "@sara.xd y tenía razón"
+        ],
+        [
+          "saiyan_loco",
+          "esta la saben los de verdad"
+        ],
+        [
+          "noob_master",
+          "yo la sé pero me callo"
+        ],
+        [
+          "lauritaa_",
+          "@noob_master qué mal te veo"
+        ],
+        [
+          "mr_tostada",
+          "me he comprado un jabalí"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada OTRO??"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz se sentía solo"
+        ],
+        [
+          "abuela_gamer",
+          "esta la sé yo"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA NO SPOILEES"
+        ]
+      ],
+      "serio": [
+        "profe_serio",
+        "me la sé pero a comentarios"
+      ],
+      "despues": [
+        [
+          "burlao_oficial",
+          "@profe_serio NOOO dilaaa"
+        ],
+        [
+          "saiyan_loco",
+          "lo pongo en comentarios"
+        ],
+        [
+          "pato_feliz",
+          "qué tensión"
+        ]
+      ]
+    }
+  ],
+  "chat": [
+    "GREFG EL MEJOR",
+    "récord de Twitch",
+    "saiyans arriba"
+  ],
+  "chat_random": [
+    "mi abuelo tiene Twitch",
+    "estoy en el bus",
+    "alguien quiere croquetas"
+  ]
+}

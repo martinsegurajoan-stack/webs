@@ -1,0 +1,600 @@
+{
+  "modo": "streamer",
+  "video": "streamer_07",
+  "nombre": "Plex",
+  "nombre_cam": "Plex",
+  "titulo": "¿Cuánto sabes de Plex?",
+  "foto": "assets/streamers/plex.jpg",
+  "foco": [
+    900,
+    470
+  ],
+  "zoom_cam": 2.0,
+  "tempo": 1.27,
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DE PLEX",
+    "SABRÁN LA ÚLTIMA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡Solo los fans de verdad llegan hasta el final!",
+    "texto": [
+      "QUIZ DE",
+      "Plex"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE",
+    "teaser": {
+      "voz": "[excited] ¿Sabes con qué animal se hizo viral Plex?",
+      "pregunta": "¿Con qué animal se hizo viral Plex?",
+      "reto": "¿LLEGAS HASTA AQUÍ?"
+    }
+  },
+  "extra_intro_voz": "[whispers] Y ahora... la pregunta extra. [excited] ¡Solo para fans de verdad!",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el nombre real de Plex?",
+      "opciones": [
+        "Daniel Alonso Agúndez",
+        "Daniel García Alonso",
+        "Sergio Agúndez Ramos",
+        "Daniel Martín Gómez"
+      ],
+      "correcta": "A",
+      "opcion_voz": "Daniel Alonso Agúndez",
+      "encuesta": [
+        24,
+        30,
+        28,
+        18
+      ],
+      "fuente": "Dato del usuario."
+    },
+    {
+      "pregunta": "¿De qué localidad española es Plex?",
+      "opciones": [
+        "Benavente",
+        "Toro (Zamora)",
+        "Valladolid",
+        "Salamanca"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Toro, en Zamora",
+      "encuesta": [
+        30,
+        27,
+        22,
+        21
+      ],
+      "fuente": "Toro (Zamora)."
+    },
+    {
+      "pregunta": "¿Cómo surgió su nombre artístico, Plex?",
+      "opciones": [
+        "Por su apellido",
+        "Copió «Flex» y cambió una letra",
+        "Por un personaje de videojuego",
+        "Por un apodo de su padre"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Copió Flex y cambió una letra",
+      "encuesta": [
+        22,
+        36,
+        26,
+        16
+      ],
+      "fuente": "Dato del usuario."
+    },
+    {
+      "pregunta": "¿En cuántos días se propuso dar la vuelta al mundo en uno de sus proyectos más famosos?",
+      "pregunta_voz": "¿En cuántos días se propuso dar la vuelta al mundo?",
+      "opciones": [
+        "30 días",
+        "60 días",
+        "80 días",
+        "100 días"
+      ],
+      "correcta": "C",
+      "opcion_voz": "En 80 días",
+      "encuesta": [
+        14,
+        18,
+        52,
+        16
+      ],
+      "fuente": "La vuelta al mundo en 80 días."
+    },
+    {
+      "pregunta": "¿A quién derrotó Plex en La Velada del Año IV?",
+      "pregunta_voz": "¿A quién derrotó Plex en La Velada del Año cuatro?",
+      "opciones": [
+        "A Viruzz",
+        "A El Mariana",
+        "A Shelao",
+        "A Misho"
+      ],
+      "correcta": "B",
+      "opcion_voz": "A El Mariana",
+      "encuesta": [
+        20,
+        38,
+        24,
+        18
+      ],
+      "fuente": "Dato del usuario."
+    },
+    {
+      "pregunta": "¿Con qué animal se hizo especialmente viral durante una aventura con Frank Cuesta?",
+      "pregunta_voz": "¿Con qué animal se hizo viral durante una aventura con Frank Cuesta?",
+      "opciones": [
+        "Un mono",
+        "Una capibara",
+        "Un tigre",
+        "Un cocodrilo"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "encuesta": [
+        24,
+        30,
+        22,
+        24
+      ],
+      "fuente": "Dato del usuario. No se revela."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "final_voz": "[excited] ¡Y ahora decides tú! ¿Quién quieres que sea el siguiente? ¡Coméntalo y apoya el vídeo!",
+  "siguiente": [
+    "ILLOJUAN",
+    "SPREEN",
+    "PERXITAA",
+    "ALEXBY11"
+  ],
+  "siguiente_escribe": [
+    "que sea Illojuan!!",
+    "SPREEN YAAA",
+    "Perxitaa porfa",
+    "Alexby o me enfado",
+    "Vegetta777!!"
+  ],
+  "portada": {
+    "titulo": [
+      "QUIZ DE",
+      "Plex"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  },
+  "chat_mod": "dato_exacto",
+  "chat_guion": [
+    {
+      "antes": [
+        [
+          "viajero_99",
+          "PLEEEX"
+        ],
+        [
+          "lauritaa_",
+          "holaaa desde Zamora"
+        ],
+        [
+          "kevin_23",
+          "esta me la sé fijo"
+        ],
+        [
+          "sara.xd",
+          "@kevin_23 llevas 6 vídeos diciendo eso"
+        ],
+        [
+          "kevin_23",
+          "@sara.xd y en alguno acerté"
+        ],
+        [
+          "sara.xd",
+          "@kevin_23 en uno"
+        ],
+        [
+          "pato_feliz",
+          "acabo de quemar las tostadas"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz eso me duele en el alma"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada perdón tostada"
+        ],
+        [
+          "abuela_gamer",
+          "hola soy la abuela de Kevin"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA OTRA VEZ"
+        ],
+        [
+          "elcrack99",
+          "dudo entre dos"
+        ]
+      ],
+      "serio": [
+        "dato_exacto",
+        "Daniel Alonso Agúndez, apuntad"
+      ],
+      "despues": [
+        [
+          "abuela_gamer",
+          "@kevin_23 has fallado cielo"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer no me hagas esto"
+        ],
+        [
+          "viajero_99",
+          "GG"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "burlao_oficial",
+          "zamoranos presentes??"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial yo de Valladolid"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master casi casi"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial casi no vale"
+        ],
+        [
+          "lucia.gamer",
+          "no os piquéis jaja"
+        ],
+        [
+          "yoquese_",
+          "esta es dificililla"
+        ],
+        [
+          "mr_tostada",
+          "mi primo vive en Salamanca"
+        ],
+        [
+          "sara.xd",
+          "@mr_tostada y eso qué aporta"
+        ],
+        [
+          "mr_tostada",
+          "@sara.xd nada, solo quería decirlo"
+        ],
+        [
+          "viajero_99",
+          "esta la sabe cualquier fan"
+        ],
+        [
+          "pepitogamer",
+          "@viajero_99 pues yo no la sé"
+        ],
+        [
+          "viajero_99",
+          "@pepitogamer pues no eres fan"
+        ]
+      ],
+      "serio": [
+        "dato_exacto",
+        "Es de Toro, en Zamora"
+      ],
+      "despues": [
+        [
+          "pepitogamer",
+          "@viajero_99 me has ofendido"
+        ],
+        [
+          "viajero_99",
+          "@pepitogamer era broma, abrazo"
+        ],
+        [
+          "lauritaa_",
+          "Zamora en el mapa"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "pepitogamer",
+          "esta es rarísima"
+        ],
+        [
+          "lauritaa_",
+          "nunca lo había pensado"
+        ],
+        [
+          "kevin_23",
+          "esta es facilísima"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 qué valiente"
+        ],
+        [
+          "kevin_23",
+          "@elcrack99 confía en mí"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 nunca"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin la merienda"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ESTOY EN UN QUIZ"
+        ],
+        [
+          "pato_feliz",
+          "he visto una oveja en un coche"
+        ],
+        [
+          "lucia.gamer",
+          "@pato_feliz en el asiento de delante??"
+        ],
+        [
+          "pato_feliz",
+          "@lucia.gamer conduciendo casi"
+        ],
+        [
+          "yoquese_",
+          "no tengo ni idea"
+        ]
+      ],
+      "serio": [
+        "dato_exacto",
+        "Copió Flex y cambió una letra"
+      ],
+      "despues": [
+        [
+          "kevin_23",
+          "eso no me lo esperaba"
+        ],
+        [
+          "elcrack99",
+          "@kevin_23 te lo dije"
+        ],
+        [
+          "abuela_gamer",
+          "Kevin la merienda se enfría"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "viajero_99",
+          "EL MEJOR PROYECTO"
+        ],
+        [
+          "mr_tostada",
+          "yo no doy la vuelta ni a la manzana"
+        ],
+        [
+          "viajero_99",
+          "@mr_tostada jajaja normal"
+        ],
+        [
+          "sara.xd",
+          "esta la sé por el título"
+        ],
+        [
+          "noob_master",
+          "yo lo vi entero"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master mentira"
+        ],
+        [
+          "noob_master",
+          "@burlao_oficial ENTERO TE DIGO"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master vale vale tranqui"
+        ],
+        [
+          "pepitogamer",
+          "acabo de ver un perro con chubasquero"
+        ],
+        [
+          "yoquese_",
+          "@pepitogamer yo quiero uno"
+        ],
+        [
+          "lucia.gamer",
+          "venga que ya casi"
+        ],
+        [
+          "pato_feliz",
+          "yo voto con el corazón"
+        ]
+      ],
+      "serio": [
+        "dato_exacto",
+        "80 días, como el libro"
+      ],
+      "despues": [
+        [
+          "noob_master",
+          "@burlao_oficial ves??"
+        ],
+        [
+          "burlao_oficial",
+          "@noob_master perdón, tenías razón"
+        ],
+        [
+          "viajero_99",
+          "quiero otro viaje así"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "lauritaa_",
+          "la Velada me encanta"
+        ],
+        [
+          "kevin_23",
+          "yo vi ese combate"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 a las tantas lo viste"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA NO ME DELATES"
+        ],
+        [
+          "elcrack99",
+          "esta es fácil"
+        ],
+        [
+          "noob_master",
+          "@elcrack99 no digas fácil"
+        ],
+        [
+          "elcrack99",
+          "@noob_master SIEMPRE ME GAFAS"
+        ],
+        [
+          "noob_master",
+          "@elcrack99 yo solo aviso"
+        ],
+        [
+          "mr_tostada",
+          "le he puesto guantes de boxeo a mi gato"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada foto ya"
+        ],
+        [
+          "yoquese_",
+          "casi llegamos a la extra"
+        ],
+        [
+          "pepitogamer",
+          "qué nervios"
+        ]
+      ],
+      "serio": [
+        "dato_exacto",
+        "Ganó a El Mariana"
+      ],
+      "despues": [
+        [
+          "kevin_23",
+          "ACERTÉ ABUELA"
+        ],
+        [
+          "abuela_gamer",
+          "@kevin_23 qué orgullo cariño"
+        ],
+        [
+          "lucia.gamer",
+          "que viene la extraaa"
+        ]
+      ]
+    },
+    {
+      "antes": [
+        [
+          "burlao_oficial",
+          "LA EXTRA LA EXTRA"
+        ],
+        [
+          "pepitogamer",
+          "esta es imposible"
+        ],
+        [
+          "sara.xd",
+          "@pepitogamer dijiste lo mismo antes"
+        ],
+        [
+          "pepitogamer",
+          "@sara.xd y tenía razón"
+        ],
+        [
+          "viajero_99",
+          "esta la saben los de verdad"
+        ],
+        [
+          "noob_master",
+          "yo la sé pero me callo"
+        ],
+        [
+          "lauritaa_",
+          "@noob_master qué mal te veo"
+        ],
+        [
+          "mr_tostada",
+          "me he comprado un jabalí"
+        ],
+        [
+          "pato_feliz",
+          "@mr_tostada OTRO MÁS??"
+        ],
+        [
+          "mr_tostada",
+          "@pato_feliz necesitaba compañía"
+        ],
+        [
+          "abuela_gamer",
+          "esta la sé yo"
+        ],
+        [
+          "kevin_23",
+          "@abuela_gamer ABUELA NO SPOILEES"
+        ]
+      ],
+      "serio": [
+        "dato_exacto",
+        "me la sé pero a comentarios"
+      ],
+      "despues": [
+        [
+          "burlao_oficial",
+          "@dato_exacto NOOO dilaaa"
+        ],
+        [
+          "viajero_99",
+          "lo pongo en comentarios"
+        ],
+        [
+          "pato_feliz",
+          "qué tensión"
+        ]
+      ]
+    }
+  ],
+  "chat": [
+    "PLEX EL MEJOR",
+    "Toro representa",
+    "vuelta al mundo gang"
+  ],
+  "chat_random": [
+    "mi abuelo tiene Twitch",
+    "estoy en el bus",
+    "alguien quiere croquetas"
+  ]
+}

@@ -1,0 +1,325 @@
+{
+ "partido": "Vox",
+ "color": "#64ab4c",
+ "color_claro": "#e4f1dd",
+ "logo": "assets/logo_partido.png",
+ "portada": {
+  "linea1": "¿Y SI GANA",
+  "linea2": "VOX?",
+  "fecha": "29-N",
+  "sub": "te lo cuento en 60 segundos"
+ },
+ "paginas": [
+  {
+   "lineas": [
+    1
+   ],
+   "tipo": "portada"
+  },
+  {
+   "lineas": [
+    2,
+    3
+   ],
+   "titulo": "Las encuestas",
+   "notas": [
+    {
+     "cuando": "encuestas",
+     "txt": "Vox ≈ 19 % del voto",
+     "marca": "subraya"
+    },
+    {
+     "cuando": "gobernar",
+     "txt": "Mayoría: 176 de 350"
+    },
+    {
+     "cuando": "2023",
+     "txt": "En 2023 sacó 33 escaños"
+    },
+    {
+     "cuando": "imaginemos",
+     "txt": "Pero… ¿y si gana?",
+     "color": "partido",
+     "grande": true
+    }
+   ],
+   "boceto": "hemiciclo",
+   "boceto_cuando": "gobernar",
+   "fuente": "Fuentes: Sondaxe, NC Report y PolitPro (oct–nov 2026)",
+   "posit": {
+    "txt": "176",
+    "sub": "para gobernar solo",
+    "cuando": "necesita"
+   },
+   "sello": "DATOS",
+   "papel": "cuadricula",
+   "recorte": {
+    "tipo": "grafico",
+    "cuando": "veinte",
+    "dur": 2.1,
+    "titular": "Votos de Vox",
+    "barras": [
+     [
+      "2023 (resultado)",
+      12.4
+     ],
+     [
+      "2026 (encuestas)",
+      19.0
+     ]
+    ],
+    "pie": "Resultado oficial 2023 y media de encuestas oct–nov 2026"
+   }
+  },
+  {
+   "lineas": [
+    4
+   ],
+   "titulo": "Impuestos",
+   "notas": [
+    {
+     "cuando": "pagarias",
+     "txt": "IRPF 0 € hasta 22.000 €/año"
+    },
+    {
+     "cuando": "dinero",
+     "txt": "+ dinero a fin de mes",
+     "signo": "si"
+    },
+    {
+     "cuando": "agujero",
+     "txt": "– agujero ≈ 40.000 M€",
+     "signo": "no"
+    }
+   ],
+   "boceto": "cartera",
+   "boceto_cuando": "dinero",
+   "fuente": "Fuente: programa económico de Vox; coste estimado por comparadores de programas",
+   "posit": {
+    "txt": "40.000 M€",
+    "sub": "coste estimado",
+    "cuando": "cuarenta"
+   },
+   "sello": "PROPUESTA"
+  },
+  {
+   "lineas": [
+    5
+   ],
+   "titulo": "Vivienda",
+   "notas": [
+    {
+     "cuando": "iva",
+     "txt": "IVA 0 % en la 1.ª vivienda",
+     "marca": "resalta"
+    }
+   ],
+   "boceto": "casa",
+   "boceto_cuando": "vivienda",
+   "fuente": "Fuente: programa de vivienda de Vox",
+   "sello": "PROPUESTA"
+  },
+  {
+   "lineas": [
+    6
+   ],
+   "titulo": "Inmigración",
+   "notas": [
+    {
+     "cuando": "expulsiones",
+     "txt": "Expulsiones"
+    },
+    {
+     "cuando": "prioridad",
+     "txt": "Prioridad para españoles en ayudas"
+    },
+    {
+     "cuando": "extranjeros",
+     "txt": "Hoy: 14,7 % de los que cotizan",
+     "marca": "rodea"
+    }
+   ],
+   "boceto": "tarta",
+   "boceto_cuando": "extranjeros",
+   "fuente": "Fuente: Seguridad Social, afiliados extranjeros (abril 2026)",
+   "sello": "PROPUESTA",
+   "papel": "cuadricula",
+   "recorte": {
+    "tipo": "periodico",
+    "cuando": "cotizan",
+    "dur": 2.0,
+    "seccion": "ECONOMÍA",
+    "titular": "3,2 millones de extranjeros cotizan",
+    "texto": "Son el 14,7 % de los afiliados a la Seguridad Social, un récord.",
+    "pie": "Dato: Seguridad Social, abril de 2026"
+   }
+  },
+  {
+   "lineas": [
+    7
+   ],
+   "titulo": "Aborto",
+   "notas": [
+    {
+     "cuando": "derogar",
+     "txt": "Derogar la ley actual",
+     "marca": "subraya"
+    }
+   ],
+   "boceto": "embarazada",
+   "boceto_cuando": "aborto",
+   "fuente": "Fuente: propuestas de Vox (Congreso, 2023) y resúmenes de su programa",
+   "sello": "PROPUESTA"
+  },
+  {
+   "lineas": [
+    8
+   ],
+   "titulo": "Autonomías",
+   "notas": [
+    {
+     "cuando": "educacion",
+     "txt": "Educación y sanidad → Estado"
+    }
+   ],
+   "boceto": "mapa",
+   "boceto_cuando": "autonomias",
+   "fuente": "Fuente: programa de Vox · Mapa: svg-maps (CC BY 4.0)",
+   "posit": {
+    "txt": "Educación",
+    "sub": "+ Sanidad → Estado",
+    "cuando": "sanidad"
+   },
+   "sello": "PROPUESTA"
+  },
+  {
+   "lineas": [
+    9
+   ],
+   "titulo": "Igualdad",
+   "notas": [
+    {
+     "cuando": "ministerio",
+     "txt": "Ministerio de Igualdad",
+     "tacha": "familia"
+    },
+    {
+     "cuando": "familia",
+     "txt": "→ Ministerio de Familia",
+     "color": "partido"
+    },
+    {
+     "cuando": "violencia",
+     "txt": "Ley de violencia de género",
+     "tacha": "una"
+    },
+    {
+     "cuando": "una",
+     "txt": "→ violencia en la familia",
+     "color": "partido"
+    }
+   ],
+   "boceto": "edificio",
+   "boceto_cuando": "ministerio",
+   "fuente": "Fuente: programa de Vox",
+   "sello": "PROPUESTA"
+  },
+  {
+   "lineas": [
+    10
+   ],
+   "titulo": "Clima",
+   "notas": [
+    {
+     "cuando": "fuera",
+     "txt": "Fuera la ley del cambio climático"
+    },
+    {
+     "cuando": "choques",
+     "txt": "Choques con Europa",
+     "signo": "no"
+    }
+   ],
+   "boceto": "europa",
+   "boceto_cuando": "clima",
+   "fuente": "Fuente: programa de Vox (Agenda 2030 y Pacto Verde)",
+   "sello": "PROPUESTA",
+   "papel": "cuadricula"
+  },
+  {
+   "lineas": [
+    11
+   ],
+   "titulo": "¿Bueno o malo?",
+   "notas": [
+    {
+     "cuando": "votantes",
+     "txt": "Votantes: orden y menos impuestos",
+     "signo": "si"
+    },
+    {
+     "cuando": "criticos",
+     "txt": "Críticos: un paso atrás",
+     "signo": "no"
+    }
+   ],
+   "boceto": "balanza",
+   "boceto_cuando": "votantes",
+   "fuente": "Escenario hipotético basado en encuestas y propuestas públicas",
+   "sello": "OPINIONES",
+   "recorte": {
+    "tipo": "periodico",
+    "cuando": "europa",
+    "dur": 1.9,
+    "seccion": "EUROPA",
+    "titular": "Pacto Verde Europeo",
+    "texto": "El objetivo de la UE: cero emisiones netas en 2050.",
+    "pie": "Dato: Comisión Europea"
+   }
+  },
+  {
+   "lineas": [
+    12
+   ],
+   "titulo": "29 de noviembre",
+   "notas": [
+    {
+     "cuando": "deciden",
+     "txt": "Deciden las urnas",
+     "color": "partido",
+     "grande": true,
+     "marca": "rodea"
+    }
+   ],
+   "boceto": "urna",
+   "boceto_cuando": "noviembre",
+   "fuente": "Elecciones generales · 29 de noviembre de 2026"
+  }
+ ],
+ "clave": [
+  "vox",
+  "noviembre",
+  "segundos",
+  "veinte",
+  "176",
+  "treinta",
+  "irpf",
+  "agujero",
+  "millones",
+  "iva",
+  "expulsiones",
+  "prioridad",
+  "quince",
+  "aborto",
+  "derogar",
+  "educacion",
+  "sanidad",
+  "familia",
+  "genero",
+  "climatico",
+  "europa",
+  "orden",
+  "atras",
+  "urnas"
+ ]
+}

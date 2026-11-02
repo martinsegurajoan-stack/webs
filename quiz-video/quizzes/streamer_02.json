@@ -1,0 +1,107 @@
+{
+  "modo": "streamer",
+  "video": "streamer_02",
+  "nombre": "Ibai",
+  "titulo": "¿Cuánto sabes de Ibai?",
+  "foto": "assets/streamers/ibai.jpg",
+  "foco": [
+    830,
+    800
+  ],
+  "zoom_cam": 1.15,
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DE IBAI",
+    "SABRÁN ESTA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡La última pregunta de Ibai no la sabe casi nadie! ¿Te atreves?",
+    "texto": [
+      "QUIZ DE",
+      "IBAI"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE"
+  },
+  "preguntas": [
+    {
+      "pregunta": "¿En qué competición empezó Ibai como comentarista de videojuegos?",
+      "opciones": [
+        "Counter-Strike Major",
+        "Liga de Videojuegos Profesional (LVP)",
+        "ESL Pro League",
+        "League of Legends World Championship"
+      ],
+      "correcta": "B",
+      "opcion_voz": "La Liga de Videojuegos Profesional",
+      "fuente": "Empezó como comentarista en la LVP (League of Legends)."
+    },
+    {
+      "pregunta": "¿En qué equipo de esports fichó Ibai en febrero de 2020?",
+      "pregunta_voz": "¿En qué equipo de esports fichó Ibai en febrero de dos mil veinte?",
+      "opciones": [
+        "Fnatic",
+        "Team Heretics",
+        "G2 Esports",
+        "KOI"
+      ],
+      "correcta": "C",
+      "opcion_voz": "G2 Esports",
+      "fuente": "Fichó por G2 Esports en febrero de 2020."
+    },
+    {
+      "pregunta": "¿En qué año organizó Ibai la primera Velada del Año?",
+      "opciones": [
+        "2019",
+        "2020",
+        "2021",
+        "2022"
+      ],
+      "correcta": "C",
+      "opcion_voz": "En dos mil veintiuno",
+      "fuente": "La primera Velada del Año fue en julio de 2021."
+    },
+    {
+      "pregunta": "¿Qué futbolista participó en el primer Mundial de Globos de Ibai?",
+      "opciones": [
+        "Gerard Piqué",
+        "Ronaldinho",
+        "Neymar",
+        "Sergio Ramos"
+      ],
+      "correcta": "A",
+      "opcion_voz": "Gerard Piqué",
+      "fuente": "El Mundial de Globos (2022) lo organizaron Ibai y Piqué."
+    },
+    {
+      "pregunta": "¿Cómo se llama el equipo de la Kings League presidido por Ibai?",
+      "opciones": [
+        "Rōnin FC",
+        "Porcinos FC",
+        "Ultimate Móstoles",
+        "Saiyans FC"
+      ],
+      "correcta": "B",
+      "opcion_voz": "Porcinos FC",
+      "fuente": "Ibai preside Porcinos FC."
+    },
+    {
+      "pregunta": "¿En qué ciudad nació Ibai Llanos?",
+      "opciones": [
+        "Bilbao",
+        "Barakaldo",
+        "San Sebastián",
+        "Vitoria-Gasteiz"
+      ],
+      "correcta": "A",
+      "sin_respuesta": true,
+      "fuente": "Las fuentes (FormulaTV, Wikipedia…) dicen Bilbao, 26-03-1995; el usuario indicó Barakaldo. No se revela."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "portada": {
+    "titulo": [
+      "QUIZ DE",
+      "IBAI"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  }
+}

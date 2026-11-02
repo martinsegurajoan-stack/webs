@@ -1,0 +1,1099 @@
+{
+ "duracion": 59.874,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si Se Acabó La Fiesta, el partido de Alvise, ganara las elecciones del 29 de noviembre? Te lo cuento en sesenta segundos.",
+   "ini": 0.0,
+   "fin": 7.824
+  },
+  {
+   "n": 2,
+   "texto": "Primero, un dato: en las europeas de 2024 sacó ochocientos mil votos y tres eurodiputados.",
+   "ini": 8.094,
+   "fin": 14.11
+  },
+  {
+   "n": 3,
+   "texto": "Hoy las encuestas le dan menos del dos por ciento y, como mucho, un diputado por Madrid. Pero imaginemos que gana.",
+   "ini": 14.23,
+   "fin": 20.392
+  },
+  {
+   "n": 4,
+   "texto": "Corrupción: ningún condenado saldría de la cárcel sin devolver lo robado, y se confiscarían sus bienes.",
+   "ini": 20.612,
+   "fin": 26.204
+  },
+  {
+   "n": 5,
+   "texto": "Cárceles: una gran cárcel para delincuentes.",
+   "ini": 26.324,
+   "fin": 29.094
+  },
+  {
+   "n": 6,
+   "texto": "Impuestos: menos Estado, y en Castilla y León propuso no pagar IRPF por debajo de treinta y cinco mil euros al año.",
+   "ini": 29.214,
+   "fin": 36.031
+  },
+  {
+   "n": 7,
+   "texto": "Vivienda: cero impuestos al comprar la primera casa, y echar a los okupas en veinticuatro horas.",
+   "ini": 36.151,
+   "fin": 41.346
+  },
+  {
+   "n": 8,
+   "texto": "Inmigración: expulsar a los que están en situación irregular.",
+   "ini": 41.466,
+   "fin": 44.602
+  },
+  {
+   "n": 9,
+   "texto": "Lo malo: no explica cómo pagaría la bajada de impuestos, y su líder está investigado por presunta financiación ilegal.",
+   "ini": 44.722,
+   "fin": 51.151
+  },
+  {
+   "n": 10,
+   "texto": "Para sus votantes, mano dura contra la corrupción. Para sus críticos, mucho ruido y poco programa.",
+   "ini": 51.271,
+   "fin": 56.693
+  },
+  {
+   "n": 11,
+   "texto": "El 29 de noviembre, deciden las urnas.",
+   "ini": 56.813,
+   "fin": 59.274
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.258,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.258,
+   "fin": 0.672,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.672,
+   "fin": 0.827,
+   "frase": 1
+  },
+  {
+   "w": "Se",
+   "ini": 0.827,
+   "fin": 0.982,
+   "frase": 1
+  },
+  {
+   "w": "Acabó",
+   "ini": 0.982,
+   "fin": 1.292,
+   "frase": 1
+  },
+  {
+   "w": "La",
+   "ini": 1.292,
+   "fin": 1.447,
+   "frase": 1
+  },
+  {
+   "w": "Fiesta,",
+   "ini": 1.447,
+   "fin": 1.86,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 2.04,
+   "fin": 2.179,
+   "frase": 1
+  },
+  {
+   "w": "partido",
+   "ini": 2.179,
+   "fin": 2.55,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 2.55,
+   "fin": 2.689,
+   "frase": 1
+  },
+  {
+   "w": "Alvise,",
+   "ini": 2.689,
+   "fin": 3.06,
+   "frase": 1
+  },
+  {
+   "w": "ganara",
+   "ini": 3.25,
+   "fin": 3.608,
+   "frase": 1
+  },
+  {
+   "w": "las",
+   "ini": 3.608,
+   "fin": 3.813,
+   "frase": 1
+  },
+  {
+   "w": "elecciones",
+   "ini": 3.813,
+   "fin": 4.376,
+   "frase": 1
+  },
+  {
+   "w": "del",
+   "ini": 4.376,
+   "fin": 4.58,
+   "frase": 1
+  },
+  {
+   "w": "29",
+   "ini": 4.58,
+   "fin": 4.734,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 4.734,
+   "fin": 4.887,
+   "frase": 1
+  },
+  {
+   "w": "noviembre?",
+   "ini": 4.887,
+   "fin": 5.45,
+   "frase": 1
+  },
+  {
+   "w": "Te",
+   "ini": 6.0,
+   "fin": 6.161,
+   "frase": 1
+  },
+  {
+   "w": "lo",
+   "ini": 6.161,
+   "fin": 6.322,
+   "frase": 1
+  },
+  {
+   "w": "cuento",
+   "ini": 6.322,
+   "fin": 6.697,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 6.697,
+   "fin": 6.858,
+   "frase": 1
+  },
+  {
+   "w": "sesenta",
+   "ini": 6.858,
+   "fin": 7.287,
+   "frase": 1
+  },
+  {
+   "w": "segundos.",
+   "ini": 7.287,
+   "fin": 7.824,
+   "frase": 1
+  },
+  {
+   "w": "Primero,",
+   "ini": 8.094,
+   "fin": 8.464,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 8.604,
+   "fin": 8.767,
+   "frase": 2
+  },
+  {
+   "w": "dato:",
+   "ini": 8.767,
+   "fin": 9.094,
+   "frase": 2
+  },
+  {
+   "w": "en",
+   "ini": 9.414,
+   "fin": 9.607,
+   "frase": 2
+  },
+  {
+   "w": "las",
+   "ini": 9.607,
+   "fin": 9.864,
+   "frase": 2
+  },
+  {
+   "w": "europeas",
+   "ini": 9.864,
+   "fin": 10.443,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 10.443,
+   "fin": 10.636,
+   "frase": 2
+  },
+  {
+   "w": "2024",
+   "ini": 10.636,
+   "fin": 10.957,
+   "frase": 2
+  },
+  {
+   "w": "sacó",
+   "ini": 10.957,
+   "fin": 11.279,
+   "frase": 2
+  },
+  {
+   "w": "ochocientos",
+   "ini": 11.279,
+   "fin": 12.051,
+   "frase": 2
+  },
+  {
+   "w": "mil",
+   "ini": 12.051,
+   "fin": 12.308,
+   "frase": 2
+  },
+  {
+   "w": "votos",
+   "ini": 12.308,
+   "fin": 12.694,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 12.694,
+   "fin": 12.823,
+   "frase": 2
+  },
+  {
+   "w": "tres",
+   "ini": 12.823,
+   "fin": 13.145,
+   "frase": 2
+  },
+  {
+   "w": "eurodiputados.",
+   "ini": 13.145,
+   "fin": 14.11,
+   "frase": 2
+  },
+  {
+   "w": "Hoy",
+   "ini": 14.23,
+   "fin": 14.422,
+   "frase": 3
+  },
+  {
+   "w": "las",
+   "ini": 14.422,
+   "fin": 14.614,
+   "frase": 3
+  },
+  {
+   "w": "encuestas",
+   "ini": 14.614,
+   "fin": 15.096,
+   "frase": 3
+  },
+  {
+   "w": "le",
+   "ini": 15.096,
+   "fin": 15.24,
+   "frase": 3
+  },
+  {
+   "w": "dan",
+   "ini": 15.24,
+   "fin": 15.432,
+   "frase": 3
+  },
+  {
+   "w": "menos",
+   "ini": 15.432,
+   "fin": 15.721,
+   "frase": 3
+  },
+  {
+   "w": "del",
+   "ini": 15.721,
+   "fin": 15.914,
+   "frase": 3
+  },
+  {
+   "w": "dos",
+   "ini": 15.914,
+   "fin": 16.106,
+   "frase": 3
+  },
+  {
+   "w": "por",
+   "ini": 16.106,
+   "fin": 16.298,
+   "frase": 3
+  },
+  {
+   "w": "ciento",
+   "ini": 16.298,
+   "fin": 16.635,
+   "frase": 3
+  },
+  {
+   "w": "y,",
+   "ini": 16.635,
+   "fin": 16.78,
+   "frase": 3
+  },
+  {
+   "w": "como",
+   "ini": 16.85,
+   "fin": 17.066,
+   "frase": 3
+  },
+  {
+   "w": "mucho,",
+   "ini": 17.066,
+   "fin": 17.37,
+   "frase": 3
+  },
+  {
+   "w": "un",
+   "ini": 17.5,
+   "fin": 17.623,
+   "frase": 3
+  },
+  {
+   "w": "diputado",
+   "ini": 17.623,
+   "fin": 17.995,
+   "frase": 3
+  },
+  {
+   "w": "por",
+   "ini": 17.995,
+   "fin": 18.16,
+   "frase": 3
+  },
+  {
+   "w": "Madrid.",
+   "ini": 18.16,
+   "fin": 18.49,
+   "frase": 3
+  },
+  {
+   "w": "Pero",
+   "ini": 18.97,
+   "fin": 19.243,
+   "frase": 3
+  },
+  {
+   "w": "imaginemos",
+   "ini": 19.243,
+   "fin": 19.845,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 19.845,
+   "fin": 20.064,
+   "frase": 3
+  },
+  {
+   "w": "gana.",
+   "ini": 20.064,
+   "fin": 20.392,
+   "frase": 3
+  },
+  {
+   "w": "Corrupción:",
+   "ini": 20.612,
+   "fin": 21.072,
+   "frase": 4
+  },
+  {
+   "w": "ningún",
+   "ini": 21.532,
+   "fin": 21.863,
+   "frase": 4
+  },
+  {
+   "w": "condenado",
+   "ini": 21.863,
+   "fin": 22.336,
+   "frase": 4
+  },
+  {
+   "w": "saldría",
+   "ini": 22.336,
+   "fin": 22.714,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 22.714,
+   "fin": 22.855,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 22.855,
+   "fin": 22.997,
+   "frase": 4
+  },
+  {
+   "w": "cárcel",
+   "ini": 22.997,
+   "fin": 23.328,
+   "frase": 4
+  },
+  {
+   "w": "sin",
+   "ini": 23.328,
+   "fin": 23.517,
+   "frase": 4
+  },
+  {
+   "w": "devolver",
+   "ini": 23.517,
+   "fin": 23.942,
+   "frase": 4
+  },
+  {
+   "w": "lo",
+   "ini": 23.942,
+   "fin": 24.084,
+   "frase": 4
+  },
+  {
+   "w": "robado,",
+   "ini": 24.084,
+   "fin": 24.462,
+   "frase": 4
+  },
+  {
+   "w": "y",
+   "ini": 24.642,
+   "fin": 24.746,
+   "frase": 4
+  },
+  {
+   "w": "se",
+   "ini": 24.746,
+   "fin": 24.903,
+   "frase": 4
+  },
+  {
+   "w": "confiscarían",
+   "ini": 24.903,
+   "fin": 25.58,
+   "frase": 4
+  },
+  {
+   "w": "sus",
+   "ini": 25.58,
+   "fin": 25.788,
+   "frase": 4
+  },
+  {
+   "w": "bienes.",
+   "ini": 25.788,
+   "fin": 26.204,
+   "frase": 4
+  },
+  {
+   "w": "Cárceles:",
+   "ini": 26.324,
+   "fin": 26.784,
+   "frase": 5
+  },
+  {
+   "w": "una",
+   "ini": 27.154,
+   "fin": 27.376,
+   "frase": 5
+  },
+  {
+   "w": "gran",
+   "ini": 27.376,
+   "fin": 27.653,
+   "frase": 5
+  },
+  {
+   "w": "cárcel",
+   "ini": 27.653,
+   "fin": 28.041,
+   "frase": 5
+  },
+  {
+   "w": "para",
+   "ini": 28.041,
+   "fin": 28.318,
+   "frase": 5
+  },
+  {
+   "w": "delincuentes.",
+   "ini": 28.318,
+   "fin": 29.094,
+   "frase": 5
+  },
+  {
+   "w": "Impuestos:",
+   "ini": 29.214,
+   "fin": 29.784,
+   "frase": 6
+  },
+  {
+   "w": "menos",
+   "ini": 30.144,
+   "fin": 30.354,
+   "frase": 6
+  },
+  {
+   "w": "Estado,",
+   "ini": 30.354,
+   "fin": 30.634,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 30.714,
+   "fin": 30.831,
+   "frase": 6
+  },
+  {
+   "w": "en",
+   "ini": 30.831,
+   "fin": 31.007,
+   "frase": 6
+  },
+  {
+   "w": "Castilla",
+   "ini": 31.007,
+   "fin": 31.532,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 31.532,
+   "fin": 31.649,
+   "frase": 6
+  },
+  {
+   "w": "León",
+   "ini": 31.649,
+   "fin": 31.941,
+   "frase": 6
+  },
+  {
+   "w": "propuso",
+   "ini": 31.941,
+   "fin": 32.409,
+   "frase": 6
+  },
+  {
+   "w": "no",
+   "ini": 32.409,
+   "fin": 32.584,
+   "frase": 6
+  },
+  {
+   "w": "pagar",
+   "ini": 32.584,
+   "fin": 32.934,
+   "frase": 6
+  },
+  {
+   "w": "IRPF",
+   "ini": 32.934,
+   "fin": 33.227,
+   "frase": 6
+  },
+  {
+   "w": "por",
+   "ini": 33.227,
+   "fin": 33.46,
+   "frase": 6
+  },
+  {
+   "w": "debajo",
+   "ini": 33.46,
+   "fin": 33.869,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 33.869,
+   "fin": 34.044,
+   "frase": 6
+  },
+  {
+   "w": "treinta",
+   "ini": 34.044,
+   "fin": 34.512,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 34.512,
+   "fin": 34.629,
+   "frase": 6
+  },
+  {
+   "w": "cinco",
+   "ini": 34.629,
+   "fin": 34.979,
+   "frase": 6
+  },
+  {
+   "w": "mil",
+   "ini": 34.979,
+   "fin": 35.213,
+   "frase": 6
+  },
+  {
+   "w": "euros",
+   "ini": 35.213,
+   "fin": 35.563,
+   "frase": 6
+  },
+  {
+   "w": "al",
+   "ini": 35.563,
+   "fin": 35.739,
+   "frase": 6
+  },
+  {
+   "w": "año.",
+   "ini": 35.739,
+   "fin": 36.031,
+   "frase": 6
+  },
+  {
+   "w": "Vivienda:",
+   "ini": 36.151,
+   "fin": 36.731,
+   "frase": 7
+  },
+  {
+   "w": "cero",
+   "ini": 37.111,
+   "fin": 37.332,
+   "frase": 7
+  },
+  {
+   "w": "impuestos",
+   "ini": 37.332,
+   "fin": 37.774,
+   "frase": 7
+  },
+  {
+   "w": "al",
+   "ini": 37.774,
+   "fin": 37.906,
+   "frase": 7
+  },
+  {
+   "w": "comprar",
+   "ini": 37.906,
+   "fin": 38.26,
+   "frase": 7
+  },
+  {
+   "w": "la",
+   "ini": 38.26,
+   "fin": 38.392,
+   "frase": 7
+  },
+  {
+   "w": "primera",
+   "ini": 38.392,
+   "fin": 38.746,
+   "frase": 7
+  },
+  {
+   "w": "casa,",
+   "ini": 38.746,
+   "fin": 39.011,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 39.191,
+   "fin": 39.289,
+   "frase": 7
+  },
+  {
+   "w": "echar",
+   "ini": 39.289,
+   "fin": 39.583,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 39.583,
+   "fin": 39.681,
+   "frase": 7
+  },
+  {
+   "w": "los",
+   "ini": 39.681,
+   "fin": 39.877,
+   "frase": 7
+  },
+  {
+   "w": "okupas",
+   "ini": 39.877,
+   "fin": 40.219,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 40.219,
+   "fin": 40.366,
+   "frase": 7
+  },
+  {
+   "w": "veinticuatro",
+   "ini": 40.366,
+   "fin": 41.003,
+   "frase": 7
+  },
+  {
+   "w": "horas.",
+   "ini": 41.003,
+   "fin": 41.346,
+   "frase": 7
+  },
+  {
+   "w": "Inmigración:",
+   "ini": 41.466,
+   "fin": 42.096,
+   "frase": 8
+  },
+  {
+   "w": "expulsar",
+   "ini": 42.386,
+   "fin": 42.793,
+   "frase": 8
+  },
+  {
+   "w": "a",
+   "ini": 42.793,
+   "fin": 42.883,
+   "frase": 8
+  },
+  {
+   "w": "los",
+   "ini": 42.883,
+   "fin": 43.064,
+   "frase": 8
+  },
+  {
+   "w": "que",
+   "ini": 43.064,
+   "fin": 43.245,
+   "frase": 8
+  },
+  {
+   "w": "están",
+   "ini": 43.245,
+   "fin": 43.516,
+   "frase": 8
+  },
+  {
+   "w": "en",
+   "ini": 43.516,
+   "fin": 43.652,
+   "frase": 8
+  },
+  {
+   "w": "situación",
+   "ini": 43.652,
+   "fin": 44.104,
+   "frase": 8
+  },
+  {
+   "w": "irregular.",
+   "ini": 44.104,
+   "fin": 44.602,
+   "frase": 8
+  },
+  {
+   "w": "Lo",
+   "ini": 44.722,
+   "fin": 44.882,
+   "frase": 9
+  },
+  {
+   "w": "malo:",
+   "ini": 44.882,
+   "fin": 45.202,
+   "frase": 9
+  },
+  {
+   "w": "no",
+   "ini": 45.482,
+   "fin": 45.627,
+   "frase": 9
+  },
+  {
+   "w": "explica",
+   "ini": 45.627,
+   "fin": 46.016,
+   "frase": 9
+  },
+  {
+   "w": "cómo",
+   "ini": 46.016,
+   "fin": 46.258,
+   "frase": 9
+  },
+  {
+   "w": "pagaría",
+   "ini": 46.258,
+   "fin": 46.647,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 46.647,
+   "fin": 46.792,
+   "frase": 9
+  },
+  {
+   "w": "bajada",
+   "ini": 46.792,
+   "fin": 47.132,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 47.132,
+   "fin": 47.278,
+   "frase": 9
+  },
+  {
+   "w": "impuestos,",
+   "ini": 47.278,
+   "fin": 47.812,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 48.022,
+   "fin": 48.123,
+   "frase": 9
+  },
+  {
+   "w": "su",
+   "ini": 48.123,
+   "fin": 48.274,
+   "frase": 9
+  },
+  {
+   "w": "líder",
+   "ini": 48.274,
+   "fin": 48.577,
+   "frase": 9
+  },
+  {
+   "w": "está",
+   "ini": 48.577,
+   "fin": 48.829,
+   "frase": 9
+  },
+  {
+   "w": "investigado",
+   "ini": 48.829,
+   "fin": 49.435,
+   "frase": 9
+  },
+  {
+   "w": "por",
+   "ini": 49.435,
+   "fin": 49.637,
+   "frase": 9
+  },
+  {
+   "w": "presunta",
+   "ini": 49.637,
+   "fin": 50.091,
+   "frase": 9
+  },
+  {
+   "w": "financiación",
+   "ini": 50.091,
+   "fin": 50.747,
+   "frase": 9
+  },
+  {
+   "w": "ilegal.",
+   "ini": 50.747,
+   "fin": 51.151,
+   "frase": 9
+  },
+  {
+   "w": "Para",
+   "ini": 51.271,
+   "fin": 51.494,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 51.494,
+   "fin": 51.673,
+   "frase": 10
+  },
+  {
+   "w": "votantes,",
+   "ini": 51.673,
+   "fin": 52.121,
+   "frase": 10
+  },
+  {
+   "w": "mano",
+   "ini": 52.221,
+   "fin": 52.439,
+   "frase": 10
+  },
+  {
+   "w": "dura",
+   "ini": 52.439,
+   "fin": 52.658,
+   "frase": 10
+  },
+  {
+   "w": "contra",
+   "ini": 52.658,
+   "fin": 52.964,
+   "frase": 10
+  },
+  {
+   "w": "la",
+   "ini": 52.964,
+   "fin": 53.096,
+   "frase": 10
+  },
+  {
+   "w": "corrupción.",
+   "ini": 53.096,
+   "fin": 53.621,
+   "frase": 10
+  },
+  {
+   "w": "Para",
+   "ini": 54.011,
+   "fin": 54.224,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 54.224,
+   "fin": 54.394,
+   "frase": 10
+  },
+  {
+   "w": "críticos,",
+   "ini": 54.394,
+   "fin": 54.821,
+   "frase": 10
+  },
+  {
+   "w": "mucho",
+   "ini": 54.941,
+   "fin": 55.303,
+   "frase": 10
+  },
+  {
+   "w": "ruido",
+   "ini": 55.303,
+   "fin": 55.666,
+   "frase": 10
+  },
+  {
+   "w": "y",
+   "ini": 55.666,
+   "fin": 55.787,
+   "frase": 10
+  },
+  {
+   "w": "poco",
+   "ini": 55.787,
+   "fin": 56.089,
+   "frase": 10
+  },
+  {
+   "w": "programa.",
+   "ini": 56.089,
+   "fin": 56.693,
+   "frase": 10
+  },
+  {
+   "w": "El",
+   "ini": 56.813,
+   "fin": 56.993,
+   "frase": 11
+  },
+  {
+   "w": "29",
+   "ini": 56.993,
+   "fin": 57.173,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 57.173,
+   "fin": 57.353,
+   "frase": 11
+  },
+  {
+   "w": "noviembre,",
+   "ini": 57.353,
+   "fin": 58.013,
+   "frase": 11
+  },
+  {
+   "w": "deciden",
+   "ini": 58.093,
+   "fin": 58.591,
+   "frase": 11
+  },
+  {
+   "w": "las",
+   "ini": 58.591,
+   "fin": 58.839,
+   "frase": 11
+  },
+  {
+   "w": "urnas.",
+   "ini": 58.839,
+   "fin": 59.274,
+   "frase": 11
+  }
+ ]
+}
