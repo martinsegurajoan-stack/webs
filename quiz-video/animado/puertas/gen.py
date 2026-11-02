@@ -529,9 +529,18 @@ luz(F(28), "#ffe2b0", 0.4)
 f16 = F(28); tmsg = P("ella", 2); ta = P("abre")
 DX, DY, DW, DH = 540, 1500, 420, 960
 mensaje = ("Puedes recuperar", "todo lo que", "has perdido…", "pero tendrás", "que entregar algo", "que todavía", "conservas.")
-grabado = "".join(f'<g class="lin16" id="ln{k}"><text x="{DX + 1.5}" y="{688 + k * 44 + 2}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="27" fill="#000" opacity="0.75">{t}</text>'
-                  f'<text x="{DX}" y="{688 + k * 44}" text-anchor="middle" font-family="Georgia" font-style="italic" font-size="27" fill="url(#brasa)" filter="url(#brillo)">{t}</text></g>' for k, t in enumerate(mensaje))
-grad_lin("brasa", ((0, "#fff0c8", 1), (0.5, "#ffb85c", 1), (1, "#ff7a2a", 1)))
+mensaje = ("PUEDES RECUPERAR", "TODO LO QUE", "HAS PERDIDO…", "PERO TENDRÁS", "QUE ENTREGAR ALGO", "QUE TODAVÍA", "CONSERVAS")
+def talla(k, t):
+    """Letras TALLADAS en la madera: borde iluminado abajo-derecha, surco oscuro, y brasa que brilla al grabarse y se apaga."""
+    y = 690 + k * 44
+    base = f'x="{DX}" text-anchor="middle" font-family="Grabado" font-size="21" letter-spacing="1.4"'
+    return (f'<g class="lin16" id="ln{k}"><text {base} y="{y + 1.6:.1f}" dx="1.3" fill="#6e5a40" opacity="0.85">{t}</text>'
+            f'<text {base} y="{y:.1f}" fill="#070504">{t}</text>'
+            f'<text class="emb16" {base} y="{y:.1f}" fill="url(#brasa)" filter="url(#brillo)" opacity="0">{t}</text></g>')
+r16 = random.Random(16)
+vetas = "".join(f'<path d="M{x:.0f},569 C{x + r16.uniform(-6, 6):.0f},800 {x + r16.uniform(-8, 8):.0f},1200 {x + r16.uniform(-5, 5):.0f},1500" stroke="{r16.choice(("#2a1f15", "#0f0a07", "#24190f"))}" stroke-width="{r16.uniform(1, 3.5):.1f}" fill="none" opacity="{r16.uniform(0.25, 0.6):.2f}"/>' for x in [r16.uniform(362, 718) for _ in range(46)])
+grabado = vetas + "".join(talla(k, t) for k, t in enumerate(mensaje))
+grad_lin("brasa", ((0, "#ffe2a8", 1), (0.5, "#ff9a3c", 1), (1, "#d2541c", 1)))
 e16 = ['<rect width="1080" height="1920" fill="#030406"/>', '<rect x="0" y="0" width="1080" height="1500" fill="url(#muro)"/>', '<polygon points="0,1500 1080,1500 1080,1920 0,1920" fill="#06080b"/>',
        '<rect id="haz16" x="0" y="1500" width="1080" height="420" fill="url(#haz16g)" opacity="0.25"/>',
        '<g id="pu16">' + puerta("p16", DX, DY, DW, DH, "oro", haz=0.55, marco="#0c0d10", hoja="#17130f", en_hoja=grabado) + '</g>',
@@ -546,10 +555,11 @@ J(f'tl.to("#e16-cam", {{x:{enfoca(540, 812, 2.6)[0]}, y:{enfoca(540, 812, 2.6)[1
 J(f'tl.to("#e16-cam", {{x:{enfoca(540, 1090, 1.12)[0]}, y:{enfoca(540, 1090, 1.12)[1]}, scale:1.12, duration:1.5, ease:"power2.inOut"}}, {ta - 0.9:.2f});')
 J(f'tl.fromTo("#tu16", {{x:-40}}, {{x:0, duration:{tmsg - f16:.2f}, ease:"sine.out", immediateRender:false}}, {f16:.2f});')
 J(f'tl.fromTo("#p16 .filo, #p16 .hueco", {{opacity:0.6}}, {{opacity:1, duration:0.3, yoyo:true, repeat:{int((tmsg - f16) / 0.6)}, ease:"sine.inOut", immediateRender:false}}, {f16:.2f});')
-J('tl.set(".lin16", {clipPath:"inset(0% 100% 0% 0%)"}, 0);')
+J('tl.set(".lin16", {clipPath:"inset(0% 100% 0% 0%)"}, 0); tl.set(".emb16", {opacity:0}, 0);')
 for k, w in enumerate(("puedes", "todo", "perdido", "pero", "entregar", "todavia", "conservas")):
     tw = P(w, {"pero": 8, "todo": 2, "entregar": 2, "puedes": 3, "todavia": 2, "perdido": 2}.get(w, 1))
     J(f'tl.to("#ln{k}", {{clipPath:"inset(0% 0% 0% 0%)", duration:0.7, ease:"none"}}, {tw - 0.2:.2f});')
+    J(f'tl.fromTo("#ln{k} .emb16", {{opacity:0.95}}, {{opacity:0.38, duration:1.6, ease:"power2.out", immediateRender:false}}, {tw - 0.2:.2f});')
 FX.append(("grabado", tmsg + 0.4))
 J(f'tl.to("#p16 .hoja", {{scaleX:0.16, transformOrigin:"0% 0%", duration:{P("detras", 2) - ta + 0.3:.2f}, ease:"power1.in"}}, {ta:.2f}); tl.to("#haz16", {{opacity:1, duration:{P("detras", 2) - ta:.2f}, ease:"power1.in"}}, {ta:.2f});')
 FX.append(("chirrido", ta - 0.1))
@@ -593,6 +603,7 @@ html = f"""<!doctype html>
 <meta name="viewport" content="width=1080, height=1920" />
 <script src="assets/gsap.min.js"></script>
 <style>
+@font-face{{font-family:'Grabado';src:url(assets/fonts/grabado.ttf) format('truetype');font-weight:700}}
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
 #root{{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;background:{BG}}}
