@@ -20,7 +20,7 @@ const fs = require('fs');
   #logo{position:absolute;left:330px;top:120px;width:260px}
   .m{position:absolute;font-family:Marker;white-space:nowrap}
   #l1{left:140px;top:300px;font-size:120px;color:#222}
-  #l2{left:140px;top:450px;font-size:210px;color:${C}}
+  #l2{left:140px;top:450px;font-size:${Math.min(210, Math.floor(700 / (P.linea2.length * 0.62)))}px;color:${C}}
   #sub{position:absolute;left:150px;top:975px;font:700 70px Caveat;color:#1f3a7a;white-space:nowrap}
   #fecha{left:150px;top:760px;font-size:120px;color:#c0392b}
   #crono{position:absolute;right:40px;top:740px}
