@@ -129,3 +129,15 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
   tejado, calle, edificios vecinos), nunca cuadrados flotando. Personajes SIEMPRE con cuello. Nadie «de pie sobre» un
   atril o un micrófono: atriles con la persona detrás. Carteles/sellos que no tapen el objeto protagonista.
 - PORTADA TIKTOK: lo importante dentro del recorte 3:4 central (y 240-1680) y gancho fuerte de curiosidad.
+
+## GUION CAÓTICO, FINAL EN SECO Y GANCHO MÁS FUERTE (usuario, 03-11-2026, TODOS los vídeos animados en adelante)
+- GUION CAÓTICO Y ADICTIVO, nada aburrido ni «de documental»: escalada rápida, giros, situaciones locas y concretas que
+  se ven (gente haciendo locuras, peleas por el botón, ciudades enteras en caos, cosas absurdas y graciosas), cada frase
+  más fuerte que la anterior. FUERA los tramos institucionales y lentos (gobiernos, parlamentos, leyes, bancos que
+  «reciben reclamaciones»…): en el vídeo del botón sobraban los gobiernos. Cada escena tiene que ser ADICTIVA.
+- FINAL EN SECO Y CON EMOCIÓN: nada de cierres tipo «y el siguiente eres tú» / «ahora te toca a ti» (le aburren).
+  Terminar en el punto de máxima tensión, con un golpe (giro brutal, imagen impactante, corte seco a negro en mitad
+  del clímax). Si es en bucle, que el corte en seco enlace con la primera frase.
+- GANCHO INICIAL MEJOR EN CADA VÍDEO: la primera frase tiene que ser la más loca/impactante de todo el vídeo
+  (situación extrema o pregunta imposible de ignorar) con imagen espectacular moviéndose desde el fotograma 0.
+  Revisar el gancho del vídeo anterior y superarlo.

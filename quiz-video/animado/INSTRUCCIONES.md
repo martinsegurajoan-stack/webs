@@ -193,3 +193,15 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - Es nuevo en esto: explicar paso a paso y fácil.
 - Avisar del coste en créditos ANTES de gastar (ElevenLabs, imágenes).
 - Enviar solo lo que pide (MP4 + miniatura + descripción), sin archivos de trabajo.
+
+## GUION CAÓTICO, FINAL EN SECO Y GANCHO MÁS FUERTE (usuario, 03-11-2026, TODOS los vídeos animados en adelante)
+- GUION CAÓTICO Y ADICTIVO, nada aburrido ni «de documental»: escalada rápida, giros, situaciones locas y concretas que
+  se ven (gente haciendo locuras, peleas por el botón, ciudades enteras en caos, cosas absurdas y graciosas), cada frase
+  más fuerte que la anterior. FUERA los tramos institucionales y lentos (gobiernos, parlamentos, leyes, bancos que
+  «reciben reclamaciones»…): en el vídeo del botón sobraban los gobiernos. Cada escena tiene que ser ADICTIVA.
+- FINAL EN SECO Y CON EMOCIÓN: nada de cierres tipo «y el siguiente eres tú» / «ahora te toca a ti» (le aburren).
+  Terminar en el punto de máxima tensión, con un golpe (giro brutal, imagen impactante, corte seco a negro en mitad
+  del clímax). Si es en bucle, que el corte en seco enlace con la primera frase.
+- GANCHO INICIAL MEJOR EN CADA VÍDEO: la primera frase tiene que ser la más loca/impactante de todo el vídeo
+  (situación extrema o pregunta imposible de ignorar) con imagen espectacular moviéndose desde el fotograma 0.
+  Revisar el gancho del vídeo anterior y superarlo.
