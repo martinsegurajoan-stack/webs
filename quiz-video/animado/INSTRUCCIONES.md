@@ -205,3 +205,4 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - GANCHO INICIAL MEJOR EN CADA VÍDEO: la primera frase tiene que ser la más loca/impactante de todo el vídeo
   (situación extrema o pregunta imposible de ignorar) con imagen espectacular moviéndose desde el fotograma 0.
   Revisar el gancho del vídeo anterior y superarlo.
+- DURACIÓN (usuario, 03-11-2026): vídeos animados de 61 a 75 s como MÁXIMO (nunca menos de 61 s ni más de 75 s).

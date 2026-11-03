@@ -23,6 +23,7 @@ Antes de cualquier vídeo, LEE `quiz-video/animado/MEJORA_CONTINUA.md` (5 mejora
 
 TODO EL VÍDEO +0,5 s (usuario, 02/03-11-2026, TODOS los vídeos): la PRIMERA PALABRA suena en el segundo 0,5 y TODO (voz, subtítulos, animaciones, cortes) se retrasa medio segundo a la vez, sin desfase entre voz e imagen; así quien abre el vídeo no se pierde el primer segundo (INICIO = 0.5 en montar_voz.py; los tiempos de gen.py salen de tiempos.json).
 
+DURACIÓN ANIMADOS (03-11-2026): entre 61 y 75 s MÁXIMO.
 GUION CAÓTICO (usuario, 03-11-2026, vídeos animados): guion caótico y adictivo, sin tramos aburridos (nada de gobiernos/instituciones),
 FINAL EN SECO con emoción (nunca «el siguiente eres tú») y GANCHO INICIAL cada vez más fuerte. Ver final de `quiz-video/animado/MEJORA_CONTINUA.md`.
 
