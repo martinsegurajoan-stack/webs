@@ -1406,5 +1406,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "ae5d6f3e-9b00-4a01-b6d0-7bb78f351c9e",
+      "completedAt": 1793693616150,
+      "output": "/home/user/webs/quiz-video/animado/vater/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
