@@ -1,1560 +1,1560 @@
 {
- "duracion": 92.503,
+ "duracion": 93.003,
  "frases": [
   {
    "n": 1,
    "texto": "Imagina que mañana recibes un botón.",
-   "ini": 0.0,
-   "fin": 2.217
+   "ini": 0.5,
+   "fin": 2.717
   },
   {
    "n": 2,
    "texto": "Si lo pulsas, aparecerá un millón de euros en tu cuenta bancaria.",
-   "ini": 2.317,
-   "fin": 6.363
+   "ini": 2.817,
+   "fin": 6.863
   },
   {
    "n": 3,
    "texto": "Pero hay un pequeño detalle: una persona aleatoria del planeta perderá todos sus ahorros.",
-   "ini": 6.463,
-   "fin": 12.35
+   "ini": 6.963,
+   "fin": 12.85
   },
   {
    "n": 4,
    "texto": "Y no eres el único.",
-   "ini": 12.8,
-   "fin": 13.858
+   "ini": 13.3,
+   "fin": 14.358
   },
   {
    "n": 5,
    "texto": "Cada persona del planeta recibe exactamente el mismo botón.",
-   "ini": 13.958,
-   "fin": 17.625
+   "ini": 14.458,
+   "fin": 18.125
   },
   {
    "n": 6,
    "texto": "Y puedes pulsarlo tantas veces como quieras.",
-   "ini": 17.725,
-   "fin": 20.292
+   "ini": 18.225,
+   "fin": 20.792
   },
   {
    "n": 7,
    "texto": "Puedes hacerte millonario en un segundo.",
-   "ini": 20.392,
-   "fin": 22.604
+   "ini": 20.892,
+   "fin": 23.104
   },
   {
    "n": 8,
    "texto": "Y lo mejor, o lo peor, es que nunca sabrás a quién estás arruinando.",
-   "ini": 22.704,
-   "fin": 27.455
+   "ini": 23.204,
+   "fin": 27.955
   },
   {
    "n": 9,
    "texto": "Al principio, millones de personas deciden pulsarlo.",
-   "ini": 27.855,
-   "fin": 30.857
+   "ini": 28.355,
+   "fin": 31.357
   },
   {
    "n": 10,
    "texto": "Algunos se compran casas, coches y viajes.",
-   "ini": 30.957,
-   "fin": 33.806
+   "ini": 31.457,
+   "fin": 34.306
   },
   {
    "n": 11,
    "texto": "Pero, al mismo tiempo, otras personas descubren que sus cuentas bancarias están completamente vacías.",
-   "ini": 33.906,
-   "fin": 39.839
+   "ini": 34.406,
+   "fin": 40.339
   },
   {
    "n": 12,
    "texto": "Sin explicación. Sin aviso.",
-   "ini": 39.939,
-   "fin": 41.859
+   "ini": 40.439,
+   "fin": 42.359
   },
   {
    "n": 13,
    "texto": "Los bancos reciben millones de reclamaciones.",
-   "ini": 41.959,
-   "fin": 44.747
+   "ini": 42.459,
+   "fin": 45.247
   },
   {
    "n": 14,
    "texto": "Las familias pierden los ahorros de toda una vida.",
-   "ini": 44.847,
-   "fin": 47.621
+   "ini": 45.347,
+   "fin": 48.121
   },
   {
    "n": 15,
    "texto": "Los comercios dejan de cobrar.",
-   "ini": 47.721,
-   "fin": 49.462
+   "ini": 48.221,
+   "fin": 49.962
   },
   {
    "n": 16,
    "texto": "Y cada vez que alguien vuelve a pulsar, otra persona lo pierde absolutamente todo.",
-   "ini": 49.562,
-   "fin": 54.569
+   "ini": 50.062,
+   "fin": 55.069
   },
   {
    "n": 17,
    "texto": "Nadie sabe quién será el siguiente.",
-   "ini": 54.669,
-   "fin": 56.857
+   "ini": 55.169,
+   "fin": 57.357
   },
   {
    "n": 18,
    "texto": "Los gobiernos intentan detener el experimento.",
-   "ini": 57.357,
-   "fin": 59.909
+   "ini": 57.857,
+   "fin": 60.409
   },
   {
    "n": 19,
    "texto": "Algunos países piden prohibir los botones.",
-   "ini": 60.009,
-   "fin": 62.365
+   "ini": 60.509,
+   "fin": 62.865
   },
   {
    "n": 20,
    "texto": "Pero hay un problema: nadie puede demostrar quién ha pulsado.",
-   "ini": 62.465,
-   "fin": 66.468
+   "ini": 62.965,
+   "fin": 66.968
   },
   {
    "n": 21,
    "texto": "Y millones de personas siguen pensando que, si no lo hacen ellas, lo hará otro.",
-   "ini": 66.568,
-   "fin": 70.978
+   "ini": 67.068,
+   "fin": 71.478
   },
   {
    "n": 22,
    "texto": "Pero entonces pasa algo que nadie había previsto.",
-   "ini": 71.678,
-   "fin": 74.736
+   "ini": 72.178,
+   "fin": 75.236
   },
   {
    "n": 23,
    "texto": "Alguien vuelve a pulsar el botón.",
-   "ini": 74.836,
-   "fin": 76.987
+   "ini": 75.336,
+   "fin": 77.487
   },
   {
    "n": 24,
    "texto": "Y esta vez, la persona elegida para perderlo todo… eres tú.",
-   "ini": 77.087,
-   "fin": 81.282
+   "ini": 77.587,
+   "fin": 81.782
   },
   {
    "n": 25,
    "texto": "Tu cuenta acaba de quedarse a cero.",
-   "ini": 81.882,
-   "fin": 83.982
+   "ini": 82.382,
+   "fin": 84.482
   },
   {
    "n": 26,
    "texto": "Y ahora tienes el botón delante.",
-   "ini": 84.382,
-   "fin": 86.446
+   "ini": 84.882,
+   "fin": 86.946
   },
   {
    "n": 27,
    "texto": "Puedes recuperar tu dinero.",
-   "ini": 86.546,
-   "fin": 88.044
+   "ini": 87.046,
+   "fin": 88.544
   },
   {
    "n": 28,
    "texto": "Pero alguien tendrá que pagar el precio.",
-   "ini": 88.444,
-   "fin": 90.704
+   "ini": 88.944,
+   "fin": 91.204
   }
  ],
  "palabras": [
   {
    "w": "Imagina",
-   "ini": 0.0,
-   "fin": 0.479,
+   "ini": 0.5,
+   "fin": 0.979,
    "frase": 1
   },
   {
    "w": "que",
-   "ini": 0.479,
-   "fin": 0.719,
+   "ini": 0.979,
+   "fin": 1.219,
    "frase": 1
   },
   {
    "w": "mañana",
-   "ini": 0.719,
-   "fin": 1.138,
+   "ini": 1.219,
+   "fin": 1.638,
    "frase": 1
   },
   {
    "w": "recibes",
-   "ini": 1.138,
-   "fin": 1.618,
+   "ini": 1.638,
+   "fin": 2.118,
    "frase": 1
   },
   {
    "w": "un",
-   "ini": 1.618,
-   "fin": 1.797,
+   "ini": 2.118,
+   "fin": 2.297,
    "frase": 1
   },
   {
    "w": "botón.",
-   "ini": 1.797,
-   "fin": 2.217,
+   "ini": 2.297,
+   "fin": 2.717,
    "frase": 1
   },
   {
    "w": "Si",
-   "ini": 2.317,
-   "fin": 2.465,
+   "ini": 2.817,
+   "fin": 2.965,
    "frase": 2
   },
   {
    "w": "lo",
-   "ini": 2.465,
-   "fin": 2.612,
+   "ini": 2.965,
+   "fin": 3.112,
    "frase": 2
   },
   {
    "w": "pulsas,",
-   "ini": 2.612,
-   "fin": 3.007,
+   "ini": 3.112,
+   "fin": 3.507,
    "frase": 2
   },
   {
    "w": "aparecerá",
-   "ini": 3.387,
-   "fin": 3.959,
+   "ini": 3.887,
+   "fin": 4.459,
    "frase": 2
   },
   {
    "w": "un",
-   "ini": 3.959,
-   "fin": 4.131,
+   "ini": 4.459,
+   "fin": 4.631,
    "frase": 2
   },
   {
    "w": "millón",
-   "ini": 4.131,
-   "fin": 4.531,
+   "ini": 4.631,
+   "fin": 5.031,
    "frase": 2
   },
   {
    "w": "de",
-   "ini": 4.531,
-   "fin": 4.703,
+   "ini": 5.031,
+   "fin": 5.203,
    "frase": 2
   },
   {
    "w": "euros",
-   "ini": 4.703,
-   "fin": 5.046,
+   "ini": 5.203,
+   "fin": 5.546,
    "frase": 2
   },
   {
    "w": "en",
-   "ini": 5.046,
-   "fin": 5.218,
+   "ini": 5.546,
+   "fin": 5.718,
    "frase": 2
   },
   {
    "w": "tu",
-   "ini": 5.218,
-   "fin": 5.39,
+   "ini": 5.718,
+   "fin": 5.89,
    "frase": 2
   },
   {
    "w": "cuenta",
-   "ini": 5.39,
-   "fin": 5.79,
+   "ini": 5.89,
+   "fin": 6.29,
    "frase": 2
   },
   {
    "w": "bancaria.",
-   "ini": 5.79,
-   "fin": 6.363,
+   "ini": 6.29,
+   "fin": 6.863,
    "frase": 2
   },
   {
    "w": "Pero",
-   "ini": 6.463,
-   "fin": 6.749,
+   "ini": 6.963,
+   "fin": 7.249,
    "frase": 3
   },
   {
    "w": "hay",
-   "ini": 6.749,
-   "fin": 6.978,
+   "ini": 7.249,
+   "fin": 7.478,
    "frase": 3
   },
   {
    "w": "un",
-   "ini": 6.978,
-   "fin": 7.15,
+   "ini": 7.478,
+   "fin": 7.65,
    "frase": 3
   },
   {
    "w": "pequeño",
-   "ini": 7.15,
-   "fin": 7.607,
+   "ini": 7.65,
+   "fin": 8.107,
    "frase": 3
   },
   {
    "w": "detalle:",
-   "ini": 7.607,
-   "fin": 8.123,
+   "ini": 8.107,
+   "fin": 8.623,
    "frase": 3
   },
   {
    "w": "una",
-   "ini": 8.603,
-   "fin": 8.848,
+   "ini": 9.103,
+   "fin": 9.348,
    "frase": 3
   },
   {
    "w": "persona",
-   "ini": 8.848,
-   "fin": 9.34,
+   "ini": 9.348,
+   "fin": 9.84,
    "frase": 3
   },
   {
    "w": "aleatoria",
-   "ini": 9.34,
-   "fin": 9.954,
+   "ini": 9.84,
+   "fin": 10.454,
    "frase": 3
   },
   {
    "w": "del",
-   "ini": 9.954,
-   "fin": 10.2,
+   "ini": 10.454,
+   "fin": 10.7,
    "frase": 3
   },
   {
    "w": "planeta",
-   "ini": 10.2,
-   "fin": 10.691,
+   "ini": 10.7,
+   "fin": 11.191,
    "frase": 3
   },
   {
    "w": "perderá",
-   "ini": 10.691,
-   "fin": 11.183,
+   "ini": 11.191,
+   "fin": 11.683,
    "frase": 3
   },
   {
    "w": "todos",
-   "ini": 11.183,
-   "fin": 11.551,
+   "ini": 11.683,
+   "fin": 12.051,
    "frase": 3
   },
   {
    "w": "sus",
-   "ini": 11.551,
-   "fin": 11.797,
+   "ini": 12.051,
+   "fin": 12.297,
    "frase": 3
   },
   {
    "w": "ahorros.",
-   "ini": 11.797,
-   "fin": 12.35,
+   "ini": 12.297,
+   "fin": 12.85,
    "frase": 3
   },
   {
    "w": "Y",
-   "ini": 12.8,
-   "fin": 12.906,
+   "ini": 13.3,
+   "fin": 13.406,
    "frase": 4
   },
   {
    "w": "no",
-   "ini": 12.906,
-   "fin": 13.064,
+   "ini": 13.406,
+   "fin": 13.564,
    "frase": 4
   },
   {
    "w": "eres",
-   "ini": 13.064,
-   "fin": 13.329,
+   "ini": 13.564,
+   "fin": 13.829,
    "frase": 4
   },
   {
    "w": "el",
-   "ini": 13.329,
-   "fin": 13.488,
+   "ini": 13.829,
+   "fin": 13.988,
    "frase": 4
   },
   {
    "w": "único.",
-   "ini": 13.488,
-   "fin": 13.858,
+   "ini": 13.988,
+   "fin": 14.358,
    "frase": 4
   },
   {
    "w": "Cada",
-   "ini": 13.958,
-   "fin": 14.263,
+   "ini": 14.458,
+   "fin": 14.763,
    "frase": 5
   },
   {
    "w": "persona",
-   "ini": 14.263,
-   "fin": 14.752,
+   "ini": 14.763,
+   "fin": 15.252,
    "frase": 5
   },
   {
    "w": "del",
-   "ini": 14.752,
-   "fin": 14.997,
+   "ini": 15.252,
+   "fin": 15.497,
    "frase": 5
   },
   {
    "w": "planeta",
-   "ini": 14.997,
-   "fin": 15.486,
+   "ini": 15.497,
+   "fin": 15.986,
    "frase": 5
   },
   {
    "w": "recibe",
-   "ini": 15.486,
-   "fin": 15.914,
+   "ini": 15.986,
+   "fin": 16.414,
    "frase": 5
   },
   {
    "w": "exactamente",
-   "ini": 15.914,
-   "fin": 16.647,
+   "ini": 16.414,
+   "fin": 17.147,
    "frase": 5
   },
   {
    "w": "el",
-   "ini": 16.647,
-   "fin": 16.83,
+   "ini": 17.147,
+   "fin": 17.33,
    "frase": 5
   },
   {
    "w": "mismo",
-   "ini": 16.83,
-   "fin": 17.197,
+   "ini": 17.33,
+   "fin": 17.697,
    "frase": 5
   },
   {
    "w": "botón.",
-   "ini": 17.197,
-   "fin": 17.625,
+   "ini": 17.697,
+   "fin": 18.125,
    "frase": 5
   },
   {
    "w": "Y",
-   "ini": 17.725,
-   "fin": 17.839,
+   "ini": 18.225,
+   "fin": 18.339,
    "frase": 6
   },
   {
    "w": "puedes",
-   "ini": 17.839,
-   "fin": 18.238,
+   "ini": 18.339,
+   "fin": 18.738,
    "frase": 6
   },
   {
    "w": "pulsarlo",
-   "ini": 18.238,
-   "fin": 18.751,
+   "ini": 18.738,
+   "fin": 19.251,
    "frase": 6
   },
   {
    "w": "tantas",
-   "ini": 18.751,
-   "fin": 19.151,
+   "ini": 19.251,
+   "fin": 19.651,
    "frase": 6
   },
   {
    "w": "veces",
-   "ini": 19.151,
-   "fin": 19.493,
+   "ini": 19.651,
+   "fin": 19.993,
    "frase": 6
   },
   {
    "w": "como",
-   "ini": 19.493,
-   "fin": 19.778,
+   "ini": 19.993,
+   "fin": 20.278,
    "frase": 6
   },
   {
    "w": "quieras.",
-   "ini": 19.778,
-   "fin": 20.292,
+   "ini": 20.278,
+   "fin": 20.792,
    "frase": 6
   },
   {
    "w": "Puedes",
-   "ini": 20.392,
-   "fin": 20.769,
+   "ini": 20.892,
+   "fin": 21.269,
    "frase": 7
   },
   {
    "w": "hacerte",
-   "ini": 20.769,
-   "fin": 21.201,
+   "ini": 21.269,
+   "fin": 21.701,
    "frase": 7
   },
   {
    "w": "millonario",
-   "ini": 21.201,
-   "fin": 21.794,
+   "ini": 21.701,
+   "fin": 22.294,
    "frase": 7
   },
   {
    "w": "en",
-   "ini": 21.794,
-   "fin": 21.956,
+   "ini": 22.294,
+   "fin": 22.456,
    "frase": 7
   },
   {
    "w": "un",
-   "ini": 21.956,
-   "fin": 22.118,
+   "ini": 22.456,
+   "fin": 22.618,
    "frase": 7
   },
   {
    "w": "segundo.",
-   "ini": 22.118,
-   "fin": 22.604,
+   "ini": 22.618,
+   "fin": 23.104,
    "frase": 7
   },
   {
    "w": "Y",
-   "ini": 22.704,
-   "fin": 22.8,
+   "ini": 23.204,
+   "fin": 23.3,
    "frase": 8
   },
   {
    "w": "lo",
-   "ini": 22.8,
-   "fin": 22.945,
+   "ini": 23.3,
+   "fin": 23.445,
    "frase": 8
   },
   {
    "w": "mejor,",
-   "ini": 22.945,
-   "fin": 23.284,
+   "ini": 23.445,
+   "fin": 23.784,
    "frase": 8
   },
   {
    "w": "o",
-   "ini": 23.644,
-   "fin": 23.777,
+   "ini": 24.144,
+   "fin": 24.277,
    "frase": 8
   },
   {
    "w": "lo",
-   "ini": 23.777,
-   "fin": 23.976,
+   "ini": 24.277,
+   "fin": 24.476,
    "frase": 8
   },
   {
    "w": "peor,",
-   "ini": 23.976,
-   "fin": 24.374,
+   "ini": 24.476,
+   "fin": 24.874,
    "frase": 8
   },
   {
    "w": "es",
-   "ini": 24.704,
-   "fin": 24.883,
+   "ini": 25.204,
+   "fin": 25.383,
    "frase": 8
   },
   {
    "w": "que",
-   "ini": 24.883,
-   "fin": 25.122,
+   "ini": 25.383,
+   "fin": 25.622,
    "frase": 8
   },
   {
    "w": "nunca",
-   "ini": 25.122,
-   "fin": 25.481,
+   "ini": 25.622,
+   "fin": 25.981,
    "frase": 8
   },
   {
    "w": "sabrás",
-   "ini": 25.481,
-   "fin": 25.9,
+   "ini": 25.981,
+   "fin": 26.4,
    "frase": 8
   },
   {
    "w": "a",
-   "ini": 25.9,
-   "fin": 26.02,
+   "ini": 26.4,
+   "fin": 26.52,
    "frase": 8
   },
   {
    "w": "quién",
-   "ini": 26.02,
-   "fin": 26.379,
+   "ini": 26.52,
+   "fin": 26.879,
    "frase": 8
   },
   {
    "w": "estás",
-   "ini": 26.379,
-   "fin": 26.737,
+   "ini": 26.879,
+   "fin": 27.237,
    "frase": 8
   },
   {
    "w": "arruinando.",
-   "ini": 26.737,
-   "fin": 27.455,
+   "ini": 27.237,
+   "fin": 27.955,
    "frase": 8
   },
   {
    "w": "Al",
-   "ini": 27.855,
-   "fin": 28.014,
+   "ini": 28.355,
+   "fin": 28.514,
    "frase": 9
   },
   {
    "w": "principio,",
-   "ini": 28.014,
-   "fin": 28.595,
+   "ini": 28.514,
+   "fin": 29.095,
    "frase": 9
   },
   {
    "w": "millones",
-   "ini": 28.695,
-   "fin": 29.194,
+   "ini": 29.195,
+   "fin": 29.694,
    "frase": 9
   },
   {
    "w": "de",
-   "ini": 29.194,
-   "fin": 29.36,
+   "ini": 29.694,
+   "fin": 29.86,
    "frase": 9
   },
   {
    "w": "personas",
-   "ini": 29.36,
-   "fin": 29.859,
+   "ini": 29.86,
+   "fin": 30.359,
    "frase": 9
   },
   {
    "w": "deciden",
-   "ini": 29.859,
-   "fin": 30.303,
+   "ini": 30.359,
+   "fin": 30.803,
    "frase": 9
   },
   {
    "w": "pulsarlo.",
-   "ini": 30.303,
-   "fin": 30.857,
+   "ini": 30.803,
+   "fin": 31.357,
    "frase": 9
   },
   {
    "w": "Algunos",
-   "ini": 30.957,
-   "fin": 31.452,
+   "ini": 31.457,
+   "fin": 31.952,
    "frase": 10
   },
   {
    "w": "se",
-   "ini": 31.452,
-   "fin": 31.638,
+   "ini": 31.952,
+   "fin": 32.138,
    "frase": 10
   },
   {
    "w": "compran",
-   "ini": 31.638,
-   "fin": 32.134,
+   "ini": 32.138,
+   "fin": 32.634,
    "frase": 10
   },
   {
    "w": "casas,",
-   "ini": 32.134,
-   "fin": 32.567,
+   "ini": 32.634,
+   "fin": 33.067,
    "frase": 10
   },
   {
    "w": "coches",
-   "ini": 32.667,
-   "fin": 33.136,
+   "ini": 33.167,
+   "fin": 33.636,
    "frase": 10
   },
   {
    "w": "y",
-   "ini": 33.136,
-   "fin": 33.27,
+   "ini": 33.636,
+   "fin": 33.77,
    "frase": 10
   },
   {
    "w": "viajes.",
-   "ini": 33.27,
-   "fin": 33.806,
+   "ini": 33.77,
+   "fin": 34.306,
    "frase": 10
   },
   {
    "w": "Pero,",
-   "ini": 33.906,
-   "fin": 34.146,
+   "ini": 34.406,
+   "fin": 34.646,
    "frase": 11
   },
   {
    "w": "al",
-   "ini": 34.236,
-   "fin": 34.398,
+   "ini": 34.736,
+   "fin": 34.898,
    "frase": 11
   },
   {
    "w": "mismo",
-   "ini": 34.398,
-   "fin": 34.723,
+   "ini": 34.898,
+   "fin": 35.223,
    "frase": 11
   },
   {
    "w": "tiempo,",
-   "ini": 34.723,
-   "fin": 35.156,
+   "ini": 35.223,
+   "fin": 35.656,
    "frase": 11
   },
   {
    "w": "otras",
-   "ini": 35.386,
-   "fin": 35.724,
+   "ini": 35.886,
+   "fin": 36.224,
    "frase": 11
   },
   {
    "w": "personas",
-   "ini": 35.724,
-   "fin": 36.231,
+   "ini": 36.224,
+   "fin": 36.731,
    "frase": 11
   },
   {
    "w": "descubren",
-   "ini": 36.231,
-   "fin": 36.795,
+   "ini": 36.731,
+   "fin": 37.295,
    "frase": 11
   },
   {
    "w": "que",
-   "ini": 36.795,
-   "fin": 37.021,
+   "ini": 37.295,
+   "fin": 37.521,
    "frase": 11
   },
   {
    "w": "sus",
-   "ini": 37.021,
-   "fin": 37.246,
+   "ini": 37.521,
+   "fin": 37.746,
    "frase": 11
   },
   {
    "w": "cuentas",
-   "ini": 37.246,
-   "fin": 37.697,
+   "ini": 37.746,
+   "fin": 38.197,
    "frase": 11
   },
   {
    "w": "bancarias",
-   "ini": 37.697,
-   "fin": 38.261,
+   "ini": 38.197,
+   "fin": 38.761,
    "frase": 11
   },
   {
    "w": "están",
-   "ini": 38.261,
-   "fin": 38.599,
+   "ini": 38.761,
+   "fin": 39.099,
    "frase": 11
   },
   {
    "w": "completamente",
-   "ini": 38.599,
-   "fin": 39.388,
+   "ini": 39.099,
+   "fin": 39.888,
    "frase": 11
   },
   {
    "w": "vacías.",
-   "ini": 39.388,
-   "fin": 39.839,
+   "ini": 39.888,
+   "fin": 40.339,
    "frase": 11
   },
   {
    "w": "Sin",
-   "ini": 39.939,
-   "fin": 40.149,
+   "ini": 40.439,
+   "fin": 40.649,
    "frase": 12
   },
   {
    "w": "explicación.",
-   "ini": 40.149,
-   "fin": 40.829,
+   "ini": 40.649,
+   "fin": 41.329,
    "frase": 12
   },
   {
    "w": "Sin",
-   "ini": 41.119,
-   "fin": 41.389,
+   "ini": 41.619,
+   "fin": 41.889,
    "frase": 12
   },
   {
    "w": "aviso.",
-   "ini": 41.389,
-   "fin": 41.859,
+   "ini": 41.889,
+   "fin": 42.359,
    "frase": 12
   },
   {
    "w": "Los",
-   "ini": 41.959,
-   "fin": 42.202,
+   "ini": 42.459,
+   "fin": 42.702,
    "frase": 13
   },
   {
    "w": "bancos",
-   "ini": 42.202,
-   "fin": 42.626,
+   "ini": 42.702,
+   "fin": 43.126,
    "frase": 13
   },
   {
    "w": "reciben",
-   "ini": 42.626,
-   "fin": 43.111,
+   "ini": 43.126,
+   "fin": 43.611,
    "frase": 13
   },
   {
    "w": "millones",
-   "ini": 43.111,
-   "fin": 43.656,
+   "ini": 43.611,
+   "fin": 44.156,
    "frase": 13
   },
   {
    "w": "de",
-   "ini": 43.656,
-   "fin": 43.838,
+   "ini": 44.156,
+   "fin": 44.338,
    "frase": 13
   },
   {
    "w": "reclamaciones.",
-   "ini": 43.838,
-   "fin": 44.747,
+   "ini": 44.338,
+   "fin": 45.247,
    "frase": 13
   },
   {
    "w": "Las",
-   "ini": 44.847,
-   "fin": 45.065,
+   "ini": 45.347,
+   "fin": 45.565,
    "frase": 14
   },
   {
    "w": "familias",
-   "ini": 45.065,
-   "fin": 45.554,
+   "ini": 45.565,
+   "fin": 46.054,
    "frase": 14
   },
   {
    "w": "pierden",
-   "ini": 45.554,
-   "fin": 45.989,
+   "ini": 46.054,
+   "fin": 46.489,
    "frase": 14
   },
   {
    "w": "los",
-   "ini": 45.989,
-   "fin": 46.207,
+   "ini": 46.489,
+   "fin": 46.707,
    "frase": 14
   },
   {
    "w": "ahorros",
-   "ini": 46.207,
-   "fin": 46.642,
+   "ini": 46.707,
+   "fin": 47.142,
    "frase": 14
   },
   {
    "w": "de",
-   "ini": 46.642,
-   "fin": 46.805,
+   "ini": 47.142,
+   "fin": 47.305,
    "frase": 14
   },
   {
    "w": "toda",
-   "ini": 46.805,
-   "fin": 47.077,
+   "ini": 47.305,
+   "fin": 47.577,
    "frase": 14
   },
   {
    "w": "una",
-   "ini": 47.077,
-   "fin": 47.295,
+   "ini": 47.577,
+   "fin": 47.795,
    "frase": 14
   },
   {
    "w": "vida.",
-   "ini": 47.295,
-   "fin": 47.621,
+   "ini": 47.795,
+   "fin": 48.121,
    "frase": 14
   },
   {
    "w": "Los",
-   "ini": 47.721,
-   "fin": 47.945,
+   "ini": 48.221,
+   "fin": 48.445,
    "frase": 15
   },
   {
    "w": "comercios",
-   "ini": 47.945,
-   "fin": 48.507,
+   "ini": 48.445,
+   "fin": 49.007,
    "frase": 15
   },
   {
    "w": "dejan",
-   "ini": 48.507,
-   "fin": 48.844,
+   "ini": 49.007,
+   "fin": 49.344,
    "frase": 15
   },
   {
    "w": "de",
-   "ini": 48.844,
-   "fin": 49.013,
+   "ini": 49.344,
+   "fin": 49.513,
    "frase": 15
   },
   {
    "w": "cobrar.",
-   "ini": 49.013,
-   "fin": 49.462,
+   "ini": 49.513,
+   "fin": 49.962,
    "frase": 15
   },
   {
    "w": "Y",
-   "ini": 49.562,
-   "fin": 49.663,
+   "ini": 50.062,
+   "fin": 50.163,
    "frase": 16
   },
   {
    "w": "cada",
-   "ini": 49.663,
-   "fin": 49.917,
+   "ini": 50.163,
+   "fin": 50.417,
    "frase": 16
   },
   {
    "w": "vez",
-   "ini": 49.917,
-   "fin": 50.12,
+   "ini": 50.417,
+   "fin": 50.62,
    "frase": 16
   },
   {
    "w": "que",
-   "ini": 50.12,
-   "fin": 50.323,
+   "ini": 50.62,
+   "fin": 50.823,
    "frase": 16
   },
   {
    "w": "alguien",
-   "ini": 50.323,
-   "fin": 50.729,
+   "ini": 50.823,
+   "fin": 51.229,
    "frase": 16
   },
   {
    "w": "vuelve",
-   "ini": 50.729,
-   "fin": 51.084,
+   "ini": 51.229,
+   "fin": 51.584,
    "frase": 16
   },
   {
    "w": "a",
-   "ini": 51.084,
-   "fin": 51.186,
+   "ini": 51.584,
+   "fin": 51.686,
    "frase": 16
   },
   {
    "w": "pulsar,",
-   "ini": 51.186,
-   "fin": 51.592,
+   "ini": 51.686,
+   "fin": 52.092,
    "frase": 16
   },
   {
    "w": "otra",
-   "ini": 51.872,
-   "fin": 52.186,
+   "ini": 52.372,
+   "fin": 52.686,
    "frase": 16
   },
   {
    "w": "persona",
-   "ini": 52.186,
-   "fin": 52.687,
+   "ini": 52.686,
+   "fin": 53.187,
    "frase": 16
   },
   {
    "w": "lo",
-   "ini": 52.687,
-   "fin": 52.876,
+   "ini": 53.187,
+   "fin": 53.376,
    "frase": 16
   },
   {
    "w": "pierde",
-   "ini": 52.876,
-   "fin": 53.315,
+   "ini": 53.376,
+   "fin": 53.815,
    "frase": 16
   },
   {
    "w": "absolutamente",
-   "ini": 53.315,
-   "fin": 54.193,
+   "ini": 53.815,
+   "fin": 54.693,
    "frase": 16
   },
   {
    "w": "todo.",
-   "ini": 54.193,
-   "fin": 54.569,
+   "ini": 54.693,
+   "fin": 55.069,
    "frase": 16
   },
   {
    "w": "Nadie",
-   "ini": 54.669,
-   "fin": 55.034,
+   "ini": 55.169,
+   "fin": 55.534,
    "frase": 17
   },
   {
    "w": "sabe",
-   "ini": 55.034,
-   "fin": 55.338,
+   "ini": 55.534,
+   "fin": 55.838,
    "frase": 17
   },
   {
    "w": "quién",
-   "ini": 55.338,
-   "fin": 55.702,
+   "ini": 55.838,
+   "fin": 56.202,
    "frase": 17
   },
   {
    "w": "será",
-   "ini": 55.702,
-   "fin": 56.006,
+   "ini": 56.202,
+   "fin": 56.506,
    "frase": 17
   },
   {
    "w": "el",
-   "ini": 56.006,
-   "fin": 56.188,
+   "ini": 56.506,
+   "fin": 56.688,
    "frase": 17
   },
   {
    "w": "siguiente.",
-   "ini": 56.188,
-   "fin": 56.857,
+   "ini": 56.688,
+   "fin": 57.357,
    "frase": 17
   },
   {
    "w": "Los",
-   "ini": 57.357,
-   "fin": 57.574,
+   "ini": 57.857,
+   "fin": 58.074,
    "frase": 18
   },
   {
    "w": "gobiernos",
-   "ini": 57.574,
-   "fin": 58.117,
+   "ini": 58.074,
+   "fin": 58.617,
    "frase": 18
   },
   {
    "w": "intentan",
-   "ini": 58.117,
-   "fin": 58.606,
+   "ini": 58.617,
+   "fin": 59.106,
    "frase": 18
   },
   {
    "w": "detener",
-   "ini": 58.606,
-   "fin": 59.04,
+   "ini": 59.106,
+   "fin": 59.54,
    "frase": 18
   },
   {
    "w": "el",
-   "ini": 59.04,
-   "fin": 59.203,
+   "ini": 59.54,
+   "fin": 59.703,
    "frase": 18
   },
   {
    "w": "experimento.",
-   "ini": 59.203,
-   "fin": 59.909,
+   "ini": 59.703,
+   "fin": 60.409,
    "frase": 18
   },
   {
    "w": "Algunos",
-   "ini": 60.009,
-   "fin": 60.447,
+   "ini": 60.509,
+   "fin": 60.947,
    "frase": 19
   },
   {
    "w": "países",
-   "ini": 60.447,
-   "fin": 60.83,
+   "ini": 60.947,
+   "fin": 61.33,
    "frase": 19
   },
   {
    "w": "piden",
-   "ini": 60.83,
-   "fin": 61.159,
+   "ini": 61.33,
+   "fin": 61.659,
    "frase": 19
   },
   {
    "w": "prohibir",
-   "ini": 61.159,
-   "fin": 61.652,
+   "ini": 61.659,
+   "fin": 62.152,
    "frase": 19
   },
   {
    "w": "los",
-   "ini": 61.652,
-   "fin": 61.871,
+   "ini": 62.152,
+   "fin": 62.371,
    "frase": 19
   },
   {
    "w": "botones.",
-   "ini": 61.871,
-   "fin": 62.365,
+   "ini": 62.371,
+   "fin": 62.865,
    "frase": 19
   },
   {
    "w": "Pero",
-   "ini": 62.465,
-   "fin": 62.733,
+   "ini": 62.965,
+   "fin": 63.233,
    "frase": 20
   },
   {
    "w": "hay",
-   "ini": 62.733,
-   "fin": 62.947,
+   "ini": 63.233,
+   "fin": 63.447,
    "frase": 20
   },
   {
    "w": "un",
-   "ini": 62.947,
-   "fin": 63.108,
+   "ini": 63.447,
+   "fin": 63.608,
    "frase": 20
   },
   {
    "w": "problema:",
-   "ini": 63.108,
-   "fin": 63.645,
+   "ini": 63.608,
+   "fin": 64.145,
    "frase": 20
   },
   {
    "w": "nadie",
-   "ini": 64.045,
-   "fin": 64.408,
+   "ini": 64.545,
+   "fin": 64.908,
    "frase": 20
   },
   {
    "w": "puede",
-   "ini": 64.408,
-   "fin": 64.772,
+   "ini": 64.908,
+   "fin": 65.272,
    "frase": 20
   },
   {
    "w": "demostrar",
-   "ini": 64.772,
-   "fin": 65.378,
+   "ini": 65.272,
+   "fin": 65.878,
    "frase": 20
   },
   {
    "w": "quién",
-   "ini": 65.378,
-   "fin": 65.741,
+   "ini": 65.878,
+   "fin": 66.241,
    "frase": 20
   },
   {
    "w": "ha",
-   "ini": 65.741,
-   "fin": 65.923,
+   "ini": 66.241,
+   "fin": 66.423,
    "frase": 20
   },
   {
    "w": "pulsado.",
-   "ini": 65.923,
-   "fin": 66.468,
+   "ini": 66.423,
+   "fin": 66.968,
    "frase": 20
   },
   {
    "w": "Y",
-   "ini": 66.568,
-   "fin": 66.673,
+   "ini": 67.068,
+   "fin": 67.173,
    "frase": 21
   },
   {
    "w": "millones",
-   "ini": 66.673,
-   "fin": 67.143,
+   "ini": 67.173,
+   "fin": 67.643,
    "frase": 21
   },
   {
    "w": "de",
-   "ini": 67.143,
-   "fin": 67.3,
+   "ini": 67.643,
+   "fin": 67.8,
    "frase": 21
   },
   {
    "w": "personas",
-   "ini": 67.3,
-   "fin": 67.77,
+   "ini": 67.8,
+   "fin": 68.27,
    "frase": 21
   },
   {
    "w": "siguen",
-   "ini": 67.77,
-   "fin": 68.136,
+   "ini": 68.27,
+   "fin": 68.636,
    "frase": 21
   },
   {
    "w": "pensando",
-   "ini": 68.136,
-   "fin": 68.607,
+   "ini": 68.636,
+   "fin": 69.107,
    "frase": 21
   },
   {
    "w": "que,",
-   "ini": 68.607,
-   "fin": 68.868,
+   "ini": 69.107,
+   "fin": 69.368,
    "frase": 21
   },
   {
    "w": "si",
-   "ini": 68.968,
-   "fin": 69.12,
+   "ini": 69.468,
+   "fin": 69.62,
    "frase": 21
   },
   {
    "w": "no",
-   "ini": 69.12,
-   "fin": 69.271,
+   "ini": 69.62,
+   "fin": 69.771,
    "frase": 21
   },
   {
    "w": "lo",
-   "ini": 69.271,
-   "fin": 69.422,
+   "ini": 69.771,
+   "fin": 69.922,
    "frase": 21
   },
   {
    "w": "hacen",
-   "ini": 69.422,
-   "fin": 69.725,
+   "ini": 69.922,
+   "fin": 70.225,
    "frase": 21
   },
   {
    "w": "ellas,",
-   "ini": 69.725,
-   "fin": 70.078,
+   "ini": 70.225,
+   "fin": 70.578,
    "frase": 21
   },
   {
    "w": "lo",
-   "ini": 70.258,
-   "fin": 70.412,
+   "ini": 70.758,
+   "fin": 70.912,
    "frase": 21
   },
   {
    "w": "hará",
-   "ini": 70.412,
-   "fin": 70.669,
+   "ini": 70.912,
+   "fin": 71.169,
    "frase": 21
   },
   {
    "w": "otro.",
-   "ini": 70.669,
-   "fin": 70.978,
+   "ini": 71.169,
+   "fin": 71.478,
    "frase": 21
   },
   {
    "w": "Pero",
-   "ini": 71.678,
-   "fin": 71.984,
+   "ini": 72.178,
+   "fin": 72.484,
    "frase": 22
   },
   {
    "w": "entonces",
-   "ini": 71.984,
-   "fin": 72.534,
+   "ini": 72.484,
+   "fin": 73.034,
    "frase": 22
   },
   {
    "w": "pasa",
-   "ini": 72.534,
-   "fin": 72.84,
+   "ini": 73.034,
+   "fin": 73.34,
    "frase": 22
   },
   {
    "w": "algo",
-   "ini": 72.84,
-   "fin": 73.146,
+   "ini": 73.34,
+   "fin": 73.646,
    "frase": 22
   },
   {
    "w": "que",
-   "ini": 73.146,
-   "fin": 73.39,
+   "ini": 73.646,
+   "fin": 73.89,
    "frase": 22
   },
   {
    "w": "nadie",
-   "ini": 73.39,
-   "fin": 73.757,
+   "ini": 73.89,
+   "fin": 74.257,
    "frase": 22
   },
   {
    "w": "había",
-   "ini": 73.757,
-   "fin": 74.124,
+   "ini": 74.257,
+   "fin": 74.624,
    "frase": 22
   },
   {
    "w": "previsto.",
-   "ini": 74.124,
-   "fin": 74.736,
+   "ini": 74.624,
+   "fin": 75.236,
    "frase": 22
   },
   {
    "w": "Alguien",
-   "ini": 74.836,
-   "fin": 75.342,
+   "ini": 75.336,
+   "fin": 75.842,
    "frase": 23
   },
   {
    "w": "vuelve",
-   "ini": 75.342,
-   "fin": 75.785,
+   "ini": 75.842,
+   "fin": 76.285,
    "frase": 23
   },
   {
    "w": "a",
-   "ini": 75.785,
-   "fin": 75.912,
+   "ini": 76.285,
+   "fin": 76.412,
    "frase": 23
   },
   {
    "w": "pulsar",
-   "ini": 75.912,
-   "fin": 76.355,
+   "ini": 76.412,
+   "fin": 76.855,
    "frase": 23
   },
   {
    "w": "el",
-   "ini": 76.355,
-   "fin": 76.544,
+   "ini": 76.855,
+   "fin": 77.044,
    "frase": 23
   },
   {
    "w": "botón.",
-   "ini": 76.544,
-   "fin": 76.987,
+   "ini": 77.044,
+   "fin": 77.487,
    "frase": 23
   },
   {
    "w": "Y",
-   "ini": 77.087,
-   "fin": 77.181,
+   "ini": 77.587,
+   "fin": 77.681,
    "frase": 24
   },
   {
    "w": "esta",
-   "ini": 77.181,
-   "fin": 77.414,
+   "ini": 77.681,
+   "fin": 77.914,
    "frase": 24
   },
   {
    "w": "vez,",
-   "ini": 77.414,
-   "fin": 77.647,
+   "ini": 77.914,
+   "fin": 78.147,
    "frase": 24
   },
   {
    "w": "la",
-   "ini": 78.017,
-   "fin": 78.183,
+   "ini": 78.517,
+   "fin": 78.683,
    "frase": 24
   },
   {
    "w": "persona",
-   "ini": 78.183,
-   "fin": 78.624,
+   "ini": 78.683,
+   "fin": 79.124,
    "frase": 24
   },
   {
    "w": "elegida",
-   "ini": 78.624,
-   "fin": 79.065,
+   "ini": 79.124,
+   "fin": 79.565,
    "frase": 24
   },
   {
    "w": "para",
-   "ini": 79.065,
-   "fin": 79.341,
+   "ini": 79.565,
+   "fin": 79.841,
    "frase": 24
   },
   {
    "w": "perderlo",
-   "ini": 79.341,
-   "fin": 79.837,
+   "ini": 79.841,
+   "fin": 80.337,
    "frase": 24
   },
   {
    "w": "todo…",
-   "ini": 79.837,
-   "fin": 80.167,
+   "ini": 80.337,
+   "fin": 80.667,
    "frase": 24
   },
   {
    "w": "eres",
-   "ini": 80.707,
-   "fin": 81.027,
+   "ini": 81.207,
+   "fin": 81.527,
    "frase": 24
   },
   {
    "w": "tú.",
-   "ini": 81.027,
-   "fin": 81.282,
+   "ini": 81.527,
+   "fin": 81.782,
    "frase": 24
   },
   {
    "w": "Tu",
-   "ini": 81.882,
-   "fin": 82.057,
+   "ini": 82.382,
+   "fin": 82.557,
    "frase": 25
   },
   {
    "w": "cuenta",
-   "ini": 82.057,
-   "fin": 82.466,
+   "ini": 82.557,
+   "fin": 82.966,
    "frase": 25
   },
   {
    "w": "acaba",
-   "ini": 82.466,
-   "fin": 82.816,
+   "ini": 82.966,
+   "fin": 83.316,
    "frase": 25
   },
   {
    "w": "de",
-   "ini": 82.816,
-   "fin": 82.991,
+   "ini": 83.316,
+   "fin": 83.491,
    "frase": 25
   },
   {
    "w": "quedarse",
-   "ini": 82.991,
-   "fin": 83.516,
+   "ini": 83.491,
+   "fin": 84.016,
    "frase": 25
   },
   {
    "w": "a",
-   "ini": 83.516,
-   "fin": 83.632,
+   "ini": 84.016,
+   "fin": 84.132,
    "frase": 25
   },
   {
    "w": "cero.",
-   "ini": 83.632,
-   "fin": 83.982,
+   "ini": 84.132,
+   "fin": 84.482,
    "frase": 25
   },
   {
    "w": "Y",
-   "ini": 84.382,
-   "fin": 84.507,
+   "ini": 84.882,
+   "fin": 85.007,
    "frase": 26
   },
   {
    "w": "ahora",
-   "ini": 84.507,
-   "fin": 84.883,
+   "ini": 85.007,
+   "fin": 85.383,
    "frase": 26
   },
   {
    "w": "tienes",
-   "ini": 84.883,
-   "fin": 85.32,
+   "ini": 85.383,
+   "fin": 85.82,
    "frase": 26
   },
   {
    "w": "el",
-   "ini": 85.32,
-   "fin": 85.508,
+   "ini": 85.82,
+   "fin": 86.008,
    "frase": 26
   },
   {
    "w": "botón",
-   "ini": 85.508,
-   "fin": 85.883,
+   "ini": 86.008,
+   "fin": 86.383,
    "frase": 26
   },
   {
    "w": "delante.",
-   "ini": 85.883,
-   "fin": 86.446,
+   "ini": 86.383,
+   "fin": 86.946,
    "frase": 26
   },
   {
    "w": "Puedes",
-   "ini": 86.546,
-   "fin": 86.921,
+   "ini": 87.046,
+   "fin": 87.421,
    "frase": 27
   },
   {
    "w": "recuperar",
-   "ini": 86.921,
-   "fin": 87.456,
+   "ini": 87.421,
+   "fin": 87.956,
    "frase": 27
   },
   {
    "w": "tu",
-   "ini": 87.456,
-   "fin": 87.616,
+   "ini": 87.956,
+   "fin": 88.116,
    "frase": 27
   },
   {
    "w": "dinero.",
-   "ini": 87.616,
-   "fin": 88.044,
+   "ini": 88.116,
+   "fin": 88.544,
    "frase": 27
   },
   {
    "w": "Pero",
-   "ini": 88.444,
-   "fin": 88.72,
+   "ini": 88.944,
+   "fin": 89.22,
    "frase": 28
   },
   {
    "w": "alguien",
-   "ini": 88.72,
-   "fin": 89.161,
+   "ini": 89.22,
+   "fin": 89.661,
    "frase": 28
   },
   {
    "w": "tendrá",
-   "ini": 89.161,
-   "fin": 89.546,
+   "ini": 89.661,
+   "fin": 90.046,
    "frase": 28
   },
   {
    "w": "que",
-   "ini": 89.546,
-   "fin": 89.767,
+   "ini": 90.046,
+   "fin": 90.267,
    "frase": 28
   },
   {
    "w": "pagar",
-   "ini": 89.767,
-   "fin": 90.097,
+   "ini": 90.267,
+   "fin": 90.597,
    "frase": 28
   },
   {
    "w": "el",
-   "ini": 90.097,
-   "fin": 90.263,
+   "ini": 90.597,
+   "fin": 90.763,
    "frase": 28
   },
   {
    "w": "precio.",
-   "ini": 90.263,
-   "fin": 90.704,
+   "ini": 90.763,
+   "fin": 91.204,
    "frase": 28
   }
  ]

@@ -18,7 +18,8 @@ def load(p):
     return s[max(0, idx[0] - int(0.02 * SR)): idx[-1] + int(0.06 * SR)]
 
 lines = [l.strip() for l in open(os.path.join(BASE, "guion.txt"), encoding="utf-8") if l.strip()]
-out, t, frases, palabras = [], 0.0, [], []
+INICIO = 0.5                                   # la voz empieza medio segundo más tarde (regla del usuario, todos los vídeos)
+out, t, frases, palabras = [np.zeros(int(INICIO * SR))], INICIO, [], []
 for i, txt in enumerate(lines, 1):
     s = load(os.path.join(BASE, "voz", f"l{i}.wav"))
     d = len(s) / SR

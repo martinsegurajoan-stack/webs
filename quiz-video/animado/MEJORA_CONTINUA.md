@@ -121,3 +121,11 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
   ritmo y sorpresa. Revisar cada rincón de cada plano (≈10 vistazos) antes de enviar. Personajes CON CARA y expresiones
   (nada de maniquíes ni siluetas negras en vídeos luminosos), manos con dedos, interfaces (móvil/banco) cuidadas y fondos
   llenos (ciudad, barrio, playa…), nunca vacíos.
+- TODO EL VÍDEO +0,5 s (usuario, 02/03-11-2026, TODOS LOS VÍDEOS): la PRIMERA PALABRA empieza en 0,5 s y TODO el vídeo
+  (voz, subtítulos, animaciones y cortes) se retrasa medio segundo junto, SIN desfase voz-imagen (INICIO = 0.5 en
+  montar_voz.py; gen.py y mezcla.py leen tiempos.json). Motivo: habla rápido y al abrir el vídeo se pierde el primer
+  segundo. El fotograma 0 ya muestra el gancho (no negro), y en ese medio segundo arranca su movimiento.
+- EDIFICIOS: si se muestran muchas habitaciones, que se vea un EDIFICIO de verdad (fachada, pisos, paredes que separan,
+  tejado, calle, edificios vecinos), nunca cuadrados flotando. Personajes SIEMPRE con cuello. Nadie «de pie sobre» un
+  atril o un micrófono: atriles con la persona detrás. Carteles/sellos que no tapen el objeto protagonista.
+- PORTADA TIKTOK: lo importante dentro del recorte 3:4 central (y 240-1680) y gancho fuerte de curiosidad.

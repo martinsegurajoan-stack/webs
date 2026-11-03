@@ -103,11 +103,11 @@ def sentado(pid, cx, ytab, h=300, rim="#ffe2b0", col=None, lado_mano=1, e=None, 
     SEN[pid] = (hs, mano, k)
     torso = (f'M{cx - 86 * k:.0f},{ytab + 30 * k:.0f} L{cx - 82 * k:.0f},{ytab - 130 * k:.0f} Q{cx - 80 * k:.0f},{ytab - 168 * k:.0f} {cx - 36 * k:.0f},{ytab - 172 * k:.0f} '
              f'L{cx + 36 * k:.0f},{ytab - 172 * k:.0f} Q{cx + 80 * k:.0f},{ytab - 168 * k:.0f} {cx + 82 * k:.0f},{ytab - 130 * k:.0f} L{cx + 86 * k:.0f},{ytab + 30 * k:.0f} Z')
-    cuello = f'<path d="M{cx - 15 * k:.0f},{ytab - 205 * k:.0f} L{cx + 15 * k:.0f},{ytab - 205 * k:.0f} L{cx + 17 * k:.0f},{ytab - 166 * k:.0f} L{cx - 17 * k:.0f},{ytab - 166 * k:.0f} Z" fill="{oscurece(piel, 0.88)}"/>'
+    cuello = f'<path d="M{cx - 16 * k:.0f},{ytab - 226 * k:.0f} L{cx + 16 * k:.0f},{ytab - 226 * k:.0f} L{cx + 19 * k:.0f},{ytab - 166 * k:.0f} L{cx - 19 * k:.0f},{ytab - 166 * k:.0f} Z" fill="{oscurece(piel, 0.88)}"/>'
     escote = f'<path d="M{cx - 24 * k:.0f},{ytab - 172 * k:.0f} L{cx:.0f},{ytab - 140 * k:.0f} L{cx + 24 * k:.0f},{ytab - 172 * k:.0f} Z" fill="{oscurece(piel, 0.88)}"/><path d="M{cx - 26 * k:.0f},{ytab - 173 * k:.0f} L{cx:.0f},{ytab - 138 * k:.0f} L{cx + 26 * k:.0f},{ytab - 173 * k:.0f}" stroke="{oscurece(ropa, 0.7)}" stroke-width="{5 * k:.1f}" fill="none"/>'
     cuerpo = (f'<g id="{pid}"><g class="cuerpo"><path d="{torso}" fill="{ropa}"/><path d="{torso}" fill="url(#brilloRopa)"/>{cuello}{escote}'
               f'<path d="{torso}" fill="none" stroke="{rim}" stroke-width="{2 * k:.1f}" opacity="0.45"/>'
-              f'<g class="cab">{cara(pid, cx, ytab - 245 * k, 42 * k, e, expr=expr0)}</g></g></g>')
+              f'<g class="cab">{cara(pid, cx, ytab - 257 * k, 42 * k, e, expr=expr0)}</g></g></g>')
     def brazo(a, m, i):
         ex = (a[0] + m[0]) / 2 + 38 * k * (1 if m[0] > cx else -1)
         return (f'<path id="{i}" d="M{a[0]:.0f},{a[1]:.0f} Q{ex:.0f},{(a[1] + m[1]) / 2:.0f} {m[0]:.0f},{m[1] - 8 * k:.0f}" stroke="{ropa}" stroke-width="{34 * k:.0f}" stroke-linecap="round" fill="none"/>')
@@ -143,8 +143,8 @@ def persona(x, suelo, h=300, col=None, rim=None, brazo=0, cls="", pid="", pose="
     sombra = f'<ellipse cx="{x:.0f}" cy="{sy:.0f}" rx="{44 * k:.0f}" ry="{7 * k:.0f}" fill="#000" opacity="0.25"/>'
     rim_s = f'<path d="{torso}" fill="none" stroke="{rim}" stroke-width="{1.8 * k:.1f}" opacity="0.4"/>' if rim else ""
     return (f'<g class="{cls}" id="{pid}">{sombra}{piernas}{br(-lado, ropa)}<path d="{torso}" fill="{ropa}"/><path d="{torso}" fill="url(#brilloRopa)"/>{rim_s}'
-            f'<rect x="{x - 7 * k:.0f}" y="{sy - 256 * k:.0f}" width="{14 * k:.0f}" height="{16 * k:.0f}" fill="{oscurece(piel, 0.88)}"/>'
-            f'{cara(pid, x, sy - 278 * k, 22 * k, e, espalda=espalda, expr=expr0)}{brazo_g}</g>')
+            f'<rect x="{x - 8 * k:.0f}" y="{sy - 276 * k:.0f}" width="{16 * k:.0f}" height="{38 * k:.0f}" fill="{oscurece(piel, 0.88)}"/>'
+            f'{cara(pid, x, sy - 296 * k, 22 * k, e, espalda=espalda, expr=expr0)}{brazo_g}</g>')
 
 def movil(mid, x, y, s=1.0, texto="", color="#ffffff"):
     """Móvil con la app del banco (cabecera, saldo grande, movimientos) y avisos verde/rojo que se encienden."""

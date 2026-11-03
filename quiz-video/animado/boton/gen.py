@@ -400,11 +400,11 @@ def sentado(pid, cx, ytab, h=300, rim="#ffe2b0", col=None, lado_mano=1, e=None, 
     SEN[pid] = (hs, mano, k)
     torso = (f'M{cx - 86 * k:.0f},{ytab + 30 * k:.0f} L{cx - 82 * k:.0f},{ytab - 130 * k:.0f} Q{cx - 80 * k:.0f},{ytab - 168 * k:.0f} {cx - 36 * k:.0f},{ytab - 172 * k:.0f} '
              f'L{cx + 36 * k:.0f},{ytab - 172 * k:.0f} Q{cx + 80 * k:.0f},{ytab - 168 * k:.0f} {cx + 82 * k:.0f},{ytab - 130 * k:.0f} L{cx + 86 * k:.0f},{ytab + 30 * k:.0f} Z')
-    cuello = f'<path d="M{cx - 15 * k:.0f},{ytab - 205 * k:.0f} L{cx + 15 * k:.0f},{ytab - 205 * k:.0f} L{cx + 17 * k:.0f},{ytab - 166 * k:.0f} L{cx - 17 * k:.0f},{ytab - 166 * k:.0f} Z" fill="{oscurece(piel, 0.88)}"/>'
+    cuello = f'<path d="M{cx - 16 * k:.0f},{ytab - 226 * k:.0f} L{cx + 16 * k:.0f},{ytab - 226 * k:.0f} L{cx + 19 * k:.0f},{ytab - 166 * k:.0f} L{cx - 19 * k:.0f},{ytab - 166 * k:.0f} Z" fill="{oscurece(piel, 0.88)}"/>'
     escote = f'<path d="M{cx - 24 * k:.0f},{ytab - 172 * k:.0f} L{cx:.0f},{ytab - 140 * k:.0f} L{cx + 24 * k:.0f},{ytab - 172 * k:.0f} Z" fill="{oscurece(piel, 0.88)}"/><path d="M{cx - 26 * k:.0f},{ytab - 173 * k:.0f} L{cx:.0f},{ytab - 138 * k:.0f} L{cx + 26 * k:.0f},{ytab - 173 * k:.0f}" stroke="{oscurece(ropa, 0.7)}" stroke-width="{5 * k:.1f}" fill="none"/>'
     cuerpo = (f'<g id="{pid}"><g class="cuerpo"><path d="{torso}" fill="{ropa}"/><path d="{torso}" fill="url(#brilloRopa)"/>{cuello}{escote}'
               f'<path d="{torso}" fill="none" stroke="{rim}" stroke-width="{2 * k:.1f}" opacity="0.45"/>'
-              f'<g class="cab">{cara(pid, cx, ytab - 245 * k, 42 * k, e, expr=expr0)}</g></g></g>')
+              f'<g class="cab">{cara(pid, cx, ytab - 257 * k, 42 * k, e, expr=expr0)}</g></g></g>')
     def brazo(a, m, i):
         ex = (a[0] + m[0]) / 2 + 38 * k * (1 if m[0] > cx else -1)
         return (f'<path id="{i}" d="M{a[0]:.0f},{a[1]:.0f} Q{ex:.0f},{(a[1] + m[1]) / 2:.0f} {m[0]:.0f},{m[1] - 8 * k:.0f}" stroke="{ropa}" stroke-width="{34 * k:.0f}" stroke-linecap="round" fill="none"/>')
@@ -440,8 +440,8 @@ def persona(x, suelo, h=300, col=None, rim=None, brazo=0, cls="", pid="", pose="
     sombra = f'<ellipse cx="{x:.0f}" cy="{sy:.0f}" rx="{44 * k:.0f}" ry="{7 * k:.0f}" fill="#000" opacity="0.25"/>'
     rim_s = f'<path d="{torso}" fill="none" stroke="{rim}" stroke-width="{1.8 * k:.1f}" opacity="0.4"/>' if rim else ""
     return (f'<g class="{cls}" id="{pid}">{sombra}{piernas}{br(-lado, ropa)}<path d="{torso}" fill="{ropa}"/><path d="{torso}" fill="url(#brilloRopa)"/>{rim_s}'
-            f'<rect x="{x - 7 * k:.0f}" y="{sy - 256 * k:.0f}" width="{14 * k:.0f}" height="{16 * k:.0f}" fill="{oscurece(piel, 0.88)}"/>'
-            f'{cara(pid, x, sy - 278 * k, 22 * k, e, espalda=espalda, expr=expr0)}{brazo_g}</g>')
+            f'<rect x="{x - 8 * k:.0f}" y="{sy - 276 * k:.0f}" width="{16 * k:.0f}" height="{38 * k:.0f}" fill="{oscurece(piel, 0.88)}"/>'
+            f'{cara(pid, x, sy - 296 * k, 22 * k, e, espalda=espalda, expr=expr0)}{brazo_g}</g>')
 
 def movil(mid, x, y, s=1.0, texto="", color="#ffffff"):
     """Móvil con la app del banco (cabecera, saldo grande, movimientos) y avisos verde/rojo que se encienden."""
@@ -539,36 +539,87 @@ mano_a("p3", P("ahorros") + 0.1, 470, 1050, 0.5)
 cabeza("p3", P("ahorros"), 8, 0.6); parpadeo("p3", F(3), F(4), 3); expr("p3", P("ahorros") - 0.1, "neutral", "sorpresa", abierta=True); expr("p3", P("ahorros") + 0.7, "triste", "preocupado")
 FX.append(("perdida", P("ahorros") - 0.2))
 
-# ================================================================== 3) NO ERES EL ÚNICO: la cámara sale de una habitación y descubre un edificio entero… y una ciudad
+def nubes(x0, y, n=4, seed=1):
+    r_ = random.Random(seed)
+    return "".join(f'<g class="nube" transform="translate({x0 + r_.uniform(0, 1000):.0f},{y + r_.uniform(0, 260):.0f})">' + "".join(f'<ellipse cx="{dx}" cy="0" rx="{rx}" ry="{rx * 0.6:.0f}" fill="#ffffff" opacity="0.92"/>' for dx, rx in ((-60, 50), (0, 70), (60, 50), (20, 45))) + '</g>' for _ in range(n))
+def arbol(x, y, s=1.0, c="#3f9a5a"):
+    return f'<rect x="{x - 9 * s:.0f}" y="{y - 120 * s:.0f}" width="{18 * s:.0f}" height="{120 * s:.0f}" fill="#6b4a2a"/><circle cx="{x}" cy="{y - 150 * s:.0f}" r="{70 * s:.0f}" fill="{c}"/><circle cx="{x - 40 * s:.0f}" cy="{y - 120 * s:.0f}" r="{48 * s:.0f}" fill="{c}"/><circle cx="{x + 42 * s:.0f}" cy="{y - 122 * s:.0f}" r="{50 * s:.0f}" fill="{c}"/><circle cx="{x - 20 * s:.0f}" cy="{y - 175 * s:.0f}" r="{30 * s:.0f}" fill="#ffffff" opacity="0.12"/>'
+
+# ================================================================== 3) NO ERES EL ÚNICO: la cámara sale de una habitación y descubre un EDIFICIO de verdad… en una ciudad
 COLS, FILAS, CW, CH = 9, 15, 320, 330
-r3 = random.Random(9)
-tipos = list(TIPOS)
-celdas = []
-for j_ in range(FILAS):
-    for i_ in range(COLS):
-        t_ = r3.choice(tipos[:-1]) if r3.random() > 0.15 else "noche"
-        x0, y0 = i_ * CW, j_ * CH
-        T_ = TIPOS[t_]
-        cel = (f'<g class="celda" id="c{j_}_{i_}"><rect x="{x0}" y="{y0}" width="{CW}" height="{CH}" fill="url(#pared_{t_})"/>'
-               f'<rect x="{x0 + CW * 0.3:.0f}" y="{y0 + CH * 0.12:.0f}" width="{CW * 0.4:.0f}" height="{CH * 0.3:.0f}" fill="url(#{T_["cielo"]})"/>'
-               f'<rect x="{x0}" y="{y0 + CH * 0.72:.0f}" width="{CW}" height="{CH * 0.28:.0f}" fill="{T_["suelo"]}"/>'
-               f'<ellipse cx="{x0 + CW / 2:.0f}" cy="{y0 + CH * 0.37:.0f}" rx="{CW * 0.06:.0f}" ry="{CH * 0.07:.0f}" fill="{r3.choice(PIELES)}"/><circle cx="{x0 + CW * 0.48:.0f}" cy="{y0 + CH * 0.37:.0f}" r="2.6" fill="#222"/><circle cx="{x0 + CW * 0.52:.0f}" cy="{y0 + CH * 0.37:.0f}" r="2.6" fill="#222"/><path d="M{x0 + CW * 0.48:.0f},{y0 + CH * 0.405:.0f} q{CW * 0.02:.1f},4 {CW * 0.04:.1f},0" stroke="#7a2e2e" stroke-width="2" fill="none"/><path d="M{x0 + CW * 0.44:.0f},{y0 + CH * 0.36:.0f} Q{x0 + CW / 2:.0f},{y0 + CH * 0.26:.0f} {x0 + CW * 0.56:.0f},{y0 + CH * 0.36:.0f} Z" fill="{r3.choice(PELOS)}"/>'
-               f'<path d="M{x0 + CW * 0.36:.0f},{y0 + CH * 0.72:.0f} L{x0 + CW * 0.38:.0f},{y0 + CH * 0.5:.0f} Q{x0 + CW / 2:.0f},{y0 + CH * 0.43:.0f} {x0 + CW * 0.62:.0f},{y0 + CH * 0.5:.0f} L{x0 + CW * 0.64:.0f},{y0 + CH * 0.72:.0f} Z" fill="{r3.choice(ROPAS)}"/>'
-               f'<rect x="{x0 + CW * 0.12:.0f}" y="{y0 + CH * 0.66:.0f}" width="{CW * 0.76:.0f}" height="{CH * 0.09:.0f}" fill="url(#{T_["mesa"]})"/>'
-               f'<ellipse class="bt" cx="{x0 + CW * 0.6:.0f}" cy="{y0 + CH * 0.645:.0f}" rx="{CW * 0.05:.0f}" ry="{CH * 0.035:.0f}" fill="#e8261a"/>'
-               f'<circle class="fl" cx="{x0 + CW * 0.6:.0f}" cy="{y0 + CH * 0.64:.0f}" r="{CW * 0.22:.0f}" fill="url(#brilloRojo)" opacity="0"/>'
-               f'<rect class="apaga" x="{x0}" y="{y0}" width="{CW}" height="{CH}" fill="#05070c" opacity="0"/>'
-               f'<rect x="{x0}" y="{y0}" width="{CW}" height="{CH}" fill="none" stroke="#2a2f38" stroke-width="14"/></g>')
-        celdas.append(cel)
 EW, EH = COLS * CW, FILAS * CH
-edif = f'<g id="edif">{"".join(celdas)}</g>'
-e4 = [f'<rect x="-6000" y="-6000" width="14000" height="14000" fill="url(#cieloTarde)"/>',
-      "".join(f'<g transform="translate({dx},{dy}) scale({sc})" opacity="0.92"><use href="#edif"/></g>' for dx, dy, sc in ((-3300, 900, 0.8), (EW + 400, 600, 0.85), (-6200, 2200, 0.6), (EW + 3200, 2000, 0.65))),
-      edif]
+tipos = list(TIPOS)
+grad_lin("fachada", ((0, "#e6d6bf", 1), (1, "#cbb699", 1)), 0, 0, 1, 0)
+grad_lin("calle", ((0, "#4a4f58", 1), (1, "#2c3038", 1)))
+def edificio(pre, seed=9, noche=False):
+    """Edificio con fachada, forjados entre plantas, pilares, balcones, tejado con depósito y antena, y planta baja con portal.
+    Cada piso es una habitación vista por su ventanal: persona con cara y cuello, mesa y el MISMO botón rojo."""
+    r_ = random.Random(seed)
+    s = [f'<rect x="-70" y="-40" width="{EW + 140}" height="{EH + 340}" fill="url(#fachada)"/>']
+    s.append("".join(f'<path d="M-70,{y} L{EW + 70},{y}" stroke="#b8a283" stroke-width="2" opacity="0.5"/>' for y in range(-20, EH + 300, 24)))
+    s.append(f'<rect x="-110" y="-110" width="{EW + 220}" height="80" fill="#a8916f"/><rect x="-90" y="-150" width="{EW + 180}" height="44" fill="#bfa987"/>'
+             f'<rect x="{EW * 0.62:.0f}" y="-430" width="260" height="280" rx="20" fill="#7a6a58"/><rect x="{EW * 0.62 - 20:.0f}" y="-450" width="300" height="40" rx="12" fill="#8a7a66"/>'
+             + "".join(f'<rect x="{EW * 0.62 + 20 + i * 70:.0f}" y="-150" width="16" height="60" fill="#6a5a48"/>' for i in range(4))
+             + f'<path d="M{EW * 0.2:.0f},-150 L{EW * 0.2:.0f},-640" stroke="#555" stroke-width="10"/><path d="M{EW * 0.2 - 80:.0f},-560 L{EW * 0.2 + 80:.0f},-560 M{EW * 0.2 - 50:.0f},-500 L{EW * 0.2 + 50:.0f},-500" stroke="#555" stroke-width="7"/><circle class="baliza" cx="{EW * 0.2:.0f}" cy="-650" r="16" fill="#ff3b2f"/>')
+    for j_ in range(FILAS):
+        for i_ in range(COLS):
+            t_ = r_.choice(tipos[:-1]) if (r_.random() > 0.15 and not noche) else ("noche" if not noche else r_.choice(tipos[:-1]))
+            T_ = dict(TIPOS[t_], cielo="cieloNoche") if noche else TIPOS[t_]
+            x0, y0 = i_ * CW, j_ * CH
+            ox0, oy0, ow, oh = x0 + 30, y0 + 34, CW - 60, CH - 74
+            cxp = ox0 + ow / 2
+            piel, pelo, ropa = r_.choice(PIELES), r_.choice(PELOS), r_.choice(ROPAS)
+            hy = oy0 + oh * 0.40; hr = ow * 0.07
+            persona_c = (f'<path d="M{cxp - ow * 0.17:.0f},{oy0 + oh * 0.86:.0f} L{cxp - ow * 0.15:.0f},{oy0 + oh * 0.6:.0f} Q{cxp:.0f},{oy0 + oh * 0.52:.0f} {cxp + ow * 0.15:.0f},{oy0 + oh * 0.6:.0f} L{cxp + ow * 0.17:.0f},{oy0 + oh * 0.86:.0f} Z" fill="{ropa}"/>'
+                         f'<rect x="{cxp - hr * 0.35:.0f}" y="{hy + hr * 0.8:.0f}" width="{hr * 0.7:.0f}" height="{hr * 0.9:.0f}" fill="{oscurece(piel, 0.88)}"/>'
+                         f'<ellipse cx="{cxp:.0f}" cy="{hy:.0f}" rx="{hr:.0f}" ry="{hr * 1.15:.0f}" fill="{piel}"/>'
+                         f'<path d="M{cxp - hr * 1.02:.0f},{hy - hr * 0.1:.0f} Q{cxp:.0f},{hy - hr * 1.6:.0f} {cxp + hr * 1.02:.0f},{hy - hr * 0.1:.0f} Q{cxp:.0f},{hy - hr * 0.7:.0f} {cxp - hr * 1.02:.0f},{hy - hr * 0.1:.0f} Z" fill="{pelo}"/>'
+                         f'<circle cx="{cxp - hr * 0.38:.0f}" cy="{hy + hr * 0.05:.0f}" r="{max(2, hr * 0.12):.1f}" fill="#222"/><circle cx="{cxp + hr * 0.38:.0f}" cy="{hy + hr * 0.05:.0f}" r="{max(2, hr * 0.12):.1f}" fill="#222"/>'
+                         f'<path d="M{cxp - hr * 0.3:.0f},{hy + hr * 0.5:.0f} q{hr * 0.3:.1f},{hr * (0.2 if r_.random() > 0.4 else -0.1):.1f} {hr * 0.6:.1f},0" stroke="#7a2e2e" stroke-width="2.4" fill="none"/>')
+            s.append(f'<g class="celda" id="{pre}{j_}_{i_}"><rect x="{ox0}" y="{oy0}" width="{ow}" height="{oh}" fill="url(#pared_{t_})"/>'
+                     f'<rect x="{ox0 + ow * 0.32:.0f}" y="{oy0 + oh * 0.1:.0f}" width="{ow * 0.36:.0f}" height="{oh * 0.28:.0f}" fill="url(#{T_["cielo"]})" stroke="#ffffff" stroke-width="3"/>'
+                     f'<rect x="{ox0 + 6}" y="{oy0 + oh * 0.08:.0f}" width="{ow * 0.12:.0f}" height="{oh * 0.5:.0f}" fill="{TELAS[t_]}" opacity="0.9"/><rect x="{ox0 + ow * 0.88 - 6:.0f}" y="{oy0 + oh * 0.08:.0f}" width="{ow * 0.12:.0f}" height="{oh * 0.5:.0f}" fill="{TELAS[t_]}" opacity="0.9"/>'
+                     f'<circle cx="{ox0 + ow * 0.2:.0f}" cy="{oy0 + oh * 0.12:.0f}" r="{ow * 0.12:.0f}" fill="url(#brilloOro)"/>'
+                     + persona_c +
+                     f'<rect x="{ox0 + ow * 0.1:.0f}" y="{oy0 + oh * 0.76:.0f}" width="{ow * 0.8:.0f}" height="{oh * 0.08:.0f}" fill="url(#{T_["mesa"]})"/><rect x="{ox0}" y="{oy0 + oh * 0.84:.0f}" width="{ow}" height="{oh * 0.16:.0f}" fill="{T_["suelo"]}"/>'
+                     f'<ellipse cx="{ox0 + ow * 0.68:.0f}" cy="{oy0 + oh * 0.745:.0f}" rx="{ow * 0.07:.0f}" ry="{oh * 0.045:.0f}" fill="#e8261a"/><rect x="{ox0 + ow * 0.6:.0f}" y="{oy0 + oh * 0.75:.0f}" width="{ow * 0.16:.0f}" height="{oh * 0.025:.0f}" fill="#2a2e35"/>'
+                     f'<rect class="apaga" x="{ox0}" y="{oy0}" width="{ow}" height="{oh}" fill="#070a12" opacity="{0.3 if noche else 0}"/>'
+                     f'<rect class="flv" x="{ox0}" y="{oy0}" width="{ow}" height="{oh}" fill="#ff3b2f" opacity="0"/><circle class="fl" cx="{ox0 + ow * 0.68:.0f}" cy="{oy0 + oh * 0.73:.0f}" r="{ow * 0.32:.0f}" fill="url(#brilloRojo)" opacity="0"/>'
+                     f'<rect x="{ox0}" y="{oy0}" width="{ow}" height="{oh}" fill="none" stroke="#f4efe6" stroke-width="10"/>'
+                     f'<rect x="{ox0 - 14}" y="{oy0 + oh}" width="{ow + 28}" height="14" fill="#efe6d6"/></g>')
+            if j_ % 2 == 1:
+                s.append(f'<rect x="{ox0 - 6}" y="{oy0 + oh - 64}" width="{ow + 12}" height="8" fill="#3a3f48"/>' + "".join(f'<rect x="{ox0 + k * 22}" y="{oy0 + oh - 60}" width="5" height="60" fill="#3a3f48"/>' for k in range(ow // 22 + 1)))
+        s.append(f'<rect x="-70" y="{j_ * CH + CH - 26}" width="{EW + 140}" height="26" fill="#b9a68c"/><rect x="-70" y="{j_ * CH + CH}" width="{EW + 140}" height="6" fill="#000" opacity="0.12"/>')
+    yb = EH
+    s.append(f'<rect x="-70" y="{yb}" width="{EW + 140}" height="300" fill="#a8916f"/><rect x="{EW / 2 - 180:.0f}" y="{yb + 40}" width="360" height="260" fill="#3a2a1a"/><rect x="{EW / 2 - 160:.0f}" y="{yb + 60}" width="320" height="240" fill="#f2d9a0" opacity="0.85"/>'
+             f'<path d="M{EW / 2 - 260:.0f},{yb + 40} L{EW / 2 + 260:.0f},{yb + 40} L{EW / 2 + 220:.0f},{yb - 20} L{EW / 2 - 220:.0f},{yb - 20} Z" fill="#c65b46"/>'
+             + "".join(f'<rect x="{x}" y="{yb + 70}" width="380" height="200" fill="#9fd6ff" stroke="#efe6d6" stroke-width="10"/>' for x in (60, EW - 440)))
+    if noche:
+        s.append(f'<rect x="-70" y="-460" width="{EW + 140}" height="{EH + 800}" fill="#0a1430" opacity="0.22"/>')
+    return f'<g id="edif_{pre}">' + "".join(s) + '</g>'
+def ciudad_alrededor(seed=3, noche=False):
+    r_ = random.Random(seed)
+    s = []
+    for x0, w, h, c in ((-2300, 1100, 4200, "#9aa8c0"), (-1150, 1000, 3300, "#c6a98a"), (EW + 160, 1100, 3600, "#a9b9a0"), (EW + 1320, 1000, 4400, "#b49ab0"), (-3300, 900, 2800, "#8a98b0"), (EW + 2380, 900, 3000, "#9aa0b8")):
+        y0 = EH + 300 - h
+        s.append(f'<rect x="{x0}" y="{y0}" width="{w}" height="{h}" fill="{c}"/><rect x="{x0 - 20}" y="{y0 - 40}" width="{w + 40}" height="40" fill="{oscurece(c, 0.8)}"/>')
+        for jj in range(int(h / 200) - 1):
+            for ii in range(int(w / 170)):
+                s.append(f'<rect x="{x0 + 40 + ii * 170}" y="{y0 + 60 + jj * 200}" width="110" height="130" fill="{r_.choice(("#ffd99a", "#9fd6ff", "#6f86a6", "#ffe7b0")) if not noche else r_.choice(("#ffd99a", "#1a2440", "#1a2440"))}" opacity="0.9"/>')
+    gy = EH + 300
+    s.append(f'<rect x="-6000" y="{gy}" width="15000" height="200" fill="#cfc8bc"/><rect x="-6000" y="{gy + 200}" width="15000" height="700" fill="url(#calle)"/>'
+             + "".join(f'<rect x="{x}" y="{gy + 520}" width="260" height="30" fill="#f2f2f2" opacity="0.8"/>' for x in range(-5800, 9000, 520))
+             + f'<rect x="-6000" y="{gy + 900}" width="15000" height="2600" fill="#7cc47f"/>'
+             + "".join(arbol(x, gy + 190, 1.8) for x in range(-3000, EW + 3200, 700))
+             + "".join(f'<g transform="translate({x},{gy + 330})"><rect x="0" y="0" width="420" height="120" rx="40" fill="{c}"/><rect x="80" y="-60" width="240" height="80" rx="30" fill="{c}"/><rect x="100" y="-48" width="200" height="54" rx="20" fill="#9fd6ff"/><circle cx="90" cy="125" r="44" fill="#111"/><circle cx="330" cy="125" r="44" fill="#111"/></g>' for x, c in ((-1500, "#e8261a"), (900, "#3f7ad8"), (EW + 600, "#f2c14e"))))
+    return "".join(s)
+edif = edificio("c", 9)
+e4 = [f'<rect x="-8000" y="-8000" width="20000" height="20000" fill="url(#cieloTarde)"/>' + nubes(-3000, -2400, 6, 4).replace('class="nube"', 'class="nube" opacity="0.9"').replace("translate(", "translate(").replace('<g class="nube"', '<g class="nube" style="transform-box:fill-box"') ,
+      ciudad_alrededor(3), edif]
 escena("e4", "".join(e4), EW)
 mostrar("e4", F(4), F(6))
-cx4, cy4 = 4 * CW + CW / 2, 7 * CH + CH * 0.55
-J(f'tl.fromTo("#e4-cam", {{x:{-(cx4 - 540) * 3.2 - (540 - 540):.0f}, y:{-3.2 * (cy4 - 960):.0f}, scale:3.2, transformOrigin:"540px 960px"}}, {{x:{-(EW / 2 - 540) * 0.16:.0f}, y:{-0.16 * (EH / 2 - 960):.0f}, scale:0.16, duration:{F(6) - F(4) - 0.2:.2f}, ease:"power3.inOut", immediateRender:false}}, {F(4):.2f});')
+cx4, cy4 = 4 * CW + CW / 2, 7 * CH + CH * 0.5
+J(f'tl.fromTo("#e4-cam", {{x:{-(cx4 - 540) * 3.0:.0f}, y:{-3.0 * (cy4 - 960):.0f}, scale:3.0, transformOrigin:"540px 960px"}}, {{x:{-(EW / 2 - 540) * 0.25:.0f}, y:{-0.25 * (2700 - 960):.0f}, scale:0.25, duration:{F(6) - F(4) - 0.2:.2f}, ease:"power3.inOut", immediateRender:false}}, {F(4):.2f});')
 J(f'tl.to("#e4 .fl", {{opacity:0.9, duration:0.1, yoyo:true, repeat:1, stagger:{{each:0.012, from:"random"}}}}, {P("mismo") - 0.3:.2f});')
 FX.append(("whoosh", F(4) + 0.2)); FX.append(("coro", P("mismo") - 0.3))
 
@@ -621,11 +672,6 @@ for k_ in range(len(TIRA)):
 FX.append(("whoosh", f9))
 # casas, coches y viajes: tres viñetas en un mismo barrido
 f10 = F(10)
-def nubes(x0, y, n=4, seed=1):
-    r_ = random.Random(seed)
-    return "".join(f'<g class="nube" transform="translate({x0 + r_.uniform(0, 1000):.0f},{y + r_.uniform(0, 260):.0f})">' + "".join(f'<ellipse cx="{dx}" cy="0" rx="{rx}" ry="{rx * 0.6:.0f}" fill="#ffffff" opacity="0.92"/>' for dx, rx in ((-60, 50), (0, 70), (60, 50), (20, 45))) + '</g>' for _ in range(n))
-def arbol(x, y, s=1.0, c="#3f9a5a"):
-    return f'<rect x="{x - 9 * s:.0f}" y="{y - 120 * s:.0f}" width="{18 * s:.0f}" height="{120 * s:.0f}" fill="#6b4a2a"/><circle cx="{x}" cy="{y - 150 * s:.0f}" r="{70 * s:.0f}" fill="{c}"/><circle cx="{x - 40 * s:.0f}" cy="{y - 120 * s:.0f}" r="{48 * s:.0f}" fill="{c}"/><circle cx="{x + 42 * s:.0f}" cy="{y - 122 * s:.0f}" r="{50 * s:.0f}" fill="{c}"/><circle cx="{x - 20 * s:.0f}" cy="{y - 175 * s:.0f}" r="{30 * s:.0f}" fill="#ffffff" opacity="0.12"/>'
 def casa(x0):
     """Barrio soleado: casas, árboles, valla; la familia sonríe con las llaves de su casa nueva."""
     vecinas = "".join(f'<rect x="{x0 + vx}" y="{1060}" width="220" height="200" fill="{c}"/><polygon points="{x0 + vx - 20},{1060} {x0 + vx + 110},{960} {x0 + vx + 240},{1060}" fill="#8a3a2a"/><rect x="{x0 + vx + 30}" y="{1110}" width="50" height="50" fill="#8fc8ea"/><rect x="{x0 + vx + 140}" y="{1110}" width="50" height="50" fill="#8fc8ea"/>' for vx, c in ((-160, "#e9dcc2"), (900, "#d8e6ef")))
@@ -676,13 +722,25 @@ cajero = ('<rect width="1080" height="1920" fill="url(#cieloDia)"/>' + skyline(6
           '<rect x="360" y="760" width="360" height="560" rx="16" fill="#3a3f48"/><rect id="pant11" x="400" y="800" width="280" height="200" rx="8" fill="#1b2a3a"/>'
           '<text id="sal11" x="540" y="880" text-anchor="middle" font-family="Inter" font-weight="800" font-size="30" fill="#9fdcff">SALDO</text>'
           '<text id="num11" x="540" y="945" text-anchor="middle" font-family="Inter" font-weight="900" font-size="48" fill="#ffffff"><tspan>41.230 €</tspan></text>'
-          '<rect x="430" y="1040" width="220" height="16" rx="8" fill="#111"/><rect x="420" y="1100" width="240" height="160" rx="10" fill="#4a505a"/>')
+          '<rect x="430" y="1040" width="220" height="16" rx="8" fill="#111"/><rect x="420" y="1100" width="240" height="160" rx="10" fill="#4a505a"/>'
+          + "".join(f'<rect x="{x}" y="720" width="150" height="400" fill="#9fd6ff" stroke="#c9c2b6" stroke-width="10"/>' + "".join(f'<rect x="{x}" y="{730 + j * 26}" width="150" height="14" fill="#ffffff" opacity="0.55"/>' for j in range(6)) + f'<path d="M{x + 20},1110 L{x + 70},920" stroke="#ffffff" stroke-width="10" opacity="0.4"/>' for x in (195, 735))
+          + '<rect x="195" y="1150" width="150" height="190" fill="#f2c14e" stroke="#c9c2b6" stroke-width="8"/><text x="270" y="1225" text-anchor="middle" font-family="Inter" font-weight="900" font-size="28" fill="#1f5fa8">AHORRA</text><text x="270" y="1262" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="#1f5fa8">CON</text><text x="270" y="1298" text-anchor="middle" font-family="Inter" font-weight="900" font-size="22" fill="#1f5fa8">NOSOTROS</text>'
+          + '<rect x="180" y="1490" width="720" height="14" fill="#b9b2a6"/><rect x="0" y="1660" width="1080" height="18" fill="#a9a196"/><rect x="0" y="1678" width="1080" height="260" fill="#5b5f66"/>'
+          + "".join(f'<path d="M{x - 40},1400 L{x + 40},1400 L{x + 30},1500 L{x - 30},1500 Z" fill="#c65b46"/><ellipse cx="{x}" cy="1390" rx="62" ry="40" fill="#3f9a5a"/><ellipse cx="{x - 30}" cy="1360" rx="34" ry="30" fill="#4fb36a"/><ellipse cx="{x + 30}" cy="1356" rx="30" ry="28" fill="#4fb36a"/>' for x in (230, 850))
+          + '<path d="M80,1670 L80,560 Q80,520 120,520 L170,520" stroke="#3a3f48" stroke-width="16" fill="none"/><path d="M150,520 L200,520 L190,550 L160,550 Z" fill="#3a3f48"/><ellipse cx="175" cy="556" rx="20" ry="8" fill="#ffe7a0"/>'
+          + '<g id="paloma11"><ellipse cx="950" cy="1640" rx="34" ry="20" fill="#8a929c"/><circle cx="978" cy="1618" r="13" fill="#9aa2ac"/><path d="M990,1618 l12,4 l-12,4 Z" fill="#e8a33a"/><path d="M944,1660 l-4,18 M956,1660 l4,18" stroke="#e8a33a" stroke-width="4"/></g>'
+          + '<g id="recibo11"><rect x="470" y="1046" width="140" height="0" fill="#ffffff"/></g>'
+          + '<clipPath id="clip11"><rect x="440" y="1048" width="200" height="300"/></clipPath><g clip-path="url(#clip11)"><g id="tique11" transform="translate(0,-260)"><rect x="475" y="1048" width="130" height="250" fill="#ffffff" stroke="#ddd" stroke-width="2"/>'
+          + '<text x="540" y="1090" text-anchor="middle" font-family="Inter" font-weight="800" font-size="16" fill="#555">BANCO</text>' + "".join(f'<rect x="490" y="{1110 + j * 20}" width="{100 - j * 12}" height="6" fill="#bbb"/>' for j in range(3))
+          + '<text x="540" y="1220" text-anchor="middle" font-family="Inter" font-weight="900" font-size="26" fill="#d8261a">0,00 €</text></g></g>')
 escena("e11", cajero + persona(560, 1780, 720, rim="#ffffff", pid="v11", espalda=True, e=estilo(111, ropa="#d94f6b", peinado="largo", pelo="#5a3a22")))
 mostrar("e11", f11, F(13))
 camara("e11", f11, F(13), enfoca(540, 1000, 1.0), enfoca(540, 920, 1.25), "sine.inOut")
 J(f'tl.set("#num11", {{innerHTML:"<tspan>0,00 €</tspan>", fill:"#d8261a"}}, {P("vacias") - 0.2:.2f}); tl.to("#pant11", {{fill:"#3a0f12", duration:0.2}}, {P("vacias") - 0.2:.2f});')
 J(f'tl.fromTo("#v11 .brazo", {{rotation:0}}, {{rotation:-150, svgOrigin:"642 1233", duration:0.5, ease:"power2.out", immediateRender:false}}, {P("explicacion") - 0.2:.2f});')
 J(f'tl.fromTo("#e11-cam", {{rotation:0}}, {{rotation:0.8, duration:0.05, yoyo:true, repeat:3, immediateRender:false}}, {P("aviso") - 0.05:.2f});')
+J(f'tl.to("#tique11", {{y:0, duration:1.2, ease:"steps(8)"}}, {P("vacias") + 0.2:.2f});')
+J(f'tl.fromTo("#paloma11", {{x:0}}, {{x:-260, duration:{F(13) - f11:.2f}, ease:"steps(24)", immediateRender:false}}, {f11:.2f});')
 FX.append(("perdida", P("vacias") - 0.2)); FX.append(("golpe", P("explicacion") - 0.05)); FX.append(("golpe", P("aviso") - 0.05))
 
 # ================================================================== 8) BANCOS · FAMILIAS · COMERCIOS (tres planos encadenados con un mismo barrido)
@@ -692,9 +750,13 @@ banco = ('<rect x="0" y="0" width="1080" height="1920" fill="url(#cieloDia)"/><r
          + "".join(f'<rect x="{180 + i * 150}" y="690" width="70" height="700" fill="#f4efe4"/><rect x="{170 + i * 150}" y="680" width="90" height="20" fill="#e2dccf"/>' for i in range(6))
          + '<rect x="120" y="1390" width="840" height="90" fill="#e2dccf"/><text x="540" y="560" text-anchor="middle" font-family="Georgia" font-weight="700" font-size="56" fill="#7a6a50" letter-spacing="10">BANCO</text>'
          + "".join(persona(80 + i * 95, 1720 + (i % 2) * 20, 330 + (i % 3) * 20, rim="#ffffff", lado=1, pid=f"cola{i}", expr0=("triste", "nervioso", "serio")[i % 3]) for i in range(11))
+         + '<rect x="470" y="1100" width="140" height="290" fill="#6b4a2a"/><rect x="482" y="1112" width="56" height="278" fill="#7d5a36"/><rect x="542" y="1112" width="56" height="278" fill="#7d5a36"/><rect x="480" y="1180" width="120" height="44" rx="6" fill="#d8261a"/><text x="540" y="1212" text-anchor="middle" font-family="Inter" font-weight="900" font-size="24" fill="#fff">CERRADO</text>'
+         + "".join(f'<g class="pancarta13"><path d="M{x},{y + 150} L{x},{y + 470}" stroke="#8a5a2c" stroke-width="12"/><rect x="{x - 110}" y="{y}" width="220" height="150" rx="10" fill="#fffbe8" stroke="#2a2e35" stroke-width="6"/><text x="{x}" y="{y + 64}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="34" fill="#d8261a">{t1}</text><text x="{x}" y="{y + 112}" text-anchor="middle" font-family="Inter" font-weight="900" font-size="34" fill="#2a2e35">{t2}</text></g>' for x, y, t1, t2 in ((250, 1090, "¿Y MI", "DINERO?"), (820, 1060, "¡DEVOLVED", "LO MÍO!")))
          + '<g id="papeles13">' + "".join(f'<rect class="pap13" x="{random.Random(i).uniform(100, 980):.0f}" y="{random.Random(i + 9).uniform(900, 1300):.0f}" width="44" height="58" fill="#ffffff" stroke="#c9c2b6"/>' for i in range(16)) + '</g>')
-cocina14 = (habitacion("cocina", seed=14, ytab=1300) + persona(380, 1300, 520, rim="#ffffff", pid="fa1", expr0="triste") + persona(700, 1300, 500, rim="#ffffff", lado=-1, pid="fa2", expr0="triste")
+cocina14 = (habitacion("cocina", seed=14, ytab=1300) + '<rect x="20" y="760" width="200" height="540" rx="18" fill="#eef2f5" stroke="#c9d1dc" stroke-width="6"/><rect x="20" y="960" width="200" height="8" fill="#c9d1dc"/><rect x="190" y="830" width="12" height="90" rx="6" fill="#9aa6b6"/><rect x="190" y="1000" width="12" height="120" rx="6" fill="#9aa6b6"/><rect x="60" y="800" width="60" height="70" fill="#f2c14e" transform="rotate(-4 90 835)"/><circle cx="150" cy="820" r="14" fill="#e2725b"/>'
+            + "".join(f'<rect x="{x}" y="600" width="170" height="150" rx="10" fill="#f6efe0" stroke="#d9cdb3" stroke-width="6"/><circle cx="{x + 150}" cy="690" r="7" fill="#b8a27a"/>' for x in (690, 870)) + persona(380, 1300, 520, rim="#ffffff", pid="fa1", expr0="triste") + persona(700, 1300, 500, rim="#ffffff", lado=-1, pid="fa2", expr0="triste")
             + mesa(-60, 1140, 1300, "maderaM", 640)
+            + movil("m14", 860, 1215, 0.55, "0,00 €", "#d8261a") + '<g transform="rotate(-8 230 1250)"><rect x="150" y="1226" width="170" height="54" fill="#ffffff" stroke="#ccc" stroke-width="2"/><rect x="164" y="1238" width="60" height="8" fill="#1f5fa8"/><rect x="164" y="1254" width="120" height="5" fill="#bbb"/><rect x="164" y="1266" width="90" height="5" fill="#bbb"/></g>' 
             + '<g id="hucha"><ellipse cx="540" cy="1250" rx="110" ry="80" fill="#f2a0b4"/><ellipse cx="640" cy="1240" rx="30" ry="24" fill="#f2a0b4"/><rect x="480" y="1316" width="22" height="20" fill="#e28aa0"/><rect x="580" y="1316" width="22" height="20" fill="#e28aa0"/><rect x="520" y="1172" width="44" height="8" rx="4" fill="#7a3a4a"/></g>'
             + '<g id="trozos" opacity="0">' + "".join(f'<path d="M{540 + dx},{1250 + dy} l{20 + abs(dx) % 15},-12 l8,24 Z" fill="#f2a0b4"/>' for dx, dy in ((-80, -10), (-40, 20), (0, -30), (40, 10), (80, -20), (-60, 30), (60, 30))) + '</g>')
 tienda = (habitacion("rosa", seed=15, ytab=1300, detalle=False) + '<rect x="0" y="700" width="1080" height="420" fill="#ffffff" opacity="0.4"/>'
@@ -706,17 +768,18 @@ escena("e13", banco + f'<g transform="translate(1080,0)">{cocina14}</g>' + f'<g 
 mostrar("e13", f13, F(16))
 J(f'tl.fromTo("#e13-cam", {{x:0, scale:1.0}}, {{x:0, scale:1.04, duration:{F(14) - f13:.2f}, ease:"none", immediateRender:false}}, {f13:.2f});')
 J(f'tl.to("#e13-cam", {{x:-1080, scale:1.0, duration:0.4, ease:"power3.inOut"}}, {F(14) - 0.25:.2f}); tl.to("#e13-cam", {{x:-2160, duration:0.4, ease:"power3.inOut"}}, {F(15) - 0.25:.2f});')
+J(f'tl.to("#e13 .pancarta13", {{y:-30, rotation:(i) => (i ? 6 : -6), transformOrigin:"50% 100%", duration:0.3, yoyo:true, repeat:7, ease:"sine.inOut", stagger:0.15}}, {f13:.2f});')
 J(f'tl.fromTo(".pap13", {{y:0, rotation:0}}, {{y:-500, rotation:(i) => (i % 2 ? 1 : -1) * 200, duration:2.4, stagger:0.08, ease:"power1.out", immediateRender:false}}, {f13 + 0.2:.2f});')
+J(f'tl.to("#m14 .aviso", {{opacity:1, duration:0.2}}, {F(14) + 0.3:.2f});')
 J(f'tl.to("#hucha", {{opacity:0, duration:0.1}}, {P("vida") - 0.1:.2f}); tl.to("#trozos", {{opacity:1, duration:0.05}}, {P("vida") - 0.1:.2f}); tl.fromTo("#trozos path", {{x:0, y:0}}, {{x:(i) => (i - 3) * 30, y:(i) => 40 + (i % 3) * 20, rotation:(i) => i * 50, duration:0.6, ease:"power2.out", immediateRender:false}}, {P("vida") - 0.1:.2f});')
 J(f'tl.set("#tpvt", {{innerHTML:"<tspan>DENEGADA</tspan>", fill:"#ff5a52"}}, {P("cobrar") - 0.2:.2f}); tl.to("#tpv", {{fill:"#3a0f12", duration:0.15}}, {P("cobrar") - 0.2:.2f});')
 FX.append(("murmullo", f13)); expr("tend", P("cobrar") - 0.2, "neutral", "sorpresa", abierta=True); parpadeo("fa1", F(14), F(15), 4); parpadeo("fa2", F(14), F(15), 5); FX.append(("rompe", P("vida") - 0.1)); FX.append(("denegada", P("cobrar") - 0.2))
 
 # ================================================================== 9) CADA PULSACIÓN = ALGUIEN LO PIERDE TODO: el edificio, en paralelo (destello rojo ↔ habitación que se apaga)
 f16 = F(16)
-edif2 = edif.replace('id="edif"', 'id="edif2"').replace('id="c', 'id="d')
-escena("e16", f'<rect x="-3000" y="-3000" width="9000" height="9000" fill="url(#cieloTarde)"/>{edif2}', EW)
+escena("e16", f'<rect x="-6000" y="-6000" width="15000" height="15000" fill="url(#cieloTarde)"/>{ciudad_alrededor(3)}{edificio("d", 9)}', EW)
 mostrar("e16", f16, F(18))
-J(f'tl.fromTo("#e16-cam", {{x:{-(EW / 2 - 540) * 0.5:.0f}, y:{-0.5 * (EH / 2 - 960):.0f}, scale:0.5}}, {{x:{-(EW / 2 - 540) * 0.62:.0f}, y:{-0.62 * (EH / 2 - 960):.0f}, scale:0.62, duration:{F(18) - f16:.2f}, ease:"sine.inOut", immediateRender:false}}, {f16:.2f});')
+J(f'tl.fromTo("#e16-cam", {{x:{-(EW / 2 - 540) * 0.27:.0f}, y:{-0.27 * (2650 - 960):.0f}, scale:0.27}}, {{x:{-(EW / 2 - 540) * 0.31:.0f}, y:{-0.31 * (2550 - 960):.0f}, scale:0.31, duration:{F(18) - f16:.2f}, ease:"sine.inOut", immediateRender:false}}, {f16:.2f});')
 r9 = random.Random(4)
 tt, gap = f16 + 0.25, 0.75
 while tt < P("siguiente") - 0.3:
@@ -728,38 +791,100 @@ while tt < P("siguiente") - 0.3:
     tt += gap; gap = max(0.28, gap * 0.82)
 FX.append(("latido", P("siguiente") - 0.4))
 
-# ================================================================== 10) LOS GOBIERNOS: parlamento · botón en una urna con sello de PROHIBIDO · ventanas anónimas
+# ================================================================== 10) LOS GOBIERNOS: parlamento lleno · el botón encerrado y PROHIBIDO · el edificio de noche
 f18 = F(18)
-parl = ('<rect width="1080" height="1920" fill="url(#cieloDia)"/><rect x="0" y="1460" width="1080" height="460" fill="#d8d0c2"/>'
-        '<path d="M300,700 Q540,420 780,700 Z" fill="#e9e3d6"/><rect x="140" y="700" width="800" height="60" fill="#e2dccf"/>'
-        + "".join(f'<rect x="{180 + i * 115}" y="770" width="54" height="600" fill="#f4efe4"/>' for i in range(7))
-        + '<rect x="120" y="1370" width="840" height="90" fill="#e2dccf"/>'
-        + "".join(f'<path d="M{x},700 L{x},540" stroke="#8a8a8a" stroke-width="5"/><rect x="{x}" y="540" width="90" height="56" fill="{c}"/>' for x, c in ((200, "#c60b1e"), (860, "#1f4fa8")))
-        + '<rect x="400" y="1300" width="280" height="300" fill="#7d4f2a"/><rect x="380" y="1290" width="320" height="24" fill="#5a3a22"/>'
-        + '<path d="M500,1290 l-20,-60 M580,1290 l20,-60" stroke="#222" stroke-width="5"/><circle cx="480" cy="1226" r="10" fill="#222"/><circle cx="600" cy="1226" r="10" fill="#222"/>'
-        + persona(540, 1320, 420, rim="#ffffff", pid="pres", expr0="serio", e=estilo(81, ropa="#2a3550", peinado="calvo", pelo="#8e8e8e")))
-escena("e18", parl)
+r18 = random.Random(18)
+grad_lin("madera18", ((0, "#c99a62", 1), (1, "#a4733f", 1)), 0, 0, 1, 0)
+grad_lin("alfombra18", ((0, "#b8323a", 1), (1, "#7e1a22", 1)))
+p18 = ['<rect width="1080" height="1920" fill="url(#madera18)"/>'
+       + "".join(f'<rect x="{x}" y="0" width="70" height="1260" fill="#8a5a2c" opacity="0.35"/><rect x="{x + 8}" y="0" width="10" height="1260" fill="#ffe2b0" opacity="0.25"/>' for x in (0, 250, 760, 1010))
+       + '<circle cx="540" cy="300" r="120" fill="#e8c35a" opacity="0.35"/><circle cx="540" cy="300" r="86" fill="none" stroke="#e8c35a" stroke-width="10" opacity="0.6"/>'
+       # reloj y banderas
+       + '<circle cx="140" cy="300" r="74" fill="#fbf6ea" stroke="#6b4a2a" stroke-width="12"/><path d="M140,300 L140,250 M140,300 L176,316" stroke="#333" stroke-width="7" stroke-linecap="round"/>'
+       + "".join(f'<path d="M{x},1260 L{x},520" stroke="#c9b27a" stroke-width="9"/><circle cx="{x}" cy="514" r="12" fill="#e8c35a"/><g class="band18" data-x="{x}"><path d="M{x + 5},530 Q{x + 60},515 {x + 115},535 L{x + 115},655 Q{x + 60},635 {x + 5},650 Z" fill="{c1}"/><path d="M{x + 5},570 Q{x + 60},555 {x + 115},575 L{x + 115},615 Q{x + 60},595 {x + 5},610 Z" fill="{c2}"/></g>' for x, c1, c2 in ((860, "#1f4fa8", "#f2c14e"), (88, "#c60b1e", "#f2c14e")))
+       # tribuna de invitados (público arriba con cuello)
+       + '<rect x="0" y="560" width="1080" height="40" fill="#6b4a2a"/>']
+for i in range(11):
+    x = 30 + i * 100 + r18.randint(-10, 10)
+    if 280 < x < 800: continue
+    e_ = estilo(300 + i)
+    p18.append(f'<g class="dip18"><rect x="{x - 26}" y="640" width="52" height="60" rx="20" fill="{e_["ropa"]}"/><rect x="{x - 6}" y="612" width="12" height="32" fill="{oscurece(e_["piel"], 0.88)}"/><ellipse cx="{x}" cy="600" rx="18" ry="21" fill="{e_["piel"]}"/><path d="M{x - 19},598 Q{x},565 {x + 19},598 Q{x},584 {x - 19},598 Z" fill="{e_["pelo"]}"/><circle cx="{x - 6}" cy="602" r="2.6" fill="#222"/><circle cx="{x + 6}" cy="602" r="2.6" fill="#222"/></g>')
+p18.append('<rect x="0" y="690" width="1080" height="50" fill="#1d1410"/><text class="led18" x="540" y="727" text-anchor="middle" font-family="Inter" font-weight="900" font-size="32" fill="#ff4a3a" letter-spacing="4">SESIÓN DE URGENCIA · BOTONES</text><rect x="0" y="740" width="1080" height="12" fill="#8a5a2c"/>' + "".join(f'<rect x="{x}" y="616" width="8" height="76" fill="#e8c35a"/>' for x in range(10, 1080, 60)))
+# suelo con alfombra y escalón
+p18.append('<rect x="0" y="1250" width="1080" height="670" fill="url(#alfombra18)"/><rect x="0" y="1250" width="1080" height="16" fill="#e8c35a"/>')
+# periodistas a los lados con cámaras y flashes
+for x, lado, s in ((150, 1, 51), (940, -1, 52)):
+    p18.append(persona(x, 1500, 330, pid=f"per{s}", lado=lado, expr0="neutral", e=estilo(s), brazo=0))
+    k_ = 330 / 300
+    cxp = x + 30 * lado
+    e_p = estilo(s)
+    p18.append("".join(f'<path d="M{x + L * 34 * k_:.0f},{1500 - 226 * k_:.0f} Q{x + L * 40 * k_:.0f},{1500 - 180 * k_:.0f} {cxp + L * 30:.0f},{1500 - 300 * k_ + 30:.0f}" stroke="{e_p["ropa"]}" stroke-width="{16 * k_:.0f}" stroke-linecap="round" fill="none"/>' for L in (-1, 1)))
+    p18.append(f'<rect x="{cxp - 34}" y="{1500 - 300 * k_}" width="68" height="46" rx="8" fill="#2a2e35"/><circle cx="{cxp + 8 * lado}" cy="{1500 - 300 * k_ + 23}" r="15" fill="#5a6270" stroke="#111" stroke-width="4"/><rect x="{cxp - 22}" y="{1500 - 300 * k_ - 12}" width="22" height="12" fill="#ddd"/>'
+               f'<circle class="flash18" cx="{cxp - 11}" cy="{1500 - 300 * k_ - 6}" r="70" fill="url(#brilloOro)" opacity="0"/>' + "".join(f'<circle cx="{cxp + L * 30:.0f}" cy="{1500 - 300 * k_ + 30:.0f}" r="9" fill="{e_p["piel"]}"/>' for L in (-1, 1)))
+# EL PRESIDENTE: de pie DETRÁS del atril (el atril se dibuja delante y le tapa de cintura para abajo)
+p18.append(persona(540, 1440, 440, rim="#ffffff", pid="pres", expr0="serio", e=estilo(81, ropa="#2a3550", peinado="calvo", pelo="#8e8e8e")))
+p18.append('<path d="M500,1236 Q470,1170 486,1120 M580,1236 Q610,1170 594,1120" stroke="#222" stroke-width="6" fill="none"/><rect x="474" y="1100" width="22" height="30" rx="10" fill="#333"/><rect x="584" y="1100" width="22" height="30" rx="10" fill="#333"/>'
+           '<path d="M390,1236 L690,1236 L670,1480 L410,1480 Z" fill="#7d4f2a"/><rect x="372" y="1222" width="336" height="28" rx="6" fill="#5a3a22"/>'
+           '<circle cx="540" cy="1350" r="56" fill="#e8c35a" stroke="#b8902a" stroke-width="8"/><path d="M540,1312 L552,1340 L582,1342 L558,1360 L566,1390 L540,1372 L514,1390 L522,1360 L498,1342 L528,1340 Z" fill="#b8902a"/>'
+           '<rect x="420" y="1418" width="240" height="14" fill="#5a3a22"/>')
+# diputados de espaldas en primer plano (en sus escaños) y papeles que se agitan
+for fila, (suelo, h, paso, off) in enumerate(((1880, 300, 190, 60), (2080, 380, 240, -40), (2320, 470, 300, 110))):
+    for i in range(6):
+        x = off + i * paso
+        if x < -80 or x > 1160: continue
+        p18.append(f'<g class="dip18">{persona(x, suelo, h, pid=f"dp{fila}_{i}", espalda=True, e=estilo(400 + fila * 10 + i))}</g>')
+    yb = suelo - 150 * h / 300
+    p18.append(f'<rect x="-20" y="{yb:.0f}" width="1120" height="{60 * h / 300:.0f}" rx="18" fill="#8e1f28"/><rect x="-20" y="{yb:.0f}" width="1120" height="10" fill="#c9505a"/>')
+for i, (x, y) in enumerate(((250, 1600), (820, 1650), (430, 1780))):
+    p18.append(f'<g class="papel18" data-x="{x}" data-y="{y}"><rect x="{x - 28}" y="{y - 84}" width="56" height="74" fill="#ffffff" stroke="#ccc" stroke-width="3"/>'
+               + "".join(f'<rect x="{x - 18}" y="{y - 70 + j * 14}" width="36" height="5" fill="#9aa"/>' for j in range(4))
+               + f'<path d="M{x - 6},{y - 6} L{x - 4},{y + 50}" stroke="#2a3550" stroke-width="20" stroke-linecap="round"/><circle cx="{x - 6}" cy="{y - 12}" r="13" fill="{PIELES[i % len(PIELES)]}"/></g>')
+escena("e18", "".join(p18))
 mostrar("e18", f18, F(19))
-camara("e18", f18, F(19), enfoca(540, 1000, 1.0), enfoca(540, 1150, 1.25), "sine.inOut")
+camara("e18", f18, F(19), enfoca(540, 960, 1.0), enfoca(540, 1060, 1.16), "sine.inOut")
+J(f'tl.to("#pres .brazo", {{rotation:-62, svgOrigin:"{540 + 34 * 440 / 300:.0f} {1440 - 228 * 440 / 300:.0f}", duration:0.35, yoyo:true, repeat:3, ease:"sine.inOut"}}, {f18 + 0.3:.2f});')
+expr("pres", f18 + 0.2, "serio", "enfado", abierta=True)
+J(f'tl.to("#e18 .dip18", {{y:-8, duration:0.3, yoyo:true, repeat:7, ease:"sine.inOut", stagger:{{each:0.05, from:"random"}}}}, {f18:.2f});')
+J(f'tl.to("#e18 .flash18", {{opacity:1, duration:0.06, yoyo:true, repeat:1, stagger:0.55}}, {f18 + 0.4:.2f});')
+J(f'tl.to("#e18 .flash18", {{opacity:1, duration:0.06, yoyo:true, repeat:1, stagger:0.45}}, {f18 + 1.5:.2f});')
+J(f'tl.to("#e18 .led18", {{opacity:0.45, duration:0.3, yoyo:true, repeat:7}}, {f18:.2f});')
+for i, (x, y) in enumerate(((250, 1600), (820, 1650), (430, 1780))):
+    J(f'tl.fromTo("#e18 .papel18:nth-of-type({i + 1})", {{y:60}}, {{y:0, duration:0.3, ease:"back.out", immediateRender:false}}, {f18 + 0.5 + i * 0.35:.2f});')
+J(f'tl.to("#e18 .papel18", {{rotation:12, transformOrigin:"50% 100%", duration:0.25, yoyo:true, repeat:6, ease:"sine.inOut", stagger:0.1}}, {f18 + 0.9:.2f});')
+J(f'tl.to("#e18 .band18", {{skewY:4, duration:0.6, yoyo:true, repeat:3, ease:"sine.inOut"}}, {f18:.2f});')
 FX.append(("murmullo", f18))
+
 f19 = F(19)
-urna = (habitacion("moderno", seed=19, ytab=1300, detalle=False) + mesa(-60, 1140, 1300, "blancoM", 640) + pon_boton("b19", 540, 1310, 1.4)
-        + '<rect x="330" y="980" width="420" height="340" fill="#cfeaff" opacity="0.18" stroke="#ffffff" stroke-width="6"/><path d="M340,990 L420,1300" stroke="#ffffff" stroke-width="10" opacity="0.35"/>'
-        + '<g id="sello19" opacity="0"><rect x="300" y="1075" width="480" height="124" rx="12" fill="none" stroke="#d8261a" stroke-width="12"/><text x="540" y="1164" text-anchor="middle" font-family="Inter" font-weight="900" font-size="70" fill="#d8261a" letter-spacing="5">PROHIBIDO</text></g>')
+# el botón, encerrado en una vitrina con cadenas y candado; el cartel PROHIBIDO cae EN LA PARED (no tapa el botón)
+vit = ('<rect x="330" y="980" width="420" height="340" fill="#cfeaff" opacity="0.16" stroke="#ffffff" stroke-width="6"/><path d="M350,990 L410,1310 M380,990 L440,1310" stroke="#ffffff" stroke-width="8" opacity="0.28"/>'
+       + '<rect x="320" y="960" width="440" height="26" rx="6" fill="#9aa3ad"/><rect x="320" y="1306" width="440" height="20" fill="#9aa3ad"/>'
+       + "".join(f'<ellipse cx="{x}" cy="{y}" rx="13" ry="8" fill="none" stroke="#7a828c" stroke-width="5" transform="rotate({ang} {x} {y})"/>' for x, y, ang in [(332 + i * 0, 1000 + i * 22, 90) for i in range(14)] + [(748, 1000 + i * 22, 90) for i in range(14)])
+       + '<g id="baliza19"><rect x="520" y="926" width="40" height="34" fill="#555"/><path d="M516,930 Q540,880 564,930 Z" fill="#ff3b2f"/></g><circle id="halo19" cx="540" cy="912" r="120" fill="url(#brilloRojo)" opacity="0.5"/>'
+       + '<g id="candado19"><path d="M664,1236 Q664,1200 690,1200 Q716,1200 716,1236" stroke="#8a8f96" stroke-width="10" fill="none"/><rect x="652" y="1234" width="76" height="62" rx="10" fill="#e8b53a"/><circle cx="690" cy="1260" r="8" fill="#5a4210"/><rect x="687" y="1262" width="6" height="18" fill="#5a4210"/></g>')
+decreto = ('<g id="decreto19"><path d="M120,1268 L330,1268 L350,1300 L100,1300 Z" fill="#fbf6ea"/><path d="M128,1262 L326,1262 L344,1294 L108,1294 Z" fill="#ffffff" stroke="#ddd" stroke-width="2"/>'
+           + "".join(f'<path d="M{150 + j * 4},{1270 + j * 6} L{290 + j * 4},{1270 + j * 6}" stroke="#9aa" stroke-width="2.5"/>' for j in range(3))
+           + '<ellipse cx="300" cy="1286" rx="16" ry="6" fill="#d8261a" opacity="0.8"/></g>')
+cartel = ('<g transform="translate(-60,0)"><g id="sello19" opacity="0"><rect x="300" y="700" width="480" height="170" rx="14" fill="#d8261a" stroke="#ffffff" stroke-width="10"/>'
+          '<circle cx="372" cy="785" r="46" fill="none" stroke="#fff" stroke-width="10"/><path d="M340,817 L404,753" stroke="#fff" stroke-width="10"/>'
+          '<text x="602" y="805" text-anchor="middle" font-family="Inter" font-weight="900" font-size="50" fill="#ffffff" letter-spacing="1">PROHIBIDO</text>'
+          + "".join(f'<circle cx="{x}" cy="{y}" r="7" fill="#f2d0cc"/>' for x, y in ((318, 718), (762, 718), (318, 852), (762, 852))) + '</g></g>')
+urna = (habitacion("moderno", seed=19, ytab=1300, detalle=False) + cartel + mesa(-60, 1140, 1300, "blancoM", 640) + pon_boton("b19", 540, 1310, 1.4) + vit + decreto)
 escena("e19", urna)
 mostrar("e19", f19, F(20))
-camara("e19", f19, F(20), enfoca(540, 1150, 1.3), enfoca(540, 1150, 1.45), "sine.inOut")
-J(f'tl.fromTo("#sello19", {{opacity:0, scale:1.8, rotation:-14}}, {{opacity:0.92, scale:1, rotation:-8, svgOrigin:"540 1135", duration:0.25, ease:"power4.in", immediateRender:false}}, {P("prohibir") - 0.05:.2f});')
+camara("e19", f19, F(20), enfoca(540, 1030, 1.3), enfoca(540, 1050, 1.45), "sine.inOut")
+J(f'tl.fromTo("#sello19", {{opacity:0, scale:1.7, rotation:-10}}, {{opacity:1, scale:1, rotation:-3, svgOrigin:"540 785", duration:0.25, ease:"power4.in", immediateRender:false}}, {P("prohibir") - 0.05:.2f});')
+J(f'tl.fromTo("#e19-cam", {{y:"+=0"}}, {{y:"+=14", duration:0.05, yoyo:true, repeat:3, immediateRender:false}}, {P("prohibir") + 0.2:.2f});')
+J(f'tl.to("#halo19", {{opacity:0.1, duration:0.25, yoyo:true, repeat:9, ease:"sine.inOut"}}, {f19:.2f});')
+J(f'tl.fromTo("#candado19", {{rotation:-14}}, {{rotation:10, svgOrigin:"690 1200", duration:0.4, yoyo:true, repeat:5, ease:"sine.inOut", immediateRender:false}}, {f19:.2f});')
 FX.append(("sello", P("prohibir") + 0.2))
+
 f20 = F(20)
-r20 = random.Random(20)
-ventanas = "".join(f'<g class="vn"><rect x="{40 + i * 205}" y="{140 + j * 230}" width="170" height="190" fill="#ffcf7a" opacity="{r20.uniform(0.55, 0.95):.2f}"/>'
-                   f'<path d="M{88 + i * 205},{330 + j * 230} Q{125 + i * 205},{270 + j * 230} {162 + i * 205},{330 + j * 230} Z" fill="{r20.choice(ROPAS)}"/><ellipse cx="{125 + i * 205}" cy="{240 + j * 230}" rx="22" ry="27" fill="{r20.choice(PIELES)}"/><circle cx="{117 + i * 205}" cy="{242 + j * 230}" r="3" fill="#222"/><circle cx="{133 + i * 205}" cy="{242 + j * 230}" r="3" fill="#222"/><path d="M{117 + i * 205},{254 + j * 230} q8,{(i + j) % 3 - 1} 16,0" stroke="#7a2e2e" stroke-width="2.4" fill="none"/><path d="M{102 + i * 205},{236 + j * 230} Q{125 + i * 205},{200 + j * 230} {148 + i * 205},{236 + j * 230} Z" fill="{r20.choice(PELOS)}"/>'
-                   f'<circle class="rj" cx="{125 + i * 205}" cy="{315 + j * 230}" r="70" fill="url(#brilloRojo)" opacity="0"/></g>' for i in range(5) for j in range(8))
-escena("e20", f'<rect width="1080" height="1920" fill="#20283a"/>{ventanas}')
+# el MISMO edificio, de noche: nadie sabe quién pulsa (destellos rojos en ventanas al azar)
+escena("e20", f'<rect x="-6000" y="-6000" width="15000" height="15000" fill="url(#cieloNoche)"/><circle cx="{EW * 0.85:.0f}" cy="-500" r="220" fill="#fff6d8"/><circle cx="{EW * 0.85:.0f}" cy="-500" r="420" fill="url(#brilloOro)" opacity="0.5"/>{ciudad_alrededor(3, noche=True)}{edificio("w", 27, noche=True)}', EW)
 mostrar("e20", f20, F(21))
-camara("e20", f20, F(21), enfoca(540, 1000, 1.25), enfoca(540, 1000, 1.0), "sine.inOut")
-J(f'tl.to("#e20 .rj", {{opacity:1, duration:0.12, yoyo:true, repeat:1, stagger:{{each:0.09, from:"random"}}}}, {P("demostrar") - 0.3:.2f});')
+J(f'tl.fromTo("#e20-cam", {{x:{-(EW / 2 - 540) * 0.5:.0f}, y:{-0.5 * (1450 - 960):.0f}, scale:0.5}}, {{x:{-(EW / 2 - 540) * 0.4:.0f}, y:{-0.4 * (2100 - 960):.0f}, scale:0.4, duration:{F(21) - f20:.2f}, ease:"sine.inOut", immediateRender:false}}, {f20:.2f});')
+J(f'tl.to("#e20 .flv", {{opacity:0.5, duration:0.12, yoyo:true, repeat:1, stagger:{{each:0.03, from:"random"}}}}, {P("demostrar") - 0.6:.2f});')
+J(f'tl.to("#e20 .fl", {{opacity:1, duration:0.12, yoyo:true, repeat:1, stagger:{{each:0.03, from:"random"}}}}, {P("demostrar") - 0.6:.2f});')
 nota("NADIE PUEDE DEMOSTRARLO", P("demostrar") - 0.2, F(21) - 0.1, 60, 500, "#9fdcff")
 
 # ================================================================== 11) «SI NO LO HAGO YO, LO HARÁ OTRO»: cortes rápidos de manos sobre botones

@@ -21,6 +21,8 @@ MEJORA CONTINUA (usuario, 02-11-2026, OBLIGATORIO, también en PORTADAS): CADA V
 Antes de cualquier vídeo, LEE `quiz-video/animado/MEJORA_CONTINUA.md` (5 mejoras concretas, KIT de efectos en
 `quiz-video/animado/kit/`, nivel mínimo de calidad y control de fotogramas) y di al entregar qué has mejorado.
 
+TODO EL VÍDEO +0,5 s (usuario, 02/03-11-2026, TODOS los vídeos): la PRIMERA PALABRA suena en el segundo 0,5 y TODO (voz, subtítulos, animaciones, cortes) se retrasa medio segundo a la vez, sin desfase entre voz e imagen; así quien abre el vídeo no se pierde el primer segundo (INICIO = 0.5 en montar_voz.py; los tiempos de gen.py salen de tiempos.json).
+
 CERO CORRECCIONES (usuario, 02-11-2026, OBLIGATORIO): no enviar ningún vídeo rápido y mal hecho; anticiparse a sus correcciones.
 Lo que más le importa: ESTÉTICA, GANCHO y GUION. Lista de comprobación en «CERO CORRECCIONES» de `quiz-video/animado/MEJORA_CONTINUA.md`.
 
