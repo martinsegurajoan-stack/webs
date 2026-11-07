@@ -657,7 +657,7 @@ FX.append(("perdida", P("cuenta") - 0.2))
 
 # ================================================================== 6) MILLONES PULSAN: travelling rápido por muchas habitaciones; casas, coches y viajes
 f9 = F(6)
-TIRA = ("industrial", "rosa", "humilde", "elegante", "cocina", "moderno", "noche", "industrial", "rosa", "humilde")
+TIRA = ("industrial", "rosa", "humilde", "elegante", "cocina")
 tira = []
 for k_, t_ in enumerate(TIRA):
     x0 = k_ * 1080
@@ -870,7 +870,7 @@ for k_, (eid, tipo, tp) in enumerate(LOCO):
         camara(eid, a, b, enfoca(600, 1100, 1.25), enfoca(620, 1130, 1.45), "sine.inOut")
         hx, hy, r = CARAS[pid]
         J(f'tl.to("#{pid} .cuerpo", {{rotation:34, y:120, svgOrigin:"540 1330", duration:0.3, ease:"power2.in", yoyo:true, repeat:3, repeatDelay:0.05}}, {tp - 0.1:.2f});')
-        J(f'tl.to("#{pid}_brazos", {{y:40, duration:0.3, yoyo:true, repeat:3, repeatDelay:0.05}}, {tp - 0.1:.2f});')
+        J(f'tl.to("#{pid}_brazos", {{rotation:34, y:120, svgOrigin:"540 1330", duration:0.3, ease:"power2.in", yoyo:true, repeat:3, repeatDelay:0.05}}, {tp - 0.1:.2f});')
         for j_ in range(2):
             pulsa(bid, tp + 0.2 + j_ * 0.65, fuerte=True)
         expr(pid, tp - 0.1, "sonrisa", "sorpresa")
@@ -912,7 +912,7 @@ f24 = F(15)
 grad_lin("mesaPOV", ((0, "#c08a55", 1), (1, "#6b4426", 1)))
 pov = (habitacion("noche", seed=24, ytab=820, detalle=True)
        + '<polygon points="-200,1000 1280,1000 2100,2700 -1020,2700" fill="url(#mesaPOV)"/><polygon points="-200,1000 1280,1000 2100,2700 -1020,2700" fill="#ffffff" opacity="0.08"/>'
-       + '<ellipse cx="200" cy="900" rx="260" ry="200" fill="url(#brilloOro)" opacity="0.55"/><rect x="170" y="760" width="60" height="150" rx="8" fill="#f2c14e"/><path d="M120,770 L280,770 L250,690 L150,690 Z" fill="#fff1c8"/>'
+       + '<ellipse cx="200" cy="900" rx="260" ry="200" fill="url(#brilloOro)" opacity="0.55"/><ellipse cx="200" cy="1004" rx="70" ry="16" fill="#3a2a1a"/><rect x="192" y="860" width="16" height="140" fill="#3a2a1a"/><path d="M120,870 L280,870 L250,790 L150,790 Z" fill="#fff1c8"/>'
        + pon_boton("btu", 540, 1360, 1.9) + movil("mtu", 900, 1420, 1.45, "<tspan>18.350 €</tspan>", "#ffffff")
        + mano_pov("manoI", 250, 1700, -1) + mano_pov("manoD", 650, 1700, 1)
        + '<rect id="oscuro24" width="1080" height="1920" fill="#0a0408" opacity="0"/><rect id="rojo24" width="1080" height="1920" fill="url(#brilloRojo)" opacity="0"/>')
@@ -931,7 +931,7 @@ J(f'tl.to("#oscuro24", {{opacity:0.45, duration:1.4}}, {tcero - 0.1:.2f});')
 FX.append(("perdida", tcero - 0.15))
 # miras el botón y pones el dedo encima
 J(f'tl.to("#e24-cam", {{x:{enfoca(540, 1260, 1.6)[0]}, y:{enfoca(540, 1260, 1.6)[1]}, scale:1.6, duration:0.8, ease:"power2.inOut"}}, {P("miras") - 0.2:.2f});')
-J(f'tl.to("#manoD", {{x:-110, y:-330, scale:0.8, svgOrigin:"650 1920", duration:0.9, ease:"power2.inOut"}}, {P("dedo") - 0.5:.2f});')
+J(f'tl.to("#manoD", {{x:-110, y:-430, scale:0.8, svgOrigin:"650 1920", duration:0.9, ease:"power2.inOut"}}, {P("dedo") - 0.5:.2f});')
 J(f'tl.to("#rojo24", {{opacity:0.5, duration:1.0, yoyo:true, repeat:3, ease:"sine.inOut"}}, {F(18):.2f}); tl.to("#btu .glow", {{opacity:1, duration:0.5, yoyo:true, repeat:9, ease:"sine.inOut"}}, {P("dedo"):.2f});')
 J(f'tl.fromTo("#manoD", {{rotation:0}}, {{rotation:1.2, svgOrigin:"650 1920", duration:0.07, yoyo:true, repeat:{int((FE(18) - F(18)) / 0.07)}, immediateRender:false}}, {F(18):.2f});')
 FX.append(("latido", F(18))); FX.append(("latido", F(18) + 1.8)); FX.append(("latido", F(18) + 3.6))
@@ -941,7 +941,7 @@ for k_, w_ in enumerate(("tres", "dos", "uno")):
     tw = P(w_, 2) if w_ == "tres" else P(w_, 2 if w_ == "dos" else 1)
     z = zooms[k_]
     J(f'tl.to("#e24-cam", {{x:{enfoca(540, 1300, z)[0]}, y:{enfoca(540, 1300, z)[1]}, scale:{z}, duration:0.18, ease:"power3.out"}}, {tw - 0.05:.2f});')
-    J(f'tl.to("#manoD", {{y:{-330 + 22 * (k_ + 1)}, duration:0.18, ease:"power2.out"}}, {tw - 0.05:.2f});')
+    J(f'tl.to("#manoD", {{y:{-430 - 25 * (k_ + 1)}, scale:{0.8 - 0.03 * (k_ + 1):.2f}, svgOrigin:"650 1920", duration:0.18, ease:"power2.out"}}, {tw - 0.05:.2f});')
     J(f'tl.fromTo("#rojo24", {{opacity:0.8}}, {{opacity:0.25, duration:0.5, immediateRender:false}}, {tw - 0.05:.2f});')
     FX.append(("latido", tw - 0.1))
 tc = FE(19) + 0.05                                        # CORTE EN SECO justo antes de pulsar

@@ -207,7 +207,7 @@ def latido_fx():
 fx = {"clic": (clic_fx(), 0.45), "clic2": (clic_fx(0.85) * 1.3, 0.6), "vibra": (vibra_fx(), 0.35), "caja": (caja_fx(), 0.55), "perdida": (perdida_fx(), 0.8),
       "whoosh": (audio.sfx_whoosh(0.6), 0.4), "coro": (coro_fx(), 0.6), "golpe": (boom_fx(2.0, 50), 0.8), "murmullo": (murmullo_fx(), 0.3),
       "rompe": (metal_fx(), 0.4), "denegada": (denegada_fx(), 0.45), "apagon": (apagon_fx(), 0.35), "latido": (latido_fx(), 0.9),
-      "sello": (boom_fx(0.6, 90), 0.8), "final": (boom_fx(3.5, 36), 1.3)}
+      "sello": (boom_fx(0.6, 90), 0.8), "claxon": (np.sin(2 * np.pi * 420 * np.arange(int(0.4 * SR)) / SR) * np.minimum(1, (0.4 - np.arange(int(0.4 * SR)) / SR) * 10) * 0.6, 0.4), "final": (boom_fx(3.5, 36), 1.3)}
 # --- MEZCLA LIMPIA (usuario, 02-11-2026: «no hagas tanto ruido… no se te oye»): la VOZ manda siempre.
 FX_GAIN = 0.32                       # todos los efectos mucho más bajos
 DENSO = {"clic", "lapiz", "tic", "tic2"}
@@ -241,13 +241,13 @@ music = ambiente(dur)
 T = json.load(open(os.path.join(BASE, "tiempos.json")))
 F_ = [f["ini"] for f in T["frases"]]
 tt = np.arange(len(music)) / SR
-FIN = [p["ini"] for p in T["palabras"]][-1] + 0.75            # golpe final: corte a negro
+FIN = max(t for k, t in json.load(open(os.path.join(BASE, "efectos.json"))) if k == "final") + 0.05   # corte seco a negro
 pulso = np.sin(2 * np.pi * 50 * tt) * np.exp(-((tt * 1.6) % 1.0) * 8)          # latido grave (96 lpm) en el caos
 caja = np.random.default_rng(1).standard_normal(len(tt)); caja = np.convolve(caja, np.ones(4) / 4, mode="same") * np.exp(-((tt * 1.6 + 0.5) % 1.0) * 30)
-tension = np.interp(tt, [0, F_[3], F_[8], F_[15], F_[20], F_[21] - 0.3, F_[21], F_[23], F_[25], dur], [0.15, 0.3, 0.45, 0.75, 1.0, 1.0, 0.0, 0.5, 0.85, 0.9])
+tension = np.interp(tt, [0, F_[2], F_[7], F_[11], F_[13], F_[14] - 0.3, F_[14], F_[16], F_[18], dur], [0.15, 0.3, 0.45, 0.8, 1.0, 1.0, 0.0, 0.5, 1.0, 1.0])
 alto = np.sin(2 * np.pi * 587.3 * tt) * 0.2 + np.sin(2 * np.pi * 880 * tt) * 0.12
-alto *= np.interp(tt, [0, 2, F_[15], F_[21] - 0.3, F_[21], F_[23], FIN, FIN + 0.01, dur], [0.4, 0.5, 0.4, 0.5, 0.0, 0.6, 0.9, 0, 0])
-base = music * np.interp(tt, [0, 3, F_[21] - 0.4, F_[21], F_[22], FIN, FIN + 0.01, dur], [0.7, 1, 1, 0.05, 0.8, 1, 0, 0])
+alto *= np.interp(tt, [0, 2, F_[11], F_[14] - 0.3, F_[14], F_[16], FIN, FIN + 0.01, dur], [0.4, 0.5, 0.4, 0.5, 0.0, 0.6, 0.9, 0, 0])
+base = music * np.interp(tt, [0, 3, F_[14] - 0.4, F_[14], F_[15], FIN, FIN + 0.01, dur], [0.7, 1, 1, 0.05, 0.8, 1, 0, 0])
 music = base + pulso * tension * 0.7 + caja * tension * 0.25 + alto
 music[tt >= FIN] = 0
 music = music / (np.max(np.abs(music)) or 1)
