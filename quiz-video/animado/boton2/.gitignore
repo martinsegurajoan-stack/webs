@@ -1,3 +1,5 @@
 salida/work-*/
 salida/.video-bruto.hf-transaction-*/
 salida/video-bruto.mp4
+render.log
+.hyperframes/render-outputs.json
