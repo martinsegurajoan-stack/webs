@@ -1013,5 +1013,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "c102521e-1dfe-4c02-9b94-2979f1a6ea11",
+      "completedAt": 1794065703947,
+      "output": "/home/user/webs/quiz-video/animado/gta6/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
