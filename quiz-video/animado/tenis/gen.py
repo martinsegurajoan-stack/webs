@@ -819,6 +819,7 @@ J(f'tl.fromTo("#barR", {{width:"0%"}}, {{width:"100%", duration:0.9, ease:"power
 J(f'tl.fromTo("#barE", {{width:"0%"}}, {{width:"100%", duration:0.9, ease:"power2.out", immediateRender:false}}, {P("slam"):.2f});')
 sale("#cRec", FE(15) + 0.2)
 chip("cHoy", 330, 1150, '<b>A 10 PUNTOS</b><small>CON 2 DE VENTAJA</small>', P("diez") - 0.3, P("minutos", 2) - 0.3)
+chip("cCierre", 140, 1150, '<b>NINGÚN TIE-BREAK ES ETERNO</b><small>ANTES QUE EL MARCADOR, SE RINDE EL CUERPO</small>', P("siempre") - 0.3, DUR - 1.3)
 chip("cMin", 330, 1150, '<b>≈ MINUTOS</b><small>NO 20 HORAS</small>', P("minutos", 2) - 0.2, FE(16) + 0.3)
 
 # marca del calambre sobre A (círculo que late en el gemelo)

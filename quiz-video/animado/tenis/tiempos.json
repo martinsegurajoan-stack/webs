@@ -1,5 +1,5 @@
 {
- "duracion": 115.261,
+ "duracion": 121.463,
  "frases": [
   {
    "n": 1,
@@ -99,9 +99,9 @@
   },
   {
    "n": 17,
-   "texto": "Por eso, en la vida real…",
+   "texto": "Por eso, en la vida real, ningún tie-break dura para siempre. Antes que el marcador, se rinde el cuerpo.",
    "ini": 111.831,
-   "fin": 113.561
+   "fin": 119.263
   }
  ],
  "palabras": [
@@ -2034,37 +2034,115 @@
   {
    "w": "Por",
    "ini": 111.831,
-   "fin": 112.058,
+   "fin": 112.053,
    "frase": 17
   },
   {
    "w": "eso,",
-   "ini": 112.058,
-   "fin": 112.341,
+   "ini": 112.053,
+   "fin": 112.331,
    "frase": 17
   },
   {
    "w": "en",
-   "ini": 112.551,
-   "fin": 112.729,
+   "ini": 112.671,
+   "fin": 112.825,
    "frase": 17
   },
   {
    "w": "la",
-   "ini": 112.729,
-   "fin": 112.908,
+   "ini": 112.825,
+   "fin": 112.978,
    "frase": 17
   },
   {
    "w": "vida",
-   "ini": 112.908,
-   "fin": 113.204,
+   "ini": 112.978,
+   "fin": 113.234,
    "frase": 17
   },
   {
-   "w": "real…",
-   "ini": 113.204,
-   "fin": 113.561,
+   "w": "real,",
+   "ini": 113.234,
+   "fin": 113.541,
+   "frase": 17
+  },
+  {
+   "w": "ningún",
+   "ini": 113.881,
+   "fin": 114.245,
+   "frase": 17
+  },
+  {
+   "w": "tie-break",
+   "ini": 114.245,
+   "fin": 114.764,
+   "frase": 17
+  },
+  {
+   "w": "dura",
+   "ini": 114.764,
+   "fin": 115.024,
+   "frase": 17
+  },
+  {
+   "w": "para",
+   "ini": 115.024,
+   "fin": 115.284,
+   "frase": 17
+  },
+  {
+   "w": "siempre.",
+   "ini": 115.284,
+   "fin": 115.751,
+   "frase": 17
+  },
+  {
+   "w": "Antes",
+   "ini": 116.571,
+   "fin": 116.853,
+   "frase": 17
+  },
+  {
+   "w": "que",
+   "ini": 116.853,
+   "fin": 117.041,
+   "frase": 17
+  },
+  {
+   "w": "el",
+   "ini": 117.041,
+   "fin": 117.182,
+   "frase": 17
+  },
+  {
+   "w": "marcador,",
+   "ini": 117.182,
+   "fin": 117.651,
+   "frase": 17
+  },
+  {
+   "w": "se",
+   "ini": 118.121,
+   "fin": 118.293,
+   "frase": 17
+  },
+  {
+   "w": "rinde",
+   "ini": 118.293,
+   "fin": 118.635,
+   "frase": 17
+  },
+  {
+   "w": "el",
+   "ini": 118.635,
+   "fin": 118.807,
+   "frase": 17
+  },
+  {
+   "w": "cuerpo.",
+   "ini": 118.807,
+   "fin": 119.263,
    "frase": 17
   }
  ]

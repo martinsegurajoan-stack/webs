@@ -32,7 +32,7 @@ for i, txt in enumerate(lines, 1):
     if i < len(lines):
         g = GAP + EXTRA.get(i, 0.0)
         out.append(np.zeros(int(g * SR))); t += g
-COLA = 1.7
+COLA = 2.2
 out.append(np.zeros(int(COLA * SR))); t += COLA
 sig = np.concatenate(out)
 sig = sig / (np.max(np.abs(sig)) or 1) * 0.9
