@@ -1,0 +1,1969 @@
+{
+ "duracion": 120.0,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Baila, se ríe más alto que nadie y jura que va borracho. Pero en su vaso no hay ni una gota de alcohol.",
+   "ini": 0.5,
+   "fin": 8.442
+  },
+  {
+   "n": 2,
+   "texto": "Es el efecto placebo del alcohol, y se ha medido en laboratorio muchas veces.",
+   "ini": 9.034,
+   "fin": 13.935
+  },
+  {
+   "n": 3,
+   "texto": "Los investigadores montan un bar de mentira: música, luces y botellas de vodka que en realidad solo tienen tónica.",
+   "ini": 14.526,
+   "fin": 22.116
+  },
+  {
+   "n": 4,
+   "texto": "Para engañar al olfato, untan el borde del vaso con vodka y dejan unas gotas flotando encima. El primer trago huele y sabe a alcohol.",
+   "ini": 22.707,
+   "fin": 31.32
+  },
+  {
+   "n": 5,
+   "texto": "Y a todos les dicen lo mismo: estáis bebiendo vodka con tónica.",
+   "ini": 31.911,
+   "fin": 36.188
+  },
+  {
+   "n": 6,
+   "texto": "Al poco rato, muchos dicen que ya lo notan. Hablan más alto, se sueltan y se ríen más.",
+   "ini": 36.78,
+   "fin": 42.94
+  },
+  {
+   "n": 7,
+   "texto": "En un estudio en Francia, los que creían haber bebido se puntuaron a sí mismos como más atractivos. Los jueces que vieron sus vídeos, no.",
+   "ini": 43.532,
+   "fin": 51.811
+  },
+  {
+   "n": 8,
+   "texto": "En otro, les enseñaron las fotos de un robo y luego les dieron datos falsos. Los que creían ir bebidos se los creyeron más, y con más seguridad.",
+   "ini": 52.403,
+   "fin": 61.471
+  },
+  {
+   "n": 9,
+   "texto": "Pero el alcoholímetro marca cero. En su sangre no hay alcohol.",
+   "ini": 62.063,
+   "fin": 66.193
+  },
+  {
+   "n": 10,
+   "texto": "¿Por qué pasa? Porque el cerebro no solo reacciona a lo que bebes. También a lo que espera que pase.",
+   "ini": 66.785,
+   "fin": 73.396
+  },
+  {
+   "n": 11,
+   "texto": "Años de fiestas le han enseñado que ese olor, esa música y ese vaso significan soltarse.",
+   "ini": 73.988,
+   "fin": 80.404
+  },
+  {
+   "n": 12,
+   "texto": "Y el alcohol es la excusa perfecta: si crees que vas bebido, te das permiso para hacer cosas que sobrio no harías.",
+   "ini": 80.996,
+   "fin": 88.275
+  },
+  {
+   "n": 13,
+   "texto": "Pero hay algo que el placebo casi no puede fingir: los reflejos.",
+   "ini": 88.867,
+   "fin": 93.315
+  },
+  {
+   "n": 14,
+   "texto": "En pruebas de equilibrio y de reacción, los que solo creen haber bebido apenas empeoran. El alcohol de verdad sí los frena, creas lo que creas.",
+   "ini": 93.906,
+   "fin": 103.164
+  },
+  {
+   "n": 15,
+   "texto": "Al final les cuentan la verdad. A muchos les cuesta creerlo.",
+   "ini": 103.755,
+   "fin": 107.779
+  },
+  {
+   "n": 16,
+   "texto": "Así que parte de lo que sientes en una fiesta no sale del vaso. Sale de tu cabeza.",
+   "ini": 108.37,
+   "fin": 113.618
+  },
+  {
+   "n": 17,
+   "texto": "Por eso él sigue bailando… sin una gota de alcohol.",
+   "ini": 114.209,
+   "fin": 118.001
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Baila,",
+   "ini": 0.5,
+   "fin": 1.16,
+   "frase": 1
+  },
+  {
+   "w": "se",
+   "ini": 1.4,
+   "fin": 1.605,
+   "frase": 1
+  },
+  {
+   "w": "ríe",
+   "ini": 1.605,
+   "fin": 1.879,
+   "frase": 1
+  },
+  {
+   "w": "más",
+   "ini": 1.879,
+   "fin": 2.152,
+   "frase": 1
+  },
+  {
+   "w": "alto",
+   "ini": 2.152,
+   "fin": 2.494,
+   "frase": 1
+  },
+  {
+   "w": "que",
+   "ini": 2.494,
+   "fin": 2.768,
+   "frase": 1
+  },
+  {
+   "w": "nadie",
+   "ini": 2.768,
+   "fin": 3.178,
+   "frase": 1
+  },
+  {
+   "w": "y",
+   "ini": 3.178,
+   "fin": 3.315,
+   "frase": 1
+  },
+  {
+   "w": "jura",
+   "ini": 3.315,
+   "fin": 3.657,
+   "frase": 1
+  },
+  {
+   "w": "que",
+   "ini": 3.657,
+   "fin": 3.931,
+   "frase": 1
+  },
+  {
+   "w": "va",
+   "ini": 3.931,
+   "fin": 4.136,
+   "frase": 1
+  },
+  {
+   "w": "borracho.",
+   "ini": 4.136,
+   "fin": 4.82,
+   "frase": 1
+  },
+  {
+   "w": "Pero",
+   "ini": 4.9,
+   "fin": 5.277,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 5.277,
+   "fin": 5.503,
+   "frase": 1
+  },
+  {
+   "w": "su",
+   "ini": 5.503,
+   "fin": 5.729,
+   "frase": 1
+  },
+  {
+   "w": "vaso",
+   "ini": 5.729,
+   "fin": 6.106,
+   "frase": 1
+  },
+  {
+   "w": "no",
+   "ini": 6.106,
+   "fin": 6.332,
+   "frase": 1
+  },
+  {
+   "w": "hay",
+   "ini": 6.332,
+   "fin": 6.634,
+   "frase": 1
+  },
+  {
+   "w": "ni",
+   "ini": 6.634,
+   "fin": 6.86,
+   "frase": 1
+  },
+  {
+   "w": "una",
+   "ini": 6.86,
+   "fin": 7.161,
+   "frase": 1
+  },
+  {
+   "w": "gota",
+   "ini": 7.161,
+   "fin": 7.538,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 7.538,
+   "fin": 7.764,
+   "frase": 1
+  },
+  {
+   "w": "alcohol.",
+   "ini": 7.764,
+   "fin": 8.442,
+   "frase": 1
+  },
+  {
+   "w": "Es",
+   "ini": 9.034,
+   "fin": 9.209,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 9.209,
+   "fin": 9.383,
+   "frase": 2
+  },
+  {
+   "w": "efecto",
+   "ini": 9.383,
+   "fin": 9.791,
+   "frase": 2
+  },
+  {
+   "w": "placebo",
+   "ini": 9.791,
+   "fin": 10.257,
+   "frase": 2
+  },
+  {
+   "w": "del",
+   "ini": 10.257,
+   "fin": 10.49,
+   "frase": 2
+  },
+  {
+   "w": "alcohol,",
+   "ini": 10.49,
+   "fin": 11.014,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 11.404,
+   "fin": 11.519,
+   "frase": 2
+  },
+  {
+   "w": "se",
+   "ini": 11.519,
+   "fin": 11.691,
+   "frase": 2
+  },
+  {
+   "w": "ha",
+   "ini": 11.691,
+   "fin": 11.864,
+   "frase": 2
+  },
+  {
+   "w": "medido",
+   "ini": 11.864,
+   "fin": 12.267,
+   "frase": 2
+  },
+  {
+   "w": "en",
+   "ini": 12.267,
+   "fin": 12.439,
+   "frase": 2
+  },
+  {
+   "w": "laboratorio",
+   "ini": 12.439,
+   "fin": 13.13,
+   "frase": 2
+  },
+  {
+   "w": "muchas",
+   "ini": 13.13,
+   "fin": 13.532,
+   "frase": 2
+  },
+  {
+   "w": "veces.",
+   "ini": 13.532,
+   "fin": 13.935,
+   "frase": 2
+  },
+  {
+   "w": "Los",
+   "ini": 14.526,
+   "fin": 14.742,
+   "frase": 3
+  },
+  {
+   "w": "investigadores",
+   "ini": 14.742,
+   "fin": 15.548,
+   "frase": 3
+  },
+  {
+   "w": "montan",
+   "ini": 15.548,
+   "fin": 15.925,
+   "frase": 3
+  },
+  {
+   "w": "un",
+   "ini": 15.925,
+   "fin": 16.086,
+   "frase": 3
+  },
+  {
+   "w": "bar",
+   "ini": 16.086,
+   "fin": 16.301,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 16.301,
+   "fin": 16.462,
+   "frase": 3
+  },
+  {
+   "w": "mentira:",
+   "ini": 16.462,
+   "fin": 16.946,
+   "frase": 3
+  },
+  {
+   "w": "música,",
+   "ini": 17.396,
+   "fin": 17.796,
+   "frase": 3
+  },
+  {
+   "w": "luces",
+   "ini": 17.876,
+   "fin": 18.287,
+   "frase": 3
+  },
+  {
+   "w": "y",
+   "ini": 18.287,
+   "fin": 18.423,
+   "frase": 3
+  },
+  {
+   "w": "botellas",
+   "ini": 18.423,
+   "fin": 19.039,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 19.039,
+   "fin": 19.244,
+   "frase": 3
+  },
+  {
+   "w": "vodka",
+   "ini": 19.244,
+   "fin": 19.654,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 19.654,
+   "fin": 19.928,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 19.928,
+   "fin": 20.133,
+   "frase": 3
+  },
+  {
+   "w": "realidad",
+   "ini": 20.133,
+   "fin": 20.748,
+   "frase": 3
+  },
+  {
+   "w": "solo",
+   "ini": 20.748,
+   "fin": 21.09,
+   "frase": 3
+  },
+  {
+   "w": "tienen",
+   "ini": 21.09,
+   "fin": 21.569,
+   "frase": 3
+  },
+  {
+   "w": "tónica.",
+   "ini": 21.569,
+   "fin": 22.116,
+   "frase": 3
+  },
+  {
+   "w": "Para",
+   "ini": 22.707,
+   "fin": 22.97,
+   "frase": 4
+  },
+  {
+   "w": "engañar",
+   "ini": 22.97,
+   "fin": 23.39,
+   "frase": 4
+  },
+  {
+   "w": "al",
+   "ini": 23.39,
+   "fin": 23.547,
+   "frase": 4
+  },
+  {
+   "w": "olfato,",
+   "ini": 23.547,
+   "fin": 23.967,
+   "frase": 4
+  },
+  {
+   "w": "untan",
+   "ini": 24.097,
+   "fin": 24.453,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 24.453,
+   "fin": 24.631,
+   "frase": 4
+  },
+  {
+   "w": "borde",
+   "ini": 24.631,
+   "fin": 24.987,
+   "frase": 4
+  },
+  {
+   "w": "del",
+   "ini": 24.987,
+   "fin": 25.224,
+   "frase": 4
+  },
+  {
+   "w": "vaso",
+   "ini": 25.224,
+   "fin": 25.52,
+   "frase": 4
+  },
+  {
+   "w": "con",
+   "ini": 25.52,
+   "fin": 25.757,
+   "frase": 4
+  },
+  {
+   "w": "vodka",
+   "ini": 25.757,
+   "fin": 26.113,
+   "frase": 4
+  },
+  {
+   "w": "y",
+   "ini": 26.113,
+   "fin": 26.232,
+   "frase": 4
+  },
+  {
+   "w": "dejan",
+   "ini": 26.232,
+   "fin": 26.587,
+   "frase": 4
+  },
+  {
+   "w": "unas",
+   "ini": 26.587,
+   "fin": 26.884,
+   "frase": 4
+  },
+  {
+   "w": "gotas",
+   "ini": 26.884,
+   "fin": 27.239,
+   "frase": 4
+  },
+  {
+   "w": "flotando",
+   "ini": 27.239,
+   "fin": 27.773,
+   "frase": 4
+  },
+  {
+   "w": "encima.",
+   "ini": 27.773,
+   "fin": 28.247,
+   "frase": 4
+  },
+  {
+   "w": "El",
+   "ini": 28.787,
+   "fin": 28.977,
+   "frase": 4
+  },
+  {
+   "w": "primer",
+   "ini": 28.977,
+   "fin": 29.42,
+   "frase": 4
+  },
+  {
+   "w": "trago",
+   "ini": 29.42,
+   "fin": 29.8,
+   "frase": 4
+  },
+  {
+   "w": "huele",
+   "ini": 29.8,
+   "fin": 30.18,
+   "frase": 4
+  },
+  {
+   "w": "y",
+   "ini": 30.18,
+   "fin": 30.307,
+   "frase": 4
+  },
+  {
+   "w": "sabe",
+   "ini": 30.307,
+   "fin": 30.623,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 30.623,
+   "fin": 30.75,
+   "frase": 4
+  },
+  {
+   "w": "alcohol.",
+   "ini": 30.75,
+   "fin": 31.32,
+   "frase": 4
+  },
+  {
+   "w": "Y",
+   "ini": 31.911,
+   "fin": 32.02,
+   "frase": 5
+  },
+  {
+   "w": "a",
+   "ini": 32.02,
+   "fin": 32.128,
+   "frase": 5
+  },
+  {
+   "w": "todos",
+   "ini": 32.128,
+   "fin": 32.454,
+   "frase": 5
+  },
+  {
+   "w": "les",
+   "ini": 32.454,
+   "fin": 32.672,
+   "frase": 5
+  },
+  {
+   "w": "dicen",
+   "ini": 32.672,
+   "fin": 32.998,
+   "frase": 5
+  },
+  {
+   "w": "lo",
+   "ini": 32.998,
+   "fin": 33.161,
+   "frase": 5
+  },
+  {
+   "w": "mismo:",
+   "ini": 33.161,
+   "fin": 33.541,
+   "frase": 5
+  },
+  {
+   "w": "estáis",
+   "ini": 33.921,
+   "fin": 34.388,
+   "frase": 5
+  },
+  {
+   "w": "bebiendo",
+   "ini": 34.388,
+   "fin": 34.988,
+   "frase": 5
+  },
+  {
+   "w": "vodka",
+   "ini": 34.988,
+   "fin": 35.388,
+   "frase": 5
+  },
+  {
+   "w": "con",
+   "ini": 35.388,
+   "fin": 35.655,
+   "frase": 5
+  },
+  {
+   "w": "tónica.",
+   "ini": 35.655,
+   "fin": 36.188,
+   "frase": 5
+  },
+  {
+   "w": "Al",
+   "ini": 36.78,
+   "fin": 36.951,
+   "frase": 6
+  },
+  {
+   "w": "poco",
+   "ini": 36.951,
+   "fin": 37.237,
+   "frase": 6
+  },
+  {
+   "w": "rato,",
+   "ini": 37.237,
+   "fin": 37.58,
+   "frase": 6
+  },
+  {
+   "w": "muchos",
+   "ini": 37.69,
+   "fin": 38.079,
+   "frase": 6
+  },
+  {
+   "w": "dicen",
+   "ini": 38.079,
+   "fin": 38.413,
+   "frase": 6
+  },
+  {
+   "w": "que",
+   "ini": 38.413,
+   "fin": 38.636,
+   "frase": 6
+  },
+  {
+   "w": "ya",
+   "ini": 38.636,
+   "fin": 38.803,
+   "frase": 6
+  },
+  {
+   "w": "lo",
+   "ini": 38.803,
+   "fin": 38.97,
+   "frase": 6
+  },
+  {
+   "w": "notan.",
+   "ini": 38.97,
+   "fin": 39.36,
+   "frase": 6
+  },
+  {
+   "w": "Hablan",
+   "ini": 39.85,
+   "fin": 40.278,
+   "frase": 6
+  },
+  {
+   "w": "más",
+   "ini": 40.278,
+   "fin": 40.523,
+   "frase": 6
+  },
+  {
+   "w": "alto,",
+   "ini": 40.523,
+   "fin": 40.89,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 41.07,
+   "fin": 41.286,
+   "frase": 6
+  },
+  {
+   "w": "sueltan",
+   "ini": 41.286,
+   "fin": 41.861,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 41.861,
+   "fin": 42.005,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 42.005,
+   "fin": 42.221,
+   "frase": 6
+  },
+  {
+   "w": "ríen",
+   "ini": 42.221,
+   "fin": 42.581,
+   "frase": 6
+  },
+  {
+   "w": "más.",
+   "ini": 42.581,
+   "fin": 42.94,
+   "frase": 6
+  },
+  {
+   "w": "En",
+   "ini": 43.532,
+   "fin": 43.689,
+   "frase": 7
+  },
+  {
+   "w": "un",
+   "ini": 43.689,
+   "fin": 43.846,
+   "frase": 7
+  },
+  {
+   "w": "estudio",
+   "ini": 43.846,
+   "fin": 44.264,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 44.264,
+   "fin": 44.421,
+   "frase": 7
+  },
+  {
+   "w": "Francia,",
+   "ini": 44.421,
+   "fin": 44.892,
+   "frase": 7
+  },
+  {
+   "w": "los",
+   "ini": 45.002,
+   "fin": 45.221,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 45.221,
+   "fin": 45.441,
+   "frase": 7
+  },
+  {
+   "w": "creían",
+   "ini": 45.441,
+   "fin": 45.825,
+   "frase": 7
+  },
+  {
+   "w": "haber",
+   "ini": 45.825,
+   "fin": 46.154,
+   "frase": 7
+  },
+  {
+   "w": "bebido",
+   "ini": 46.154,
+   "fin": 46.538,
+   "frase": 7
+  },
+  {
+   "w": "se",
+   "ini": 46.538,
+   "fin": 46.703,
+   "frase": 7
+  },
+  {
+   "w": "puntuaron",
+   "ini": 46.703,
+   "fin": 47.251,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 47.251,
+   "fin": 47.361,
+   "frase": 7
+  },
+  {
+   "w": "sí",
+   "ini": 47.361,
+   "fin": 47.526,
+   "frase": 7
+  },
+  {
+   "w": "mismos",
+   "ini": 47.526,
+   "fin": 47.91,
+   "frase": 7
+  },
+  {
+   "w": "como",
+   "ini": 47.91,
+   "fin": 48.184,
+   "frase": 7
+  },
+  {
+   "w": "más",
+   "ini": 48.184,
+   "fin": 48.403,
+   "frase": 7
+  },
+  {
+   "w": "atractivos.",
+   "ini": 48.403,
+   "fin": 49.062,
+   "frase": 7
+  },
+  {
+   "w": "Los",
+   "ini": 49.572,
+   "fin": 49.758,
+   "frase": 7
+  },
+  {
+   "w": "jueces",
+   "ini": 49.758,
+   "fin": 50.083,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 50.083,
+   "fin": 50.269,
+   "frase": 7
+  },
+  {
+   "w": "vieron",
+   "ini": 50.269,
+   "fin": 50.594,
+   "frase": 7
+  },
+  {
+   "w": "sus",
+   "ini": 50.594,
+   "fin": 50.78,
+   "frase": 7
+  },
+  {
+   "w": "vídeos,",
+   "ini": 50.78,
+   "fin": 51.152,
+   "frase": 7
+  },
+  {
+   "w": "no.",
+   "ini": 51.462,
+   "fin": 51.811,
+   "frase": 7
+  },
+  {
+   "w": "En",
+   "ini": 52.403,
+   "fin": 52.569,
+   "frase": 8
+  },
+  {
+   "w": "otro,",
+   "ini": 52.569,
+   "fin": 52.903,
+   "frase": 8
+  },
+  {
+   "w": "les",
+   "ini": 53.053,
+   "fin": 53.275,
+   "frase": 8
+  },
+  {
+   "w": "enseñaron",
+   "ini": 53.275,
+   "fin": 53.833,
+   "frase": 8
+  },
+  {
+   "w": "las",
+   "ini": 53.833,
+   "fin": 54.056,
+   "frase": 8
+  },
+  {
+   "w": "fotos",
+   "ini": 54.056,
+   "fin": 54.39,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 54.39,
+   "fin": 54.557,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 54.557,
+   "fin": 54.725,
+   "frase": 8
+  },
+  {
+   "w": "robo",
+   "ini": 54.725,
+   "fin": 55.003,
+   "frase": 8
+  },
+  {
+   "w": "y",
+   "ini": 55.003,
+   "fin": 55.115,
+   "frase": 8
+  },
+  {
+   "w": "luego",
+   "ini": 55.115,
+   "fin": 55.449,
+   "frase": 8
+  },
+  {
+   "w": "les",
+   "ini": 55.449,
+   "fin": 55.672,
+   "frase": 8
+  },
+  {
+   "w": "dieron",
+   "ini": 55.672,
+   "fin": 56.062,
+   "frase": 8
+  },
+  {
+   "w": "datos",
+   "ini": 56.062,
+   "fin": 56.397,
+   "frase": 8
+  },
+  {
+   "w": "falsos.",
+   "ini": 56.397,
+   "fin": 56.843,
+   "frase": 8
+  },
+  {
+   "w": "Los",
+   "ini": 57.373,
+   "fin": 57.597,
+   "frase": 8
+  },
+  {
+   "w": "que",
+   "ini": 57.597,
+   "fin": 57.822,
+   "frase": 8
+  },
+  {
+   "w": "creían",
+   "ini": 57.822,
+   "fin": 58.215,
+   "frase": 8
+  },
+  {
+   "w": "ir",
+   "ini": 58.215,
+   "fin": 58.384,
+   "frase": 8
+  },
+  {
+   "w": "bebidos",
+   "ini": 58.384,
+   "fin": 58.833,
+   "frase": 8
+  },
+  {
+   "w": "se",
+   "ini": 58.833,
+   "fin": 59.001,
+   "frase": 8
+  },
+  {
+   "w": "los",
+   "ini": 59.001,
+   "fin": 59.226,
+   "frase": 8
+  },
+  {
+   "w": "creyeron",
+   "ini": 59.226,
+   "fin": 59.732,
+   "frase": 8
+  },
+  {
+   "w": "más,",
+   "ini": 59.732,
+   "fin": 60.013,
+   "frase": 8
+  },
+  {
+   "w": "y",
+   "ini": 60.243,
+   "fin": 60.36,
+   "frase": 8
+  },
+  {
+   "w": "con",
+   "ini": 60.36,
+   "fin": 60.594,
+   "frase": 8
+  },
+  {
+   "w": "más",
+   "ini": 60.594,
+   "fin": 60.828,
+   "frase": 8
+  },
+  {
+   "w": "seguridad.",
+   "ini": 60.828,
+   "fin": 61.471,
+   "frase": 8
+  },
+  {
+   "w": "Pero",
+   "ini": 62.063,
+   "fin": 62.338,
+   "frase": 9
+  },
+  {
+   "w": "el",
+   "ini": 62.338,
+   "fin": 62.503,
+   "frase": 9
+  },
+  {
+   "w": "alcoholímetro",
+   "ini": 62.503,
+   "fin": 63.273,
+   "frase": 9
+  },
+  {
+   "w": "marca",
+   "ini": 63.273,
+   "fin": 63.603,
+   "frase": 9
+  },
+  {
+   "w": "cero.",
+   "ini": 63.603,
+   "fin": 63.933,
+   "frase": 9
+  },
+  {
+   "w": "En",
+   "ini": 64.303,
+   "fin": 64.498,
+   "frase": 9
+  },
+  {
+   "w": "su",
+   "ini": 64.498,
+   "fin": 64.694,
+   "frase": 9
+  },
+  {
+   "w": "sangre",
+   "ini": 64.694,
+   "fin": 65.15,
+   "frase": 9
+  },
+  {
+   "w": "no",
+   "ini": 65.15,
+   "fin": 65.346,
+   "frase": 9
+  },
+  {
+   "w": "hay",
+   "ini": 65.346,
+   "fin": 65.607,
+   "frase": 9
+  },
+  {
+   "w": "alcohol.",
+   "ini": 65.607,
+   "fin": 66.193,
+   "frase": 9
+  },
+  {
+   "w": "¿Por",
+   "ini": 66.785,
+   "fin": 67.021,
+   "frase": 10
+  },
+  {
+   "w": "qué",
+   "ini": 67.021,
+   "fin": 67.211,
+   "frase": 10
+  },
+  {
+   "w": "pasa?",
+   "ini": 67.211,
+   "fin": 67.495,
+   "frase": 10
+  },
+  {
+   "w": "Porque",
+   "ini": 68.015,
+   "fin": 68.4,
+   "frase": 10
+  },
+  {
+   "w": "el",
+   "ini": 68.4,
+   "fin": 68.565,
+   "frase": 10
+  },
+  {
+   "w": "cerebro",
+   "ini": 68.565,
+   "fin": 69.005,
+   "frase": 10
+  },
+  {
+   "w": "no",
+   "ini": 69.005,
+   "fin": 69.17,
+   "frase": 10
+  },
+  {
+   "w": "solo",
+   "ini": 69.17,
+   "fin": 69.445,
+   "frase": 10
+  },
+  {
+   "w": "reacciona",
+   "ini": 69.445,
+   "fin": 69.995,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 69.995,
+   "fin": 70.105,
+   "frase": 10
+  },
+  {
+   "w": "lo",
+   "ini": 70.105,
+   "fin": 70.27,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 70.27,
+   "fin": 70.49,
+   "frase": 10
+  },
+  {
+   "w": "bebes.",
+   "ini": 70.49,
+   "fin": 70.875,
+   "frase": 10
+  },
+  {
+   "w": "También",
+   "ini": 71.215,
+   "fin": 71.728,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 71.728,
+   "fin": 71.856,
+   "frase": 10
+  },
+  {
+   "w": "lo",
+   "ini": 71.856,
+   "fin": 72.049,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 72.049,
+   "fin": 72.305,
+   "frase": 10
+  },
+  {
+   "w": "espera",
+   "ini": 72.305,
+   "fin": 72.755,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 72.755,
+   "fin": 73.011,
+   "frase": 10
+  },
+  {
+   "w": "pase.",
+   "ini": 73.011,
+   "fin": 73.396,
+   "frase": 10
+  },
+  {
+   "w": "Años",
+   "ini": 73.988,
+   "fin": 74.36,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 74.36,
+   "fin": 74.584,
+   "frase": 11
+  },
+  {
+   "w": "fiestas",
+   "ini": 74.584,
+   "fin": 75.181,
+   "frase": 11
+  },
+  {
+   "w": "le",
+   "ini": 75.181,
+   "fin": 75.404,
+   "frase": 11
+  },
+  {
+   "w": "han",
+   "ini": 75.404,
+   "fin": 75.703,
+   "frase": 11
+  },
+  {
+   "w": "enseñado",
+   "ini": 75.703,
+   "fin": 76.374,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 76.374,
+   "fin": 76.672,
+   "frase": 11
+  },
+  {
+   "w": "ese",
+   "ini": 76.672,
+   "fin": 76.97,
+   "frase": 11
+  },
+  {
+   "w": "olor,",
+   "ini": 76.97,
+   "fin": 77.418,
+   "frase": 11
+  },
+  {
+   "w": "esa",
+   "ini": 77.498,
+   "fin": 77.768,
+   "frase": 11
+  },
+  {
+   "w": "música",
+   "ini": 77.768,
+   "fin": 78.241,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 78.241,
+   "fin": 78.376,
+   "frase": 11
+  },
+  {
+   "w": "ese",
+   "ini": 78.376,
+   "fin": 78.647,
+   "frase": 11
+  },
+  {
+   "w": "vaso",
+   "ini": 78.647,
+   "fin": 78.985,
+   "frase": 11
+  },
+  {
+   "w": "significan",
+   "ini": 78.985,
+   "fin": 79.728,
+   "frase": 11
+  },
+  {
+   "w": "soltarse.",
+   "ini": 79.728,
+   "fin": 80.404,
+   "frase": 11
+  },
+  {
+   "w": "Y",
+   "ini": 80.996,
+   "fin": 81.111,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 81.111,
+   "fin": 81.283,
+   "frase": 12
+  },
+  {
+   "w": "alcohol",
+   "ini": 81.283,
+   "fin": 81.743,
+   "frase": 12
+  },
+  {
+   "w": "es",
+   "ini": 81.743,
+   "fin": 81.916,
+   "frase": 12
+  },
+  {
+   "w": "la",
+   "ini": 81.916,
+   "fin": 82.088,
+   "frase": 12
+  },
+  {
+   "w": "excusa",
+   "ini": 82.088,
+   "fin": 82.491,
+   "frase": 12
+  },
+  {
+   "w": "perfecta:",
+   "ini": 82.491,
+   "fin": 83.066,
+   "frase": 12
+  },
+  {
+   "w": "si",
+   "ini": 83.466,
+   "fin": 83.635,
+   "frase": 12
+  },
+  {
+   "w": "crees",
+   "ini": 83.635,
+   "fin": 83.973,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 83.973,
+   "fin": 84.199,
+   "frase": 12
+  },
+  {
+   "w": "vas",
+   "ini": 84.199,
+   "fin": 84.425,
+   "frase": 12
+  },
+  {
+   "w": "bebido,",
+   "ini": 84.425,
+   "fin": 84.876,
+   "frase": 12
+  },
+  {
+   "w": "te",
+   "ini": 85.006,
+   "fin": 85.187,
+   "frase": 12
+  },
+  {
+   "w": "das",
+   "ini": 85.187,
+   "fin": 85.43,
+   "frase": 12
+  },
+  {
+   "w": "permiso",
+   "ini": 85.43,
+   "fin": 85.914,
+   "frase": 12
+  },
+  {
+   "w": "para",
+   "ini": 85.914,
+   "fin": 86.217,
+   "frase": 12
+  },
+  {
+   "w": "hacer",
+   "ini": 86.217,
+   "fin": 86.58,
+   "frase": 12
+  },
+  {
+   "w": "cosas",
+   "ini": 86.58,
+   "fin": 86.943,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 86.943,
+   "fin": 87.186,
+   "frase": 12
+  },
+  {
+   "w": "sobrio",
+   "ini": 87.186,
+   "fin": 87.609,
+   "frase": 12
+  },
+  {
+   "w": "no",
+   "ini": 87.609,
+   "fin": 87.791,
+   "frase": 12
+  },
+  {
+   "w": "harías.",
+   "ini": 87.791,
+   "fin": 88.275,
+   "frase": 12
+  },
+  {
+   "w": "Pero",
+   "ini": 88.867,
+   "fin": 89.236,
+   "frase": 13
+  },
+  {
+   "w": "hay",
+   "ini": 89.236,
+   "fin": 89.532,
+   "frase": 13
+  },
+  {
+   "w": "algo",
+   "ini": 89.532,
+   "fin": 89.902,
+   "frase": 13
+  },
+  {
+   "w": "que",
+   "ini": 89.902,
+   "fin": 90.197,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 90.197,
+   "fin": 90.419,
+   "frase": 13
+  },
+  {
+   "w": "placebo",
+   "ini": 90.419,
+   "fin": 91.011,
+   "frase": 13
+  },
+  {
+   "w": "casi",
+   "ini": 91.011,
+   "fin": 91.38,
+   "frase": 13
+  },
+  {
+   "w": "no",
+   "ini": 91.38,
+   "fin": 91.602,
+   "frase": 13
+  },
+  {
+   "w": "puede",
+   "ini": 91.602,
+   "fin": 92.045,
+   "frase": 13
+  },
+  {
+   "w": "fingir:",
+   "ini": 92.045,
+   "fin": 92.637,
+   "frase": 13
+  },
+  {
+   "w": "los",
+   "ini": 92.727,
+   "fin": 92.895,
+   "frase": 13
+  },
+  {
+   "w": "reflejos.",
+   "ini": 92.895,
+   "fin": 93.315,
+   "frase": 13
+  },
+  {
+   "w": "En",
+   "ini": 93.906,
+   "fin": 94.069,
+   "frase": 14
+  },
+  {
+   "w": "pruebas",
+   "ini": 94.069,
+   "fin": 94.503,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 94.503,
+   "fin": 94.666,
+   "frase": 14
+  },
+  {
+   "w": "equilibrio",
+   "ini": 94.666,
+   "fin": 95.262,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 95.262,
+   "fin": 95.371,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 95.371,
+   "fin": 95.534,
+   "frase": 14
+  },
+  {
+   "w": "reacción,",
+   "ini": 95.534,
+   "fin": 96.076,
+   "frase": 14
+  },
+  {
+   "w": "los",
+   "ini": 96.296,
+   "fin": 96.533,
+   "frase": 14
+  },
+  {
+   "w": "que",
+   "ini": 96.533,
+   "fin": 96.77,
+   "frase": 14
+  },
+  {
+   "w": "solo",
+   "ini": 96.77,
+   "fin": 97.066,
+   "frase": 14
+  },
+  {
+   "w": "creen",
+   "ini": 97.066,
+   "fin": 97.421,
+   "frase": 14
+  },
+  {
+   "w": "haber",
+   "ini": 97.421,
+   "fin": 97.776,
+   "frase": 14
+  },
+  {
+   "w": "bebido",
+   "ini": 97.776,
+   "fin": 98.19,
+   "frase": 14
+  },
+  {
+   "w": "apenas",
+   "ini": 98.19,
+   "fin": 98.604,
+   "frase": 14
+  },
+  {
+   "w": "empeoran.",
+   "ini": 98.604,
+   "fin": 99.196,
+   "frase": 14
+  },
+  {
+   "w": "El",
+   "ini": 99.726,
+   "fin": 99.893,
+   "frase": 14
+  },
+  {
+   "w": "alcohol",
+   "ini": 99.893,
+   "fin": 100.339,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 100.339,
+   "fin": 100.506,
+   "frase": 14
+  },
+  {
+   "w": "verdad",
+   "ini": 100.506,
+   "fin": 100.896,
+   "frase": 14
+  },
+  {
+   "w": "sí",
+   "ini": 100.896,
+   "fin": 101.063,
+   "frase": 14
+  },
+  {
+   "w": "los",
+   "ini": 101.063,
+   "fin": 101.286,
+   "frase": 14
+  },
+  {
+   "w": "frena,",
+   "ini": 101.286,
+   "fin": 101.676,
+   "frase": 14
+  },
+  {
+   "w": "creas",
+   "ini": 101.896,
+   "fin": 102.276,
+   "frase": 14
+  },
+  {
+   "w": "lo",
+   "ini": 102.276,
+   "fin": 102.467,
+   "frase": 14
+  },
+  {
+   "w": "que",
+   "ini": 102.467,
+   "fin": 102.72,
+   "frase": 14
+  },
+  {
+   "w": "creas.",
+   "ini": 102.72,
+   "fin": 103.164,
+   "frase": 14
+  },
+  {
+   "w": "Al",
+   "ini": 103.755,
+   "fin": 103.912,
+   "frase": 15
+  },
+  {
+   "w": "final",
+   "ini": 103.912,
+   "fin": 104.227,
+   "frase": 15
+  },
+  {
+   "w": "les",
+   "ini": 104.227,
+   "fin": 104.437,
+   "frase": 15
+  },
+  {
+   "w": "cuentan",
+   "ini": 104.437,
+   "fin": 104.857,
+   "frase": 15
+  },
+  {
+   "w": "la",
+   "ini": 104.857,
+   "fin": 105.015,
+   "frase": 15
+  },
+  {
+   "w": "verdad.",
+   "ini": 105.015,
+   "fin": 105.435,
+   "frase": 15
+  },
+  {
+   "w": "A",
+   "ini": 105.885,
+   "fin": 106.016,
+   "frase": 15
+  },
+  {
+   "w": "muchos",
+   "ini": 106.016,
+   "fin": 106.473,
+   "frase": 15
+  },
+  {
+   "w": "les",
+   "ini": 106.473,
+   "fin": 106.734,
+   "frase": 15
+  },
+  {
+   "w": "cuesta",
+   "ini": 106.734,
+   "fin": 107.191,
+   "frase": 15
+  },
+  {
+   "w": "creerlo.",
+   "ini": 107.191,
+   "fin": 107.779,
+   "frase": 15
+  },
+  {
+   "w": "Así",
+   "ini": 108.37,
+   "fin": 108.597,
+   "frase": 16
+  },
+  {
+   "w": "que",
+   "ini": 108.597,
+   "fin": 108.824,
+   "frase": 16
+  },
+  {
+   "w": "parte",
+   "ini": 108.824,
+   "fin": 109.164,
+   "frase": 16
+  },
+  {
+   "w": "de",
+   "ini": 109.164,
+   "fin": 109.334,
+   "frase": 16
+  },
+  {
+   "w": "lo",
+   "ini": 109.334,
+   "fin": 109.505,
+   "frase": 16
+  },
+  {
+   "w": "que",
+   "ini": 109.505,
+   "fin": 109.731,
+   "frase": 16
+  },
+  {
+   "w": "sientes",
+   "ini": 109.731,
+   "fin": 110.185,
+   "frase": 16
+  },
+  {
+   "w": "en",
+   "ini": 110.185,
+   "fin": 110.355,
+   "frase": 16
+  },
+  {
+   "w": "una",
+   "ini": 110.355,
+   "fin": 110.582,
+   "frase": 16
+  },
+  {
+   "w": "fiesta",
+   "ini": 110.582,
+   "fin": 110.979,
+   "frase": 16
+  },
+  {
+   "w": "no",
+   "ini": 110.979,
+   "fin": 111.149,
+   "frase": 16
+  },
+  {
+   "w": "sale",
+   "ini": 111.149,
+   "fin": 111.433,
+   "frase": 16
+  },
+  {
+   "w": "del",
+   "ini": 111.433,
+   "fin": 111.66,
+   "frase": 16
+  },
+  {
+   "w": "vaso.",
+   "ini": 111.66,
+   "fin": 112.0,
+   "frase": 16
+  },
+  {
+   "w": "Sale",
+   "ini": 112.32,
+   "fin": 112.662,
+   "frase": 16
+  },
+  {
+   "w": "de",
+   "ini": 112.662,
+   "fin": 112.866,
+   "frase": 16
+  },
+  {
+   "w": "tu",
+   "ini": 112.866,
+   "fin": 113.071,
+   "frase": 16
+  },
+  {
+   "w": "cabeza.",
+   "ini": 113.071,
+   "fin": 113.618,
+   "frase": 16
+  },
+  {
+   "w": "Por",
+   "ini": 114.209,
+   "fin": 114.477,
+   "frase": 17
+  },
+  {
+   "w": "eso",
+   "ini": 114.477,
+   "fin": 114.745,
+   "frase": 17
+  },
+  {
+   "w": "él",
+   "ini": 114.745,
+   "fin": 114.946,
+   "frase": 17
+  },
+  {
+   "w": "sigue",
+   "ini": 114.946,
+   "fin": 115.349,
+   "frase": 17
+  },
+  {
+   "w": "bailando…",
+   "ini": 115.349,
+   "fin": 116.019,
+   "frase": 17
+  },
+  {
+   "w": "sin",
+   "ini": 116.459,
+   "fin": 116.706,
+   "frase": 17
+  },
+  {
+   "w": "una",
+   "ini": 116.706,
+   "fin": 116.952,
+   "frase": 17
+  },
+  {
+   "w": "gota",
+   "ini": 116.952,
+   "fin": 117.261,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 117.261,
+   "fin": 117.446,
+   "frase": 17
+  },
+  {
+   "w": "alcohol.",
+   "ini": 117.446,
+   "fin": 118.001,
+   "frase": 17
+  }
+ ]
+}
