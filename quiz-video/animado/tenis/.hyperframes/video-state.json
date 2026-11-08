@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "f9753ab3-369f-4e4e-97e1-e8cee4f65959",
-  "currentRevision": "4695cae6-a12c-4362-afcf-f328f78c06f7",
+  "currentRevision": "a6eaad93-57cc-4e95-989a-2baeacd17d73",
   "pendingChanges": false,
   "files": {
     "assets/fonts/Caveat-700-latin.woff2": {
@@ -33,8 +33,8 @@
       "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/4a/4ad63a0dd3518ed1d4f8a1ff5510d36bf3b7c2ac4a5ca9afce7c82d7eb36dd26"
     },
     "gen.py": {
-      "hash": "e4b1c3845701753be303cf5018b5f39472ad9fddc8c3cae6939bc0b06220f979",
-      "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/e4/e4b1c3845701753be303cf5018b5f39472ad9fddc8c3cae6939bc0b06220f979"
+      "hash": "35cdbf600f6761cffa51dba335bb9616bbfc0de202d23fe0a0147aaaa4825e04",
+      "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/35/35cdbf600f6761cffa51dba335bb9616bbfc0de202d23fe0a0147aaaa4825e04"
     },
     "guion.txt": {
       "hash": "a46736f1c080cad9101fcac1626870c39725bd0375109a949d4eb41879c5edd7",
@@ -137,8 +137,8 @@
       "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/e2/e2a87d013fdb6a31dc2a05ea589bab422a1f79e42f676e54a3b817dfd8635373"
     },
     "index.html": {
-      "hash": "17089a0e8b7cecdc31ddc7a8da40a723ec4d160bf7f3f9e95379be4a1a857bc6",
-      "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/17/17089a0e8b7cecdc31ddc7a8da40a723ec4d160bf7f3f9e95379be4a1a857bc6"
+      "hash": "f4a7eaaecbdde69cc302a0b6fceb5358884f8117f227c46494b4ebb15f62f463",
+      "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/f4/f4a7eaaecbdde69cc302a0b6fceb5358884f8117f227c46494b4ebb15f62f463"
     },
     "voz_el/narrador.mp3": {
       "hash": "37142e5da567808abc24b606cde2d7d09de2e05463aabaf39ff8d06aec127436",
@@ -173,8 +173,8 @@
       "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/bf/bf36a481fe7cb81557d4ca42b47c8f55cbd3e6c782cc2e99117b62b38f021200"
     },
     "salida/video-FINAL.mp4": {
-      "hash": "a2982856845cecb70de8ba9b2fc17a2e6600cdb305d85d56f40be9972885f35e",
-      "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/a2/a2982856845cecb70de8ba9b2fc17a2e6600cdb305d85d56f40be9972885f35e"
+      "hash": "aff3812f5769e8e6a5d1f5cb2505e76885b85010a8ca8d8b1acfba55d1da3cfc",
+      "content": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/af/aff3812f5769e8e6a5d1f5cb2505e76885b85010a8ca8d8b1acfba55d1da3cfc"
     },
     "voz_el/final.mp3": {
       "hash": "abbcbcfd9a251d6a744a15a07cebad20fca562dfc12c24c5d805dd947658d9b7",
@@ -579,6 +579,29 @@
         "voz/l17.wav": {
           "before": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/9b/9bfe7b8e64467625f952b2309f9674a7cf210132c57c85bf1020e2173a9c1126",
           "after": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/bf/bf4808acc7bdc8152f8b6849184caabb82b95047ef3ab97b93134e00bad4c7e1"
+        }
+      }
+    },
+    "a6eaad93-57cc-4e95-989a-2baeacd17d73": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794176401037,
+      "endedAt": 1794176401070,
+      "files": {
+        "gen.py": {
+          "before": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/e4/e4b1c3845701753be303cf5018b5f39472ad9fddc8c3cae6939bc0b06220f979",
+          "after": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/35/35cdbf600f6761cffa51dba335bb9616bbfc0de202d23fe0a0147aaaa4825e04"
+        },
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/17/17089a0e8b7cecdc31ddc7a8da40a723ec4d160bf7f3f9e95379be4a1a857bc6",
+          "after": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/f4/f4a7eaaecbdde69cc302a0b6fceb5358884f8117f227c46494b4ebb15f62f463"
+        },
+        "salida/video-FINAL.mp4": {
+          "before": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/a2/a2982856845cecb70de8ba9b2fc17a2e6600cdb305d85d56f40be9972885f35e",
+          "after": "/root/.cache/hyperframes/history/f9753ab3-369f-4e4e-97e1-e8cee4f65959/blobs/af/aff3812f5769e8e6a5d1f5cb2505e76885b85010a8ca8d8b1acfba55d1da3cfc"
         }
       }
     }
