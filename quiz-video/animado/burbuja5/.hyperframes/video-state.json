@@ -364,5 +364,16 @@
       ]
     },
     "unversioned": []
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "ab9cc61d-091a-4861-a061-b1fcf91d1c30",
+      "completedAt": 1794162887141,
+      "output": "/home/user/webs/quiz-video/animado/burbuja5/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
