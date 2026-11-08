@@ -145,3 +145,12 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
 
 ## ACTUALIZACIÓN 08-11-2026 (manda sobre todo lo anterior)
 - DURACIÓN, FINAL Y BUCLE (usuario, 08-11-2026, SUSTITUYE a lo anterior): animados de 75 a 100 s. Final en seco pero NO tan brusco (la última frase se deja respirar 1-2 s y la música baja suave; nada de corte a negro de golpe). El FINAL CUADRA SIEMPRE CON EL PRINCIPIO: la última frase enlaza con la primera y el último fotograma es igual al primero (bucle invisible). SIN ruidos tipo radio/estática al final (nada de ruido blanco, golpes ni «boom» de cierre). Vídeos MUY decorados, visuales y adictivos.
+
+## tenis (08-11-2026) — «¿qué pasaría si un tie-break dura más de 20 horas?» (`animado/tenis/`, 2:10, pedido por el usuario)
+- Personas de palo con TRONCO GRUESO y articulaciones (codo, rodilla), posturas animadas (derecha, revés, saque, correr,
+  toalla, beber, calambre) en `gen.py` (`POSES` + `pose()`): base reutilizable para cualquier vídeo de deporte.
+- Perspectiva de TV calculada en 3D (`PR()`): pista, gradas, muros con publicidad inventada, red, silla del juez, banquillos,
+  jueces de línea y recogepelotas en su sitio real; bola con física (arco, bote, sombra y estela).
+- El tiempo de la historia (horas) mueve TODO a la vez con `pista()`: cielo día/ocaso/noche/alba, sol, focos que se encienden
+  por bancos, público que se va por grupos, cansancio de los jugadores, marcador y reloj del partido.
+- Gancho = estado final (20 h) + rebobinado en el mismo plano; el último fotograma es igual al primero (bucle real).
