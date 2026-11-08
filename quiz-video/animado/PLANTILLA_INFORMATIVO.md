@@ -10,13 +10,17 @@ Referencia: `animado/burbuja5/` (burbuja desde 1.000 m, 08-11-2026). Usar para c
   «hazlo gráficamente más sencillo, hay mucha información y mucho gráfico».
 - Personaje cuidado (adulto con ropa, cara, arnés), luz de sol lateral, decorado completo (nubes, pájaros, horizonte con
   pueblo, parque con casa, árboles, valla, farola, camino, flores). Nada de gráficas con ejes ni fórmulas.
-- Gancho fuerte desde el fotograma 0 (frase corta y dato enorme: «1.000 m»). Final en seco con frase contundente y negro.
-- 61-75 s. Primera palabra en 0,5 s. Marca de agua @mundo.supuesto. Subtítulos de siempre (arriba, palabra a palabra,
+- Gancho fuerte desde el fotograma 0 (frase corta y dato enorme: «1.000 m»).
+- DURACIÓN, FINAL Y BUCLE (usuario, 08-11-2026, SUSTITUYE a lo anterior): animados de 75 a 100 s. Final en seco pero NO tan brusco (la última frase se deja respirar 1-2 s y la música baja suave; nada de corte a negro de golpe). El FINAL CUADRA SIEMPRE CON EL PRINCIPIO: la última frase enlaza con la primera y el último fotograma es igual al primero (bucle invisible). SIN ruidos tipo radio/estática al final (nada de ruido blanco, golpes ni «boom» de cierre). Vídeos MUY decorados, visuales y adictivos.
+  (burbuja5 es anterior a esta regla: dura 74,6 s, acaba en negro y no hace bucle; en el siguiente, aplicarla.)
+- Primera palabra en 0,5 s. Marca de agua @mundo.supuesto. Subtítulos de siempre (arriba, palabra a palabra,
   recuadro azul en lo importante).
 
 ## Pasos (gastando lo mínimo)
 1. `mkdir animado/NUEVO && cp -r burbuja5/{assets,mezcla.py,montar_voz.py,.gitignore,voz_el,gen.py,miniatura} NUEVO/`
-   (borrar `voz_el/narrador.*`). Escribir `guion.txt` (una frase por línea, ~16 líneas ≈ 1.200 caracteres ≈ 75 s).
+   (borrar `voz_el/narrador.*`). Escribir `guion.txt` (una frase por línea, ~18-22 líneas ≈ 1.300-1.700 caracteres ≈ 75-100 s). La última frase
+   enlaza con la primera (bucle) y en `gen.py` el último plano vuelve al encuadre del fotograma 0 (cambiar el fundido a negro final).
+   `mezcla.py` ya no mete ruido ni «boom» al final: la música baja suave.
 2. Voz: `creative_generate_speech` con TODO el guion en una llamada, voz «Juanjo Viral» `30jLfQdV8RTduXvosh02`,
    `eleven_v4`, `generations_count` 1 (~1.200 créditos). Bajar el mp3 → `voz_el/narrador.wav` (ffmpeg, mono 44,1 kHz).
 3. `mkdir -p voz && python3 voz_el/partir.py && python3 voz_el/acortar.py && python3 montar_voz.py`

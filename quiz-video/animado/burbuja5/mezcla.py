@@ -220,6 +220,8 @@ for k, t in sorted(json.load(open(os.path.join(BASE, "efectos.json"))), key=lamb
     ult[k] = t
     if k not in DENSO:
         ult["_"] = t
+    if k == "final":
+        continue                     # sin «boom» de cierre (usuario, 08-11-2026)
     s, g = fx[k]
     mix.add_fx(s, t, g * FX_GAIN)
 def ambiente(d):
@@ -246,10 +248,11 @@ pulso = np.sin(2 * np.pi * 50 * tt) * np.exp(-((tt * 1.6) % 1.0) * 8)          #
 caja = np.random.default_rng(1).standard_normal(len(tt)); caja = np.convolve(caja, np.ones(4) / 4, mode="same") * np.exp(-((tt * 1.6 + 0.5) % 1.0) * 30)
 tension = np.interp(tt, [0, F_[2], F_[5], F_[8], F_[9], F_[12], F_[13], F_[15], dur], [0.1, 0.3, 0.5, 0.75, 1.0, 1.0, 0.4, 0.6, 0.7])
 alto = np.sin(2 * np.pi * 587.3 * tt) * 0.2 + np.sin(2 * np.pi * 880 * tt) * 0.12
-alto *= np.interp(tt, [0, 2, F_[8], F_[13], F_[15], FIN, FIN + 0.01, dur], [0.3, 0.4, 0.4, 0.2, 0.5, 0.7, 0, 0])
-base = music * np.interp(tt, [0, 3, FIN, FIN + 0.01, dur], [0.8, 1, 1, 0, 0])
-music = base + pulso * tension * 0.7 + caja * tension * 0.25 + alto
-music[tt >= FIN] = 0
+alto *= np.interp(tt, [0, 2, F_[8], F_[13], dur], [0.3, 0.4, 0.4, 0.2, 0.3])
+base = music * np.interp(tt, [0, 3, dur], [0.8, 1, 1])
+# sin ruido tipo radio (nada de caja de ruido blanco) y la música baja SUAVE al final (usuario, 08-11-2026)
+music = base + pulso * tension * 0.7 + alto
+music *= np.interp(tt, [0, dur - 2.5, dur], [1, 1, 0])
 music = music / (np.max(np.abs(music)) or 1)
 vozv = mix.voice / (np.max(np.abs(mix.voice)) or 1) * 0.9
 env = np.convolve(np.abs(vozv), np.ones(int(0.05 * SR)) / int(0.05 * SR), mode="same")

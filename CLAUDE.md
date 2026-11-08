@@ -14,7 +14,7 @@ UNA vez al principio para no rehacer.
 
 ## Reglas de TODOS los vídeos
 - Primera palabra en el segundo 0,5 (todo retrasado 0,5 s a la vez: INICIO = 0.5 en montar_voz.py).
-- ≥ 61 s (se cobra por visitas); animados entre 61 y 75 s. Comprobar con ffprobe.
+- ≥ 61 s (se cobra por visitas); animados entre 75 y 100 s. Comprobar con ffprobe.
 - Gancho fuerte desde el fotograma 0, cada vez mejor. CERO CORRECCIONES: estética, gancho y guion cuidados; revisar todo antes de entregar.
 - Mejora continua (también portadas): cada vídeo mejor que el anterior; decir qué se ha mejorado. Ver `quiz-video/animado/MEJORA_CONTINUA.md`.
 - Skills de vídeo: `.claude/skills/GUIA-SKILLS-VIDEO.md`.
@@ -31,7 +31,9 @@ UNA vez al principio para no rehacer.
 - Voz FIJA «Juanjo Viral» (30jLfQdV8RTduXvosh02, eleven_v4, 1 toma, guion entero en una llamada), sin risas.
 - Marca de agua «@mundo.supuesto» abajo, centrada, pequeña y transparente. Subtítulos arriba palabra a palabra con recuadro azul.
 - Entregar MP4 + miniatura 9:16 (y recorte 3:4 TikTok, contenido entre y 240-1680) + descripción (+ invitar a compartir y seguir + 4 hashtags).
-- Guion adictivo sin tramos aburridos, FINAL EN SECO (nunca «el siguiente eres tú»).
+- Guion adictivo sin tramos aburridos; final en seco pero no tan brusco (nunca «el siguiente eres tú»), y el FINAL CUADRA SIEMPRE
+  con el PRINCIPIO (bucle: última frase enlaza con la primera, último fotograma = primero). Sin ruido tipo radio al final.
+  Vídeos MUY decorados, visuales y adictivos.
 - «¿QUÉ PASARÍA SI…?» INFORMATIVO (preferido desde 08-11-2026): `quiz-video/animado/PLANTILLA_INFORMATIVO.md`
   (narrador serio y neutro, sin humor, datos reales, UN SOLO PLANO siguiendo al protagonista, sin transiciones, información
   sencilla junto a él, decorado y luz cuidados).
