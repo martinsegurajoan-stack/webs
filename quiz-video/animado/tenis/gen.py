@@ -819,7 +819,7 @@ J(f'tl.fromTo("#barR", {{width:"0%"}}, {{width:"100%", duration:0.9, ease:"power
 J(f'tl.fromTo("#barE", {{width:"0%"}}, {{width:"100%", duration:0.9, ease:"power2.out", immediateRender:false}}, {P("slam"):.2f});')
 sale("#cRec", FE(15) + 0.2)
 chip("cHoy", 330, 1150, '<b>A 10 PUNTOS</b><small>CON 2 DE VENTAJA</small>', P("diez") - 0.3, P("minutos", 2) - 0.3)
-chip("cCierre", 140, 1150, '<b>NINGÚN TIE-BREAK ES ETERNO</b><small>ANTES QUE EL MARCADOR, SE RINDE EL CUERPO</small>', P("siempre") - 0.3, DUR - 1.3)
+chip("cCierre", 150, 1110, '<b>NINGÚN TIE-BREAK ES ETERNO</b><small>ANTES QUE EL MARCADOR, SE RINDE EL CUERPO</small>', P("siempre") - 0.3, DUR - 1.3, cls="chip col")
 chip("cMin", 330, 1150, '<b>≈ MINUTOS</b><small>NO 20 HORAS</small>', P("minutos", 2) - 0.2, FE(16) + 0.3)
 
 # marca del calambre sobre A (círculo que late en el gemelo)
@@ -900,7 +900,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#03060c}}
 .rebob{{position:absolute;left:0;right:0;top:1100px;text-align:center;font:900 120px Inter;letter-spacing:-3px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,0.6)}}
 .chip{{position:absolute;display:flex;align-items:center;gap:14px;padding:12px 20px;border-radius:16px;background:rgba(6,14,28,0.78);border:1px solid rgba(255,255,255,0.22);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.35)}}
 .chip b{{display:block;font:800 50px/1 Inter;color:#fff;font-variant-numeric:tabular-nums}} .chip small{{display:block;margin-top:5px;font:800 18px Inter;letter-spacing:4px;color:#b9c9da}}
-.chip.ama{{border-left:6px solid {AM}}} .chip.lite b{{font-size:34px}}
+.chip.col{{flex-direction:column;align-items:center;gap:4px;width:780px;white-space:normal;text-align:center}} .chip.ama{{border-left:6px solid {AM}}} .chip.lite b{{font-size:34px}}
 .rojo{{color:{RJ} !important}} .tach{{text-decoration:line-through;color:#9fb3c8}}
 .anillo{{position:absolute;width:170px;height:170px;text-align:center}} .anillo svg{{position:absolute;left:0;top:0}}
 .anillo b{{position:absolute;left:0;right:0;top:44px;font:900 64px/1 Inter;color:#fff}} .anillo small{{position:absolute;left:0;right:0;top:110px;font:800 14px Inter;letter-spacing:3px;color:#ffe2a8}}
