@@ -319,9 +319,9 @@ F_ = [f["ini"] for f in T["frases"]]
 tt = np.arange(len(music)) / SR
 FIN = json.load(open(os.path.join(BASE, "efectos.json")))
 FIN = max(t for k, t in FIN if k == "final") + 0.05                  # corte seco a negro
-tension = np.interp(tt, [0, F_[12], F_[15], F_[17], FIN, dur + 1], [0, 0.2, 0.6, 1.0, 1.0, 1.0])
+tension = np.interp(tt, [0, F_[9], F_[12], F_[14], FIN, dur + 1], [0, 0.3, 0.7, 1.0, 1.0, 1.0])
 grave = np.sin(2 * np.pi * 55 * tt) * np.exp(-((tt * 1.9) % 1.0) * 7)
-music = music * np.interp(tt, [0, F_[5] + 1.0, F_[5] + 1.2, F_[6] + 0.1, F_[6] + 0.4, F_[15], dur + 1], [1, 1, 0.05, 0.05, 1, 0.5, 0.4]) + grave * tension * 0.8
+music = music * np.interp(tt, [0, F_[4] + 0.8, F_[4] + 1.0, F_[5] - 0.2, F_[5], F_[9], dur + 1], [1, 1, 0.05, 0.05, 1, 0.5, 0.4]) + grave * tension * 0.8
 music[tt >= FIN] = 0
 music = music / (np.max(np.abs(music)) or 1)
 vozv = mix.voice / (np.max(np.abs(mix.voice)) or 1) * 0.9

@@ -7,7 +7,7 @@ const path = require('path');
   await p.addInitScript(() => { window.__timelines = {}; });
   await p.goto('file://' + dir + '/index.html'); await p.waitForTimeout(1500);
   await p.evaluate(() => {
-    window.__timelines.main.seek(6.75);
+    window.__timelines.main.seek(7.0);
     gsap.set('#follow', { y: 960 - 2530 }); gsap.set('#zoom', { scale: 0.95 });
     for (const s of ['#subs', '#marca', '#grano', '#negroF', '#topsombra', '#altim', '#gancho', '.nota']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
     const d = document.createElement('div'); d.style.cssText = 'position:absolute;inset:0;z-index:90;font-family:Inter;text-align:center';

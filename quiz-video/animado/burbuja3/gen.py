@@ -780,7 +780,7 @@ ENC = [(F(6) - 0.1, 1000, 1.2), (F(7), 980, 1.0), (F(9), 960, 1.05), (F(10), 700
 for t_, sy_, s_ in ENC:
     encuadre(t_, sy_, s_, 0.8 if s_ < 0.5 else 0.6)
 # 6) el estómago se queda arriba · el corazón a 180
-J(f'tl.to("#bb_gorra", {{y:-60, rotation:-25, svgOrigin:"0 -170", duration:0.6, ease:"power2.out"}}, {P("estomago") - 0.2:.2f}); tl.to("#bb_movil", {{y:-150, x:-40, rotation:60, svgOrigin:"31 45", duration:0.8, ease:"power2.out"}}, {P("estomago") - 0.1:.2f});')
+J(f'tl.to("#bb_gorra", {{y:-60, rotation:-25, svgOrigin:"0 -170", duration:0.6, ease:"power2.out"}}, {P("estomago") - 0.2:.2f}); tl.to("#bb_movil", {{y:-70, x:105, duration:0.8, ease:"power2.out"}}, {P("estomago") - 0.1:.2f});')
 J(f'tl.to("#bb_cuerpo", {{y:-14, duration:0.3, yoyo:true, repeat:1}}, {P("estomago"):.2f});')
 expr("bb", P("estomago") - 0.2, "nervioso", "sorpresa", abierta=True)
 OVR.append('<div id="pulso"><svg viewBox="0 0 40 36" width="46" height="42"><path d="M20,34 C-6,16 2,-4 20,8 C38,-4 46,16 20,34 Z" fill="#ff3b4f"/></svg><b><span id="bpm">70</span></b><small>PULSACIONES</small></div>')
@@ -813,7 +813,7 @@ J(f'tl.to(CR, {{v:28, duration:{F(10) - P("medio"):.2f}, ease:"none", onUpdate:p
 J(f'tl.to("#bubBr", {{rotation:-1530, svgOrigin:"0 0", duration:{F(10) - F(9):.2f}, ease:"sine.out"}}, {F(9):.2f});')
 J(f'tl.to("#bb_verde", {{opacity:0.55, duration:0.5}}, {P("mareado") - 0.2:.2f}); tl.to("#bb_verde", {{opacity:0, duration:0.6}}, {F(11):.2f});')
 expr("bb", P("mareado") - 0.2, "triste", "preocupado")
-J(f'tl.fromTo("#bb_vomito", {{opacity:0, scale:0.1}}, {{opacity:1, scale:1, svgOrigin:"0 -100", duration:0.25, ease:"back.out(2)", immediateRender:false}}, {P("vomitando") - 0.05:.2f}); tl.to("#bb_vomito", {{opacity:0, duration:0.5}}, {F(11):.2f});')
+J(f'tl.fromTo("#bb_vomito", {{opacity:0}}, {{opacity:1, duration:0.15, immediateRender:false}}, {P("vomitando") - 0.05:.2f}); tl.to("#bb_vomito", {{opacity:0, duration:0.5}}, {F(11):.2f});')
 expr("bb", P("vomitando") - 0.1, "nervioso", "sorpresa", abierta=True)
 FX.append(("chof", P("vomitando")))
 # 10-14) LO REAL: tarjetas sobre la caída
@@ -967,7 +967,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:{BG}}}
 #rebob i{{display:inline-block;width:0;height:0;border-top:50px solid transparent;border-bottom:50px solid transparent;border-right:70px solid #fff;margin-right:-10px;vertical-align:middle}}
 #flashB{{position:absolute;inset:0;z-index:58;background:#ffffff;opacity:0;pointer-events:none}}
 
-#grano{{position:absolute;inset:0;z-index:57;pointer-events:none;opacity:0.08;background:url(assets/grano.png);mix-blend-mode:overlay}}
+#grano{{position:absolute;inset:0;z-index:57;pointer-events:none;opacity:0.03;background:url(assets/grano.png);mix-blend-mode:overlay}}
 #vineta{{position:absolute;inset:0;z-index:56;pointer-events:none;background:radial-gradient(110% 80% at 50% 50%, rgba(0,0,0,0) 50%, rgba(0,0,0,0.6))}}
 #topsombra{{position:absolute;left:0;right:0;top:0;height:560px;z-index:55;pointer-events:none;background:linear-gradient(rgba(2,3,6,0.78), rgba(2,3,6,0))}}
 #marca{{position:absolute;left:0;right:0;top:1775px;text-align:center;font:700 28px Inter;color:#ffffff;opacity:0.32;pointer-events:none;z-index:61}}
