@@ -154,3 +154,6 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
 - El tiempo de la historia (horas) mueve TODO a la vez con `pista()`: cielo día/ocaso/noche/alba, sol, focos que se encienden
   por bancos, público que se va por grupos, cansancio de los jugadores, marcador y reloj del partido.
 - Gancho = estado final (20 h) + rebobinado en el mismo plano; el último fotograma es igual al primero (bucle real).
+- v2 (corrección del usuario: «no cuentes una historia sin final, di lo que pasaría de verdad y por qué no sería posible»):
+  en los «¿qué pasaría si…?» imposibles, explicar PRIMERO por qué es casi imposible (dato/probabilidad real), luego qué
+  pasaría de verdad y con qué FINAL REAL (aquí: una retirada) y cerrar con lo que ya se hace en la realidad (reglamento).

@@ -4,6 +4,8 @@ Referencia: `animado/burbuja5/` (burbuja desde 1.000 m, 08-11-2026). Usar para c
 ## Lo que pidió el usuario (correcciones de las versiones 1-4 de la burbuja)
 - Narración SERIA e INFORMATIVA, narrador neutro todo el rato, SIN humor (nada de chistes ni «mirando gatos»).
 - Decir de verdad lo que pasaría (datos reales y razonados: velocidades, g, lesiones, etc.).
+- (usuario, 08-11-2026, vídeo del tenis) Si el supuesto es imposible o casi: decir PRIMERO por qué no podría pasar (dato real),
+  después qué pasaría de verdad y con un FINAL REAL (nunca una historia que no acaba). Referencia: `animado/tenis/`.
 - UN SOLO PLANO CONTINUO: la cámara sigue al protagonista todo el rato (la bola cayendo); el mundo pasa a su
   alrededor (nubes, horizonte, suelo que llega). SIN transiciones ni cortes. Nada de quitar zoom y volver a ponerlo.
 - La información aparece JUNTO al protagonista (número grande debajo, chips a los lados, cotas dibujadas), poca a la vez:

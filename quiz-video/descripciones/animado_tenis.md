@@ -1,14 +1,14 @@
-# ¿Qué pasaría si un partido de tenis dura más de 20 horas? (@mundo.supuesto)
+# ¿Qué pasaría de verdad si un tie-break no acabara nunca? (@mundo.supuesto) — v2 realista
 
 ## TikTok / Instagram
-Veinte horas jugando el mismo tie-break y todavía no ha ganado nadie 🎾 Sin banquillo, sin médico para los calambres, 9.000 calorías quemadas y la grada vacía al amanecer. El récord real es de 11 horas y 5 minutos… repartidas en tres días.
+Un tie-break infinito es casi imposible: la probabilidad tiene más de 260 ceros 🎾 Pero si pasara, no lo ganaría nadie con un punto: calambres sin médico, rabdomiólisis, 20 horas sin dormir… y al final, una retirada. Por eso los Grand Slam ya cambiaron las reglas.
 
 📤 Compártelo con quien juegue al tenis y sigue a @mundo.supuesto para más.
 
 #fyp #tenis #tennis #usopen
 
 ## YouTube Shorts
-TÍTULO: ¿Y si un tie-break NO terminara nunca? 20 horas de tenis sin parar 🎾 #shorts
+TÍTULO: ¿Cómo acabaría DE VERDAD un tie-break infinito? 🎾 #shorts
 
-DESCRIPCIÓN: Veinte horas, el mismo tie-break y ningún ganador: así cambiaría el cuerpo de los jugadores. Suscríbete y compártelo con quien juegue al tenis.
+DESCRIPCIÓN: Es casi imposible, pero si pasara, el partido no acabaría con un punto. Te explicamos por qué. Suscríbete y compártelo con quien juegue al tenis.
 #shorts #tenis #tennis #usopen

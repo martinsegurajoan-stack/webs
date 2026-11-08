@@ -271,9 +271,9 @@ tt = np.arange(len(music)) / SR
 FIN = [p["ini"] for p in T["palabras"]][-1] + 0.75            # golpe final: corte a negro
 pulso = np.sin(2 * np.pi * 50 * tt) * np.exp(-((tt * 1.6) % 1.0) * 8)          # latido grave (96 lpm) en el caos
 caja = np.random.default_rng(1).standard_normal(len(tt)); caja = np.convolve(caja, np.ones(4) / 4, mode="same") * np.exp(-((tt * 1.6 + 0.5) % 1.0) * 30)
-tension = np.interp(tt, [0, F_[2], F_[7], F_[11], F_[15], F_[18], F_[22], F_[24], dur], [0.15, 0.3, 0.45, 0.6, 0.8, 0.9, 0.7, 0.8, 0.4])
+tension = np.interp(tt, [0, F_[1], F_[4], F_[8], F_[11], F_[12], F_[14], F_[15], dur], [0.3, 0.25, 0.35, 0.6, 0.85, 1.0, 0.3, 0.35, 0.3])
 alto = np.sin(2 * np.pi * 587.3 * tt) * 0.2 + np.sin(2 * np.pi * 880 * tt) * 0.12
-alto *= np.interp(tt, [0, 2, F_[10], F_[20], dur], [0.3, 0.4, 0.4, 0.2, 0.3])
+alto *= np.interp(tt, [0, 2, F_[8], F_[14], dur], [0.3, 0.4, 0.4, 0.2, 0.3])
 base = music * np.interp(tt, [0, 3, dur], [0.8, 1, 1])
 # sin ruido tipo radio (nada de caja de ruido blanco) y la música baja SUAVE al final (usuario, 08-11-2026)
 music = base + pulso * tension * 0.7 + alto

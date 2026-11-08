@@ -48,11 +48,10 @@ SC = 0.0195                                   # escala de las personas (algo má
 def esc(Z, X=0.0): return PR(X, 0, Z)[2] * SC
 
 # ------------------------------------------------------------------ el tiempo de la historia (horas de tie-break)
-R0 = F(2) + 0.15                              # rebobinado: de las 20 h al inicio (13:00)
+R0 = F(15) + 0.1                              # rebobinado: de la madrugada de vuelta a hoy (13:00)
 R1 = R0 + 1.7
-T_FOCOS = P("focos")
-ANCH = [(0, 20.0), (R0, 20.0), (R1, 0.0), (F(8), 3.0), (F(10), 6.0), (T_FOCOS, 6.3), (F(14), 11.0), (F(16), 14.0),
-        (F(22), 17.5), (DUR, 20.0)]
+ANCH = [(0, 0.0), (P("imagina"), 0.12), (F(6), 1.2), (F(7), 3.0), (F(8), 6.0), (F(9), 8.5), (F(11), 11.0), (F(12), 14.0),
+        (F(13), 15.0), (R0, 15.4), (R1, 0.0), (DUR, 0.0)]
 def H(t):
     for (a, va), (b, vb) in zip(ANCH, ANCH[1:]):
         if a <= t <= b:
@@ -601,18 +600,17 @@ def peloteo(t0, t1, saca=None, botes=1.15, lento=1.0, final="ganador", rng=None)
     pose(quien, "listo", t + 0.4, 0.35)
     return t + dur
 
-# ------------------------------------------------------------------ COLOCACIÓN INICIAL (fotograma 0 = estado a las 20 h)
-LADO_ACT = {"A": 1, "B": -1}                  # a las 20 h: B abajo (de espaldas), A arriba
+# ------------------------------------------------------------------ COLOCACIÓN INICIAL (fotograma 0 = 13:00, empieza el tie-break)
+LADO_ACT = {"A": 1, "B": -1}                  # B abajo (de espaldas), A arriba
 jug_svg = figura("A", JUG["A"]) + figura("B", JUG["B"])
 coloca("A", 0.3, 12.6, espejo=-1)
 coloca("B", 0.8, -12.7, espejo=1)
-pose("A", "listo", 0, 0.01, slouch=1.0)
-pose("B", "bote", 0, 0.01, slouch=1.0)
-J('tl.set("#A_sud, #B_sud", {opacity:0.28}, 0);')
+pose("A", "listo", 0, 0.01, slouch=0.0)
+pose("B", "bote", 0, 0.01, slouch=0.0)
+J('tl.set("#A_sud, #B_sud", {opacity:0}, 0);')
 pista("#A_sud", lambda t: round(0.28 * cansancio(t), 2), dec=2)
 pista("#B_sud", lambda t: round(0.28 * cansancio(t), 2), dec=2)
 
-# la bola en la mano del que saca (bota antes de sacar) — igual al principio y al final (bucle)
 def bote_previo(t, pid="B", n=2):
     X, Z = POS[pid]
     lz = LADO_ACT[pid]
@@ -623,103 +621,86 @@ def bote_previo(t, pid="B", n=2):
         bola_vuelo(tt, [(arco(mano, suelo, 0.0, 3), 0.3), (arco(suelo, mano, 0.0, 3), 0.3)], fantasmas=False)
         pose(pid, "bote", tt, 0.2, "sine.inOut", solo={"brR", "anR", "mgR"})
         fx("bote", tt + 0.3)
+POSES["suelo"] = dict(head=(-3, -56), neck=(-2, -46), hip=(0, -13), eR=(10, -30), hR=(15, -8), eL=(-10, -30), hL=(-13, -20), tip=(42, -3),
+                      kR=(12, -24), fR=(20, -3), kL=(-12, -24), fL=(-20, -3))
+POSES["brazo"] = dict(head=(0, -91), neck=(0, -80), hip=(0, -47), eR=(9, -64), hR=(8, -50), eL=(-12, -94), hL=(-16, -112), tip=(14, -76),
+                      kR=(6, -24), fR=(7, 0), kL=(-6, -24), fL=(-7, 0))
 
 # ------------------------------------------------------------------ GUION VISUAL
 rv = random.Random(4)
-# 1) gancho: a las 20 h, B bota la bola y saca; peloteo lento y cansado
+# 1-4) 13:00: empieza el tie-break, empates seguidos (gancho: ∞ y «casi imposible»)
 bote_previo(0.15, "B", 1)
 POS["B"] = (0.8, -12.7)
-fin1 = peloteo(0.85, R0 - 0.8, saca="B", lento=1.15, rng=rv)
-# 2) rebobinado: todo vuelve a las 13:00 (cielo, público, cansancio, marcador)
-pose("A", "listo", R0 + 0.2, 0.8, slouch=0.0)
-pose("B", "listo", R0 + 0.2, 0.8, slouch=0.0)
-coloca("A", 0.0, 12.5, R0 + 0.2, 1.2)
-coloca("B", 0.0, -12.5, R0 + 0.2, 1.2)
-fx("rebobina", R0)
-t_ = peloteo(R1 + 0.2, F(4) + 0.6, saca="A", rng=rv)
-# 4) fin del punto: el recogepelotas de la red corre a por la bola
-camino("bk2", [(-5.9, -0.7), (-3.0, -0.9), (-5.9, -0.7)], t_ + 0.2, 1.6, piernas="correr")
-pose("bk2", "agachado", t_ + 1.85, 0.25)
-# 5) cambio de lado SIN banquillo (A baja, B sube), pasando junto a la silla del juez
-T_CAMBIO = P("cambian") - 0.6
-pose("A", "listo", T_CAMBIO - 0.3, 0.3)
-camino("A", [POS["A"], (5.4, 3.5), (5.6, -1.2), (4.0, -8.0), (2.6, -13.6)], T_CAMBIO, 4.2, espejo=1)
-camino("B", [POS["B"], (5.2, -3.5), (5.1, 1.2), (3.0, 8.0), (1.2, 12.6)], T_CAMBIO + 0.15, 4.2, espejo=-1)
+t_ = peloteo(0.85, F(3) - 0.2, saca="B", rng=rv)
+t_ = peloteo(F(3) + 0.3, F(5) - 0.3, saca="A", rng=rv)
+# 5) «imagina que pasa»: empieza a correr el tiempo
+t_ = peloteo(F(5) + 0.1, F(6) - 0.2, saca="B", rng=rv)
+# 6) cambio de lado sin sentarse (A baja hasta la esquina) y los 25 s: toalla, agua y comer
+T_CAMBIO = F(6) - 0.05
+camino("A", [POS["A"], (5.4, 3.5), (5.6, -1.2), (4.6, -8.0), (4.0, -14.9)], T_CAMBIO, 3.4, espejo=1)
+camino("B", [POS["B"], (5.2, -3.5), (5.1, 1.2), (3.0, 8.0), (1.2, 12.6)], T_CAMBIO + 0.1, 3.4, espejo=-1)
 LADO_ACT = {"A": -1, "B": 1}
-# 6) los 25 segundos: toalla (del recogepelotas), agua y plátano en la esquina
 T_TOA = P("toalla")
-pose("bk5", "dar", T_TOA - 0.5, 0.3)
-camino("A", [POS["A"], (4.0, -14.9)], T_CAMBIO + 4.3, 0.9)
-pose("A", "toalla", T_TOA, 0.35)
-pose("A", "beber", P("trago"), 0.35)
-pose("A", "comer", P("platano"), 0.35)
-pose("bk5", "firme", P("trago"), 0.3)
-camino("A", [(4.0, -14.9), (0.6, -12.7)], FE(6) - 0.2, 1.0)
-pose("A", "listo", FE(6) + 0.85, 0.3)
-# toalla / botella / plátano en la mano de A
-# 7-8) se reanuda, con el marcador corriendo
-t_ = peloteo(F(7) + 0.4, P("doscientos") - 1.0, saca="A", rng=rv)
-# 9) saque a 210 y luego a 180 km/h (marcador del fondo)
-POS["A"] = (0.6, -12.7)
-coloca("A", 0.6, -12.7, P("doscientos") - 1.0, 0.4)
-peloteo(P("doscientos") - 0.6, P("doscientos") + 1.2, saca="A", rng=rv)
-J(f'tl.set("#vel0", {{opacity:0}}, {P("doscientos") - 0.1:.2f}); tl.set("#vel1", {{opacity:1}}, {P("doscientos") - 0.1:.2f});')
-coloca("A", -0.6, -12.7, P("ochenta") - 1.2, 0.4)
+pose("bk5", "dar", T_TOA - 0.6, 0.3)
+pose("A", "toalla", T_TOA, 0.3)
+pose("A", "beber", P("agua") + 0.05, 0.3)
+pose("A", "comer", P("comer"), 0.3)
+pose("bk5", "firme", P("comer"), 0.3)
+camino("A", [(4.0, -14.9), (0.6, -12.7)], FE(6) + 0.1, 0.9)
+pose("A", "listo", FE(6) + 1.0, 0.3)
+# 7) glucógeno y velocidad del saque
+coloca("B", 0.6, 12.6, F(7), 0.5)
+t_ = peloteo(F(7) + 0.6, P("velocidad") - 0.9, saca="A", rng=rv)
+J(f'tl.set("#vel0", {{opacity:0}}, {F(7) + 1.1:.2f}); tl.set("#vel1", {{opacity:1}}, {F(7) + 1.1:.2f});')
+coloca("A", -0.6, -12.7, P("velocidad") - 0.9, 0.3)
 POS["A"] = (-0.6, -12.7)
-peloteo(P("ochenta") - 0.8, F(10) + 2.5, saca="A", lento=1.05, rng=rv)
-J(f'tl.set("#vel1", {{opacity:0}}, {P("ochenta") - 0.3:.2f}); tl.set("#vel2", {{opacity:1}}, {P("ochenta") - 0.3:.2f});')
-J(f'tl.set("#vel2", {{opacity:0}}, {F(11):.2f}); tl.set("#vel0", {{opacity:1}}, {F(11):.2f});')
-# 10-11) sol que se pone, focos, sudor y mareos
-t_ = peloteo(F(10) + 2.7, P("mareos") - 0.2, saca="B", rng=rv)
-J(f'tl.to("#A_h", {{rotation:8, svgOrigin:"0 -80", duration:0.5, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("mareos"):.2f});')
-J(f'tl.to("#A", {{rotation:3, duration:0.6, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("mareos"):.2f});')
-# 12) calambre: A se agacha y se agarra el gemelo; luego sigue
+t_ = peloteo(P("velocidad") - 0.5, F(8) + 2.6, saca="A", lento=1.05, rng=rv)
+J(f'tl.set("#vel1", {{opacity:0}}, {P("velocidad") + 0.05:.2f}); tl.set("#vel2", {{opacity:1}}, {P("velocidad") + 0.05:.2f});')
+J(f'tl.set("#vel2", {{opacity:0}}, {F(9):.2f}); tl.set("#vel0", {{opacity:1}}, {F(9):.2f});')
+# 8) atardece, se encienden los focos; sudor y mareos
+t_ = peloteo(F(8) + 2.8, P("mareos") - 0.1, saca="B", rng=rv)
+J(f'tl.to("#A_h", {{rotation:8, svgOrigin:"0 -80", duration:0.45, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("mareos"):.2f});')
+J(f'tl.to("#A", {{rotation:3, duration:0.55, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("mareos"):.2f});')
+# 9) calambre: A se agacha y se agarra el gemelo; luego sigue
 T_CAL = P("calambres")
 pose("A", "calambre", T_CAL + 0.1, 0.45, "power2.out")
-pose("A", "listo", P("seguir") - 0.1, 0.6, "power1.inOut")
-# 13) relevo de recogepelotas y jueces de línea (los jugadores siguen)
-T_REL = P("relevan") - 0.6
-camino("bk5", [(4.6, -15.8), (9.6, -15.4)], T_REL, 1.8, espejo=-1)
-J(f'tl.set("#bk7", {{opacity:1}}, {T_REL:.2f});')
-camino("bk7", [(9.6, -15.0), (4.6, -15.8)], T_REL + 0.3, 1.8, espejo=1)
-camino("lj4", [(8.0, -11.9), (9.9, -12.6)], T_REL + 0.2, 1.4)
-J(f'tl.to("#lj4", {{opacity:0, duration:0.3}}, {T_REL + 1.5:.2f});')
-J(f'tl.set("#lj7", {{opacity:1}}, {T_REL + 0.4:.2f});')
-camino("lj7", [(9.8, -11.6), (8.0, -11.9)], T_REL + 0.5, 1.4)
-pose("lj7", "sentado", T_REL + 1.95, 0.3)
-pose("bk7", "firme", T_REL + 2.2, 0.3)
-t_ = peloteo(F(13) + 0.3, F(14) - 0.2, saca="B", rng=rv)
-# 14) medianoche: segundo cambio de lado (cada seis puntos), B vuelve abajo
-T_C2 = F(14) + 0.1
-camino("A", [POS["A"], (5.3, -3.5), (5.4, 1.2), (3.0, 8.0), (0.3, 12.6)], T_C2, 3.6, espejo=-1)
-camino("B", [POS["B"], (5.0, 3.5), (5.0, -1.2), (3.0, -8.0), (0.8, -12.7)], T_C2 + 0.1, 3.6, espejo=1)
+pose("A", "listo", FE(9) - 0.3, 0.6, "power1.inOut")
+# 10) se pasa de los 25 s: aviso y penalización (el juez levanta el brazo)
+pose("A", "cansado", F(10), 0.5)
+pose("juez", "brazo", P("avisa") - 0.1, 0.3)
+pose("juez", "sentado", FE(10) + 0.2, 0.4)
+# 11-12) la noche: peloteos lentos, el público se va
+t_ = peloteo(F(11) + 0.2, F(13) - 0.3, saca="B", lento=1.2, botes=0.8, rng=rv)
+# 13-14) la retirada: A se derrumba, deja la raqueta y se sienta en la pista; B se acerca a la red
+T_RET = P("retirada")
+pose("A", "calambre", T_RET - 1.2, 0.6, "power2.in")
+pose("A", "suelo", T_RET - 0.1, 0.9, "power2.inOut")
+pose("B", "cansado", T_RET - 0.6, 0.6)
+camino("B", [POS["B"], (0.6, 2.2)], P("basta") - 0.4, 2.6)
+pose("B", "cansado", P("basta") + 2.3, 0.4)
+# 15) rebobinado al presente: todo vuelve a las 13:00 (reglamento actual)
+pose("A", "listo", R0 + 0.15, 0.9, slouch=0.0)
+pose("B", "listo", R0 + 0.15, 0.9, slouch=0.0)
+camino("A", [POS["A"], (0.3, 12.6)], R0 + 0.15, 1.4, espejo=-1)
+camino("B", [POS["B"], (0.8, -12.7)], R0 + 0.15, 1.4, espejo=1)
 LADO_ACT = {"A": 1, "B": -1}
-# 15-21) la noche: peloteos cada vez más lentos
-t_ = peloteo(F(15) + 0.2, F(19) - 0.3, saca="B", lento=1.1, rng=rv)
-# 19) saque a 180 de A (arriba): B llega tarde, la bola le pasa
-POS["A"] = (0.5, 12.6)
-peloteo(F(19) + 0.6, F(19) + 1.6, saca="A", lento=1.0, rng=rv)
-t_ = peloteo(P("tarde", 3) + 0.6, F(20) - 0.1, saca="A", lento=1.15, rng=rv)
-# 20) pelotas viejas: botan menos
-t_ = peloteo(F(20) + 0.2, F(22) - 0.2, saca="B", botes=0.65, lento=1.15, rng=rv)
-t_ = peloteo(F(22) + 0.1, F(24) + 0.6, saca="A", botes=0.7, lento=1.2, rng=rv)
-# 24) ampollas: gesto de dolor (se mira la mano)
-pose("B", "cansado", P("ampollas"), 0.4)
-t_ = peloteo(P("golpe") - 0.2, F(26) - 0.2, saca="A", botes=0.7, lento=1.2, rng=rv)
-# 26) el final vuelve al fotograma 0: B a la posición de saque, A lista, bola en la mano
-coloca("A", 0.3, 12.6, F(26), 1.2)
-coloca("B", 0.8, -12.7, F(26), 1.2)
-pose("A", "listo", F(26) + 0.4, 0.6, slouch=1.0)
-pose("B", "listo", F(26) + 0.4, 0.6, slouch=1.0)
-bote_previo(DUR - 2.0, "B", 2)
-pose("B", "bote", DUR - 0.75, 0.5, slouch=1.0)
+fx("rebobina", R0)
+# 15-16) un tie-break normal, como hoy
+t_ = peloteo(R1 + 0.6, DUR - 3.4, saca="B", rng=rv)
+# 17) el final vuelve al fotograma 0: B en posición de saque, A lista, bola en la mano
+coloca("A", 0.3, 12.6, DUR - 3.2, 0.9)
+coloca("B", 0.8, -12.7, DUR - 3.2, 0.9)
+pose("A", "listo", DUR - 3.0, 0.5, slouch=0.0)
+pose("B", "listo", DUR - 3.0, 0.5, slouch=0.0)
+bote_previo(DUR - 1.6, "B", 2)
+pose("B", "bote", DUR - 0.3, 0.25, slouch=0.0)
 
 # ------------------------------------------------------------------ OBJETOS EN LA MANO (toalla, botella, plátano)
 mano_obj = ('<g id="toaA" opacity="0"><rect x="-10" y="-98" width="20" height="14" rx="3" fill="#f4f8fc"/></g>'
             '<g id="botA" opacity="0"><rect x="-6" y="-104" width="7" height="16" rx="2" fill="#4fd1ff"/></g>'
             '<g id="plaA" opacity="0"><path d="M-8,-96 Q-2,-84 4,-94" stroke="#ffd84a" stroke-width="5" fill="none" stroke-linecap="round"/></g>')
-for sel, a, b in (("#toaA", P("toalla"), P("trago") - 0.1), ("#botA", P("trago"), P("platano") - 0.1), ("#plaA", P("platano"), FE(6) - 0.2)):
-    J(f'tl.to("{sel}", {{opacity:1, duration:0.2}}, {a + 0.15:.2f}); tl.to("{sel}", {{opacity:0, duration:0.2}}, {b:.2f});')
+for sel, a, b in (("#toaA", P("toalla"), P("agua") - 0.05), ("#botA", P("agua"), P("comer") - 0.05), ("#plaA", P("comer"), FE(6) + 0.1)):
+    J(f'tl.to("{sel}", {{opacity:1, duration:0.15}}, {a + 0.1:.2f}); tl.to("{sel}", {{opacity:0, duration:0.15}}, {b:.2f});')
 
 # ------------------------------------------------------------------ CIELO, LUZ Y RELOJES
 pista("#cDia", luzdia, dec=3)
@@ -739,109 +720,116 @@ pista("#tinteOcaso", lambda t: round(0.22 * max(ocaso(t), alba(t) * 0.7), 3))
 pista("#luzP", lambda t: round(focos(t) * (1 - luzdia(t)), 2), dec=2)
 # reloj del partido, hora local y marcador (todo sale de las horas de tie-break)
 hv = "hv"
-J(f'const {hv} = {{v:20}};')
+J(f'const {hv} = {{v:0}}; const pv = {{v:0}};')
+def NP(t):
+    if t <= P("imagina"):
+        return 24 * t / P("imagina")
+    if t < R0:
+        return 24 + 110 * H(t)
+    if t < R1:
+        return (24 + 110 * 15.4) * (1 - (t - R0) / (R1 - R0)) ** 2
+    return 0.0
+kp = [f'{{v:{NP(tb):.2f}, duration:{tb - ta:.3f}, ease:"none"}}' for ta, tb in zip(TS, TS[1:])]
 kf = []
 last = None
 for (ta, _), tb in zip([(t, 0) for t in TS], TS[1:]):
     kf.append(f'{{v:{H(tb):.4f}, duration:{tb - ta:.3f}, ease:"none"}}')
-J('''function pintaReloj(h){
+J('''function pintaReloj(h, np){
   const s = Math.max(0, Math.round(h * 3600)); const hh = Math.floor(s / 3600), mm = Math.floor(s % 3600 / 60), ss = s % 60;
   const p = n => String(n).padStart(2, "0");
   document.getElementById("crono").textContent = p(hh) + ":" + p(mm) + ":" + p(ss);
   const lm = Math.round((13 * 60 + h * 60)) % 1440;
   const hl = p(Math.floor(lm / 60)) + ":" + p(lm % 60);
   document.getElementById("horaLocal").textContent = hl;
-  const n = Math.max(0, Math.round(h * 110)); const a = Math.ceil(n / 2), b = Math.floor(n / 2);
+  const n = Math.max(0, Math.round(np)); const a = Math.ceil(n / 2), b = Math.floor(n / 2);
   const f = x => String(x).replace(/\\B(?=(\\d{3})+(?!\\d))/g, ".");
   document.getElementById("ptsA").textContent = f(b); document.getElementById("ptsB").textContent = f(a);
   const noche = (lm < 6 * 60 + 30 || lm > 20 * 60); document.getElementById("icoSol").style.opacity = noche ? 0 : 1; document.getElementById("icoLuna").style.opacity = noche ? 1 : 0;
 }''')
-J(f'tl.to({hv}, {{keyframes:[{",".join(kf)}], onUpdate:() => pintaReloj({hv}.v)}}, 0);')
-J(f'pintaReloj(20);')
+J(f'tl.to({hv}, {{keyframes:[{",".join(kf)}], onUpdate:() => pintaReloj({hv}.v, pv.v)}}, 0);')
+J(f'tl.to(pv, {{keyframes:[{",".join(kp)}], onUpdate:() => pintaReloj({hv}.v, pv.v)}}, 0);')
+J('pintaReloj(0, 0);')
 
 # ------------------------------------------------------------------ DATOS JUNTO A LOS PROTAGONISTAS (HTML)
 def chip(cid, x, y, html, t, hasta, cls="chip", desde="opacity:0, y:16"):
     OVR.append(f'<div id="{cid}" class="{cls}" style="left:{x}px;top:{y}px">{html}</div>')
     entra(f"#{cid}", t, desde)
     sale(f"#{cid}", hasta)
-# gancho (y bucle: vuelve al final)
-OVR.append('<div id="hook" class="gran"><b>20<i>HORAS</i></b><small>EL MISMO TIE-BREAK</small></div>')
+# gancho (y bucle: vuelve al final): el infinito sobre la pista y el sello «casi imposible»
+OVR.append('<div id="hook" class="gran"><b>∞</b><small>UN TIE-BREAK QUE NO ACABA</small></div>')
 J('tl.set("#hook", {opacity:1}, 0);')
-J(f'tl.to("#hook", {{opacity:0, scale:0.92, transformOrigin:"50% 50%", duration:0.35}}, {R0 - 0.1:.2f});')
+J(f'tl.to("#hook", {{opacity:0, scale:0.92, transformOrigin:"50% 50%", duration:0.35}}, {P("pasara") - 0.1:.2f});')
 J(f'tl.fromTo("#hook", {{opacity:0, scale:1.06}}, {{opacity:1, scale:1, transformOrigin:"50% 50%", duration:0.6, ease:"power2.out", immediateRender:false}}, {DUR - 1.1:.2f});')
-OVR.append('<div id="rebob" class="rebob">◀◀ 13:00</div>')
-J(f'tl.set("#rebob", {{opacity:0}}, 0); tl.to("#rebob", {{opacity:1, duration:0.15}}, {R0:.2f}); tl.to("#rebob", {{opacity:0, duration:0.3}}, {R1 + 0.2:.2f});')
-chip("cQuinto", 300, 760, '<b>6 – 6</b><small>QUINTO SET</small>', P("quinto"), F(3) + 0.2)
-chip("cPista", 60, 1080, '<b>PISTA DURA</b><small>COMO EN NUEVA YORK</small>', P("dura"), P("quinto") - 0.1, cls="chip ama")
-chip("cDiez", 330, 1110, '<b>A 10 PUNTOS</b><small>GANAR POR 2</small>', P("diez"), F(4) - 0.2)
-chip("cNunca", 330, 1240, '<b class="rojo">+2 NUNCA LLEGA</b>', P("nunca"), F(4) - 0.2, cls="chip lite")
-# 25 segundos: anillo que se vacía
+OVR.append('<div id="sello" class="sello">CASI IMPOSIBLE</div>')
+J(f'tl.set("#sello", {{opacity:0}}, 0); tl.fromTo("#sello", {{opacity:0, scale:1.6, rotation:-8}}, {{opacity:1, scale:1, rotation:-8, duration:0.3, ease:"back.out(2)", immediateRender:false}}, {P("imposible") - 0.05:.2f}); tl.to("#sello", {{opacity:0, duration:0.3}}, {P("pasara") - 0.1:.2f});')
+chip("cFin", 300, 1150, '<b>¿CÓMO ACABA?</b><small>NO CON UN PUNTO</small>', P("espera") - 0.5, FE(1) + 0.2, cls="chip ama")
+chip("cUno", 330, 1150, '<b>1 Y 1</b><small>UNA Y OTRA VEZ</small>', P("uno") - 0.2, FE(2) + 0.1)
+chip("cSaque", 300, 1150, '<b>2 DE CADA 3</b><small>PUNTOS GANA EL QUE SACA</small>', P("dos", 2) - 0.3, P("probabilidad") - 0.3)
+OVR.append('<div id="cProb" class="comp" style="left:90px;top:1110px;text-align:center"><small class="et">PROBABILIDAD DE 1.000 EMPATES SEGUIDOS</small>'
+           '<div class="prob">0,000<span>…</span>0001</div><small class="et rojo2">MÁS DE 260 CEROS</small></div>')
+entra("#cProb", P("probabilidad") - 0.2)
+sale("#cProb", FE(3) + 0.3)
+chip("c50", 130, 1150, '<b>&lt; 50 PUNTOS</b><small>EL TIE-BREAK MÁS LARGO CONOCIDO</small>', P("cincuenta") - 0.6, FE(4) + 0.2)
+chip("cImag", 340, 880, '<b>¿Y SI PASA?</b>', P("imagina") - 0.2, P("treinta") - 0.2, cls="chip ama")
+chip("c35", 60, 1150, '<b>≈35 s</b><small>CADA PUNTO</small>', P("treinta") - 0.2, FE(5))
+chip("c100", 640, 1150, '<b>+100</b><small>PUNTOS POR HORA</small>', P("cien") - 0.2, FE(5))
 OVR.append('<div id="c25" class="anillo" style="left:260px;top:930px"><svg width="170" height="170" viewBox="0 0 170 170"><circle cx="85" cy="85" r="72" stroke="rgba(255,255,255,0.18)" stroke-width="12" fill="rgba(4,10,20,0.55)"/><circle id="c25arco" cx="85" cy="85" r="72" stroke="#ffc24a" stroke-width="12" fill="none" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" transform="rotate(-90 85 85)"/></svg><b id="c25n">25</b><small>SEGUNDOS</small></div>')
-entra("#c25", P("veinticinco") - 0.1, "opacity:0, scale:0.8")
-J(f'tl.fromTo("#c25arco", {{attr:{{"stroke-dashoffset":0}}}}, {{attr:{{"stroke-dashoffset":1}}, duration:{FE(6) - P("veinticinco"):.2f}, ease:"none", immediateRender:false}}, {P("veinticinco"):.2f});')
-J(f'const c25 = {{v:25}}; tl.to(c25, {{v:0, duration:{FE(6) - P("veinticinco"):.2f}, ease:"none", onUpdate:() => {{ document.getElementById("c25n").textContent = Math.ceil(c25.v); }}}}, {P("veinticinco"):.2f});')
+T25 = P("veinticinco")
+entra("#c25", T25 - 0.1, "opacity:0, scale:0.8")
+J(f'tl.fromTo("#c25arco", {{attr:{{"stroke-dashoffset":0}}}}, {{attr:{{"stroke-dashoffset":1}}, duration:{FE(6) - T25:.2f}, ease:"none", immediateRender:false}}, {T25:.2f});')
+J(f'const c25 = {{v:25}}; tl.to(c25, {{v:0, duration:{FE(6) - T25:.2f}, ease:"none", onUpdate:() => {{ document.getElementById("c25n").textContent = Math.ceil(c25.v); }}}}, {T25:.2f});')
 sale("#c25", FE(6) + 0.2)
-chip("cBanq", 60, 760, '<b class="rojo">✕ BANQUILLO</b><small>CADA 6 PUNTOS, DE PIE</small>', P("descanso"), FE(5))
+chip("cBanq", 60, 760, '<b class="rojo">✕ BANQUILLO</b><small>CAMBIAN DE LADO DE PIE</small>', P("descanso") - 0.2, T25 - 0.1)
 chip("cToa", 470, 1310, '<b>TOALLA</b>', P("toalla"), FE(6) + 0.1, cls="chip lite")
-chip("cAgua", 470, 1230, '<b>AGUA</b>', P("trago"), FE(6) + 0.1, cls="chip lite")
-chip("cPla", 470, 1150, '<b>PLÁTANO</b>', P("platano"), FE(6) + 0.1, cls="chip lite")
-chip("c35", 60, 1150, '<b>≈35 s</b><small>CADA PUNTO</small>', P("treinta"), FE(7))
-chip("c100", 640, 1150, '<b>+100</b><small>PUNTOS POR HORA</small>', P("cien"), FE(7))
-# glucógeno: batería que se vacía
+chip("cAgua", 470, 1230, '<b>AGUA</b>', P("agua"), FE(6) + 0.1, cls="chip lite")
+chip("cPla", 470, 1150, '<b>COMER</b>', P("comer"), FE(6) + 0.1, cls="chip lite")
 OVR.append('<div id="cGlu" class="chip" style="left:640px;top:1200px"><div class="bat"><i id="batN"></i></div><div><b id="gluN">100%</b><small>GLUCÓGENO</small></div></div>')
 entra("#cGlu", P("glucogeno") - 0.6)
-J(f'tl.fromTo("#batN", {{width:"100%", background:"#35d987"}}, {{width:"12%", background:"#ff5a4f", duration:2.4, ease:"power1.in", immediateRender:false}}, {P("glucogeno") - 0.4:.2f});')
-J(f'const glu = {{v:100}}; tl.to(glu, {{v:12, duration:2.4, ease:"power1.in", onUpdate:() => {{ document.getElementById("gluN").textContent = Math.round(glu.v) + "%"; }}}}, {P("glucogeno") - 0.4:.2f});')
-sale("#cGlu", FE(8))
-chip("cVel", 330, 1150, '<b><span class="tach">210</span> → <span class="rojo">180</span></b><small>KM/H DE SAQUE</small>', P("ochenta") - 0.2, FE(9) + 0.3)
-chip("c6h", 340, 880, '<b>19:00</b><small>SE PONE EL SOL</small>', P("seis", 3) - 0.1, FE(10))
-chip("cSudor", 640, 1180, '<b>+6 L</b><small>DE SUDOR</small>', P("litros") - 0.3, P("mareos") + 1.4)
-chip("cSodio", 60, 1180, '<b class="rojo">SODIO ↓</b><small>MAREOS</small>', P("sodio") - 0.1, FE(11) + 0.2)
-chip("cCal", 300, 1180, '<b class="rojo">CALAMBRE</b><small>SIN ATENCIÓN MÉDICA</small>', P("calambre") - 0.2, FE(12))
-chip("cRel", 640, 1640, '<b>RELEVO</b><small>CADA TURNO</small>', P("relevan") - 0.2, FE(13), cls="chip lite")
-chip("cJugNo", 330, 1180, '<b class="rojo">LOS JUGADORES, NO</b>', P("jugadores") - 0.2, FE(13) + 0.2, cls="chip lite")
-chip("c00", 380, 880, '<b>00:00</b><small>EL PÚBLICO SE VA</small>', P("medianoche") - 0.1, FE(14) + 0.2)
-chip("cLim", 300, 860, '<b>SIN HORA LÍMITE</b>', P("limite") - 0.3, P("partido") - 0.1, cls="chip ama")
-chip("cRec1", 300, 860, '<b>02:50</b><small>EL FINAL MÁS TARDÍO DEL TORNEO</small>', P("madrugada") - 0.8, FE(15) + 0.3)
-chip("c14", 330, 1150, '<b>14 HORAS</b><small>DE TIE-BREAK</small>', P("catorce") - 0.1, FE(16) + 0.2)
-OVR.append('<div id="cKcal" class="chip" style="left:300px;top:1150px"><div><b id="kcalN">0</b><small>KCAL CADA UNO</small></div></div>')
-entra("#cKcal", P("quemado") - 0.2)
-J(f'const kc = {{v:0}}; tl.to(kc, {{v:9000, duration:1.6, ease:"power2.out", onUpdate:() => {{ document.getElementById("kcalN").textContent = String(Math.round(kc.v / 50) * 50).replace(/\\B(?=(\\d{{3}})+(?!\\d))/g, "."); }}}}, {P("quemado"):.2f});')
-sale("#cKcal", FE(17))
-chip("c4d", 330, 1260, '<b>= 4 DÍAS</b><small>DE COMIDA NORMAL</small>', P("cuatro", 1) - 0.3, FE(17), cls="chip lite")
-chip("cDesp", 60, 1150, '<b>20 h</b><small>DESPIERTOS</small>', P("despiertos") - 0.3, FE(18))
-chip("cAlc", 600, 1150, '<b class="rojo">REFLEJOS</b><small>COMO CON ALCOHOL</small>', P("alcohol") - 0.5, FE(18) + 0.2)
-chip("cMedio", 600, 1180, '<b>0,5 s</b><small>PARA REACCIONAR</small>', P("medio") - 0.2, FE(19))
-chip("cTarde", 160, 1180, '<b class="rojo">LLEGA TARDE</b>', P("tarde", 3) - 0.2, FE(19) + 0.2, cls="chip lite")
-chip("cBola", 300, 1150, '<b>LA MISMA PELOTA</b><small>HACE HORAS</small>', P("pelotas") - 0.1, P("pierden") - 0.1)
-chip("cBota", 300, 1150, '<b class="rojo">BOTA MENOS</b><small>PIERDE PRESIÓN</small>', P("pierden"), FE(20) + 0.2)
-OVR.append('<div id="cKm" class="chip" style="left:330px;top:1150px"><div><b id="kmN">0 km</b><small>CORRIENDO A SPRINTS</small></div></div>')
-entra("#cKm", P("corrido") - 0.2)
-J(f'const km = {{v:0}}; tl.to(km, {{v:40, duration:1.4, ease:"power2.out", onUpdate:() => {{ document.getElementById("kmN").textContent = Math.round(km.v) + " km"; }}}}, {P("corrido"):.2f});')
-sale("#cKm", FE(21))
-chip("cMar", 330, 1260, '<b>≈ MARATÓN</b><small>42 KM</small>', P("maraton") - 0.2, FE(21), cls="chip lite")
-chip("cAma", 340, 880, '<b>06:30</b><small>QUEDAN UNOS CIENTOS</small>', P("amanece") - 0.1, FE(22) + 0.2)
-chip("cMil", 330, 1150, '<b>+1.000</b><small>PUNTOS CADA UNO</small>', P("mil", 2) - 0.3, FE(23) + 0.2)
-chip("cAmp", 330, 1250, '<b class="rojo">AMPOLLAS</b><small>MANOS Y PIES</small>', P("ampollas") - 0.2, FE(24))
-# récord real frente a este partido: dos barras
-OVR.append('<div id="cRec" class="comp" style="left:90px;top:1120px">'
-           '<div class="fila2"><small>RÉCORD REAL · 3 DÍAS</small><div class="barra"><i id="barR"></i></div><b>11 h 05</b></div>'
-           '<div class="fila2"><small>ESTE PARTIDO · SIN PARAR</small><div class="barra"><i id="barE" class="rojo"></i></div><b class="rojo">20 h</b></div></div>')
-entra("#cRec", P("record") - 0.2)
-J(f'tl.fromTo("#barR", {{width:"0%"}}, {{width:"55%", duration:0.9, ease:"power2.out", immediateRender:false}}, {P("once"):.2f});')
-J(f'tl.fromTo("#barE", {{width:"0%"}}, {{width:"100%", duration:1.0, ease:"power2.out", immediateRender:false}}, {P("dias", 2):.2f});')
-sale("#cRec", F(26) + 1.2)
-chip("cEmp", 360, 1150, '<b>EMPATE</b><small>OTRA VEZ</small>', P("empate") - 0.2, DUR - 1.3)
+J(f'tl.fromTo("#batN", {{width:"100%", background:"#35d987"}}, {{width:"12%", background:"#ff5a4f", duration:2.2, ease:"power1.in", immediateRender:false}}, {P("glucogeno") - 0.4:.2f});')
+J(f'const glu = {{v:100}}; tl.to(glu, {{v:12, duration:2.2, ease:"power1.in", onUpdate:() => {{ document.getElementById("gluN").textContent = Math.round(glu.v) + "%"; }}}}, {P("glucogeno") - 0.4:.2f});')
+sale("#cGlu", P("velocidad") - 0.6)
+chip("cVel", 330, 1150, '<b><span class="tach">210</span> → <span class="rojo">180</span></b><small>KM/H DE SAQUE</small>', P("velocidad") - 0.5, FE(7) + 0.4)
+chip("c6h", 340, 880, '<b>19:00</b><small>SE PONE EL SOL</small>', P("seis") - 0.1, P("bebe") - 0.2)
+chip("cSudor", 640, 1180, '<b>+6 L</b><small>DE SUDOR</small>', P("litros") - 0.3, FE(8) + 0.2)
+chip("cSodio", 60, 1180, '<b class="rojo">SODIO ↓</b><small>MAREOS · NÁUSEAS · CONFUSIÓN</small>', P("sodio") - 0.1, FE(8) + 0.2)
+chip("cCal", 300, 1180, '<b class="rojo">CALAMBRE</b><small>SIN ATENCIÓN MÉDICA</small>', P("calambre") - 0.2, P("retiras") - 0.3)
+chip("cORet", 280, 1180, '<b>O SIGUES</b><small class="am">O TE RETIRAS</small>', P("retiras") - 0.5, FE(9) + 0.2)
+OVR.append('<div id="c25b" class="chip" style="left:300px;top:1150px"><div><b id="c25bn">25 s</b><small>ENTRE PUNTOS</small></div></div>')
+entra("#c25b", F(10) + 0.2)
+J(f'const c25b = {{v:22}}; tl.to(c25b, {{v:31, duration:1.3, ease:"none", onUpdate:() => {{ const e = document.getElementById("c25bn"); e.textContent = Math.floor(c25b.v) + " s"; e.style.color = c25b.v > 25 ? "#ff5a4f" : "#fff"; }}}}, {F(10) + 0.4:.2f});')
+sale("#c25b", FE(10) + 0.2)
+chip("cAviso", 640, 780, '<b>AVISO</b>', P("avisa") - 0.1, FE(10) + 0.2, cls="chip lite ama")
+chip("cPen", 640, 860, '<b class="rojo">PENALIZACIÓN</b>', P("penaliza") - 0.1, FE(10) + 0.2, cls="chip lite")
+chip("cRab", 240, 1150, '<b class="rojo">RABDOMIÓLISIS</b><small>EL MÚSCULO SE ROMPE</small>', P("romperse") - 0.4, FE(11) + 0.2)
+chip("cOri", 270, 1265, '<b>ORINA OSCURA · RIÑÓN</b>', P("orina") - 0.2, FE(11) + 0.2, cls="chip lite")
+chip("c03", 340, 880, '<b>03:00</b><small>20 h DESPIERTOS</small>', P("madrugada") - 0.2, FE(12) + 0.2)
+chip("cAlc", 300, 1150, '<b class="rojo">REFLEJOS</b><small>COMO SI HUBIERA BEBIDO</small>', P("reflejos") - 0.2, FE(12) + 0.2)
+chip("cNoPunto", 300, 1150, '<b>NO CON UN PUNTO</b>', P("punto", 2) - 0.3, P("retirada") - 0.3, cls="chip lite")
+OVR.append('<div id="cRet" class="sello rojo3" style="top:1130px">RETIRADA</div>')
+J(f'tl.set("#cRet", {{opacity:0}}, 0); tl.fromTo("#cRet", {{opacity:0, scale:1.5, rotation:-6}}, {{opacity:1, scale:1, rotation:-6, duration:0.3, ease:"back.out(2)", immediateRender:false}}, {P("retirada") - 0.05:.2f}); tl.to("#cRet", {{opacity:0, duration:0.3}}, {P("basta") - 0.4:.2f});')
+chip("cPierde", 110, 1150, '<b class="rojo">PIERDE EL PARTIDO</b><small>SIN PERDER EL TIE-BREAK</small>', P("pierde", 2) - 0.3, R0 - 0.15)
+J(f'tl.set("#retA", {{opacity:0}}, 0); tl.to("#retA", {{opacity:1, duration:0.2}}, {P("retirada"):.2f}); tl.to("#retA", {{opacity:0, duration:0.2}}, {R0:.2f});')
+OVR.append('<div id="rebob" class="rebob">◀◀ HOY</div>')
+J(f'tl.set("#rebob", {{opacity:0}}, 0); tl.to("#rebob", {{opacity:1, duration:0.15}}, {R0:.2f}); tl.to("#rebob", {{opacity:0, duration:0.3}}, {R1 + 0.2:.2f});')
+OVR.append('<div id="cRec" class="comp" style="left:90px;top:1110px">'
+           '<div class="fila2"><small>RÉCORD · WIMBLEDON 2010</small><div class="barra"><i id="barR" class="rojo"></i></div><b class="rojo">11 h 05</b></div>'
+           '<div class="fila2"><small>TIE-BREAK EN EL 5.º SET</small><div class="barra"><i id="barE"></i></div><b>2022</b></div></div>')
+entra("#cRec", P("record") - 0.3)
+J(f'tl.fromTo("#barR", {{width:"0%"}}, {{width:"100%", duration:0.9, ease:"power2.out", immediateRender:false}}, {P("once"):.2f});')
+J(f'tl.fromTo("#barE", {{width:"0%"}}, {{width:"100%", duration:0.9, ease:"power2.out", immediateRender:false}}, {P("slam"):.2f});')
+sale("#cRec", FE(15) + 0.2)
+chip("cHoy", 330, 1150, '<b>A 10 PUNTOS</b><small>CON 2 DE VENTAJA</small>', P("diez") - 0.3, P("minutos", 2) - 0.3)
+chip("cMin", 330, 1150, '<b>≈ MINUTOS</b><small>NO 20 HORAS</small>', P("minutos", 2) - 0.2, FE(16) + 0.3)
 
-# marcas de ampollas y calambre sobre B / A (círculos que laten en la figura)
+# marca del calambre sobre A (círculo que late en el gemelo)
 J('tl.set("#A_cal, #B_amp1, #B_amp2", {opacity:0}, 0);')
-J(f'tl.to("#A_cal", {{opacity:1, duration:0.2}}, {T_CAL + 0.3:.2f}); tl.to("#A_cal", {{scale:1.4, svgOrigin:"12 -14", duration:0.4, yoyo:true, repeat:5}}, {T_CAL + 0.3:.2f}); tl.to("#A_cal", {{opacity:0, duration:0.3}}, {P("seguir") - 0.1:.2f});')
-J(f'tl.to("#B_amp1, #B_amp2", {{opacity:1, duration:0.3}}, {P("ampollas") + 0.2:.2f}); tl.to("#B_amp1, #B_amp2", {{opacity:0, duration:0.3}}, {FE(24) + 0.3:.2f});')
+J(f'tl.to("#A_cal", {{opacity:1, duration:0.2}}, {T_CAL + 0.3:.2f}); tl.to("#A_cal", {{scale:1.4, svgOrigin:"12 -14", duration:0.4, yoyo:true, repeat:5}}, {T_CAL + 0.3:.2f}); tl.to("#A_cal", {{opacity:0, duration:0.3}}, {FE(9) - 0.3:.2f});')
 
-# ------------------------------------------------------------------ cámara: casi quieta, se acerca suave en 2 momentos
+# ------------------------------------------------------------------ cámara: casi quieta, se acerca suave en 3 momentos
 J('tl.set("#cam", {transformOrigin:"540px 1300px", scale:1, x:0, y:0}, 0);')
-J(f'tl.to("#cam", {{scale:1.28, x:-140, y:-150, duration:2.2, ease:"sine.inOut"}}, {T_TOA - 1.6:.2f}); tl.to("#cam", {{scale:1, x:0, y:0, duration:2.2, ease:"sine.inOut"}}, {FE(6) + 0.4:.2f});')
-J(f'tl.to("#cam", {{scale:1.25, x:0, y:-130, duration:2.0, ease:"sine.inOut"}}, {T_CAL - 0.9:.2f}); tl.to("#cam", {{scale:1, x:0, y:0, duration:2.2, ease:"sine.inOut"}}, {P("seguir") + 0.4:.2f});')
+J(f'tl.to("#cam", {{scale:1.28, x:-140, y:-150, duration:1.8, ease:"sine.inOut"}}, {T_TOA - 1.5:.2f}); tl.to("#cam", {{scale:1, x:0, y:0, duration:2.0, ease:"sine.inOut"}}, {FE(6) + 0.3:.2f});')
+J(f'tl.to("#cam", {{scale:1.25, x:0, y:-130, duration:1.8, ease:"sine.inOut"}}, {T_CAL - 0.9:.2f}); tl.to("#cam", {{scale:1, x:0, y:0, duration:2.0, ease:"sine.inOut"}}, {FE(9) + 0.1:.2f});')
+J(f'tl.to("#cam", {{scale:1.22, x:0, y:-110, duration:2.0, ease:"sine.inOut"}}, {T_RET - 1.6:.2f}); tl.to("#cam", {{scale:1, x:0, y:0, duration:1.4, ease:"sine.inOut"}}, {R0:.2f});')
 
 # ------------------------------------------------------------------ ensamblar SVG
 # marcas sobre las figuras: van dentro de su grupo (coordenadas locales)
@@ -906,7 +894,7 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#03060c}}
 #root{{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;background:#03060c;color:{TX}}}
 #cam{{position:absolute;inset:0}}
 .gran{{position:absolute;left:0;right:0;top:1060px;text-align:center;white-space:nowrap;text-shadow:0 6px 24px rgba(0,10,25,0.7)}}
-.gran b{{display:block;font:900 200px/1 Inter;letter-spacing:-8px;color:#fff;font-variant-numeric:tabular-nums}} .gran b i{{font-style:normal;font-size:70px;letter-spacing:0;margin-left:16px;color:{AM}}}
+.gran b{{display:block;font:900 260px/0.9 Inter;letter-spacing:-8px;color:#fff;font-variant-numeric:tabular-nums}} .gran b i{{font-style:normal;font-size:70px;letter-spacing:0;margin-left:16px;color:{AM}}}
 .gran small{{display:inline-block;margin-top:14px;padding:8px 20px;border-radius:12px;background:rgba(4,10,20,0.6);font:800 34px Inter;letter-spacing:7px;color:#fff}}
 .rebob{{position:absolute;left:0;right:0;top:1100px;text-align:center;font:900 120px Inter;letter-spacing:-3px;color:#fff;text-shadow:0 6px 24px rgba(0,0,0,0.6)}}
 .chip{{position:absolute;display:flex;align-items:center;gap:14px;padding:12px 20px;border-radius:16px;background:rgba(6,14,28,0.78);border:1px solid rgba(255,255,255,0.22);white-space:nowrap;box-shadow:0 8px 24px rgba(0,0,0,0.35)}}
@@ -925,6 +913,11 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#03060c}}
 .sb .tit{{background:#0e5a3c;color:#e9d58a;font:800 15px Inter;letter-spacing:3px;padding:5px 12px}}
 .sb .row{{display:grid;grid-template-columns:22px 110px 38px 38px 120px;align-items:center;padding:5px 12px;font:800 24px Inter;color:#fff}}
 .sb .row i{{width:12px;height:12px;border-radius:50%;display:block}} .sb .row span{{text-align:center;color:#b9c9da}} .sb .row b{{text-align:right;color:{AM};font-variant-numeric:tabular-nums}}
+.sb .row{{position:relative}} #retA{{position:absolute;right:14px;top:4px;padding:2px 8px;border-radius:6px;background:{RJ};font:900 22px Inter;font-style:normal;color:#fff;opacity:0}}
+.sello{{position:absolute;left:0;right:0;margin:0 auto;width:max-content;top:900px;padding:10px 26px;border:6px solid {RJ};border-radius:14px;font:900 64px Inter;letter-spacing:4px;color:{RJ};background:rgba(4,10,20,0.55)}}
+.sello.rojo3{{font-size:96px}}
+.prob{{font:900 110px/1.1 Inter;letter-spacing:-3px;color:#fff;font-variant-numeric:tabular-nums}} .prob span{{color:{AM}}}
+.comp .et{{display:block;font:800 20px Inter;letter-spacing:4px;color:#b9c9da}} .comp .et.rojo2{{color:#ff8a80}} .chip small.am{{color:{AM};font-size:26px}}
 #relojes{{position:absolute;right:36px;top:500px;z-index:60;text-align:right;background:rgba(6,12,24,0.86);border-radius:12px;padding:8px 16px;border:1px solid rgba(255,255,255,0.18)}}
 #relojes small{{display:block;font:800 14px Inter;letter-spacing:3px;color:#b9c9da}} #crono{{display:block;font:900 40px/1.1 Inter;color:#fff;font-variant-numeric:tabular-nums}}
 #horaL{{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-top:4px;font:800 26px Inter;color:#ffe2a8;font-variant-numeric:tabular-nums}}
@@ -946,10 +939,10 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#03060c}}
   <div id="flash"></div>
   <div id="topsombra"></div><div id="vineta"></div><div id="grano"></div>
   <div id="hud"><div class="sb"><div class="tit">QUINTO SET · TIE-BREAK</div>
-    <div class="row"><i style="background:{JUG["A"]["cam"]}"></i>RIVAS<span>2</span><span>6</span><b id="ptsA">1.100</b></div>
-    <div class="row"><i style="background:{JUG["B"]["cam"]}"></i>LANG<span>2</span><span>6</span><b id="ptsB">1.100</b></div></div></div>
-  <div id="relojes"><small>TIEMPO DE TIE-BREAK</small><b id="crono">20:00:00</b>
-    <div id="horaL"><span class="ic"><svg id="icoSol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#ffd27a"/></svg><svg id="icoLuna" viewBox="0 0 24 24" style="opacity:0"><path d="M15,3 A9,9 0 1 0 21,15 A7,7 0 1 1 15,3 Z" fill="#e9eefc"/></svg></span><span id="horaLocal">09:00</span></div></div>
+    <div class="row"><i style="background:{JUG["A"]["cam"]}"></i>RIVAS<span>2</span><span>6</span><b id="ptsA">0</b><em id="retA">RET.</em></div>
+    <div class="row"><i style="background:{JUG["B"]["cam"]}"></i>LANG<span>2</span><span>6</span><b id="ptsB">0</b></div></div></div>
+  <div id="relojes"><small>TIEMPO DE TIE-BREAK</small><b id="crono">00:00:00</b>
+    <div id="horaL"><span class="ic"><svg id="icoSol" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#ffd27a"/></svg><svg id="icoLuna" viewBox="0 0 24 24" style="opacity:0"><path d="M15,3 A9,9 0 1 0 21,15 A7,7 0 1 1 15,3 Z" fill="#e9eefc"/></svg></span><span id="horaLocal">13:00</span></div></div>
   <div id="marca">@mundo.supuesto</div>
   <div id="subs" data-layout-allow-overlap>{"".join(SUBS)}</div>
   <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="{DUR}" data-track-index="5" data-volume="1"></audio>
