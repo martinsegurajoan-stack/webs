@@ -1,22 +1,21 @@
-# ¿Qué pasaría si te sueltan en una burbuja gigante desde un helicóptero? — @mundo.supuesto
+# ¿Qué pasaría si te dejasen caer desde 1.000 m dentro de una burbuja? — @mundo.supuesto (versión informativa)
 
-## TikTok / Instagram
+## TikTok / Instagram / Facebook
 ```
-Te meten en una burbuja gigante, la cuelgan de un helicóptero… y a 1.000 metros cortan la cuerda 🚁🫧
-El corazón a 180, 140 km/h, medio minuto cayendo dando vueltas (y vomitando 🤢). Pero lo real es esto: la burbuja solo amortigua unos 40 cm, y el golpe sería de unas 200 veces tu peso. El cuerpo humano aguanta unas 45.
-¿Te subirías? 👇
-Compártelo con el amigo que se metería sin pensarlo y sígueme en @mundo.supuesto para más 🔔
-#fyp #quepasariasi #curiosidades #fisica
+¿Qué le pasaría a tu cuerpo si te soltaran desde 1.000 metros dentro de una burbuja de plástico?
+En 3 segundos vas a 90 km/h y llegas a unos 140 km/h. La caída dura unos 28 segundos. Al llegar al suelo solo hay unos 40 cm de aire para frenar: eso supone unas 200 veces la gravedad, y el cuerpo humano tolera unas 45. La burbuja solo protege en caídas de unos 6 metros.
+Compártelo con alguien que se lo creería y sígueme en @mundo.supuesto para más.
+#fyp #quepasariasi #curiosidades #ciencia
 ```
 
 ## YouTube Shorts
 Título:
 ```
-¿Y si te sueltan en una burbuja gigante desde 1.000 metros? 🚁🫧 #shorts
+¿Qué pasaría si caes desde 1.000 m dentro de una burbuja? #shorts
 ```
 Descripción:
 ```
-140 km/h, medio minuto cayendo y un golpe de 200 veces tu peso. Esto es lo que pasaría de verdad 🫧
-Suscríbete y compártelo con quien se metería sin pensarlo.
-#shorts #quepasariasi #curiosidades #fisica
+140 km/h, 28 segundos de caída y un frenazo de unas 200 veces la gravedad. Esto es lo que le pasaría a tu cuerpo.
+Suscríbete y compártelo.
+#fyp #quepasariasi #curiosidades #ciencia
 ```
