@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "e9b2a7e6-0076-4548-b526-2e46750e1e7f",
-  "currentRevision": "e8f096eb-7320-41ff-a826-26c00c083d35",
+  "currentRevision": "062d2d7d-a8a4-4d9f-9ba3-2d0145d2c0fc",
   "pendingChanges": false,
   "files": {
     "_figuras.py": {
@@ -45,8 +45,8 @@
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/4f/4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "gen.py": {
-      "hash": "2670e238c5e084589d01767fd8de15b284e04a92d32b0f754eaa1bf83fc0ef7e",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/26/2670e238c5e084589d01767fd8de15b284e04a92d32b0f754eaa1bf83fc0ef7e"
+      "hash": "b2ddee79d0216a6266d7f4eb48de561c502021e12e400505605d54fbcd8532f7",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/b2/b2ddee79d0216a6266d7f4eb48de561c502021e12e400505605d54fbcd8532f7"
     },
     "guion.txt": {
       "hash": "c0f66200a95a8459f6d24b039697845a91b0389a98aad8e832c685fa0be8e7c7",
@@ -149,8 +149,8 @@
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/c7/c7928709a59f77ca48aa1cf77e3e9cb552c56a6cf403316b624505a312c3ec10"
     },
     "index.html": {
-      "hash": "2836729b61c5afaac9869e4e0ef5c657c7ac247e051eab4b6568c1594d3e6ed4",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/28/2836729b61c5afaac9869e4e0ef5c657c7ac247e051eab4b6568c1594d3e6ed4"
+      "hash": "93860479af1c19bd54da729e9f944ae10570780e1443ddbff7f82eefaba38ad3",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/93/93860479af1c19bd54da729e9f944ae10570780e1443ddbff7f82eefaba38ad3"
     },
     "voz_el/narrador.mp3": {
       "hash": "c29b17e6c279d930a81ea8a82471468571e39ad14dadd2e9ebe2d615d9626c5b",
@@ -159,10 +159,6 @@
     "voz_el/narrador.wav": {
       "hash": "1a9d171d16ee33e1ade139b754ef7b088e81dedb147a7d84b0a0957d0c052bdd",
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/1a/1a9d171d16ee33e1ade139b754ef7b088e81dedb147a7d84b0a0957d0c052bdd"
-    },
-    "render.log": {
-      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "miniatura/hacer.js": {
       "hash": "665d903919538eca3761e84e8852e47ce63720f2560ce46d53997b33b45adbe2",
@@ -175,6 +171,14 @@
     "miniatura/miniatura_tiktok_3x4.png": {
       "hash": "f73d8935af5e9c8c39285f44c3f117a5aaa7773e69902512bd9cc24384c8faac",
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/f7/f73d8935af5e9c8c39285f44c3f117a5aaa7773e69902512bd9cc24384c8faac"
+    },
+    "render.log": {
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "salida/video-FINAL.mp4": {
+      "hash": "bb72644906a2c7f107fa87339ff579e9642e6fb9464f4e1178aa927e02a5f419",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/bb/bb72644906a2c7f107fa87339ff579e9642e6fb9464f4e1178aa927e02a5f419"
     }
   },
   "revisions": {
@@ -229,6 +233,29 @@
         "render.log": {
           "before": null,
           "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "062d2d7d-a8a4-4d9f-9ba3-2d0145d2c0fc": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794180467035,
+      "endedAt": 1794180467055,
+      "files": {
+        "gen.py": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/26/2670e238c5e084589d01767fd8de15b284e04a92d32b0f754eaa1bf83fc0ef7e",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/b2/b2ddee79d0216a6266d7f4eb48de561c502021e12e400505605d54fbcd8532f7"
+        },
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/28/2836729b61c5afaac9869e4e0ef5c657c7ac247e051eab4b6568c1594d3e6ed4",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/93/93860479af1c19bd54da729e9f944ae10570780e1443ddbff7f82eefaba38ad3"
+        },
+        "salida/video-FINAL.mp4": {
+          "before": null,
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/bb/bb72644906a2c7f107fa87339ff579e9642e6fb9464f4e1178aa927e02a5f419"
         }
       }
     }
@@ -672,8 +699,8 @@
   },
   "renders": {
     "latest": {
-      "id": "4fdbad5d-d047-4f64-9ee2-6067acd79227",
-      "completedAt": 1794180281374,
+      "id": "2df8c8d3-51b8-4837-953d-92d592b8bfdf",
+      "completedAt": 1794180983790,
       "output": "/home/user/webs/quiz-video/animado/placebo/salida/video-bruto.mp4",
       "status": "completed",
       "revision": null
