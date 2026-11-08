@@ -1,7 +1,7 @@
 {
   "version": 1,
   "historyId": "e9b2a7e6-0076-4548-b526-2e46750e1e7f",
-  "currentRevision": "34f40a04-ea0d-44cd-867a-aa82fc039f89",
+  "currentRevision": "63ed4234-5d3a-4910-aadb-614d33552b18",
   "pendingChanges": false,
   "files": {
     "_figuras.py": {
@@ -45,8 +45,8 @@
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/9f/9f3cec7545cb216e9972c85b5412389d0910b4fc41cfe47fc8ce4de76a99d84b"
     },
     "gen.py": {
-      "hash": "0676d82f4e4efd8bb8dae344d8d26ac0146b3cafd849efa67a31a00821539093",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/06/0676d82f4e4efd8bb8dae344d8d26ac0146b3cafd849efa67a31a00821539093"
+      "hash": "c22209ee1534e58e8f7d423c61018f27ec32bd65284cae928c174ec296ce4534",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/c2/c22209ee1534e58e8f7d423c61018f27ec32bd65284cae928c174ec296ce4534"
     },
     "guion.txt": {
       "hash": "fea8c96b2211731cbbde35c23838c2f220e7ec68b4cba277f9c2a69651f2f3e4",
@@ -149,8 +149,8 @@
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/e9/e99c1989d426dc657155fbb6732bbd92bcb6928f371881e362585f972ffb46d7"
     },
     "index.html": {
-      "hash": "c84c4227cced5efa237b058ace379cc722c77add6385914cab9cca4961ea401c",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/c8/c84c4227cced5efa237b058ace379cc722c77add6385914cab9cca4961ea401c"
+      "hash": "b411c8b76a962983b04e5f966e8ac30b3de0c4823f43614c9767edfb1679d0d8",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/b4/b411c8b76a962983b04e5f966e8ac30b3de0c4823f43614c9767edfb1679d0d8"
     },
     "voz_el/narrador.mp3": {
       "hash": "deef0c568603011abae4e735f1e198845e884225d4aea98fe77620db0cffd41e",
@@ -161,20 +161,20 @@
       "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/ef/ef2f88066575aa1e8f260d330a4beff93badf3b79164a7a0550120451072b717"
     },
     "miniatura/hacer.js": {
-      "hash": "665d903919538eca3761e84e8852e47ce63720f2560ce46d53997b33b45adbe2",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/66/665d903919538eca3761e84e8852e47ce63720f2560ce46d53997b33b45adbe2"
+      "hash": "a88feabfcd437f514dc2e33779bb1bb57dafef8170fa5396798c4a9a7b693ed3",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/a8/a88feabfcd437f514dc2e33779bb1bb57dafef8170fa5396798c4a9a7b693ed3"
     },
     "miniatura/miniatura_9x16.png": {
-      "hash": "de75d5f7c1564e1cd2416b051f64e36ec59ae6fe4da6d2b15c32f0426589ac02",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/de/de75d5f7c1564e1cd2416b051f64e36ec59ae6fe4da6d2b15c32f0426589ac02"
+      "hash": "eae884be67e4476012645e26990dcb790ae5a3d09b033ccc5a854e3cf5b3d51c",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/ea/eae884be67e4476012645e26990dcb790ae5a3d09b033ccc5a854e3cf5b3d51c"
     },
     "miniatura/miniatura_tiktok_3x4.png": {
-      "hash": "f73d8935af5e9c8c39285f44c3f117a5aaa7773e69902512bd9cc24384c8faac",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/f7/f73d8935af5e9c8c39285f44c3f117a5aaa7773e69902512bd9cc24384c8faac"
+      "hash": "61c159ab57afc285076393954e96ff9d0502f856422226dcb4ad051d7f28cf95",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/61/61c159ab57afc285076393954e96ff9d0502f856422226dcb4ad051d7f28cf95"
     },
     "render.log": {
-      "hash": "6db78209b38904d5a98a495e059ed8f151bd88d6b0a683cb6374eec1f9c3354f",
-      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/6d/6db78209b38904d5a98a495e059ed8f151bd88d6b0a683cb6374eec1f9c3354f"
+      "hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     "salida/video-FINAL.mp4": {
       "hash": "a05d6bf241c0084e9224fb230f5ad0eaa4726d1a2e8309abbfedf18c8b7d6a7a",
@@ -437,6 +437,41 @@
         "index.html": {
           "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/dd/dddfdbe11e77b73f623b5357b32c8ac4f879d116d6084b1f4f242490d6ffbb00",
           "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/c8/c84c4227cced5efa237b058ace379cc722c77add6385914cab9cca4961ea401c"
+        }
+      }
+    },
+    "63ed4234-5d3a-4910-aadb-614d33552b18": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1794182017160,
+      "endedAt": 1794182017248,
+      "files": {
+        "gen.py": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/06/0676d82f4e4efd8bb8dae344d8d26ac0146b3cafd849efa67a31a00821539093",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/c2/c22209ee1534e58e8f7d423c61018f27ec32bd65284cae928c174ec296ce4534"
+        },
+        "index.html": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/c8/c84c4227cced5efa237b058ace379cc722c77add6385914cab9cca4961ea401c",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/b4/b411c8b76a962983b04e5f966e8ac30b3de0c4823f43614c9767edfb1679d0d8"
+        },
+        "miniatura/hacer.js": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/66/665d903919538eca3761e84e8852e47ce63720f2560ce46d53997b33b45adbe2",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/a8/a88feabfcd437f514dc2e33779bb1bb57dafef8170fa5396798c4a9a7b693ed3"
+        },
+        "miniatura/miniatura_9x16.png": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/de/de75d5f7c1564e1cd2416b051f64e36ec59ae6fe4da6d2b15c32f0426589ac02",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/ea/eae884be67e4476012645e26990dcb790ae5a3d09b033ccc5a854e3cf5b3d51c"
+        },
+        "miniatura/miniatura_tiktok_3x4.png": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/f7/f73d8935af5e9c8c39285f44c3f117a5aaa7773e69902512bd9cc24384c8faac",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/61/61c159ab57afc285076393954e96ff9d0502f856422226dcb4ad051d7f28cf95"
+        },
+        "render.log": {
+          "before": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/6d/6db78209b38904d5a98a495e059ed8f151bd88d6b0a683cb6374eec1f9c3354f",
+          "after": "/root/.cache/hyperframes/history/e9b2a7e6-0076-4548-b526-2e46750e1e7f/blobs/e3/e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         }
       }
     }
