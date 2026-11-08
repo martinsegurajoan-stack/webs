@@ -669,5 +669,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "4fdbad5d-d047-4f64-9ee2-6067acd79227",
+      "completedAt": 1794180281374,
+      "output": "/home/user/webs/quiz-video/animado/placebo/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }

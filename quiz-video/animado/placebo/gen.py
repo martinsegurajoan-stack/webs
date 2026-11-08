@@ -376,7 +376,7 @@ OVR.append('<div id="bocata" class="bocata" style="left:1900px;top:880px">'
 entra("#bocata", P("fotos") - 0.3, "opacity:0, scale:0.8")
 J(f'tl.set("#fFalso, #falsoT", {{opacity:0}}, 0); tl.to("#fFalso, #falsoT", {{opacity:1, duration:0.3}}, {P("falsos") - 0.2:.2f});')
 sale("#bocata", FE(8) + 0.1)
-chip("cFalsos", 1820, 1180, '<b class="rojo">MÁS RECUERDOS FALSOS</b><small>Y MÁS SEGUROS DE ELLOS</small>', P("creyeron") - 0.3, FE(8) + 0.2)
+chip("cFalsos", 1660, 1180, '<b class="rojo">MÁS RECUERDOS FALSOS</b><small>Y MÁS SEGUROS DE ELLOS</small>', P("creyeron") - 0.3, FE(8) + 0.2)
 OVR.append(f'<div id="cCero" class="gran2" style="left:1700px;top:1020px"><b>0,00</b><small>ALCOHOLÍMETRO</small></div>')
 entra("#cCero", P("cero") - 0.3, "opacity:0, scale:0.8")
 sale("#cCero", FE(9) + 0.4)
