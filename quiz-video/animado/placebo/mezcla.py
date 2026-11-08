@@ -224,6 +224,19 @@ def rebobina_fx(d=1.7):
     rng = np.random.default_rng(2); nz = np.convolve(rng.standard_normal(len(t)), np.ones(8) / 8, mode="same")
     env = np.minimum(1, t * 8) * np.minimum(1, (d - t) * 4)
     return env * (0.3 * np.sin(ph) * (0.6 + 0.4 * np.sin(2 * np.pi * 22 * t)) + 0.5 * nz)
+def rasca_fx(d=0.45):
+    t = np.arange(int(d * SR)) / SR
+    f = 900 * np.exp(-t * 6) + 120
+    ph = 2 * np.pi * np.cumsum(f) / SR
+    rng = np.random.default_rng(6); nz = np.convolve(rng.standard_normal(len(t)), np.ones(4) / 4, mode="same")
+    return (0.6 * np.sign(np.sin(ph)) * 0.3 + 0.5 * nz) * np.minimum(1, t * 60) * np.exp(-t * 3)
+def pop_fx():
+    t = np.arange(int(0.12 * SR)) / SR
+    return np.sin(2 * np.pi * (700 - 2500 * t) * t) * np.exp(-t * 35)
+def ding_fx():
+    t = np.arange(int(0.9 * SR)) / SR
+    return (np.sin(2 * np.pi * 1760 * t) * 0.6 + np.sin(2 * np.pi * 2637 * t) * 0.3) * np.exp(-t * 5)
+fx.update({"rasca": (rasca_fx(), 0.9), "pop": (pop_fx(), 0.6), "ding": (ding_fx(), 0.6), "riser": (riser(1.0), 0.6)})
 fx.update({"bola": (bola_fx(), 0.9), "bote": (bote_fx(), 0.5), "rebobina": (rebobina_fx(), 0.9)})
 # --- MEZCLA LIMPIA (usuario, 02-11-2026: «no hagas tanto ruido… no se te oye»): la VOZ manda siempre.
 FX_GAIN = 0.32                       # todos los efectos mucho más bajos

@@ -7,8 +7,8 @@ const path = require('path');
   await p.addInitScript(() => { window.__timelines = {}; });
   await p.goto('file://' + dir + '/index.html'); await p.waitForTimeout(2500);
   await p.evaluate(() => {
-    window.__timelines.main.seek(0.6);
-    for (const s of ['#subs', '#grano', '.chip', '#hook']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
+    window.__timelines.main.seek(2.0);
+    for (const s of ['#subs', '#grano', '#fxl', '#hook']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
     document.querySelector('#topsombra').style.height = '640px';
     const d = document.createElement('div'); d.style.cssText = 'position:absolute;inset:0;z-index:90;font-family:Inter;text-align:center';
     d.innerHTML = `

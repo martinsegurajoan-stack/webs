@@ -175,7 +175,7 @@ mundo.append(f'<g transform="translate(1880,{SUELO})"><path d="M0,0 L0,-420" str
 mundo.append(f'<g transform="translate(2660,{SUELO})"><rect x="-34" y="-70" width="68" height="70" rx="8" fill="#6b4a2e"/>'
              + "".join(f'<path d="M0,-70 Q{dx},{-150 - abs(dx)} {dx * 1.6},{-200 + abs(dx) * 0.5}" stroke="#3fa66b" stroke-width="14" fill="none" stroke-linecap="round"/>' for dx in (-40, -15, 15, 40)) + '</g>')
 # cinta en el suelo para la prueba de equilibrio (aparece luego)
-mundo.append('<g id="cinta" opacity="0"><path d="M1960,1700 L2560,1700" stroke="#ffc24a" stroke-width="10" stroke-dasharray="40 14"/></g>')
+mundo.append('<g id="cinta" opacity="0"><path d="M1960,1700 L2230,1700" stroke="#35d987" stroke-width="10" stroke-dasharray="40 14"/></g>')
 
 # ------------------------------------------------------------------ PERSONAS
 ROPA = ["#e2604a", "#35a3d9", "#7a5bd6", "#3fa66b", "#f08aa0", "#ffc24a", "#f2f4f7", "#1d1d24"]
@@ -239,161 +239,278 @@ for i, pid in enumerate(("C1", "C2")):
         pz(pid, ["hablar", "reir", "beber2", "firme"][int(t * 3 + i) % 4], t, 0.4, "sine.inOut")
         t += 2.4
 
-# ------------------------------------------------------------------ GUION VISUAL (el protagonista P y la cámara)
-CAM = []                                        # (t, x del centro) — la cámara sigue al protagonista
-def cam(t, x, d=1.6):
-    CAM.append((t, max(540, min(W - 540, x)), d))
-cam(0, PX0, 0)
-# 1-2) gancho: baila con el vaso, con 0,00 de alcohol
-bailar("P", 0.0, F(3) - 0.3, cada=1)
-# 3) camina a la barra (bar de mentira)
-anda("P", 700, F(3) - 0.2, 2.6)
-cam(F(3) - 0.2, 620, 2.6)
-pz("P", "firme", F(3) + 2.5, 0.3)
-# el camarero (investigador) coge la botella de «vodka» y sirve
-pz("R1", "servir", P("botellas") - 0.3, 0.4)
-pz("R1", "firme", FE(3), 0.4)
-# 4) el borde del vaso y las gotas (lupa), y el primer trago
-pz("P", "beber2", P("trago") - 0.2, 0.35)
-pz("P", "firme", P("alcohol", 3) + 0.4, 0.4)
-# 5) «estáis bebiendo vodka con tónica»
-pz("R1", "hablar", F(5), 0.3); pz("R1", "firme", FE(5) + 0.2, 0.3)
-# 6) vuelve a la pista: habla alto, se suelta, se ríe
-anda("P", 1150, F(6) - 0.1, 2.2)
-cam(F(6) - 0.1, 1150, 2.2)
-pz("P", "hablar", P("alto", 2) - 0.2, 0.3)
-bailar("P", P("sueltan") - 0.1, P("rien") - 0.1, cada=1)
-pz("P", "reir", P("rien") - 0.1, 0.3)
-J(f'tl.to("#P_h", {{rotation:-10, svgOrigin:"0 -91", duration:0.25, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("rien"):.2f});')
-# 7) se mira al espejo (se ve más guapo); los «jueces» del sofá sacan un 6
-anda("P", 2440, F(7) - 0.1, 3.0)
-cam(F(7) - 0.1, 2160, 3.0)
-pz("P", "espejo", P("atractivos") - 0.4, 0.4)
-J(f'tl.to("#S1_nota, #S2_nota", {{opacity:1, duration:0.3}}, {P("jueces") - 0.1:.2f}); tl.to("#S1_nota, #S2_nota", {{opacity:0, duration:0.3}}, {FE(7) + 0.4:.2f});')
-pz("S1", "nota", P("jueces") - 0.2, 0.3); pz("S2", "nota", P("jueces") - 0.1, 0.3)
-pz("S1", "sentado", FE(7) + 0.3, 0.3); pz("S2", "sentado", FE(7) + 0.4, 0.3)
-# 8) recuerdos falsos: piensa (bocadillo con las fotos del robo)
-anda("P", 2260, F(8) - 0.1, 1.2)
-pz("P", "pensar", F(8) + 1.2, 0.4)
-# la investigadora cruza la fiesta por detrás hasta el salón
-anda("R2", 2060, F(8), 6.5, y=1600)
-# 9) alcoholímetro: sopla y marca 0,00
-J(f'tl.to("#R2_alco", {{opacity:1, duration:0.2}}, {F(9) - 0.2:.2f}); tl.to("#R2_alco", {{opacity:0, duration:0.2}}, {FE(9) + 0.3:.2f});')
-pz("R2", "dar", F(9) - 0.2, 0.3)
-pz("P", "soplar", F(9) + 0.2, 0.3)
-pz("P", "firme", FE(9) - 0.2, 0.3); pz("R2", "firme", FE(9) + 0.2, 0.3)
-# 10-12) por qué pasa: expectativas, olor-música-vaso, excusa
-pz("P", "pensar", F(10), 0.4)
-bailar("P", F(11) + 0.2, FE(11), cada=2)
-pz("P", "hablar", F(12), 0.3)
-pz("P", "reir", P("permiso") - 0.1, 0.3)
-pz("P", "firme", FE(12), 0.3)
-# 13-14) reflejos: camina por la cinta y atrapa la regla
-J(f'tl.to("#cinta", {{opacity:1, duration:0.4}}, {F(13):.2f}); tl.to("#cinta", {{opacity:0, duration:0.4}}, {FE(14) + 0.3:.2f});')
-coloca("P", 1980, 1700, 3.1, F(13) - 0.1, 0.8)
-pz("P", "brazos", F(13) + 0.6, 0.4)
-J(f'tl.to("#P", {{x:2500, duration:3.0, ease:"none"}}, {F(13) + 1.0:.2f});')
-k, tt = 0, F(13) + 1.0
-while tt < F(13) + 3.9:
-    pz("P", f"andar{1 + k % 2}", tt, 0.22, "sine.inOut", solo=PIERNAS); tt += 0.3; k += 1
-POS["P"] = (2500, 1700, 3.1)
-cam(F(13) - 0.1, 2240, 1.2)
-# la regla: la investigadora la suelta y él la atrapa
-coloca("R2", 2380, 1600, 2.7, F(14) - 0.6, 0.6)
-pz("R2", "mostrar", F(14), 0.3)
-J(f'tl.to("#R2_regla", {{opacity:1, duration:0.15}}, {F(14) + 0.2:.2f});')
-pz("P", "atrapar", P("reaccion") - 0.1, 0.15, "power3.out")
-J(f'tl.to("#R2_regla", {{y:"+=26", duration:0.12, ease:"power2.in"}}, {P("reaccion") - 0.2:.2f}); tl.to("#R2_regla", {{opacity:0, duration:0.2}}, {FE(14):.2f});')
-pz("P", "firme", P("empeoran") + 0.2, 0.3)
-pz("R2", "firme", P("empeoran") + 0.3, 0.3)
-# 15) la verdad: la investigadora enseña la botella (solo tónica); él se lleva las manos a la cabeza
-J(f'tl.to("#R2_bot", {{opacity:1, duration:0.2}}, {F(15) - 0.1:.2f}); tl.to("#R2_bot", {{opacity:0, duration:0.2}}, {FE(15) + 0.4:.2f});')
-pz("R2", "mostrar", F(15), 0.3)
-pz("P", "sorpresa", P("creerlo") - 0.5, 0.35)
-pz("R2", "firme", FE(15) + 0.3, 0.3)
-# 16-17) vuelve a la pista y sigue bailando (igual que en el fotograma 0)
-coloca("P", 2500, 1650, 3.1, F(16) - 0.3, 0.4)
-anda("P", PX0, F(16) + 0.1, 4.2, y=1650)
-cam(F(16) + 0.1, PX0, 4.2)
-bailar("P", F(16) + 4.4, DUR - 0.25, cada=1)
-pz("P", "baile1", DUR - 0.25, 0.2)
-# cámara
-J(f'tl.set("#cam", {{x:{-(PX0 - 540)}}}, 0);')
-for t, x, d in CAM[1:]:
-    J(f'tl.to("#cam", {{x:{-(x - 540):.0f}, duration:{d:.2f}, ease:"sine.inOut"}}, {t:.2f});')
+# ------------------------------------------------------------------ v2: EDICIÓN DINÁMICA (zooms, barridos, textos que golpean)
+FXL = []                                        # capa de efectos en pantalla (fuera de la cámara)
+def slam(cid, html, t, hasta, y=1000, cls="slam", rot=-3, son="golpe"):
+    FXL.append(f'<div id="{cid}" class="{cls}" style="top:{y}px">{html}</div>')
+    J(f'tl.set("#{cid}", {{opacity:0}}, 0); tl.fromTo("#{cid}", {{opacity:0, scale:2.3, rotation:{rot * 2}}}, {{opacity:1, scale:1, rotation:{rot}, duration:0.32, ease:"back.out(2.2)", immediateRender:false}}, {t:.2f});')
+    J(f'tl.to("#{cid}", {{opacity:0, scale:1.25, duration:0.22, ease:"power2.in"}}, {hasta:.2f});')
+    if son:
+        fx(son, t)
+def burbuja(cid, html, t, hasta, x, y, cola="izq"):
+    FXL.append(f'<div id="{cid}" class="bubble {cola}" style="left:{x}px;top:{y}px">{html}</div>')
+    J(f'tl.set("#{cid}", {{opacity:0}}, 0); tl.fromTo("#{cid}", {{opacity:0, scale:0.4, y:30}}, {{opacity:1, scale:1, y:0, duration:0.35, ease:"back.out(2)", immediateRender:false}}, {t:.2f});')
+    J(f'tl.to("#{cid}", {{opacity:0, scale:0.8, duration:0.2}}, {hasta:.2f});')
+    fx("pop", t)
+CAMS = []
+def plano(t, cx, cy, z, d=0.55, ease="power3.inOut", barrido=False):
+    z = max(1.0, z)
+    x = min(0, max(1080 - W * z, 540 - cx * z)); y = min(0, max(1920 - 1920 * z, 960 - cy * z))
+    if d == 0:
+        J(f'tl.set("#cam", {{x:{x:.0f}, y:{y:.0f}, scale:{z:.3f}}}, {t:.2f});')
+    else:
+        J(f'tl.to("#cam", {{x:{x:.0f}, y:{y:.0f}, scale:{z:.3f}, duration:{d:.2f}, ease:"{ease}"}}, {t:.2f});')
+    if barrido:
+        J(f'tl.to("#shake", {{filter:"blur(14px)", duration:{d * 0.45:.2f}, ease:"power2.in"}}, {t:.2f}); tl.to("#shake", {{filter:"blur(0px)", duration:{d * 0.55:.2f}, ease:"power2.out"}}, {t + d * 0.45:.2f});')
+        fx("whoosh", t)
+def golpe_cam(t, f=14):
+    J(f'tl.fromTo("#imp", {{x:0, y:0}}, {{keyframes:[{{x:{f}, y:{-f * 0.6:.0f}, duration:0.05}}, {{x:{-f * 0.8:.0f}, y:{f * 0.5:.0f}, duration:0.05}}, {{x:{f * 0.5:.0f}, y:{f * 0.3:.0f}, duration:0.05}}, {{x:0, y:0, duration:0.08}}], immediateRender:false}}, {t:.2f});')
+def boca(t, tipo):
+    for m in ("son", "ris", "o", "pla"):
+        J(f'tl.set("#P_{m}", {{opacity:{1 if m == tipo else 0}}}, {t:.2f});')
+def teleporta(pid, x, y, s, t):
+    J(f'tl.set("#{pid}", {{x:{x}, y:{y}, scale:{s}}}, {t:.2f});'); POS[pid] = (x, y, s)
+HEADY = 1650 - 3.1 * 90
+def face(x): return (x, HEADY + 40, 2.3)
 
-# ------------------------------------------------------------------ MEDIDORES (lo que siente / alcohol en sangre)
-SIENTE = [(0, 82), (F(3) - 0.2, 82), (F(3) + 0.8, 0), (P("trago"), 0), (P("trago") + 1.0, 18), (F(6), 25), (P("rien"), 70), (FE(8), 78),
-          (F(9), 78), (FE(15) - 1.0, 78), (P("creerlo"), 35), (F(16) + 1.5, 45), (DUR - 2.0, 82), (DUR, 82)]
+# cara del protagonista (ojos y bocas que cambian)
+CARA = ('<circle cx="-3.2" cy="-90.6" r="1.15" fill="#1d1d24"/><circle cx="3.2" cy="-90.6" r="1.15" fill="#1d1d24"/>'
+        '<path id="P_son" d="M-3.6,-86.6 Q0,-83.4 3.6,-86.6" stroke="#5a1d1d" stroke-width="1.3" fill="none" stroke-linecap="round"/>'
+        '<path id="P_ris" d="M-4,-87.2 Q0,-80.6 4,-87.2 Z" fill="#5a1d1d" opacity="0"/>'
+        '<ellipse id="P_o" cx="0" cy="-85.6" rx="1.8" ry="2.5" fill="#5a1d1d" opacity="0"/>'
+        '<path id="P_pla" d="M-3,-86 L3,-86" stroke="#5a1d1d" stroke-width="1.3" opacity="0"/>'
+        '<g id="P_esp" opacity="0">' + "".join(f'<path d="M{12 * math.cos(a):.1f},{-104 + 4 * math.sin(a):.1f} q2,-3 4,0" stroke="#ffc24a" stroke-width="1.2" fill="none"/>' for a in (0, 2.1, 4.2)) +
+        '<g id="P_espiral"><path d="M0,-108 m-6,0 a6,4 0 1,1 12,0 a4.5,3 0 1,1 -9,0 a3,2 0 1,1 6,0" stroke="#ffc24a" stroke-width="1.4" fill="none"/></g></g>')
+
+# fantasma «con alcohol de verdad» para la comparación de reflejos
+GHOST = dict(PROTA); GHOST["cam"] = "#ff5a4f"
+gente.append(("G", figura("G", GHOST, "brazos", sudor=False)))
+coloca("G", 2330, 1700, 3.1)
+J('tl.set("#G", {opacity:0}, 0);')
+mundo.append('<g id="cinta2" opacity="0"><path d="M2310,1700 L2600,1700" stroke="#ff5a4f" stroke-width="10" stroke-dasharray="40 14"/></g>')
+
+# ------------------------------------------------------------------ GUION VISUAL
+R2X = 2380
+x0, y0, z0 = face(PX0)
+plano(0, x0, y0, z0, 0)
+boca(0, "ris")
+# 1) gancho: primer plano bailando; «¿borracho?»; golpe al vaso con 0,00
+bailar("P", 0.0, F(3) - 0.2, cada=1)
+slam("sBorr", "¿BORRACHO?", 0.0, P("convencido") + 0.9, y=980, son=None)
+J('tl.set("#sBorr", {opacity:1, scale:1, rotation:-3}, 0);')
+plano(P("baila") - 0.1, PX0, 1460, 1.7, 0.5)
+boca(P("grita"), "o"); boca(P("rie") , "ris")
+J(f'tl.to("#P_h", {{rotation:-12, svgOrigin:"0 -91", duration:0.18, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("rie"):.2f});')
+plano(P("gota") - 0.25, PX0 - 56, 1340, 2.9, 0.35, "power4.out")
+slam("s000", '0,00<small>GOTAS DE ALCOHOL</small>', P("gota") - 0.05, FE(1) + 0.15, y=980, cls="slam verde")
+golpe_cam(P("gota"))
+# 2) se abre: toda la fiesta
+plano(F(2) - 0.05, 1300, 960, 1.0, 0.9, "power2.inOut")
+slam("sCient", 'CIENTOS<small>DE PERSONAS</small>', P("cientos") - 0.05, P("raro") - 0.3, y=1040, cls="slam")
+plano(P("raro") - 0.2, PX0, 1460, 1.5, 0.6)
+slam("sRaro", 'MUY RARO', P("raro") - 0.05, FE(2) + 0.2, y=1100, cls="slam rojo", son="latido")
+# 3) barrido a la barra: el truco
+teleporta("P", 720, 1650, 3.1, F(3) + 0.05)
+pz("P", "firme", F(3) + 0.1, 0.2)
+boca(F(3) + 0.1, "son")
+plano(F(3) - 0.05, 560, 1180, 1.35, 0.5, barrido=True)
+slam("sFalso", 'BAR FALSO', P("falso") - 0.05, P("musica") - 0.1, y=1120, cls="slam ama")
+slam("sMus", '🎵 MÚSICA', P("musica") - 0.05, P("luces") - 0.1, y=1120, cls="slam", son="pop")
+J(f'tl.fromTo(".bomb0, .bomb1, .bomb2", {{scale:1, transformOrigin:"50% 50%"}}, {{scale:1.6, transformOrigin:"50% 50%", duration:0.2, yoyo:true, repeat:1}}, {P("luces"):.2f});')
+slam("sLuz", '💡 LUCES', P("luces") - 0.05, P("botellas") - 0.1, y=1120, cls="slam", son="pop")
+plano(P("botellas") - 0.1, 450, 980, 2.1, 0.5)
+slam("sTon", '<s>VODKA</s> TÓNICA', P("tonica") - 0.05, FE(3) + 0.2, y=1150, cls="slam az", son="rasca")
+golpe_cam(P("tonica"), 10)
+# 4) la lupa: borde untado, gotas; hueles/saboreas/no hay
+plano(F(4) - 0.05, 720, 1460, 1.6, 0.6)
+FXL.append('<div id="lupa" class="lupa2"><svg viewBox="0 0 400 400" width="560" height="560">'
+           '<circle cx="200" cy="200" r="190" fill="#140f24" stroke="#ffffff" stroke-width="8"/>'
+           '<path d="M110,110 L290,110 L270,330 L130,330 Z" fill="url(#tonica)" stroke="#ffffff" stroke-width="5"/>'
+           '<path id="lupaBorde" d="M110,110 L290,110" stroke="#ffc24a" stroke-width="12" stroke-linecap="round" pathLength="1" stroke-dasharray="1 1" stroke-dashoffset="1"/>'
+           '<g id="dedo"><path d="M80,40 q30,-10 40,40 l-8,40 q-20,6 -30,-10 Z" fill="#e6b28b" stroke="#a87250" stroke-width="3"/></g>'
+           '<g id="lupaGotas">' + "".join(f'<g id="gt{i}"><ellipse cx="{150 + i * 35}" cy="60" rx="8" ry="11" fill="#fff4c2"/></g>' for i in range(3)) + '</g>'
+           '<circle cx="250" cy="120" r="30" fill="#9be15d" stroke="#5a9a2a" stroke-width="4"/></svg></div>')
+J('tl.set("#lupa", {opacity:0}, 0); tl.set("#gt0, #gt1, #gt2", {opacity:0}, 0);')
+J(f'tl.fromTo("#lupa", {{opacity:0, scale:0.3, rotation:-20}}, {{opacity:1, scale:1, rotation:0, duration:0.45, ease:"back.out(1.8)", immediateRender:false}}, {P("sospeche") - 0.3:.2f});')
+fx("whoosh", P("sospeche") - 0.3)
+J(f'tl.fromTo("#dedo", {{x:0}}, {{x:200, duration:0.5, yoyo:true, repeat:2, ease:"sine.inOut", immediateRender:false}}, {P("borde") - 0.1:.2f});')
+J(f'tl.to("#lupaBorde", {{strokeDashoffset:0, duration:1.4, ease:"none"}}, {P("borde") - 0.1:.2f});')
+for i in range(3):
+    J(f'tl.fromTo("#gt{i}", {{opacity:1, y:-40}}, {{opacity:1, y:58, duration:0.45, ease:"bounce.out", immediateRender:false}}, {P("vodka", 2) + i * 0.18:.2f});')
+J(f'tl.to("#dedo", {{opacity:0, duration:0.2}}, {P("vodka", 2):.2f});')
+J(f'tl.to("#lupa", {{opacity:0, scale:0.6, duration:0.25}}, {P("hueles") - 0.25:.2f});')
+pz("P", "beber2", P("hueles") - 0.1, 0.3)
+slam("sHue", 'HUELE ✓', P("hueles") - 0.05, P("saboreas") - 0.05, y=980, cls="slam verde", son="clic")
+slam("sSab", 'SABE ✓', P("saboreas") - 0.05, P("pero") - 0.05, y=1100, cls="slam verde", son="clic")
+slam("sNo", 'ALCOHOL ✗', P("pero") + 0.3, FE(4) + 0.2, y=1220, cls="slam rojo", son="denegada")
+pz("P", "firme", FE(4), 0.3)
+# 5) el investigador: «estáis bebiendo vodka» (P vuelve a la pista fuera de plano)
+plano(F(5) - 0.05, 470, 1180, 1.9, 0.5, barrido=True)
+pz("R1", "hablar", F(5) + 0.1, 0.3); pz("R1", "firme", FE(5) + 0.2, 0.3)
+burbuja("bVodka", '«ESTÁIS BEBIENDO VODKA» 😉', P("estais") - 0.2, P("bueno") - 0.4, 120, 760)
+teleporta("P", 1150, 1650, 3.1, F(5) + 0.4)
+slam("sBueno", 'AQUÍ EMPIEZA<br>LO BUENO', P("bueno") - 0.3, FE(5) + 0.25, y=1020, cls="slam ama", son="riser")
+plano(P("bueno") - 0.3, 470, 1180, 2.3, 0.8, "power2.in")
+# 6) montaje en la pista: se suelta, habla alto, se ríe, mareos
+plano(F(6) - 0.05, 1150, 1460, 1.55, 0.5, barrido=True)
+bailar("P", F(6), P("habla") - 0.1, cada=1)
+boca(F(6), "ris")
+plano(P("habla") - 0.1, 1150, HEADY + 40, 2.4, 0.3, "power4.out")
+pz("P", "hablar", P("habla") - 0.1, 0.25); boca(P("habla"), "o")
+FXL.append('<div id="ondas" class="ondas"><i></i><i></i><i></i></div>')
+J('tl.set("#ondas", {opacity:0}, 0);')
+J(f'tl.set("#ondas", {{opacity:1}}, {P("habla"):.2f}); tl.fromTo("#ondas i", {{scale:0.2, opacity:1}}, {{scale:2.2, opacity:0, duration:0.7, stagger:0.18, repeat:1, ease:"power1.out", immediateRender:false}}, {P("habla"):.2f}); tl.set("#ondas", {{opacity:0}}, {P("cualquier") - 0.2:.2f});')
+slam("sVol", '🔊 + VOLUMEN', P("habla"), P("rie", 2) - 0.1, y=1160, cls="slam", son="pop")
+plano(P("rie", 2) - 0.1, 1150, 1460, 1.7, 0.35)
+pz("P", "reir", P("rie", 2) - 0.1, 0.25); boca(P("rie", 2), "ris")
+J(f'tl.to("#P_h", {{rotation:-12, svgOrigin:"0 -91", duration:0.16, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("rie", 2):.2f});')
+slam("sRie", 'SE RÍE<br>DE TODO', P("rie", 2), P("mareados") - 0.1, y=1060, cls="slam ama", son="pop")
+plano(P("mareados") - 0.2, 1150, HEADY + 30, 2.2, 0.5)
+J(f'tl.to("#P_esp", {{opacity:1, duration:0.2}}, {P("mareados"):.2f}); tl.to("#P_espiral", {{rotation:720, svgOrigin:"0 -108", duration:2.2, ease:"none"}}, {P("mareados"):.2f}); tl.to("#P_esp", {{opacity:0, duration:0.2}}, {FE(7) + 0.1:.2f});')
+J(f'tl.to("#shake", {{rotation:3, duration:0.6, yoyo:true, repeat:1, ease:"sine.inOut"}}, {P("mareados"):.2f});')
+pz("P", "firme", P("mareados") - 0.1, 0.3); boca(P("mareados"), "pla")
+J(f'tl.to("#P", {{rotation:4, duration:0.5, yoyo:true, repeat:3, ease:"sine.inOut"}}, {P("mareados"):.2f});')
+# 7) congelado: ¿con tónica?
+J(f'tl.to("#cam", {{filter:"grayscale(1) contrast(1.15) brightness(0.8)", duration:0.12}}, {F(7) - 0.05:.2f}); tl.to("#cam", {{filter:"grayscale(0) contrast(1) brightness(1)", duration:0.25}}, {FE(7) + 0.1:.2f});')
+fx("rasca", F(7) - 0.05)
+plano(F(7) - 0.05, 1150, HEADY + 40, 2.7, 0.2, "power4.out")
+slam("sTon2", '¿CON TÓNICA?', P("tonica", 2) - 0.1, FE(7) + 0.1, y=1080, cls="slam az", son=None)
+# 8) barrido al salón: espejo y jueces
+teleporta("P", 2420, 1650, 3.1, F(8))
+pz("P", "espejo", F(8) + 0.1, 0.3); boca(F(8) + 0.1, "son")
+plano(F(8) - 0.1, 2300, 1300, 1.3, 0.5, barrido=True)
+slam("sFra", '🇫🇷 FRANCIA', P("francia") - 0.05, P("creian") - 0.1, y=1000, cls="slam", son="pop")
+plano(P("guapos") - 0.4, 2480, 1250, 2.0, 0.5)
+FXL.append('<div id="brillos" class="brillos">✨<span>✨</span><em>✨</em></div>')
+J('tl.set("#brillos", {opacity:0}, 0);')
+J(f'tl.to("#brillos", {{opacity:1, duration:0.2}}, {P("guapos") - 0.1:.2f}); tl.fromTo("#brillos", {{scale:0.6, rotation:-10}}, {{scale:1.15, rotation:10, duration:0.5, yoyo:true, repeat:2, ease:"sine.inOut", immediateRender:false}}, {P("guapos") - 0.1:.2f}); tl.to("#brillos", {{opacity:0, duration:0.2}}, {P("demas") - 0.2:.2f});')
+slam("sGuapo", '★★★★★<small>ÉL SE VE ASÍ</small>', P("guapos"), P("demas") - 0.2, y=1480, cls="slam ama", son="ding")
+plano(P("demas") - 0.2, 2150, 1300, 1.9, 0.5)
+J(f'tl.to("#S1_nota, #S2_nota", {{opacity:1, duration:0.2}}, {P("demas"):.2f}); tl.to("#S1_nota, #S2_nota", {{opacity:0, duration:0.3}}, {FE(8) + 0.3:.2f});')
+pz("S1", "nota", P("demas") - 0.1, 0.3); pz("S2", "nota", P("demas"), 0.3)
+pz("S1", "sentado", FE(8) + 0.3, 0.3); pz("S2", "sentado", FE(8) + 0.4, 0.3)
+slam("sDif", 'NADIE MÁS<br>LO NOTABA', P("diferencia") - 0.3, FE(8) + 0.2, y=1080, cls="slam", son="golpe")
+# 9) recuerdos falsos
+pz("P", "pensar", F(9) + 0.2, 0.3); boca(F(9), "pla")
+plano(F(9) - 0.05, 2420, 1380, 1.6, 0.6)
+slam("sInq", 'INQUIETANTE', P("inquietante") - 0.1, P("ensenaron") - 0.1, y=1150, cls="slam rojo", son="latido")
+FXL.append('<div id="bocata" class="bocata2"><div class="fotos"><i>👤💼</i><i>🏃</i><i id="fFalso" class="f3">🧢</i></div><small id="falsoT">DETALLE FALSO</small></div>')
+J('tl.set("#bocata", {opacity:0}, 0); tl.set("#fFalso, #falsoT", {opacity:0}, 0);')
+J(f'tl.fromTo("#bocata", {{opacity:0, scale:0.5, y:40}}, {{opacity:1, scale:1, y:0, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {P("fotos") - 0.3:.2f});')
+J(f'tl.fromTo("#fFalso", {{opacity:0, scale:2.5, rotation:-25}}, {{opacity:1, scale:1, rotation:0, duration:0.3, ease:"back.out(2)", immediateRender:false}}, {P("colaron") - 0.1:.2f}); tl.to("#falsoT", {{opacity:1, duration:0.2}}, {P("colaron"):.2f});')
+fx("sello", P("colaron"))
+J(f'tl.to("#bocata", {{opacity:0, duration:0.25}}, {P("tragaron") - 0.3:.2f});')
+slam("sTrag", 'SE LO TRAGARON', P("tragaron") - 0.2, P("convencidisimos") - 0.1, y=1080, cls="slam rojo")
+slam("s100", '100%<small>SEGUROS</small>', P("convencidisimos") - 0.1, FE(9) + 0.2, y=1080, cls="slam ama", son="pop")
+anda("R2", R2X - 260, F(8), 5.0, y=1600)
+# 10) el alcoholímetro: cero
+anda("R2", R2X - 140, F(10) - 0.6, 0.6)
+J(f'tl.to("#R2_alco", {{opacity:1, duration:0.2}}, {F(10) - 0.1:.2f}); tl.to("#R2_alco", {{opacity:0, duration:0.2}}, {FE(10) + 0.3:.2f});')
+pz("R2", "dar", F(10) - 0.1, 0.3)
+pz("P", "soplar", F(10) + 0.3, 0.25); boca(F(10) + 0.3, "o")
+plano(F(10) - 0.05, 2330, 1400, 1.9, 0.45)
+FXL.append('<div id="alcN" class="slam verde" style="top:960px"><b id="alcV">0,37</b><small>ALCOHOLÍMETRO</small></div>')
+J('tl.set("#alcN", {opacity:0}, 0);')
+J(f'tl.fromTo("#alcN", {{opacity:0, scale:0.5}}, {{opacity:1, scale:1, duration:0.3, ease:"back.out(2)", immediateRender:false}}, {P("alcoholimetro"):.2f});')
+J(f'const alv = {{v:0.9}}; tl.to(alv, {{v:0, duration:{max(0.3, P("cero") - P("alcoholimetro") - 0.1):.2f}, ease:"power2.in", onUpdate:() => {{ document.getElementById("alcV").textContent = alv.v.toFixed(2).replace(".", ","); }}}}, {P("alcoholimetro") + 0.1:.2f});')
+J(f'tl.fromTo("#alcN", {{scale:1.5}}, {{scale:1, duration:0.3, ease:"back.out(3)", immediateRender:false}}, {P("cero") - 0.05:.2f});')
+golpe_cam(P("cero"), 20); fx("golpe", P("cero"))
+J(f'tl.fromTo("#medA", {{boxShadow:"0 0 0px rgba(53,217,135,0)"}}, {{boxShadow:"0 0 30px rgba(53,217,135,1)", duration:0.25, yoyo:true, repeat:3, immediateRender:false}}, {P("cero"):.2f});')
+J(f'tl.to("#alcN", {{opacity:0, duration:0.25}}, {FE(10) + 0.2:.2f});')
+pz("P", "firme", P("nada"), 0.3); pz("R2", "firme", FE(10) + 0.3, 0.3)
+# 11-12) el cerebro se adelanta y activa el modo fiesta
+plano(F(11) - 0.05, 2420, HEADY + 40, 2.5, 0.5)
+boca(F(11), "son")
+FXL.append('<div id="cerebro" class="cerebro"><svg viewBox="0 0 300 220" width="520" height="380">'
+           '<path d="M150,30 C90,0 30,30 35,90 C10,120 30,180 90,185 C110,215 145,205 150,190 C155,205 190,215 210,185 C270,180 290,120 265,90 C270,30 210,0 150,30 Z" fill="#ff9ec7" stroke="#ffffff" stroke-width="6"/>'
+           '<path d="M150,35 L150,185 M80,80 q30,20 10,50 M220,80 q-30,20 -10,50 M100,150 q25,-10 40,10 M200,150 q-25,-10 -40,10" stroke="#d1608f" stroke-width="7" fill="none" stroke-linecap="round"/></svg>'
+           '<div id="iconos"><i id="ic1">👃</i><i id="ic2">🎵</i><i id="ic3">🥃</i></div>'
+           '<div id="sw" class="sw2"><span>MODO FIESTA</span><b><i id="swk"></i></b></div></div>')
+J('tl.set("#cerebro", {opacity:0}, 0); tl.set("#ic1, #ic2, #ic3", {opacity:0}, 0);')
+J(f'tl.fromTo("#cerebro", {{opacity:0, scale:0.4}}, {{opacity:1, scale:1, duration:0.45, ease:"back.out(1.8)", immediateRender:false}}, {P("cerebro") - 0.2:.2f});')
+fx("whoosh", P("cerebro") - 0.2)
+slam("sAdel", '⏩ SE ADELANTA', P("adelanta") - 0.1, FE(11) + 0.2, y=1420, cls="slam ama", son="riser")
+for i, (w, dx) in enumerate((("huele", -420), ("oye", 420), ("vaso", -420))):
+    tw = P(w, 3) if w == "vaso" else P(w)
+    J(f'tl.fromTo("#ic{i + 1}", {{opacity:1, x:{dx}, y:{-120 + i * 90}, scale:1.6}}, {{opacity:1, x:0, y:0, scale:0.9, duration:0.45, ease:"power3.in", immediateRender:false}}, {tw - 0.15:.2f});')
+    fx("pop", tw + 0.3)
+J(f'tl.to("#swk", {{x:62, background:"#35d987", duration:0.2, ease:"back.out(3)"}}, {P("fiesta") - 0.05:.2f}); tl.to("#sw b", {{background:"rgba(53,217,135,0.35)", duration:0.2}}, {P("fiesta") - 0.05:.2f});')
+fx("ding", P("fiesta"))
+# confeti al activar el modo fiesta
+rc = random.Random(12)
+conf = "".join(f'<i class="cf" style="left:{rc.randint(0, 1060)}px;background:{rc.choice(["#ff5ad8", "#4fd1ff", "#ffc24a", "#35d987", "#ffffff"])}"></i>' for _ in range(70))
+FXL.append(f'<div id="confeti">{conf}</div>')
+J('tl.set("#confeti", {opacity:0}, 0);')
+J(f'tl.set("#confeti", {{opacity:1}}, {P("fiesta"):.2f}); tl.fromTo("#confeti .cf", {{y:-80, rotation:0}}, {{y:2000, rotation:540, duration:2.4, stagger:0.025, ease:"power1.in", immediateRender:false}}, {P("fiesta"):.2f}); tl.set("#confeti", {{opacity:0}}, {P("fiesta") + 4.2:.2f});')
+J(f'tl.to("#cerebro", {{opacity:0, scale:0.6, duration:0.3}}, {FE(12) - 0.1:.2f});')
+bailar("P", P("fiesta"), FE(12) + 0.1, cada=1); boca(P("fiesta"), "ris")
+plano(P("fiesta") - 0.05, 2250, 1250, 1.25, 0.6)
+# 13) la excusa perfecta
+pz("P", "sorpresa", F(13) + 0.1, 0.2)
+pz("P", "hablar", P("yo") - 0.2, 0.25); boca(F(13), "son")
+plano(F(13) - 0.05, 2420, 1400, 1.9, 0.5)
+slam("sExc", 'LA EXCUSA<br>PERFECTA', P("excusa") - 0.1, P("yo") - 0.35, y=1000, cls="slam ama")
+burbuja("bYo", '«NO ERA YO,<br>ERA EL ALCOHOL» 🤷', P("yo") - 0.3, FE(13) + 0.3, 520, 800, cola="der")
+# 14) silencio: los reflejos (luces bajan, foco sobre él)
+J(f'tl.to("#oscuro", {{opacity:0.62, duration:0.5}}, {F(14) - 0.1:.2f}); tl.to("#oscuro", {{opacity:0, duration:0.5}}, {P("fallarias") - 0.6:.2f});')
+teleporta("P", 1980, 1700, 3.1, F(14) - 0.05)
+pz("P", "firme", F(14), 0.2); boca(F(14), "pla")
+plano(F(14) - 0.1, 2000, 1500, 1.6, 0.6, barrido=True)
+slam("sRefl", 'LOS REFLEJOS', P("reflejos") - 0.1, FE(14) + 0.2, y=1060, cls="slam az", son="latido")
+# 15) comparación: placebo recto / alcohol real torcido
+J(f'tl.to("#cinta, #cinta2", {{opacity:1, duration:0.3}}, {F(15) - 0.3:.2f}); tl.to("#cinta, #cinta2", {{opacity:0, duration:0.3}}, {FE(15) + 0.4:.2f});')
+J(f'tl.to("#G", {{opacity:0.75, duration:0.3}}, {F(15) - 0.3:.2f}); tl.to("#G", {{opacity:0, duration:0.3}}, {FE(15) + 0.3:.2f});')
+plano(F(15) - 0.2, 2268, 1500, 1.25, 0.5)
+pz("P", "brazos", F(15), 0.3); pz("G", "brazos", F(15), 0.3)
+J(f'tl.to("#P", {{x:2210, duration:2.0, ease:"none"}}, {F(15) + 0.2:.2f});')
+J(f'tl.to("#G", {{keyframes:[{{x:2390, y:1685, rotation:-9, duration:0.5}}, {{x:2440, y:1720, rotation:10, duration:0.5}}, {{x:2510, y:1680, rotation:-12, duration:0.5}}, {{x:2560, y:1725, rotation:12, duration:0.5}}], ease:"sine.inOut"}}, {F(15) + 0.2:.2f});')
+k, tt = 0, F(15) + 0.2
+while tt < F(15) + 2.1:
+    pz("P", f"andar{1 + k % 2}", tt, 0.22, "sine.inOut", solo=PIERNAS); pz("G", f"andar{1 + k % 2}", tt, 0.22, "sine.inOut", solo=PIERNAS); tt += 0.3; k += 1
+POS["P"] = (2210, 1700, 3.1)
+FXL.append('<div id="etqs" class="etqs"><span class="v">PLACEBO</span><span class="r">ALCOHOL REAL</span></div>')
+J('tl.set("#etqs", {opacity:0}, 0);'); J(f'tl.to("#etqs", {{opacity:1, duration:0.3}}, {F(15):.2f}); tl.to("#etqs", {{opacity:0, duration:0.3}}, {FE(15) + 0.3:.2f});')
+coloca("R2", 2080, 1590, 2.7, F(15) + 0.2, 0.8)
+pz("R2", "mostrar", P("regla") - 0.5, 0.3)
+J(f'tl.to("#R2_regla", {{opacity:1, duration:0.15}}, {P("regla") - 0.4:.2f}); tl.to("#R2_regla", {{y:"+=26", duration:0.12, ease:"power2.in"}}, {P("regla"):.2f}); tl.to("#R2_regla", {{opacity:0, duration:0.2}}, {FE(15):.2f});')
+pz("P", "atrapar", P("regla") + 0.05, 0.12, "power3.out"); fx("clic2", P("regla") + 0.1)
+slam("sPerf", 'PLACEBO: ✓', P("perfecto") - 0.15, P("fallarias") - 0.3, y=1000, cls="slam verde", son="ding")
+slam("sFall", 'ALCOHOL: ✗', P("fallarias") - 0.2, FE(15) + 0.2, y=1120, cls="slam rojo", son="denegada")
+pz("P", "firme", FE(15), 0.3); pz("R2", "firme", FE(15), 0.3)
+# 16) la verdad: enseñan la botella; no se lo creen
+J(f'tl.to("#R2_bot", {{opacity:1, duration:0.2}}, {F(16) - 0.1:.2f}); tl.to("#R2_bot", {{opacity:0, duration:0.2}}, {FE(16) + 0.3:.2f});')
+pz("R2", "mostrar", F(16), 0.3)
+plano(F(16) - 0.05, 2150, 1380, 1.7, 0.5)
+pz("P", "sorpresa", P("creen") - 0.5, 0.25); boca(P("creen") - 0.5, "o")
+plano(P("creen") - 0.5, 2210, HEADY + 90, 2.6, 0.3, "power4.out")
+slam("sCreen", '¿SOLO TÓNICA?', P("verdad", 2) + 0.2, FE(16) + 0.2, y=1060, cls="slam az", son="rasca")
+pz("R2", "firme", FE(16) + 0.3, 0.3)
+# 17) vuelve a la pista y sigue bailando → mismo plano que el fotograma 0
+teleporta("P", PX0, 1650, 3.1, F(17) - 0.05)
+plano(F(17) - 0.1, 1300, 960, 1.0, 0.55, barrido=True)
+bailar("P", F(17), DUR - 0.25, cada=1); boca(F(17), "ris")
+slam("sCopa", 'UNA SOLA COPA…', P("copa") - 0.2, P("chico", 2) - 0.4, y=1040, cls="slam ama", son="pop")
+plano(P("copa") + 0.4, x0, y0, z0, max(0.6, DUR - 1.4 - P("copa") - 0.4), "sine.inOut")
+pz("P", "baile1", DUR - 0.25, 0.2)
+J(f'tl.fromTo("#sBorr", {{opacity:0, scale:1.6, rotation:-6}}, {{opacity:1, scale:1, rotation:-3, duration:0.4, ease:"back.out(2)", immediateRender:false}}, {DUR - 1.0:.2f});')
+
+# ------------------------------------------------------------------ MEDIDORES
+SIENTE = [(0, 82), (F(3) - 0.2, 82), (F(3) + 0.6, 0), (P("hueles"), 0), (P("saboreas") + 0.6, 20), (F(6), 30), (P("rie", 2), 70), (P("mareados") + 0.5, 80),
+          (FE(15) - 1.0, 80), (P("creen"), 35), (F(17) + 1.5, 55), (DUR - 2.0, 82), (DUR, 82)]
 kf = [f'{{v:{b[1]}, duration:{max(0.01, b[0] - a[0]):.3f}, ease:"sine.inOut"}}' for a, b in zip(SIENTE, SIENTE[1:])]
 J('const sv = {v:82};')
 J(f'tl.to(sv, {{keyframes:[{",".join(kf)}], onUpdate:() => {{ document.getElementById("barS").style.width = sv.v + "%"; document.getElementById("numS").textContent = Math.round(sv.v) + "%"; }}}}, 0);')
 J('document.getElementById("barS").style.width = "82%";')
-J(f'tl.fromTo("#medA", {{boxShadow:"0 0 0px rgba(53,217,135,0)"}}, {{boxShadow:"0 0 26px rgba(53,217,135,0.9)", duration:0.4, yoyo:true, repeat:3, immediateRender:false}}, {P("cero") - 0.2:.2f});')
+# pulso sutil a ritmo y cámara en mano
+J(f'tl.fromTo("#shake", {{x:-5, y:3}}, {{x:5, y:-3, duration:2.7, yoyo:true, repeat:{int(DUR / 2.7)}, ease:"sine.inOut", immediateRender:false}}, 0);')
+J(f'tl.fromTo("#pulso", {{scale:1, transformOrigin:"50% 50%"}}, {{scale:1.012, transformOrigin:"50% 50%", duration:{BEAT / 2:.3f}, yoyo:true, repeat:{int(DUR / (BEAT / 2))}, ease:"sine.inOut", immediateRender:false}}, 0);')
 
-# ------------------------------------------------------------------ DATOS JUNTO AL PROTAGONISTA (coordenadas del mundo)
-def chip(cid, x, y, html, t, hasta, cls="chip", desde="opacity:0, y:16"):
-    OVR.append(f'<div id="{cid}" class="{cls}" style="left:{x}px;top:{y}px">{html}</div>')
-    entra(f"#{cid}", t, desde)
-    sale(f"#{cid}", hasta)
-HOOK = f'<div id="hook" class="gran" style="left:{PX0 - 540}px"><b>0,00<i>g/L</i></b><small>DE ALCOHOL EN SU VASO</small></div>'
-OVR.append(HOOK)
-J('tl.set("#hook", {opacity:1}, 0);')
-J(f'tl.to("#hook", {{opacity:0, scale:0.92, transformOrigin:"50% 50%", duration:0.35}}, {P("placebo") - 0.6:.2f});')
-J(f'tl.fromTo("#hook", {{opacity:0, scale:1.06}}, {{opacity:1, scale:1, transformOrigin:"50% 50%", duration:0.6, ease:"power2.out", immediateRender:false}}, {DUR - 1.2:.2f});')
-chip("cBorr", PX0 + 40, 1020, '<b>«VOY BORRACHO»</b>', P("jura") - 0.2, FE(1) + 0.1, cls="chip lite ama")
-chip("cPlac", PX0 - 300, 1060, '<b>EFECTO PLACEBO</b><small>MEDIDO EN LABORATORIO</small>', P("placebo") - 0.2, FE(2) + 0.2)
-chip("cBar", 170, 1180, '<b>BAR DE MENTIRA</b><small>MÚSICA · LUCES · BOTELLAS</small>', P("mentira") - 0.3, P("tonica") - 0.2)
-chip("cTon", 560, 1100, '<b>«VODKA» = <span class="az">TÓNICA</span></b>', P("tonica") - 0.2, FE(3) + 0.3)
-# lupa con el vaso: borde untado y gotas flotando
-OVR.append('<div id="lupa" class="lupa" style="left:770px;top:880px"><svg viewBox="0 0 300 300" width="300" height="300">'
-           '<circle cx="150" cy="150" r="140" fill="#140f24" stroke="#ffffff" stroke-width="6"/>'
-           '<path d="M90,90 L210,90 L196,250 L104,250 Z" fill="url(#tonica)" stroke="#ffffff" stroke-width="4"/>'
-           '<path id="lupaBorde" d="M90,90 L210,90" stroke="#ffc24a" stroke-width="9" stroke-linecap="round" opacity="0"/>'
-           '<g id="lupaGotas" opacity="0"><ellipse cx="130" cy="104" rx="9" ry="4" fill="#fff4c2"/><ellipse cx="165" cy="108" rx="7" ry="3" fill="#fff4c2"/><ellipse cx="150" cy="100" rx="6" ry="3" fill="#fff4c2"/></g>'
-           '<circle cx="182" cy="96" r="22" fill="#9be15d" stroke="#5a9a2a" stroke-width="3"/></svg>'
-           '<small id="lupaT1">BORDE CON VODKA</small><small id="lupaT2">GOTAS ENCIMA</small></div>')
-entra("#lupa", P("olfato") - 0.3, "opacity:0, scale:0.7")
-J(f'tl.set("#lupaBorde, #lupaGotas, #lupaT1, #lupaT2", {{opacity:0}}, 0);')
-J(f'tl.to("#lupaBorde, #lupaT1", {{opacity:1, duration:0.3}}, {P("borde") - 0.1:.2f}); tl.to("#lupaGotas, #lupaT2", {{opacity:1, duration:0.3}}, {P("gotas") - 0.1:.2f});')
-sale("#lupa", P("trago") + 0.3)
-chip("cHuele", 560, 1060, '<b>HUELE Y SABE A ALCOHOL</b>', P("huele") - 0.2, FE(4) + 0.2, cls="chip lite")
-chip("cDicen", 170, 1180, '<b>«ESTÁIS BEBIENDO VODKA»</b>', P("mismo") - 0.2, FE(5) + 0.2, cls="chip lite ama")
-chip("cNotan", 840, 1060, '<b>«YA LO NOTO»</b>', P("notan") - 0.3, FE(6), cls="chip lite ama")
-chip("cAlto", 1250, 1180, '<b>+ VOLUMEN · + RISAS</b>', P("alto", 2) - 0.1, FE(6) + 0.2, cls="chip lite")
-OVR.append('<div id="cGuapo" class="comp" style="left:1650px;top:1040px;width:760px">'
-           '<div class="fila2"><small>ÉL SE PUNTÚA</small><div class="barra"><i id="barG1"></i></div><b class="az">★★★★★</b></div>'
-           '<div class="fila2"><small>LOS JUECES</small><div class="barra"><i id="barG2" class="gris"></i></div><b>IGUAL</b></div></div>')
-entra("#cGuapo", P("atractivos") - 0.5)
-J(f'tl.fromTo("#barG1", {{width:"0%"}}, {{width:"92%", duration:0.8, ease:"power2.out", immediateRender:false}}, {P("atractivos") - 0.3:.2f});')
-J(f'tl.fromTo("#barG2", {{width:"0%"}}, {{width:"55%", duration:0.8, ease:"power2.out", immediateRender:false}}, {P("jueces"):.2f});')
-sale("#cGuapo", FE(7) + 0.2)
-chip("cFrancia", 1700, 960, '<b>ESTUDIO EN FRANCIA</b>', P("francia") - 0.2, P("atractivos") - 0.6, cls="chip lite")
-# bocadillo de pensamiento con las fotos del robo y el dato falso
-OVR.append('<div id="bocata" class="bocata" style="left:1900px;top:880px">'
-           '<div class="fotos"><i class="f1">👤💼</i><i class="f2">🏃</i><i id="fFalso" class="f3">🧢</i></div>'
-           '<small id="falsoT">DATO FALSO</small></div>')
-entra("#bocata", P("fotos") - 0.3, "opacity:0, scale:0.8")
-J(f'tl.set("#fFalso, #falsoT", {{opacity:0}}, 0); tl.to("#fFalso, #falsoT", {{opacity:1, duration:0.3}}, {P("falsos") - 0.2:.2f});')
-sale("#bocata", FE(8) + 0.1)
-chip("cFalsos", 1660, 1180, '<b class="rojo">MÁS RECUERDOS FALSOS</b><small>Y MÁS SEGUROS DE ELLOS</small>', P("creyeron") - 0.3, FE(8) + 0.2)
-OVR.append(f'<div id="cCero" class="gran2" style="left:1700px;top:1020px"><b>0,00</b><small>ALCOHOLÍMETRO</small></div>')
-entra("#cCero", P("cero") - 0.3, "opacity:0, scale:0.8")
-sale("#cCero", FE(9) + 0.4)
-chip("cExp", 1760, 1060, '<b>EXPECTATIVA → EFECTO</b><small>EL CEREBRO PREDICE</small>', P("espera") - 0.6, FE(10) + 0.2)
-chip("cOlor", 1700, 1060, '<b>👃 OLOR + 🎵 MÚSICA + 🥃 VASO</b><small>= SOLTARSE</small>', P("olor") - 0.3, FE(11) + 0.2)
-chip("cExc", 1760, 1060, '<b>EXCUSA PERFECTA</b><small>«HA SIDO EL ALCOHOL»</small>', P("excusa") - 0.3, P("permiso") - 0.2)
-chip("cPerm", 1760, 1060, '<b class="az">PERMISO PARA SOLTARSE</b>', P("permiso") - 0.2, FE(12) + 0.2)
-chip("cRefl", 1950, 1060, '<b>LOS REFLEJOS</b><small>NO SE PUEDEN FINGIR</small>', P("reflejos") - 0.3, F(14) + 0.3, cls="chip ama")
-OVR.append('<div id="cComp" class="comp" style="left:1720px;top:1020px;width:800px">'
-           '<div class="fila2"><small>SOLO CREE QUE BEBE</small><div class="barra"><i id="barC1" class="verde"></i></div><b class="verde2">CASI IGUAL</b></div>'
-           '<div class="fila2"><small>ALCOHOL DE VERDAD</small><div class="barra"><i id="barC2" class="rojo"></i></div><b class="rojo">MÁS LENTO</b></div></div>')
-entra("#cComp", P("empeoran") - 0.6)
-J(f'tl.fromTo("#barC1", {{width:"0%"}}, {{width:"90%", duration:0.8, ease:"power2.out", immediateRender:false}}, {P("empeoran") - 0.4:.2f});')
-J(f'tl.fromTo("#barC2", {{width:"0%"}}, {{width:"48%", duration:0.8, ease:"power2.out", immediateRender:false}}, {P("frena") - 0.2:.2f});')
-sale("#cComp", FE(14) + 0.3)
-chip("cVerdad", 1900, 1060, '<b>SOLO ERA TÓNICA</b><small>A MUCHOS LES CUESTA CREERLO</small>', P("verdad", 2) - 0.2, FE(15) + 0.3, cls="chip ama")
-chip("cCabeza", 1480, 1060, '<b>NO SALE DEL VASO</b><small class="am">SALE DE TU CABEZA</small>', P("vaso", 4) - 0.6, FE(16) + 0.3)
+# ------------------------------------------------------------------ insertar la cara en la figura del protagonista
+for i, (pid, g) in enumerate(gente):
+    if pid == "P":
+        a = g.index('<g id="P_h" >'); b = g.index('</g></g>', a)
+        gente[i] = (pid, g[:b] + CARA + g[b:])
+OVR = []
 
 # ------------------------------------------------------------------ ensamblar SVG
 svg_gente = "".join(g for pid, g in sorted(gente, key=lambda g: POS.get(g[0], (0, 0, 0))[1]))
@@ -405,7 +522,7 @@ barra = (f'<rect x="120" y="1240" width="700" height="{SUELO - 1240 + 30}" rx="8
          + '<g transform="translate(300,1222)"><path d="M-10,-30 L10,-30 L8,0 L-8,0 Z" fill="url(#tonica)" stroke="#fff" stroke-width="1.5"/></g>'
          + '<g transform="translate(560,1222)"><rect x="-12" y="-64" width="24" height="64" rx="7" fill="#dfeef8"/><rect x="-5" y="-84" width="10" height="22" fill="#dfeef8"/><rect x="-10" y="-44" width="20" height="16" fill="#fff"/><text x="0" y="-32" text-anchor="middle" font-family="Inter" font-weight="900" font-size="7" fill="#1d1d24">VODKA</text></g>'
          + '<g transform="translate(650,1222)"><path d="M-14,-10 Q0,-26 14,-10 Z" fill="#9be15d"/></g>')
-svg = f'<g id="mundo">{"".join(mundo)}{r1}{barra}{svg_gente}</g>'
+svg = f'<g id="mundo">{"".join(mundo)}{r1}{barra}<rect id="oscuro" x="0" y="0" width="{W}" height="1920" fill="#05030c" opacity="0"/>{svg_gente}</g>'
 
 _S = open(os.path.join(BASE, "_subs.py"), encoding="utf-8").read()
 exec(re.sub(r"CLAVE = set\(.*?\]\)", lambda m: 'CLAVE = set(norm(w) for w in ["borracho", "gota", "placebo", "laboratorio", "mentira", "vodka", "tonica", "olfato", "borde", "gotas", "huele", "sabe", "notan", "alto", "rien", "francia", "atractivos", "jueces", "robo", "falsos", "seguridad", "cero", "sangre", "espera", "olor", "musica", "vaso", "soltarse", "excusa", "permiso", "reflejos", "equilibrio", "reaccion", "empeoran", "frena", "verdad", "creerlo", "cabeza", "bailando"])', _S, count=1, flags=re.S))
@@ -418,7 +535,25 @@ html = f"""<!doctype html>
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:1080px;height:1920px;overflow:hidden;background:#0a0716}}
 #root{{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;background:#0a0716;color:{TX}}}
-#cam{{position:absolute;left:0;top:0;width:{W}px;height:1920px}}
+#imp,#shake,#pulso{{position:absolute;inset:0}} #cam{{position:absolute;left:0;top:0;width:{W}px;height:1920px;transform-origin:0 0}}
+#fxl{{position:absolute;inset:0;z-index:58;pointer-events:none}}
+.slam{{position:absolute;left:0;right:0;margin:0 auto;width:max-content;max-width:1000px;padding:10px 30px;border-radius:18px;background:rgba(10,6,22,0.82);border:3px solid #fff;text-align:center;font:900 92px/1.02 Inter;letter-spacing:-2px;color:#fff;text-shadow:0 6px 20px rgba(0,0,0,0.5);box-shadow:0 14px 40px rgba(0,0,0,0.45)}}
+.slam small{{display:block;margin-top:6px;font:800 26px Inter;letter-spacing:6px;color:#e6dcff}} .slam s{{color:#9fb3c8;font-size:70px}}
+.slam.verde{{border-color:{VE};color:{VE}}} .slam.rojo{{border-color:{RJ};color:{RJ}}} .slam.ama{{border-color:{AM};color:{AM}}} .slam.az{{border-color:{CY_};color:{CY_}}}
+.slam.verde b{{font:900 150px/1 Inter;font-variant-numeric:tabular-nums}}
+.bubble{{position:absolute;padding:20px 28px;border-radius:30px;background:#fff;color:#1d1430;font:900 50px/1.1 Inter;box-shadow:0 10px 30px rgba(0,0,0,0.4)}}
+.bubble:after{{content:"";position:absolute;bottom:-26px;left:70px;border:16px solid transparent;border-top:20px solid #fff}} .bubble.der:after{{left:auto;right:90px}}
+.lupa2{{position:absolute;left:260px;top:700px;width:560px}}
+.ondas{{position:absolute;left:540px;top:900px}} .ondas i{{position:absolute;left:-90px;top:-90px;width:180px;height:180px;border-radius:50%;border:8px solid {AM}}}
+.brillos{{position:absolute;left:640px;top:760px;font-size:90px}} .brillos span{{position:absolute;left:-200px;top:180px;font-size:60px}} .brillos em{{position:absolute;left:60px;top:260px;font-size:50px;font-style:normal}}
+.bocata2{{position:absolute;left:120px;top:640px;width:840px;padding:24px;border-radius:50px;background:rgba(255,255,255,0.95);text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.4)}}
+.bocata2 .fotos{{display:flex;gap:20px;justify-content:center}} .bocata2 .fotos i{{display:block;font-style:normal;font-size:80px;width:200px;height:170px;line-height:170px;background:#e9e2cf;border:8px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,0.3)}}
+.bocata2 .fotos i.f3{{outline:7px solid {RJ}}} .bocata2 small{{display:block;margin-top:14px;font:900 34px Inter;letter-spacing:5px;color:{RJ}}}
+.cerebro{{position:absolute;left:280px;top:700px;width:520px;text-align:center}} #iconos{{position:absolute;left:0;right:0;top:120px}} #iconos i{{position:absolute;left:220px;top:0;font-size:80px;font-style:normal}}
+.sw2{{display:inline-flex;align-items:center;gap:16px;margin-top:6px;padding:12px 22px;border-radius:40px;background:rgba(10,6,22,0.85);font:900 34px Inter;color:#fff;letter-spacing:3px}}
+.sw2 b{{position:relative;width:120px;height:56px;border-radius:28px;background:rgba(255,255,255,0.2)}} .sw2 b i{{position:absolute;left:4px;top:4px;width:48px;height:48px;border-radius:50%;background:#9fb3c8}}
+#confeti{{position:absolute;inset:0;overflow:hidden}} .cf{{position:absolute;top:0;width:16px;height:26px;border-radius:3px}}
+.etqs{{position:absolute;left:0;right:0;top:1300px;display:flex;justify-content:space-around;font:900 40px Inter;letter-spacing:3px}} .etqs .v{{color:{VE}}} .etqs .r{{color:{RJ}}}
 .gran{{position:absolute;width:1080px;top:1060px;text-align:center;white-space:nowrap;text-shadow:0 6px 24px rgba(0,0,0,0.7)}}
 .gran b{{display:block;font:900 190px/1 Inter;letter-spacing:-6px;color:#fff;font-variant-numeric:tabular-nums}} .gran b i{{font-style:normal;font-size:64px;letter-spacing:0;margin-left:14px;color:{VE}}}
 .gran small{{display:inline-block;margin-top:12px;padding:8px 20px;border-radius:12px;background:rgba(10,6,22,0.7);font:800 32px Inter;letter-spacing:6px;color:#fff}}
@@ -450,8 +585,9 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#0a0716}}
 </style></head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{DUR}" data-width="1080" data-height="1920">
-  <div id="cam"><svg width="{W}" height="1920" viewBox="0 0 {W} 1920" style="position:absolute;left:0;top:0;overflow:visible"><defs>{"".join(DEFS)}</defs>{svg}</svg>
-  {"".join(OVR)}</div>
+  <div id="imp"><div id="shake"><div id="pulso"><div id="cam"><svg width="{W}" height="1920" viewBox="0 0 {W} 1920" style="position:absolute;left:0;top:0;overflow:visible"><defs>{"".join(DEFS)}</defs>{svg}</svg>
+  {"".join(OVR)}</div></div></div></div>
+  <div id="fxl">{"".join(FXL)}</div>
   <div id="topsombra"></div><div id="vineta"></div><div id="grano"></div>
   <div id="meds"><small>LO QUE SIENTE <b id="numS">82%</b></small><div class="med"><div id="barS"></div></div>
     <div id="medA"><small>ALCOHOL EN SANGRE <b>0,00 g/L</b></small></div></div>

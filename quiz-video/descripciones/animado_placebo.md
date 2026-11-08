@@ -1,7 +1,7 @@
 # Efecto placebo del alcohol en una fiesta (@mundo.supuesto)
 
 ## TikTok / Instagram
-Baila, se ríe más alto que nadie y jura que va borracho… pero en su vaso no hay ni una gota de alcohol 🥃 Así funciona el efecto placebo del alcohol: bares de mentira, vasos con el borde untado de vodka y gente que se siente borracha bebiendo solo tónica.
+Jura que va borracho… y en su vaso no hay ni una gota de alcohol 🥃 Bares falsos, vasos untados de vodka, gente mareada con tónica y un alcoholímetro que marca CERO. Tu cerebro activa el «modo fiesta» él solito.
 
 📤 Compártelo con tu grupo de fiesta y sigue a @mundo.supuesto para más.
 
