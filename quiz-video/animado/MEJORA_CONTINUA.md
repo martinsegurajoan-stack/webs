@@ -157,3 +157,12 @@ Lo más importante para el usuario: 1) ESTÉTICA, 2) GANCHO, 3) GUION. Antes de 
 - v2 (corrección del usuario: «no cuentes una historia sin final, di lo que pasaría de verdad y por qué no sería posible»):
   en los «¿qué pasaría si…?» imposibles, explicar PRIMERO por qué es casi imposible (dato/probabilidad real), luego qué
   pasaría de verdad y con qué FINAL REAL (aquí: una retirada) y cerrar con lo que ya se hace en la realidad (reglamento).
+
+## pantallas (09-11-2026) — «100 horas pegado a una pantalla» — NUEVO ESTÁNDAR DE CALIDAD (usuario: «parece hecho por un bebé»)
+- PROHIBIDAS las personas de palo y los dibujos simples. Usar el personaje de PERFIL articulado `pantallas/_rig.py`
+  (ropa con sombras, manos, zapatos, cara con ojo, ceja, ojeras, ojos rojos, bocas; posturas por ángulos: sentado con móvil,
+  teclear, zombi, cuello, mirar arriba…). Escenarios a ESCALA REAL (1 cm = 3,6 px) con luz, degradados, sombras y muchos objetos.
+- Rótulos limpios (tarjeta oscura con barra de color, icono SVG, entrada con máscara), titulares grandes con máscara; NADA de emojis
+  ni cajas torcidas. Paneles de infografía (ojo realista, cuello con kilos, gráficas). Cámara de cine: barridos con desenfoque,
+  primeros planos, deriva lenta. Imágenes IA (~190 créditos/imagen) solo si el usuario lo aprueba; vídeo IA (~14.000) no.
+- Palabras repetidas en el guion: comprobar SIEMPRE el número de aparición (p. ej. «seis» dentro de «cuarenta y seis»).
