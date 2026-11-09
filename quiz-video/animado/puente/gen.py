@@ -24,7 +24,7 @@ def F(n): return FR[n - 1]["ini"]
 def FE(n): return FR[n - 1]["fin"]
 tl, FX, FXL = [], [], []
 def J(s): tl.append(s)
-def fx(k, t): FX.append([k, round(t, 3)])
+def fx(k, t): pass   # usuario 09-11: fuera todos los efectos (solo voz + música suave)
 
 # ------------------------------------------------------------------ cámara ortográfica (proxy C) y estado de obra (E.st)
 TX, TH, DECK, PROF, ANCLA = 450, 300, 96, 130, 770
@@ -98,7 +98,8 @@ etiqueta((-TX + 40, -PROF + 20, 40), 560, 1300, "CIMENTACIÓN", "Cajón de hormi
 st(F(5) - 0.1, 0.5, agua=1)
 cam(F(5) - 0.2, (-TX, 150, 0), (-1, 0.42, 0.75), 1.45, 1.2)
 st(P("levantan") - 0.2, 2.6, "power2.out", tor=1)
-dato('<b>+200 m</b><small>DE ALTURA</small>', P("doscientos") - 0.3, P("fijate") - 0.2, top=1460)
+i_alt = dato('<b><span id="altN">0</span> m</b><small>DE ALTURA</small>', P("levantan") - 0.2, P("fijate") - 0.2, top=1460)
+J(f'const altv = {{v:0}}; tl.to(altv, {{v:210, duration:{P("doscientos") - P("levantan") + 0.6:.2f}, ease:"power2.out", onUpdate:() => {{ document.getElementById("altN").textContent = (altv.v > 205 ? "+" : "") + Math.round(Math.min(altv.v, 200)); }}}}, {P("levantan") - 0.2:.2f});')
 cam(P("fijate") - 0.5, (-TX, 215, 0), (-1, 0.28, 0.32), 2.9, 1.1)
 hl("arc", P("arriba") - 0.1, FE(5) + 0.3)
 etiqueta((-TX, 230, 0), 600, 1300, "LA TORRE", "Arcos huecos", "menos peso, menos viento", P("arcos") - 0.3, FE(5) + 0.3)
@@ -155,7 +156,8 @@ etiqueta((-TX, TH, 0), 600, 1300, "EL PESO VIAJA", "Péndolas → cable", "→ t
 # 14) ni un kilo al mar
 cam(F(14) - 0.2, (0, -50, 0), (-0.2, 0.25, 1), 1.3, 1.0)
 st(F(14) - 0.2, 0.5, agua=0.25)
-dato('<b>0 kg</b><small>SOBRE EL MAR</small>', P("kilo") - 0.2, FE(14) + 0.3, top=1440)
+dato('<b><span id="kgN">250.000</span> kg</b><small>PESO QUE CAE SOBRE EL MAR</small>', P("kilo") - 0.4, FE(14) + 0.3, top=1440)
+J(f'const kgv = {{v:250000}}; tl.to(kgv, {{v:0, duration:1.2, ease:"power2.in", onUpdate:() => {{ document.getElementById("kgN").textContent = String(Math.round(kgv.v)).replace(/\\B(?=(\\d{{3}})+(?!\\d))/g, "."); }}}}, {P("kilo") - 0.2:.2f});')
 st(FE(14) + 0.2, 0.5, agua=1, fza=0)
 # 15) último tramo, asfalto, luces
 cam(F(15) - 0.2, (-260, 96, 0), (-0.8, 0.55, 1), 1.7, 1.1)
@@ -175,6 +177,22 @@ cam(F(17) - 0.2, (0, 90, 0), (-1, 0.76, 1), 0.66, DUR - F(17) - 0.3, "sine.inOut
 dato('<b>Colgado de dos cables</b>', P("cables", 2) - 0.6, DUR - 1.2, top=1440)
 J(f'tl.fromTo("#d1", {{opacity:0, y:30}}, {{opacity:1, y:0, duration:0.6, ease:"power3.out", immediateRender:false}}, {DUR - 1.0:.2f});')
 
+# pasos de la obra: barra inferior que avanza
+PASOS = [("Cimientos", F(4)), ("Torres", F(5)), ("Cable", F(6)), ("Anclajes", F(9)), ("Péndolas", F(10)), ("Tablero", F(11)), ("Luces", F(15))]
+FXL.append('<div id="pasos"><div class="pbar"><i id="pfill"></i></div>' + "".join(f'<div class="paso" id="paso{k}" style="left:{40 + k * 150}px"><span class="pdot"></span><em>{n}</em></div>' for k, (n, t) in enumerate(PASOS)) + '</div>')
+J(f'tl.set("#pasos", {{opacity:0, y:40}}, 0); tl.to("#pasos", {{opacity:1, y:0, duration:0.6, ease:"power3.out"}}, {F(4) - 0.2:.2f}); tl.to("#pasos", {{opacity:0, y:40, duration:0.5}}, {FE(15) + 0.8:.2f});')
+J('tl.set("#pfill", {width:0}, 0);')
+for k, (n, t) in enumerate(PASOS):
+    J(f'tl.to("#paso{k} .pdot", {{backgroundColor:"#4ea3ff", borderColor:"#4ea3ff", scale:1.5, duration:0.35, ease:"back.out(3)"}}, {t:.2f}); tl.to("#paso{k} em", {{color:"#ffffff", duration:0.3}}, {t:.2f});')
+    J(f'tl.to("#pfill", {{width:{k * 150}, duration:0.6, ease:"power2.inOut"}}, {t - 0.3:.2f});')
+    if k + 1 < len(PASOS):
+        J(f'tl.to("#paso{k} .pdot", {{scale:1, duration:0.3}}, {PASOS[k + 1][1]:.2f}); tl.to("#paso{k} em", {{color:"rgba(255,255,255,0.75)", duration:0.3}}, {PASOS[k + 1][1]:.2f});')
+# nubes que cruzan el cielo (bucle exacto: vuelven a su sitio al final)
+NUB = [(60, 560, 0.9), (640, 640, 0.75), (860, 520, 1.1), (180, 1500, 0.85), (760, 1540, 1.0)]
+FXN = "".join(f'<div class="nube" id="nb{k}" style="left:{x}px;top:{y}px;transform:scale({sc})"><i></i><i></i><i></i></div>' for k, (x, y, sc) in enumerate(NUB))
+for k in range(len(NUB)):
+    J(f'tl.fromTo("#nb{k}", {{x:0}}, {{x:{(-1) ** k * 70}, duration:{DUR / 2:.2f}, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}}, 0);')
+
 # ------------------------------------------------------------------ montaje
 _S = open(os.path.join(BASE, "_subs.py"), encoding="utf-8").read()
 exec(re.sub(r"CLAVE = set\(.*?\]\)", lambda m: 'CLAVE = set(norm(w) for w in ["mil", "columna", "aguanta", "profundo", "corrientes", "barcos", "pilar", "cuelgan", "hormigon", "roca", "torres", "doscientos", "arcos", "huecos", "cable", "dron", "hilado", "cinco", "miles", "metro", "anclajes", "pendolas", "tablero", "centro", "truco", "kilo", "luces", "viento", "rigido", "colgado", "cables"])', _S, count=1, flags=re.S))
@@ -185,28 +203,35 @@ html = f"""<!doctype html>
 <style>
 *{{margin:0;padding:0;box-sizing:border-box}}
 html,body{{width:1080px;height:1920px;overflow:hidden;background:#15181d}}
-#root{{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;background:radial-gradient(110% 70% at 50% 46%, #3a3e45 0%, #26292e 60%, #17191c 100%);color:#fff}}
+#root{{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;background:linear-gradient(180deg, #3f8fd2 0%, #74b6e6 38%, #b9dcf3 72%, #e4f2fb 100%);color:#fff}}
 #gl{{position:absolute;inset:0}}
 #fxl{{position:absolute;inset:0;z-index:58;pointer-events:none}} svg#lineas{{position:absolute;inset:0;z-index:57;pointer-events:none}}
 .lab{{position:absolute;padding:16px 22px 18px;border-radius:16px;background:rgba(18,21,27,0.78);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(6px);opacity:0}}
 .lab small{{display:block;font:700 17px Inter;letter-spacing:5px;color:#4ea3ff;margin-bottom:6px}} .lab b{{display:block;font:600 42px/1.12 Inter;letter-spacing:-0.5px}}
 .lab em{{display:block;font-style:normal;font:500 24px/1.3 Inter;color:rgba(255,255,255,0.68);margin-top:6px}}
-.dato{{position:absolute;left:0;right:0;text-align:center;text-shadow:0 6px 30px rgba(0,0,0,0.5)}}
-.dato b{{display:block;font:300 120px/1 Inter;letter-spacing:-4px}} .dato small{{display:block;margin-top:12px;font:600 22px Inter;letter-spacing:8px;color:rgba(255,255,255,0.7)}}
-.tacha{{position:absolute;left:0;right:0;top:820px;text-align:center;font:200 300px/1 Inter;color:#ffffff}}
+.dato{{position:absolute;left:0;right:0;text-align:center}} .dato > *{{background:rgba(14,30,52,0.78)}} .dato b{{display:inline-block !important;padding:18px 42px 14px;border-radius:26px 26px 0 0}} .dato small{{display:block !important;width:max-content;margin:0 auto !important;padding:0 36px 16px;border-radius:0 0 22px 22px}}
+.dato b{{font:300 104px/1 Inter;letter-spacing:-3px}} .dato small{{display:block;margin-top:12px;font:600 22px Inter;letter-spacing:8px;color:rgba(255,255,255,0.7)}}
+.tacha{{position:absolute;left:0;right:0;top:820px;text-align:center;font:200 300px/1 Inter;color:#ffffff;text-shadow:0 6px 30px rgba(8,30,60,0.6)}}
 .seccion{{position:absolute;left:240px;right:240px;top:560px;padding:30px 0 34px;text-align:center;background:rgba(18,21,27,0.88);border-radius:28px;border:1px solid rgba(255,255,255,0.12)}} .seccion b{{display:block;font:300 100px/1 Inter;letter-spacing:-3px;margin-top:10px;font-variant-numeric:tabular-nums}} .seccion small{{font:600 22px Inter;letter-spacing:8px;color:rgba(255,255,255,0.7)}}
-.flechas{{position:absolute;left:0;right:0;top:1440px;display:flex;justify-content:center;gap:40px;font:300 70px Inter;color:#4ea3ff}} .flechas span:nth-child(2){{font:600 26px Inter;letter-spacing:8px;color:#fff;align-self:center}}
+.flechas{{position:absolute;left:250px;right:250px;top:1440px;padding:6px 0;border-radius:26px;background:rgba(14,30,52,0.72);display:flex;justify-content:center;gap:40px;font:300 70px Inter;color:#4ea3ff}} .flechas span:nth-child(2){{font:600 26px Inter;letter-spacing:8px;color:#fff;align-self:center}}
 .viento{{position:absolute;inset:0}} .viento i{{position:absolute;left:0;width:420px;height:3px;border-radius:2px;background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,0.7),rgba(255,255,255,0))}}
 #grano{{position:absolute;inset:0;z-index:56;pointer-events:none;opacity:0.03;background:url(assets/grano.png);mix-blend-mode:overlay}}
-#topsombra{{position:absolute;left:0;right:0;top:0;height:480px;z-index:55;pointer-events:none;background:linear-gradient(rgba(14,16,20,0.85),rgba(14,16,20,0))}}
-#marca{{position:absolute;left:0;right:0;top:1820px;text-align:center;font:600 26px Inter;color:#ffffff;opacity:0.28;pointer-events:none;z-index:61}}
+#topsombra{{position:absolute;left:0;right:0;top:0;height:520px;z-index:55;pointer-events:none;background:linear-gradient(rgba(16,52,92,0.55),rgba(16,52,92,0))}}
+#nubes{{position:absolute;inset:0;z-index:0;pointer-events:none}} .nube{{position:absolute;width:260px;height:80px;transform-origin:center}}
+.nube i{{position:absolute;bottom:0;border-radius:50%;background:#ffffff;opacity:0.92}} .nube i:nth-child(1){{left:0;width:130px;height:60px}} .nube i:nth-child(2){{left:60px;width:130px;height:90px}} .nube i:nth-child(3){{left:130px;width:120px;height:62px}}
+#pasos{{position:absolute;left:20px;top:1630px;height:118px;width:1040px;border-radius:28px;background:rgba(14,30,52,0.72)}}
+#pasos .pbar{{position:absolute;left:60px;top:36px;width:900px;height:4px;border-radius:2px;background:rgba(255,255,255,0.18)}} #pasos .pbar i{{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:#4ea3ff}}
+#pasos .paso{{position:absolute;top:14px;width:40px;text-align:center}} #pasos .pdot{{display:block;margin:10px auto 0;width:28px;height:28px;border-radius:50%;border:4px solid rgba(255,255,255,0.35);background:#1d3350;box-sizing:border-box}}
+#pasos em{{position:absolute;left:-60px;right:-60px;top:50px;font:700 21px Inter;font-style:normal;color:rgba(255,255,255,0.75);text-shadow:0 2px 8px rgba(10,30,60,0.6);letter-spacing:0.5px}}
+#marca{{position:absolute;left:0;right:0;top:1820px;text-align:center;font:600 26px Inter;color:#ffffff;opacity:0.45;pointer-events:none;z-index:61}}
 #subs{{position:absolute;left:60px;right:60px;top:250px;height:220px;z-index:62}}
-.sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:600 58px Inter;color:rgba(255,255,255,0.42);line-height:1.22;text-shadow:0 3px 12px rgba(0,0,0,0.6)}}
+.sub{{position:absolute;left:0;right:0;top:0;text-align:center;font:600 58px Inter;color:rgba(255,255,255,0.62);line-height:1.22;text-shadow:0 3px 14px rgba(8,30,60,0.75)}}
 .sw{{display:inline-block;position:relative;padding:0 6px;margin:0 1px}}
 .key .hl{{position:absolute;inset:-4px -2px -2px -2px;border:3px solid #4ea3ff;border-radius:6px;background:rgba(78,163,255,0.18);opacity:0}}
 </style></head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{DUR}" data-width="1080" data-height="1920">
+  <div id="nubes">{FXN}</div>
   <div id="gl"></div>
   <div id="topsombra"></div><div id="grano"></div>
   <svg id="lineas" width="1080" height="1920"></svg>
@@ -226,7 +251,7 @@ const LABS = [], LV = {{}};
 const SVGL = document.getElementById("lineas");
 function frame() {{
   E.aplica();
-  const n = Math.hypot(C.dx, C.dy, C.dz) / 1500; E.pon(C.tx + C.dx / n, C.ty + C.dy / n, C.tz + C.dz / n, C.tx, C.ty, C.tz, C.z); E.cam.updateMatrixWorld();
+  const w = 2 * Math.PI * E.st.t / {DUR:.3f}; const ddx = C.dx + 0.07 * Math.sin(4 * w); const n = Math.hypot(ddx, C.dy, C.dz) / 1500; E.pon(C.tx + ddx / n, C.ty + C.dy / n, C.tz + C.dz / n, C.tx, C.ty, C.tz, C.z * (1 + 0.035 * Math.sin(6 * w))); E.cam.updateMatrixWorld();
   const pul = 0.75 + 0.25 * Math.sin(E.st.t * 6);
   for (const k in R) R[k].set(HL[k] * pul);
   let s = "";

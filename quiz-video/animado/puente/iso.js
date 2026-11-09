@@ -10,7 +10,7 @@
   const FR = 900;                                   // mitad de la altura visible (zoom)
   const cam = new THREE.OrthographicCamera(-FR * W / H, FR * W / H, FR, -FR, -6000, 6000);
   scene.add(new THREE.HemisphereLight(0xe6e6e6, 0x4a4a4a, 0.5));
-  const sol = new THREE.DirectionalLight(0xffffff, 1.5); sol.position.set(-700, 1300, 900); sol.castShadow = true;
+  const sol = new THREE.DirectionalLight(0xffffff, 1.05); sol.position.set(-700, 1300, 900); sol.castShadow = true;
   sol.shadow.mapSize.set(2048, 2048); Object.assign(sol.shadow.camera, { left: -1300, right: 1300, top: 1000, bottom: -1000, near: 10, far: 4000 }); sol.shadow.radius = 2; sol.shadow.bias = -0.0005;
   scene.add(sol); scene.add(sol.target);
   // sombreado plano tipo ilustración: 3 tonos por cara, sin brillos ni degradados realistas
@@ -23,7 +23,7 @@
   // ---------------- medidas
   const SPAN = 900, TX = SPAN / 2, TH = 300, DECK = 96, LEN = 1300, D = 360, PROF = 130, LAND = 300;
   const ANCLA = LEN / 2 + 120;
-  const C = { blanco: 0xf3f1ed, hueso: 0xe7e3dc, gris: 0x8d939b, pizarra: 0x3d434c, arena: 0x3b3a37, roca: 0x2f2e2c, rocaO: 0x1c1b1a, hierba: 0x52504c, agua: 0x22303a, acento: 0xef5b3b };
+  const C = { blanco: 0xf3f1ed, hueso: 0xe7e3dc, gris: 0x8d939b, pizarra: 0x3d434c, arena: 0xbfa77c, roca: 0x8c6a4c, rocaO: 0x6b4f39, hierba: 0x7fb85b, agua: 0x3f9ccc, acento: 0xef5b3b };
 
   // ---------------- maqueta: bloques de tierra con capas, fondo marino y agua
   for (const s of [-1, 1]) {
@@ -31,27 +31,27 @@
     base.add(caja(LAND, 60, D, M(C.rocaO), cx, -PROF - 50, 0));
     base.add(caja(LAND, PROF + 20, D, M(C.roca), cx, -PROF / 2 - 10 + 10, 0));
     base.add(caja(LAND, 14, D, M(C.hierba), cx, 6, 0));
-    for (const y of [-30, -62, -94]) base.add(caja(LAND + 1, 2, D + 1, M(0x1f1e1c), cx, y, 0));
+    for (const y of [-30, -62, -94]) base.add(caja(LAND + 1, 2, D + 1, M(0x7d5c42), cx, y, 0));
     base.add(caja(LAND - 30, 2, 46, M(C.pizarra, { roughness: 0.9 }), cx + s * 10, 14, 0));
     // talud hacia el agua
     const t = S(new THREE.Mesh(new THREE.BoxGeometry(70, PROF, D), M(C.roca))); t.position.set(s * (LEN / 2 - 30), -PROF / 2 + 2, 0); t.rotation.z = s * 0.22; base.add(t);
     // árboles discretos
-    for (let k = 0; k < 7; k++) {
+    for (let k = 0; k < 16; k++) {
       const tr = new THREE.Group(); const h = 30 + (k % 3) * 10;
-      tr.add(S(new THREE.Mesh(new THREE.CylinderGeometry(2.5, 3, 12, 6), M(0x3a3936))));
-      const cop = S(new THREE.Mesh(new THREE.IcosahedronGeometry(h * 0.45, 0), M(0x45433f, { flatShading: true }))); cop.position.y = h * 0.6; tr.add(cop);
-      tr.position.set(s * (LEN / 2 + 60 + (k * 37) % 220), 14, -D / 2 + 30 + ((k * 91) % (D - 60))); base.add(tr);
+      tr.add(S(new THREE.Mesh(new THREE.CylinderGeometry(2.5, 3, 12, 6), M(0x7a5a3c))));
+      const cop = S(new THREE.Mesh(new THREE.IcosahedronGeometry(h * 0.45, 0), M(k % 2 ? 0x4f9a48 : 0x67ad52, { flatShading: true }))); cop.position.y = h * 0.6; tr.add(cop);
+      { const zz = -D / 2 + 22 + ((k * 91) % (D - 44)); if (Math.abs(zz) < 34) continue; tr.position.set(s * (LEN / 2 + 50 + (k * 53) % 230), 14, zz); } tr.scale.setScalar(0.8 + (k % 4) * 0.12); base.add(tr);
     }
   }
   base.add(caja(LEN, 60, D, M(C.rocaO), 0, -PROF - 50, 0));
   base.add(caja(LEN, 22, D, M(C.arena), 0, -PROF - 9, 0));
   for (let k = 0; k < 30; k++) { const p = S(new THREE.Mesh(new THREE.DodecahedronGeometry(5 + (k % 4) * 3, 0), M(C.roca, { flatShading: true }))); p.position.set(-LEN / 2 + 40 + (k * 173) % (LEN - 80), -PROF + 2, -D / 2 + 20 + (k * 61) % (D - 40)); base.add(p); }
   const aguaMat = new THREE.MeshStandardMaterial({ color: C.agua, transparent: true, opacity: 0.8, roughness: 0.2, metalness: 0.0, depthWrite: false });
-  const ag = new THREE.BoxGeometry(LEN - 4, PROF - 4, D - 4); const colA = [], cTop = new THREE.Color(0x2f404b), cBot = new THREE.Color(0x0a1015);
+  const ag = new THREE.BoxGeometry(LEN - 4, PROF - 4, D - 4); const colA = [], cTop = new THREE.Color(0x2a86bf), cBot = new THREE.Color(0x0c3d66);
   for (let k = 0; k < ag.attributes.position.count; k++) { const y = ag.attributes.position.getY(k); const c = cBot.clone().lerp(cTop, (y + PROF / 2) / PROF); colA.push(c.r, c.g, c.b); }
   ag.setAttribute('color', new THREE.Float32BufferAttribute(colA, 3)); aguaMat.vertexColors = true; aguaMat.color.set(0xffffff);
   const agua = new THREE.Mesh(ag, aguaMat); agua.position.set(0, -PROF / 2 - 4, 0); agua.renderOrder = 10; base.add(agua);
-  const supMat = new THREE.MeshStandardMaterial({ color: 0x1e2c35, transparent: true, opacity: 0.88, roughness: 0.05, metalness: 0.1, depthWrite: false });
+  const supMat = new THREE.MeshStandardMaterial({ color: 0x2e8bc4, transparent: true, opacity: 0.82, roughness: 0.05, metalness: 0.1, depthWrite: false });
   const sup = new THREE.Mesh(new THREE.PlaneGeometry(LEN - 4, D - 4, 1, 1), supMat); sup.rotation.x = -Math.PI / 2; sup.position.y = -5; sup.renderOrder = 11; base.add(sup);
   // líneas de oleaje suaves en la superficie
   const olas = new THREE.Group(); for (let k = 0; k < 26; k++) { const o = new THREE.Mesh(new THREE.PlaneGeometry(40 + (k % 5) * 18, 2), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.45, depthWrite: false })); o.rotation.x = -Math.PI / 2; o.position.set(-LEN / 2 + 60 + (k * 211) % (LEN - 120), -4.5, -D / 2 + 20 + (k * 47) % (D - 40)); olas.add(o); } base.add(olas);
@@ -127,6 +127,19 @@
   [0x8d939b, 0xe7e3dc, 0x8d939b, 0xe7e3dc].forEach((c, i) => barco.add(caja(20, 16, 30, M(c), -18 + i * 22, 23, 0)));
   barco.position.set(0, -3, 260); barco.rotation.y = Math.PI / 2; base.add(barco);
 
+  // ================= DECORADO VIVO: casas, veleros, pájaros
+  for (const s of [-1, 1]) for (let k = 0; k < 3; k++) {
+    const h = new THREE.Group(); const w = 34 + k * 6;
+    h.add(caja(w, 22, 28, M(0xf6f1e7), 0, 11, 0));
+    const tj = new THREE.Mesh(new THREE.CylinderGeometry(0, 24, 16, 4), M(k % 2 ? 0xc96f4a : 0x5d7b96, { flatShading: true })); tj.rotation.y = Math.PI / 4; tj.scale.set(w / 34, 1, 0.82); tj.position.y = 30; S(tj); h.add(tj);
+    h.position.set(s * (LEN / 2 + LAND - 60 - k * 70), 14, (k % 2 ? 1 : -1) * (110 + k * 12)); base.add(h);
+  }
+  const veleros = [[-240, 0.9], [240, 0.6], [80, 1.1]].map(([x, v], k) => { const g = new THREE.Group(); g.add(caja(34, 7, 12, M(0xf6f1e7), 0, 2, 0));
+    const vg = new THREE.BufferGeometry(); vg.setAttribute('position', new THREE.Float32BufferAttribute([0, 6, 0, 0, 46, 0, 22, 6, 0, 0, 6, 0, -14, 6, 0, 0, 40, 0], 3)); vg.computeVertexNormals();
+    g.add(S(new THREE.Mesh(vg, new THREE.MeshToonMaterial({ color: 0xffffff, side: THREE.DoubleSide, gradientMap: GRAD })))); g.rotation.y = Math.PI / 2; g.position.x = x; g.userData = { v, k }; base.add(g); return g; });
+  const pajaros = Array.from({ length: 7 }, (_, k) => { const g = new THREE.Group(); const mat = new THREE.MeshBasicMaterial({ color: 0x2b3440, side: THREE.DoubleSide });
+    const a1 = new THREE.Mesh(new THREE.PlaneGeometry(9, 2.2), mat); a1.position.x = -4.5; const a2 = a1.clone(); a2.position.x = 4.5; const p1 = new THREE.Group(); p1.add(a1); const p2 = new THREE.Group(); p2.add(a2);
+    g.add(p1, p2); g.userData = { p1, p2, k }; g.rotation.x = -Math.PI / 2; base.add(g); return g; });
   // ================= ESTADO DE OBRA (0 = sin construir, 1 = terminado) =================
   const ACC = 0x4ea3ff;
   const st = { t: 0, cim: 1, tor: 1, pil: 0, pas: 0, rueda: 0, ruedaOn: 0, hilo: 1, anc: 1, pen: 1, dov: 1, asf: 1, luz: 0, coches: 0, fza: 0, vien: 0, agua: 1, barcoZ: 260, fan: 0 };
@@ -193,7 +206,9 @@
     fan.material.opacity = st.fan * 0.35; fan.visible = st.fan > 0.01;
     aguaMat.opacity = aguaOp * st.agua; supMat.opacity = surf * st.agua; olas.visible = st.agua > 0.5;
     barco.position.z = st.barcoZ;
-    sol.intensity = 1.5 - 0.55 * st.luz; hemi.intensity = 0.5 - 0.15 * st.luz;
+    veleros.forEach(g => { const { v, k } = g.userData; g.position.set(g.position.x, -3 + Math.sin(t * 2 + k) * 1.2, ((t * 14 * v + k * 120) % (D - 50)) - (D - 50) / 2); g.rotation.z = Math.sin(t * 1.6 + k) * 0.06; g.visible = st.agua > 0.5; });
+    pajaros.forEach(g => { const { p1, p2, k } = g.userData; const u = ((t * 0.045 + k * 0.137) % 1); g.position.set(-900 + u * 1800, 360 + (k % 3) * 22 + Math.sin(t + k) * 6, -120 + (k * 47) % 240); const f = Math.sin(t * 9 + k) * 0.6; p1.rotation.y = f; p2.rotation.y = -f; });
+    sol.intensity = 1.05 - 0.3 * st.luz; hemi.intensity = 0.5 - 0.12 * st.luz;
   }
   // resaltado azul pulsante sobre un conjunto de piezas
   function resalta(lista) {

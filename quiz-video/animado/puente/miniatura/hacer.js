@@ -9,13 +9,13 @@ const path = require('path');
   await p.goto('file://' + dir + '/index.html'); await p.waitForTimeout(3000);
   await p.evaluate(() => {
     window.__timelines.main.seek(5.0);
-    for (const s of ['#subs', '#grano', '#fxl', '#lineas']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
+    for (const s of ['#subs', '#grano', '#fxl', '#lineas', '#pasos']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
     const d = document.createElement('div'); d.style.cssText = 'position:absolute;inset:0;z-index:90;font-family:Inter;text-align:center';
     d.innerHTML = `
       <div style="position:absolute;left:0;right:0;top:300px">
-        <div style="font:700 30px Inter;letter-spacing:10px;color:#4ea3ff">1.000 METROS DE MAR</div>
+        <div style="font:700 30px Inter;letter-spacing:10px;color:#ffffff;text-shadow:0 3px 12px rgba(8,30,60,0.7)">1.000 METROS DE MAR</div>
         <div style="margin-top:18px;font:800 132px/0.95 Inter;letter-spacing:-5px;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,0.6)">NI UNA<br>COLUMNA</div>
-        <div style="margin-top:22px;font:600 44px Inter;letter-spacing:2px;color:rgba(255,255,255,0.75)">¿Cómo se aguanta?</div></div>`;
+        <div style="margin-top:22px;font:600 44px Inter;letter-spacing:2px;color:#ffffff;text-shadow:0 3px 12px rgba(8,30,60,0.7)">¿Cómo se aguanta?</div></div>`;
     document.querySelector('#root').appendChild(d);
   });
   await p.waitForTimeout(800);

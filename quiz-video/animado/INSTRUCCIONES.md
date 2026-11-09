@@ -213,3 +213,7 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   MAQUETA ISOMÉTRICA PLANA (cámara ortográfica, sombreado plano de 3 tonos `MeshToonMaterial`, sin brillos), fondo gris
   carbón neutro, paleta casi monocroma (blanco/grises, agua gris azulada) y UN solo acento azul (#4ea3ff) para resaltar.
   Base reutilizable: `puente/iso.js` (estado de obra `E.st` + `aplica()` + `resalta()`) y `puente/gen.py`.
+- (09-11-2026, puente v2) Usuario: «muchos sonidos molestos innecesarios» → SIN efectos de sonido (fx() vacío): solo
+  voz + música suave. El narrador empieza NEUTRO desde la primera frase: etiqueta [calm] al principio, sin [curious],
+  y frases iniciales unidas (no telegráficas). Más visual e interactivo: cielo azul con nubes, césped, árboles, casas,
+  veleros y pájaros moviéndose, barra de PASOS de la obra que avanza, contadores animados y cámara que «respira».
