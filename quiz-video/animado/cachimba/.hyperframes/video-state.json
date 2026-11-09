@@ -737,5 +737,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "31156587-b4b4-4528-ac91-5119df0ff5fa",
+      "completedAt": 1794213273436,
+      "output": "/home/user/webs/quiz-video/animado/cachimba/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
