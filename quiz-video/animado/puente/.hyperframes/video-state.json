@@ -1578,5 +1578,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "ed97ea15-a65b-417c-8000-f1b9b3d9ccf1",
+      "completedAt": 1794256427985,
+      "output": "/home/user/webs/quiz-video/animado/puente/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
