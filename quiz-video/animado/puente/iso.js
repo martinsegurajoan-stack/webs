@@ -9,8 +9,8 @@
   const scene = new THREE.Scene();
   const FR = 900;                                   // mitad de la altura visible (zoom)
   const cam = new THREE.OrthographicCamera(-FR * W / H, FR * W / H, FR, -FR, -6000, 6000);
-  scene.add(new THREE.HemisphereLight(0xdfe6ee, 0x4a4540, 0.5));
-  const sol = new THREE.DirectionalLight(0xfff1e0, 1.5); sol.position.set(-700, 1300, 900); sol.castShadow = true;
+  scene.add(new THREE.HemisphereLight(0xe6e6e6, 0x4a4a4a, 0.5));
+  const sol = new THREE.DirectionalLight(0xffffff, 1.5); sol.position.set(-700, 1300, 900); sol.castShadow = true;
   sol.shadow.mapSize.set(2048, 2048); Object.assign(sol.shadow.camera, { left: -1300, right: 1300, top: 1000, bottom: -1000, near: 10, far: 4000 }); sol.shadow.radius = 6; sol.shadow.bias = -0.0005;
   scene.add(sol); scene.add(sol.target);
   const M = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.75, metalness: 0.0 }, o));
@@ -21,7 +21,7 @@
   // ---------------- medidas
   const SPAN = 900, TX = SPAN / 2, TH = 300, DECK = 96, LEN = 1300, D = 360, PROF = 130, LAND = 300;
   const ANCLA = LEN / 2 + 120;
-  const C = { blanco: 0xf3f1ed, hueso: 0xe7e3dc, gris: 0x8d939b, pizarra: 0x3d434c, arena: 0xa8875a, roca: 0x6b5d50, rocaO: 0x3f3731, hierba: 0x6c7a4c, agua: 0x1f5c6b, acento: 0xef5b3b };
+  const C = { blanco: 0xf3f1ed, hueso: 0xe7e3dc, gris: 0x8d939b, pizarra: 0x3d434c, arena: 0x3b3a37, roca: 0x2f2e2c, rocaO: 0x1c1b1a, hierba: 0x52504c, agua: 0x22303a, acento: 0xef5b3b };
 
   // ---------------- maqueta: bloques de tierra con capas, fondo marino y agua
   for (const s of [-1, 1]) {
@@ -29,15 +29,15 @@
     base.add(caja(LAND, 60, D, M(C.rocaO), cx, -PROF - 50, 0));
     base.add(caja(LAND, PROF + 20, D, M(C.roca), cx, -PROF / 2 - 10 + 10, 0));
     base.add(caja(LAND, 14, D, M(C.hierba), cx, 6, 0));
-    for (const y of [-30, -62, -94]) base.add(caja(LAND + 1, 2, D + 1, M(0x4f453c), cx, y, 0));
+    for (const y of [-30, -62, -94]) base.add(caja(LAND + 1, 2, D + 1, M(0x1f1e1c), cx, y, 0));
     base.add(caja(LAND - 30, 2, 46, M(C.pizarra, { roughness: 0.9 }), cx + s * 10, 14, 0));
     // talud hacia el agua
     const t = S(new THREE.Mesh(new THREE.BoxGeometry(70, PROF, D), M(C.roca))); t.position.set(s * (LEN / 2 - 30), -PROF / 2 + 2, 0); t.rotation.z = s * 0.22; base.add(t);
     // árboles discretos
     for (let k = 0; k < 7; k++) {
       const tr = new THREE.Group(); const h = 30 + (k % 3) * 10;
-      tr.add(S(new THREE.Mesh(new THREE.CylinderGeometry(2.5, 3, 12, 6), M(0x8a7a66))));
-      const cop = S(new THREE.Mesh(new THREE.IcosahedronGeometry(h * 0.45, 0), M(0x6f7f58, { flatShading: true }))); cop.position.y = h * 0.6; tr.add(cop);
+      tr.add(S(new THREE.Mesh(new THREE.CylinderGeometry(2.5, 3, 12, 6), M(0x3a3936))));
+      const cop = S(new THREE.Mesh(new THREE.IcosahedronGeometry(h * 0.45, 0), M(0x45433f, { flatShading: true }))); cop.position.y = h * 0.6; tr.add(cop);
       tr.position.set(s * (LEN / 2 + 60 + (k * 37) % 220), 14, -D / 2 + 30 + ((k * 91) % (D - 60))); base.add(tr);
     }
   }
@@ -45,11 +45,11 @@
   base.add(caja(LEN, 22, D, M(C.arena), 0, -PROF - 9, 0));
   for (let k = 0; k < 30; k++) { const p = S(new THREE.Mesh(new THREE.DodecahedronGeometry(5 + (k % 4) * 3, 0), M(C.roca, { flatShading: true }))); p.position.set(-LEN / 2 + 40 + (k * 173) % (LEN - 80), -PROF + 2, -D / 2 + 20 + (k * 61) % (D - 40)); base.add(p); }
   const aguaMat = new THREE.MeshStandardMaterial({ color: C.agua, transparent: true, opacity: 0.8, roughness: 0.2, metalness: 0.0, depthWrite: false });
-  const ag = new THREE.BoxGeometry(LEN - 4, PROF - 4, D - 4); const colA = [], cTop = new THREE.Color(0x3d8fa0), cBot = new THREE.Color(0x0f3540);
+  const ag = new THREE.BoxGeometry(LEN - 4, PROF - 4, D - 4); const colA = [], cTop = new THREE.Color(0x2f404b), cBot = new THREE.Color(0x0a1015);
   for (let k = 0; k < ag.attributes.position.count; k++) { const y = ag.attributes.position.getY(k); const c = cBot.clone().lerp(cTop, (y + PROF / 2) / PROF); colA.push(c.r, c.g, c.b); }
   ag.setAttribute('color', new THREE.Float32BufferAttribute(colA, 3)); aguaMat.vertexColors = true; aguaMat.color.set(0xffffff);
   const agua = new THREE.Mesh(ag, aguaMat); agua.position.set(0, -PROF / 2 - 4, 0); agua.renderOrder = 10; base.add(agua);
-  const supMat = new THREE.MeshStandardMaterial({ color: 0x1a5866, transparent: true, opacity: 0.78, roughness: 0.05, metalness: 0.1, depthWrite: false });
+  const supMat = new THREE.MeshStandardMaterial({ color: 0x1e2c35, transparent: true, opacity: 0.88, roughness: 0.05, metalness: 0.1, depthWrite: false });
   const sup = new THREE.Mesh(new THREE.PlaneGeometry(LEN - 4, D - 4, 1, 1), supMat); sup.rotation.x = -Math.PI / 2; sup.position.y = -5; sup.renderOrder = 11; base.add(sup);
   // líneas de oleaje suaves en la superficie
   const olas = new THREE.Group(); for (let k = 0; k < 26; k++) { const o = new THREE.Mesh(new THREE.PlaneGeometry(40 + (k % 5) * 18, 2), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.45, depthWrite: false })); o.rotation.x = -Math.PI / 2; o.position.set(-LEN / 2 + 60 + (k * 211) % (LEN - 120), -4.5, -D / 2 + 20 + (k * 47) % (D - 40)); olas.add(o); } base.add(olas);
@@ -87,7 +87,7 @@
       hueco.position.set(0, (y0 + y1) / 2, 0); hueco.rotation.y = Math.PI / 2; g.add(hueco); huecos.push(hueco);
     }
     // luz roja de aviso arriba
-    const b = new THREE.Mesh(new THREE.SphereGeometry(3, 10, 10), new THREE.MeshBasicMaterial({ color: 0xff5040 })); b.position.y = TH + 24; g.add(b);
+    const b = new THREE.Mesh(new THREE.SphereGeometry(3, 10, 10), new THREE.MeshBasicMaterial({ color: 0xf3f1ed })); b.position.y = TH + 24; g.add(b);
     g.position.x = x; base.add(g); torres.push(g); return g;
   }
   torre(-TX); torre(TX);
@@ -102,7 +102,7 @@
     const asf = caja(LD - 0.6, 1.2, 46, M(C.pizarra, { roughness: 0.9 }), 0, 6.6, 0); d.add(asf);
     for (const z of [-7, 7]) { const linea = new THREE.Mesh(new THREE.BoxGeometry(LD * 0.45, 0.4, 1), new THREE.MeshBasicMaterial({ color: 0xe9e6df })); linea.position.set(0, 7.4, z); d.add(linea); }
     for (const z of [-26, 26]) { d.add(caja(LD - 0.6, 5, 1.6, M(C.hueso), 0, 9.5, z)); }
-    const far = new THREE.Mesh(new THREE.SphereGeometry(1.8, 8, 8), new THREE.MeshBasicMaterial({ color: 0xfff2cc })); far.position.set(0, 16, 25); d.add(far);
+    const far = new THREE.Mesh(new THREE.SphereGeometry(1.8, 8, 8), new THREE.MeshBasicMaterial({ color: 0xf3f1ed })); far.position.set(0, 16, 25); d.add(far);
     d.position.set(-ANCLA + LD * (i + 0.5), DECK, 0); base.add(d); dovelas.push(d);
   }
   // ---------------- cables y péndolas
