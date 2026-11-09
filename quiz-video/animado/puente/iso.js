@@ -8,7 +8,7 @@
   document.getElementById('gl').appendChild(renderer.domElement);
   const scene = new THREE.Scene();
   const FR = 900;                                   // mitad de la altura visible (zoom)
-  const cam = new THREE.OrthographicCamera(-FR * W / H, FR * W / H, FR, -FR, -6000, 6000);
+  const cam = new THREE.OrthographicCamera(-FR * W / H, FR * W / H, FR, -FR, 1, 4000);
   scene.add(new THREE.HemisphereLight(0xe6e6e6, 0x4a4a4a, 0.5));
   const sol = new THREE.DirectionalLight(0xffffff, 1.05); sol.position.set(-700, 1300, 900); sol.castShadow = true;
   sol.shadow.mapSize.set(2048, 2048); Object.assign(sol.shadow.camera, { left: -1300, right: 1300, top: 1000, bottom: -1000, near: 10, far: 4000 }); sol.shadow.radius = 2; sol.shadow.bias = -0.0005;
@@ -21,20 +21,19 @@
   const base = new THREE.Group(); scene.add(base);
 
   // ---------------- medidas
-  const SPAN = 900, TX = SPAN / 2, TH = 300, DECK = 96, LEN = 1300, D = 360, PROF = 130, LAND = 300;
+  const SPAN = 900, TX = SPAN / 2, TH = 300, DECK = 96, LEN = 1300, D = 560, PROF = 130, LAND = 300;
   const ANCLA = LEN / 2 + 120;
-  const C = { blanco: 0xf3f1ed, hueso: 0xe7e3dc, gris: 0x8d939b, pizarra: 0x3d434c, arena: 0xbfa77c, roca: 0x8c6a4c, rocaO: 0x6b4f39, hierba: 0x7fb85b, agua: 0x3f9ccc, acento: 0xef5b3b };
+  const C = { blanco: 0xf3f1ed, hueso: 0xe7e3dc, gris: 0x8d939b, pizarra: 0x3d434c, arena: 0xbfa77c, roca: 0x8c6a4c, rocaO: 0x6b4f39, hierba: 0x6cab4c, agua: 0x3f9ccc, acento: 0xef5b3b };
 
   // ---------------- maqueta: bloques de tierra con capas, fondo marino y agua
   for (const s of [-1, 1]) {
     const cx = s * (LEN / 2 + LAND / 2 - 2);
     base.add(caja(LAND, 60, D, M(C.rocaO), cx, -PROF - 50, 0));
-    base.add(caja(LAND, PROF + 20, D, M(C.roca), cx, -PROF / 2 - 10 + 10, 0));
-    base.add(caja(LAND, 14, D, M(C.hierba), cx, 6, 0));
-    for (const y of [-30, -62, -94]) base.add(caja(LAND + 1, 2, D + 1, M(0x7d5c42), cx, y, 0));
+    base.add(caja(LAND, PROF + 11, D, M(C.roca), cx, -PROF / 2 - 4.5, 0));
+    base.add(caja(LAND + 0.6, 12, D + 0.6, M(C.hierba), cx, 7, 0));
+    for (const y of [-30, -62, -94]) base.add(caja(LAND + 3, 2, D + 3, M(0x7d5c42), cx, y, 0));
     base.add(caja(LAND - 30, 2, 46, M(C.pizarra, { roughness: 0.9 }), cx + s * 10, 14, 0));
     // talud hacia el agua
-    const t = S(new THREE.Mesh(new THREE.BoxGeometry(70, PROF, D), M(C.roca))); t.position.set(s * (LEN / 2 - 30), -PROF / 2 + 2, 0); t.rotation.z = s * 0.22; base.add(t);
     // árboles discretos
     for (let k = 0; k < 16; k++) {
       const tr = new THREE.Group(); const h = 30 + (k % 3) * 10;
@@ -142,6 +141,7 @@
     g.add(p1, p2); g.userData = { p1, p2, k }; g.rotation.x = -Math.PI / 2; base.add(g); return g; });
   // ================= ESTADO DE OBRA (0 = sin construir, 1 = terminado) =================
   const ACC = 0x4ea3ff;
+  let DURV = 114.14;
   const st = { t: 0, cim: 1, tor: 1, pil: 0, pas: 0, rueda: 0, ruedaOn: 0, hilo: 1, anc: 1, pen: 1, dov: 1, asf: 1, luz: 0, coches: 0, fza: 0, vien: 0, agua: 1, barcoZ: 260, fan: 0 };
   // cable piloto + dron
   const curva = (z, dy = 0) => new THREE.CatmullRomCurve3(Array.from({ length: 201 }, (_, i) => { const x = -ANCLA + 2 * ANCLA * i / 200; return new THREE.Vector3(x, yC(x) + dy, z); }));
@@ -149,7 +149,7 @@
   const piloto = new THREE.Mesh(pilGeo, new THREE.MeshBasicMaterial({ color: 0xffffff })); base.add(piloto);
   const dron = new THREE.Group(); dron.add(caja(10, 3, 10, M(C.pizarra), 0, 0, 0));
   const rotores = []; for (const [a, b] of [[-8, -8], [8, -8], [-8, 8], [8, 8]]) { const r = new THREE.Mesh(new THREE.CylinderGeometry(5, 5, 0.6, 16), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 })); r.position.set(a, 2.5, b); dron.add(r); rotores.push(r); }
-  base.add(dron);
+  dron.scale.setScalar(3); base.add(dron);
   // pasarela (barandillas siguiendo el cable) y rueda de hilado
   const pasMat = new THREE.MeshBasicMaterial({ color: 0xbfc3c8, transparent: true, opacity: 0 });
   const pasarela = new THREE.Group(); for (const z of [-38, -22, 22, 38]) pasarela.add(new THREE.Mesh(new THREE.TubeGeometry(curva(z, -4), 300, 0.6, 4, false), pasMat)); base.add(pasarela);
@@ -205,8 +205,10 @@
     puntos.forEach((p, k) => { const s = k % 2 ? 1 : -1, z = (k >> 1) % 2 ? 30 : -30; const u = ((t * 0.35 + (k >> 2) / 7) % 1); const x = s * u * ANCLA; p.position.set(x, yC(x) + 1, z); p.visible = st.fza > 0.01; p.material.opacity = st.fza * Math.sin(Math.PI * u); });
     fan.material.opacity = st.fan * 0.35; fan.visible = st.fan > 0.01;
     aguaMat.opacity = aguaOp * st.agua; supMat.opacity = surf * st.agua; olas.visible = st.agua > 0.5;
-    barco.position.z = st.barcoZ;
-    veleros.forEach(g => { const { v, k } = g.userData; g.position.set(g.position.x, -3 + Math.sin(t * 2 + k) * 1.2, ((t * 14 * v + k * 120) % (D - 50)) - (D - 50) / 2); g.rotation.z = Math.sin(t * 1.6 + k) * 0.06; g.visible = st.agua > 0.5; });
+    const ZR = D / 2 - 40, borde = (z) => cl((ZR - Math.abs(z)) / 45);
+    const fade = (g, a) => { g.traverse(m => { if (m.material) { m.material.transparent = true; m.material.opacity = a; } }); g.visible = a > 0.01 && (g === barco || st.agua > 0.5); };
+    { const z = ZR - ((t * (4 * ZR / DURV) + ZR - 14 * (4 * ZR / DURV)) % (2 * ZR) + 2 * ZR) % (2 * ZR); barco.position.z = z; fade(barco, borde(z)); }
+    veleros.forEach(g => { const { k } = g.userData; const vz = (k + 2) * 2 * ZR / DURV; const z = ((t * vz + k * 170) % (2 * ZR)) - ZR; g.position.set(g.position.x, -3 + Math.sin(t * 2 + k) * 1.2, k % 2 ? -z : z); g.rotation.y = k % 2 ? -Math.PI / 2 : Math.PI / 2; g.rotation.z = Math.sin(t * 1.6 + k) * 0.06; fade(g, borde(z)); });
     pajaros.forEach(g => { const { p1, p2, k } = g.userData; const u = ((t * 0.045 + k * 0.137) % 1); g.position.set(-900 + u * 1800, 360 + (k % 3) * 22 + Math.sin(t + k) * 6, -120 + (k * 47) % 240); const f = Math.sin(t * 9 + k) * 0.6; p1.rotation.y = f; p2.rotation.y = -f; });
     sol.intensity = 1.05 - 0.3 * st.luz; hemi.intensity = 0.5 - 0.12 * st.luz;
   }
@@ -220,6 +222,6 @@
   function pon(px, py, pz, tx, ty, tz, zoom) {
     cam.position.set(px, py, pz); cam.lookAt(tx, ty, tz); cam.zoom = zoom; cam.updateProjectionMatrix();
   }
-  window.ESC = { st, aplica, resalta, hueR, renderer, scene, cam, base, agua, aguaMat, sup, olas, cimientos, torres, huecos, dovelas, cables, pendolas, anclajes, barco, proyecta, pon,
+  window.ESC = { setDur(d) { DURV = d; }, st, aplica, resalta, hueR, renderer, scene, cam, base, agua, aguaMat, sup, olas, cimientos, torres, huecos, dovelas, cables, pendolas, anclajes, barco, proyecta, pon,
     TX, TH, DECK, PROF, ANCLA, LEN, D, yC, C, render() { renderer.render(scene, cam); } };
 })();

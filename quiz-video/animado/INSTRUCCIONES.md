@@ -217,3 +217,8 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   voz + música suave. El narrador empieza NEUTRO desde la primera frase: etiqueta [calm] al principio, sin [curious],
   y frases iniciales unidas (no telegráficas). Más visual e interactivo: cielo azul con nubes, césped, árboles, casas,
   veleros y pájaros moviéndose, barra de PASOS de la obra que avanza, contadores animados y cámara que «respira».
+- (09-11-2026, puente v3) Errores que vio el usuario: CÉSPED «bugeado» = z-fighting (caras coplanarias de dos cajas:
+  nunca dos cajas con la misma cara; cámara ortográfica con near/far ajustados 1–4000, no ±6000). BARCOS que salen del
+  agua y vuelven de golpe: los objetos que se mueven deben ir en BUCLE DENTRO del agua y desvanecerse en los bordes
+  (nunca tl.set que teletransporte). Nubes solo arriba (abajo parece que la maqueta flota). Revisar SIEMPRE una hoja de
+  fotogramas cada 4 s y recortes ampliados antes de entregar.

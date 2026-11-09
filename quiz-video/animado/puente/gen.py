@@ -62,7 +62,7 @@ def PL(word):
 J(f'tl.to(E.st, {{t:{DUR:.2f}, duration:{DUR:.2f}, ease:"none"}}, 0);')
 J('Object.assign(E.st, {luz:1, coches:1});')
 # 1) gancho: el puente terminado, de noche con tráfico; leve deriva de cámara
-cam(0.0, (0, 80, 0), (-1, 0.72, 1.05), 0.72, FE(1), "sine.inOut")
+cam(0.0, (0, 80, 0), (-1, 0.72, 1.05), 0.66, FE(1), "sine.inOut")
 d1 = dato('<b>1.000 m</b><small>NI UNA COLUMNA EN EL AGUA</small>', 0.0, P("coches") - 0.2, top=1440)
 J('tl.set("#d1", {opacity:1, y:0, letterSpacing:"0px"}, 0);')
 dato('<b>¿Cómo se aguanta?</b>', P("aguanta") - 0.6, FE(1) + 0.2, top=1460)
@@ -70,14 +70,12 @@ dato('<b>¿Cómo se aguanta?</b>', P("aguanta") - 0.6, FE(1) + 0.2, top=1460)
 st(F(2) - 0.3, 0.6, luz=0, coches=0)
 cam(F(2) - 0.2, (0, -40, 60), (-0.55, 0.42, 1), 1.35, 1.0)
 st(F(2) + 0.2, 0.6, agua=0.45)
-st(P("barcos") - 1.2, FE(2) - P("barcos") + 2.6, "none", barcoZ=-260)
 etiqueta((0, -PROF + 10, 120), 70, 1250, "PROFUNDIDAD", "Mar profundo", "", P("profundo") - 0.2, P("corrientes") - 0.1)
 etiqueta((-260, -6, 140), 70, 1250, "CORRIENTES", "Fuertes", "", P("corrientes") - 0.1, P("barcos") - 0.3)
-etiqueta((0, 30, 120), 560, 1300, "PASO LIBRE", "Barcos enormes", "por debajo del puente", P("barcos") - 0.3, FE(2) + 0.2)
+etiqueta((0, 20, 0), 560, 1300, "PASO LIBRE", "Barcos enormes", "por debajo del puente", P("barcos") - 0.3, FE(2) + 0.2)
 st(FE(2), 0.5, agua=1)
 # 3) un pilar en medio: no. Lo cuelgan
 cam(F(3) - 0.1, (0, 40, 0), (-1, 0.6, 1.1), 0.95, 1.0)
-J(f'tl.set(E.st, {{barcoZ:260}}, {F(3) + 0.3:.2f});')
 st(P("pilar") - 0.1, 0.5, fan=1); st(P("estorbo") + 0.2, 0.4, fan=0)
 FXL.append('<div class="tacha" id="tacha">✕</div>')
 J(f'tl.set("#tacha", {{opacity:0}}, 0); tl.fromTo("#tacha", {{opacity:0, scale:2}}, {{opacity:1, scale:1, duration:0.3, ease:"back.out(2)", immediateRender:false}}, {P("estorbo") - 0.3:.2f}); tl.to("#tacha", {{opacity:0, duration:0.3}}, {P("estorbo") + 0.5:.2f});')
@@ -173,7 +171,7 @@ J(f'tl.to("#viento", {{opacity:1, duration:0.4}}, {F(16):.2f}); tl.fromTo("#vien
 fx("whoosh", F(16))
 etiqueta((0, DECK, 30), 560, 1300, "FLEXIBLE", "Se mueve varios metros", "si fuera rígido, se rompería", PL("metros") - 0.6, FE(16) + 0.2)
 # 17) cierre: vuelve exactamente al plano del principio (bucle)
-cam(F(17) - 0.2, (0, 90, 0), (-1, 0.76, 1), 0.66, DUR - F(17) - 0.3, "sine.inOut")
+cam(F(17) - 0.2, (0, 90, 0), (-1, 0.76, 1), 0.6, DUR - F(17) - 0.3, "sine.inOut")
 dato('<b>Colgado de dos cables</b>', P("cables", 2) - 0.6, DUR - 1.2, top=1440)
 J(f'tl.fromTo("#d1", {{opacity:0, y:30}}, {{opacity:1, y:0, duration:0.6, ease:"power3.out", immediateRender:false}}, {DUR - 1.0:.2f});')
 
@@ -188,7 +186,7 @@ for k, (n, t) in enumerate(PASOS):
     if k + 1 < len(PASOS):
         J(f'tl.to("#paso{k} .pdot", {{scale:1, duration:0.3}}, {PASOS[k + 1][1]:.2f}); tl.to("#paso{k} em", {{color:"rgba(255,255,255,0.75)", duration:0.3}}, {PASOS[k + 1][1]:.2f});')
 # nubes que cruzan el cielo (bucle exacto: vuelven a su sitio al final)
-NUB = [(60, 560, 0.9), (640, 640, 0.75), (860, 520, 1.1), (180, 1500, 0.85), (760, 1540, 1.0)]
+NUB = [(60, 560, 0.9), (640, 640, 0.75), (860, 520, 1.1)]
 FXN = "".join(f'<div class="nube" id="nb{k}" style="left:{x}px;top:{y}px;transform:scale({sc})"><i></i><i></i><i></i></div>' for k, (x, y, sc) in enumerate(NUB))
 for k in range(len(NUB)):
     J(f'tl.fromTo("#nb{k}", {{x:0}}, {{x:{(-1) ** k * 70}, duration:{DUR / 2:.2f}, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}}, 0);')
@@ -242,11 +240,11 @@ html,body{{width:1080px;height:1920px;overflow:hidden;background:#15181d}}
 </div>
 <script src="iso.js"></script>
 <script>
-const E = window.ESC;
+const E = window.ESC; E.setDur({DUR});
 const R = {{ cim: E.resalta(E.cimientos), arc: E.hueR, anc: E.resalta(E.anclajes), pen: E.resalta(E.pendolas), cab: E.resalta(E.cables) }};
 Object.values(R).forEach(r => r.set(0));
 const HL = {{ cim:0, arc:0, anc:0, pen:0, cab:0 }};
-const C = {{ tx:0, ty:90, tz:0, dx:-1, dy:0.76, dz:1, z:0.66 }};
+const C = {{ tx:0, ty:90, tz:0, dx:-1, dy:0.76, dz:1, z:0.6 }};
 const LABS = [], LV = {{}};
 const SVGL = document.getElementById("lineas");
 function frame() {{

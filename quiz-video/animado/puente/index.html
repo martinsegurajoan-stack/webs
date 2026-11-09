@@ -33,7 +33,7 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#15181d}
 </style></head>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="114.141" data-width="1080" data-height="1920">
-  <div id="nubes"><div class="nube" id="nb0" style="left:60px;top:560px;transform:scale(0.9)"><i></i><i></i><i></i></div><div class="nube" id="nb1" style="left:640px;top:640px;transform:scale(0.75)"><i></i><i></i><i></i></div><div class="nube" id="nb2" style="left:860px;top:520px;transform:scale(1.1)"><i></i><i></i><i></i></div><div class="nube" id="nb3" style="left:180px;top:1500px;transform:scale(0.85)"><i></i><i></i><i></i></div><div class="nube" id="nb4" style="left:760px;top:1540px;transform:scale(1.0)"><i></i><i></i><i></i></div></div>
+  <div id="nubes"><div class="nube" id="nb0" style="left:60px;top:560px;transform:scale(0.9)"><i></i><i></i><i></i></div><div class="nube" id="nb1" style="left:640px;top:640px;transform:scale(0.75)"><i></i><i></i><i></i></div><div class="nube" id="nb2" style="left:860px;top:520px;transform:scale(1.1)"><i></i><i></i><i></i></div></div>
   <div id="gl"></div>
   <div id="topsombra"></div><div id="grano"></div>
   <svg id="lineas" width="1080" height="1920"></svg>
@@ -44,11 +44,11 @@ html,body{width:1080px;height:1920px;overflow:hidden;background:#15181d}
 </div>
 <script src="iso.js"></script>
 <script>
-const E = window.ESC;
+const E = window.ESC; E.setDur(114.141);
 const R = { cim: E.resalta(E.cimientos), arc: E.hueR, anc: E.resalta(E.anclajes), pen: E.resalta(E.pendolas), cab: E.resalta(E.cables) };
 Object.values(R).forEach(r => r.set(0));
 const HL = { cim:0, arc:0, anc:0, pen:0, cab:0 };
-const C = { tx:0, ty:90, tz:0, dx:-1, dy:0.76, dz:1, z:0.66 };
+const C = { tx:0, ty:90, tz:0, dx:-1, dy:0.76, dz:1, z:0.6 };
 const LABS = [], LV = {};
 const SVGL = document.getElementById("lineas");
 function frame() {
@@ -69,26 +69,24 @@ function frame() {
 const tl = gsap.timeline({ paused: true, onUpdate: frame });
 tl.to(E.st, {t:114.14, duration:114.14, ease:"none"}, 0);
 Object.assign(E.st, {luz:1, coches:1});
-tl.to(C, {tx:0, ty:80, tz:0, dx:-1, dy:0.72, dz:1.05, z:0.72, duration:7.89, ease:"sine.inOut"}, 0.00);
+tl.to(C, {tx:0, ty:80, tz:0, dx:-1, dy:0.72, dz:1.05, z:0.66, duration:7.89, ease:"sine.inOut"}, 0.00);
 tl.set("#d1", {opacity:0}, 0); tl.fromTo("#d1", {opacity:0, y:30, letterSpacing:"8px"}, {opacity:1, y:0, letterSpacing:"0px", duration:0.6, ease:"power3.out", immediateRender:false}, 0.00); tl.to("#d1", {opacity:0, y:-20, duration:0.3}, 5.76);
 tl.set("#d1", {opacity:1, y:0, letterSpacing:"0px"}, 0);
 tl.set("#d2", {opacity:0}, 0); tl.fromTo("#d2", {opacity:0, y:30, letterSpacing:"8px"}, {opacity:1, y:0, letterSpacing:"0px", duration:0.6, ease:"power3.out", immediateRender:false}, 6.83); tl.to("#d2", {opacity:0, y:-20, duration:0.3}, 8.09);
 tl.to(E.st, {luz:0, coches:0, duration:0.60, ease:"power2.inOut"}, 7.93);
 tl.to(C, {tx:0, ty:-40, tz:60, dx:-0.55, dy:0.42, dz:1, z:1.35, duration:1.00, ease:"power2.inOut"}, 8.03);
 tl.to(E.st, {agua:0.45, duration:0.60, ease:"power2.inOut"}, 8.43);
-tl.to(E.st, {barcoZ:-260, duration:3.50, ease:"none"}, 12.01);
 LABS.push({i:3, p:[0,-120,120], lx:70, ly:1250});
 tl.fromTo(LV, {l3:0}, {l3:1, duration:0.45, ease:"power2.out", immediateRender:false}, 8.87); tl.to(LV, {l3:0, duration:0.3}, 9.96);
 LV.l3 = 0;
 LABS.push({i:4, p:[-260,-6,140], lx:70, ly:1250});
 tl.fromTo(LV, {l4:0}, {l4:1, duration:0.45, ease:"power2.out", immediateRender:false}, 9.96); tl.to(LV, {l4:0, duration:0.3}, 12.91);
 LV.l4 = 0;
-LABS.push({i:5, p:[0,30,120], lx:560, ly:1300});
+LABS.push({i:5, p:[0,20,0], lx:560, ly:1300});
 tl.fromTo(LV, {l5:0}, {l5:1, duration:0.45, ease:"power2.out", immediateRender:false}, 12.91); tl.to(LV, {l5:0, duration:0.3}, 14.32);
 LV.l5 = 0;
 tl.to(E.st, {agua:1, duration:0.50, ease:"power2.inOut"}, 14.12);
 tl.to(C, {tx:0, ty:40, tz:0, dx:-1, dy:0.6, dz:1.1, z:0.95, duration:1.00, ease:"power2.inOut"}, 14.16);
-tl.set(E.st, {barcoZ:260}, 14.56);
 tl.to(E.st, {fan:1, duration:0.50, ease:"power2.inOut"}, 14.34);
 tl.to(E.st, {fan:0, duration:0.40, ease:"power2.inOut"}, 17.25);
 tl.set("#tacha", {opacity:0}, 0); tl.fromTo("#tacha", {opacity:0, scale:2}, {opacity:1, scale:1, duration:0.3, ease:"back.out(2)", immediateRender:false}, 16.75); tl.to("#tacha", {opacity:0, duration:0.3}, 17.55);
@@ -178,7 +176,7 @@ tl.to("#viento", {opacity:1, duration:0.4}, 99.81); tl.fromTo("#viento i", {x:-7
 LABS.push({i:18, p:[0,96,30], lx:560, ly:1300});
 tl.fromTo(LV, {l18:0}, {l18:1, duration:0.45, ease:"power2.out", immediateRender:false}, 102.00); tl.to(LV, {l18:0, duration:0.3}, 106.30);
 LV.l18 = 0;
-tl.to(C, {tx:0, ty:90, tz:0, dx:-1, dy:0.76, dz:1, z:0.66, duration:7.60, ease:"sine.inOut"}, 106.04);
+tl.to(C, {tx:0, ty:90, tz:0, dx:-1, dy:0.76, dz:1, z:0.6, duration:7.60, ease:"sine.inOut"}, 106.04);
 tl.set("#d19", {opacity:0}, 0); tl.fromTo("#d19", {opacity:0, y:30, letterSpacing:"8px"}, {opacity:1, y:0, letterSpacing:"0px", duration:0.6, ease:"power3.out", immediateRender:false}, 111.17); tl.to("#d19", {opacity:0, y:-20, duration:0.3}, 112.94);
 tl.fromTo("#d1", {opacity:0, y:30}, {opacity:1, y:0, duration:0.6, ease:"power3.out", immediateRender:false}, 113.14);
 tl.set("#pasos", {opacity:0, y:40}, 0); tl.to("#pasos", {opacity:1, y:0, duration:0.6, ease:"power3.out"}, 21.54); tl.to("#pasos", {opacity:0, y:40, duration:0.5}, 100.47);
@@ -206,8 +204,6 @@ tl.to("#pfill", {width:900, duration:0.6, ease:"power2.inOut"}, 94.41);
 tl.fromTo("#nb0", {x:0}, {x:70, duration:57.07, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}, 0);
 tl.fromTo("#nb1", {x:0}, {x:-70, duration:57.07, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}, 0);
 tl.fromTo("#nb2", {x:0}, {x:70, duration:57.07, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}, 0);
-tl.fromTo("#nb3", {x:0}, {x:-70, duration:57.07, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}, 0);
-tl.fromTo("#nb4", {x:0}, {x:70, duration:57.07, ease:"sine.inOut", yoyo:true, repeat:1, immediateRender:false}, 0);
 tl.to("#w0_0 .hl", {opacity:1, duration:0.06}, 0.50);
 tl.to("#w0_0", {color:"#ffffff", duration:0.06}, 0.50);
 tl.to("#w0_1", {color:"#ffffff", duration:0.06}, 0.73);
