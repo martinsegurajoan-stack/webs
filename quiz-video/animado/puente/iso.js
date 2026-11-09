@@ -3,7 +3,7 @@
   const W = 1080, H = 1920;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
   renderer.setPixelRatio(1); renderer.setSize(W, H);
-  renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.78;
+  renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.NoToneMapping;
   renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   document.getElementById('gl').appendChild(renderer.domElement);
   const scene = new THREE.Scene();
@@ -11,9 +11,11 @@
   const cam = new THREE.OrthographicCamera(-FR * W / H, FR * W / H, FR, -FR, -6000, 6000);
   scene.add(new THREE.HemisphereLight(0xe6e6e6, 0x4a4a4a, 0.5));
   const sol = new THREE.DirectionalLight(0xffffff, 1.5); sol.position.set(-700, 1300, 900); sol.castShadow = true;
-  sol.shadow.mapSize.set(2048, 2048); Object.assign(sol.shadow.camera, { left: -1300, right: 1300, top: 1000, bottom: -1000, near: 10, far: 4000 }); sol.shadow.radius = 6; sol.shadow.bias = -0.0005;
+  sol.shadow.mapSize.set(2048, 2048); Object.assign(sol.shadow.camera, { left: -1300, right: 1300, top: 1000, bottom: -1000, near: 10, far: 4000 }); sol.shadow.radius = 2; sol.shadow.bias = -0.0005;
   scene.add(sol); scene.add(sol.target);
-  const M = (c, o = {}) => new THREE.MeshStandardMaterial(Object.assign({ color: c, roughness: 0.75, metalness: 0.0 }, o));
+  // sombreado plano tipo ilustración: 3 tonos por cara, sin brillos ni degradados realistas
+  const GRAD = (() => { const d = new Uint8Array([90, 170, 255]); const t = new THREE.DataTexture(d, 3, 1, THREE.RedFormat); t.minFilter = t.magFilter = THREE.NearestFilter; t.needsUpdate = true; return t; })();
+  const M = (c, o = {}) => { const { roughness, metalness, ...r } = o; return new THREE.MeshToonMaterial(Object.assign({ color: c, gradientMap: GRAD }, r)); };
   const S = (m) => { m.castShadow = true; m.receiveShadow = true; return m; };
   const caja = (w, h, d, mat, x, y, z) => { const m = S(new THREE.Mesh(new THREE.BoxGeometry(w, h, d), mat)); m.position.set(x, y, z); return m; };
   const base = new THREE.Group(); scene.add(base);
@@ -102,7 +104,8 @@
     const asf = caja(LD - 0.6, 1.2, 46, M(C.pizarra, { roughness: 0.9 }), 0, 6.6, 0); d.add(asf);
     for (const z of [-7, 7]) { const linea = new THREE.Mesh(new THREE.BoxGeometry(LD * 0.45, 0.4, 1), new THREE.MeshBasicMaterial({ color: 0xe9e6df })); linea.position.set(0, 7.4, z); d.add(linea); }
     for (const z of [-26, 26]) { d.add(caja(LD - 0.6, 5, 1.6, M(C.hueso), 0, 9.5, z)); }
-    const far = new THREE.Mesh(new THREE.SphereGeometry(1.8, 8, 8), new THREE.MeshBasicMaterial({ color: 0xf3f1ed })); far.position.set(0, 16, 25); d.add(far);
+    const far = new THREE.Mesh(new THREE.SphereGeometry(1.8, 8, 8), new THREE.MeshBasicMaterial({ color: 0x9a9a9a })); far.position.set(0, 16, 25); d.add(far);
+    d.userData = { asf, far, lineas: d.children.filter(o => o.material && o.material.type === 'MeshBasicMaterial' && o !== far), x0: -ANCLA + LD * (i + 0.5) };
     d.position.set(-ANCLA + LD * (i + 0.5), DECK, 0); base.add(d); dovelas.push(d);
   }
   // ---------------- cables y péndolas
@@ -124,10 +127,84 @@
   [0x8d939b, 0xe7e3dc, 0x8d939b, 0xe7e3dc].forEach((c, i) => barco.add(caja(20, 16, 30, M(c), -18 + i * 22, 23, 0)));
   barco.position.set(0, -3, 260); barco.rotation.y = Math.PI / 2; base.add(barco);
 
+  // ================= ESTADO DE OBRA (0 = sin construir, 1 = terminado) =================
+  const ACC = 0x4ea3ff;
+  const st = { t: 0, cim: 1, tor: 1, pil: 0, pas: 0, rueda: 0, ruedaOn: 0, hilo: 1, anc: 1, pen: 1, dov: 1, asf: 1, luz: 0, coches: 0, fza: 0, vien: 0, agua: 1, barcoZ: 260, fan: 0 };
+  // cable piloto + dron
+  const curva = (z, dy = 0) => new THREE.CatmullRomCurve3(Array.from({ length: 201 }, (_, i) => { const x = -ANCLA + 2 * ANCLA * i / 200; return new THREE.Vector3(x, yC(x) + dy, z); }));
+  const pilGeo = new THREE.TubeGeometry(curva(0, 2), 400, 0.9, 6, false); const pilIdx = pilGeo.index.count;
+  const piloto = new THREE.Mesh(pilGeo, new THREE.MeshBasicMaterial({ color: 0xffffff })); base.add(piloto);
+  const dron = new THREE.Group(); dron.add(caja(10, 3, 10, M(C.pizarra), 0, 0, 0));
+  const rotores = []; for (const [a, b] of [[-8, -8], [8, -8], [-8, 8], [8, 8]]) { const r = new THREE.Mesh(new THREE.CylinderGeometry(5, 5, 0.6, 16), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.6 })); r.position.set(a, 2.5, b); dron.add(r); rotores.push(r); }
+  base.add(dron);
+  // pasarela (barandillas siguiendo el cable) y rueda de hilado
+  const pasMat = new THREE.MeshBasicMaterial({ color: 0xbfc3c8, transparent: true, opacity: 0 });
+  const pasarela = new THREE.Group(); for (const z of [-38, -22, 22, 38]) pasarela.add(new THREE.Mesh(new THREE.TubeGeometry(curva(z, -4), 300, 0.6, 4, false), pasMat)); base.add(pasarela);
+  const ruedas = []; for (const z of [-30, 30]) { const r = new THREE.Mesh(new THREE.TorusGeometry(7, 1.6, 8, 24), new THREE.MeshBasicMaterial({ color: ACC })); base.add(r); ruedas.push([r, z]); }
+  // cables en tres grosores (hilado progresivo)
+  const finos = [1.1, 2.2].map(rad => { const m = new THREE.Group(); for (const z of [-30, 30]) m.add(new THREE.Mesh(new THREE.TubeGeometry(curva(z), 300, rad, 8, false), cabMat)); base.add(m); return m; });
+  // pilar fantasma (lo que NO se hace)
+  const fan = new THREE.Mesh(new THREE.CylinderGeometry(40, 46, PROF + DECK + 30, 32), new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0, depthWrite: false }));
+  fan.position.set(0, (DECK - PROF) / 2 - 10, 0); fan.renderOrder = 12; base.add(fan);
+  // barcazas bajo los tramos que se izan
+  const barcazas = [0, 1].map(() => { const b = new THREE.Group(); b.add(caja(LD + 10, 8, 70, M(C.pizarra), 0, 0, 0)); b.add(caja(6, 50, 6, M(0x9a9a9a), -LD / 2, 29, 30)); base.add(b); return b; });
+  // coches
+  const coches = Array.from({ length: 14 }, (_, k) => { const c = caja(14, 6, 8, M(k % 3 ? 0xd8d8d8 : 0x6c6c6c), 0, 0, 0); base.add(c); return c; });
+  // flujo de fuerzas (puntos que viajan por el cable)
+  const puntos = Array.from({ length: 28 }, () => { const p = new THREE.Mesh(new THREE.SphereGeometry(4, 10, 10), new THREE.MeshBasicMaterial({ color: ACC, transparent: true })); base.add(p); return p; });
+  // halos de farolas
+  const halos = dovelas.map(d => { const h = new THREE.Mesh(new THREE.SphereGeometry(6, 10, 10), new THREE.MeshBasicMaterial({ color: 0xfff6e0, transparent: true, opacity: 0, blending: THREE.AdditiveBlending, depthWrite: false })); h.position.set(0, 16, 25); d.add(h); return h; });
+  const ordenD = dovelas.map((d, i) => i).sort((a, b) => Math.abs(dovelas[a].userData.x0) - Math.abs(dovelas[b].userData.x0));
+  const rangoD = []; ordenD.forEach((i, k) => rangoD[i] = Math.floor(k / 2));
+  const ordenP = pendolas.map((p, i) => i).sort((a, b) => Math.abs(pendolas[a].position.x) - Math.abs(pendolas[b].position.x));
+  const rangoP = []; ordenP.forEach((i, k) => rangoP[i] = k / pendolas.length);
+  const cl = (v) => Math.max(0, Math.min(1, v)); const ease = (v) => v * v * (3 - 2 * v);
+  const surf = supMat.opacity, aguaOp = aguaMat.opacity;
+  const hemi = scene.children.find(o => o.isHemisphereLight);
+  function aplica() {
+    const t = st.t;
+    olas.children.forEach((o, k) => { o.position.z = -D / 2 + 20 + ((k * 47 + t * 9) % (D - 40)); });
+    // cimientos: bajan desde la superficie hasta la roca
+    cimientos.forEach(c => { c.visible = st.cim > 0.001; c.position.y = -10 + (-PROF - 38 + 10) * ease(cl(st.cim)); });
+    torres.forEach(g => { g.visible = st.tor > 0.005; g.scale.y = Math.max(0.005, ease(cl(st.tor))); });
+    // piloto + dron
+    const np = Math.floor(cl(st.pil) * pilIdx / 6) * 6; pilGeo.setDrawRange(0, np); piloto.visible = st.pil > 0.001 && st.hilo < 0.999;
+    dron.visible = st.pil > 0.001 && st.pil < 0.999; { const x = -ANCLA + 2 * ANCLA * cl(st.pil); dron.position.set(x, yC(x) + 16 + 3 * Math.sin(t * 5), 0); rotores.forEach(r => r.rotation.y = t * 40); }
+    pasMat.opacity = cl(st.pas) * 0.9; pasarela.visible = st.pas > 0.01;
+    ruedas.forEach(([r, z]) => { const f = st.rueda % 2, u = f < 1 ? f : 2 - f; const x = -ANCLA + 2 * ANCLA * (0.04 + 0.92 * u); r.position.set(x, yC(x) + 2, z); r.rotation.y = Math.PI / 2; r.rotation.x = t * 8; r.visible = st.ruedaOn > 0.5; });
+    finos[0].visible = st.hilo > 0.001 && st.hilo < 0.4; finos[1].visible = st.hilo >= 0.4 && st.hilo < 0.8; cables.forEach(c => c.visible = st.hilo >= 0.8);
+    anclajes.forEach(a => { a.visible = st.anc > 0.005; a.scale.y = Math.max(0.005, ease(cl(st.anc))); });
+    pendolas.forEach((p, i) => { const v = cl((st.pen - rangoP[i]) * 6); p.visible = v > 0.001; p.scale.y = Math.max(0.001, v); p.position.y = yC(p.position.x) - p.geometry.parameters.height * v / 2; });
+    // tablero: del centro hacia fuera, izado desde barcazas
+    const nR = Math.ceil(dovelas.length / 2), sw = Math.sin(t * 2.3);
+    const bz = [];
+    dovelas.forEach((d, i) => {
+      const p = cl(st.dov * (nR + 1) - rangoD[i]); const x0 = d.userData.x0; const suelo = Math.abs(x0) < LEN / 2 ? 0 : 20;
+      d.visible = p > 0.001; d.position.y = suelo + (DECK - suelo) * ease(cl(p * 1.15));
+      d.position.z = st.vien * 14 * sw * Math.cos(Math.PI * x0 / (2 * ANCLA));
+      if (p > 0.001 && p < 1 && Math.abs(x0) < LEN / 2) bz.push(x0);
+      const a = cl((st.asf * (nR + 1)) - rangoD[i]); d.userData.asf.visible = a > 0.5; d.userData.lineas.forEach(l => l.visible = a > 0.5);
+      d.userData.far.material.color.setHex(st.luz > 0.5 ? 0xfff6e0 : 0x9a9a9a);
+    });
+    halos.forEach(h => h.material.opacity = st.luz * 0.55);
+    barcazas.forEach((b, k) => { b.visible = k < bz.length; if (k < bz.length) b.position.set(bz[k], -1, 0); });
+    coches.forEach((c, k) => { const L = 2 * ANCLA - 60; const dir = k % 2 ? 1 : -1; const u = ((t * 70 + k * 157) % L); c.position.set(dir > 0 ? -L / 2 + u : L / 2 - u, DECK + 10, dir * 11 + (Math.sin(t * 2.3) * st.vien * 14 * Math.cos(Math.PI * (u - L / 2) / (2 * ANCLA)))); c.visible = st.coches > 0.5; });
+    puntos.forEach((p, k) => { const s = k % 2 ? 1 : -1, z = (k >> 1) % 2 ? 30 : -30; const u = ((t * 0.35 + (k >> 2) / 7) % 1); const x = s * u * ANCLA; p.position.set(x, yC(x) + 1, z); p.visible = st.fza > 0.01; p.material.opacity = st.fza * Math.sin(Math.PI * u); });
+    fan.material.opacity = st.fan * 0.35; fan.visible = st.fan > 0.01;
+    aguaMat.opacity = aguaOp * st.agua; supMat.opacity = surf * st.agua; olas.visible = st.agua > 0.5;
+    barco.position.z = st.barcoZ;
+    sol.intensity = 1.5 - 0.55 * st.luz; hemi.intensity = 0.5 - 0.15 * st.luz;
+  }
+  // resaltado azul pulsante sobre un conjunto de piezas
+  function resalta(lista) {
+    const mats = []; lista.forEach(o => o.traverse(m => { if (m.isMesh && m.material && m.material.emissive) { m.material = m.material.clone(); mats.push(m.material); } }));
+    return { set(v) { mats.forEach(mm => { mm.emissive.setHex(ACC); mm.emissiveIntensity = v * 0.9; }); } };
+  }
+  const hueR = { set(v) { huecos.forEach(h => { h.material.color.setHex(ACC); h.material.opacity = v * 0.55; }); } };
   function proyecta(v3) { const v = v3.clone().project(cam); return [(v.x + 1) / 2 * W, (1 - v.y) / 2 * H]; }
   function pon(px, py, pz, tx, ty, tz, zoom) {
     cam.position.set(px, py, pz); cam.lookAt(tx, ty, tz); cam.zoom = zoom; cam.updateProjectionMatrix();
   }
-  window.ESC = { renderer, scene, cam, base, agua, aguaMat, sup, olas, cimientos, torres, huecos, dovelas, cables, pendolas, anclajes, barco, proyecta, pon,
+  window.ESC = { st, aplica, resalta, hueR, renderer, scene, cam, base, agua, aguaMat, sup, olas, cimientos, torres, huecos, dovelas, cables, pendolas, anclajes, barco, proyecta, pon,
     TX, TH, DECK, PROF, ANCLA, LEN, D, yC, C, render() { renderer.render(scene, cam); } };
 })();

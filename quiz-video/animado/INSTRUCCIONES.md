@@ -209,3 +209,7 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 
 ## ACTUALIZACIÓN 08-11-2026 (manda sobre todo lo anterior)
 - DURACIÓN, FINAL Y BUCLE (usuario, 08-11-2026, SUSTITUYE a lo anterior): animados de 75 a 100 s. Final en seco pero NO tan brusco (la última frase se deja respirar 1-2 s y la música baja suave; nada de corte a negro de golpe). El FINAL CUADRA SIEMPRE CON EL PRINCIPIO: la última frase enlaza con la primera y el último fotograma es igual al primero (bucle invisible). SIN ruidos tipo radio/estática al final (nada de ruido blanco, golpes ni «boom» de cierre). Vídeos MUY decorados, visuales y adictivos.
+- (09-11-2026, puente) NO hacer 3D realista con perspectiva tipo el vídeo del avión («muy 3D se ve feo»). Estilo que gustó:
+  MAQUETA ISOMÉTRICA PLANA (cámara ortográfica, sombreado plano de 3 tonos `MeshToonMaterial`, sin brillos), fondo gris
+  carbón neutro, paleta casi monocroma (blanco/grises, agua gris azulada) y UN solo acento azul (#4ea3ff) para resaltar.
+  Base reutilizable: `puente/iso.js` (estado de obra `E.st` + `aplica()` + `resalta()`) y `puente/gen.py`.
