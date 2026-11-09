@@ -1,0 +1,10 @@
+.hyperframes/artifacts/
+.hyperframes/render-outputs.json
+assets/*.wav
+render.log
+salida/.video-bruto.hf-transaction-*/
+salida/video-FINAL.mp4
+salida/video-bruto.mp4
+salida/work-*/
+voz/
+voz_el/narrador.wav
