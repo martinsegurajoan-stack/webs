@@ -1,0 +1,9 @@
+<!doctype html><html><head><meta charset="UTF-8"><style>*{margin:0;padding:0} body{width:1080px;height:1920px;overflow:hidden}
+#root{position:relative;width:1080px;height:1920px;background:radial-gradient(110% 70% at 50% 46%, #3a3e45 0%, #26292e 60%, #17191c 100%)} #gl{position:absolute;inset:0}</style></head>
+<body><div id="root"><div id="gl"></div></div><script src="assets/three.min.js"></script><script src="iso.js"></script>
+<script>const E = window.ESC; const f = location.hash.slice(1) || '1';
+// isométrica: vista desde la diagonal, cámara ortográfica
+if (f === '1') E.pon(-1000, 820, 1000, 60, 20, -60, 0.72);
+else if (f === '2') { E.aguaMat.opacity = 0.25; E.pon(-700, 300, 700, -E.TX, -40, 0, 3.2); }
+else E.pon(-700, 900, 700, -E.TX, 220, 0, 3.0);
+E.render();</script></body></html>
