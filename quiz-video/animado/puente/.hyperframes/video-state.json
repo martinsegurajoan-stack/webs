@@ -2503,8 +2503,8 @@
   },
   "renders": {
     "latest": {
-      "id": "720c0f9c-d177-4f31-ab8f-18db6529e6dd",
-      "completedAt": 1794258914091,
+      "id": "8df4aef2-f41a-4e72-a118-d43714f50ed0",
+      "completedAt": 1794263015135,
       "output": "/home/user/webs/quiz-video/animado/puente/salida/video-bruto.mp4",
       "status": "completed",
       "revision": null
