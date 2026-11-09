@@ -63,9 +63,9 @@ J(f'tl.to(E.st, {{t:{DUR:.2f}, duration:{DUR:.2f}, ease:"none"}}, 0);')
 J('Object.assign(E.st, {luz:1, coches:1});')
 # 1) gancho: el puente terminado, de noche con tráfico; leve deriva de cámara
 cam(0.0, (0, 80, 0), (-1, 0.72, 1.05), 0.66, FE(1), "sine.inOut")
-d1 = dato('<b>1.000 m</b><small>NI UNA COLUMNA EN EL AGUA</small>', 0.0, P("coches") - 0.2, top=1440)
+d1 = dato('<b style="font-size:84px;letter-spacing:-2px">¿Cómo se construye?</b><small>UN PUENTE SOBRE EL MAR</small>', 0.0, P("mil") - 0.3, top=1420)
 J('tl.set("#d1", {opacity:1, y:0, letterSpacing:"0px"}, 0);')
-dato('<b>¿Cómo se aguanta?</b>', P("aguanta") - 0.6, FE(1) + 0.2, top=1460)
+dato('<b>1.000 m</b><small>NI UNA COLUMNA EN EL AGUA</small>', P("mil") - 0.1, FE(1) + 0.2, top=1440)
 # 2) mar profundo, corrientes, barcos enormes
 st(F(2) - 0.3, 0.6, luz=0, coches=0)
 cam(F(2) - 0.2, (0, -40, 60), (-0.55, 0.42, 1), 1.35, 1.0)
@@ -193,7 +193,7 @@ for k in range(len(NUB)):
 
 # ------------------------------------------------------------------ montaje
 _S = open(os.path.join(BASE, "_subs.py"), encoding="utf-8").read()
-exec(re.sub(r"CLAVE = set\(.*?\]\)", lambda m: 'CLAVE = set(norm(w) for w in ["mil", "columna", "aguanta", "profundo", "corrientes", "barcos", "pilar", "cuelgan", "hormigon", "roca", "torres", "doscientos", "arcos", "huecos", "cable", "dron", "hilado", "cinco", "miles", "metro", "anclajes", "pendolas", "tablero", "centro", "truco", "kilo", "luces", "viento", "rigido", "colgado", "cables"])', _S, count=1, flags=re.S))
+exec(re.sub(r"CLAVE = set\(.*?\]\)", lambda m: 'CLAVE = set(norm(w) for w in ["construye", "mil", "columna", "profundo", "corrientes", "barcos", "pilar", "cuelgan", "hormigon", "roca", "torres", "doscientos", "arcos", "huecos", "cable", "dron", "hilado", "cinco", "miles", "metro", "anclajes", "pendolas", "tablero", "centro", "truco", "kilo", "luces", "viento", "rigido", "colgado", "cables"])', _S, count=1, flags=re.S))
 html = f"""<!doctype html>
 <html lang="es"><head><meta charset="UTF-8" />
 <meta name="viewport" content="width=1080, height=1920" />

@@ -1,4 +1,4 @@
-// Miniatura 9:16 (+ 3:4): el puente terminado de noche con titular sobrio.
+// Miniatura 9:16 (+ 3:4): el puente A MEDIO CONSTRUIR (tablero subiendo por tramos) con la pregunta del gancho.
 const { chromium } = require('playwright');
 const path = require('path');
 (async () => {
@@ -8,14 +8,18 @@ const path = require('path');
   await p.addInitScript(() => { window.__timelines = {}; });
   await p.goto('file://' + dir + '/index.html'); await p.waitForTimeout(3000);
   await p.evaluate(() => {
-    window.__timelines.main.seek(5.0);
+    window.__timelines.main.seek(3.0);
     for (const s of ['#subs', '#grano', '#fxl', '#lineas', '#pasos']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
+    const E = window.ESC; Object.assign(E.st, { dov: 0.3, asf: 0, luz: 0, coches: 0, pen: 1, hilo: 1 });
+    E.pon(-1000 * 0.9, 640 * 0.9, 1080 * 0.9, 0, 110, 0, 0.82); E.aplica(); E.render();
     const d = document.createElement('div'); d.style.cssText = 'position:absolute;inset:0;z-index:90;font-family:Inter;text-align:center';
+    const sh = 'text-shadow:0 6px 24px rgba(8,30,60,0.55)';
     d.innerHTML = `
-      <div style="position:absolute;left:0;right:0;top:300px">
-        <div style="font:700 30px Inter;letter-spacing:10px;color:#ffffff;text-shadow:0 3px 12px rgba(8,30,60,0.7)">1.000 METROS DE MAR</div>
-        <div style="margin-top:18px;font:800 132px/0.95 Inter;letter-spacing:-5px;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,0.6)">NI UNA<br>COLUMNA</div>
-        <div style="margin-top:22px;font:600 44px Inter;letter-spacing:2px;color:#ffffff;text-shadow:0 3px 12px rgba(8,30,60,0.7)">¿Cómo se aguanta?</div></div>`;
+      <div style="position:absolute;left:0;right:0;top:270px">
+        <div style="font:800 54px Inter;letter-spacing:1px;color:#fff;${sh}">¿CÓMO SE CONSTRUYE</div>
+        <div style="margin-top:6px;font:900 150px/0.95 Inter;letter-spacing:-6px;color:#fff;${sh}">UN PUENTE</div>
+        <div style="margin-top:6px;font:800 66px Inter;letter-spacing:1px;color:#fff;${sh}">SOBRE EL MAR?</div></div>
+      <div style="position:absolute;left:0;right:0;top:1470px"><span style="display:inline-block;padding:18px 36px;border-radius:24px;background:rgba(14,30,52,0.82);font:700 44px Inter;color:#fff">1.000 m · <span style="color:#4ea3ff">0 columnas</span> en el agua</span></div>`;
     document.querySelector('#root').appendChild(d);
   });
   await p.waitForTimeout(800);

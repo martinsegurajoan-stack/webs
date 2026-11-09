@@ -222,3 +222,5 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   agua y vuelven de golpe: los objetos que se mueven deben ir en BUCLE DENTRO del agua y desvanecerse en los bordes
   (nunca tl.set que teletransporte). Nubes solo arriba (abajo parece que la maqueta flota). Revisar SIEMPRE una hoja de
   fotogramas cada 4 s y recortes ampliados antes de entregar.
+- (09-11-2026) EMPEZAR DIRECTO con una pregunta al espectador («¿Alguna vez te has preguntado cómo se construye…?»),
+  NUNCA como si se contara una historia («Mil metros de mar…»): aburre. Primera frase = el tema del vídeo en pregunta.
