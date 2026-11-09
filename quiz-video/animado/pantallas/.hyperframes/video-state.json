@@ -1118,5 +1118,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "053c2348-3fda-44bd-bafe-2ff479599aff",
+      "completedAt": 1794216947246,
+      "output": "/home/user/webs/quiz-video/animado/pantallas/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
