@@ -842,5 +842,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "c11182bb-d192-4bd8-9725-75ef029c03c6",
+      "completedAt": 1794482028088,
+      "output": "/home/user/webs/quiz-video/animado/parpadeo/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
