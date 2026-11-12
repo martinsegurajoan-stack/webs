@@ -9,7 +9,7 @@ from quizvideo.personalidad import align_words   # reparte palabras usando las p
 from quizvideo import audio
 SR = audio.SR
 GAP = 0.14
-EXTRA = {1: 0.3, 3: 0.15, 8: 0.3, 15: 0.15, 17: 0.25}
+EXTRA = {1: 0.25, 2: 0.3, 10: 0.2, 13: 0.2, 14: 0.45, 15: 0.3, 19: 0.3, 20: 0.25}
 
 def load(p):
     raw = subprocess.check_output(["ffmpeg", "-loglevel", "error", "-i", p, "-ac", "1", "-ar", str(SR), "-f", "f32le", "-"])
@@ -32,7 +32,7 @@ for i, txt in enumerate(lines, 1):
     if i < len(lines):
         g = GAP + EXTRA.get(i, 0.0)
         out.append(np.zeros(int(g * SR))); t += g
-COLA = 1.6
+COLA = 1.4
 out.append(np.zeros(int(COLA * SR))); t += COLA
 sig = np.concatenate(out)
 sig = sig / (np.max(np.abs(sig)) or 1) * 0.9
