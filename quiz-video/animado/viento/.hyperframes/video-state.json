@@ -908,5 +908,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "23926e8c-5d11-4efa-bb3a-bd9308c7a558",
+      "completedAt": 1794551272089,
+      "output": "/home/user/webs/quiz-video/animado/viento/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
