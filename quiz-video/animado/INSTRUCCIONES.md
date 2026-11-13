@@ -232,3 +232,9 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   Tarjetas de cristal (backdrop-filter) con barra de acento; contadores que suben; contador de progreso (DÍA n).
   Transiciones de cámara que pasen por algo (nubes al subir al espacio), nunca segundos de fondo vacío.
   Evitar triángulos/montañas gigantes detrás del personaje y bordes rectos duros (orilla, niebla).
+- (13-11-2026, viento v3) Usuario: «sin dibujitos, real y serio; nada de contadores tipo "días sin viento"; textos que no
+  estorben». → Estilo DOCUMENTAL DE DATOS: planeta real en canvas (Natural Earth 1:50m + d3-geo ortográfica, fondo espacio
+  oscuro, atmósfera), partículas de viento deterministas (dependen de un «tiempo de viento» S.W para poder congelarlas y
+  hacer bucle exacto), datos dibujados SOBRE el mapa (rutas, penachos, círculos, partículas) y rótulos mínimos sin cajas
+  (kicker azul + texto fino con sombra). Vuelos de cámara: alejar → girar → acercar (nunca zoom a mitad de océano).
+  Narración: datos MUY sorprendentes y comprensibles (Londres vs Nueva York, olas de la Antártida a Alaska, Bodélé…).
