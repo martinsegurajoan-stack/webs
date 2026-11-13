@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0d0a08}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;color:#fff;background:radial-gradient(ellipse 70% 55% at 50% 52%,#3a2e25 0%,#1c1612 55%,#0b0907 100%)}
+canvas{position:absolute;left:0;top:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#vineta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,0.6) 100%)}
+#bajo{position:absolute;left:0;right:0;bottom:0;height:640px;pointer-events:none;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75))}
+#fxl{position:absolute;inset:0;z-index:58;pointer-events:none}
+.pan{position:absolute;opacity:0;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px;border-radius:30px;background:rgba(14,11,9,0.9);box-shadow:0 30px 60px rgba(0,0,0,0.45);border:1px solid rgba(255,240,220,0.08)}
+.cap{font:500 26px Inter;color:rgba(255,245,235,0.85);text-align:center;line-height:1.3} .cap .r{color:#ff8a7e;font-weight:600}
+.dato{position:absolute;left:70px;opacity:0;max-width:940px;text-shadow:0 2px 18px rgba(0,0,0,0.9)}
+.dato small{display:flex;align-items:center;gap:16px;font:600 19px Inter;letter-spacing:6px;color:#ffc98f;margin-bottom:12px} .dato small::before{content:"";width:46px;height:1px;background:#ffc98f}
+.dato b{display:block;font:300 80px/1.04 Inter;letter-spacing:-2px} .dato em{display:block;font-style:normal;font:300 27px Inter;color:rgba(255,255,255,0.72);margin-top:12px}
+#grano{position:absolute;inset:0;z-index:56;pointer-events:none;opacity:0.05;background:url(assets/grano.png);mix-blend-mode:overlay}
+#topsombra{position:absolute;left:0;right:0;top:0;height:520px;z-index:55;pointer-events:none;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0))}
+#marca{position:absolute;left:0;right:0;top:1820px;text-align:center;font:500 25px Inter;color:#ffffff;opacity:0.42;pointer-events:none;z-index:61}
+#subs{position:absolute;left:60px;right:60px;top:250px;height:220px;z-index:62}
+.sub{position:absolute;left:0;right:0;top:0;text-align:center;font:600 56px Inter;color:rgba(255,255,255,0.55);line-height:1.22;text-shadow:0 3px 16px rgba(0,0,0,0.95)}
+.sw{display:inline-block;position:relative;padding:0 6px;margin:0 1px}
+.key .hl{position:absolute;inset:-4px -2px -2px -2px;border:2px solid #ffc98f;border-radius:6px;background:rgba(255,201,143,0.14);opacity:0}
+</style></head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="%%DUR%%" data-width="1080" data-height="1920">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div id="vineta"></div><div id="bajo"></div><div id="flash"></div>
+  <div id="topsombra"></div><div id="grano"></div>
+  <div id="fxl">%%FXL%%</div>
+  <div id="marca">@mundo.supuesto</div>
+  <div id="subs" data-layout-allow-overlap>%%SUBS%%</div>
+  <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="%%DUR%%" data-track-index="5" data-volume="1"></audio>
+</div>
+<script>
+const fmt = (v, d) => { const s = v.toFixed(d).split("."); return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (s[1] ? "," + s[1] : ""); };
+const INI = %%INI%%;
+const S = Object.assign({ t:0, L:0.3, regla:0, sucio:0, rotura:0, gira:0, deforma:0, flash:0 }, INI);
+const cv = document.getElementById("cv"), g = cv.getContext("2d");
+const PXCM = 25, CS = 12 * PXCM;
+// dedos: x, y base, ángulo (grados, + = derecha), largo, ancho, factor de crecimiento, sentido de la espiral
+const DED = [
+  { x:-122, y:-178, a:-44, l:150, w:56, f:0.95, s:-1 },
+  { x:-80,  y:-312, a:-7,  l:196, w:46, f:1.00, s:-1 },
+  { x:-26,  y:-326, a:0,   l:212, w:48, f:1.05, s:1 },
+  { x:28,   y:-316, a:6,   l:198, w:46, f:0.98, s:1 },
+  { x:80,   y:-290, a:14,  l:156, w:40, f:0.92, s:1 },
+];
+function una(k, d, x0, y0, ang, L, w0) {
+  // centro de la uña desde la punta del dedo; se retuerce a partir de CS
+  const pts = []; let x = x0, y = y0, a = ang, s = 0; const ds = 5;
+  pts.push([x, y, a]);
+  while (s < L) { s += ds; if (s > CS) { const k2 = Math.min(0.022, 0.0016 + (s - CS) * 0.0000042); a += d.s * k2 * ds; }
+    x += Math.sin(a) * ds; y -= Math.cos(a) * ds; pts.push([x, y, a]); }
+  const L1 = [], R1 = [];
+  for (let i = 0; i < pts.length; i++) { const [px, py, pa] = pts[i]; const u = i / Math.max(1, pts.length - 1); const w = w0 * (0.95 - 0.35 * Math.min(1, (i * ds) / 2600)) * (i === pts.length - 1 ? 0.55 : 1);
+    const nx = Math.cos(pa), ny = Math.sin(pa); L1.push([px - nx * w / 2, py - ny * w / 2]); R1.push([px + nx * w / 2, py + ny * w / 2]); }
+  return { pts, L1, R1 };
+}
+function dibujaUna(u, alpha) {
+  if (u.pts.length < 2) return;
+  g.globalAlpha = alpha;
+  g.beginPath(); u.L1.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); for (let i = u.R1.length - 1; i >= 0; i--) g.lineTo(u.R1[i][0], u.R1[i][1]); g.closePath();
+  const gr = g.createLinearGradient(u.pts[0][0], u.pts[0][1], u.pts[u.pts.length - 1][0], u.pts[u.pts.length - 1][1]);
+  gr.addColorStop(0, "#f4e8d4"); gr.addColorStop(1, "#d8c095"); g.fillStyle = gr; g.fill();
+  g.lineWidth = 2.2; g.strokeStyle = "rgba(120,92,58,0.85)"; g.stroke();
+  g.strokeStyle = "rgba(255,255,255,0.35)"; g.lineWidth = 2; g.beginPath(); u.L1.forEach((p, i) => { const q = u.pts[i]; const x = (p[0] * 0.7 + q[0] * 0.3), y = (p[1] * 0.7 + q[1] * 0.3); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
+  g.globalAlpha = 1;
+}
+function dedo(d, def) {
+  const a = (d.a + def * (d.a < -20 ? 30 : -20 - d.a * 0.6)) * Math.PI / 180;
+  const tipx = d.x + Math.sin(a) * d.l, tipy = d.y - Math.cos(a) * d.l;
+  g.save(); g.translate(d.x, d.y); g.rotate(a);
+  const gr = g.createLinearGradient(-d.w / 2, 0, d.w / 2, 0); gr.addColorStop(0, "#c98d6a"); gr.addColorStop(0.35, "#e8b58f"); gr.addColorStop(0.7, "#efc3a0"); gr.addColorStop(1, "#c08463");
+  g.fillStyle = gr; g.beginPath(); g.moveTo(-d.w / 2, 20); g.lineTo(-d.w / 2 * 0.92, -d.l + d.w / 2); g.arc(0, -d.l + d.w / 2, d.w / 2 * 0.92, Math.PI, 0); g.lineTo(d.w / 2, 20); g.closePath(); g.fill();
+  if (S.deforma > 0.01) { g.fillStyle = `rgba(200,70,60,${(0.28 * S.deforma).toFixed(3)})`; g.fill(); }
+  g.strokeStyle = "rgba(150,95,70,0.5)"; g.lineWidth = 2;
+  for (const f of [0.36, 0.66]) { g.beginPath(); g.moveTo(-d.w * 0.28, -d.l * f); g.quadraticCurveTo(0, -d.l * f + 5, d.w * 0.28, -d.l * f); g.stroke(); }
+  // placa de la uña
+  const nw = d.w * 0.66, nh = d.w * 0.82; const ny0 = -d.l + d.w * 0.18;
+  g.fillStyle = "#f5d3c3"; g.beginPath(); g.moveTo(-nw / 2, ny0 + nh); g.lineTo(-nw / 2, ny0 + 6); g.quadraticCurveTo(-nw / 2, ny0, -nw / 2 + 6, ny0); g.lineTo(nw / 2 - 6, ny0); g.quadraticCurveTo(nw / 2, ny0, nw / 2, ny0 + 6); g.lineTo(nw / 2, ny0 + nh); g.quadraticCurveTo(0, ny0 + nh + 8, -nw / 2, ny0 + nh); g.fill();
+  g.fillStyle = "rgba(255,255,255,0.45)"; g.fillRect(-nw / 2 + 6, ny0 + 8, 5, nh - 14);
+  g.fillStyle = "rgba(255,255,255,0.65)"; g.beginPath(); g.ellipse(0, ny0 + nh - 4, nw * 0.3, 5, 0, 0, 7); g.fill();
+  g.restore();
+  return [d.x + Math.sin(a) * (d.l - d.w * 0.18 + 2), d.y - Math.cos(a) * (d.l - d.w * 0.18 + 2), a, nw];
+}
+function mano() {
+  const def = S.deforma;
+  // antebrazo y palma
+  let gr = g.createLinearGradient(-150, 0, 150, 0); gr.addColorStop(0, "#b77a58"); gr.addColorStop(0.3, "#e2ad87"); gr.addColorStop(0.65, "#ecbd98"); gr.addColorStop(1, "#b37555");
+  g.fillStyle = gr;
+  g.beginPath(); g.moveTo(-118, 700); g.lineTo(-104, 40); g.quadraticCurveTo(-150, -90, -140, -170); g.quadraticCurveTo(-120, -300, -60, -330); g.lineTo(60, -324);
+  g.quadraticCurveTo(112, -300, 116, -250); g.quadraticCurveTo(120, -100, 104, 40); g.lineTo(118, 700); g.closePath(); g.fill();
+  g.strokeStyle = "rgba(160,100,72,0.35)"; g.lineWidth = 3; for (const x of [-70, -22, 26, 72]) { g.beginPath(); g.moveTo(x * 0.55, -60); g.quadraticCurveTo(x * 0.8, -180, x, -300); g.stroke(); }
+  const out = DED.map(d => dedo(d, def));
+  return out;
+}
+function frame() {
+  const t = S.t;
+  g.clearRect(0, 0, 1080, 1920);
+  g.save(); g.translate(540, 1100); g.scale(S.z, S.z); g.translate(-S.cx, -S.cy);
+  g.rotate(S.gira * 0.12);
+  // luz cálida detrás
+  const lg = g.createRadialGradient(0, -400, 50, 0, -400, 1400); lg.addColorStop(0, "rgba(255,200,140,0.10)"); lg.addColorStop(1, "rgba(255,200,140,0)"); g.fillStyle = lg; g.fillRect(-3000, -5000, 6000, 7000);
+  // sombra de la mano
+  g.save(); g.translate(26, 30); g.filter = "blur(22px)"; g.globalAlpha = 0.45; g.fillStyle = "#000"; g.beginPath(); g.ellipse(0, -200, 190, 330, 0, 0, 7); g.fill(); g.restore();
+  const tips = mano();
+  tips.forEach((tp, k) => { const d = DED[k]; let L = S.L * PXCM * d.f; if (k === 0 && S.L > 60) L *= 1.06;
+    if (k === 3 && S.rotura > 0) { const Lc = Math.min(L, 6 * PXCM); const full = una(k, d, tp[0], tp[1], tp[2], L, tp[3]);
+      const base = una(k, d, tp[0], tp[1], tp[2], Lc, tp[3]); dibujaUna(base, 1);
+      // trozo roto que cae
+      const n0 = Math.floor(Lc / 5); const piece = { pts: full.pts.slice(n0), L1: full.L1.slice(n0), R1: full.R1.slice(n0) };
+      g.save(); const px = piece.pts[0][0], py = piece.pts[0][1]; g.translate(px + 60 * S.rotura, py + 900 * S.rotura * S.rotura); g.rotate(1.4 * S.rotura); g.translate(-px, -py); dibujaUna(piece, 1 - S.rotura); g.restore();
+      return; }
+    dibujaUna(una(k, d, tp[0], tp[1], tp[2], L, tp[3]), 1);
+    if (S.sucio > 0.01) { g.save(); g.translate(tp[0], tp[1]); g.rotate(tp[2]); g.fillStyle = `rgba(70,52,30,${(0.85 * S.sucio).toFixed(3)})`; g.fillRect(-tp[3] / 2 + 3, -10, tp[3] - 6, 8); g.restore(); }
+  });
+  // regla junto al dedo corazón
+  if (S.regla > 0.01) { const tp = tips[2]; g.save(); g.globalAlpha = S.regla; g.translate(tp[0] + 46, tp[1]);
+    g.fillStyle = "rgba(255,230,190,0.18)"; g.fillRect(0, -6 * PXCM - 10, 34, 6 * PXCM + 14); g.strokeStyle = "#ffd9a6"; g.lineWidth = 2; g.strokeRect(0, -6 * PXCM - 10, 34, 6 * PXCM + 14);
+    g.fillStyle = "#ffd9a6"; g.font = "600 13px Inter"; for (let c = 0; c <= 6; c++) { g.fillRect(0, -c * PXCM, c % 1 === 0 ? 18 : 10, 2); g.fillText(c + "", 22, -c * PXCM + 5); }
+    for (let m = 0; m <= 60; m++) if (m % 10) g.fillRect(0, -m * PXCM / 10, 8, 1);
+    g.restore(); }
+  g.restore();
+  document.getElementById("flash").style.opacity = S.flash * 0.7;
+}
+const tl = gsap.timeline({ paused: true, onUpdate: frame });
+tl.to(S, {t:%%DURX%%, duration:%%DURX%%, ease:"none"}, 0);
+%%TL%%
+tl.to({}, {duration:0.01}, %%DUREND%%);
+window.__timelines["main"] = tl;
+tl.seek(0); frame();
+</script>
+</body></html>

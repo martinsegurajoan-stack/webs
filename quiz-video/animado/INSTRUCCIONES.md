@@ -244,3 +244,7 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   IMPORTANTE: desde file:// WebGL bloquea imágenes locales → incrustarlas en base64 (data URI) y crear las THREE.Texture
   SOLO cuando todas las <img> estén completas (si no: «Offset overflows texture dimensions»). Las <img> con display:none.
   Plantilla reutilizable: `viento/_plantilla.html` + `viento/gen.py`.
+- (13-11-2026, uñas v2) Usuario: «represéntalo con un muñeco y que se vean los problemas del día a día». → Mezclar
+  primer plano realista (canvas) con ESCENAS DEL MUÑECO (_rig.py) viviendo cada problema (sofá con el móvil, espejo,
+  moneda, cama, zapato), alternando con un fundido (S.vista). Uñas del muñeco = trazos con stroke-dashoffset (pathLength
+  100) dentro de P_manoN/P_manoF. Al sentar/tumbar: ocultar P_sombra y colocar la cadera a la altura del asiento.

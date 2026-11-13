@@ -47,6 +47,62 @@ def panel(html, t, hasta, x=540, y=760, w=600, entra="up"):
 LN = 'fill="none" stroke="#f3e9dc" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"'
 RD = 'fill="none" stroke="#ff6f61" stroke-width="7" stroke-linecap="round"'
 
+
+# ================================================================== ESCENA CON EL MUÑECO (problemas del día a día)
+exec(open(os.path.join(BASE, "_rig.py"), encoding="utf-8").read())
+PROTA = dict(piel="#e3b08c", pelo="#2e2019", camisa="#3e6fa8", pantalon="#2c3442", zapato="#e3b08c")
+PR["abrocha"] = dict(tor=-90, hd=-70, uaN=72, faN=-118, uaF=76, faF=-112, thN=92, shN=90, thF=88, shF=90)
+PR["abrocha2"] = dict(tor=-90, hd=-70, uaN=76, faN=-108, uaF=72, faF=-122, thN=92, shN=90, thF=88, shF=90)
+PR["agacha"] = dict(tor=-40, hd=-20, uaN=96, faN=92, uaF=100, faF=96, thN=-35, shN=100, thF=-25, shF=95)
+PR["sentMovilT"] = dict(tor=-80, hd=-40, uaN=72, faN=-40, uaF=76, faF=-26, thN=2, shN=92, thF=6, shF=94)
+PR["pieZ"] = dict(tor=-82, hd=-50, uaN=60, faN=40, uaF=64, faF=46, thN=-10, shN=20, thF=6, shF=94)
+import math as _m
+def espiral(total=150, recto=26, sgn=1, ang0=0.0):
+    pts, x, y, a, s = [(0.0, 0.0)], 0.0, 0.0, ang0, 0.0
+    while s < total:
+        s += 1.5
+        if s > recto: a += sgn * min(0.16, 0.012 + (s - recto) * 0.0022)
+        x += _m.cos(a) * 1.5; y += _m.sin(a) * 1.5; pts.append((x, y))
+    d = "M" + " L".join(f"{px:.1f},{py:.1f}" for px, py in pts)
+    return d, s
+NAILS_LEN = 150
+def unasMano(cls):
+    out = ""
+    for k, (dy, ang, sg) in enumerate(((-2.6, -0.10, -1), (-0.9, -0.03, 1), (0.9, 0.04, 1), (2.6, 0.12, 1))):
+        d, L = espiral(NAILS_LEN, 22 + k * 3, sg, ang)
+        out += (f'<g transform="translate(5,{dy})"><path class="{cls} nb" d="{d}" pathLength="100" stroke="#7a6146" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-dasharray="100 200" stroke-dashoffset="100"/>'
+                f'<path class="{cls} nf" d="{d}" pathLength="100" stroke="#f0e2c6" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-dasharray="100 200" stroke-dashoffset="100"/></g>')
+    return out
+MOVIL = ('<g transform="rotate(-70)"><rect x="-7" y="-13" width="14" height="24" rx="3" fill="#15171c"/><rect x="-5.6" y="-11.2" width="11.2" height="20.4" rx="2" fill="#8fd8ff"/>'
+         '<circle id="ripU" cx="0" cy="-2" r="2" fill="none" stroke="#ff5a4f" stroke-width="1.2" opacity="0"/><circle id="ripN" cx="0" cy="-2" r="2" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0"/></g>')
+fig = rig("P", PROTA)
+fig = fig.replace('<g id="P_manoN"></g>', f'<g id="P_manoN"><g id="movilG" opacity="0">{MOVIL}</g>{unasMano("un1")}</g>').replace('<g id="P_manoF"></g>', f'<g id="P_manoF">{unasMano("un2")}</g>')
+# pies descalzos con uña del dedo gordo que se curva hacia abajo
+dP, LP = espiral(70, 6, 1, 0.25)
+fig = fig.replace('<path d="M-6,6 L21,6 L21,8 L-6,8 Z" fill="#ffffff" opacity="0.25"/>',
+                  f'<g transform="translate(20,3)"><path class="pieU nb" d="{dP}" pathLength="100" stroke="#7a6146" stroke-width="3.4" fill="none" stroke-linecap="round" stroke-dasharray="100 200" stroke-dashoffset="100"/><path class="pieU nf" d="{dP}" pathLength="100" stroke="#f0e2c6" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-dasharray="100 200" stroke-dashoffset="100"/></g>')
+E = []
+E.append('<rect x="-2000" y="-700" width="5000" height="700" fill="#4a3f36"/><rect x="-2000" y="-700" width="5000" height="700" fill="url(#papel)"/>')
+E.append('<rect x="-2000" y="0" width="5000" height="600" fill="#6b4c36"/>' + "".join(f'<rect x="{-2000 + k * 90}" y="0" width="2" height="600" fill="#5a3e2c"/>' for k in range(56)))
+E.append('<rect x="-2000" y="-14" width="5000" height="14" fill="#d9cdbd"/>')
+# salón: ventana, lámpara, sofá, mesa
+E.append('<g transform="translate(-180,-330)"><rect width="190" height="230" fill="#1c2a3f"/><rect width="190" height="230" fill="url(#noche)"/><path d="M95,0 V230 M0,115 H190" stroke="#d9cdbd" stroke-width="8"/><rect x="-10" y="-10" width="210" height="250" fill="none" stroke="#d9cdbd" stroke-width="10"/></g>')
+E.append('<g transform="translate(330,0)"><rect x="-3" y="-260" width="6" height="260" fill="#2a2a2a"/><path d="M-40,-260 L40,-260 L26,-310 L-26,-310 Z" fill="#f1d9a7"/><ellipse cx="0" cy="-220" rx="130" ry="90" fill="#ffd38a" opacity="0.12"/></g>')
+E.append('<g transform="translate(-40,0)"><rect x="-10" y="-110" width="230" height="70" rx="18" fill="#8a4f3d"/><rect x="0" y="-62" width="210" height="34" rx="10" fill="#9c5a46"/><rect x="-20" y="-80" width="30" height="72" rx="12" fill="#7c4535"/><rect x="200" y="-80" width="30" height="72" rx="12" fill="#7c4535"/><rect x="0" y="-28" width="10" height="28" fill="#3a2a22"/><rect x="200" y="-28" width="10" height="28" fill="#3a2a22"/></g>')
+E.append('<g transform="translate(220,0)"><rect x="0" y="-48" width="90" height="8" fill="#c79a6e"/><rect x="8" y="-40" width="6" height="40" fill="#a57b55"/><rect x="76" y="-40" width="6" height="40" fill="#a57b55"/><rect x="30" y="-56" width="30" height="8" rx="2" fill="#e8e2d8"/></g>')
+# pasillo: espejo y moneda
+E.append('<g transform="translate(660,-260)"><rect width="120" height="210" rx="60" fill="#9fb6c9" opacity="0.55"/><rect width="120" height="210" rx="60" fill="none" stroke="#c9a46a" stroke-width="8"/><path d="M30,40 L50,20 M30,80 L70,40" stroke="#ffffff" stroke-width="4" opacity="0.4"/></g>')
+E.append('<g id="moneda"><ellipse cx="900" cy="-3" rx="8" ry="3" fill="#e2b84a"/><ellipse cx="900" cy="-4" rx="8" ry="3" fill="#f6d06a"/></g>')
+# dormitorio: cama, mesilla, zapato
+E.append('<g transform="translate(1180,0)"><rect x="0" y="-100" width="12" height="100" fill="#5a3b2a"/><rect x="0" y="-62" width="320" height="34" rx="8" fill="#e8e2d8"/><rect x="0" y="-70" width="320" height="12" rx="6" fill="#ffffff"/><rect x="10" y="-82" width="70" height="20" rx="10" fill="#f6f2ea"/><rect x="120" y="-66" width="200" height="10" rx="5" fill="#4f7cab"/><rect x="0" y="-28" width="320" height="10" fill="#5a3b2a"/><rect x="300" y="-60" width="12" height="60" fill="#5a3b2a"/></g>')
+E.append('<g transform="translate(1100,0)"><rect x="-40" y="-60" width="60" height="60" fill="#6e4a33"/><rect x="-32" y="-90" width="10" height="30" fill="#ddd"/><path d="M-36,-100 L-18,-100 L-22,-90 L-32,-90 Z" fill="#f1d9a7"/></g>')
+E.append('<g id="zapato" transform="translate(1330,0)"><path d="M0,-4 C0,-14 6,-20 16,-20 L30,-22 C40,-22 46,-14 48,-4 L48,0 L0,0 Z" fill="#3a3a3a"/><path d="M4,-2 H46" stroke="#eee" stroke-width="2"/></g>')
+E.append('')
+SCN = ''.join(E) + f'<g id="pos"><g id="tumba"><g id="sentar"><g transform="translate(0,-92)">{fig}</g></g></g></g><g id="trozo" opacity="0"><path d="M0,0 C10,-6 22,-4 28,6 C32,14 26,22 18,20" stroke="#f0e2c6" stroke-width="2" fill="none"/></g>'
+SDEFS = ('<pattern id="papel" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0,0 V40" stroke="#3f352d" stroke-width="2"/></pattern>'
+         '<linearGradient id="noche" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a3d5c"/><stop offset="1" stop-color="#0f1726"/></linearGradient>')
+def esc(t, d=0.6, **kv): st(t, d, "power2.inOut", **kv)
+
 # ------------------------------------------------------------------ GUION VISUAL
 INI = dict(cx=0, cy=-250, z=2.05)
 FXL.append('<div class="dato" id="hook" style="top:1480px;opacity:1"><small>SIN CORTARLAS</small><b>nunca más</b></div>')
@@ -62,31 +118,30 @@ dato("CRECEN", "<span id=\"nmm\">0</span> mm al mes", F(2) + 0.2, P("ano") - 0.4
 contador("#nmm", 0, 3.5, F(2) + 0.3, 1.2, 1)
 dato("EN UN AÑO", "≈ 4 cm", P("ano") - 0.4, P("escribes") - 0.4)
 dato("LA MANO CON LA QUE ESCRIBES", "crece más rápido", P("escribes") - 0.4, FE(2) + 0.2)
-# 3) el móvil no detecta la uña
-MOVIL = (f'<svg viewBox="0 0 300 560" width="300" height="560"><rect x="20" y="10" width="260" height="540" rx="42" fill="#15171c" stroke="#3a3f4a" stroke-width="6"/>'
-         f'<rect x="38" y="60" width="224" height="440" rx="14" fill="#1f2a3a"/><rect x="110" y="26" width="80" height="16" rx="8" fill="#000"/>'
-         + "".join(f'<rect x="{58 + (k % 4) * 52}" y="{90 + (k // 4) * 64}" width="38" height="38" rx="10" fill="{c}"/>' for k, c in enumerate(["#4ea3ff", "#ff9f43", "#2ecc71", "#a66cff", "#ff6b81", "#f1c40f", "#1abc9c", "#e67e22", "#5dade2", "#ec7063", "#58d68d", "#af7ac5"]))
-         + f'<circle id="tapU" cx="150" cy="380" r="34" fill="none" stroke="#ff6f61" stroke-width="5" opacity="0"/><path id="tapX" d="M128,358 L172,402 M172,358 L128,402" {RD} opacity="0"/>'
-         f'<circle id="tapN" cx="150" cy="380" r="34" fill="none" stroke="#4ea3ff" stroke-width="5" opacity="0"/></svg>')
-panel(MOVIL + '<div class="cap" id="capM">la uña no conduce: <b class="r">la pantalla no responde</b></div>', F(3) - 0.2, FE(3) + 0.2, x=780, y=560, w=400)
-J(f'tl.to(S, {{L:4.6, duration:{FE(3) - F(3):.2f}, ease:"none"}}, {F(3):.2f}); tl.to(S, {{cx:200, cy:-230, duration:1.2}}, {F(3) - 0.2:.2f});')
-J(f'tl.fromTo("#tapU", {{opacity:0.9, attr:{{r:12}}}}, {{opacity:0, attr:{{r:60}}, duration:0.6, repeat:1, immediateRender:false}}, {P("pantalla") - 0.2:.2f}); tl.to("#tapX", {{opacity:1, duration:0.2}}, {P("piel") - 0.3:.2f}); tl.to("#tapX", {{opacity:0, duration:0.2}}, {P("nudillos") - 0.5:.2f});')
-J(f'tl.fromTo("#tapN", {{opacity:0.9, attr:{{r:12}}}}, {{opacity:0, attr:{{r:70}}, duration:0.6, repeat:2, immediateRender:false}}, {P("nudillos") - 0.3:.2f});')
-J(f'tl.to("#capM", {{opacity:0, duration:0.2}}, {P("nudillos") - 0.5:.2f}); tl.call(() => {{}}, null, 0);')
+# 3) el móvil: el muñeco en el sofá; la uña toca la pantalla y no pasa nada; con el nudillo, sí
+J(f'tl.to(S, {{vista:1, duration:0.6}}, {F(3) - 0.3:.2f});')
+J(f'tl.set(S, {{px:60, py:30, sx:70, sy:-60, sz:4.4}}, {F(3) - 0.3:.2f});')
+rset(J, "P", "sentMovil", 0); J(f'tl.set("#P_sombra", {{opacity:0}}, {F(3) - 0.3:.2f}); tl.set("#P_sombra", {{opacity:0.28}}, {F(4) - 0.2:.2f}); tl.set("#P_sombra", {{opacity:0}}, {P("moneda") - 0.5:.2f});'); J(f'tl.set("#movilG", {{opacity:1}}, {F(3) - 0.3:.2f});')
+st(F(3), FE(3) - F(3), "none", L=4.6)
+for k in range(3):
+    rpose(J, "P", "sentMovilT", P("pantalla") - 0.2 + k * 0.5, 0.18); rpose(J, "P", "sentMovil", P("pantalla") + 0.0 + k * 0.5, 0.18)
+J(f'tl.fromTo("#ripU", {{opacity:1, attr:{{r:1}}}}, {{opacity:0, attr:{{r:7}}, duration:0.5, repeat:2, immediateRender:false}}, {P("pantalla") - 0.1:.2f});')
+J(f'tl.fromTo("#ripN", {{opacity:1, attr:{{r:1}}}}, {{opacity:0, attr:{{r:8}}, duration:0.5, repeat:2, immediateRender:false}}, {P("nudillos") - 0.2:.2f});')
+esc(F(3) + 0.5, 2.5, sx=90, sy=-90, sz=6.0)
+dato("LA UÑA NO CONDUCE", "la pantalla no responde", P("pantalla") - 0.4, P("nudillos") - 0.5)
 dato("SOLUCIÓN", "escribir con los nudillos", P("nudillos") - 0.4, FE(3) + 0.2)
-# 4) botón, cremallera, moneda
-ICON = {
-    "boton": f'<circle cx="60" cy="60" r="44" {LN}/><circle cx="46" cy="48" r="6" fill="#f3e9dc"/><circle cx="74" cy="48" r="6" fill="#f3e9dc"/><circle cx="46" cy="74" r="6" fill="#f3e9dc"/><circle cx="74" cy="74" r="6" fill="#f3e9dc"/>',
-    "cremallera": f'<path d="M60,6 V114" {LN}/>' + "".join(f'<path d="M{48 if k % 2 else 60},{14 + k * 9} h12" {LN} stroke-width="4"/>' for k in range(9)) + f'<rect x="44" y="72" width="32" height="40" rx="8" {LN}/>',
-    "moneda": f'<ellipse cx="60" cy="80" rx="46" ry="18" {LN}/><path d="M14,80 V66 M106,80 V66" {LN}/><ellipse cx="60" cy="66" rx="46" ry="18" {LN}/><text x="60" y="73" font-family="Inter" font-weight="700" font-size="22" text-anchor="middle" fill="#f3e9dc">€</text>',
-}
-for k, (n, w) in enumerate((("boton", "boton"), ("cremallera", "cremallera"), ("moneda", "moneda"))):
-    t0 = P(w) - 0.35
-    panel(f'<svg viewBox="0 0 120 120" width="200" height="200">{ICON[n]}<path class="tacha{k}" d="M14,14 L106,106" {RD} opacity="0"/></svg>', t0, FE(4) + 0.2, x=220 + k * 320, y=520, w=220)
-    J(f'tl.to(".tacha{k}", {{opacity:1, duration:0.25}}, {t0 + 0.5:.2f});')
-st(F(4) - 0.2, 1.2, cx=0, cy=-600, z=1.4)
-J(f'tl.to(S, {{L:5.2, duration:{FE(4) - F(4):.2f}, ease:"none"}}, {F(4):.2f});')
-dato("TAREAS DE 2 SEGUNDOS", "casi imposibles", P("imposible") - 0.6, FE(4) + 0.2)
+# 4) botón frente al espejo + moneda del suelo
+J(f'tl.set("#movilG", {{opacity:0}}, {F(4) - 0.2:.2f}); tl.set(S, {{px:610, py:0, sx:640, sy:-110, sz:4.6}}, {F(4) - 0.2:.2f});')
+rset(J, "P", "abrocha", F(4) - 0.2)
+for k in range(6):
+    rpose(J, "P", "abrocha2" if k % 2 == 0 else "abrocha", F(4) + k * 0.32, 0.3, "sine.inOut")
+st(F(4), FE(4) - F(4), "none", L=5.4)
+J(f'tl.set(S, {{px:860, sx:880, sy:-70, sz:4.6}}, {P("moneda") - 0.5:.2f}); tl.set("#sentar", {{y:62}}, {P("moneda") - 0.5:.2f});')
+rset(J, "P", "agacha", P("moneda") - 0.5)
+J(f'tl.to("#moneda", {{x:14, duration:0.25, yoyo:true, repeat:5, ease:"sine.inOut"}}, {P("moneda"):.2f});')
+dato("ABROCHARSE UN BOTÓN", "imposible", P("boton") - 0.3, P("moneda") - 0.6)
+dato("COGER UNA MONEDA", "imposible", P("moneda") - 0.5, FE(4) + 0.2)
+J(f'tl.to(S, {{vista:0, duration:0.6}}, {FE(4) - 0.2:.2f}); tl.set("#sentar", {{y:0}}, {FE(4) + 0.5:.2f});')
 # 5) bacterias bajo la uña
 BAC = "".join(f'<g class="bac" transform="translate({140 + 120 * math.cos(k * 2.39) * (0.3 + 0.7 * ((k * 37) % 10) / 10):.0f},{140 + 120 * math.sin(k * 2.39) * (0.3 + 0.7 * ((k * 53) % 10) / 10):.0f}) rotate({(k * 47) % 180})"><rect x="-14" y="-5" width="28" height="10" rx="5" fill="{["#7ed957", "#5ac8a8", "#b6e36b"][k % 3]}" opacity="0.9"/></g>' for k in range(34))
 LUPA = (f'<svg viewBox="0 0 280 280" width="460" height="460"><defs><clipPath id="clL"><circle cx="140" cy="140" r="126"/></clipPath><radialGradient id="gL" cx="0.5" cy="0.45" r="0.6"><stop offset="0" stop-color="#3a2f22"/><stop offset="1" stop-color="#16110c"/></radialGradient></defs>'
@@ -97,32 +152,31 @@ J(f'tl.to(".bac", {{rotation:"+=40", x:"+=6", duration:0.5, yoyo:true, repeat:9,
 st(F(5) - 0.2, 1.2, cy=-600, z=1.4)
 J(f'tl.to(S, {{L:5.8, duration:{FE(5) - F(5):.2f}, ease:"none"}}, {F(5):.2f}); tl.to(S, {{sucio:1, duration:0.8}}, {P("bacterias") - 0.3:.2f}); tl.to(S, {{sucio:0, duration:0.5}}, {FE(5) + 0.2:.2f});')
 dato("BAJO UNA UÑA LARGA", "millones de bacterias", P("bacterias") - 0.3, FE(5) + 0.2)
-# 6) el pie: la uña se curva hacia abajo como un cuerno; el zapato no entra
-PIE = ('<svg viewBox="0 0 640 380" width="640" height="380"><defs><linearGradient id="gP" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eec1a0"/><stop offset="1" stop-color="#cf9a78"/></linearGradient></defs>'
-       '<path d="M30,330 C40,250 60,200 120,180 L380,150 C450,142 500,160 520,200 C536,232 530,270 500,290 L60,330 Z" fill="url(#gP)"/>'
-       '<path d="M450,170 C470,166 490,168 500,182" stroke="#b9876a" stroke-width="4" fill="none"/><path d="M480,190 C500,184 520,190 524,210" fill="#f6d9c8" stroke="#c99a80" stroke-width="3"/>'
-       '<path id="cuerno" d="M522,200 C580,196 612,232 606,282 C600,320 566,336 548,318" stroke="#e8d8b8" stroke-width="20" fill="none" stroke-linecap="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>'
-       '<path d="M0,334 H640" stroke="#5a4c3e" stroke-width="4"/>'
-       '<g id="zapato" opacity="0"><path d="M10,330 C20,260 90,214 170,206 L360,190 C440,184 520,210 560,270 C580,300 576,330 560,334 L10,334 Z" fill="none" stroke="#9fd3ff" stroke-width="6" stroke-dasharray="14 10"/></g></svg>')
-panel(PIE, F(6) - 0.2, FE(6) + 0.2, x=540, y=520, w=640)
-J(f'tl.to("#zapato", {{opacity:1, duration:0.4}}, {P("zapato") - 0.6:.2f}); tl.to("#zapato", {{x:-120, opacity:0, duration:0.8, ease:"power2.in"}}, {P("cabria"):.2f});')
-J(f'tl.to("#cuerno", {{strokeDashoffset:0, duration:{FE(6) - P("meses") + 0.2:.2f}, ease:"power1.inOut"}}, {P("meses") - 0.4:.2f});')
-st(F(6) - 0.2, 1.2, cy=-640, z=1.3)
-dato("LAS DE LOS PIES", "se curvan como un cuerno", P("curvan") - 0.4, FE(6) + 0.2)
+# 6) el pie: sentado en la cama, la uña del pie se curva; el zapato no entra
+J(f'tl.to(S, {{vista:1, duration:0.6}}, {F(6) - 0.3:.2f}); tl.set(S, {{px:1240, py:22, sx:1270, sy:-60, sz:4.8}}, {F(6) - 0.3:.2f});')
+rset(J, "P", "sentado", F(6) - 0.3); J(f'tl.set("#zapato", {{x:1330, y:0}}, {F(6) - 0.3:.2f});')
+st(F(6), FE(6) - F(6), "power1.inOut", Lp=1)
+esc(P("zapato") - 0.6, 1.4, sx=1290, sy=-30, sz=6.5)
+J(f'tl.to("#zapato", {{x:1292, duration:0.6, ease:"power2.out"}}, {P("zapato") - 0.4:.2f}); tl.to("#zapato", {{x:1340, rotation:-20, duration:0.5, ease:"back.out(2)"}}, {P("cabria") - 0.1:.2f});')
+dato("NINGÚN ZAPATO", "te cabría", P("zapato") - 0.4, P("curvan") - 0.6)
+dato("LAS DE LOS PIES", "se curvan como un cuerno", P("curvan") - 0.5, FE(6) + 0.2)
+J(f'tl.to(S, {{vista:0, duration:0.6}}, {FE(6) - 0.1:.2f});')
 # 7) espiral pasados 20 cm
 st(F(7) - 0.3, 1.6, cx=0, cy=-560, z=0.95)
 st(F(7), FE(7) - F(7), "power1.inOut", L=34)
 dato("A PARTIR DE", "<span id=\"ncm\">0</span> cm", P("veinte") - 0.4, P("espiral") - 0.4)
 contador("#ncm", 0, 20, P("veinte") - 0.3, 0.9)
 dato("SE RETUERCEN", "en espiral", P("espiral") - 0.4, FE(7) + 0.2, "cada lado crece a distinto ritmo")
-# 8) dormir: un mal giro y la uña se parte
-J(f'tl.to(S, {{rotura:1, duration:0.9, ease:"power2.in"}}, {P("parte") - 0.3:.2f});')
-J(f'tl.to(S, {{gira:1, duration:0.35, yoyo:true, repeat:1, ease:"power2.inOut"}}, {P("giro") - 0.2:.2f});')
-st(F(8), FE(8) - F(8), "none", L=38)
-dato("DORMIR", "un mal giro y se parte", P("giro") - 0.3, FE(8) + 0.2, "años de crecimiento, perdidos")
+# 8) dormir: en la cama, un giro y la uña se parte (el muñeco con uñas larguísimas)
+J(f'tl.to(S, {{vista:1, duration:0.6}}, {F(8) - 0.3:.2f}); tl.set(S, {{px:1422, py:-80, sx:1340, sy:-110, sz:3.6, Lp:0}}, {F(8) - 0.3:.2f});')
+rset(J, "P", "tumbado", F(8) - 0.3); J(f'tl.set("#tumba", {{rotation:-90, svgOrigin:"0 0"}}, {F(8) - 0.3:.2f}); tl.set("#zapato", {{opacity:0}}, {F(8) - 0.3:.2f});')
+J(f'tl.to("#tumba", {{rotation:-80, svgOrigin:"0 0", duration:0.35, yoyo:true, repeat:1, ease:"power2.inOut"}}, {P("giro") - 0.2:.2f});')
+J(f'tl.set("#trozo", {{opacity:1, x:1280, y:-120}}, {P("parte") - 0.1:.2f}); tl.to("#trozo", {{y:0, x:1400, rotation:200, duration:0.9, ease:"power2.in"}}, {P("parte") - 0.1:.2f}); tl.to("#trozo", {{opacity:0, duration:0.3}}, {FE(8) + 0.2:.2f});')
+J(f'tl.to(S, {{rotP:1, duration:0.1}}, {P("parte") - 0.1:.2f});')
+dato("DORMIR", "un giro y se parte", P("giro") - 0.3, FE(8) + 0.2, "años de crecimiento, perdidos")
+J(f'tl.to(S, {{vista:0, duration:0.6}}, {FE(8) - 0.1:.2f}); tl.set("#tumba", {{rotation:0}}, {FE(8) + 0.6:.2f});')
 # 9) Shridhar Chillal: 66 años, pulgar de casi 2 m
-st(F(9) - 0.2, FE(9) - F(9) + 0.4, "power2.inOut", L=180, z=0.36, cy=-1400)
-J(f'tl.to(S, {{rotura:0, duration:0.01}}, {F(9):.2f});')
+st(F(9) - 0.2, FE(9) - F(9) + 0.4, "power2.inOut", L=180, z=0.36, cy=-1150)
 dato("SHRIDHAR CHILLAL · INDIA", "<span id=\"nan\">0</span> años sin cortarlas", P("sesenta") - 0.4, P("pulgar") - 0.3)
 contador("#nan", 0, 66, P("sesenta") - 0.3, 1.4)
 BARRAS = ('<svg viewBox="0 0 420 520" width="420" height="520"><path d="M20,480 H400" stroke="#6b5c4c" stroke-width="3"/>'
@@ -134,7 +188,7 @@ J(f'tl.to("#bP", {{attr:{{y:66, height:414}}, duration:1.4, ease:"power2.out"}},
 dato("SU PULGAR", "1,98 m", P("pulgar") - 0.3, FE(9) + 0.3, "récord Guinness, 2016")
 # 10) dedos deformados; la mano no vuelve a abrirse
 J(f'tl.to(S, {{deforma:1, duration:2.2, ease:"power2.inOut"}}, {F(10) + 0.2:.2f}); tl.to(S, {{deforma:0, duration:0.8}}, {FE(10) + 0.4:.2f});')
-st(F(10) - 0.2, 1.6, z=0.6, cy=-900)
+st(F(10) - 0.2, 1.6, z=0.6, cy=-750)
 dato("EL PRECIO", "dedos deformados", F(10) + 0.2, P("abrirse") - 0.5)
 dato("ESA MANO", "nunca volvió a abrirse", P("abrirse") - 0.5, FE(10) + 0.3)
 # 11) queratina: pelo, garra, cuerno de rinoceronte
@@ -161,7 +215,7 @@ _S = open(os.path.join(BASE, "_subs.py"), encoding="utf-8").read()
 exec(re.sub(r"CLAVE = set\(.*?\]\)", lambda m: 'CLAVE = set(norm(w) for w in ["nunca", "unas", "tres", "cuatro", "escribes", "movil", "pantalla", "nudillos", "boton", "cremallera", "moneda", "imposible", "bacterias", "sucios", "zapato", "cuerno", "veinte", "espiral", "parte", "chillal", "sesenta", "pulgar", "metros", "deformaron", "abrirse", "queratina", "pelo", "garras", "rinoceronte", "cortas"])', _S, count=1, flags=re.S))
 html = open(os.path.join(BASE, "_plantilla.html"), encoding="utf-8").read()
 for k, v in (("%%DURX%%", f"{DUR:.3f}"), ("%%DUREND%%", f"{DUR - 0.01:.3f}"), ("%%DUR%%", f"{DUR}"), ("%%FXL%%", "".join(FXL)), ("%%SUBS%%", "".join(SUBS)),
-             ("%%TL%%", chr(10).join(tl)), ("%%INI%%", json.dumps(INI))):
+             ("%%TL%%", chr(10).join(tl)), ("%%INI%%", json.dumps(INI)), ("%%SCN%%", SCN), ("%%SDEFS%%", SDEFS)):
     html = html.replace(k, v)
 open(os.path.join(BASE, "index.html"), "w", encoding="utf-8").write(html)
 json.dump([], open(os.path.join(BASE, "efectos.json"), "w"))

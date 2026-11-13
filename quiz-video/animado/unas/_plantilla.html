@@ -27,6 +27,7 @@ canvas{position:absolute;left:0;top:0}
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="%%DUR%%" data-width="1080" data-height="1920">
   <canvas id="cv" width="1080" height="1920"></canvas>
+  <svg id="scn" width="1080" height="1920" viewBox="0 0 1080 1920" style="position:absolute;left:0;top:0;opacity:0"><defs>%%SDEFS%%</defs><g id="camS">%%SCN%%</g></svg>
   <div id="vineta"></div><div id="bajo"></div><div id="flash"></div>
   <div id="topsombra"></div><div id="grano"></div>
   <div id="fxl">%%FXL%%</div>
@@ -37,7 +38,7 @@ canvas{position:absolute;left:0;top:0}
 <script>
 const fmt = (v, d) => { const s = v.toFixed(d).split("."); return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (s[1] ? "," + s[1] : ""); };
 const INI = %%INI%%;
-const S = Object.assign({ t:0, L:0.3, regla:0, sucio:0, rotura:0, gira:0, deforma:0, flash:0 }, INI);
+const S = Object.assign({ t:0, vista:0, px:0, py:0, sx:0, sy:-80, sz:4, Lp:0, rotP:0, L:0.3, regla:0, sucio:0, rotura:0, gira:0, deforma:0, flash:0 }, INI);
 const cv = document.getElementById("cv"), g = cv.getContext("2d");
 const PXCM = 25, CS = 12 * PXCM;
 // dedos: x, y base, ángulo (grados, + = derecha), largo, ancho, factor de crecimiento, sentido de la espiral
@@ -66,7 +67,9 @@ function dibujaUna(u, alpha) {
   const gr = g.createLinearGradient(u.pts[0][0], u.pts[0][1], u.pts[u.pts.length - 1][0], u.pts[u.pts.length - 1][1]);
   gr.addColorStop(0, "#f4e8d4"); gr.addColorStop(1, "#d8c095"); g.fillStyle = gr; g.fill();
   g.lineWidth = 2.2; g.strokeStyle = "rgba(120,92,58,0.85)"; g.stroke();
-  g.strokeStyle = "rgba(255,255,255,0.35)"; g.lineWidth = 2; g.beginPath(); u.L1.forEach((p, i) => { const q = u.pts[i]; const x = (p[0] * 0.7 + q[0] * 0.3), y = (p[1] * 0.7 + q[1] * 0.3); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
+  g.strokeStyle = "rgba(255,255,255,0.4)"; g.lineWidth = 2.5; g.beginPath(); u.L1.forEach((p, i) => { const q = u.pts[i]; const x = (p[0] * 0.7 + q[0] * 0.3), y = (p[1] * 0.7 + q[1] * 0.3); i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke();
+  g.strokeStyle = "rgba(140,110,70,0.35)"; g.lineWidth = 1.2; for (const f of [0.35, 0.65]) { g.beginPath(); u.L1.forEach((p, i) => { const r = u.R1[i]; const x = p[0] * (1 - f) + r[0] * f, y = p[1] * (1 - f) + r[1] * f; i ? g.lineTo(x, y) : g.moveTo(x, y); }); g.stroke(); }
+  if (u.pts.length > 3) { const p0 = u.pts[0]; g.fillStyle = "rgba(255,250,240,0.55)"; g.beginPath(); const a0 = u.L1[0], b0 = u.R1[0], a1 = u.L1[Math.min(3, u.L1.length - 1)], b1 = u.R1[Math.min(3, u.R1.length - 1)]; g.moveTo(a0[0], a0[1]); g.lineTo(a1[0], a1[1]); g.lineTo(b1[0], b1[1]); g.lineTo(b0[0], b0[1]); g.closePath(); g.fill(); }
   g.globalAlpha = 1;
 }
 function dedo(d, def) {
@@ -77,12 +80,15 @@ function dedo(d, def) {
   g.fillStyle = gr; g.beginPath(); g.moveTo(-d.w / 2, 20); g.lineTo(-d.w / 2 * 0.92, -d.l + d.w / 2); g.arc(0, -d.l + d.w / 2, d.w / 2 * 0.92, Math.PI, 0); g.lineTo(d.w / 2, 20); g.closePath(); g.fill();
   if (S.deforma > 0.01) { g.fillStyle = `rgba(200,70,60,${(0.28 * S.deforma).toFixed(3)})`; g.fill(); }
   g.strokeStyle = "rgba(150,95,70,0.5)"; g.lineWidth = 2;
-  for (const f of [0.36, 0.66]) { g.beginPath(); g.moveTo(-d.w * 0.28, -d.l * f); g.quadraticCurveTo(0, -d.l * f + 5, d.w * 0.28, -d.l * f); g.stroke(); }
+  for (const f of [0.34, 0.64]) { for (let j = 0; j < 3; j++) { g.globalAlpha = 0.55 - j * 0.12; g.beginPath(); g.moveTo(-d.w * (0.26 - j * 0.04), -d.l * f + j * 5); g.quadraticCurveTo(0, -d.l * f + 6 + j * 5, d.w * (0.26 - j * 0.04), -d.l * f + j * 5); g.stroke(); } g.globalAlpha = 1; }
+  const kn = g.createRadialGradient(0, -d.l * 0.02, 1, 0, -d.l * 0.02, d.w * 0.6); kn.addColorStop(0, "rgba(255,225,200,0.35)"); kn.addColorStop(1, "rgba(255,225,200,0)"); g.fillStyle = kn; g.beginPath(); g.arc(0, -d.l * 0.02, d.w * 0.6, 0, 7); g.fill();
   // placa de la uña
   const nw = d.w * 0.66, nh = d.w * 0.82; const ny0 = -d.l + d.w * 0.18;
   g.fillStyle = "#f5d3c3"; g.beginPath(); g.moveTo(-nw / 2, ny0 + nh); g.lineTo(-nw / 2, ny0 + 6); g.quadraticCurveTo(-nw / 2, ny0, -nw / 2 + 6, ny0); g.lineTo(nw / 2 - 6, ny0); g.quadraticCurveTo(nw / 2, ny0, nw / 2, ny0 + 6); g.lineTo(nw / 2, ny0 + nh); g.quadraticCurveTo(0, ny0 + nh + 8, -nw / 2, ny0 + nh); g.fill();
   g.fillStyle = "rgba(255,255,255,0.45)"; g.fillRect(-nw / 2 + 6, ny0 + 8, 5, nh - 14);
-  g.fillStyle = "rgba(255,255,255,0.65)"; g.beginPath(); g.ellipse(0, ny0 + nh - 4, nw * 0.3, 5, 0, 0, 7); g.fill();
+  g.fillStyle = "rgba(255,250,245,0.75)"; g.beginPath(); g.ellipse(0, ny0 + nh - 2, nw * 0.32, 9, 0, Math.PI, 0); g.fill();
+  g.strokeStyle = "rgba(170,100,80,0.6)"; g.lineWidth = 2.5; g.beginPath(); g.moveTo(-nw / 2 - 2, ny0 + nh + 2); g.quadraticCurveTo(0, ny0 + nh + 12, nw / 2 + 2, ny0 + nh + 2); g.stroke();
+  g.strokeStyle = "rgba(160,110,90,0.25)"; g.lineWidth = 1; for (let k = -2; k <= 2; k++) { g.beginPath(); g.moveTo(k * nw / 6, ny0 + 4); g.lineTo(k * nw / 6, ny0 + nh - 4); g.stroke(); }
   g.restore();
   return [d.x + Math.sin(a) * (d.l - d.w * 0.18 + 2), d.y - Math.cos(a) * (d.l - d.w * 0.18 + 2), a, nw];
 }
@@ -93,7 +99,10 @@ function mano() {
   g.fillStyle = gr;
   g.beginPath(); g.moveTo(-118, 700); g.lineTo(-104, 40); g.quadraticCurveTo(-150, -90, -140, -170); g.quadraticCurveTo(-120, -300, -60, -330); g.lineTo(60, -324);
   g.quadraticCurveTo(112, -300, 116, -250); g.quadraticCurveTo(120, -100, 104, 40); g.lineTo(118, 700); g.closePath(); g.fill();
-  g.strokeStyle = "rgba(160,100,72,0.35)"; g.lineWidth = 3; for (const x of [-70, -22, 26, 72]) { g.beginPath(); g.moveTo(x * 0.55, -60); g.quadraticCurveTo(x * 0.8, -180, x, -300); g.stroke(); }
+  for (const x of [-70, -22, 26, 72]) { g.strokeStyle = "rgba(255,220,195,0.14)"; g.lineWidth = 7; g.beginPath(); g.moveTo(x * 0.5, -40); g.quadraticCurveTo(x * 0.8, -180, x, -300); g.stroke();
+    g.strokeStyle = "rgba(150,92,66,0.14)"; g.lineWidth = 2; g.beginPath(); g.moveTo(x * 0.5 + 6, -40); g.quadraticCurveTo(x * 0.8 + 6, -180, x + 6, -300); g.stroke(); }
+  g.strokeStyle = "rgba(110,120,170,0.13)"; g.lineWidth = 4; g.beginPath(); g.moveTo(-60, 120); g.bezierCurveTo(-40, 0, -70, -100, -40, -200); g.moveTo(40, 140); g.bezierCurveTo(60, 20, 10, -80, 30, -190); g.moveTo(-40, -120); g.quadraticCurveTo(0, -140, 32, -110); g.stroke();
+  for (const [x, y] of [[-80, -312], [-26, -326], [28, -316], [80, -290]]) { const kg = g.createRadialGradient(x, y, 2, x, y, 30); kg.addColorStop(0, "rgba(255,226,205,0.45)"); kg.addColorStop(1, "rgba(255,226,205,0)"); g.fillStyle = kg; g.beginPath(); g.arc(x, y, 30, 0, 7); g.fill(); }
   const out = DED.map(d => dedo(d, def));
   return out;
 }
@@ -125,7 +134,15 @@ function frame() {
     g.restore(); }
   g.restore();
   document.getElementById("flash").style.opacity = S.flash * 0.7;
+  // escena del muñeco
+  const sc = document.getElementById("scn"); sc.style.opacity = S.vista; cv.style.opacity = 1 - S.vista;
+  if (S.vista > 0.001) { document.getElementById("camS").setAttribute("transform", `translate(540,1000) scale(${S.sz}) translate(${-S.sx},${-S.sy})`);
+    document.getElementById("pos").setAttribute("transform", `translate(${S.px},${S.py})`);
+    const pc = Math.min(100, S.L * 1.08 * 2.0 / 150 * 100); for (const el of UNC) el.setAttribute("stroke-dashoffset", (100 - pc).toFixed(2));
+    if (S.rotP > 0) for (const el of UNC2) el.setAttribute("stroke-dashoffset", (100 - Math.min(pc, 18)).toFixed(2));
+    const pp = 100 * S.Lp; for (const el of PIEU) el.setAttribute("stroke-dashoffset", (100 - pp).toFixed(2)); }
 }
+const UNC = [...document.querySelectorAll(".un1, .un2")], UNC2 = [...document.querySelectorAll(".un2")], PIEU = [...document.querySelectorAll(".pieU")];
 const tl = gsap.timeline({ paused: true, onUpdate: frame });
 tl.to(S, {t:%%DURX%%, duration:%%DURX%%, ease:"none"}, 0);
 %%TL%%
