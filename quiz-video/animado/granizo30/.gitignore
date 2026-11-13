@@ -1,0 +1,8 @@
+.hyperframes/
+salida/work-*
+render*.log
+check.json
+render_todo.log
+salida/.*
+salida/*.hf-transaction-*
+salida/video-bruto.mp4

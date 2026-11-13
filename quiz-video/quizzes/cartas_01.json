@@ -1,0 +1,188 @@
+{
+  "modo": "cartas",
+  "video": "cartas_01",
+  "titulo": "Elige una carta",
+  "estilo_voz": "[cheerful and excited]",
+  "gancho": {
+    "voz": "¡Vasos arriba! Elige una carta… ¡y que beba quien tenga que beber!",
+    "texto": [
+      "ELIGE",
+      "UNA CARTA"
+    ],
+    "pegatina": "¡Y QUE BEBA QUIEN TOQUE!"
+  },
+  "instrucciones": {
+    "voz": "Cada uno dice en voz alta: uno, dos o tres. ¡Y si no os da tiempo, pausad el vídeo!",
+    "pasos": [
+      "Cada uno elige 1, 2 o 3",
+      "Giramos las cartas",
+      "¡Cumple lo que te toque!"
+    ],
+    "nota": "Vale con cualquier bebida"
+  },
+  "reacciones": [
+    "¡Salud!",
+    "¡Arriba ese vaso!",
+    "¡Eso, eso, eso!"
+  ],
+  "rondas": [
+    {
+      "nombre": "CALENTAMIENTO",
+      "anuncio": "¡Ronda uno, calentamiento! ¡Elegid carta!",
+      "cartas": [
+        {
+          "emoji": "cerveza",
+          "texto": "Bebe 1 sorbo",
+          "tag": "BEBE",
+          "voz": "¡La uno: bebe un sorbo!"
+        },
+        {
+          "emoji": "angel",
+          "texto": "¡Te libras!",
+          "tag": "SALVADO",
+          "voz": "¡La dos: te libras!"
+        },
+        {
+          "emoji": "senala",
+          "texto": "Reparte 2 sorbos",
+          "tag": "REPARTE",
+          "voz": "¡La tres: reparte dos sorbos!"
+        }
+      ]
+    },
+    {
+      "nombre": "BRINDIS",
+      "anuncio": "¡Ronda dos, brindis! ¡Elegid carta!",
+      "cartas": [
+        {
+          "emoji": "copas",
+          "texto": "Brinda con alguien y bebéis los dos",
+          "tag": "BRINDIS",
+          "voz": "¡La uno: brinda con alguien y bebed los dos!"
+        },
+        {
+          "emoji": "corona",
+          "texto": "Tú eliges quién bebe 2 sorbos",
+          "tag": "MANDAS TÚ",
+          "voz": "¡La dos: tú eliges quién bebe!"
+        },
+        {
+          "emoji": "brindis",
+          "texto": "Bebe 2 sorbos",
+          "tag": "BEBE",
+          "voz": "¡La tres: dos sorbos!"
+        }
+      ]
+    },
+    {
+      "nombre": "REFLEJOS",
+      "anuncio": "¡Ronda tres, reflejos! ¡Elegid carta!",
+      "cartas": [
+        {
+          "emoji": "nariz",
+          "texto": "El último en tocarse la nariz bebe",
+          "tag": "TODOS",
+          "voz": "¡La uno: el último en tocarse la nariz, bebe!"
+        },
+        {
+          "emoji": "diablo",
+          "texto": "Los que eligieron la 3 beben 2",
+          "tag": "TRAMPA",
+          "voz": "¡La dos: los de la tres beben dos!"
+        },
+        {
+          "emoji": "angel",
+          "texto": "¡Te libras!… ¿seguro?",
+          "tag": "SALVADO?",
+          "voz": "¡La tres: te libras… o no!"
+        }
+      ]
+    },
+    {
+      "nombre": "CAOS",
+      "anuncio": "¡Ronda cuatro, caos total! ¡Elegid carta!",
+      "cartas": [
+        {
+          "emoji": "cambio",
+          "texto": "Cambia de sitio con alguien y bebed",
+          "tag": "CAOS",
+          "voz": "¡La uno: cambia de sitio con alguien y bebed!"
+        },
+        {
+          "emoji": "fiesta",
+          "texto": "Todos beben menos tú",
+          "tag": "FIESTA",
+          "voz": "¡La dos: todos beben menos tú!"
+        },
+        {
+          "emoji": "fuego",
+          "texto": "Bebe 3 sorbos",
+          "tag": "BEBE",
+          "voz": "¡La tres: tres sorbos!"
+        }
+      ]
+    },
+    {
+      "nombre": "LA MALDICIÓN",
+      "anuncio": "¡Ronda cinco, la maldición! ¡Elegid carta!",
+      "cartas": [
+        {
+          "emoji": "cremallera",
+          "texto": "1 minuto sin decir «yo»",
+          "tag": "MALDICIÓN",
+          "voz": "¡La uno: un minuto sin decir «yo»!"
+        },
+        {
+          "emoji": "izquierda",
+          "texto": "Bebe el de tu izquierda",
+          "tag": "VECINO",
+          "voz": "¡La dos: bebe el de tu izquierda!"
+        },
+        {
+          "emoji": "champan",
+          "texto": "¡Brindis general! Todos beben",
+          "tag": "TODOS",
+          "voz": "¡La tres: brindis general, todos beben!"
+        }
+      ]
+    },
+    {
+      "nombre": "CARTA DORADA",
+      "dorada": true,
+      "anuncio": "¡Última ronda! Solo una carta es dorada… ¡Elegid bien!",
+      "orden": [
+        0,
+        2,
+        1
+      ],
+      "cartas": [
+        {
+          "emoji": "cerveza",
+          "texto": "Bebe 3 sorbos",
+          "tag": "BEBE",
+          "voz": "La uno… ¡tres sorbos!"
+        },
+        {
+          "emoji": "trofeo",
+          "texto": "¡CARTA DORADA! Repartes 5 sorbos",
+          "tag": "DORADA",
+          "voz": "Y la dos… ¡es la carta dorada! ¡Repartes cinco!"
+        },
+        {
+          "emoji": "cerveza",
+          "texto": "Bebe 3 sorbos",
+          "tag": "BEBE",
+          "voz": "La tres… ¡también tres!"
+        }
+      ]
+    }
+  ],
+  "cierre_voz": "¿Quién ha bebido más? ¡Etiquétalo en comentarios!",
+  "portada": {
+    "titulo": [
+      "ELIGE",
+      "UNA CARTA"
+    ],
+    "pegatina": "¡Y QUE BEBA QUIEN TOQUE!"
+  }
+}

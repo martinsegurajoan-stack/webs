@@ -1,0 +1,288 @@
+{
+ "partido": "PSOE",
+ "color": "#d8453f",
+ "color_claro": "#fbe4e2",
+ "logo": "assets/logo_partido.png",
+ "escanos_encuestas": 102,
+ "portada": {
+  "linea1": "¿Y SI GANA",
+  "linea2": "EL PSOE?",
+  "fecha": "29-N",
+  "sub": "te lo cuento en 60 segundos"
+ },
+ "paginas": [
+  {
+   "lineas": [
+    1
+   ],
+   "tipo": "portada"
+  },
+  {
+   "lineas": [
+    2,
+    3
+   ],
+   "titulo": "Las encuestas",
+   "notas": [
+    {
+     "cuando": "encuestas",
+     "txt": "PSOE ≈ 26 % del voto",
+     "marca": "subraya"
+    },
+    {
+     "cuando": "cien",
+     "txt": "Unos 100 escaños"
+    },
+    {
+     "cuando": "2023",
+     "txt": "En 2023 sacó 121"
+    },
+    {
+     "cuando": "imaginemos",
+     "txt": "Pero… ¿y si gana?",
+     "color": "partido",
+     "grande": true
+    }
+   ],
+   "boceto": "hemiciclo",
+   "boceto_cuando": "cien",
+   "posit": {
+    "txt": "176",
+    "sub": "para gobernar solo",
+    "cuando": "socios"
+   },
+   "sello": "DATOS",
+   "papel": "cuadricula",
+   "recorte": {
+    "tipo": "grafico",
+    "cuando": "veintiseis",
+    "dur": 2.1,
+    "titular": "Votos del PSOE",
+    "barras": [
+     [
+      "2023 (resultado)",
+      31.7
+     ],
+     [
+      "2026 (encuestas)",
+      25.8
+     ]
+    ],
+    "pie": "Resultado oficial 2023 y media de encuestas oct–nov 2026"
+   },
+   "fuente": "Fuentes: Target Point, SocioMétrica y NC Report (oct–nov 2026)"
+  },
+  {
+   "lineas": [
+    4
+   ],
+   "titulo": "Vivienda",
+   "notas": [
+    {
+     "cuando": "empresa",
+     "txt": "Empresa pública de vivienda",
+     "marca": "resalta"
+    },
+    {
+     "cuando": "asequible",
+     "txt": "Alquiler a precio asequible",
+     "signo": "si"
+    },
+    {
+     "cuando": "justo",
+     "txt": "No logró aprobarlo antes",
+     "signo": "no"
+    }
+   ],
+   "boceto": "casa",
+   "boceto_cuando": "vivienda",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: propuestas del PSOE y del Gobierno (2026)",
+   "etiqueta": "ALQUILER"
+  },
+  {
+   "lineas": [
+    5
+   ],
+   "titulo": "Trabajo",
+   "notas": [
+    {
+     "cuando": "jornada",
+     "txt": "Jornada → 36 h semanales",
+     "marca": "subraya"
+    },
+    {
+     "cuando": "2030",
+     "txt": "Poco a poco, antes de 2030"
+    }
+   ],
+   "boceto": "reloj",
+   "boceto_cuando": "treinta",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: resoluciones del PSOE (41.º Congreso Federal)"
+  },
+  {
+   "lineas": [
+    6
+   ],
+   "titulo": "Salario mínimo",
+   "notas": [
+    {
+     "cuando": "mil",
+     "txt": "Hoy: 1.221 €/mes (14 pagas)"
+    },
+    {
+     "cuando": "subiendo",
+     "txt": "Seguiría subiendo",
+     "signo": "si"
+    }
+   ],
+   "boceto": "cartera",
+   "boceto_cuando": "salario",
+   "sello": "DATOS",
+   "papel": "cuadricula",
+   "recorte": {
+    "tipo": "periodico",
+    "cuando": "mil",
+    "dur": 2.0,
+    "seccion": "EMPLEO",
+    "titular": "SMI 2026: 1.221 € al mes",
+    "texto": "En 14 pagas: 17.094 € al año, un 3,1 % más que en 2025.",
+    "pie": "Dato: Real Decreto 126/2026 (BOE)"
+   },
+   "fuente": "Fuente: BOE, Real Decreto 126/2026"
+  },
+  {
+   "lineas": [
+    7
+   ],
+   "titulo": "Pensiones",
+   "notas": [
+    {
+     "cuando": "inflacion",
+     "txt": "Suben con el IPC",
+     "signo": "si"
+    },
+    {
+     "cuando": "constitucion",
+     "txt": "Blindarlo en la Constitución",
+     "marca": "rodea"
+    }
+   ],
+   "boceto": "hucha",
+   "boceto_cuando": "pensiones",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: propuestas del PSOE; revalorización 2026 por real decreto-ley"
+  },
+  {
+   "lineas": [
+    8
+   ],
+   "titulo": "Impuestos",
+   "notas": [
+    {
+     "cuando": "grandes",
+     "txt": "Más impuesto a grandes empresas"
+    },
+    {
+     "cuando": "cuarenta",
+     "txt": "si sus jefes cobran 40× la plantilla",
+     "marca": "subraya"
+    }
+   ],
+   "boceto": "empresa",
+   "boceto_cuando": "cuarenta",
+   "sello": "PROPUESTA",
+   "posit": {
+    "txt": "×40",
+    "sub": "sueldo del directivo",
+    "cuando": "plantilla"
+   },
+   "fuente": "Fuente: resolución del 41.º Congreso Federal del PSOE"
+  },
+  {
+   "lineas": [
+    9
+   ],
+   "titulo": "Lo malo",
+   "notas": [
+    {
+     "cuando": "pactar",
+     "txt": "Pactos con independentistas",
+     "signo": "no"
+    },
+    {
+     "cuando": "bloqueos",
+     "txt": "Bloqueos (ej.: ley de vivienda)",
+     "signo": "no"
+    }
+   ],
+   "boceto": "puzle",
+   "boceto_cuando": "independentistas",
+   "sello": "DATOS",
+   "fuente": "Fuente: La Moncloa y prensa (disolución de las Cortes, oct. 2026)"
+  },
+  {
+   "lineas": [
+    10
+   ],
+   "titulo": "¿Bueno o malo?",
+   "notas": [
+    {
+     "cuando": "votantes",
+     "txt": "Votantes: más derechos y servicios",
+     "signo": "si"
+    },
+    {
+     "cuando": "criticos",
+     "txt": "Críticos: más gasto y concesiones",
+     "signo": "no"
+    }
+   ],
+   "boceto": "balanza",
+   "boceto_cuando": "votantes",
+   "sello": "OPINIONES",
+   "fuente": "Escenario hipotético basado en encuestas y propuestas públicas"
+  },
+  {
+   "lineas": [
+    11
+   ],
+   "titulo": "29 de noviembre",
+   "notas": [
+    {
+     "cuando": "deciden",
+     "txt": "Deciden las urnas",
+     "color": "partido",
+     "grande": true,
+     "marca": "rodea"
+    }
+   ],
+   "boceto": "urna",
+   "boceto_cuando": "noviembre",
+   "fuente": "Elecciones generales · 29 de noviembre de 2026"
+  }
+ ],
+ "clave": [
+  "psoe",
+  "noviembre",
+  "segundos",
+  "cien",
+  "socios",
+  "vivienda",
+  "empresa",
+  "treinta",
+  "seis",
+  "salario",
+  "subiendo",
+  "pensiones",
+  "inflacion",
+  "constitucion",
+  "cuarenta",
+  "independentistas",
+  "bloqueos",
+  "derechos",
+  "gasto",
+  "urnas"
+ ]
+}

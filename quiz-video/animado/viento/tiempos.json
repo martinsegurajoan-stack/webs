@@ -1,0 +1,1891 @@
+{
+ "duracion": 106.478,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si mañana el viento se detuviera en todo el planeta?",
+   "ini": 0.5,
+   "fin": 4.514
+  },
+  {
+   "n": 2,
+   "texto": "Lo primero, el silencio. Ni una hoja moviéndose. Y el mar, liso como un espejo: casi todas las olas las fabrica el viento.",
+   "ini": 5.004,
+   "fin": 13.291
+  },
+  {
+   "n": 3,
+   "texto": "Algunas viajan muy lejos: hay olas que nacen en una tormenta junto a la Antártida… y rompen una semana después en Alaska.",
+   "ini": 13.431,
+   "fin": 20.991
+  },
+  {
+   "n": 4,
+   "texto": "Los olores no llegarían a ninguna parte. El olor a pan recién hecho apenas saldría de la panadería.",
+   "ini": 21.281,
+   "fin": 27.161
+  },
+  {
+   "n": 5,
+   "texto": "Volar también cambiaría: hoy, ir de Nueva York a Londres dura casi una hora menos que volver. Lo empuja el viento.",
+   "ini": 27.301,
+   "fin": 34.254
+  },
+  {
+   "n": 6,
+   "texto": "El maíz, el cereal que más se cultiva del mundo, no daría ni una mazorca: su polen viaja con el viento.",
+   "ini": 34.394,
+   "fin": 40.933
+  },
+  {
+   "n": 7,
+   "texto": "Las ciudades se ahogarían en su propio humo. En 1952, cinco días sin viento en Londres bastaron para que la niebla tóxica matara a miles de personas.",
+   "ini": 41.073,
+   "fin": 51.424
+  },
+  {
+   "n": 8,
+   "texto": "Y Londres se congelaría. Está mucho más al norte que Nueva York… y aun así tiene inviernos más suaves. La calienta el viento del Atlántico.",
+   "ini": 51.714,
+   "fin": 59.907
+  },
+  {
+   "n": 9,
+   "texto": "La humedad del mar ya no llegaría tierra adentro: el interior de los continentes se iría convirtiendo en desierto.",
+   "ini": 60.047,
+   "fin": 66.708
+  },
+  {
+   "n": 10,
+   "texto": "Y el Amazonas se quedaría sin abono. Cada año, el viento le trae desde el Sáhara polvo para llenar más de un millón de camiones.",
+   "ini": 66.848,
+   "fin": 74.406
+  },
+  {
+   "n": 11,
+   "texto": "Más de la mitad sale de un solo sitio: el fondo de un lago seco en Chad.",
+   "ini": 74.546,
+   "fin": 79.041
+  },
+  {
+   "n": 12,
+   "texto": "Hasta los árboles se volverían frágiles. En Biosfera 2, un invernadero gigante sin viento, crecían rápido… y se partían solos.",
+   "ini": 79.381,
+   "fin": 87.573
+  },
+  {
+   "n": 13,
+   "texto": "Lo único bueno: ni un solo huracán.",
+   "ini": 87.713,
+   "fin": 90.27
+  },
+  {
+   "n": 14,
+   "texto": "Pero tranquilo: es imposible. Mientras el Sol caliente más el ecuador que los polos, el aire nunca dejará de moverse.",
+   "ini": 90.71,
+   "fin": 97.861
+  },
+  {
+   "n": 15,
+   "texto": "Así que la próxima vez que te moleste el viento, recuerda: te trae la lluvia, la comida… y el aire que respiras.",
+   "ini": 98.201,
+   "fin": 105.078
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.5,
+   "fin": 0.804,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.804,
+   "fin": 1.291,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 1.291,
+   "fin": 1.473,
+   "frase": 1
+  },
+  {
+   "w": "mañana",
+   "ini": 1.473,
+   "fin": 1.899,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 1.899,
+   "fin": 2.081,
+   "frase": 1
+  },
+  {
+   "w": "viento",
+   "ini": 2.081,
+   "fin": 2.507,
+   "frase": 1
+  },
+  {
+   "w": "se",
+   "ini": 2.507,
+   "fin": 2.69,
+   "frase": 1
+  },
+  {
+   "w": "detuviera",
+   "ini": 2.69,
+   "fin": 3.298,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 3.298,
+   "fin": 3.48,
+   "frase": 1
+  },
+  {
+   "w": "todo",
+   "ini": 3.48,
+   "fin": 3.784,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 3.784,
+   "fin": 3.967,
+   "frase": 1
+  },
+  {
+   "w": "planeta?",
+   "ini": 3.967,
+   "fin": 4.514,
+   "frase": 1
+  },
+  {
+   "w": "Lo",
+   "ini": 5.004,
+   "fin": 5.159,
+   "frase": 2
+  },
+  {
+   "w": "primero,",
+   "ini": 5.159,
+   "fin": 5.624,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 5.854,
+   "fin": 6.046,
+   "frase": 2
+  },
+  {
+   "w": "silencio.",
+   "ini": 6.046,
+   "fin": 6.684,
+   "frase": 2
+  },
+  {
+   "w": "Ni",
+   "ini": 6.914,
+   "fin": 7.06,
+   "frase": 2
+  },
+  {
+   "w": "una",
+   "ini": 7.06,
+   "fin": 7.255,
+   "frase": 2
+  },
+  {
+   "w": "hoja",
+   "ini": 7.255,
+   "fin": 7.499,
+   "frase": 2
+  },
+  {
+   "w": "moviéndose.",
+   "ini": 7.499,
+   "fin": 8.084,
+   "frase": 2
+  },
+  {
+   "w": "Y",
+   "ini": 8.224,
+   "fin": 8.404,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 8.404,
+   "fin": 8.674,
+   "frase": 2
+  },
+  {
+   "w": "mar,",
+   "ini": 8.674,
+   "fin": 9.124,
+   "frase": 2
+  },
+  {
+   "w": "liso",
+   "ini": 9.344,
+   "fin": 9.587,
+   "frase": 2
+  },
+  {
+   "w": "como",
+   "ini": 9.587,
+   "fin": 9.83,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 9.83,
+   "fin": 9.976,
+   "frase": 2
+  },
+  {
+   "w": "espejo:",
+   "ini": 9.976,
+   "fin": 10.364,
+   "frase": 2
+  },
+  {
+   "w": "casi",
+   "ini": 10.454,
+   "fin": 10.784,
+   "frase": 2
+  },
+  {
+   "w": "todas",
+   "ini": 10.784,
+   "fin": 11.18,
+   "frase": 2
+  },
+  {
+   "w": "las",
+   "ini": 11.18,
+   "fin": 11.444,
+   "frase": 2
+  },
+  {
+   "w": "olas",
+   "ini": 11.444,
+   "fin": 11.774,
+   "frase": 2
+  },
+  {
+   "w": "las",
+   "ini": 11.774,
+   "fin": 12.037,
+   "frase": 2
+  },
+  {
+   "w": "fabrica",
+   "ini": 12.037,
+   "fin": 12.565,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 12.565,
+   "fin": 12.763,
+   "frase": 2
+  },
+  {
+   "w": "viento.",
+   "ini": 12.763,
+   "fin": 13.291,
+   "frase": 2
+  },
+  {
+   "w": "Algunas",
+   "ini": 13.431,
+   "fin": 13.985,
+   "frase": 3
+  },
+  {
+   "w": "viajan",
+   "ini": 13.985,
+   "fin": 14.469,
+   "frase": 3
+  },
+  {
+   "w": "muy",
+   "ini": 14.469,
+   "fin": 14.746,
+   "frase": 3
+  },
+  {
+   "w": "lejos:",
+   "ini": 14.746,
+   "fin": 15.231,
+   "frase": 3
+  },
+  {
+   "w": "hay",
+   "ini": 15.431,
+   "fin": 15.633,
+   "frase": 3
+  },
+  {
+   "w": "olas",
+   "ini": 15.633,
+   "fin": 15.886,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 15.886,
+   "fin": 16.088,
+   "frase": 3
+  },
+  {
+   "w": "nacen",
+   "ini": 16.088,
+   "fin": 16.391,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 16.391,
+   "fin": 16.542,
+   "frase": 3
+  },
+  {
+   "w": "una",
+   "ini": 16.542,
+   "fin": 16.745,
+   "frase": 3
+  },
+  {
+   "w": "tormenta",
+   "ini": 16.745,
+   "fin": 17.199,
+   "frase": 3
+  },
+  {
+   "w": "junto",
+   "ini": 17.199,
+   "fin": 17.502,
+   "frase": 3
+  },
+  {
+   "w": "a",
+   "ini": 17.502,
+   "fin": 17.604,
+   "frase": 3
+  },
+  {
+   "w": "la",
+   "ini": 17.604,
+   "fin": 17.755,
+   "frase": 3
+  },
+  {
+   "w": "Antártida…",
+   "ini": 17.755,
+   "fin": 18.311,
+   "frase": 3
+  },
+  {
+   "w": "y",
+   "ini": 18.531,
+   "fin": 18.657,
+   "frase": 3
+  },
+  {
+   "w": "rompen",
+   "ini": 18.657,
+   "fin": 19.099,
+   "frase": 3
+  },
+  {
+   "w": "una",
+   "ini": 19.099,
+   "fin": 19.351,
+   "frase": 3
+  },
+  {
+   "w": "semana",
+   "ini": 19.351,
+   "fin": 19.793,
+   "frase": 3
+  },
+  {
+   "w": "después",
+   "ini": 19.793,
+   "fin": 20.297,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 20.297,
+   "fin": 20.487,
+   "frase": 3
+  },
+  {
+   "w": "Alaska.",
+   "ini": 20.487,
+   "fin": 20.991,
+   "frase": 3
+  },
+  {
+   "w": "Los",
+   "ini": 21.281,
+   "fin": 21.515,
+   "frase": 4
+  },
+  {
+   "w": "olores",
+   "ini": 21.515,
+   "fin": 21.925,
+   "frase": 4
+  },
+  {
+   "w": "no",
+   "ini": 21.925,
+   "fin": 22.101,
+   "frase": 4
+  },
+  {
+   "w": "llegarían",
+   "ini": 22.101,
+   "fin": 22.686,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 22.686,
+   "fin": 22.803,
+   "frase": 4
+  },
+  {
+   "w": "ninguna",
+   "ini": 22.803,
+   "fin": 23.271,
+   "frase": 4
+  },
+  {
+   "w": "parte.",
+   "ini": 23.271,
+   "fin": 23.681,
+   "frase": 4
+  },
+  {
+   "w": "El",
+   "ini": 23.911,
+   "fin": 24.076,
+   "frase": 4
+  },
+  {
+   "w": "olor",
+   "ini": 24.076,
+   "fin": 24.352,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 24.352,
+   "fin": 24.462,
+   "frase": 4
+  },
+  {
+   "w": "pan",
+   "ini": 24.462,
+   "fin": 24.682,
+   "frase": 4
+  },
+  {
+   "w": "recién",
+   "ini": 24.682,
+   "fin": 25.068,
+   "frase": 4
+  },
+  {
+   "w": "hecho",
+   "ini": 25.068,
+   "fin": 25.399,
+   "frase": 4
+  },
+  {
+   "w": "apenas",
+   "ini": 25.399,
+   "fin": 25.784,
+   "frase": 4
+  },
+  {
+   "w": "saldría",
+   "ini": 25.784,
+   "fin": 26.225,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 26.225,
+   "fin": 26.39,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 26.39,
+   "fin": 26.555,
+   "frase": 4
+  },
+  {
+   "w": "panadería.",
+   "ini": 26.555,
+   "fin": 27.161,
+   "frase": 4
+  },
+  {
+   "w": "Volar",
+   "ini": 27.301,
+   "fin": 27.654,
+   "frase": 5
+  },
+  {
+   "w": "también",
+   "ini": 27.654,
+   "fin": 28.125,
+   "frase": 5
+  },
+  {
+   "w": "cambiaría:",
+   "ini": 28.125,
+   "fin": 28.771,
+   "frase": 5
+  },
+  {
+   "w": "hoy,",
+   "ini": 29.011,
+   "fin": 29.311,
+   "frase": 5
+  },
+  {
+   "w": "ir",
+   "ini": 29.471,
+   "fin": 29.631,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 29.631,
+   "fin": 29.79,
+   "frase": 5
+  },
+  {
+   "w": "Nueva",
+   "ini": 29.79,
+   "fin": 30.109,
+   "frase": 5
+  },
+  {
+   "w": "York",
+   "ini": 30.109,
+   "fin": 30.375,
+   "frase": 5
+  },
+  {
+   "w": "a",
+   "ini": 30.375,
+   "fin": 30.481,
+   "frase": 5
+  },
+  {
+   "w": "Londres",
+   "ini": 30.481,
+   "fin": 30.906,
+   "frase": 5
+  },
+  {
+   "w": "dura",
+   "ini": 30.906,
+   "fin": 31.171,
+   "frase": 5
+  },
+  {
+   "w": "casi",
+   "ini": 31.171,
+   "fin": 31.437,
+   "frase": 5
+  },
+  {
+   "w": "una",
+   "ini": 31.437,
+   "fin": 31.65,
+   "frase": 5
+  },
+  {
+   "w": "hora",
+   "ini": 31.65,
+   "fin": 31.915,
+   "frase": 5
+  },
+  {
+   "w": "menos",
+   "ini": 31.915,
+   "fin": 32.234,
+   "frase": 5
+  },
+  {
+   "w": "que",
+   "ini": 32.234,
+   "fin": 32.446,
+   "frase": 5
+  },
+  {
+   "w": "volver.",
+   "ini": 32.446,
+   "fin": 32.871,
+   "frase": 5
+  },
+  {
+   "w": "Lo",
+   "ini": 33.101,
+   "fin": 33.266,
+   "frase": 5
+  },
+  {
+   "w": "empuja",
+   "ini": 33.266,
+   "fin": 33.65,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 33.65,
+   "fin": 33.815,
+   "frase": 5
+  },
+  {
+   "w": "viento.",
+   "ini": 33.815,
+   "fin": 34.254,
+   "frase": 5
+  },
+  {
+   "w": "El",
+   "ini": 34.394,
+   "fin": 34.567,
+   "frase": 6
+  },
+  {
+   "w": "maíz,",
+   "ini": 34.567,
+   "fin": 34.914,
+   "frase": 6
+  },
+  {
+   "w": "el",
+   "ini": 35.204,
+   "fin": 35.353,
+   "frase": 6
+  },
+  {
+   "w": "cereal",
+   "ini": 35.353,
+   "fin": 35.701,
+   "frase": 6
+  },
+  {
+   "w": "que",
+   "ini": 35.701,
+   "fin": 35.9,
+   "frase": 6
+  },
+  {
+   "w": "más",
+   "ini": 35.9,
+   "fin": 36.099,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 36.099,
+   "fin": 36.249,
+   "frase": 6
+  },
+  {
+   "w": "cultiva",
+   "ini": 36.249,
+   "fin": 36.647,
+   "frase": 6
+  },
+  {
+   "w": "del",
+   "ini": 36.647,
+   "fin": 36.846,
+   "frase": 6
+  },
+  {
+   "w": "mundo,",
+   "ini": 36.846,
+   "fin": 37.194,
+   "frase": 6
+  },
+  {
+   "w": "no",
+   "ini": 37.414,
+   "fin": 37.605,
+   "frase": 6
+  },
+  {
+   "w": "daría",
+   "ini": 37.605,
+   "fin": 37.986,
+   "frase": 6
+  },
+  {
+   "w": "ni",
+   "ini": 37.986,
+   "fin": 38.177,
+   "frase": 6
+  },
+  {
+   "w": "una",
+   "ini": 38.177,
+   "fin": 38.432,
+   "frase": 6
+  },
+  {
+   "w": "mazorca:",
+   "ini": 38.432,
+   "fin": 39.004,
+   "frase": 6
+  },
+  {
+   "w": "su",
+   "ini": 39.214,
+   "fin": 39.386,
+   "frase": 6
+  },
+  {
+   "w": "polen",
+   "ini": 39.386,
+   "fin": 39.73,
+   "frase": 6
+  },
+  {
+   "w": "viaja",
+   "ini": 39.73,
+   "fin": 40.074,
+   "frase": 6
+  },
+  {
+   "w": "con",
+   "ini": 40.074,
+   "fin": 40.303,
+   "frase": 6
+  },
+  {
+   "w": "el",
+   "ini": 40.303,
+   "fin": 40.475,
+   "frase": 6
+  },
+  {
+   "w": "viento.",
+   "ini": 40.475,
+   "fin": 40.933,
+   "frase": 6
+  },
+  {
+   "w": "Las",
+   "ini": 41.073,
+   "fin": 41.308,
+   "frase": 7
+  },
+  {
+   "w": "ciudades",
+   "ini": 41.308,
+   "fin": 41.836,
+   "frase": 7
+  },
+  {
+   "w": "se",
+   "ini": 41.836,
+   "fin": 42.012,
+   "frase": 7
+  },
+  {
+   "w": "ahogarían",
+   "ini": 42.012,
+   "fin": 42.599,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 42.599,
+   "fin": 42.775,
+   "frase": 7
+  },
+  {
+   "w": "su",
+   "ini": 42.775,
+   "fin": 42.951,
+   "frase": 7
+  },
+  {
+   "w": "propio",
+   "ini": 42.951,
+   "fin": 43.361,
+   "frase": 7
+  },
+  {
+   "w": "humo.",
+   "ini": 43.361,
+   "fin": 43.713,
+   "frase": 7
+  },
+  {
+   "w": "En",
+   "ini": 43.913,
+   "fin": 44.47,
+   "frase": 7
+  },
+  {
+   "w": "1952,",
+   "ini": 44.47,
+   "fin": 45.583,
+   "frase": 7
+  },
+  {
+   "w": "cinco",
+   "ini": 45.803,
+   "fin": 46.154,
+   "frase": 7
+  },
+  {
+   "w": "días",
+   "ini": 46.154,
+   "fin": 46.447,
+   "frase": 7
+  },
+  {
+   "w": "sin",
+   "ini": 46.447,
+   "fin": 46.681,
+   "frase": 7
+  },
+  {
+   "w": "viento",
+   "ini": 46.681,
+   "fin": 47.091,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 47.091,
+   "fin": 47.267,
+   "frase": 7
+  },
+  {
+   "w": "Londres",
+   "ini": 47.267,
+   "fin": 47.735,
+   "frase": 7
+  },
+  {
+   "w": "bastaron",
+   "ini": 47.735,
+   "fin": 48.262,
+   "frase": 7
+  },
+  {
+   "w": "para",
+   "ini": 48.262,
+   "fin": 48.555,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 48.555,
+   "fin": 48.789,
+   "frase": 7
+  },
+  {
+   "w": "la",
+   "ini": 48.789,
+   "fin": 48.965,
+   "frase": 7
+  },
+  {
+   "w": "niebla",
+   "ini": 48.965,
+   "fin": 49.375,
+   "frase": 7
+  },
+  {
+   "w": "tóxica",
+   "ini": 49.375,
+   "fin": 49.784,
+   "frase": 7
+  },
+  {
+   "w": "matara",
+   "ini": 49.784,
+   "fin": 50.194,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 50.194,
+   "fin": 50.311,
+   "frase": 7
+  },
+  {
+   "w": "miles",
+   "ini": 50.311,
+   "fin": 50.663,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 50.663,
+   "fin": 50.838,
+   "frase": 7
+  },
+  {
+   "w": "personas.",
+   "ini": 50.838,
+   "fin": 51.424,
+   "frase": 7
+  },
+  {
+   "w": "Y",
+   "ini": 51.714,
+   "fin": 51.836,
+   "frase": 8
+  },
+  {
+   "w": "Londres",
+   "ini": 51.836,
+   "fin": 52.326,
+   "frase": 8
+  },
+  {
+   "w": "se",
+   "ini": 52.326,
+   "fin": 52.509,
+   "frase": 8
+  },
+  {
+   "w": "congelaría.",
+   "ini": 52.509,
+   "fin": 53.244,
+   "frase": 8
+  },
+  {
+   "w": "Está",
+   "ini": 53.454,
+   "fin": 53.696,
+   "frase": 8
+  },
+  {
+   "w": "mucho",
+   "ini": 53.696,
+   "fin": 53.987,
+   "frase": 8
+  },
+  {
+   "w": "más",
+   "ini": 53.987,
+   "fin": 54.181,
+   "frase": 8
+  },
+  {
+   "w": "al",
+   "ini": 54.181,
+   "fin": 54.327,
+   "frase": 8
+  },
+  {
+   "w": "norte",
+   "ini": 54.327,
+   "fin": 54.618,
+   "frase": 8
+  },
+  {
+   "w": "que",
+   "ini": 54.618,
+   "fin": 54.812,
+   "frase": 8
+  },
+  {
+   "w": "Nueva",
+   "ini": 54.812,
+   "fin": 55.103,
+   "frase": 8
+  },
+  {
+   "w": "York…",
+   "ini": 55.103,
+   "fin": 55.394,
+   "frase": 8
+  },
+  {
+   "w": "y",
+   "ini": 55.524,
+   "fin": 55.643,
+   "frase": 8
+  },
+  {
+   "w": "aun",
+   "ini": 55.643,
+   "fin": 55.882,
+   "frase": 8
+  },
+  {
+   "w": "así",
+   "ini": 55.882,
+   "fin": 56.121,
+   "frase": 8
+  },
+  {
+   "w": "tiene",
+   "ini": 56.121,
+   "fin": 56.48,
+   "frase": 8
+  },
+  {
+   "w": "inviernos",
+   "ini": 56.48,
+   "fin": 57.077,
+   "frase": 8
+  },
+  {
+   "w": "más",
+   "ini": 57.077,
+   "fin": 57.316,
+   "frase": 8
+  },
+  {
+   "w": "suaves.",
+   "ini": 57.316,
+   "fin": 57.794,
+   "frase": 8
+  },
+  {
+   "w": "La",
+   "ini": 57.984,
+   "fin": 58.14,
+   "frase": 8
+  },
+  {
+   "w": "calienta",
+   "ini": 58.14,
+   "fin": 58.607,
+   "frase": 8
+  },
+  {
+   "w": "el",
+   "ini": 58.607,
+   "fin": 58.763,
+   "frase": 8
+  },
+  {
+   "w": "viento",
+   "ini": 58.763,
+   "fin": 59.127,
+   "frase": 8
+  },
+  {
+   "w": "del",
+   "ini": 59.127,
+   "fin": 59.335,
+   "frase": 8
+  },
+  {
+   "w": "Atlántico.",
+   "ini": 59.335,
+   "fin": 59.907,
+   "frase": 8
+  },
+  {
+   "w": "La",
+   "ini": 60.047,
+   "fin": 60.216,
+   "frase": 9
+  },
+  {
+   "w": "humedad",
+   "ini": 60.216,
+   "fin": 60.667,
+   "frase": 9
+  },
+  {
+   "w": "del",
+   "ini": 60.667,
+   "fin": 60.893,
+   "frase": 9
+  },
+  {
+   "w": "mar",
+   "ini": 60.893,
+   "fin": 61.119,
+   "frase": 9
+  },
+  {
+   "w": "ya",
+   "ini": 61.119,
+   "fin": 61.288,
+   "frase": 9
+  },
+  {
+   "w": "no",
+   "ini": 61.288,
+   "fin": 61.457,
+   "frase": 9
+  },
+  {
+   "w": "llegaría",
+   "ini": 61.457,
+   "fin": 61.965,
+   "frase": 9
+  },
+  {
+   "w": "tierra",
+   "ini": 61.965,
+   "fin": 62.359,
+   "frase": 9
+  },
+  {
+   "w": "adentro:",
+   "ini": 62.359,
+   "fin": 62.867,
+   "frase": 9
+  },
+  {
+   "w": "el",
+   "ini": 63.087,
+   "fin": 63.254,
+   "frase": 9
+  },
+  {
+   "w": "interior",
+   "ini": 63.254,
+   "fin": 63.755,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 63.755,
+   "fin": 63.923,
+   "frase": 9
+  },
+  {
+   "w": "los",
+   "ini": 63.923,
+   "fin": 64.145,
+   "frase": 9
+  },
+  {
+   "w": "continentes",
+   "ini": 64.145,
+   "fin": 64.814,
+   "frase": 9
+  },
+  {
+   "w": "se",
+   "ini": 64.814,
+   "fin": 64.981,
+   "frase": 9
+  },
+  {
+   "w": "iría",
+   "ini": 64.981,
+   "fin": 65.26,
+   "frase": 9
+  },
+  {
+   "w": "convirtiendo",
+   "ini": 65.26,
+   "fin": 65.984,
+   "frase": 9
+  },
+  {
+   "w": "en",
+   "ini": 65.984,
+   "fin": 66.151,
+   "frase": 9
+  },
+  {
+   "w": "desierto.",
+   "ini": 66.151,
+   "fin": 66.708,
+   "frase": 9
+  },
+  {
+   "w": "Y",
+   "ini": 66.848,
+   "fin": 66.954,
+   "frase": 10
+  },
+  {
+   "w": "el",
+   "ini": 66.954,
+   "fin": 67.114,
+   "frase": 10
+  },
+  {
+   "w": "Amazonas",
+   "ini": 67.114,
+   "fin": 67.593,
+   "frase": 10
+  },
+  {
+   "w": "se",
+   "ini": 67.593,
+   "fin": 67.753,
+   "frase": 10
+  },
+  {
+   "w": "quedaría",
+   "ini": 67.753,
+   "fin": 68.232,
+   "frase": 10
+  },
+  {
+   "w": "sin",
+   "ini": 68.232,
+   "fin": 68.445,
+   "frase": 10
+  },
+  {
+   "w": "abono.",
+   "ini": 68.445,
+   "fin": 68.818,
+   "frase": 10
+  },
+  {
+   "w": "Cada",
+   "ini": 69.028,
+   "fin": 69.338,
+   "frase": 10
+  },
+  {
+   "w": "año,",
+   "ini": 69.338,
+   "fin": 69.648,
+   "frase": 10
+  },
+  {
+   "w": "el",
+   "ini": 69.778,
+   "fin": 69.947,
+   "frase": 10
+  },
+  {
+   "w": "viento",
+   "ini": 69.947,
+   "fin": 70.342,
+   "frase": 10
+  },
+  {
+   "w": "le",
+   "ini": 70.342,
+   "fin": 70.512,
+   "frase": 10
+  },
+  {
+   "w": "trae",
+   "ini": 70.512,
+   "fin": 70.794,
+   "frase": 10
+  },
+  {
+   "w": "desde",
+   "ini": 70.794,
+   "fin": 71.132,
+   "frase": 10
+  },
+  {
+   "w": "el",
+   "ini": 71.132,
+   "fin": 71.302,
+   "frase": 10
+  },
+  {
+   "w": "Sáhara",
+   "ini": 71.302,
+   "fin": 71.697,
+   "frase": 10
+  },
+  {
+   "w": "polvo",
+   "ini": 71.697,
+   "fin": 72.035,
+   "frase": 10
+  },
+  {
+   "w": "para",
+   "ini": 72.035,
+   "fin": 72.317,
+   "frase": 10
+  },
+  {
+   "w": "llenar",
+   "ini": 72.317,
+   "fin": 72.713,
+   "frase": 10
+  },
+  {
+   "w": "más",
+   "ini": 72.713,
+   "fin": 72.938,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 72.938,
+   "fin": 73.108,
+   "frase": 10
+  },
+  {
+   "w": "un",
+   "ini": 73.108,
+   "fin": 73.277,
+   "frase": 10
+  },
+  {
+   "w": "millón",
+   "ini": 73.277,
+   "fin": 73.672,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 73.672,
+   "fin": 73.841,
+   "frase": 10
+  },
+  {
+   "w": "camiones.",
+   "ini": 73.841,
+   "fin": 74.406,
+   "frase": 10
+  },
+  {
+   "w": "Más",
+   "ini": 74.546,
+   "fin": 74.773,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 74.773,
+   "fin": 74.944,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 74.944,
+   "fin": 75.115,
+   "frase": 11
+  },
+  {
+   "w": "mitad",
+   "ini": 75.115,
+   "fin": 75.456,
+   "frase": 11
+  },
+  {
+   "w": "sale",
+   "ini": 75.456,
+   "fin": 75.741,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 75.741,
+   "fin": 75.912,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 75.912,
+   "fin": 76.083,
+   "frase": 11
+  },
+  {
+   "w": "solo",
+   "ini": 76.083,
+   "fin": 76.367,
+   "frase": 11
+  },
+  {
+   "w": "sitio:",
+   "ini": 76.367,
+   "fin": 76.766,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 76.966,
+   "fin": 77.149,
+   "frase": 11
+  },
+  {
+   "w": "fondo",
+   "ini": 77.149,
+   "fin": 77.515,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 77.515,
+   "fin": 77.698,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 77.698,
+   "fin": 77.881,
+   "frase": 11
+  },
+  {
+   "w": "lago",
+   "ini": 77.881,
+   "fin": 78.187,
+   "frase": 11
+  },
+  {
+   "w": "seco",
+   "ini": 78.187,
+   "fin": 78.492,
+   "frase": 11
+  },
+  {
+   "w": "en",
+   "ini": 78.492,
+   "fin": 78.675,
+   "frase": 11
+  },
+  {
+   "w": "Chad.",
+   "ini": 78.675,
+   "fin": 79.041,
+   "frase": 11
+  },
+  {
+   "w": "Hasta",
+   "ini": 79.381,
+   "fin": 79.711,
+   "frase": 12
+  },
+  {
+   "w": "los",
+   "ini": 79.711,
+   "fin": 79.93,
+   "frase": 12
+  },
+  {
+   "w": "árboles",
+   "ini": 79.93,
+   "fin": 80.369,
+   "frase": 12
+  },
+  {
+   "w": "se",
+   "ini": 80.369,
+   "fin": 80.534,
+   "frase": 12
+  },
+  {
+   "w": "volverían",
+   "ini": 80.534,
+   "fin": 81.083,
+   "frase": 12
+  },
+  {
+   "w": "frágiles.",
+   "ini": 81.083,
+   "fin": 81.631,
+   "frase": 12
+  },
+  {
+   "w": "En",
+   "ini": 81.741,
+   "fin": 81.945,
+   "frase": 12
+  },
+  {
+   "w": "Biosfera",
+   "ini": 81.945,
+   "fin": 82.557,
+   "frase": 12
+  },
+  {
+   "w": "2,",
+   "ini": 82.557,
+   "fin": 82.761,
+   "frase": 12
+  },
+  {
+   "w": "un",
+   "ini": 82.871,
+   "fin": 83.068,
+   "frase": 12
+  },
+  {
+   "w": "invernadero",
+   "ini": 83.068,
+   "fin": 83.857,
+   "frase": 12
+  },
+  {
+   "w": "gigante",
+   "ini": 83.857,
+   "fin": 84.383,
+   "frase": 12
+  },
+  {
+   "w": "sin",
+   "ini": 84.383,
+   "fin": 84.646,
+   "frase": 12
+  },
+  {
+   "w": "viento,",
+   "ini": 84.646,
+   "fin": 85.171,
+   "frase": 12
+  },
+  {
+   "w": "crecían",
+   "ini": 85.241,
+   "fin": 85.606,
+   "frase": 12
+  },
+  {
+   "w": "rápido…",
+   "ini": 85.606,
+   "fin": 85.971,
+   "frase": 12
+  },
+  {
+   "w": "y",
+   "ini": 86.171,
+   "fin": 86.311,
+   "frase": 12
+  },
+  {
+   "w": "se",
+   "ini": 86.311,
+   "fin": 86.522,
+   "frase": 12
+  },
+  {
+   "w": "partían",
+   "ini": 86.522,
+   "fin": 87.082,
+   "frase": 12
+  },
+  {
+   "w": "solos.",
+   "ini": 87.082,
+   "fin": 87.573,
+   "frase": 12
+  },
+  {
+   "w": "Lo",
+   "ini": 87.713,
+   "fin": 87.878,
+   "frase": 13
+  },
+  {
+   "w": "único",
+   "ini": 87.878,
+   "fin": 88.208,
+   "frase": 13
+  },
+  {
+   "w": "bueno:",
+   "ini": 88.208,
+   "fin": 88.593,
+   "frase": 13
+  },
+  {
+   "w": "ni",
+   "ini": 88.803,
+   "fin": 89.023,
+   "frase": 13
+  },
+  {
+   "w": "un",
+   "ini": 89.023,
+   "fin": 89.243,
+   "frase": 13
+  },
+  {
+   "w": "solo",
+   "ini": 89.243,
+   "fin": 89.61,
+   "frase": 13
+  },
+  {
+   "w": "huracán.",
+   "ini": 89.61,
+   "fin": 90.27,
+   "frase": 13
+  },
+  {
+   "w": "Pero",
+   "ini": 90.71,
+   "fin": 90.957,
+   "frase": 14
+  },
+  {
+   "w": "tranquilo:",
+   "ini": 90.957,
+   "fin": 91.5,
+   "frase": 14
+  },
+  {
+   "w": "es",
+   "ini": 91.71,
+   "fin": 91.918,
+   "frase": 14
+  },
+  {
+   "w": "imposible.",
+   "ini": 91.918,
+   "fin": 92.68,
+   "frase": 14
+  },
+  {
+   "w": "Mientras",
+   "ini": 92.89,
+   "fin": 93.328,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 93.328,
+   "fin": 93.475,
+   "frase": 14
+  },
+  {
+   "w": "Sol",
+   "ini": 93.475,
+   "fin": 93.67,
+   "frase": 14
+  },
+  {
+   "w": "caliente",
+   "ini": 93.67,
+   "fin": 94.108,
+   "frase": 14
+  },
+  {
+   "w": "más",
+   "ini": 94.108,
+   "fin": 94.303,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 94.303,
+   "fin": 94.449,
+   "frase": 14
+  },
+  {
+   "w": "ecuador",
+   "ini": 94.449,
+   "fin": 94.839,
+   "frase": 14
+  },
+  {
+   "w": "que",
+   "ini": 94.839,
+   "fin": 95.034,
+   "frase": 14
+  },
+  {
+   "w": "los",
+   "ini": 95.034,
+   "fin": 95.229,
+   "frase": 14
+  },
+  {
+   "w": "polos,",
+   "ini": 95.229,
+   "fin": 95.57,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 95.85,
+   "fin": 96.033,
+   "frase": 14
+  },
+  {
+   "w": "aire",
+   "ini": 96.033,
+   "fin": 96.337,
+   "frase": 14
+  },
+  {
+   "w": "nunca",
+   "ini": 96.337,
+   "fin": 96.703,
+   "frase": 14
+  },
+  {
+   "w": "dejará",
+   "ini": 96.703,
+   "fin": 97.13,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 97.13,
+   "fin": 97.313,
+   "frase": 14
+  },
+  {
+   "w": "moverse.",
+   "ini": 97.313,
+   "fin": 97.861,
+   "frase": 14
+  },
+  {
+   "w": "Así",
+   "ini": 98.201,
+   "fin": 98.463,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 98.463,
+   "fin": 98.725,
+   "frase": 15
+  },
+  {
+   "w": "la",
+   "ini": 98.725,
+   "fin": 98.922,
+   "frase": 15
+  },
+  {
+   "w": "próxima",
+   "ini": 98.922,
+   "fin": 99.446,
+   "frase": 15
+  },
+  {
+   "w": "vez",
+   "ini": 99.446,
+   "fin": 99.708,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 99.708,
+   "fin": 99.97,
+   "frase": 15
+  },
+  {
+   "w": "te",
+   "ini": 99.97,
+   "fin": 100.167,
+   "frase": 15
+  },
+  {
+   "w": "moleste",
+   "ini": 100.167,
+   "fin": 100.691,
+   "frase": 15
+  },
+  {
+   "w": "el",
+   "ini": 100.691,
+   "fin": 100.887,
+   "frase": 15
+  },
+  {
+   "w": "viento,",
+   "ini": 100.887,
+   "fin": 101.411,
+   "frase": 15
+  },
+  {
+   "w": "recuerda:",
+   "ini": 101.641,
+   "fin": 101.701,
+   "frase": 15
+  },
+  {
+   "w": "te",
+   "ini": 101.771,
+   "fin": 101.954,
+   "frase": 15
+  },
+  {
+   "w": "trae",
+   "ini": 101.954,
+   "fin": 102.26,
+   "frase": 15
+  },
+  {
+   "w": "la",
+   "ini": 102.26,
+   "fin": 102.443,
+   "frase": 15
+  },
+  {
+   "w": "lluvia,",
+   "ini": 102.443,
+   "fin": 102.931,
+   "frase": 15
+  },
+  {
+   "w": "la",
+   "ini": 103.021,
+   "fin": 103.144,
+   "frase": 15
+  },
+  {
+   "w": "comida…",
+   "ini": 103.144,
+   "fin": 103.471,
+   "frase": 15
+  },
+  {
+   "w": "y",
+   "ini": 103.681,
+   "fin": 103.798,
+   "frase": 15
+  },
+  {
+   "w": "el",
+   "ini": 103.798,
+   "fin": 103.972,
+   "frase": 15
+  },
+  {
+   "w": "aire",
+   "ini": 103.972,
+   "fin": 104.263,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 104.263,
+   "fin": 104.496,
+   "frase": 15
+  },
+  {
+   "w": "respiras.",
+   "ini": 104.496,
+   "fin": 105.078,
+   "frase": 15
+  }
+ ]
+}

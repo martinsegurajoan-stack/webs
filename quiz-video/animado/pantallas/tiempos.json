@@ -1,0 +1,2173 @@
+{
+ "duracion": 121.692,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Cien horas pegado a una pantalla. Solo paras seis horas cada noche para dormir. Ni en el autobús, ni en el baño. ¿Qué le pasa a tu cuerpo?",
+   "ini": 0.5,
+   "fin": 8.105
+  },
+  {
+   "n": 2,
+   "texto": "Seis y media de la mañana. Suena la alarma… y lo primero que miras es el móvil.",
+   "ini": 8.585,
+   "fin": 13.323
+  },
+  {
+   "n": 3,
+   "texto": "En el autobús, cabeza agachada. Con el cuello doblado así, tu cabeza pesa como si cargaras más de veinte kilos.",
+   "ini": 13.503,
+   "fin": 20.097
+  },
+  {
+   "n": 4,
+   "texto": "Y como los ojos leen quietos mientras el cuerpo se mueve, el cerebro recibe señales que no cuadran. Mareo.",
+   "ini": 20.277,
+   "fin": 26.365
+  },
+  {
+   "n": 5,
+   "texto": "Oficina. Doce horas delante del ordenador. Normalmente parpadeas unas quince veces por minuto. Mirando una pantalla, puedes bajar a cinco.",
+   "ini": 26.745,
+   "fin": 35.176
+  },
+  {
+   "n": 6,
+   "texto": "El ojo se seca, escuece, se pone rojo… y a media tarde lo ves todo borroso.",
+   "ini": 35.356,
+   "fin": 40.651
+  },
+  {
+   "n": 7,
+   "texto": "Ni al baño vas sin el móvil. Un estudio de 2025 encontró que quienes lo usan en el váter tienen un cuarenta y seis por ciento más de riesgo de hemorroides.",
+   "ini": 40.831,
+   "fin": 50.252
+  },
+  {
+   "n": 8,
+   "texto": "De noche, más pantalla. Esa luz retrasa la melatonina, la hormona que te dice que es hora de dormir. Te duermes tarde. Seis horas. Y vuelta a empezar.",
+   "ini": 50.432,
+   "fin": 59.702
+  },
+  {
+   "n": 9,
+   "texto": "Día tres. Estás irritable, olvidas cosas y cometes más errores. Lo peor: casi no lo notas.",
+   "ini": 60.182,
+   "fin": 66.746
+  },
+  {
+   "n": 10,
+   "texto": "Con seis horas cada noche, en dos semanas tu cerebro rinde como si llevaras una noche entera sin dormir.",
+   "ini": 66.926,
+   "fin": 72.669
+  },
+  {
+   "n": 11,
+   "texto": "Y el móvil vibra en tu bolsillo… pero no hay nada. Se llama vibración fantasma.",
+   "ini": 72.849,
+   "fin": 77.814
+  },
+  {
+   "n": 12,
+   "texto": "Hora sesenta. Espalda y cuello doloridos. Llevas casi dieciséis horas al día sentado.",
+   "ini": 78.194,
+   "fin": 84.126
+  },
+  {
+   "n": 13,
+   "texto": "Y trabajar tanto ni siquiera sirve: a partir de unas cincuenta horas a la semana, cada hora extra rinde cada vez menos.",
+   "ini": 84.306,
+   "fin": 91.295
+  },
+  {
+   "n": 14,
+   "texto": "Si esto dura años, según la OMS, trabajar cincuenta y cinco horas o más a la semana sube un treinta y cinco por ciento el riesgo de ictus.",
+   "ini": 91.475,
+   "fin": 100.281
+  },
+  {
+   "n": 15,
+   "texto": "Hora cien. Ojos rojos, dolor de cabeza, cuello destrozado y un cansancio que no se va.",
+   "ini": 100.761,
+   "fin": 106.866
+  },
+  {
+   "n": 16,
+   "texto": "La buena noticia: casi todo se recupera descansando. Cada veinte minutos, mira algo lejano durante veinte segundos.",
+   "ini": 107.046,
+   "fin": 113.884
+  },
+  {
+   "n": 17,
+   "texto": "Y ahora que has visto este vídeo entero en una pantalla… quizá es buen momento para levantar la vista.",
+   "ini": 114.364,
+   "fin": 119.692
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Cien",
+   "ini": 0.5,
+   "fin": 0.743,
+   "frase": 1
+  },
+  {
+   "w": "horas",
+   "ini": 0.743,
+   "fin": 1.034,
+   "frase": 1
+  },
+  {
+   "w": "pegado",
+   "ini": 1.034,
+   "fin": 1.374,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 1.374,
+   "fin": 1.471,
+   "frase": 1
+  },
+  {
+   "w": "una",
+   "ini": 1.471,
+   "fin": 1.665,
+   "frase": 1
+  },
+  {
+   "w": "pantalla.",
+   "ini": 1.665,
+   "fin": 2.15,
+   "frase": 1
+  },
+  {
+   "w": "Solo",
+   "ini": 2.24,
+   "fin": 2.533,
+   "frase": 1
+  },
+  {
+   "w": "paras",
+   "ini": 2.533,
+   "fin": 2.886,
+   "frase": 1
+  },
+  {
+   "w": "seis",
+   "ini": 2.886,
+   "fin": 3.179,
+   "frase": 1
+  },
+  {
+   "w": "horas",
+   "ini": 3.179,
+   "fin": 3.531,
+   "frase": 1
+  },
+  {
+   "w": "cada",
+   "ini": 3.531,
+   "fin": 3.825,
+   "frase": 1
+  },
+  {
+   "w": "noche",
+   "ini": 3.825,
+   "fin": 4.177,
+   "frase": 1
+  },
+  {
+   "w": "para",
+   "ini": 4.177,
+   "fin": 4.47,
+   "frase": 1
+  },
+  {
+   "w": "dormir.",
+   "ini": 4.47,
+   "fin": 4.94,
+   "frase": 1
+  },
+  {
+   "w": "Ni",
+   "ini": 5.15,
+   "fin": 5.213,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 5.213,
+   "fin": 5.277,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 5.277,
+   "fin": 5.34,
+   "frase": 1
+  },
+  {
+   "w": "autobús,",
+   "ini": 5.34,
+   "fin": 5.53,
+   "frase": 1
+  },
+  {
+   "w": "ni",
+   "ini": 5.62,
+   "fin": 5.864,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 5.864,
+   "fin": 6.108,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 6.108,
+   "fin": 6.352,
+   "frase": 1
+  },
+  {
+   "w": "baño.",
+   "ini": 6.352,
+   "fin": 6.84,
+   "frase": 1
+  },
+  {
+   "w": "¿Qué",
+   "ini": 7.04,
+   "fin": 7.245,
+   "frase": 1
+  },
+  {
+   "w": "le",
+   "ini": 7.245,
+   "fin": 7.368,
+   "frase": 1
+  },
+  {
+   "w": "pasa",
+   "ini": 7.368,
+   "fin": 7.573,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 7.573,
+   "fin": 7.655,
+   "frase": 1
+  },
+  {
+   "w": "tu",
+   "ini": 7.655,
+   "fin": 7.778,
+   "frase": 1
+  },
+  {
+   "w": "cuerpo?",
+   "ini": 7.778,
+   "fin": 8.105,
+   "frase": 1
+  },
+  {
+   "w": "Seis",
+   "ini": 8.585,
+   "fin": 8.834,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 8.834,
+   "fin": 8.933,
+   "frase": 2
+  },
+  {
+   "w": "media",
+   "ini": 8.933,
+   "fin": 9.231,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 9.231,
+   "fin": 9.379,
+   "frase": 2
+  },
+  {
+   "w": "la",
+   "ini": 9.379,
+   "fin": 9.528,
+   "frase": 2
+  },
+  {
+   "w": "mañana.",
+   "ini": 9.528,
+   "fin": 9.925,
+   "frase": 2
+  },
+  {
+   "w": "Suena",
+   "ini": 10.145,
+   "fin": 10.474,
+   "frase": 2
+  },
+  {
+   "w": "la",
+   "ini": 10.474,
+   "fin": 10.638,
+   "frase": 2
+  },
+  {
+   "w": "alarma…",
+   "ini": 10.638,
+   "fin": 11.075,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 11.305,
+   "fin": 11.417,
+   "frase": 2
+  },
+  {
+   "w": "lo",
+   "ini": 11.417,
+   "fin": 11.586,
+   "frase": 2
+  },
+  {
+   "w": "primero",
+   "ini": 11.586,
+   "fin": 12.034,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 12.034,
+   "fin": 12.258,
+   "frase": 2
+  },
+  {
+   "w": "miras",
+   "ini": 12.258,
+   "fin": 12.594,
+   "frase": 2
+  },
+  {
+   "w": "es",
+   "ini": 12.594,
+   "fin": 12.762,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 12.762,
+   "fin": 12.93,
+   "frase": 2
+  },
+  {
+   "w": "móvil.",
+   "ini": 12.93,
+   "fin": 13.323,
+   "frase": 2
+  },
+  {
+   "w": "En",
+   "ini": 13.503,
+   "fin": 13.659,
+   "frase": 3
+  },
+  {
+   "w": "el",
+   "ini": 13.659,
+   "fin": 13.815,
+   "frase": 3
+  },
+  {
+   "w": "autobús,",
+   "ini": 13.815,
+   "fin": 14.283,
+   "frase": 3
+  },
+  {
+   "w": "cabeza",
+   "ini": 14.483,
+   "fin": 14.903,
+   "frase": 3
+  },
+  {
+   "w": "agachada.",
+   "ini": 14.903,
+   "fin": 15.503,
+   "frase": 3
+  },
+  {
+   "w": "Con",
+   "ini": 15.713,
+   "fin": 15.907,
+   "frase": 3
+  },
+  {
+   "w": "el",
+   "ini": 15.907,
+   "fin": 16.052,
+   "frase": 3
+  },
+  {
+   "w": "cuello",
+   "ini": 16.052,
+   "fin": 16.392,
+   "frase": 3
+  },
+  {
+   "w": "doblado",
+   "ini": 16.392,
+   "fin": 16.78,
+   "frase": 3
+  },
+  {
+   "w": "así,",
+   "ini": 16.78,
+   "fin": 17.023,
+   "frase": 3
+  },
+  {
+   "w": "tu",
+   "ini": 17.183,
+   "fin": 17.348,
+   "frase": 3
+  },
+  {
+   "w": "cabeza",
+   "ini": 17.348,
+   "fin": 17.732,
+   "frase": 3
+  },
+  {
+   "w": "pesa",
+   "ini": 17.732,
+   "fin": 18.007,
+   "frase": 3
+  },
+  {
+   "w": "como",
+   "ini": 18.007,
+   "fin": 18.282,
+   "frase": 3
+  },
+  {
+   "w": "si",
+   "ini": 18.282,
+   "fin": 18.447,
+   "frase": 3
+  },
+  {
+   "w": "cargaras",
+   "ini": 18.447,
+   "fin": 18.942,
+   "frase": 3
+  },
+  {
+   "w": "más",
+   "ini": 18.942,
+   "fin": 19.162,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 19.162,
+   "fin": 19.327,
+   "frase": 3
+  },
+  {
+   "w": "veinte",
+   "ini": 19.327,
+   "fin": 19.712,
+   "frase": 3
+  },
+  {
+   "w": "kilos.",
+   "ini": 19.712,
+   "fin": 20.097,
+   "frase": 3
+  },
+  {
+   "w": "Y",
+   "ini": 20.277,
+   "fin": 20.385,
+   "frase": 4
+  },
+  {
+   "w": "como",
+   "ini": 20.385,
+   "fin": 20.657,
+   "frase": 4
+  },
+  {
+   "w": "los",
+   "ini": 20.657,
+   "fin": 20.874,
+   "frase": 4
+  },
+  {
+   "w": "ojos",
+   "ini": 20.874,
+   "fin": 21.145,
+   "frase": 4
+  },
+  {
+   "w": "leen",
+   "ini": 21.145,
+   "fin": 21.417,
+   "frase": 4
+  },
+  {
+   "w": "quietos",
+   "ini": 21.417,
+   "fin": 21.852,
+   "frase": 4
+  },
+  {
+   "w": "mientras",
+   "ini": 21.852,
+   "fin": 22.34,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 22.34,
+   "fin": 22.503,
+   "frase": 4
+  },
+  {
+   "w": "cuerpo",
+   "ini": 22.503,
+   "fin": 22.883,
+   "frase": 4
+  },
+  {
+   "w": "se",
+   "ini": 22.883,
+   "fin": 23.046,
+   "frase": 4
+  },
+  {
+   "w": "mueve,",
+   "ini": 23.046,
+   "fin": 23.427,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 23.497,
+   "fin": 23.644,
+   "frase": 4
+  },
+  {
+   "w": "cerebro",
+   "ini": 23.644,
+   "fin": 24.039,
+   "frase": 4
+  },
+  {
+   "w": "recibe",
+   "ini": 24.039,
+   "fin": 24.384,
+   "frase": 4
+  },
+  {
+   "w": "señales",
+   "ini": 24.384,
+   "fin": 24.778,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 24.778,
+   "fin": 24.975,
+   "frase": 4
+  },
+  {
+   "w": "no",
+   "ini": 24.975,
+   "fin": 25.123,
+   "frase": 4
+  },
+  {
+   "w": "cuadran.",
+   "ini": 25.123,
+   "fin": 25.567,
+   "frase": 4
+  },
+  {
+   "w": "Mareo.",
+   "ini": 25.777,
+   "fin": 26.365,
+   "frase": 4
+  },
+  {
+   "w": "Oficina.",
+   "ini": 26.745,
+   "fin": 27.295,
+   "frase": 5
+  },
+  {
+   "w": "Doce",
+   "ini": 27.505,
+   "fin": 27.782,
+   "frase": 5
+  },
+  {
+   "w": "horas",
+   "ini": 27.782,
+   "fin": 28.116,
+   "frase": 5
+  },
+  {
+   "w": "delante",
+   "ini": 28.116,
+   "fin": 28.561,
+   "frase": 5
+  },
+  {
+   "w": "del",
+   "ini": 28.561,
+   "fin": 28.783,
+   "frase": 5
+  },
+  {
+   "w": "ordenador.",
+   "ini": 28.783,
+   "fin": 29.395,
+   "frase": 5
+  },
+  {
+   "w": "Normalmente",
+   "ini": 29.585,
+   "fin": 30.242,
+   "frase": 5
+  },
+  {
+   "w": "parpadeas",
+   "ini": 30.242,
+   "fin": 30.79,
+   "frase": 5
+  },
+  {
+   "w": "unas",
+   "ini": 30.79,
+   "fin": 31.064,
+   "frase": 5
+  },
+  {
+   "w": "quince",
+   "ini": 31.064,
+   "fin": 31.448,
+   "frase": 5
+  },
+  {
+   "w": "veces",
+   "ini": 31.448,
+   "fin": 31.777,
+   "frase": 5
+  },
+  {
+   "w": "por",
+   "ini": 31.777,
+   "fin": 31.996,
+   "frase": 5
+  },
+  {
+   "w": "minuto.",
+   "ini": 31.996,
+   "fin": 32.435,
+   "frase": 5
+  },
+  {
+   "w": "Mirando",
+   "ini": 32.665,
+   "fin": 33.075,
+   "frase": 5
+  },
+  {
+   "w": "una",
+   "ini": 33.075,
+   "fin": 33.281,
+   "frase": 5
+  },
+  {
+   "w": "pantalla,",
+   "ini": 33.281,
+   "fin": 33.795,
+   "frase": 5
+  },
+  {
+   "w": "puedes",
+   "ini": 33.955,
+   "fin": 34.343,
+   "frase": 5
+  },
+  {
+   "w": "bajar",
+   "ini": 34.343,
+   "fin": 34.676,
+   "frase": 5
+  },
+  {
+   "w": "a",
+   "ini": 34.676,
+   "fin": 34.787,
+   "frase": 5
+  },
+  {
+   "w": "cinco.",
+   "ini": 34.787,
+   "fin": 35.176,
+   "frase": 5
+  },
+  {
+   "w": "El",
+   "ini": 35.356,
+   "fin": 35.552,
+   "frase": 6
+  },
+  {
+   "w": "ojo",
+   "ini": 35.552,
+   "fin": 35.815,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 35.815,
+   "fin": 36.012,
+   "frase": 6
+  },
+  {
+   "w": "seca,",
+   "ini": 36.012,
+   "fin": 36.406,
+   "frase": 6
+  },
+  {
+   "w": "escuece,",
+   "ini": 36.636,
+   "fin": 37.036,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 37.166,
+   "fin": 37.399,
+   "frase": 6
+  },
+  {
+   "w": "pone",
+   "ini": 37.399,
+   "fin": 37.788,
+   "frase": 6
+  },
+  {
+   "w": "rojo…",
+   "ini": 37.788,
+   "fin": 38.256,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 38.476,
+   "fin": 38.593,
+   "frase": 6
+  },
+  {
+   "w": "a",
+   "ini": 38.593,
+   "fin": 38.711,
+   "frase": 6
+  },
+  {
+   "w": "media",
+   "ini": 38.711,
+   "fin": 39.064,
+   "frase": 6
+  },
+  {
+   "w": "tarde",
+   "ini": 39.064,
+   "fin": 39.416,
+   "frase": 6
+  },
+  {
+   "w": "lo",
+   "ini": 39.416,
+   "fin": 39.593,
+   "frase": 6
+  },
+  {
+   "w": "ves",
+   "ini": 39.593,
+   "fin": 39.828,
+   "frase": 6
+  },
+  {
+   "w": "todo",
+   "ini": 39.828,
+   "fin": 40.122,
+   "frase": 6
+  },
+  {
+   "w": "borroso.",
+   "ini": 40.122,
+   "fin": 40.651,
+   "frase": 6
+  },
+  {
+   "w": "Ni",
+   "ini": 40.831,
+   "fin": 41.007,
+   "frase": 7
+  },
+  {
+   "w": "al",
+   "ini": 41.007,
+   "fin": 41.183,
+   "frase": 7
+  },
+  {
+   "w": "baño",
+   "ini": 41.183,
+   "fin": 41.476,
+   "frase": 7
+  },
+  {
+   "w": "vas",
+   "ini": 41.476,
+   "fin": 41.711,
+   "frase": 7
+  },
+  {
+   "w": "sin",
+   "ini": 41.711,
+   "fin": 41.945,
+   "frase": 7
+  },
+  {
+   "w": "el",
+   "ini": 41.945,
+   "fin": 42.121,
+   "frase": 7
+  },
+  {
+   "w": "móvil.",
+   "ini": 42.121,
+   "fin": 42.531,
+   "frase": 7
+  },
+  {
+   "w": "Un",
+   "ini": 42.701,
+   "fin": 42.88,
+   "frase": 7
+  },
+  {
+   "w": "estudio",
+   "ini": 42.88,
+   "fin": 43.355,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 43.355,
+   "fin": 43.534,
+   "frase": 7
+  },
+  {
+   "w": "2025",
+   "ini": 43.534,
+   "fin": 43.831,
+   "frase": 7
+  },
+  {
+   "w": "encontró",
+   "ini": 43.831,
+   "fin": 44.366,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 44.366,
+   "fin": 44.604,
+   "frase": 7
+  },
+  {
+   "w": "quienes",
+   "ini": 44.604,
+   "fin": 45.079,
+   "frase": 7
+  },
+  {
+   "w": "lo",
+   "ini": 45.079,
+   "fin": 45.258,
+   "frase": 7
+  },
+  {
+   "w": "usan",
+   "ini": 45.258,
+   "fin": 45.555,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 45.555,
+   "fin": 45.733,
+   "frase": 7
+  },
+  {
+   "w": "el",
+   "ini": 45.733,
+   "fin": 45.912,
+   "frase": 7
+  },
+  {
+   "w": "váter",
+   "ini": 45.912,
+   "fin": 46.268,
+   "frase": 7
+  },
+  {
+   "w": "tienen",
+   "ini": 46.268,
+   "fin": 46.685,
+   "frase": 7
+  },
+  {
+   "w": "un",
+   "ini": 46.685,
+   "fin": 46.863,
+   "frase": 7
+  },
+  {
+   "w": "cuarenta",
+   "ini": 46.863,
+   "fin": 47.398,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 47.398,
+   "fin": 47.517,
+   "frase": 7
+  },
+  {
+   "w": "seis",
+   "ini": 47.517,
+   "fin": 47.814,
+   "frase": 7
+  },
+  {
+   "w": "por",
+   "ini": 47.814,
+   "fin": 48.052,
+   "frase": 7
+  },
+  {
+   "w": "ciento",
+   "ini": 48.052,
+   "fin": 48.468,
+   "frase": 7
+  },
+  {
+   "w": "más",
+   "ini": 48.468,
+   "fin": 48.706,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 48.706,
+   "fin": 48.884,
+   "frase": 7
+  },
+  {
+   "w": "riesgo",
+   "ini": 48.884,
+   "fin": 49.3,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 49.3,
+   "fin": 49.479,
+   "frase": 7
+  },
+  {
+   "w": "hemorroides.",
+   "ini": 49.479,
+   "fin": 50.252,
+   "frase": 7
+  },
+  {
+   "w": "De",
+   "ini": 50.432,
+   "fin": 50.603,
+   "frase": 8
+  },
+  {
+   "w": "noche,",
+   "ini": 50.603,
+   "fin": 51.002,
+   "frase": 8
+  },
+  {
+   "w": "más",
+   "ini": 51.152,
+   "fin": 51.406,
+   "frase": 8
+  },
+  {
+   "w": "pantalla.",
+   "ini": 51.406,
+   "fin": 52.042,
+   "frase": 8
+  },
+  {
+   "w": "Esa",
+   "ini": 52.272,
+   "fin": 52.453,
+   "frase": 8
+  },
+  {
+   "w": "luz",
+   "ini": 52.453,
+   "fin": 52.635,
+   "frase": 8
+  },
+  {
+   "w": "retrasa",
+   "ini": 52.635,
+   "fin": 52.999,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 52.999,
+   "fin": 53.136,
+   "frase": 8
+  },
+  {
+   "w": "melatonina,",
+   "ini": 53.136,
+   "fin": 53.682,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 53.752,
+   "fin": 53.92,
+   "frase": 8
+  },
+  {
+   "w": "hormona",
+   "ini": 53.92,
+   "fin": 54.371,
+   "frase": 8
+  },
+  {
+   "w": "que",
+   "ini": 54.371,
+   "fin": 54.596,
+   "frase": 8
+  },
+  {
+   "w": "te",
+   "ini": 54.596,
+   "fin": 54.765,
+   "frase": 8
+  },
+  {
+   "w": "dice",
+   "ini": 54.765,
+   "fin": 55.047,
+   "frase": 8
+  },
+  {
+   "w": "que",
+   "ini": 55.047,
+   "fin": 55.272,
+   "frase": 8
+  },
+  {
+   "w": "es",
+   "ini": 55.272,
+   "fin": 55.441,
+   "frase": 8
+  },
+  {
+   "w": "hora",
+   "ini": 55.441,
+   "fin": 55.722,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 55.722,
+   "fin": 55.891,
+   "frase": 8
+  },
+  {
+   "w": "dormir.",
+   "ini": 55.891,
+   "fin": 56.342,
+   "frase": 8
+  },
+  {
+   "w": "Te",
+   "ini": 56.572,
+   "fin": 56.705,
+   "frase": 8
+  },
+  {
+   "w": "duermes",
+   "ini": 56.705,
+   "fin": 57.06,
+   "frase": 8
+  },
+  {
+   "w": "tarde.",
+   "ini": 57.06,
+   "fin": 57.372,
+   "frase": 8
+  },
+  {
+   "w": "Seis",
+   "ini": 57.582,
+   "fin": 57.89,
+   "frase": 8
+  },
+  {
+   "w": "horas.",
+   "ini": 57.89,
+   "fin": 58.322,
+   "frase": 8
+  },
+  {
+   "w": "Y",
+   "ini": 58.572,
+   "fin": 58.685,
+   "frase": 8
+  },
+  {
+   "w": "vuelta",
+   "ini": 58.685,
+   "fin": 59.08,
+   "frase": 8
+  },
+  {
+   "w": "a",
+   "ini": 59.08,
+   "fin": 59.193,
+   "frase": 8
+  },
+  {
+   "w": "empezar.",
+   "ini": 59.193,
+   "fin": 59.702,
+   "frase": 8
+  },
+  {
+   "w": "Día",
+   "ini": 60.182,
+   "fin": 60.474,
+   "frase": 9
+  },
+  {
+   "w": "tres.",
+   "ini": 60.474,
+   "fin": 60.912,
+   "frase": 9
+  },
+  {
+   "w": "Estás",
+   "ini": 61.142,
+   "fin": 61.499,
+   "frase": 9
+  },
+  {
+   "w": "irritable,",
+   "ini": 61.499,
+   "fin": 62.152,
+   "frase": 9
+  },
+  {
+   "w": "olvidas",
+   "ini": 62.312,
+   "fin": 62.842,
+   "frase": 9
+  },
+  {
+   "w": "cosas",
+   "ini": 62.842,
+   "fin": 63.239,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 63.239,
+   "fin": 63.372,
+   "frase": 9
+  },
+  {
+   "w": "cometes",
+   "ini": 63.372,
+   "fin": 63.901,
+   "frase": 9
+  },
+  {
+   "w": "más",
+   "ini": 63.901,
+   "fin": 64.166,
+   "frase": 9
+  },
+  {
+   "w": "errores.",
+   "ini": 64.166,
+   "fin": 64.762,
+   "frase": 9
+  },
+  {
+   "w": "Lo",
+   "ini": 64.902,
+   "fin": 65.036,
+   "frase": 9
+  },
+  {
+   "w": "peor:",
+   "ini": 65.036,
+   "fin": 65.302,
+   "frase": 9
+  },
+  {
+   "w": "casi",
+   "ini": 65.522,
+   "fin": 65.862,
+   "frase": 9
+  },
+  {
+   "w": "no",
+   "ini": 65.862,
+   "fin": 66.066,
+   "frase": 9
+  },
+  {
+   "w": "lo",
+   "ini": 66.066,
+   "fin": 66.27,
+   "frase": 9
+  },
+  {
+   "w": "notas.",
+   "ini": 66.27,
+   "fin": 66.746,
+   "frase": 9
+  },
+  {
+   "w": "Con",
+   "ini": 66.926,
+   "fin": 67.127,
+   "frase": 10
+  },
+  {
+   "w": "seis",
+   "ini": 67.127,
+   "fin": 67.379,
+   "frase": 10
+  },
+  {
+   "w": "horas",
+   "ini": 67.379,
+   "fin": 67.681,
+   "frase": 10
+  },
+  {
+   "w": "cada",
+   "ini": 67.681,
+   "fin": 67.933,
+   "frase": 10
+  },
+  {
+   "w": "noche,",
+   "ini": 67.933,
+   "fin": 68.286,
+   "frase": 10
+  },
+  {
+   "w": "en",
+   "ini": 68.416,
+   "fin": 68.579,
+   "frase": 10
+  },
+  {
+   "w": "dos",
+   "ini": 68.579,
+   "fin": 68.798,
+   "frase": 10
+  },
+  {
+   "w": "semanas",
+   "ini": 68.798,
+   "fin": 69.234,
+   "frase": 10
+  },
+  {
+   "w": "tu",
+   "ini": 69.234,
+   "fin": 69.397,
+   "frase": 10
+  },
+  {
+   "w": "cerebro",
+   "ini": 69.397,
+   "fin": 69.834,
+   "frase": 10
+  },
+  {
+   "w": "rinde",
+   "ini": 69.834,
+   "fin": 70.161,
+   "frase": 10
+  },
+  {
+   "w": "como",
+   "ini": 70.161,
+   "fin": 70.433,
+   "frase": 10
+  },
+  {
+   "w": "si",
+   "ini": 70.433,
+   "fin": 70.597,
+   "frase": 10
+  },
+  {
+   "w": "llevaras",
+   "ini": 70.597,
+   "fin": 71.088,
+   "frase": 10
+  },
+  {
+   "w": "una",
+   "ini": 71.088,
+   "fin": 71.306,
+   "frase": 10
+  },
+  {
+   "w": "noche",
+   "ini": 71.306,
+   "fin": 71.633,
+   "frase": 10
+  },
+  {
+   "w": "entera",
+   "ini": 71.633,
+   "fin": 72.015,
+   "frase": 10
+  },
+  {
+   "w": "sin",
+   "ini": 72.015,
+   "fin": 72.233,
+   "frase": 10
+  },
+  {
+   "w": "dormir.",
+   "ini": 72.233,
+   "fin": 72.669,
+   "frase": 10
+  },
+  {
+   "w": "Y",
+   "ini": 72.849,
+   "fin": 72.953,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 72.953,
+   "fin": 73.108,
+   "frase": 11
+  },
+  {
+   "w": "móvil",
+   "ini": 73.108,
+   "fin": 73.419,
+   "frase": 11
+  },
+  {
+   "w": "vibra",
+   "ini": 73.419,
+   "fin": 73.73,
+   "frase": 11
+  },
+  {
+   "w": "en",
+   "ini": 73.73,
+   "fin": 73.885,
+   "frase": 11
+  },
+  {
+   "w": "tu",
+   "ini": 73.885,
+   "fin": 74.041,
+   "frase": 11
+  },
+  {
+   "w": "bolsillo…",
+   "ini": 74.041,
+   "fin": 74.559,
+   "frase": 11
+  },
+  {
+   "w": "pero",
+   "ini": 74.769,
+   "fin": 75.022,
+   "frase": 11
+  },
+  {
+   "w": "no",
+   "ini": 75.022,
+   "fin": 75.173,
+   "frase": 11
+  },
+  {
+   "w": "hay",
+   "ini": 75.173,
+   "fin": 75.376,
+   "frase": 11
+  },
+  {
+   "w": "nada.",
+   "ini": 75.376,
+   "fin": 75.679,
+   "frase": 11
+  },
+  {
+   "w": "Se",
+   "ini": 75.829,
+   "fin": 76.034,
+   "frase": 11
+  },
+  {
+   "w": "llama",
+   "ini": 76.034,
+   "fin": 76.445,
+   "frase": 11
+  },
+  {
+   "w": "vibración",
+   "ini": 76.445,
+   "fin": 77.13,
+   "frase": 11
+  },
+  {
+   "w": "fantasma.",
+   "ini": 77.13,
+   "fin": 77.814,
+   "frase": 11
+  },
+  {
+   "w": "Hora",
+   "ini": 78.194,
+   "fin": 78.501,
+   "frase": 12
+  },
+  {
+   "w": "sesenta.",
+   "ini": 78.501,
+   "fin": 79.054,
+   "frase": 12
+  },
+  {
+   "w": "Espalda",
+   "ini": 79.284,
+   "fin": 79.778,
+   "frase": 12
+  },
+  {
+   "w": "y",
+   "ini": 79.778,
+   "fin": 79.902,
+   "frase": 12
+  },
+  {
+   "w": "cuello",
+   "ini": 79.902,
+   "fin": 80.335,
+   "frase": 12
+  },
+  {
+   "w": "doloridos.",
+   "ini": 80.335,
+   "fin": 81.014,
+   "frase": 12
+  },
+  {
+   "w": "Llevas",
+   "ini": 81.324,
+   "fin": 81.77,
+   "frase": 12
+  },
+  {
+   "w": "casi",
+   "ini": 81.77,
+   "fin": 82.088,
+   "frase": 12
+  },
+  {
+   "w": "dieciséis",
+   "ini": 82.088,
+   "fin": 82.725,
+   "frase": 12
+  },
+  {
+   "w": "horas",
+   "ini": 82.725,
+   "fin": 83.107,
+   "frase": 12
+  },
+  {
+   "w": "al",
+   "ini": 83.107,
+   "fin": 83.298,
+   "frase": 12
+  },
+  {
+   "w": "día",
+   "ini": 83.298,
+   "fin": 83.553,
+   "frase": 12
+  },
+  {
+   "w": "sentado.",
+   "ini": 83.553,
+   "fin": 84.126,
+   "frase": 12
+  },
+  {
+   "w": "Y",
+   "ini": 84.306,
+   "fin": 84.407,
+   "frase": 13
+  },
+  {
+   "w": "trabajar",
+   "ini": 84.407,
+   "fin": 84.862,
+   "frase": 13
+  },
+  {
+   "w": "tanto",
+   "ini": 84.862,
+   "fin": 85.165,
+   "frase": 13
+  },
+  {
+   "w": "ni",
+   "ini": 85.165,
+   "fin": 85.317,
+   "frase": 13
+  },
+  {
+   "w": "siquiera",
+   "ini": 85.317,
+   "fin": 85.772,
+   "frase": 13
+  },
+  {
+   "w": "sirve:",
+   "ini": 85.772,
+   "fin": 86.126,
+   "frase": 13
+  },
+  {
+   "w": "a",
+   "ini": 86.346,
+   "fin": 86.443,
+   "frase": 13
+  },
+  {
+   "w": "partir",
+   "ini": 86.443,
+   "fin": 86.786,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 86.786,
+   "fin": 86.933,
+   "frase": 13
+  },
+  {
+   "w": "unas",
+   "ini": 86.933,
+   "fin": 87.177,
+   "frase": 13
+  },
+  {
+   "w": "cincuenta",
+   "ini": 87.177,
+   "fin": 87.666,
+   "frase": 13
+  },
+  {
+   "w": "horas",
+   "ini": 87.666,
+   "fin": 87.96,
+   "frase": 13
+  },
+  {
+   "w": "a",
+   "ini": 87.96,
+   "fin": 88.058,
+   "frase": 13
+  },
+  {
+   "w": "la",
+   "ini": 88.058,
+   "fin": 88.204,
+   "frase": 13
+  },
+  {
+   "w": "semana,",
+   "ini": 88.204,
+   "fin": 88.596,
+   "frase": 13
+  },
+  {
+   "w": "cada",
+   "ini": 88.896,
+   "fin": 89.211,
+   "frase": 13
+  },
+  {
+   "w": "hora",
+   "ini": 89.211,
+   "fin": 89.527,
+   "frase": 13
+  },
+  {
+   "w": "extra",
+   "ini": 89.527,
+   "fin": 89.906,
+   "frase": 13
+  },
+  {
+   "w": "rinde",
+   "ini": 89.906,
+   "fin": 90.285,
+   "frase": 13
+  },
+  {
+   "w": "cada",
+   "ini": 90.285,
+   "fin": 90.601,
+   "frase": 13
+  },
+  {
+   "w": "vez",
+   "ini": 90.601,
+   "fin": 90.853,
+   "frase": 13
+  },
+  {
+   "w": "menos.",
+   "ini": 90.853,
+   "fin": 91.295,
+   "frase": 13
+  },
+  {
+   "w": "Si",
+   "ini": 91.475,
+   "fin": 91.646,
+   "frase": 14
+  },
+  {
+   "w": "esto",
+   "ini": 91.646,
+   "fin": 91.93,
+   "frase": 14
+  },
+  {
+   "w": "dura",
+   "ini": 91.93,
+   "fin": 92.214,
+   "frase": 14
+  },
+  {
+   "w": "años,",
+   "ini": 92.214,
+   "fin": 92.555,
+   "frase": 14
+  },
+  {
+   "w": "según",
+   "ini": 92.795,
+   "fin": 92.98,
+   "frase": 14
+  },
+  {
+   "w": "la",
+   "ini": 92.98,
+   "fin": 93.072,
+   "frase": 14
+  },
+  {
+   "w": "OMS,",
+   "ini": 93.072,
+   "fin": 93.225,
+   "frase": 14
+  },
+  {
+   "w": "trabajar",
+   "ini": 93.325,
+   "fin": 93.916,
+   "frase": 14
+  },
+  {
+   "w": "cincuenta",
+   "ini": 93.916,
+   "fin": 94.572,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 94.572,
+   "fin": 94.703,
+   "frase": 14
+  },
+  {
+   "w": "cinco",
+   "ini": 94.703,
+   "fin": 95.097,
+   "frase": 14
+  },
+  {
+   "w": "horas",
+   "ini": 95.097,
+   "fin": 95.491,
+   "frase": 14
+  },
+  {
+   "w": "o",
+   "ini": 95.491,
+   "fin": 95.622,
+   "frase": 14
+  },
+  {
+   "w": "más",
+   "ini": 95.622,
+   "fin": 95.884,
+   "frase": 14
+  },
+  {
+   "w": "a",
+   "ini": 95.884,
+   "fin": 96.016,
+   "frase": 14
+  },
+  {
+   "w": "la",
+   "ini": 96.016,
+   "fin": 96.212,
+   "frase": 14
+  },
+  {
+   "w": "semana",
+   "ini": 96.212,
+   "fin": 96.672,
+   "frase": 14
+  },
+  {
+   "w": "sube",
+   "ini": 96.672,
+   "fin": 97.0,
+   "frase": 14
+  },
+  {
+   "w": "un",
+   "ini": 97.0,
+   "fin": 97.197,
+   "frase": 14
+  },
+  {
+   "w": "treinta",
+   "ini": 97.197,
+   "fin": 97.722,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 97.722,
+   "fin": 97.853,
+   "frase": 14
+  },
+  {
+   "w": "cinco",
+   "ini": 97.853,
+   "fin": 98.246,
+   "frase": 14
+  },
+  {
+   "w": "por",
+   "ini": 98.246,
+   "fin": 98.509,
+   "frase": 14
+  },
+  {
+   "w": "ciento",
+   "ini": 98.509,
+   "fin": 98.968,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 98.968,
+   "fin": 99.165,
+   "frase": 14
+  },
+  {
+   "w": "riesgo",
+   "ini": 99.165,
+   "fin": 99.624,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 99.624,
+   "fin": 99.821,
+   "frase": 14
+  },
+  {
+   "w": "ictus.",
+   "ini": 99.821,
+   "fin": 100.281,
+   "frase": 14
+  },
+  {
+   "w": "Hora",
+   "ini": 100.761,
+   "fin": 101.02,
+   "frase": 15
+  },
+  {
+   "w": "cien.",
+   "ini": 101.02,
+   "fin": 101.331,
+   "frase": 15
+  },
+  {
+   "w": "Ojos",
+   "ini": 101.561,
+   "fin": 102.298,
+   "frase": 15
+  },
+  {
+   "w": "rojos,",
+   "ini": 102.298,
+   "fin": 103.331,
+   "frase": 15
+  },
+  {
+   "w": "dolor",
+   "ini": 103.451,
+   "fin": 103.511,
+   "frase": 15
+  },
+  {
+   "w": "de",
+   "ini": 103.511,
+   "fin": 103.541,
+   "frase": 15
+  },
+  {
+   "w": "cabeza,",
+   "ini": 103.541,
+   "fin": 103.621,
+   "frase": 15
+  },
+  {
+   "w": "cuello",
+   "ini": 103.741,
+   "fin": 104.206,
+   "frase": 15
+  },
+  {
+   "w": "destrozado",
+   "ini": 104.206,
+   "fin": 104.938,
+   "frase": 15
+  },
+  {
+   "w": "y",
+   "ini": 104.938,
+   "fin": 105.071,
+   "frase": 15
+  },
+  {
+   "w": "un",
+   "ini": 105.071,
+   "fin": 105.27,
+   "frase": 15
+  },
+  {
+   "w": "cansancio",
+   "ini": 105.27,
+   "fin": 105.935,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 105.935,
+   "fin": 106.201,
+   "frase": 15
+  },
+  {
+   "w": "no",
+   "ini": 106.201,
+   "fin": 106.401,
+   "frase": 15
+  },
+  {
+   "w": "se",
+   "ini": 106.401,
+   "fin": 106.6,
+   "frase": 15
+  },
+  {
+   "w": "va.",
+   "ini": 106.6,
+   "fin": 106.866,
+   "frase": 15
+  },
+  {
+   "w": "La",
+   "ini": 107.046,
+   "fin": 107.191,
+   "frase": 16
+  },
+  {
+   "w": "buena",
+   "ini": 107.191,
+   "fin": 107.481,
+   "frase": 16
+  },
+  {
+   "w": "noticia:",
+   "ini": 107.481,
+   "fin": 107.916,
+   "frase": 16
+  },
+  {
+   "w": "casi",
+   "ini": 108.206,
+   "fin": 108.468,
+   "frase": 16
+  },
+  {
+   "w": "todo",
+   "ini": 108.468,
+   "fin": 108.729,
+   "frase": 16
+  },
+  {
+   "w": "se",
+   "ini": 108.729,
+   "fin": 108.886,
+   "frase": 16
+  },
+  {
+   "w": "recupera",
+   "ini": 108.886,
+   "fin": 109.357,
+   "frase": 16
+  },
+  {
+   "w": "descansando.",
+   "ini": 109.357,
+   "fin": 110.036,
+   "frase": 16
+  },
+  {
+   "w": "Cada",
+   "ini": 110.106,
+   "fin": 110.404,
+   "frase": 16
+  },
+  {
+   "w": "veinte",
+   "ini": 110.404,
+   "fin": 110.821,
+   "frase": 16
+  },
+  {
+   "w": "minutos,",
+   "ini": 110.821,
+   "fin": 111.356,
+   "frase": 16
+  },
+  {
+   "w": "mira",
+   "ini": 111.446,
+   "fin": 111.737,
+   "frase": 16
+  },
+  {
+   "w": "algo",
+   "ini": 111.737,
+   "fin": 112.027,
+   "frase": 16
+  },
+  {
+   "w": "lejano",
+   "ini": 112.027,
+   "fin": 112.433,
+   "frase": 16
+  },
+  {
+   "w": "durante",
+   "ini": 112.433,
+   "fin": 112.897,
+   "frase": 16
+  },
+  {
+   "w": "veinte",
+   "ini": 112.897,
+   "fin": 113.303,
+   "frase": 16
+  },
+  {
+   "w": "segundos.",
+   "ini": 113.303,
+   "fin": 113.884,
+   "frase": 16
+  },
+  {
+   "w": "Y",
+   "ini": 114.364,
+   "fin": 114.468,
+   "frase": 17
+  },
+  {
+   "w": "ahora",
+   "ini": 114.468,
+   "fin": 114.781,
+   "frase": 17
+  },
+  {
+   "w": "que",
+   "ini": 114.781,
+   "fin": 114.989,
+   "frase": 17
+  },
+  {
+   "w": "has",
+   "ini": 114.989,
+   "fin": 115.197,
+   "frase": 17
+  },
+  {
+   "w": "visto",
+   "ini": 115.197,
+   "fin": 115.51,
+   "frase": 17
+  },
+  {
+   "w": "este",
+   "ini": 115.51,
+   "fin": 115.771,
+   "frase": 17
+  },
+  {
+   "w": "vídeo",
+   "ini": 115.771,
+   "fin": 116.083,
+   "frase": 17
+  },
+  {
+   "w": "entero",
+   "ini": 116.083,
+   "fin": 116.448,
+   "frase": 17
+  },
+  {
+   "w": "en",
+   "ini": 116.448,
+   "fin": 116.604,
+   "frase": 17
+  },
+  {
+   "w": "una",
+   "ini": 116.604,
+   "fin": 116.813,
+   "frase": 17
+  },
+  {
+   "w": "pantalla…",
+   "ini": 116.813,
+   "fin": 117.334,
+   "frase": 17
+  },
+  {
+   "w": "quizá",
+   "ini": 117.434,
+   "fin": 117.728,
+   "frase": 17
+  },
+  {
+   "w": "es",
+   "ini": 117.728,
+   "fin": 117.876,
+   "frase": 17
+  },
+  {
+   "w": "buen",
+   "ini": 117.876,
+   "fin": 118.121,
+   "frase": 17
+  },
+  {
+   "w": "momento",
+   "ini": 118.121,
+   "fin": 118.514,
+   "frase": 17
+  },
+  {
+   "w": "para",
+   "ini": 118.514,
+   "fin": 118.759,
+   "frase": 17
+  },
+  {
+   "w": "levantar",
+   "ini": 118.759,
+   "fin": 119.201,
+   "frase": 17
+  },
+  {
+   "w": "la",
+   "ini": 119.201,
+   "fin": 119.348,
+   "frase": 17
+  },
+  {
+   "w": "vista.",
+   "ini": 119.348,
+   "fin": 119.692,
+   "frase": 17
+  }
+ ]
+}

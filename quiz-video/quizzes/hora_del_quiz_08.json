@@ -1,0 +1,136 @@
+{
+  "modo": "mexico",
+  "tema": "México",
+  "titulo": "¿Cuánto sabes de México?",
+  "dificultad": "medio",
+  "tempo": 1.43,
+  "frase_intro": "¿Llegas hasta el final, compadre? La última casi nadie la acierta.",
+  "pegatina_gancho": "¿MÁS MEXICANO QUE UN TACO?",
+  "preguntas": [
+    {
+      "pregunta": "¿Qué presidente mexicano fue conocido como el Benemérito de las Américas?",
+      "opciones": [
+        "Porfirio Díaz",
+        "Benito Juárez",
+        "Lázaro Cárdenas",
+        "Francisco Madero"
+      ],
+      "correcta": "B",
+      "imagen": "palacio_3d.png",
+      "comentario": "[laughs] ¡Qué padre, compadre!",
+      "fuente": "Benito Juárez fue declarado «Benemérito de las Américas» (1867).",
+      "pregunta_voz": "¿Qué presidente fue el Benemérito de las Américas?",
+      "foto": "mx_palacio.png",
+      "foto_x": 0.5
+    },
+    {
+      "pregunta": "¿Qué civilización construyó la ciudad de Palenque?",
+      "opciones": [
+        "Mexica",
+        "Tolteca",
+        "Maya",
+        "Olmeca"
+      ],
+      "correcta": "C",
+      "imagen": "maiz_3d.png",
+      "fuente": "Palenque es una ciudad maya (Chiapas).",
+      "foto": "mx_ruinas.png",
+      "foto_x": 0.6
+    },
+    {
+      "pregunta": "¿Cuál es el estado mexicano con mayor extensión territorial?",
+      "opciones": [
+        "Sonora",
+        "Chihuahua",
+        "Coahuila",
+        "Durango"
+      ],
+      "correcta": "B",
+      "imagen": "mapa_3d.png",
+      "comentario": "[laughs] ¡Ay, Chihuahua!",
+      "fuente": "Chihuahua (~247.000 km²) es el estado más extenso.",
+      "pregunta_voz": "¿Cuál es el estado mexicano más grande?",
+      "foto": "mx_desierto.png",
+      "foto_x": 0.5
+    },
+    {
+      "pregunta": "¿Cuál es el golfo que se encuentra al este de México?",
+      "opciones": [
+        "Golfo de California",
+        "Golfo de México",
+        "Golfo de Panamá",
+        "Golfo de Tehuantepec"
+      ],
+      "correcta": "B",
+      "imagen": "ola_3d.png",
+      "fuente": "El golfo de México baña la costa este del país.",
+      "pregunta_voz": "¿Qué golfo está al este de México?",
+      "foto": "mx_playa.png",
+      "foto_x": 0.42
+    },
+    {
+      "pregunta": "¿Cuál es el nombre del volcán situado entre Ciudad de México y Puebla?",
+      "opciones": [
+        "Pico de Orizaba",
+        "Popocatépetl",
+        "Paricutín",
+        "Nevado de Toluca"
+      ],
+      "correcta": "B",
+      "imagen": "volcan_3d.png",
+      "comentario": "[laughs] ¡Híjole, qué trabalenguas!",
+      "fuente": "El Popocatépetl está entre el Estado de México, Puebla y Morelos, entre CDMX y Puebla.",
+      "pregunta_voz": "¿Qué volcán está entre Ciudad de México y Puebla?",
+      "foto": "mx_volcan.png",
+      "foto_x": 0.6
+    },
+    {
+      "pregunta": "¿Cuál de estas civilizaciones fue realmente la más avanzada de Mesoamérica antes de la llegada de los españoles?",
+      "opciones": [
+        "Los mayas",
+        "Los mexicas (aztecas)",
+        "Los olmecas",
+        "No existe una respuesta objetiva"
+      ],
+      "correcta": "D",
+      "sin_respuesta": true,
+      "imagen": "cerebro_3d.png",
+      "fuente": "Pregunta de debate: el usuario marca «No existe una respuesta objetiva». No se revela.",
+      "pregunta_voz": "¿Qué civilización fue la más avanzada de Mesoamérica antes de los españoles?",
+      "foto": "mx_piramide.png",
+      "foto_x": 0.66
+    }
+  ],
+  "portada": {
+    "arriba": "QUIZ DE MÉXICO",
+    "titulo": [
+      [
+        "¿CUÁNTO SABES",
+        "w"
+      ],
+      [
+        "DE MÉXICO?",
+        "a"
+      ]
+    ],
+    "pregunta": 4,
+    "emoji": "sombrero",
+    "emoji2": "maracas",
+    "estilo": "cartel",
+    "pegatina": "LA ÚLTIMA CASI NADIE LA ACIERTA",
+    "sub": "¿Llegas al final, compadre?"
+  },
+  "cuenta_atras": 4,
+  "outro_corto": true,
+  "gancho_teaser": {
+    "voz": "[Mexican accent, excited] ¡Ay, ay, ay! ¡Esta es la última pregunta del vídeo... y casi nadie la acierta!",
+    "pregunta": "¿Qué civilización fue la más avanzada de Mesoamérica?",
+    "reto": "¿LLEGAS HASTA AQUÍ?",
+    "etiqueta": "PREGUNTA EXTRA",
+    "sonido": "fanfarria"
+  },
+  "intro_voz": "[Mexican accent, excited] ¿Llegas hasta el final, compadre? ¡Es hora del quiz de México!",
+  "extra_intro_voz": "[Mexican accent, excited] ¡Y ahora... la pregunta extra! ¡Solo para los más mexicanos!",
+  "extra_lema": "SOLO PARA LOS MÁS MEXICANOS",
+  "extra_sonido": "fanfarria"
+}

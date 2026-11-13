@@ -1,0 +1,1189 @@
+{
+ "duracion": 66.139,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si estuvieras cinco años tumbado, sin sentarte ni levantarte?",
+   "ini": 0.0,
+   "fin": 4.897
+  },
+  {
+   "n": 2,
+   "texto": "Te traen la comida… y no tienes que hacer nada.",
+   "ini": 5.117,
+   "fin": 7.769
+  },
+  {
+   "n": 3,
+   "texto": "Suena a vacaciones, ¿verdad?",
+   "ini": 7.989,
+   "fin": 9.671
+  },
+  {
+   "n": 4,
+   "texto": "Pero cada dos horas, alguien tiene que darte la vuelta.",
+   "ini": 10.241,
+   "fin": 13.521
+  },
+  {
+   "n": 5,
+   "texto": "Si no, la piel se rompe y aparecen escaras.",
+   "ini": 13.741,
+   "fin": 16.992
+  },
+  {
+   "n": 6,
+   "texto": "Al primer mes, tus piernas ya han perdido mucha fuerza.",
+   "ini": 17.212,
+   "fin": 20.633
+  },
+  {
+   "n": 7,
+   "texto": "Y para ir al baño… el baño tiene que venir a ti.",
+   "ini": 20.853,
+   "fin": 24.003
+  },
+  {
+   "n": 8,
+   "texto": "Al año, tus huesos pierden calcio, como los de un astronauta.",
+   "ini": 24.523,
+   "fin": 28.234
+  },
+  {
+   "n": 9,
+   "texto": "De hecho, las agencias espaciales pagan a voluntarios por pasar meses tumbados.",
+   "ini": 28.454,
+   "fin": 33.442
+  },
+  {
+   "n": 10,
+   "texto": "Es lo más parecido a vivir en el espacio.",
+   "ini": 33.662,
+   "fin": 36.011
+  },
+  {
+   "n": 11,
+   "texto": "Tu corazón trabaja menos… y se hace más pequeño.",
+   "ini": 36.531,
+   "fin": 40.038
+  },
+  {
+   "n": 12,
+   "texto": "Y el calcio que pierden los huesos puede acabar en piedras en el riñón.",
+   "ini": 40.258,
+   "fin": 44.332
+  },
+  {
+   "n": 13,
+   "texto": "A los cinco años, por fin te dicen: ¡ya puedes levantarte!",
+   "ini": 44.852,
+   "fin": 48.772
+  },
+  {
+   "n": 14,
+   "texto": "Te pones de pie… y todo da vueltas.",
+   "ini": 48.992,
+   "fin": 51.654
+  },
+  {
+   "n": 15,
+   "texto": "La sangre baja de golpe a los pies, y puedes desmayarte.",
+   "ini": 51.874,
+   "fin": 55.197
+  },
+  {
+   "n": 16,
+   "texto": "Tus piernas no te sostienen: tienes que volver a aprender a andar.",
+   "ini": 55.417,
+   "fin": 59.432
+  },
+  {
+   "n": 17,
+   "texto": "Meses de rehabilitación… paso a paso.",
+   "ini": 59.652,
+   "fin": 62.657
+  },
+  {
+   "n": 18,
+   "texto": "Y todo empezó… con un día más en la cama.",
+   "ini": 63.177,
+   "fin": 66.139
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.306,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.306,
+   "fin": 0.797,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.797,
+   "fin": 0.98,
+   "frase": 1
+  },
+  {
+   "w": "estuvieras",
+   "ini": 0.98,
+   "fin": 1.654,
+   "frase": 1
+  },
+  {
+   "w": "cinco",
+   "ini": 1.654,
+   "fin": 2.022,
+   "frase": 1
+  },
+  {
+   "w": "años",
+   "ini": 2.022,
+   "fin": 2.329,
+   "frase": 1
+  },
+  {
+   "w": "tumbado,",
+   "ini": 2.329,
+   "fin": 2.88,
+   "frase": 1
+  },
+  {
+   "w": "sin",
+   "ini": 3.22,
+   "fin": 3.46,
+   "frase": 1
+  },
+  {
+   "w": "sentarte",
+   "ini": 3.46,
+   "fin": 3.998,
+   "frase": 1
+  },
+  {
+   "w": "ni",
+   "ini": 3.998,
+   "fin": 4.178,
+   "frase": 1
+  },
+  {
+   "w": "levantarte?",
+   "ini": 4.178,
+   "fin": 4.897,
+   "frase": 1
+  },
+  {
+   "w": "Te",
+   "ini": 5.117,
+   "fin": 5.264,
+   "frase": 2
+  },
+  {
+   "w": "traen",
+   "ini": 5.264,
+   "fin": 5.558,
+   "frase": 2
+  },
+  {
+   "w": "la",
+   "ini": 5.558,
+   "fin": 5.705,
+   "frase": 2
+  },
+  {
+   "w": "comida…",
+   "ini": 5.705,
+   "fin": 6.097,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 6.437,
+   "fin": 6.532,
+   "frase": 2
+  },
+  {
+   "w": "no",
+   "ini": 6.532,
+   "fin": 6.675,
+   "frase": 2
+  },
+  {
+   "w": "tienes",
+   "ini": 6.675,
+   "fin": 7.008,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 7.008,
+   "fin": 7.198,
+   "frase": 2
+  },
+  {
+   "w": "hacer",
+   "ini": 7.198,
+   "fin": 7.483,
+   "frase": 2
+  },
+  {
+   "w": "nada.",
+   "ini": 7.483,
+   "fin": 7.769,
+   "frase": 2
+  },
+  {
+   "w": "Suena",
+   "ini": 7.989,
+   "fin": 8.211,
+   "frase": 3
+  },
+  {
+   "w": "a",
+   "ini": 8.211,
+   "fin": 8.285,
+   "frase": 3
+  },
+  {
+   "w": "vacaciones,",
+   "ini": 8.285,
+   "fin": 8.729,
+   "frase": 3
+  },
+  {
+   "w": "¿verdad?",
+   "ini": 8.809,
+   "fin": 9.671,
+   "frase": 3
+  },
+  {
+   "w": "Pero",
+   "ini": 10.241,
+   "fin": 10.525,
+   "frase": 4
+  },
+  {
+   "w": "cada",
+   "ini": 10.525,
+   "fin": 10.808,
+   "frase": 4
+  },
+  {
+   "w": "dos",
+   "ini": 10.808,
+   "fin": 11.035,
+   "frase": 4
+  },
+  {
+   "w": "horas,",
+   "ini": 11.035,
+   "fin": 11.431,
+   "frase": 4
+  },
+  {
+   "w": "alguien",
+   "ini": 11.611,
+   "fin": 12.048,
+   "frase": 4
+  },
+  {
+   "w": "tiene",
+   "ini": 12.048,
+   "fin": 12.375,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 12.375,
+   "fin": 12.593,
+   "frase": 4
+  },
+  {
+   "w": "darte",
+   "ini": 12.593,
+   "fin": 12.921,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 12.921,
+   "fin": 13.084,
+   "frase": 4
+  },
+  {
+   "w": "vuelta.",
+   "ini": 13.084,
+   "fin": 13.521,
+   "frase": 4
+  },
+  {
+   "w": "Si",
+   "ini": 13.741,
+   "fin": 13.938,
+   "frase": 5
+  },
+  {
+   "w": "no,",
+   "ini": 13.938,
+   "fin": 14.201,
+   "frase": 5
+  },
+  {
+   "w": "la",
+   "ini": 14.491,
+   "fin": 14.694,
+   "frase": 5
+  },
+  {
+   "w": "piel",
+   "ini": 14.694,
+   "fin": 15.032,
+   "frase": 5
+  },
+  {
+   "w": "se",
+   "ini": 15.032,
+   "fin": 15.235,
+   "frase": 5
+  },
+  {
+   "w": "rompe",
+   "ini": 15.235,
+   "fin": 15.64,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 15.64,
+   "fin": 15.775,
+   "frase": 5
+  },
+  {
+   "w": "aparecen",
+   "ini": 15.775,
+   "fin": 16.384,
+   "frase": 5
+  },
+  {
+   "w": "escaras.",
+   "ini": 16.384,
+   "fin": 16.992,
+   "frase": 5
+  },
+  {
+   "w": "Al",
+   "ini": 17.212,
+   "fin": 17.368,
+   "frase": 6
+  },
+  {
+   "w": "primer",
+   "ini": 17.368,
+   "fin": 17.732,
+   "frase": 6
+  },
+  {
+   "w": "mes,",
+   "ini": 17.732,
+   "fin": 17.992,
+   "frase": 6
+  },
+  {
+   "w": "tus",
+   "ini": 18.282,
+   "fin": 18.512,
+   "frase": 6
+  },
+  {
+   "w": "piernas",
+   "ini": 18.512,
+   "fin": 18.97,
+   "frase": 6
+  },
+  {
+   "w": "ya",
+   "ini": 18.97,
+   "fin": 19.142,
+   "frase": 6
+  },
+  {
+   "w": "han",
+   "ini": 19.142,
+   "fin": 19.372,
+   "frase": 6
+  },
+  {
+   "w": "perdido",
+   "ini": 19.372,
+   "fin": 19.83,
+   "frase": 6
+  },
+  {
+   "w": "mucha",
+   "ini": 19.83,
+   "fin": 20.174,
+   "frase": 6
+  },
+  {
+   "w": "fuerza.",
+   "ini": 20.174,
+   "fin": 20.633,
+   "frase": 6
+  },
+  {
+   "w": "Y",
+   "ini": 20.853,
+   "fin": 20.974,
+   "frase": 7
+  },
+  {
+   "w": "para",
+   "ini": 20.974,
+   "fin": 21.277,
+   "frase": 7
+  },
+  {
+   "w": "ir",
+   "ini": 21.277,
+   "fin": 21.458,
+   "frase": 7
+  },
+  {
+   "w": "al",
+   "ini": 21.458,
+   "fin": 21.64,
+   "frase": 7
+  },
+  {
+   "w": "baño…",
+   "ini": 21.64,
+   "fin": 22.003,
+   "frase": 7
+  },
+  {
+   "w": "el",
+   "ini": 22.333,
+   "fin": 22.5,
+   "frase": 7
+  },
+  {
+   "w": "baño",
+   "ini": 22.5,
+   "fin": 22.778,
+   "frase": 7
+  },
+  {
+   "w": "tiene",
+   "ini": 22.778,
+   "fin": 23.112,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 23.112,
+   "fin": 23.335,
+   "frase": 7
+  },
+  {
+   "w": "venir",
+   "ini": 23.335,
+   "fin": 23.669,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 23.669,
+   "fin": 23.78,
+   "frase": 7
+  },
+  {
+   "w": "ti.",
+   "ini": 23.78,
+   "fin": 24.003,
+   "frase": 7
+  },
+  {
+   "w": "Al",
+   "ini": 24.523,
+   "fin": 24.725,
+   "frase": 8
+  },
+  {
+   "w": "año,",
+   "ini": 24.725,
+   "fin": 25.063,
+   "frase": 8
+  },
+  {
+   "w": "tus",
+   "ini": 25.193,
+   "fin": 25.377,
+   "frase": 8
+  },
+  {
+   "w": "huesos",
+   "ini": 25.377,
+   "fin": 25.698,
+   "frase": 8
+  },
+  {
+   "w": "pierden",
+   "ini": 25.698,
+   "fin": 26.066,
+   "frase": 8
+  },
+  {
+   "w": "calcio,",
+   "ini": 26.066,
+   "fin": 26.433,
+   "frase": 8
+  },
+  {
+   "w": "como",
+   "ini": 26.543,
+   "fin": 26.856,
+   "frase": 8
+  },
+  {
+   "w": "los",
+   "ini": 26.856,
+   "fin": 27.107,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 27.107,
+   "fin": 27.294,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 27.294,
+   "fin": 27.482,
+   "frase": 8
+  },
+  {
+   "w": "astronauta.",
+   "ini": 27.482,
+   "fin": 28.234,
+   "frase": 8
+  },
+  {
+   "w": "De",
+   "ini": 28.454,
+   "fin": 28.637,
+   "frase": 9
+  },
+  {
+   "w": "hecho,",
+   "ini": 28.637,
+   "fin": 29.064,
+   "frase": 9
+  },
+  {
+   "w": "las",
+   "ini": 29.134,
+   "fin": 29.38,
+   "frase": 9
+  },
+  {
+   "w": "agencias",
+   "ini": 29.38,
+   "fin": 29.934,
+   "frase": 9
+  },
+  {
+   "w": "espaciales",
+   "ini": 29.934,
+   "fin": 30.611,
+   "frase": 9
+  },
+  {
+   "w": "pagan",
+   "ini": 30.611,
+   "fin": 30.98,
+   "frase": 9
+  },
+  {
+   "w": "a",
+   "ini": 30.98,
+   "fin": 31.103,
+   "frase": 9
+  },
+  {
+   "w": "voluntarios",
+   "ini": 31.103,
+   "fin": 31.842,
+   "frase": 9
+  },
+  {
+   "w": "por",
+   "ini": 31.842,
+   "fin": 32.088,
+   "frase": 9
+  },
+  {
+   "w": "pasar",
+   "ini": 32.088,
+   "fin": 32.457,
+   "frase": 9
+  },
+  {
+   "w": "meses",
+   "ini": 32.457,
+   "fin": 32.826,
+   "frase": 9
+  },
+  {
+   "w": "tumbados.",
+   "ini": 32.826,
+   "fin": 33.442,
+   "frase": 9
+  },
+  {
+   "w": "Es",
+   "ini": 33.662,
+   "fin": 33.829,
+   "frase": 10
+  },
+  {
+   "w": "lo",
+   "ini": 33.829,
+   "fin": 33.997,
+   "frase": 10
+  },
+  {
+   "w": "más",
+   "ini": 33.997,
+   "fin": 34.221,
+   "frase": 10
+  },
+  {
+   "w": "parecido",
+   "ini": 34.221,
+   "fin": 34.724,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 34.724,
+   "fin": 34.836,
+   "frase": 10
+  },
+  {
+   "w": "vivir",
+   "ini": 34.836,
+   "fin": 35.172,
+   "frase": 10
+  },
+  {
+   "w": "en",
+   "ini": 35.172,
+   "fin": 35.34,
+   "frase": 10
+  },
+  {
+   "w": "el",
+   "ini": 35.34,
+   "fin": 35.507,
+   "frase": 10
+  },
+  {
+   "w": "espacio.",
+   "ini": 35.507,
+   "fin": 36.011,
+   "frase": 10
+  },
+  {
+   "w": "Tu",
+   "ini": 36.531,
+   "fin": 36.715,
+   "frase": 11
+  },
+  {
+   "w": "corazón",
+   "ini": 36.715,
+   "fin": 37.208,
+   "frase": 11
+  },
+  {
+   "w": "trabaja",
+   "ini": 37.208,
+   "fin": 37.7,
+   "frase": 11
+  },
+  {
+   "w": "menos…",
+   "ini": 37.7,
+   "fin": 38.131,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 38.501,
+   "fin": 38.635,
+   "frase": 11
+  },
+  {
+   "w": "se",
+   "ini": 38.635,
+   "fin": 38.835,
+   "frase": 11
+  },
+  {
+   "w": "hace",
+   "ini": 38.835,
+   "fin": 39.169,
+   "frase": 11
+  },
+  {
+   "w": "más",
+   "ini": 39.169,
+   "fin": 39.437,
+   "frase": 11
+  },
+  {
+   "w": "pequeño.",
+   "ini": 39.437,
+   "fin": 40.038,
+   "frase": 11
+  },
+  {
+   "w": "Y",
+   "ini": 40.258,
+   "fin": 40.372,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 40.372,
+   "fin": 40.541,
+   "frase": 12
+  },
+  {
+   "w": "calcio",
+   "ini": 40.541,
+   "fin": 40.937,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 40.937,
+   "fin": 41.164,
+   "frase": 12
+  },
+  {
+   "w": "pierden",
+   "ini": 41.164,
+   "fin": 41.616,
+   "frase": 12
+  },
+  {
+   "w": "los",
+   "ini": 41.616,
+   "fin": 41.843,
+   "frase": 12
+  },
+  {
+   "w": "huesos",
+   "ini": 41.843,
+   "fin": 42.239,
+   "frase": 12
+  },
+  {
+   "w": "puede",
+   "ini": 42.239,
+   "fin": 42.578,
+   "frase": 12
+  },
+  {
+   "w": "acabar",
+   "ini": 42.578,
+   "fin": 42.974,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 42.974,
+   "fin": 43.144,
+   "frase": 12
+  },
+  {
+   "w": "piedras",
+   "ini": 43.144,
+   "fin": 43.597,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 43.597,
+   "fin": 43.766,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 43.766,
+   "fin": 43.936,
+   "frase": 12
+  },
+  {
+   "w": "riñón.",
+   "ini": 43.936,
+   "fin": 44.332,
+   "frase": 12
+  },
+  {
+   "w": "A",
+   "ini": 44.852,
+   "fin": 44.957,
+   "frase": 13
+  },
+  {
+   "w": "los",
+   "ini": 44.957,
+   "fin": 45.165,
+   "frase": 13
+  },
+  {
+   "w": "cinco",
+   "ini": 45.165,
+   "fin": 45.479,
+   "frase": 13
+  },
+  {
+   "w": "años,",
+   "ini": 45.479,
+   "fin": 45.792,
+   "frase": 13
+  },
+  {
+   "w": "por",
+   "ini": 46.002,
+   "fin": 46.215,
+   "frase": 13
+  },
+  {
+   "w": "fin",
+   "ini": 46.215,
+   "fin": 46.429,
+   "frase": 13
+  },
+  {
+   "w": "te",
+   "ini": 46.429,
+   "fin": 46.589,
+   "frase": 13
+  },
+  {
+   "w": "dicen:",
+   "ini": 46.589,
+   "fin": 46.962,
+   "frase": 13
+  },
+  {
+   "w": "¡ya",
+   "ini": 47.282,
+   "fin": 47.541,
+   "frase": 13
+  },
+  {
+   "w": "puedes",
+   "ini": 47.541,
+   "fin": 47.995,
+   "frase": 13
+  },
+  {
+   "w": "levantarte!",
+   "ini": 47.995,
+   "fin": 48.772,
+   "frase": 13
+  },
+  {
+   "w": "Te",
+   "ini": 48.992,
+   "fin": 49.147,
+   "frase": 14
+  },
+  {
+   "w": "pones",
+   "ini": 49.147,
+   "fin": 49.458,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 49.458,
+   "fin": 49.613,
+   "frase": 14
+  },
+  {
+   "w": "pie…",
+   "ini": 49.613,
+   "fin": 49.872,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 50.242,
+   "fin": 50.391,
+   "frase": 14
+  },
+  {
+   "w": "todo",
+   "ini": 50.391,
+   "fin": 50.762,
+   "frase": 14
+  },
+  {
+   "w": "da",
+   "ini": 50.762,
+   "fin": 50.985,
+   "frase": 14
+  },
+  {
+   "w": "vueltas.",
+   "ini": 50.985,
+   "fin": 51.654,
+   "frase": 14
+  },
+  {
+   "w": "La",
+   "ini": 51.874,
+   "fin": 52.051,
+   "frase": 15
+  },
+  {
+   "w": "sangre",
+   "ini": 52.051,
+   "fin": 52.463,
+   "frase": 15
+  },
+  {
+   "w": "baja",
+   "ini": 52.463,
+   "fin": 52.757,
+   "frase": 15
+  },
+  {
+   "w": "de",
+   "ini": 52.757,
+   "fin": 52.934,
+   "frase": 15
+  },
+  {
+   "w": "golpe",
+   "ini": 52.934,
+   "fin": 53.287,
+   "frase": 15
+  },
+  {
+   "w": "a",
+   "ini": 53.287,
+   "fin": 53.405,
+   "frase": 15
+  },
+  {
+   "w": "los",
+   "ini": 53.405,
+   "fin": 53.641,
+   "frase": 15
+  },
+  {
+   "w": "pies,",
+   "ini": 53.641,
+   "fin": 53.994,
+   "frase": 15
+  },
+  {
+   "w": "y",
+   "ini": 54.094,
+   "fin": 54.199,
+   "frase": 15
+  },
+  {
+   "w": "puedes",
+   "ini": 54.199,
+   "fin": 54.567,
+   "frase": 15
+  },
+  {
+   "w": "desmayarte.",
+   "ini": 54.567,
+   "fin": 55.197,
+   "frase": 15
+  },
+  {
+   "w": "Tus",
+   "ini": 55.417,
+   "fin": 55.645,
+   "frase": 16
+  },
+  {
+   "w": "piernas",
+   "ini": 55.645,
+   "fin": 56.1,
+   "frase": 16
+  },
+  {
+   "w": "no",
+   "ini": 56.1,
+   "fin": 56.271,
+   "frase": 16
+  },
+  {
+   "w": "te",
+   "ini": 56.271,
+   "fin": 56.442,
+   "frase": 16
+  },
+  {
+   "w": "sostienen:",
+   "ini": 56.442,
+   "fin": 57.067,
+   "frase": 16
+  },
+  {
+   "w": "tienes",
+   "ini": 57.537,
+   "fin": 57.886,
+   "frase": 16
+  },
+  {
+   "w": "que",
+   "ini": 57.886,
+   "fin": 58.086,
+   "frase": 16
+  },
+  {
+   "w": "volver",
+   "ini": 58.086,
+   "fin": 58.435,
+   "frase": 16
+  },
+  {
+   "w": "a",
+   "ini": 58.435,
+   "fin": 58.534,
+   "frase": 16
+  },
+  {
+   "w": "aprender",
+   "ini": 58.534,
+   "fin": 58.983,
+   "frase": 16
+  },
+  {
+   "w": "a",
+   "ini": 58.983,
+   "fin": 59.083,
+   "frase": 16
+  },
+  {
+   "w": "andar.",
+   "ini": 59.083,
+   "fin": 59.432,
+   "frase": 16
+  },
+  {
+   "w": "Meses",
+   "ini": 59.652,
+   "fin": 60.041,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 60.041,
+   "fin": 60.235,
+   "frase": 17
+  },
+  {
+   "w": "rehabilitación…",
+   "ini": 60.235,
+   "fin": 61.272,
+   "frase": 17
+  },
+  {
+   "w": "paso",
+   "ini": 61.682,
+   "fin": 62.057,
+   "frase": 17
+  },
+  {
+   "w": "a",
+   "ini": 62.057,
+   "fin": 62.207,
+   "frase": 17
+  },
+  {
+   "w": "paso.",
+   "ini": 62.207,
+   "fin": 62.657,
+   "frase": 17
+  },
+  {
+   "w": "Y",
+   "ini": 63.177,
+   "fin": 63.304,
+   "frase": 18
+  },
+  {
+   "w": "todo",
+   "ini": 63.304,
+   "fin": 63.62,
+   "frase": 18
+  },
+  {
+   "w": "empezó…",
+   "ini": 63.62,
+   "fin": 64.127,
+   "frase": 18
+  },
+  {
+   "w": "con",
+   "ini": 64.427,
+   "fin": 64.681,
+   "frase": 18
+  },
+  {
+   "w": "un",
+   "ini": 64.681,
+   "fin": 64.871,
+   "frase": 18
+  },
+  {
+   "w": "día",
+   "ini": 64.871,
+   "fin": 65.124,
+   "frase": 18
+  },
+  {
+   "w": "más",
+   "ini": 65.124,
+   "fin": 65.378,
+   "frase": 18
+  },
+  {
+   "w": "en",
+   "ini": 65.378,
+   "fin": 65.568,
+   "frase": 18
+  },
+  {
+   "w": "la",
+   "ini": 65.568,
+   "fin": 65.758,
+   "frase": 18
+  },
+  {
+   "w": "cama.",
+   "ini": 65.758,
+   "fin": 66.139,
+   "frase": 18
+  }
+ ]
+}

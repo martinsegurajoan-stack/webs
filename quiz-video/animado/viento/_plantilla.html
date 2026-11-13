@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script><script src="assets/three.min.js"></script><script src="assets/d3-array.min.js"></script><script src="assets/d3-geo.min.js"></script><script src="assets/mundo.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#000}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;color:#fff;background:#000}
+#cielo{position:absolute;left:-200px;top:-200px;width:1480px;height:2320px;background:url(assets/tierra/cielo.png) center/cover;opacity:0.55}
+canvas{position:absolute;left:0;top:0}
+#vineta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,0.6) 100%)}
+#bajo{position:absolute;left:0;right:0;bottom:0;height:760px;pointer-events:none;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.82))}
+#fxl{position:absolute;inset:0;z-index:58;pointer-events:none}
+.lab{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;text-shadow:0 2px 12px rgba(0,0,0,1)}
+.lab small{display:block;font:600 18px Inter;letter-spacing:5px;color:#9fdcff;margin-bottom:4px} .lab b{display:block;font:500 36px Inter;letter-spacing:0.2px}
+.dato{position:absolute;left:70px;top:1470px;opacity:0;max-width:900px;text-shadow:0 2px 18px rgba(0,0,0,0.9)}
+.dato small{display:flex;align-items:center;gap:16px;font:600 19px Inter;letter-spacing:6px;color:#9fdcff;margin-bottom:12px} .dato small::before{content:"";width:46px;height:1px;background:#9fdcff}
+.dato b{display:block;font:300 84px/1.04 Inter;letter-spacing:-2px} .dato em{display:block;font-style:normal;font:300 27px Inter;color:rgba(255,255,255,0.72);margin-top:12px;letter-spacing:0.3px}
+#kmh{position:absolute;left:70px;top:1470px;text-shadow:0 2px 18px rgba(0,0,0,0.9)} #kmh small{display:flex;align-items:center;gap:16px;font:600 19px Inter;letter-spacing:6px;color:#9fdcff;margin-bottom:12px} #kmh small::before{content:"";width:46px;height:1px;background:#9fdcff}
+#kmh b{display:block;font:100 130px/1 Inter;letter-spacing:-5px;font-variant-numeric:tabular-nums}
+#grano{position:absolute;inset:0;z-index:56;pointer-events:none;opacity:0.05;background:url(assets/grano.png);mix-blend-mode:overlay}
+#topsombra{position:absolute;left:0;right:0;top:0;height:540px;z-index:55;pointer-events:none;background:linear-gradient(rgba(0,0,0,0.72),rgba(0,0,0,0))}
+#marca{position:absolute;left:0;right:0;top:1820px;text-align:center;font:500 25px Inter;color:#ffffff;opacity:0.42;pointer-events:none;z-index:61;letter-spacing:0.5px}
+#subs{position:absolute;left:60px;right:60px;top:250px;height:220px;z-index:62}
+.sub{position:absolute;left:0;right:0;top:0;text-align:center;font:600 56px Inter;color:rgba(255,255,255,0.55);line-height:1.22;text-shadow:0 3px 16px rgba(0,0,0,0.95)}
+.sw{display:inline-block;position:relative;padding:0 6px;margin:0 1px}
+.key .hl{position:absolute;inset:-4px -2px -2px -2px;border:2px solid #9fdcff;border-radius:6px;background:rgba(159,220,255,0.14);opacity:0}
+.tex{display:none}
+</style></head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="%%DUR%%" data-width="1080" data-height="1920">
+  <img class="tex" id="tDia" src="%%TDIA%%"><img class="tex" id="tNoche" src="%%TNOCHE%%"><img class="tex" id="tNubes" src="%%TNUBES%%"><img class="tex" id="tMar" src="%%TMAR%%">
+  <div id="cielo"></div>
+  <canvas id="gl" width="1080" height="1920"></canvas>
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div id="vineta"></div><div id="bajo"></div>
+  <div id="topsombra"></div><div id="grano"></div>
+  <div id="fxl">%%FXL%%</div>
+  <div id="marca">@mundo.supuesto</div>
+  <div id="subs" data-layout-allow-overlap>%%SUBS%%</div>
+  <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="%%DUR%%" data-track-index="5" data-volume="1"></audio>
+</div>
+<script>
+const fmt = (v, d) => { const s = v.toFixed(d).split("."); return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (s[1] ? "," + s[1] : ""); };
+const S = { t:0, W:0, va:1, lon:-28, lat:18, sc:440, sol:55, olas:0, swell:0, swellA:0, olor:0, olorV:1, vuelos:0, vueloA:0, vueloB:0, chorro:0, maiz:0, maizG:0, smog:0, latl:0, oeste:0, seco:0, humedad:0, polvo:0, bodele:0, bio:0, hur:0, solar:0, espejo:0, pulso:0, hielo:0, amaz:0, amazF:0, bodP:0, celdas:0, hoja:0, pol:0, lluviaS:0, arbol:0 };
+const LABS = [], LV = {};
+// ---------------- planeta 3D (texturas NASA)
+const glc = document.getElementById("gl");
+const R3 = new THREE.WebGLRenderer({ canvas: glc, antialias: true, alpha: true, preserveDrawingBuffer: true });
+R3.setPixelRatio(1); R3.setSize(1080, 1920, false); R3.setClearColor(0x000000, 0);
+const scene = new THREE.Scene(), camera = new THREE.PerspectiveCamera(28, 1080 / 1920, 0.01, 100);
+const outer = new THREE.Group(), inner = new THREE.Group(); outer.add(inner); scene.add(outer);
+const VACIA = new THREE.DataTexture(new Uint8Array([0, 0, 0, 255]), 1, 1); VACIA.needsUpdate = true;
+const TXI = { dia:"tDia", noche:"tNoche", nubes:"tNubes", mar:"tMar" }; let TXOK = false;
+function texListas() { if (TXOK) return true; for (const k in TXI) { const im = document.getElementById(TXI[k]); if (!(im.complete && im.naturalWidth > 0)) return false; }
+  for (const k in TXI) { const t = new THREE.Texture(document.getElementById(TXI[k])); t.anisotropy = 8; t.wrapS = THREE.RepeatWrapping; t.needsUpdate = true; TX[k] = t; }
+  U.dia.value = TX.dia; U.noche.value = TX.noche; U.mar.value = TX.mar; UN.nubes.value = TX.nubes; TXOK = true; return true; }
+const TX = { dia: VACIA, noche: VACIA, nubes: VACIA, mar: VACIA };
+const U = { dia:{value:TX.dia}, noche:{value:TX.noche}, mar:{value:TX.mar}, sol:{value:new THREE.Vector3(1,0,0)}, seco:{value:0}, espejo:{value:0}, humoP:{value:new THREE.Vector3(0,0,1)}, humo:{value:0} };
+const VS = `varying vec2 vUv; varying vec3 vN; varying vec3 vP; void main(){ vUv = uv; vN = normalize(mat3(modelMatrix) * normal); vec4 w = modelMatrix * vec4(position,1.0); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`;
+const tierra = new THREE.Mesh(new THREE.SphereGeometry(1, 160, 160), new THREE.ShaderMaterial({ uniforms: U, vertexShader: VS, fragmentShader: `
+  uniform sampler2D dia, noche, mar; uniform vec3 sol, humoP; uniform float seco, espejo, humo; varying vec2 vUv; varying vec3 vN; varying vec3 vP;
+  void main(){ vec3 N = normalize(vN), L = normalize(sol), V = normalize(cameraPosition - vP);
+    float d = dot(N, L); float day = smoothstep(-0.12, 0.22, d);
+    vec3 c = texture2D(dia, vUv).rgb; float oc = texture2D(mar, vUv).r;
+    float g = c.g - max(c.r, c.b); vec3 arena = vec3(0.80, 0.63, 0.40) * (0.55 + 0.7 * dot(c, vec3(0.333)));
+    c = mix(c, arena, seco * (1.0 - oc) * (0.55 + 0.4 * smoothstep(-0.05, 0.08, g + 0.06)));
+    vec3 lit = c * (0.30 + 0.85 * max(d, 0.0));
+    vec3 luces = texture2D(noche, vUv).rgb * vec3(1.0, 0.82, 0.55) * 0.9 * (1.0 - day);
+    float h = humo * smoothstep(0.12, 0.0, distance(normalize(vP), humoP)); luces *= (1.0 - 0.85 * h); lit = mix(lit, vec3(0.32, 0.27, 0.2) * (0.25 + max(d, 0.0)), h * 0.6);
+    vec3 H = normalize(L + V); float sh = mix(30.0, 900.0, espejo); float sp = pow(max(dot(N, H), 0.0), sh) * oc * mix(0.4, 1.15, espejo) * step(0.0, d);
+    float fr = pow(1.0 - max(dot(N, V), 0.0), 2.6);
+    vec3 atm = vec3(0.32, 0.58, 1.0) * fr * (0.15 + 0.95 * day);
+    gl_FragColor = vec4(lit + luces + vec3(1.0, 0.97, 0.9) * sp + atm, 1.0); }` }));
+inner.add(tierra);
+const UN = { nubes:{value:TX.nubes}, sol:U.sol, off:{value:0}, op:{value:0.0} };
+const nubes = new THREE.Mesh(new THREE.SphereGeometry(1.007, 160, 160), new THREE.ShaderMaterial({ uniforms: UN, transparent: true, depthWrite: false, vertexShader: VS, fragmentShader: `
+  uniform sampler2D nubes; uniform vec3 sol; uniform float off, op; varying vec2 vUv; varying vec3 vN; varying vec3 vP;
+  void main(){ float a = texture2D(nubes, vec2(vUv.x + off, vUv.y)).r; float d = dot(normalize(vN), normalize(sol));
+    vec3 c = vec3(1.0) * (0.05 + 1.0 * max(d, 0.0)) + vec3(1.0, 0.55, 0.35) * 0.35 * smoothstep(0.25, 0.0, abs(d)) * step(0.0, d + 0.1);
+    gl_FragColor = vec4(c, a * op * smoothstep(-0.12, 0.2, d)); }` }));
+inner.add(nubes);
+const atmo = new THREE.Mesh(new THREE.SphereGeometry(1.085, 96, 96), new THREE.ShaderMaterial({ uniforms: { sol: U.sol }, side: THREE.BackSide, transparent: true, blending: THREE.AdditiveBlending, depthWrite: false,
+  vertexShader: `varying vec3 vN; varying vec3 vP; void main(){ vN = normalize(mat3(modelMatrix) * normal); vec4 w = modelMatrix * vec4(position,1.0); vP = w.xyz; gl_Position = projectionMatrix * viewMatrix * w; }`,
+  fragmentShader: `uniform vec3 sol; varying vec3 vN; varying vec3 vP; void main(){ vec3 V = normalize(cameraPosition - vP); float i = pow(max(0.0, 0.62 + dot(normalize(vN), V)), 3.2); float d = dot(-normalize(vN), normalize(sol));
+    gl_FragColor = vec4(vec3(0.35, 0.62, 1.0) * i * (0.35 + 0.9 * smoothstep(-0.3, 0.4, d)), i); }` }));
+scene.add(atmo);
+function vec(lon, lat, r) { const ph = (lon + 180) * Math.PI / 180, th = (90 - lat) * Math.PI / 180; return new THREE.Vector3(-Math.cos(ph) * Math.sin(th) * r, Math.cos(th) * r, Math.sin(ph) * Math.sin(th) * r); }
+// ---------------- capa 2D (datos)
+const cv = document.getElementById("cv"), g = cv.getContext("2d");
+const CAMP = new THREE.Vector3(), _v = new THREE.Vector3(), _n = new THREE.Vector3();
+let MW = new THREE.Matrix4();
+function P3(lon, lat, alt) { _v.copy(vec(lon, lat, 1 + (alt || 0))).applyMatrix4(MW); _n.copy(_v).normalize(); const vis = _n.dot(CAMP.clone().sub(_v)) > 0; const s = _v.clone().project(camera); return [(s.x + 1) * 540, (1 - s.y) * 960, vis]; }
+function glow(x, y, r, col, a) { if (a <= 0.001) return; const gr = g.createRadialGradient(x, y, 0, x, y, r); gr.addColorStop(0, col.replace("A", a)); gr.addColorStop(1, col.replace("A", 0)); g.fillStyle = gr; g.beginPath(); g.arc(x, y, r, 0, 7); g.fill(); }
+function trazo(coords, alt, col, w, dash) { g.strokeStyle = col; g.lineWidth = w; if (dash) g.setLineDash(dash); g.beginPath(); let ok = 0; for (const c of coords) { const p = P3(c[0], c[1], alt); if (!p[2]) { ok = 0; continue; } if (ok) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); ok = 1; } g.stroke(); g.setLineDash([]); }
+function relleno(coords, alt, col) { g.fillStyle = col; g.beginPath(); let n = 0; for (const c of coords) { const p = P3(c[0], c[1], alt); if (n) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); n++; } g.closePath(); g.fill(); }
+function rnd(i) { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
+const N = 1100, SEED = [];
+for (let i = 0; i < N; i++) { const u = rnd(i + 1), v = rnd(i + 7.3); SEED.push([u * 360 - 180, Math.asin(2 * v - 1) * 180 / Math.PI, rnd(i + 3.1) * %%LV%%]); }
+function campo(lon, lat) { const p = lat * Math.PI / 180, l = lon * Math.PI / 180;
+  const u = -7.5 * Math.cos(6 * p) * (0.75 + 0.25 * Math.cos(p)) + 2.6 * Math.sin(3 * l + 2 * p) + 1.6 * Math.cos(5 * l - 3 * p);
+  const v = 2.4 * Math.sin(6 * p) * Math.cos(2 * l) + 2.2 * Math.sin(4 * l + p * 3) - 1.2 * Math.cos(3 * l - 2 * p); return [u / Math.max(0.25, Math.cos(p)), v]; }
+function particulas() { const dt = 0.1; g.lineCap = "round"; g.globalCompositeOperation = "lighter";
+  for (let i = 0; i < N; i++) { const sd = SEED[i]; const age = ((S.W + sd[2]) % %%LV%% + %%LV%%) % %%LV%%;
+    let lon = sd[0], lat = sd[1]; const n = Math.floor(age / dt); const tr = [];
+    for (let k = 0; k < n; k++) { const f = campo(lon, lat); lon += f[0] * dt; lat = Math.max(-85, Math.min(85, lat + f[1] * dt)); if (k >= n - 7) tr.push([lon, lat]); }
+    if (tr.length < 2) continue; const vida = Math.sin(Math.PI * age / %%LV%%);
+    g.beginPath(); let ok = 0; for (const q of tr) { const p = P3(q[0], q[1], 0.012); if (!p[2]) { ok = 0; continue; } if (ok) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); ok = 1; }
+    g.strokeStyle = `rgba(235,248,255,${(0.6 * vida * S.va).toFixed(3)})`; g.lineWidth = 2.4; g.stroke(); }
+  g.globalCompositeOperation = "source-over"; }
+function poli(c) { return c; }
+const NY = [-74, 40.7], LON = [-0.1, 51.5], BOD = [18, 17], AMA = [-62, -3], STORM = [-165, -55], BIO = [-110.85, 32.58], MAD = [-3.7, 40.4];
+const AMZ = [[-79,-2],[-77,2],[-72,3],[-67,4],[-62,4],[-58,3],[-54,1],[-50,-1],[-49,-4],[-52,-8],[-55,-12],[-60,-14],[-65,-15],[-69,-14],[-72,-12],[-75,-9],[-77,-6]];
+const BODP = [[16,16.2],[17.2,15.6],[18.7,16.2],[19.2,17.3],[18.1,18.2],[16.5,17.8]];
+const MAIZ = [[-92, 41.5, 6], [-97, 38, 4], [-52, -20, 4], [-61, -33, 3.5], [-100, 20, 3]];
+const HUR = [[-60, 18], [-78, 25], [-45, 15]];
+const CELDAS = [[[-60,5],[-20,22],[20,28]], [[60,-5],[20,-22],[-20,-28]], [[-80,35],[-40,48],[0,58]], [[80,-35],[40,-48],[0,-58]]];
+const UKP = []; for (const f of UKIE.features) { const gm = f.geometry; const polys = gm.type === "Polygon" ? [gm.coordinates] : gm.coordinates; for (const p of polys) if (p[0].length > 30) UKP.push(p[0]); }
+function frame() {
+  const t = S.t, wv = 2 * Math.PI * t / %%DURX%%;
+  const lon = S.lon + 1.6 * Math.sin(3 * wv), lat = S.lat + 0.8 * Math.sin(2 * wv);
+  const dist = Math.max(2.15, 3940 / S.sc) * (1 - 0.02 * Math.sin(4 * wv));
+  inner.rotation.y = Math.atan2(Math.cos((lon + 180) * Math.PI / 180), Math.sin((lon + 180) * Math.PI / 180));
+  outer.rotation.x = lat * Math.PI / 180;
+  camera.position.set(0, 0, dist); camera.lookAt(0, 0, 0); camera.updateMatrixWorld(); outer.updateMatrixWorld(true);
+  MW.copy(inner.matrixWorld); CAMP.copy(camera.position);
+  const a = S.sol * Math.PI / 180; U.sol.value.set(Math.sin(a), 0.25, Math.cos(a)).normalize();
+  U.seco.value = S.seco; U.espejo.value = S.espejo; UN.off.value = S.W * 0.0045;
+  U.humo.value = S.smog; U.humoP.value.copy(vec(LON[0], LON[1], 1)).applyMatrix4(MW).normalize();
+  texListas(); R3.render(scene, camera);
+  document.getElementById("cielo").style.transform = `translate(${(-S.lon * 0.6).toFixed(1)}px, ${(S.lat * 0.6).toFixed(1)}px)`;
+  g.clearRect(0, 0, 1080, 1920);
+  const C = (q) => P3(q[0], q[1], 0);
+  // pulso del parón
+  if (S.pulso > 0.01 && S.pulso < 0.999) { const p = C([lon, lat]); g.strokeStyle = `rgba(159,220,255,${(0.7 * (1 - S.pulso)).toFixed(3)})`; g.lineWidth = 3; g.beginPath(); g.arc(540, 960, (420 + 420 * S.pulso), 0, 7); g.stroke(); }
+  // humedad
+  if (S.humedad > 0.01 || S.lluviaS > 0.01) for (let k = 0; k < 60; k++) { const la = -35 + (k % 12) * 6, lo0 = -45 + ((t * 2.2 + k * 1.7) % 22) * (1 - 0.7 * (1 - S.lluviaS));
+      const p = P3(lo0, la, 0.02), q = P3(lo0 + 3.5, la + 0.6, 0.02); if (!p[2] || !q[2]) continue; g.strokeStyle = `rgba(150,215,255,${(0.6 * Math.max(S.humedad, S.lluviaS)).toFixed(3)})`; g.lineWidth = 3; g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]); g.stroke(); }
+  particulas();
+  // hojas: el bosque europeo «tiembla» con viento y se queda quieto
+  if (S.hoja > 0.01) { const m = Math.max(0, Math.min(1, 1 - (t - %%HOJA%%) / 1.6)); g.globalCompositeOperation = "lighter";
+      for (let k = 0; k < 90; k++) { const lo = -4 + rnd(k + 40) * 36, la = 44 + rnd(k + 90) * 18; const p = P3(lo, la, 0.004); if (!p[2]) continue;
+        const an = 0.6 * Math.sin(t * 9 + k * 1.7) * m + rnd(k) * 3, L = 7 + rnd(k + 5) * 6; g.strokeStyle = `rgba(170,240,150,${(0.65 * S.hoja * (0.4 + 0.6 * m)).toFixed(3)})`; g.lineWidth = 2.2;
+        g.beginPath(); g.moveTo(p[0] - Math.cos(an) * L, p[1] - Math.sin(an) * L); g.lineTo(p[0] + Math.cos(an) * L, p[1] + Math.sin(an) * L); g.stroke(); }
+      g.globalCompositeOperation = "source-over"; }
+  // oleaje
+  if (S.olas > 0.01) for (let k = 0; k < 14; k++) { const r = ((t * 0.9 + k * 1.3) % 18) + 2; trazo(d3.geoCircle().center([-150 + (k % 3) * 25 - 25, -30 + (k % 4) * 9]).radius(r)().coordinates[0], 0.004, `rgba(210,240,255,${(0.45 * S.olas * (1 - r / 20)).toFixed(3)})`, 2); }
+  if (S.swellA > 0.01) { for (let k = 0; k < 7; k++) { const r = Math.max(0.5, S.swell * 118 - k * 6); trazo(d3.geoCircle().center(STORM).radius(r)().coordinates[0], 0.004, `rgba(170,230,255,${(0.6 * S.swellA * (1 - k / 7)).toFixed(3)})`, 2.5); }
+    const ps = C(STORM); if (ps[2]) glow(ps[0], ps[1], 80, "rgba(220,240,255,A)", 0.6 * S.swellA); }
+  // olor a pan
+  if (S.olor > 0.01) { const p = C(MAD); if (p[2]) { g.save(); g.translate(p[0], p[1]); g.globalAlpha = S.olor; const L = 380 * S.olorV + 26 * (1 - S.olorV), Wd = 60 * S.olorV + 26 * (1 - S.olorV);
+      const gg = g.createRadialGradient(0, 0, 0, L * 0.45, 0, L); gg.addColorStop(0, "rgba(255,205,130,0.8)"); gg.addColorStop(1, "rgba(255,205,130,0)"); g.fillStyle = gg; g.beginPath(); g.ellipse(L * 0.45 * S.olorV, 0, L * 0.55 + 14, Wd, 0, 0, 7); g.fill();
+      for (let k = 0; k < 26; k++) { const u = ((t * 0.6 + k / 26) % 1); g.fillStyle = `rgba(255,220,160,${(0.8 * (1 - u)).toFixed(2)})`; g.beginPath(); g.arc(u * L * S.olorV + 10 * Math.sin(k), Math.sin(k * 2.3) * Wd * u, 2.5, 0, 7); g.fill(); }
+      g.restore(); } }
+  // vuelos
+  if (S.chorro > 0.01) { g.globalCompositeOperation = "lighter"; for (let k = 0; k < 80; k++) { const u = ((t * 0.25 + k / 80) % 1), lo = -80 + u * 85, la = 44 + 6 * Math.sin(u * 5 + k) + (k % 5) - 2; const p = P3(lo, la, 0.01), q = P3(lo + 4, la + 0.4, 0.01);
+      if (!p[2] || !q[2]) continue; g.strokeStyle = `rgba(255,180,90,${(0.5 * S.chorro * Math.sin(Math.PI * u)).toFixed(3)})`; g.lineWidth = 2.5; g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]); g.stroke(); } g.globalCompositeOperation = "source-over"; }
+  if (S.vuelos > 0.01) { const ip = d3.geoInterpolate(NY, LON); const pts = d3.range(0, 1.001, 0.02).map(ip); const alt = (u) => 0.035 * Math.sin(Math.PI * u);
+      g.strokeStyle = `rgba(255,255,255,${(0.55 * S.vuelos).toFixed(3)})`; g.lineWidth = 2; g.setLineDash([6, 9]); g.beginPath(); pts.forEach((q, k) => { const p = P3(q[0], q[1], alt(k / 50)); if (k) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); }); g.stroke(); g.setLineDash([]);
+      let f = null; if (S.vueloB > 0) f = 1 - S.vueloB; else if (S.vueloA > 0) f = S.vueloA;
+      if (f !== null) { const q = ip(f), p = P3(q[0], q[1], alt(f)), q2 = ip(Math.min(1, f + 0.01)), p2 = P3(q2[0], q2[1], alt(f + 0.01)); let an = Math.atan2(p2[1] - p[1], p2[0] - p[0]); if (S.vueloB > 0) an += Math.PI;
+        glow(p[0], p[1], 50, "rgba(255,255,255,A)", 0.55 * S.vuelos); g.save(); g.translate(p[0], p[1]); g.rotate(an); g.fillStyle = "#ffffff"; g.beginPath();
+        g.moveTo(22, 0); g.lineTo(10, -3); g.lineTo(-2, -20); g.lineTo(-8, -20); g.lineTo(0, -3); g.lineTo(-14, -3); g.lineTo(-20, -10); g.lineTo(-24, -10); g.lineTo(-20, 0); g.lineTo(-24, 10); g.lineTo(-20, 10); g.lineTo(-14, 3); g.lineTo(0, 3); g.lineTo(-8, 20); g.lineTo(-2, 20); g.lineTo(10, 3); g.closePath(); g.fill(); g.restore(); } }
+  // maíz y polen
+  if (S.maiz > 0.01) for (const [lo, la, r] of MAIZ) { const cs = d3.geoCircle().center([lo, la]).radius(r)().coordinates[0]; relleno(cs, 0.003, `rgba(${Math.round(255 - 120 * S.maizG)},${Math.round(200 - 80 * S.maizG)},${Math.round(70 + 40 * S.maizG)},${(0.42 * S.maiz).toFixed(3)})`);
+      trazo(cs, 0.003, `rgba(255,220,120,${(0.8 * S.maiz * (1 - 0.6 * S.maizG)).toFixed(3)})`, 2); }
+  if (S.pol > 0.01) { const p0 = C([-92, 41.5]); if (p0[2]) for (let k = 0; k < 60; k++) { const u = ((t * 0.5 + k / 60) % 1); glow(p0[0] + (k % 12 - 6) * 16, p0[1] - 120 + u * 140, 6, "rgba(255,225,110,A)", S.pol * (1 - u)); } }
+  // Londres 1952 (humo sobre las luces de la ciudad)
+  if (S.smog > 0.01) { const p = C(LON); if (p[2]) for (let k = 0; k < 9; k++) glow(p[0] + 90 * Math.sin(k * 2.1 + t * 0.25), p[1] + 50 * Math.cos(k * 1.7 + t * 0.2), 160 + 90 * S.smog + k * 20, "rgba(150,128,96,A)", 0.4 * S.smog); }
+  // latitudes y viento del Atlántico
+  if (S.latl > 0.01) for (const [la, col] of [[51.5, "255,205,130"], [40.7, "159,220,255"]]) trazo(d3.range(-90, 31, 2).map(lo => [lo, la]), 0.004, `rgba(${col},${(0.7 * S.latl).toFixed(3)})`, 2, [4, 8]);
+  if (S.oeste > 0.01) { g.globalCompositeOperation = "lighter"; for (let k = 0; k < 50; k++) { const u = ((t * 0.3 + k / 50) % 1), lo = -45 + u * 45, la = 46 + (k % 8) * 1.4; const p = P3(lo, la, 0.01), q = P3(lo + 3, la + 0.3, 0.01);
+      if (!p[2] || !q[2]) continue; g.strokeStyle = `rgba(255,160,80,${(0.7 * S.oeste * Math.sin(Math.PI * u)).toFixed(3)})`; g.lineWidth = 3; g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(q[0], q[1]); g.stroke(); } g.globalCompositeOperation = "source-over"; }
+  // Gran Bretaña e Irlanda congeladas
+  if (S.hielo > 0.01) { for (const pl of UKP) { relleno(pl, 0.002, `rgba(220,240,255,${(0.65 * S.hielo).toFixed(3)})`); trazo(pl, 0.002, `rgba(255,255,255,${(0.9 * S.hielo).toFixed(3)})`, 2); }
+      const p = C([-2.5, 54]); if (p[2]) glow(p[0], p[1], 260, "rgba(190,230,255,A)", 0.35 * S.hielo); }
+  // Amazonas entero
+  if (S.amaz > 0.01) { relleno(AMZ, 0.003, `rgba(${Math.round(70 + 150 * S.amazF)},${Math.round(210 - 50 * S.amazF)},${Math.round(110 - 50 * S.amazF)},${(0.38 * S.amaz).toFixed(3)})`);
+      g.lineDashOffset = -t * 30; trazo(AMZ.concat([AMZ[0]]), 0.003, `rgba(170,255,190,${(0.9 * S.amaz * (1 - 0.5 * S.amazF)).toFixed(3)})`, 2.5, [10, 7]); g.lineDashOffset = 0; }
+  // polvo del Sáhara
+  if (S.polvo > 0.01) { const ip = d3.geoInterpolate(BOD, AMA); g.globalCompositeOperation = "lighter";
+      for (let k = 0; k < 320; k++) { const u = ((t * 0.18 + k / 320) % 1), q = ip(u); const off = 3.5 * Math.sin(k * 7.3) * Math.sin(Math.PI * u); const p = P3(q[0] + off, q[1] + off * 0.6 + 6 * Math.sin(Math.PI * u), 0.02 + 0.03 * Math.sin(Math.PI * u));
+        if (!p[2]) continue; g.fillStyle = `rgba(240,185,100,${(0.7 * S.polvo * Math.sin(Math.PI * u)).toFixed(3)})`; g.beginPath(); g.arc(p[0], p[1], 2.4, 0, 7); g.fill(); }
+      g.globalCompositeOperation = "source-over"; const p = C(BOD); if (p[2]) glow(p[0], p[1], 80, "rgba(240,190,110,A)", 0.6 * S.polvo); }
+  if (S.bodP > 0.01) { relleno(BODP, 0.003, `rgba(240,190,110,${(0.6 * S.bodP).toFixed(3)})`); trazo(BODP.concat([BODP[0]]), 0.003, `rgba(255,225,170,${S.bodP})`, 2.5);
+      const p = C(BOD); if (p[2]) for (let k = 0; k < 50; k++) { const u = ((t * 0.5 + k / 50) % 1); g.fillStyle = `rgba(240,190,110,${(S.bodP * (1 - u)).toFixed(3)})`; g.beginPath(); g.arc(p[0] + 30 * Math.sin(k * 3.7) - u * 170, p[1] - u * 150 + 20 * Math.cos(k), 2.5 + u * 5, 0, 7); g.fill(); } }
+  if (S.bio > 0.01) { const p = C(BIO); if (p[2]) { glow(p[0], p[1], 60 + 12 * Math.sin(t * 4), "rgba(150,255,200,A)", 0.7 * S.bio); g.strokeStyle = `rgba(150,255,200,${S.bio})`; g.lineWidth = 2; for (let k = 0; k < 3; k++) { const r = 20 + ((t * 30 + k * 25) % 75); g.globalAlpha = S.bio * (1 - r / 95); g.beginPath(); g.arc(p[0], p[1], r, 0, 7); g.stroke(); } g.globalAlpha = 1; } }
+  // huracanes
+  if (S.hur > 0.01) for (const [lo, la] of HUR) { const p = C([lo, la]); if (!p[2]) continue; g.globalCompositeOperation = "lighter";
+      for (let k = 0; k < 140; k++) { const an = k * 0.3 + t * 1.6, r = 4 + k * 0.95; g.fillStyle = `rgba(255,255,255,${(0.35 * S.hur * (1 - k / 145)).toFixed(3)})`; g.beginPath(); g.arc(p[0] + Math.cos(an) * r, p[1] + Math.sin(an) * r * 0.9, 4.5, 0, 7); g.fill(); }
+      g.globalCompositeOperation = "source-over"; }
+  if (S.solar > 0.01) { g.save(); g.filter = "blur(22px)"; g.globalCompositeOperation = "lighter"; trazo(d3.range(-180, 181, 4).map(lo => [lo, 0]), 0.01, `rgba(255,120,50,${(0.55 * S.solar).toFixed(3)})`, 120); g.restore();
+      glow(140, 760, 320, "rgba(255,225,150,A)", 0.6 * S.solar); }
+  // celdas de circulación (el aire vuelve a moverse)
+  if (S.celdas > 0.01) for (const c of CELDAS) { const pts = d3.range(0, 1.001, 0.05).map(u => { const i = Math.min(c.length - 2, Math.floor(u * (c.length - 1))), w = u * (c.length - 1) - i; return [c[i][0] + (c[i + 1][0] - c[i][0]) * w, c[i][1] + (c[i + 1][1] - c[i][1]) * w]; });
+      g.lineDashOffset = -t * 60; trazo(pts, 0.03, `rgba(255,255,255,${(0.7 * S.celdas).toFixed(3)})`, 3, [22, 16]); g.lineDashOffset = 0; }
+  // rótulos anclados
+  for (const L of LABS) { const el = document.getElementById("lb" + L.i); const o = LV["l" + L.i] || 0; el.style.opacity = o;
+    if (o > 0.01) { const p = P3(L.lon, L.lat, 0); if (!p[2]) { el.style.opacity = 0; continue; }
+      const dx = L.lado === "i" ? -80 : 80; g.strokeStyle = `rgba(159,220,255,${o})`; g.lineWidth = 1.5; g.beginPath(); g.moveTo(p[0], p[1]); g.lineTo(p[0] + dx, p[1] - 70 + L.dy); g.stroke();
+      g.fillStyle = `rgba(255,255,255,${o})`; g.beginPath(); g.arc(p[0], p[1], 5, 0, 7); g.fill(); glow(p[0], p[1], 26, "rgba(159,220,255,A)", 0.55 * o);
+      const w = el.offsetWidth; let x = L.lado === "i" ? p[0] + dx - w - 12 : p[0] + dx + 12; x = Math.max(24, Math.min(1056 - w, x));
+      el.style.transform = `translate(${x}px, ${p[1] - 70 + L.dy - el.offsetHeight / 2}px)`; } }
+}
+const tl = gsap.timeline({ paused: true, onUpdate: frame });
+tl.to(S, {t:%%DURX%%, duration:%%DURX%%, ease:"none"}, 0);
+%%TL%%
+tl.to({}, {duration:0.01}, %%DUREND%%);
+window.__timelines["main"] = tl;
+tl.seek(0); frame();
+window.addEventListener("load", () => { frame(); });
+</script>
+</body></html>

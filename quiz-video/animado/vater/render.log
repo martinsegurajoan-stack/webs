@@ -1,0 +1,42 @@
+[INFO] [Compiler] Fetched 11 font face(s) for "Inter" from Google Fonts (cached to /root/.cache/hyperframes/fonts/inter)
+[INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
+[INFO] [Compiler] Embedded local font file: assets/fonts/grabado.ttf (362 KB → data URI)
+[hyperframes] browserGpuMode probe → software (WebGL unavailable)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, beginframe, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
+[initSession:beginframe] warmup loop started (0ms)
+[initSession:beginframe] page.goto start (1ms)
+[initSession:beginframe] page.goto complete (452ms)
+[initSession:beginframe] GSAP proxy flush complete (466ms)
+[Browser:WARN] GSAP target .cortina not found. https://gsap.com
+[Browser:WARN] GSAP target .hoja not found. https://gsap.com
+[Browser:WARN] GSAP target .vapor not found. https://gsap.com
+[Browser:WARN] GSAP target .aguja not found. https://gsap.com
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[initSession:beginframe] pollHfReady complete (730ms)
+[initSession:beginframe] pollSubCompositionTimelines complete (ready) (735ms)
+[initSession:beginframe] applyVideoMetadataHints complete (735ms)
+[initSession:beginframe] media + fonts + tailwind ready (739ms)
+[initSession:beginframe] static-frame dedup: disabled (capture mode beginframe, not screenshot) (800ms)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, beginframe, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=linux)
+[initSession:beginframe] warmup loop started (0ms)
+[initSession:beginframe] page.goto start (1ms)
+[initSession:beginframe] page.goto complete (510ms)
+[initSession:beginframe] GSAP proxy flush complete (521ms)
+[Browser:WARN] GSAP target .cortina not found. https://gsap.com
+[Browser:WARN] GSAP target .hoja not found. https://gsap.com
+[Browser:WARN] GSAP target .vapor not found. https://gsap.com
+[Browser:WARN] GSAP target .aguja not found. https://gsap.com
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[Browser:WARN] GSAP target  not found. https://gsap.com
+[initSession:beginframe] pollHfReady complete (760ms)
+[initSession:beginframe] pollSubCompositionTimelines complete (ready) (765ms)
+[initSession:beginframe] applyVideoMetadataHints complete (765ms)
+[initSession:beginframe] media + fonts + tailwind ready (768ms)
+[initSession:beginframe] static-frame dedup: disabled (capture mode beginframe, not screenshot) (799ms)

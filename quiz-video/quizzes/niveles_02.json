@@ -1,0 +1,102 @@
+{
+  "modo": "niveles",
+  "video": "niveles_02",
+  "colores": "B",
+  "titulo": "¿Hasta qué nivel llegas? Parte 2",
+  "gancho": {
+    "voz": "[excited] ¡Esta vez es MUCHO más difícil! ¿Llegas al nivel imposible?",
+    "texto": ["PARTE 2:", "MÁS DIFÍCIL"],
+    "pegatina": "¿LLEGAS AL NIVEL IMPOSIBLE?"
+  },
+  "rondas": [
+    {
+      "tipo": "secuencia",
+      "nombre": "CALENTAMIENTO",
+      "dificultad": "FÁCIL",
+      "anuncio": "Nivel uno: calentamiento.",
+      "pregunta": "¿Qué número sigue?",
+      "voz": "¿Qué número sigue?",
+      "serie": ["3", "6", "11", "18"],
+      "salto": "+3 +5 +7…",
+      "opciones": ["25", "27", "29", "36"],
+      "correcta": "B",
+      "respuesta_voz": "¡La B, veintisiete! Se suma tres, cinco, siete… y luego nueve.",
+      "fuente": "3+3=6, +5=11, +7=18, +9=27."
+    },
+    {
+      "tipo": "busca",
+      "nombre": "OJO DE HALCÓN",
+      "dificultad": "MEDIA",
+      "anuncio": "Nivel dos: ojo de halcón.",
+      "pregunta": "Encuentra el número diferente",
+      "voz": "Encuentra el número diferente.",
+      "filas": ["9999999999", "9999999999", "9999999999", "9999996999"],
+      "opciones": ["Fila A", "Fila B", "Fila C", "Fila D"],
+      "correcta": "D",
+      "respuesta_voz": "¡La D! Había un seis disfrazado de nueve.",
+      "fuente": "Un 6 entre nueves en la fila D."
+    },
+    {
+      "tipo": "memoria",
+      "nombre": "MEMORIA",
+      "dificultad": "DIFÍCIL",
+      "anuncio": "Nivel tres: memoria.",
+      "memoriza": "¡Memoriza los números!",
+      "memoriza_voz": "Siete números… ¡cinco segundos!",
+      "numeros": ["4", "9", "1", "7", "3", "8", "6"],
+      "posicion": 5,
+      "pregunta": "¿Qué número estaba en la 5ª posición?",
+      "voz": "¿Qué número estaba en la quinta posición?",
+      "opciones": ["7", "3", "8", "1"],
+      "correcta": "B",
+      "respuesta_voz": "¡La B, el tres!"
+    },
+    {
+      "tipo": "logica",
+      "nombre": "LÓGICA PURA",
+      "dificultad": "MUY DIFÍCIL",
+      "anuncio": "Nivel cuatro: lógica pura.",
+      "pregunta": "5 máquinas hacen 5 piezas en 5 minutos. ¿Cuánto tardan 100 máquinas en hacer 100 piezas?",
+      "voz": "Cinco máquinas hacen cinco piezas en cinco minutos. ¿Cuánto tardan cien máquinas en hacer cien piezas?",
+      "imagen": "engranaje_3d.png",
+      "opciones": ["5 min", "20 min", "100 min", "500 min"],
+      "correcta": "A",
+      "explicacion": "Cada máquina: 1 pieza en 5 min",
+      "respuesta_voz": "¡La A, cinco minutos! Cada máquina hace una pieza en cinco minutos.",
+      "fuente": "Clásico de razonamiento: cada máquina tarda 5 min por pieza, trabajando en paralelo."
+    },
+    {
+      "tipo": "acertijo",
+      "nombre": "LA TRAMPA FINAL",
+      "dificultad": "EXPERTO",
+      "anuncio": "Nivel cinco: la trampa final.",
+      "pregunta": "Un bate y una pelota cuestan 1,10 €. El bate cuesta 1 € más que la pelota. ¿Cuánto cuesta la pelota?",
+      "voz": "Un bate y una pelota cuestan un euro con diez. El bate cuesta un euro más que la pelota. ¿Cuánto cuesta la pelota?",
+      "imagen": "beisbol_3d.png",
+      "opciones": ["10 céntimos", "5 céntimos", "1 céntimo", "55 céntimos"],
+      "correcta": "B",
+      "explicacion": "0,05 € + 1,05 € = 1,10 €",
+      "respuesta_voz": "¡La B, cinco céntimos! El bate cuesta uno con cinco, y suman uno con diez.",
+      "fuente": "Pelota x, bate x+1: 2x+1=1,10 → x=0,05."
+    },
+    {
+      "tipo": "reloj",
+      "extra": true,
+      "nombre": "IMPOSIBLE",
+      "dificultad": "SOLO GENIOS",
+      "anuncio": "[whispers] Nivel imposible… solo para genios.",
+      "pregunta": "¿Cuántas veces se superponen exactamente las agujas de un reloj en un día (24 h)?",
+      "voz": "¿Cuántas veces se superponen exactamente las agujas de un reloj en un día entero?",
+      "hora": [12, 0],
+      "opciones": ["12", "22", "23", "24"],
+      "correcta": "B",
+      "fuente": "Se superponen 11 veces cada 12 h (cada 65 5/11 min) → 22 en 24 h. No se revela: va a comentarios.",
+      "respuesta_voz": "¡Escríbelo en los comentarios si te lo sabes!"
+    }
+  ],
+  "cierre_voz": "¿Hasta qué nivel has llegado? ¡Dímelo en comentarios!",
+  "portada": {
+    "titulo": ["¿HASTA QUÉ", "NIVEL LLEGAS?"],
+    "pegatina": "PARTE 2: MUCHO MÁS DIFÍCIL"
+  }
+}

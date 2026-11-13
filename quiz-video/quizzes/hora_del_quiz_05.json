@@ -1,0 +1,138 @@
+{
+  "modo": "gamer",
+  "tema": "videojuegos",
+  "titulo": "¿Cuánto sabes de videojuegos?",
+  "dificultad": "medio",
+  "frase_intro": "¡La última pregunta es una trampa en la que cae casi todo el mundo! ¿Llegarás al seis de seis?",
+  "pegatina_gancho": "¿LLEGAS AL 6/6?",
+  "preguntas": [
+    {
+      "pregunta": "¿Qué mob de Minecraft explota al acercarte?",
+      "opciones": [
+        "Enderman",
+        "Creeper",
+        "Zombi",
+        "Ghast"
+      ],
+      "correcta": "B",
+      "imagen": "pico_3d.png",
+      "fuente": "El Creeper se acerca en silencio y explota."
+    },
+    {
+      "pregunta": "¿Cómo se llama el protagonista de The Legend of Zelda?",
+      "opciones": [
+        "Zelda",
+        "Ganon",
+        "Link",
+        "Epona"
+      ],
+      "correcta": "C",
+      "imagen": "escudo_3d.png",
+      "fuente": "El protagonista es Link; Zelda es la princesa."
+    },
+    {
+      "pregunta": "¿Qué actor interpreta a Steve en la película de Minecraft?",
+      "opciones": [
+        "Dwayne Johnson",
+        "Chris Pratt",
+        "Jack Black",
+        "Ryan Reynolds"
+      ],
+      "correcta": "C",
+      "imagen": "claqueta_3d.png",
+      "fuente": "Una película de Minecraft (2025): Jack Black es Steve."
+    },
+    {
+      "pregunta": "¿Cómo se llama el modo de Fortnite en el que no puedes construir?",
+      "opciones": [
+        "Zero Build",
+        "Modo Creativo",
+        "Salvar el Mundo",
+        "Battle Lab"
+      ],
+      "correcta": "A",
+      "imagen": "paracaidas_3d.png",
+      "fuente": "Zero Build (Cero construcción), desde 2022."
+    },
+    {
+      "pregunta": "¿Cuál es la fecha de lanzamiento de GTA VI?",
+      "opciones": [
+        "26 de mayo",
+        "15 de septiembre",
+        "19 de noviembre",
+        "1 de diciembre"
+      ],
+      "correcta": "C",
+      "opcion_voz": [
+        "26 de mayo",
+        "15 de septiembre",
+        "El diecinueve de noviembre",
+        "1 de diciembre"
+      ],
+      "imagen": "deportivo_3d.png",
+      "fuente": "Rockstar lo retrasó del 26 de mayo al 19 de noviembre de 2026 (comprobado el 30-10-2026, sin nuevo retraso).",
+      "pregunta_voz": "¿Cuál es la fecha de lanzamiento de GTA seis?"
+    },
+    {
+      "pregunta": "¿En qué fecha se lanzó Clash Royale a nivel mundial?",
+      "opciones": [
+        "4 de enero de 2016",
+        "2 de marzo de 2016",
+        "15 de junio de 2016",
+        "2 de marzo de 2017"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "etiqueta": "PREGUNTA IMPOSIBLE",
+      "etiqueta_voz": "¡Pregunta imposible!",
+      "imagen": "espadas_3d.png",
+      "fuente": "Lanzamiento mundial 2-3-2016; el 4-1-2016 fue el lanzamiento de prueba en pocos países (trampa). No se revela."
+    }
+  ],
+  "rangos_voz": "¿Cuántas has acertado? ¡Mira tu rango!",
+  "rangos": [
+    {
+      "rango": "0–2",
+      "nombre": "Novato",
+      "imagen": "rango_novato_3d.png",
+      "voz": "De cero a dos: novato."
+    },
+    {
+      "rango": "3–4",
+      "nombre": "Gamer casual",
+      "imagen": "rango_casual_3d.png",
+      "voz": "De tres a cuatro: gamer casual."
+    },
+    {
+      "rango": "5",
+      "nombre": "Gamer de verdad",
+      "imagen": "rango_gamer_3d.png",
+      "voz": "Cinco: ¡gamer de verdad!"
+    },
+    {
+      "rango": "6/6",
+      "nombre": "Leyenda",
+      "imagen": "rango_leyenda_3d.png",
+      "voz": "Y seis de seis… ¡leyenda!"
+    }
+  ],
+  "portada": {
+    "arriba": "QUIZ GAMER",
+    "titulo": [
+      [
+        "¿CUÁNTO SABES",
+        "w"
+      ],
+      [
+        "DE VIDEOJUEGOS?",
+        "a"
+      ]
+    ],
+    "pregunta": 0,
+    "emoji": "mando",
+    "emoji2": "invasor",
+    "estilo": "cartel",
+    "pegatina": "¿LLEGAS AL 6/6?",
+    "sub": "La última es una trampa"
+  }
+}

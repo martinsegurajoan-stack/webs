@@ -1,0 +1,889 @@
+{
+ "duracion": 56.262,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si Esquerra Republicana ganara las elecciones del 29 de noviembre? Te lo cuento en sesenta segundos.",
+   "ini": 0.0,
+   "fin": 7.033
+  },
+  {
+   "n": 2,
+   "texto": "Primero, un dato: solo se presenta en Cataluña, que reparte cuarenta y ocho de los trescientos cincuenta escaños. En 2023 sacó siete.",
+   "ini": 7.303,
+   "fin": 16.308
+  },
+  {
+   "n": 3,
+   "texto": "Así que no puede gobernar España, pero sí puede decidir quién gobierna.",
+   "ini": 16.428,
+   "fin": 20.874
+  },
+  {
+   "n": 4,
+   "texto": "Financiación: Cataluña recaudaría su propio IRPF, como ya hacen el País Vasco y Navarra.",
+   "ini": 21.094,
+   "fin": 27.32
+  },
+  {
+   "n": 5,
+   "texto": "Deuda: perdonar parte de lo que la Generalitat debe al Estado.",
+   "ini": 27.44,
+   "fin": 31.272
+  },
+  {
+   "n": 6,
+   "texto": "Trenes: que Cataluña gestione Rodalies, los trenes de cercanías.",
+   "ini": 31.392,
+   "fin": 35.531
+  },
+  {
+   "n": 7,
+   "texto": "Vivienda: al menos mil millones de euros al año.",
+   "ini": 35.651,
+   "fin": 38.944
+  },
+  {
+   "n": 8,
+   "texto": "Y un referéndum pactado sobre la independencia.",
+   "ini": 39.064,
+   "fin": 41.702
+  },
+  {
+   "n": 9,
+   "texto": "Lo malo: otras comunidades lo ven como un privilegio, y sin acuerdo puede bloquear los presupuestos.",
+   "ini": 41.822,
+   "fin": 47.645
+  },
+  {
+   "n": 10,
+   "texto": "Para sus votantes, más autogobierno. Para sus críticos, desigualdad entre territorios.",
+   "ini": 47.765,
+   "fin": 52.88
+  },
+  {
+   "n": 11,
+   "texto": "El 29 de noviembre, deciden las urnas.",
+   "ini": 53.0,
+   "fin": 55.662
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.277,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.277,
+   "fin": 0.72,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.72,
+   "fin": 0.886,
+   "frase": 1
+  },
+  {
+   "w": "Esquerra",
+   "ini": 0.886,
+   "fin": 1.384,
+   "frase": 1
+  },
+  {
+   "w": "Republicana",
+   "ini": 1.384,
+   "fin": 2.049,
+   "frase": 1
+  },
+  {
+   "w": "ganara",
+   "ini": 2.049,
+   "fin": 2.436,
+   "frase": 1
+  },
+  {
+   "w": "las",
+   "ini": 2.436,
+   "fin": 2.658,
+   "frase": 1
+  },
+  {
+   "w": "elecciones",
+   "ini": 2.658,
+   "fin": 3.267,
+   "frase": 1
+  },
+  {
+   "w": "del",
+   "ini": 3.267,
+   "fin": 3.489,
+   "frase": 1
+  },
+  {
+   "w": "29",
+   "ini": 3.489,
+   "fin": 3.655,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 3.655,
+   "fin": 3.821,
+   "frase": 1
+  },
+  {
+   "w": "noviembre?",
+   "ini": 3.821,
+   "fin": 4.43,
+   "frase": 1
+  },
+  {
+   "w": "Te",
+   "ini": 5.02,
+   "fin": 5.198,
+   "frase": 1
+  },
+  {
+   "w": "lo",
+   "ini": 5.198,
+   "fin": 5.375,
+   "frase": 1
+  },
+  {
+   "w": "cuento",
+   "ini": 5.375,
+   "fin": 5.79,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 5.79,
+   "fin": 5.967,
+   "frase": 1
+  },
+  {
+   "w": "sesenta",
+   "ini": 5.967,
+   "fin": 6.441,
+   "frase": 1
+  },
+  {
+   "w": "segundos.",
+   "ini": 6.441,
+   "fin": 7.033,
+   "frase": 1
+  },
+  {
+   "w": "Primero,",
+   "ini": 7.303,
+   "fin": 7.713,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 7.843,
+   "fin": 8.009,
+   "frase": 2
+  },
+  {
+   "w": "dato:",
+   "ini": 8.009,
+   "fin": 8.343,
+   "frase": 2
+  },
+  {
+   "w": "solo",
+   "ini": 8.693,
+   "fin": 8.958,
+   "frase": 2
+  },
+  {
+   "w": "se",
+   "ini": 8.958,
+   "fin": 9.117,
+   "frase": 2
+  },
+  {
+   "w": "presenta",
+   "ini": 9.117,
+   "fin": 9.594,
+   "frase": 2
+  },
+  {
+   "w": "en",
+   "ini": 9.594,
+   "fin": 9.753,
+   "frase": 2
+  },
+  {
+   "w": "Cataluña,",
+   "ini": 9.753,
+   "fin": 10.283,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 10.453,
+   "fin": 10.741,
+   "frase": 2
+  },
+  {
+   "w": "reparte",
+   "ini": 10.741,
+   "fin": 11.318,
+   "frase": 2
+  },
+  {
+   "w": "cuarenta",
+   "ini": 11.318,
+   "fin": 11.967,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 11.967,
+   "fin": 12.111,
+   "frase": 2
+  },
+  {
+   "w": "ocho",
+   "ini": 12.111,
+   "fin": 12.472,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 12.472,
+   "fin": 12.688,
+   "frase": 2
+  },
+  {
+   "w": "los",
+   "ini": 12.688,
+   "fin": 12.977,
+   "frase": 2
+  },
+  {
+   "w": "trescientos",
+   "ini": 12.977,
+   "fin": 13.842,
+   "frase": 2
+  },
+  {
+   "w": "cincuenta",
+   "ini": 13.842,
+   "fin": 14.563,
+   "frase": 2
+  },
+  {
+   "w": "escaños.",
+   "ini": 14.563,
+   "fin": 15.213,
+   "frase": 2
+  },
+  {
+   "w": "En",
+   "ini": 15.313,
+   "fin": 15.462,
+   "frase": 2
+  },
+  {
+   "w": "2023",
+   "ini": 15.462,
+   "fin": 15.711,
+   "frase": 2
+  },
+  {
+   "w": "sacó",
+   "ini": 15.711,
+   "fin": 15.96,
+   "frase": 2
+  },
+  {
+   "w": "siete.",
+   "ini": 15.96,
+   "fin": 16.308,
+   "frase": 2
+  },
+  {
+   "w": "Así",
+   "ini": 16.428,
+   "fin": 16.648,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 16.648,
+   "fin": 16.868,
+   "frase": 3
+  },
+  {
+   "w": "no",
+   "ini": 16.868,
+   "fin": 17.033,
+   "frase": 3
+  },
+  {
+   "w": "puede",
+   "ini": 17.033,
+   "fin": 17.363,
+   "frase": 3
+  },
+  {
+   "w": "gobernar",
+   "ini": 17.363,
+   "fin": 17.858,
+   "frase": 3
+  },
+  {
+   "w": "España,",
+   "ini": 17.858,
+   "fin": 18.298,
+   "frase": 3
+  },
+  {
+   "w": "pero",
+   "ini": 18.618,
+   "fin": 18.915,
+   "frase": 3
+  },
+  {
+   "w": "sí",
+   "ini": 18.915,
+   "fin": 19.093,
+   "frase": 3
+  },
+  {
+   "w": "puede",
+   "ini": 19.093,
+   "fin": 19.449,
+   "frase": 3
+  },
+  {
+   "w": "decidir",
+   "ini": 19.449,
+   "fin": 19.924,
+   "frase": 3
+  },
+  {
+   "w": "quién",
+   "ini": 19.924,
+   "fin": 20.28,
+   "frase": 3
+  },
+  {
+   "w": "gobierna.",
+   "ini": 20.28,
+   "fin": 20.874,
+   "frase": 3
+  },
+  {
+   "w": "Financiación:",
+   "ini": 21.094,
+   "fin": 21.804,
+   "frase": 4
+  },
+  {
+   "w": "Cataluña",
+   "ini": 22.294,
+   "fin": 22.919,
+   "frase": 4
+  },
+  {
+   "w": "recaudaría",
+   "ini": 22.919,
+   "fin": 23.683,
+   "frase": 4
+  },
+  {
+   "w": "su",
+   "ini": 23.683,
+   "fin": 23.891,
+   "frase": 4
+  },
+  {
+   "w": "propio",
+   "ini": 23.891,
+   "fin": 24.377,
+   "frase": 4
+  },
+  {
+   "w": "IRPF,",
+   "ini": 24.377,
+   "fin": 24.794,
+   "frase": 4
+  },
+  {
+   "w": "como",
+   "ini": 24.904,
+   "fin": 25.214,
+   "frase": 4
+  },
+  {
+   "w": "ya",
+   "ini": 25.214,
+   "fin": 25.4,
+   "frase": 4
+  },
+  {
+   "w": "hacen",
+   "ini": 25.4,
+   "fin": 25.771,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 25.771,
+   "fin": 25.957,
+   "frase": 4
+  },
+  {
+   "w": "País",
+   "ini": 25.957,
+   "fin": 26.267,
+   "frase": 4
+  },
+  {
+   "w": "Vasco",
+   "ini": 26.267,
+   "fin": 26.639,
+   "frase": 4
+  },
+  {
+   "w": "y",
+   "ini": 26.639,
+   "fin": 26.762,
+   "frase": 4
+  },
+  {
+   "w": "Navarra.",
+   "ini": 26.762,
+   "fin": 27.32,
+   "frase": 4
+  },
+  {
+   "w": "Deuda:",
+   "ini": 27.44,
+   "fin": 27.92,
+   "frase": 5
+  },
+  {
+   "w": "perdonar",
+   "ini": 28.31,
+   "fin": 28.786,
+   "frase": 5
+  },
+  {
+   "w": "parte",
+   "ini": 28.786,
+   "fin": 29.103,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 29.103,
+   "fin": 29.262,
+   "frase": 5
+  },
+  {
+   "w": "lo",
+   "ini": 29.262,
+   "fin": 29.421,
+   "frase": 5
+  },
+  {
+   "w": "que",
+   "ini": 29.421,
+   "fin": 29.632,
+   "frase": 5
+  },
+  {
+   "w": "la",
+   "ini": 29.632,
+   "fin": 29.791,
+   "frase": 5
+  },
+  {
+   "w": "Generalitat",
+   "ini": 29.791,
+   "fin": 30.426,
+   "frase": 5
+  },
+  {
+   "w": "debe",
+   "ini": 30.426,
+   "fin": 30.69,
+   "frase": 5
+  },
+  {
+   "w": "al",
+   "ini": 30.69,
+   "fin": 30.849,
+   "frase": 5
+  },
+  {
+   "w": "Estado.",
+   "ini": 30.849,
+   "fin": 31.272,
+   "frase": 5
+  },
+  {
+   "w": "Trenes:",
+   "ini": 31.392,
+   "fin": 31.662,
+   "frase": 6
+  },
+  {
+   "w": "que",
+   "ini": 32.182,
+   "fin": 32.39,
+   "frase": 6
+  },
+  {
+   "w": "Cataluña",
+   "ini": 32.39,
+   "fin": 32.857,
+   "frase": 6
+  },
+  {
+   "w": "gestione",
+   "ini": 32.857,
+   "fin": 33.324,
+   "frase": 6
+  },
+  {
+   "w": "Rodalies,",
+   "ini": 33.324,
+   "fin": 33.842,
+   "frase": 6
+  },
+  {
+   "w": "los",
+   "ini": 34.132,
+   "fin": 34.356,
+   "frase": 6
+  },
+  {
+   "w": "trenes",
+   "ini": 34.356,
+   "fin": 34.748,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 34.748,
+   "fin": 34.916,
+   "frase": 6
+  },
+  {
+   "w": "cercanías.",
+   "ini": 34.916,
+   "fin": 35.531,
+   "frase": 6
+  },
+  {
+   "w": "Vivienda:",
+   "ini": 35.651,
+   "fin": 36.271,
+   "frase": 7
+  },
+  {
+   "w": "al",
+   "ini": 36.591,
+   "fin": 36.772,
+   "frase": 7
+  },
+  {
+   "w": "menos",
+   "ini": 36.772,
+   "fin": 37.134,
+   "frase": 7
+  },
+  {
+   "w": "mil",
+   "ini": 37.134,
+   "fin": 37.375,
+   "frase": 7
+  },
+  {
+   "w": "millones",
+   "ini": 37.375,
+   "fin": 37.918,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 37.918,
+   "fin": 38.099,
+   "frase": 7
+  },
+  {
+   "w": "euros",
+   "ini": 38.099,
+   "fin": 38.461,
+   "frase": 7
+  },
+  {
+   "w": "al",
+   "ini": 38.461,
+   "fin": 38.642,
+   "frase": 7
+  },
+  {
+   "w": "año.",
+   "ini": 38.642,
+   "fin": 38.944,
+   "frase": 7
+  },
+  {
+   "w": "Y",
+   "ini": 39.064,
+   "fin": 39.174,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 39.174,
+   "fin": 39.339,
+   "frase": 8
+  },
+  {
+   "w": "referéndum",
+   "ini": 39.339,
+   "fin": 39.943,
+   "frase": 8
+  },
+  {
+   "w": "pactado",
+   "ini": 39.943,
+   "fin": 40.383,
+   "frase": 8
+  },
+  {
+   "w": "sobre",
+   "ini": 40.383,
+   "fin": 40.713,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 40.713,
+   "fin": 40.877,
+   "frase": 8
+  },
+  {
+   "w": "independencia.",
+   "ini": 40.877,
+   "fin": 41.702,
+   "frase": 8
+  },
+  {
+   "w": "Lo",
+   "ini": 41.822,
+   "fin": 41.985,
+   "frase": 9
+  },
+  {
+   "w": "malo:",
+   "ini": 41.985,
+   "fin": 42.312,
+   "frase": 9
+  },
+  {
+   "w": "otras",
+   "ini": 42.672,
+   "fin": 42.977,
+   "frase": 9
+  },
+  {
+   "w": "comunidades",
+   "ini": 42.977,
+   "fin": 43.588,
+   "frase": 9
+  },
+  {
+   "w": "lo",
+   "ini": 43.588,
+   "fin": 43.74,
+   "frase": 9
+  },
+  {
+   "w": "ven",
+   "ini": 43.74,
+   "fin": 43.944,
+   "frase": 9
+  },
+  {
+   "w": "como",
+   "ini": 43.944,
+   "fin": 44.198,
+   "frase": 9
+  },
+  {
+   "w": "un",
+   "ini": 44.198,
+   "fin": 44.351,
+   "frase": 9
+  },
+  {
+   "w": "privilegio,",
+   "ini": 44.351,
+   "fin": 44.962,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 45.132,
+   "fin": 45.239,
+   "frase": 9
+  },
+  {
+   "w": "sin",
+   "ini": 45.239,
+   "fin": 45.453,
+   "frase": 9
+  },
+  {
+   "w": "acuerdo",
+   "ini": 45.453,
+   "fin": 45.88,
+   "frase": 9
+  },
+  {
+   "w": "puede",
+   "ini": 45.88,
+   "fin": 46.201,
+   "frase": 9
+  },
+  {
+   "w": "bloquear",
+   "ini": 46.201,
+   "fin": 46.682,
+   "frase": 9
+  },
+  {
+   "w": "los",
+   "ini": 46.682,
+   "fin": 46.896,
+   "frase": 9
+  },
+  {
+   "w": "presupuestos.",
+   "ini": 46.896,
+   "fin": 47.645,
+   "frase": 9
+  },
+  {
+   "w": "Para",
+   "ini": 47.765,
+   "fin": 47.997,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 47.997,
+   "fin": 48.182,
+   "frase": 10
+  },
+  {
+   "w": "votantes,",
+   "ini": 48.182,
+   "fin": 48.645,
+   "frase": 10
+  },
+  {
+   "w": "más",
+   "ini": 48.735,
+   "fin": 48.973,
+   "frase": 10
+  },
+  {
+   "w": "autogobierno.",
+   "ini": 48.973,
+   "fin": 49.805,
+   "frase": 10
+  },
+  {
+   "w": "Para",
+   "ini": 50.045,
+   "fin": 50.269,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 50.269,
+   "fin": 50.448,
+   "frase": 10
+  },
+  {
+   "w": "críticos,",
+   "ini": 50.448,
+   "fin": 50.895,
+   "frase": 10
+  },
+  {
+   "w": "desigualdad",
+   "ini": 51.015,
+   "fin": 51.737,
+   "frase": 10
+  },
+  {
+   "w": "entre",
+   "ini": 51.737,
+   "fin": 52.098,
+   "frase": 10
+  },
+  {
+   "w": "territorios.",
+   "ini": 52.098,
+   "fin": 52.88,
+   "frase": 10
+  },
+  {
+   "w": "El",
+   "ini": 53.0,
+   "fin": 53.192,
+   "frase": 11
+  },
+  {
+   "w": "29",
+   "ini": 53.192,
+   "fin": 53.384,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 53.384,
+   "fin": 53.576,
+   "frase": 11
+  },
+  {
+   "w": "noviembre,",
+   "ini": 53.576,
+   "fin": 54.28,
+   "frase": 11
+  },
+  {
+   "w": "deciden",
+   "ini": 54.37,
+   "fin": 54.914,
+   "frase": 11
+  },
+  {
+   "w": "las",
+   "ini": 54.914,
+   "fin": 55.186,
+   "frase": 11
+  },
+  {
+   "w": "urnas.",
+   "ini": 55.186,
+   "fin": 55.662,
+   "frase": 11
+  }
+ ]
+}

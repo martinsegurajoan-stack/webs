@@ -1,0 +1,5 @@
+__pycache__/
+*.wav
+salida/*.png
+modelos/
+assets/voz_ref/*.wav

@@ -1,0 +1,52 @@
+{
+  "tema": "cultura general",
+  "titulo": "¿Cuánto sabes de cultura general?",
+  "dificultad": "medio",
+  "preguntas": [
+    {
+      "pregunta": "¿Qué día están previstas las próximas elecciones generales en España?",
+      "opciones": [
+        "15 de noviembre",
+        "29 de noviembre",
+        "6 de diciembre",
+        "22 de noviembre"
+      ],
+      "correcta": "B",
+      "fuente": "Real Decreto 806/2026 (BOE): elecciones generales el 29 de noviembre de 2026."
+    },
+    {
+      "pregunta": "¿En qué ciudad se encuentra la Casa Blanca?",
+      "opciones": [
+        "Nueva York",
+        "Washington D. C.",
+        "Los Ángeles",
+        "Chicago"
+      ],
+      "correcta": "B",
+      "fuente": "La Casa Blanca está en el 1600 de Pennsylvania Avenue, Washington D. C."
+    },
+    {
+      "pregunta": "¿Quién fue el primer presidente del Gobierno de España tras la dictadura franquista?",
+      "opciones": [
+        "Felipe González",
+        "Mariano Rajoy",
+        "Leopoldo Calvo-Sotelo",
+        "Adolfo Suárez"
+      ],
+      "correcta": "D",
+      "fuente": "Adolfo Suárez (1976-1981), primer presidente elegido en las urnas en 1977."
+    },
+    {
+      "pregunta": "Si hay 5 manzanas y cojo 2, ¿cuántas manzanas me quedan?",
+      "opciones": [
+        "2",
+        "3",
+        "4",
+        "1"
+      ],
+      "correcta": "A",
+      "sin_respuesta": true,
+      "fuente": "Pregunta trampa para comentarios: no se revela. Te quedas con las 2 que has cogido (A); en el montón quedan 3 (B)."
+    }
+  ]
+}

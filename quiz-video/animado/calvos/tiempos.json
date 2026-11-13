@@ -1,0 +1,1399 @@
+{
+ "duracion": 76.424,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Y si mañana te despertaras sin un solo pelo? Ni tú, ni nadie en el mundo. Nunca más.",
+   "ini": 0.5,
+   "fin": 5.467
+  },
+  {
+   "n": 2,
+   "texto": "Sin cejas, sin pestañas, sin barba. Y lo primero que notarías es que te cuesta reconocer a la gente: para identificar una cara, tu cerebro se fija muchísimo en el pelo.",
+   "ini": 5.957,
+   "fin": 16.729
+  },
+  {
+   "n": 3,
+   "texto": "El primer día de calor, el sudor te caería directo a los ojos. Las cejas son un canal que lo desvía hacia los lados.",
+   "ini": 16.869,
+   "fin": 23.257
+  },
+  {
+   "n": 4,
+   "texto": "Sin pestañas, te entraría mucho más polvo en los ojos, y se secarían antes.",
+   "ini": 23.397,
+   "fin": 27.782
+  },
+  {
+   "n": 5,
+   "texto": "Y sin los pelos de la nariz, el polen llegaría más adentro. Más alergias.",
+   "ini": 27.922,
+   "fin": 32.461
+  },
+  {
+   "n": 6,
+   "texto": "Ni siquiera notarías un mosquito posándose en tu brazo: cada pelo es un sensor que avisa a un nervio.",
+   "ini": 32.601,
+   "fin": 38.118
+  },
+  {
+   "n": 7,
+   "texto": "Una especie entera se extinguiría para siempre: el piojo humano. Solo puede vivir en nuestro pelo.",
+   "ini": 38.258,
+   "fin": 43.89
+  },
+  {
+   "n": 8,
+   "texto": "Desaparecería una industria de casi cien mil millones de dólares al año: champús, tintes, peluquerías.",
+   "ini": 44.18,
+   "fin": 50.593
+  },
+  {
+   "n": 9,
+   "texto": "Un templo de la India perdería una fortuna: millones de peregrinos se rapan allí como ofrenda, y el templo vende ese pelo para fabricar pelucas.",
+   "ini": 50.733,
+   "fin": 59.165
+  },
+  {
+   "n": 10,
+   "texto": "La policía perdería una prueba clave: un solo pelo puede revelar qué drogas tomaste durante meses.",
+   "ini": 59.305,
+   "fin": 65.076
+  },
+  {
+   "n": 11,
+   "texto": "Y lo más sorprendente: ya tienes casi tantos pelos como un chimpancé. Unos cinco millones. Lo que pasa es que la mayoría son tan finos… que ni los ves.",
+   "ini": 65.516,
+   "fin": 74.824
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Y",
+   "ini": 0.5,
+   "fin": 0.681,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.681,
+   "fin": 0.863,
+   "frase": 1
+  },
+  {
+   "w": "mañana",
+   "ini": 0.863,
+   "fin": 1.286,
+   "frase": 1
+  },
+  {
+   "w": "te",
+   "ini": 1.286,
+   "fin": 1.467,
+   "frase": 1
+  },
+  {
+   "w": "despertaras",
+   "ini": 1.467,
+   "fin": 2.192,
+   "frase": 1
+  },
+  {
+   "w": "sin",
+   "ini": 2.192,
+   "fin": 2.434,
+   "frase": 1
+  },
+  {
+   "w": "un",
+   "ini": 2.434,
+   "fin": 2.615,
+   "frase": 1
+  },
+  {
+   "w": "solo",
+   "ini": 2.615,
+   "fin": 2.917,
+   "frase": 1
+  },
+  {
+   "w": "pelo?",
+   "ini": 2.917,
+   "fin": 3.28,
+   "frase": 1
+  },
+  {
+   "w": "Ni",
+   "ini": 3.47,
+   "fin": 3.556,
+   "frase": 1
+  },
+  {
+   "w": "tú,",
+   "ini": 3.556,
+   "fin": 3.67,
+   "frase": 1
+  },
+  {
+   "w": "ni",
+   "ini": 3.74,
+   "fin": 3.769,
+   "frase": 1
+  },
+  {
+   "w": "nadie",
+   "ini": 3.769,
+   "fin": 3.826,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 3.826,
+   "fin": 3.855,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 3.855,
+   "fin": 3.883,
+   "frase": 1
+  },
+  {
+   "w": "mundo.",
+   "ini": 3.883,
+   "fin": 3.95,
+   "frase": 1
+  },
+  {
+   "w": "Nunca",
+   "ini": 4.16,
+   "fin": 4.873,
+   "frase": 1
+  },
+  {
+   "w": "más.",
+   "ini": 4.873,
+   "fin": 5.467,
+   "frase": 1
+  },
+  {
+   "w": "Sin",
+   "ini": 5.957,
+   "fin": 6.168,
+   "frase": 2
+  },
+  {
+   "w": "cejas,",
+   "ini": 6.168,
+   "fin": 6.537,
+   "frase": 2
+  },
+  {
+   "w": "sin",
+   "ini": 6.687,
+   "fin": 6.89,
+   "frase": 2
+  },
+  {
+   "w": "pestañas,",
+   "ini": 6.89,
+   "fin": 7.397,
+   "frase": 2
+  },
+  {
+   "w": "sin",
+   "ini": 7.487,
+   "fin": 7.771,
+   "frase": 2
+  },
+  {
+   "w": "barba.",
+   "ini": 7.771,
+   "fin": 8.267,
+   "frase": 2
+  },
+  {
+   "w": "Y",
+   "ini": 8.347,
+   "fin": 8.476,
+   "frase": 2
+  },
+  {
+   "w": "lo",
+   "ini": 8.476,
+   "fin": 8.67,
+   "frase": 2
+  },
+  {
+   "w": "primero",
+   "ini": 8.67,
+   "fin": 9.187,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 9.187,
+   "fin": 9.445,
+   "frase": 2
+  },
+  {
+   "w": "notarías",
+   "ini": 9.445,
+   "fin": 10.027,
+   "frase": 2
+  },
+  {
+   "w": "es",
+   "ini": 10.027,
+   "fin": 10.221,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 10.221,
+   "fin": 10.479,
+   "frase": 2
+  },
+  {
+   "w": "te",
+   "ini": 10.479,
+   "fin": 10.673,
+   "frase": 2
+  },
+  {
+   "w": "cuesta",
+   "ini": 10.673,
+   "fin": 11.125,
+   "frase": 2
+  },
+  {
+   "w": "reconocer",
+   "ini": 11.125,
+   "fin": 11.772,
+   "frase": 2
+  },
+  {
+   "w": "a",
+   "ini": 11.772,
+   "fin": 11.901,
+   "frase": 2
+  },
+  {
+   "w": "la",
+   "ini": 11.901,
+   "fin": 12.095,
+   "frase": 2
+  },
+  {
+   "w": "gente:",
+   "ini": 12.095,
+   "fin": 12.547,
+   "frase": 2
+  },
+  {
+   "w": "para",
+   "ini": 12.697,
+   "fin": 12.984,
+   "frase": 2
+  },
+  {
+   "w": "identificar",
+   "ini": 12.984,
+   "fin": 13.673,
+   "frase": 2
+  },
+  {
+   "w": "una",
+   "ini": 13.673,
+   "fin": 13.903,
+   "frase": 2
+  },
+  {
+   "w": "cara,",
+   "ini": 13.903,
+   "fin": 14.247,
+   "frase": 2
+  },
+  {
+   "w": "tu",
+   "ini": 14.477,
+   "fin": 14.642,
+   "frase": 2
+  },
+  {
+   "w": "cerebro",
+   "ini": 14.642,
+   "fin": 15.081,
+   "frase": 2
+  },
+  {
+   "w": "se",
+   "ini": 15.081,
+   "fin": 15.246,
+   "frase": 2
+  },
+  {
+   "w": "fija",
+   "ini": 15.246,
+   "fin": 15.52,
+   "frase": 2
+  },
+  {
+   "w": "muchísimo",
+   "ini": 15.52,
+   "fin": 16.07,
+   "frase": 2
+  },
+  {
+   "w": "en",
+   "ini": 16.07,
+   "fin": 16.234,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 16.234,
+   "fin": 16.399,
+   "frase": 2
+  },
+  {
+   "w": "pelo.",
+   "ini": 16.399,
+   "fin": 16.729,
+   "frase": 2
+  },
+  {
+   "w": "El",
+   "ini": 16.869,
+   "fin": 17.004,
+   "frase": 3
+  },
+  {
+   "w": "primer",
+   "ini": 17.004,
+   "fin": 17.319,
+   "frase": 3
+  },
+  {
+   "w": "día",
+   "ini": 17.319,
+   "fin": 17.499,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 17.499,
+   "fin": 17.634,
+   "frase": 3
+  },
+  {
+   "w": "calor,",
+   "ini": 17.634,
+   "fin": 17.949,
+   "frase": 3
+  },
+  {
+   "w": "el",
+   "ini": 18.109,
+   "fin": 18.274,
+   "frase": 3
+  },
+  {
+   "w": "sudor",
+   "ini": 18.274,
+   "fin": 18.605,
+   "frase": 3
+  },
+  {
+   "w": "te",
+   "ini": 18.605,
+   "fin": 18.77,
+   "frase": 3
+  },
+  {
+   "w": "caería",
+   "ini": 18.77,
+   "fin": 19.156,
+   "frase": 3
+  },
+  {
+   "w": "directo",
+   "ini": 19.156,
+   "fin": 19.597,
+   "frase": 3
+  },
+  {
+   "w": "a",
+   "ini": 19.597,
+   "fin": 19.707,
+   "frase": 3
+  },
+  {
+   "w": "los",
+   "ini": 19.707,
+   "fin": 19.928,
+   "frase": 3
+  },
+  {
+   "w": "ojos.",
+   "ini": 19.928,
+   "fin": 20.259,
+   "frase": 3
+  },
+  {
+   "w": "Las",
+   "ini": 20.469,
+   "fin": 20.675,
+   "frase": 3
+  },
+  {
+   "w": "cejas",
+   "ini": 20.675,
+   "fin": 20.985,
+   "frase": 3
+  },
+  {
+   "w": "son",
+   "ini": 20.985,
+   "fin": 21.192,
+   "frase": 3
+  },
+  {
+   "w": "un",
+   "ini": 21.192,
+   "fin": 21.346,
+   "frase": 3
+  },
+  {
+   "w": "canal",
+   "ini": 21.346,
+   "fin": 21.656,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 21.656,
+   "fin": 21.863,
+   "frase": 3
+  },
+  {
+   "w": "lo",
+   "ini": 21.863,
+   "fin": 22.018,
+   "frase": 3
+  },
+  {
+   "w": "desvía",
+   "ini": 22.018,
+   "fin": 22.379,
+   "frase": 3
+  },
+  {
+   "w": "hacia",
+   "ini": 22.379,
+   "fin": 22.689,
+   "frase": 3
+  },
+  {
+   "w": "los",
+   "ini": 22.689,
+   "fin": 22.896,
+   "frase": 3
+  },
+  {
+   "w": "lados.",
+   "ini": 22.896,
+   "fin": 23.257,
+   "frase": 3
+  },
+  {
+   "w": "Sin",
+   "ini": 23.397,
+   "fin": 23.64,
+   "frase": 4
+  },
+  {
+   "w": "pestañas,",
+   "ini": 23.64,
+   "fin": 24.247,
+   "frase": 4
+  },
+  {
+   "w": "te",
+   "ini": 24.377,
+   "fin": 24.522,
+   "frase": 4
+  },
+  {
+   "w": "entraría",
+   "ini": 24.522,
+   "fin": 24.957,
+   "frase": 4
+  },
+  {
+   "w": "mucho",
+   "ini": 24.957,
+   "fin": 25.247,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 25.247,
+   "fin": 25.44,
+   "frase": 4
+  },
+  {
+   "w": "polvo",
+   "ini": 25.44,
+   "fin": 25.729,
+   "frase": 4
+  },
+  {
+   "w": "en",
+   "ini": 25.729,
+   "fin": 25.874,
+   "frase": 4
+  },
+  {
+   "w": "los",
+   "ini": 25.874,
+   "fin": 26.068,
+   "frase": 4
+  },
+  {
+   "w": "ojos,",
+   "ini": 26.068,
+   "fin": 26.357,
+   "frase": 4
+  },
+  {
+   "w": "y",
+   "ini": 26.587,
+   "fin": 26.701,
+   "frase": 4
+  },
+  {
+   "w": "se",
+   "ini": 26.701,
+   "fin": 26.872,
+   "frase": 4
+  },
+  {
+   "w": "secarían",
+   "ini": 26.872,
+   "fin": 27.384,
+   "frase": 4
+  },
+  {
+   "w": "antes.",
+   "ini": 27.384,
+   "fin": 27.782,
+   "frase": 4
+  },
+  {
+   "w": "Y",
+   "ini": 27.922,
+   "fin": 28.033,
+   "frase": 5
+  },
+  {
+   "w": "sin",
+   "ini": 28.033,
+   "fin": 28.253,
+   "frase": 5
+  },
+  {
+   "w": "los",
+   "ini": 28.253,
+   "fin": 28.474,
+   "frase": 5
+  },
+  {
+   "w": "pelos",
+   "ini": 28.474,
+   "fin": 28.805,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 28.805,
+   "fin": 28.971,
+   "frase": 5
+  },
+  {
+   "w": "la",
+   "ini": 28.971,
+   "fin": 29.136,
+   "frase": 5
+  },
+  {
+   "w": "nariz,",
+   "ini": 29.136,
+   "fin": 29.522,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 29.592,
+   "fin": 29.743,
+   "frase": 5
+  },
+  {
+   "w": "polen",
+   "ini": 29.743,
+   "fin": 30.045,
+   "frase": 5
+  },
+  {
+   "w": "llegaría",
+   "ini": 30.045,
+   "fin": 30.498,
+   "frase": 5
+  },
+  {
+   "w": "más",
+   "ini": 30.498,
+   "fin": 30.699,
+   "frase": 5
+  },
+  {
+   "w": "adentro.",
+   "ini": 30.699,
+   "fin": 31.152,
+   "frase": 5
+  },
+  {
+   "w": "Más",
+   "ini": 31.422,
+   "fin": 31.719,
+   "frase": 5
+  },
+  {
+   "w": "alergias.",
+   "ini": 31.719,
+   "fin": 32.461,
+   "frase": 5
+  },
+  {
+   "w": "Ni",
+   "ini": 32.601,
+   "fin": 32.748,
+   "frase": 6
+  },
+  {
+   "w": "siquiera",
+   "ini": 32.748,
+   "fin": 33.188,
+   "frase": 6
+  },
+  {
+   "w": "notarías",
+   "ini": 33.188,
+   "fin": 33.629,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 33.629,
+   "fin": 33.775,
+   "frase": 6
+  },
+  {
+   "w": "mosquito",
+   "ini": 33.775,
+   "fin": 34.216,
+   "frase": 6
+  },
+  {
+   "w": "posándose",
+   "ini": 34.216,
+   "fin": 34.705,
+   "frase": 6
+  },
+  {
+   "w": "en",
+   "ini": 34.705,
+   "fin": 34.852,
+   "frase": 6
+  },
+  {
+   "w": "tu",
+   "ini": 34.852,
+   "fin": 34.999,
+   "frase": 6
+  },
+  {
+   "w": "brazo:",
+   "ini": 34.999,
+   "fin": 35.341,
+   "frase": 6
+  },
+  {
+   "w": "cada",
+   "ini": 35.571,
+   "fin": 35.848,
+   "frase": 6
+  },
+  {
+   "w": "pelo",
+   "ini": 35.848,
+   "fin": 36.125,
+   "frase": 6
+  },
+  {
+   "w": "es",
+   "ini": 36.125,
+   "fin": 36.291,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 36.291,
+   "fin": 36.457,
+   "frase": 6
+  },
+  {
+   "w": "sensor",
+   "ini": 36.457,
+   "fin": 36.845,
+   "frase": 6
+  },
+  {
+   "w": "que",
+   "ini": 36.845,
+   "fin": 37.066,
+   "frase": 6
+  },
+  {
+   "w": "avisa",
+   "ini": 37.066,
+   "fin": 37.398,
+   "frase": 6
+  },
+  {
+   "w": "a",
+   "ini": 37.398,
+   "fin": 37.509,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 37.509,
+   "fin": 37.675,
+   "frase": 6
+  },
+  {
+   "w": "nervio.",
+   "ini": 37.675,
+   "fin": 38.118,
+   "frase": 6
+  },
+  {
+   "w": "Una",
+   "ini": 38.258,
+   "fin": 38.467,
+   "frase": 7
+  },
+  {
+   "w": "especie",
+   "ini": 38.467,
+   "fin": 38.886,
+   "frase": 7
+  },
+  {
+   "w": "entera",
+   "ini": 38.886,
+   "fin": 39.252,
+   "frase": 7
+  },
+  {
+   "w": "se",
+   "ini": 39.252,
+   "fin": 39.408,
+   "frase": 7
+  },
+  {
+   "w": "extinguiría",
+   "ini": 39.408,
+   "fin": 40.036,
+   "frase": 7
+  },
+  {
+   "w": "para",
+   "ini": 40.036,
+   "fin": 40.297,
+   "frase": 7
+  },
+  {
+   "w": "siempre:",
+   "ini": 40.297,
+   "fin": 40.768,
+   "frase": 7
+  },
+  {
+   "w": "el",
+   "ini": 40.988,
+   "fin": 41.177,
+   "frase": 7
+  },
+  {
+   "w": "piojo",
+   "ini": 41.177,
+   "fin": 41.554,
+   "frase": 7
+  },
+  {
+   "w": "humano.",
+   "ini": 41.554,
+   "fin": 42.058,
+   "frase": 7
+  },
+  {
+   "w": "Solo",
+   "ini": 42.258,
+   "fin": 42.498,
+   "frase": 7
+  },
+  {
+   "w": "puede",
+   "ini": 42.498,
+   "fin": 42.786,
+   "frase": 7
+  },
+  {
+   "w": "vivir",
+   "ini": 42.786,
+   "fin": 43.074,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 43.074,
+   "fin": 43.218,
+   "frase": 7
+  },
+  {
+   "w": "nuestro",
+   "ini": 43.218,
+   "fin": 43.602,
+   "frase": 7
+  },
+  {
+   "w": "pelo.",
+   "ini": 43.602,
+   "fin": 43.89,
+   "frase": 7
+  },
+  {
+   "w": "Desaparecería",
+   "ini": 44.18,
+   "fin": 44.987,
+   "frase": 8
+  },
+  {
+   "w": "una",
+   "ini": 44.987,
+   "fin": 45.218,
+   "frase": 8
+  },
+  {
+   "w": "industria",
+   "ini": 45.218,
+   "fin": 45.795,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 45.795,
+   "fin": 45.968,
+   "frase": 8
+  },
+  {
+   "w": "casi",
+   "ini": 45.968,
+   "fin": 46.256,
+   "frase": 8
+  },
+  {
+   "w": "cien",
+   "ini": 46.256,
+   "fin": 46.544,
+   "frase": 8
+  },
+  {
+   "w": "mil",
+   "ini": 46.544,
+   "fin": 46.775,
+   "frase": 8
+  },
+  {
+   "w": "millones",
+   "ini": 46.775,
+   "fin": 47.294,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 47.294,
+   "fin": 47.467,
+   "frase": 8
+  },
+  {
+   "w": "dólares",
+   "ini": 47.467,
+   "fin": 47.928,
+   "frase": 8
+  },
+  {
+   "w": "al",
+   "ini": 47.928,
+   "fin": 48.101,
+   "frase": 8
+  },
+  {
+   "w": "año:",
+   "ini": 48.101,
+   "fin": 48.39,
+   "frase": 8
+  },
+  {
+   "w": "champús,",
+   "ini": 48.55,
+   "fin": 48.95,
+   "frase": 8
+  },
+  {
+   "w": "tintes,",
+   "ini": 49.12,
+   "fin": 49.67,
+   "frase": 8
+  },
+  {
+   "w": "peluquerías.",
+   "ini": 49.76,
+   "fin": 50.593,
+   "frase": 8
+  },
+  {
+   "w": "Un",
+   "ini": 50.733,
+   "fin": 50.902,
+   "frase": 9
+  },
+  {
+   "w": "templo",
+   "ini": 50.902,
+   "fin": 51.296,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 51.296,
+   "fin": 51.465,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 51.465,
+   "fin": 51.634,
+   "frase": 9
+  },
+  {
+   "w": "India",
+   "ini": 51.634,
+   "fin": 51.973,
+   "frase": 9
+  },
+  {
+   "w": "perdería",
+   "ini": 51.973,
+   "fin": 52.48,
+   "frase": 9
+  },
+  {
+   "w": "una",
+   "ini": 52.48,
+   "fin": 52.705,
+   "frase": 9
+  },
+  {
+   "w": "fortuna:",
+   "ini": 52.705,
+   "fin": 53.213,
+   "frase": 9
+  },
+  {
+   "w": "millones",
+   "ini": 53.403,
+   "fin": 53.867,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 53.867,
+   "fin": 54.021,
+   "frase": 9
+  },
+  {
+   "w": "peregrinos",
+   "ini": 54.021,
+   "fin": 54.589,
+   "frase": 9
+  },
+  {
+   "w": "se",
+   "ini": 54.589,
+   "fin": 54.743,
+   "frase": 9
+  },
+  {
+   "w": "rapan",
+   "ini": 54.743,
+   "fin": 55.053,
+   "frase": 9
+  },
+  {
+   "w": "allí",
+   "ini": 55.053,
+   "fin": 55.311,
+   "frase": 9
+  },
+  {
+   "w": "como",
+   "ini": 55.311,
+   "fin": 55.569,
+   "frase": 9
+  },
+  {
+   "w": "ofrenda,",
+   "ini": 55.569,
+   "fin": 56.033,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 56.253,
+   "fin": 56.369,
+   "frase": 9
+  },
+  {
+   "w": "el",
+   "ini": 56.369,
+   "fin": 56.544,
+   "frase": 9
+  },
+  {
+   "w": "templo",
+   "ini": 56.544,
+   "fin": 56.952,
+   "frase": 9
+  },
+  {
+   "w": "vende",
+   "ini": 56.952,
+   "fin": 57.301,
+   "frase": 9
+  },
+  {
+   "w": "ese",
+   "ini": 57.301,
+   "fin": 57.534,
+   "frase": 9
+  },
+  {
+   "w": "pelo",
+   "ini": 57.534,
+   "fin": 57.825,
+   "frase": 9
+  },
+  {
+   "w": "para",
+   "ini": 57.825,
+   "fin": 58.116,
+   "frase": 9
+  },
+  {
+   "w": "fabricar",
+   "ini": 58.116,
+   "fin": 58.641,
+   "frase": 9
+  },
+  {
+   "w": "pelucas.",
+   "ini": 58.641,
+   "fin": 59.165,
+   "frase": 9
+  },
+  {
+   "w": "La",
+   "ini": 59.305,
+   "fin": 59.472,
+   "frase": 10
+  },
+  {
+   "w": "policía",
+   "ini": 59.472,
+   "fin": 59.918,
+   "frase": 10
+  },
+  {
+   "w": "perdería",
+   "ini": 59.918,
+   "fin": 60.421,
+   "frase": 10
+  },
+  {
+   "w": "una",
+   "ini": 60.421,
+   "fin": 60.644,
+   "frase": 10
+  },
+  {
+   "w": "prueba",
+   "ini": 60.644,
+   "fin": 61.034,
+   "frase": 10
+  },
+  {
+   "w": "clave:",
+   "ini": 61.034,
+   "fin": 61.425,
+   "frase": 10
+  },
+  {
+   "w": "un",
+   "ini": 61.645,
+   "fin": 61.814,
+   "frase": 10
+  },
+  {
+   "w": "solo",
+   "ini": 61.814,
+   "fin": 62.095,
+   "frase": 10
+  },
+  {
+   "w": "pelo",
+   "ini": 62.095,
+   "fin": 62.376,
+   "frase": 10
+  },
+  {
+   "w": "puede",
+   "ini": 62.376,
+   "fin": 62.714,
+   "frase": 10
+  },
+  {
+   "w": "revelar",
+   "ini": 62.714,
+   "fin": 63.164,
+   "frase": 10
+  },
+  {
+   "w": "qué",
+   "ini": 63.164,
+   "fin": 63.389,
+   "frase": 10
+  },
+  {
+   "w": "drogas",
+   "ini": 63.389,
+   "fin": 63.782,
+   "frase": 10
+  },
+  {
+   "w": "tomaste",
+   "ini": 63.782,
+   "fin": 64.232,
+   "frase": 10
+  },
+  {
+   "w": "durante",
+   "ini": 64.232,
+   "fin": 64.682,
+   "frase": 10
+  },
+  {
+   "w": "meses.",
+   "ini": 64.682,
+   "fin": 65.076,
+   "frase": 10
+  },
+  {
+   "w": "Y",
+   "ini": 65.516,
+   "fin": 65.619,
+   "frase": 11
+  },
+  {
+   "w": "lo",
+   "ini": 65.619,
+   "fin": 65.773,
+   "frase": 11
+  },
+  {
+   "w": "más",
+   "ini": 65.773,
+   "fin": 65.978,
+   "frase": 11
+  },
+  {
+   "w": "sorprendente:",
+   "ini": 65.978,
+   "fin": 66.696,
+   "frase": 11
+  },
+  {
+   "w": "ya",
+   "ini": 66.996,
+   "fin": 67.168,
+   "frase": 11
+  },
+  {
+   "w": "tienes",
+   "ini": 67.168,
+   "fin": 67.568,
+   "frase": 11
+  },
+  {
+   "w": "casi",
+   "ini": 67.568,
+   "fin": 67.855,
+   "frase": 11
+  },
+  {
+   "w": "tantos",
+   "ini": 67.855,
+   "fin": 68.255,
+   "frase": 11
+  },
+  {
+   "w": "pelos",
+   "ini": 68.255,
+   "fin": 68.599,
+   "frase": 11
+  },
+  {
+   "w": "como",
+   "ini": 68.599,
+   "fin": 68.885,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 68.885,
+   "fin": 69.056,
+   "frase": 11
+  },
+  {
+   "w": "chimpancé.",
+   "ini": 69.056,
+   "fin": 69.686,
+   "frase": 11
+  },
+  {
+   "w": "Unos",
+   "ini": 69.906,
+   "fin": 70.175,
+   "frase": 11
+  },
+  {
+   "w": "cinco",
+   "ini": 70.175,
+   "fin": 70.498,
+   "frase": 11
+  },
+  {
+   "w": "millones.",
+   "ini": 70.498,
+   "fin": 71.036,
+   "frase": 11
+  },
+  {
+   "w": "Lo",
+   "ini": 71.156,
+   "fin": 71.333,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 71.333,
+   "fin": 71.568,
+   "frase": 11
+  },
+  {
+   "w": "pasa",
+   "ini": 71.568,
+   "fin": 71.863,
+   "frase": 11
+  },
+  {
+   "w": "es",
+   "ini": 71.863,
+   "fin": 72.039,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 72.039,
+   "fin": 72.275,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 72.275,
+   "fin": 72.452,
+   "frase": 11
+  },
+  {
+   "w": "mayoría",
+   "ini": 72.452,
+   "fin": 72.923,
+   "frase": 11
+  },
+  {
+   "w": "son",
+   "ini": 72.923,
+   "fin": 73.158,
+   "frase": 11
+  },
+  {
+   "w": "tan",
+   "ini": 73.158,
+   "fin": 73.394,
+   "frase": 11
+  },
+  {
+   "w": "finos…",
+   "ini": 73.394,
+   "fin": 73.806,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 74.036,
+   "fin": 74.233,
+   "frase": 11
+  },
+  {
+   "w": "ni",
+   "ini": 74.233,
+   "fin": 74.381,
+   "frase": 11
+  },
+  {
+   "w": "los",
+   "ini": 74.381,
+   "fin": 74.578,
+   "frase": 11
+  },
+  {
+   "w": "ves.",
+   "ini": 74.578,
+   "fin": 74.824,
+   "frase": 11
+  }
+ ]
+}

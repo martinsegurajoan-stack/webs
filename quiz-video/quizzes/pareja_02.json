@@ -1,0 +1,48 @@
+{
+  "modo": "pareja",
+  "tema": "pareja",
+  "titulo": "¿Cuánto conoces a tu pareja?",
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es su comida favorita?",
+      "opciones": ["Pizza o pasta", "Carne o parrilla", "Sushi o comida asiática", "Otra (di cuál)"],
+      "imagen": "cubiertos_3d.png"
+    },
+    {
+      "pregunta": "¿Cómo prefiere que le demuestren cariño?",
+      "opciones": ["Con palabras y mensajes bonitos", "Con abrazos y contacto físico", "Con regalos y detalles", "Pasando tiempo juntos"],
+      "imagen": "carinyo_3d.png"
+    },
+    {
+      "pregunta": "¿Qué es lo primero que hace al despertarse?",
+      "opciones": ["Mirar el móvil", "Tomar café o desayunar", "Ir a la ducha", "Quedarse un rato más en la cama"],
+      "imagen": "despertador_3d.png"
+    },
+    {
+      "pregunta": "¿Cuál es su mayor defecto?",
+      "opciones": ["La impaciencia", "El orgullo", "La desorganización", "Darle demasiadas vueltas a todo"],
+      "imagen": "sudor_3d.png"
+    },
+    {
+      "pregunta": "¿Qué superpoder elegiría?",
+      "opciones": ["Volar", "Ser invisible", "Leer la mente", "Viajar en el tiempo"],
+      "imagen": "superheroe_3d.png"
+    },
+    {
+      "pregunta": "¿Cuál fue su primera impresión de ti?",
+      "opciones": ["Le pareciste tímido/a", "Le pareciste simpático/a", "Le pareciste atractivo/a", "No le caíste bien al principio"],
+      "sin_respuesta": true,
+      "imagen": "ojos_3d.png"
+    }
+  ],
+  "portada": {
+    "arriba": "TEST DE PAREJAS",
+    "titulo": [["¿DE VERDAD", "w"], ["LE CONOCES?", "a"]],
+    "pregunta": 4,
+    "emoji": "picaro",
+    "emoji2": "ojos",
+    "estilo": "cartel",
+    "pegatina": "¡HACEDLO A LA VEZ!",
+    "sub": "Si fallas… a dormir al sofá"
+  }
+}
