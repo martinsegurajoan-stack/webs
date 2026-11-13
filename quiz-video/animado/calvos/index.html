@@ -65,11 +65,11 @@ function cabeza() {
   // ojos
   const parp = S.parp;
   for (const s of [-1, 1]) { const ex = s * 62, ey = -440;
-    g.save(); g.beginPath(); g.ellipse(ex, ey, 34, 16 * (1 - parp), 0, 0, 7); g.clip(); g.fillStyle = "#fbf7f2"; g.fillRect(ex - 40, ey - 20, 80, 40);
+    g.save(); g.beginPath(); g.ellipse(ex, ey, 34, Math.max(0.5, 16 * (1 - parp)), 0, 0, 7); g.clip(); g.fillStyle = "#fbf7f2"; g.fillRect(ex - 40, ey - 20, 80, 40);
     if (S.rojo > 0.01) { g.strokeStyle = `rgba(220,60,60,${(0.6 * S.rojo).toFixed(3)})`; g.lineWidth = 1.5; for (let k = 0; k < 5; k++) { g.beginPath(); g.moveTo(ex + s * 30, ey + (k - 2) * 4); g.lineTo(ex + s * 14, ey + (k - 2) * 2); g.stroke(); } }
     const ox = S.mira * 10; const ig = g.createRadialGradient(ex + ox, ey, 2, ex + ox, ey, 13); ig.addColorStop(0, "#7fa6c8"); ig.addColorStop(1, "#33506d"); g.fillStyle = ig; g.beginPath(); g.arc(ex + ox, ey, 13, 0, 7); g.fill(); g.fillStyle = "#14181d"; g.beginPath(); g.arc(ex + ox, ey, 6, 0, 7); g.fill(); g.fillStyle = "#fff"; g.beginPath(); g.arc(ex + ox - 4, ey - 5, 3, 0, 7); g.fill();
     g.fillStyle = "rgba(0,0,0,0.12)"; g.fillRect(ex - 40, ey - 20, 80, 8); g.restore();
-    if (parp > 0.05) { g.fillStyle = "#e0a986"; g.beginPath(); g.ellipse(ex, ey, 35, 17, 0, Math.PI, 0); g.lineTo(ex + 35, ey); g.ellipse(ex, ey, 35, 17 * (1 - 2 * parp), 0, 0, Math.PI, true); g.fill(); }
+    if (parp > 0.05) { g.fillStyle = "#e0a986"; g.beginPath(); g.ellipse(ex, ey, 35, 17, 0, Math.PI, 0); g.lineTo(ex + 35, ey); g.ellipse(ex, ey, 35, Math.max(0.5, 17 * (1 - 2 * parp)), 0, 0, Math.PI, true); g.fill(); }
     g.strokeStyle = "#7a4a36"; g.lineWidth = 3; g.beginPath(); g.ellipse(ex, ey, 35, 17, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
     // pestañas
     if (P > 0.01) { g.strokeStyle = `rgba(30,20,16,${P.toFixed(3)})`; g.lineWidth = 2.5; for (let k = 0; k < 9; k++) { const a = Math.PI * (1.12 + k * 0.095); const x = ex + Math.cos(a) * 35, y = ey + Math.sin(a) * 17; g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * 10, y + Math.sin(a) * 12 - 3); g.stroke(); } }
@@ -93,7 +93,7 @@ function cabeza() {
 }
 function frame() {
   const t = S.t;
-  g.clearRect(0, 0, 1080, 1920);
+  cv.width = 1080; g.lineCap = "butt";
   const wv = t * 0.35; g.save(); g.translate(540 + 6 * Math.sin(wv), 1100 + 4 * Math.cos(wv * 1.3)); g.scale(S.z * (1 + 0.012 * Math.sin(wv * 0.8)), S.z * (1 + 0.012 * Math.sin(wv * 0.8))); g.translate(-S.cx, -S.cy);
   { const rl = g.createRadialGradient(0, -470, 100, 0, -470, 520); rl.addColorStop(0, "rgba(120,170,230,0.10)"); rl.addColorStop(1, "rgba(120,170,230,0)"); g.fillStyle = rl; g.fillRect(-1500, -2000, 3000, 3000); }
   g.save(); g.translate(20, 30); g.filter = "blur(30px)"; g.globalAlpha = 0.4; g.fillStyle = "#000"; g.beginPath(); g.ellipse(0, -420, 200, 270, 0, 0, 7); g.fill(); g.restore();

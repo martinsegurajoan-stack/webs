@@ -251,3 +251,6 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
 - (13-11-2026, calvos) PROHIBIDO empezar con «¿Qué pasaría si…?» → gancho directo en 2.ª persona («¿Y si mañana te
   despertaras sin…? Ni tú, ni nadie. Nunca más.»). PROHIBIDO el final tipo «Así que, aunque no lo parezca… Ahora imagina…»
   o preguntas de cierre: acabar con el DATO MÁS SORPRENDENTE dicho con pausa («…que ni los ves.»).
+- (13-11-2026) TRAMPA: una excepción a mitad de frame() en canvas (p. ej. ellipse con radio negativo al parpadear) deja
+  save/clip/filter sin cerrar y estropea TODO el render aunque las capturas sueltas salgan bien. Antes de renderizar,
+  recorrer el timeline entero cada 0,04 s comprobando que no hay errores, y empezar frame() con `cv.width = cv.width`.
