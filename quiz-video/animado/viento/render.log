@@ -1,3 +1,4 @@
 [INFO] [Compiler] Fetched 11 font face(s) for "Inter" from Google Fonts (cached to /root/.cache/hyperframes/fonts/inter)
 [INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
 [hyperframes] browserGpuMode probe → software (WebGL unavailable)
+[WARN] [Render] Measured slow frame capture during auto-worker calibration. {"renderJobId":"2b115f2b-b05e-42a7-9ff0-4a1f0a355ca9","multiplier":5.82,"p95Ms":3491,"sampledFrames":[0,798,1597,2396,3194]}
