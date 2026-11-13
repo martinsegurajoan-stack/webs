@@ -2386,8 +2386,8 @@
   },
   "renders": {
     "latest": {
-      "id": "ab47f0fa-3576-46be-aca6-56bae138408e",
-      "completedAt": 1794572720005,
+      "id": "d4b02f73-b0d3-4ced-b798-c4529ae25d63",
+      "completedAt": 1794585354680,
       "output": "/home/user/webs/quiz-video/animado/viento/salida/video-bruto.mp4",
       "status": "completed",
       "revision": null
