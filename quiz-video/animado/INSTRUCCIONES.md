@@ -238,3 +238,9 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   hacer bucle exacto), datos dibujados SOBRE el mapa (rutas, penachos, círculos, partículas) y rótulos mínimos sin cajas
   (kicker azul + texto fino con sombra). Vuelos de cámara: alejar → girar → acercar (nunca zoom a mitad de océano).
   Narración: datos MUY sorprendentes y comprensibles (Londres vs Nueva York, olas de la Antártida a Alaska, Bodélé…).
+- (13-11-2026, viento v5) «Se ve pobre/cutre» → planeta 3D REAL con three.js y texturas NASA Blue Marble (día, luces
+  nocturnas, nubes, máscara de océano; sacadas gratis de los paquetes npm `three-globe` y `earth-visualization`) en
+  `viento/assets/tierra/`, shader propio: terminador día/noche, luces de ciudades, brillo del mar, atmósfera, nubes con luz.
+  IMPORTANTE: desde file:// WebGL bloquea imágenes locales → incrustarlas en base64 (data URI) y crear las THREE.Texture
+  SOLO cuando todas las <img> estén completas (si no: «Offset overflows texture dimensions»). Las <img> con display:none.
+  Plantilla reutilizable: `viento/_plantilla.html` + `viento/gen.py`.

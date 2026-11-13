@@ -6,8 +6,8 @@ const path = require('path');
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: 1080, height: 1920 } });
   await p.addInitScript(() => { window.__timelines = {}; });
   await p.goto('file://' + dir + '/index.html'); await p.waitForTimeout(3500);
-  await p.evaluate(() => {
-    window.__timelines.main.seek(1.5); S.sc = 470; frame();
+  await p.evaluate(async () => {
+    window.__timelines.main.seek(1.5); S.sc = 470; frame(); await new Promise(r => setTimeout(r, 1500)); frame();
     for (const s of ['#subs', '#grano', '#fxl', '#topsombra']) document.querySelectorAll(s).forEach(e => e.style.display = 'none');
     const d = document.createElement('div'); d.style.cssText = 'position:absolute;inset:0;z-index:90;font-family:Inter;text-align:center';
     const sh = 'text-shadow:0 6px 30px rgba(0,0,0,0.9)';
