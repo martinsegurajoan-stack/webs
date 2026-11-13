@@ -1,4 +1,12 @@
 [INFO] [Compiler] Fetched 11 font face(s) for "Inter" from Google Fonts (cached to /root/.cache/hyperframes/fonts/inter)
 [INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
 [hyperframes] browserGpuMode probe → software (WebGL unavailable)
-[WARN] [Render] Measured slow frame capture during auto-worker calibration. {"renderJobId":"d8826a83-43af-4e96-8abe-67737d06701e","multiplier":8,"p95Ms":16844,"sampledFrames":[0,798,1597,2396,3194]}
+[Browser:WARN] [.WebGL-0x2bc4001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x2bc4001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x2bc4001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x2bc4001b3400]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
+[WARN] [Render] Measured slow frame capture during auto-worker calibration. {"renderJobId":"5f07120b-2ac0-4cc9-b8d9-e576ba61fbe0","multiplier":8,"p95Ms":10147,"sampledFrames":[0,798,1597,2396,3194]}
+[Browser:WARN] [.WebGL-0x2a24001b2800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x2a24001b2800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x2a24001b2800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels
+[Browser:WARN] [.WebGL-0x2a24001b2800]GL Driver Message (OpenGL, Performance, GL_CLOSE_PATH_NV, High): GPU stall due to ReadPixels (this message will no longer repeat)
