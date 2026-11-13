@@ -224,3 +224,11 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   fotogramas cada 4 s y recortes ampliados antes de entregar.
 - (09-11-2026) EMPEZAR DIRECTO con una pregunta al espectador («¿Alguna vez te has preguntado cómo se construye…?»),
   NUNCA como si se contara una historia («Mil metros de mar…»): aburre. Primera frase = el tema del vídeo en pregunta.
+- (13-11-2026, viento v2) «Parece infantil» → estándar PROFESIONAL para ilustración plana: profundidad (capas con
+  parallax y bruma en el horizonte, perspectiva atmosférica: lo lejano más claro/azulado), degradados en mar/arena/hierba,
+  sombras suaves, fenómenos visibles (estelas de viento, partículas, reflejo en el agua en calma), tinte de color por
+  escena (niebla sepia, sequía naranja), viñeta. Mapas/planetas con DATOS REALES (Natural Earth vía world-atlas +
+  d3-geo, ortográfica, con atmósfera y lado de noche), nada de continentes «manchurrón» ni iconos tipo emoji.
+  Tarjetas de cristal (backdrop-filter) con barra de acento; contadores que suben; contador de progreso (DÍA n).
+  Transiciones de cámara que pasen por algo (nubes al subir al espacio), nunca segundos de fondo vacío.
+  Evitar triángulos/montañas gigantes detrás del personaje y bordes rectos duros (orilla, niebla).
