@@ -1,2 +1,5 @@
   Waiting for another render to finish (pid 532, project /home/user/webs/quiz-video/animado/viento, running 17m 50s). Renders run one at a time per user account; pass --no-wait to stop instead.
   Lock: /root/.cache/hyperframes/locks/render.lock
+[INFO] [Compiler] Fetched 11 font face(s) for "Inter" from Google Fonts (cached to /root/.cache/hyperframes/fonts/inter)
+[INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
+[hyperframes] browserGpuMode probe → software (WebGL unavailable)
