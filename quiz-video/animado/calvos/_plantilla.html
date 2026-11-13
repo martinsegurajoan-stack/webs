@@ -11,7 +11,7 @@ canvas{position:absolute;left:0;top:0}
 #vineta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,0.6) 100%)}
 #bajo{position:absolute;left:0;right:0;bottom:0;height:640px;pointer-events:none;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75))}
 #fxl{position:absolute;inset:0;z-index:58;pointer-events:none}
-.pan{position:absolute;opacity:0;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px;border-radius:30px;background:rgba(10,13,18,0.9);box-shadow:0 30px 60px rgba(0,0,0,0.45);border:1px solid rgba(255,240,220,0.08)}
+.pan{position:absolute;opacity:0;transform-origin:50% 50%;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px;border-radius:30px;background:rgba(10,13,18,0.9);box-shadow:0 30px 60px rgba(0,0,0,0.45);border:1px solid rgba(255,240,220,0.08)}
 .pan svg{width:100% !important;height:auto !important}
 .cap{font:500 26px Inter;color:rgba(255,245,235,0.85);text-align:center;line-height:1.3} .cap .r{color:#ff8a7e;font-weight:600}
 .dato{position:absolute;left:70px;opacity:0;max-width:940px;text-shadow:0 2px 18px rgba(0,0,0,0.9)}
@@ -38,7 +38,7 @@ canvas{position:absolute;left:0;top:0}
 <script>
 const fmt = (v, d) => { const s = v.toFixed(d).split("."); return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (s[1] ? "," + s[1] : ""); };
 const INI = %%INI%%;
-const S = Object.assign({ t:0, pelo:1, caida:0, scan:0, gotas:0, polvo:0, rojo:0, polen:0, flash:0, brillo:0 }, INI);
+const S = Object.assign({ t:0, vello:0, parp:0, mira:0, barba:1, pelo:1, caida:0, scan:0, gotas:0, polvo:0, rojo:0, polen:0, flash:0, brillo:0 }, INI);
 const cv = document.getElementById("cv"), g = cv.getContext("2d");
 function rnd(i) { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
 function piel(x0, x1) { const gr = g.createLinearGradient(x0, 0, x1, 0); gr.addColorStop(0, "#b9805f"); gr.addColorStop(0.3, "#e3ae8b"); gr.addColorStop(0.62, "#efc09d"); gr.addColorStop(1, "#b47958"); return gr; }
@@ -57,11 +57,19 @@ function cabeza() {
   g.fillStyle = piel(-155, 155); g.beginPath(); g.moveTo(0, -660); g.bezierCurveTo(105, -660, 158, -590, 156, -470); g.bezierCurveTo(154, -340, 120, -250, 0, -228); g.bezierCurveTo(-120, -250, -154, -340, -156, -470); g.bezierCurveTo(-158, -590, -105, -660, 0, -660); g.fill();
   // brillo de la calva
   if (P < 0.99) { const gr = g.createRadialGradient(-40, -610, 5, -40, -610, 90); gr.addColorStop(0, `rgba(255,255,255,${(0.35 * (1 - P) + 0.3 * S.brillo).toFixed(3)})`); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.beginPath(); g.arc(-40, -610, 90, 0, 7); g.fill(); }
-    // ojos
+    for (const s of [-1, 1]) { let sg = g.createRadialGradient(s * 62, -446, 6, s * 62, -446, 60); sg.addColorStop(0, "rgba(120,60,40,0.22)"); sg.addColorStop(1, "rgba(120,60,40,0)"); g.fillStyle = sg; g.beginPath(); g.arc(s * 62, -446, 60, 0, 7); g.fill();
+    sg = g.createRadialGradient(s * 82, -370, 4, s * 82, -370, 55); sg.addColorStop(0, "rgba(230,120,100,0.22)"); sg.addColorStop(1, "rgba(230,120,100,0)"); g.fillStyle = sg; g.beginPath(); g.arc(s * 82, -370, 55, 0, 7); g.fill(); }
+  { const ng = g.createLinearGradient(-14, 0, 14, 0); ng.addColorStop(0, "rgba(255,230,210,0)"); ng.addColorStop(0.5, "rgba(255,230,210,0.35)"); ng.addColorStop(1, "rgba(255,230,210,0)"); g.fillStyle = ng; g.fillRect(-12, -430, 24, 70); }
+  { const jg = g.createLinearGradient(0, -280, 0, -228); jg.addColorStop(0, "rgba(120,60,40,0)"); jg.addColorStop(1, "rgba(120,60,40,0.18)"); g.fillStyle = jg; g.beginPath(); g.ellipse(0, -250, 110, 26, 0, 0, 7); g.fill(); }
+  if (S.barba > 0.01) { g.fillStyle = `rgba(48,34,26,${(0.55 * S.barba).toFixed(3)})`; for (let k = 0; k < 420; k++) { const a = rnd(k) * Math.PI, r = 0.75 + rnd(k + 3) * 0.25; const x = Math.cos(a) * 140 * r, y = -330 + Math.sin(a) * 100 * r; if (y < -320 && Math.abs(x) < 60) continue; g.fillRect(x, y, 2.2, 2.2); } }
+  // ojos
+  const parp = S.parp;
   for (const s of [-1, 1]) { const ex = s * 62, ey = -440;
-    g.fillStyle = "#fbf7f2"; g.beginPath(); g.ellipse(ex, ey, 34, 16, 0, 0, 7); g.fill();
+    g.save(); g.beginPath(); g.ellipse(ex, ey, 34, 16 * (1 - parp), 0, 0, 7); g.clip(); g.fillStyle = "#fbf7f2"; g.fillRect(ex - 40, ey - 20, 80, 40);
     if (S.rojo > 0.01) { g.strokeStyle = `rgba(220,60,60,${(0.6 * S.rojo).toFixed(3)})`; g.lineWidth = 1.5; for (let k = 0; k < 5; k++) { g.beginPath(); g.moveTo(ex + s * 30, ey + (k - 2) * 4); g.lineTo(ex + s * 14, ey + (k - 2) * 2); g.stroke(); } }
-    g.fillStyle = "#4b6b8a"; g.beginPath(); g.arc(ex, ey, 13, 0, 7); g.fill(); g.fillStyle = "#14181d"; g.beginPath(); g.arc(ex, ey, 6, 0, 7); g.fill(); g.fillStyle = "#fff"; g.beginPath(); g.arc(ex - 4, ey - 5, 3, 0, 7); g.fill();
+    const ox = S.mira * 10; const ig = g.createRadialGradient(ex + ox, ey, 2, ex + ox, ey, 13); ig.addColorStop(0, "#7fa6c8"); ig.addColorStop(1, "#33506d"); g.fillStyle = ig; g.beginPath(); g.arc(ex + ox, ey, 13, 0, 7); g.fill(); g.fillStyle = "#14181d"; g.beginPath(); g.arc(ex + ox, ey, 6, 0, 7); g.fill(); g.fillStyle = "#fff"; g.beginPath(); g.arc(ex + ox - 4, ey - 5, 3, 0, 7); g.fill();
+    g.fillStyle = "rgba(0,0,0,0.12)"; g.fillRect(ex - 40, ey - 20, 80, 8); g.restore();
+    if (parp > 0.05) { g.fillStyle = "#e0a986"; g.beginPath(); g.ellipse(ex, ey, 35, 17, 0, Math.PI, 0); g.lineTo(ex + 35, ey); g.ellipse(ex, ey, 35, 17 * (1 - 2 * parp), 0, 0, Math.PI, true); g.fill(); }
     g.strokeStyle = "#7a4a36"; g.lineWidth = 3; g.beginPath(); g.ellipse(ex, ey, 35, 17, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
     // pestañas
     if (P > 0.01) { g.strokeStyle = `rgba(30,20,16,${P.toFixed(3)})`; g.lineWidth = 2.5; for (let k = 0; k < 9; k++) { const a = Math.PI * (1.12 + k * 0.095); const x = ex + Math.cos(a) * 35, y = ey + Math.sin(a) * 17; g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * 10, y + Math.sin(a) * 12 - 3); g.stroke(); } }
@@ -71,10 +79,13 @@ function cabeza() {
   // nariz y boca
   g.strokeStyle = "rgba(150,90,65,0.7)"; g.lineWidth = 4; g.beginPath(); g.moveTo(-8, -420); g.quadraticCurveTo(-14, -370, -26, -352); g.quadraticCurveTo(0, -338, 26, -352); g.stroke();
   g.fillStyle = "rgba(120,60,45,0.55)"; g.beginPath(); g.ellipse(-14, -350, 7, 4, 0, 0, 7); g.ellipse(14, -350, 7, 4, 0, 0, 7); g.fill();
-  g.strokeStyle = "#a5574a"; g.lineWidth = 6; g.beginPath(); g.moveTo(-40, -296); g.quadraticCurveTo(0, -282, 40, -296); g.stroke();
+  g.fillStyle = "#b8665a"; g.beginPath(); g.moveTo(-42, -298); g.quadraticCurveTo(-20, -310, 0, -302); g.quadraticCurveTo(20, -310, 42, -298); g.quadraticCurveTo(0, -292, -42, -298); g.fill();
+  g.fillStyle = "#c97a6b"; g.beginPath(); g.moveTo(-38, -297); g.quadraticCurveTo(0, -292, 38, -297); g.quadraticCurveTo(0, -270, -38, -297); g.fill();
+  g.fillStyle = "rgba(255,255,255,0.25)"; g.beginPath(); g.ellipse(0, -284, 12, 3, 0, 0, 7); g.fill();
   // pelo de arriba (flequillo)
-  if (P > 0.01) { g.globalAlpha = P; g.fillStyle = "#2f2018"; g.beginPath(); g.moveTo(-160, -470); g.bezierCurveTo(-170, -640, -80, -700, 10, -698); g.bezierCurveTo(120, -696, 176, -630, 160, -470);
+  if (P > 0.01) { g.globalAlpha = P; const hg = g.createLinearGradient(-160, -700, 160, -470); hg.addColorStop(0, "#4a3123"); hg.addColorStop(0.5, "#2f2018"); hg.addColorStop(1, "#1d140f"); g.fillStyle = hg; g.beginPath(); g.moveTo(-160, -470); g.bezierCurveTo(-170, -640, -80, -700, 10, -698); g.bezierCurveTo(120, -696, 176, -630, 160, -470);
       g.bezierCurveTo(140, -560, 90, -590, 40, -585); g.quadraticCurveTo(-10, -560, -50, -590); g.quadraticCurveTo(-120, -580, -160, -470); g.fill();
+      g.strokeStyle = "rgba(140,100,70,0.45)"; g.lineWidth = 2; for (let k = 0; k < 22; k++) { g.beginPath(); g.moveTo(-150 + k * 14, -660 + Math.abs(k - 11) * 3); g.quadraticCurveTo(-140 + k * 14, -620, -150 + k * 13.5, -585 + Math.abs(k - 11) * 2); g.stroke(); }
       g.strokeStyle = "rgba(90,60,45,0.6)"; g.lineWidth = 3; for (let k = 0; k < 8; k++) { g.beginPath(); g.moveTo(-110 + k * 30, -680 + Math.abs(k - 4) * 6); g.quadraticCurveTo(-120 + k * 32, -630, -100 + k * 28, -590); g.stroke(); } g.globalAlpha = 1; }
   // pelos cayendo
   if (S.caida > 0.01 && S.caida < 0.999) { g.strokeStyle = "rgba(47,32,24,0.9)"; g.lineWidth = 3; for (let k = 0; k < 90; k++) { const x0 = -150 + rnd(k) * 300, y0 = -700 + rnd(k + 9) * 110, f = S.caida;
@@ -83,9 +94,11 @@ function cabeza() {
 function frame() {
   const t = S.t;
   g.clearRect(0, 0, 1080, 1920);
-  g.save(); g.translate(540, 1100); g.scale(S.z, S.z); g.translate(-S.cx, -S.cy);
+  const wv = t * 0.35; g.save(); g.translate(540 + 6 * Math.sin(wv), 1100 + 4 * Math.cos(wv * 1.3)); g.scale(S.z * (1 + 0.012 * Math.sin(wv * 0.8)), S.z * (1 + 0.012 * Math.sin(wv * 0.8))); g.translate(-S.cx, -S.cy);
+  { const rl = g.createRadialGradient(0, -470, 100, 0, -470, 520); rl.addColorStop(0, "rgba(120,170,230,0.10)"); rl.addColorStop(1, "rgba(120,170,230,0)"); g.fillStyle = rl; g.fillRect(-1500, -2000, 3000, 3000); }
   g.save(); g.translate(20, 30); g.filter = "blur(30px)"; g.globalAlpha = 0.4; g.fillStyle = "#000"; g.beginPath(); g.ellipse(0, -420, 200, 270, 0, 0, 7); g.fill(); g.restore();
   cabeza();
+  if (S.vello > 0.01) { g.strokeStyle = `rgba(110,75,55,${(0.32 * S.vello).toFixed(3)})`; g.lineWidth = 0.7; for (let k = 0; k < 900; k++) { const x = -150 + rnd(k) * 300, y = -650 + rnd(k + 11) * 420; const dx = x / 150, dy = (y + 470) / 210; if (dx * dx + dy * dy > 0.92) continue; if (Math.abs(y + 440) < 22 && Math.abs(Math.abs(x) - 62) < 38) continue; g.beginPath(); g.moveTo(x, y); g.lineTo(x + 1.5 + Math.sin(k + t * 2) * 0.6, y - 2.6); g.stroke(); } }
   // escáner de reconocimiento facial
   if (S.scan > 0.01) { g.strokeStyle = `rgba(159,220,255,${S.scan})`; g.lineWidth = 4 / S.z * 1.6;
     const x0 = -200, y0 = -720, x1 = 200, y1 = -200, c = 50; for (const [x, y, dx, dy] of [[x0, y0, 1, 1], [x1, y0, -1, 1], [x0, y1, 1, -1], [x1, y1, -1, -1]]) { g.beginPath(); g.moveTo(x + dx * c, y); g.lineTo(x, y); g.lineTo(x, y + dy * c); g.stroke(); }

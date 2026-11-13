@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8" />
+<meta name="viewport" content="width=1080, height=1920" />
+<script src="assets/gsap.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1920px;overflow:hidden;background:#0b0d10}
+#root{position:relative;width:1080px;height:1920px;overflow:hidden;font-family:Inter, sans-serif;color:#fff;background:radial-gradient(ellipse 70% 55% at 50% 50%,#2b3440 0%,#151a21 55%,#08090c 100%)}
+canvas{position:absolute;left:0;top:0}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#vineta{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,0) 55%,rgba(0,0,0,0.6) 100%)}
+#bajo{position:absolute;left:0;right:0;bottom:0;height:640px;pointer-events:none;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.75))}
+#fxl{position:absolute;inset:0;z-index:58;pointer-events:none}
+.pan{position:absolute;opacity:0;display:flex;flex-direction:column;align-items:center;gap:14px;padding:26px;border-radius:30px;background:rgba(10,13,18,0.9);box-shadow:0 30px 60px rgba(0,0,0,0.45);border:1px solid rgba(255,240,220,0.08)}
+.pan svg{width:100% !important;height:auto !important}
+.cap{font:500 26px Inter;color:rgba(255,245,235,0.85);text-align:center;line-height:1.3} .cap .r{color:#ff8a7e;font-weight:600}
+.dato{position:absolute;left:70px;opacity:0;max-width:940px;text-shadow:0 2px 18px rgba(0,0,0,0.9)}
+.dato small{display:flex;align-items:center;gap:16px;font:600 19px Inter;letter-spacing:6px;color:#9fdcff;margin-bottom:12px} .dato small::before{content:"";width:46px;height:1px;background:#9fdcff}
+.dato b{display:block;font:300 80px/1.04 Inter;letter-spacing:-2px} .dato em{display:block;font-style:normal;font:300 27px Inter;color:rgba(255,255,255,0.72);margin-top:12px}
+#grano{position:absolute;inset:0;z-index:56;pointer-events:none;opacity:0.05;background:url(assets/grano.png);mix-blend-mode:overlay}
+#topsombra{position:absolute;left:0;right:0;top:0;height:520px;z-index:55;pointer-events:none;background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0))}
+#marca{position:absolute;left:0;right:0;top:1820px;text-align:center;font:500 25px Inter;color:#ffffff;opacity:0.42;pointer-events:none;z-index:61}
+#subs{position:absolute;left:60px;right:60px;top:250px;height:220px;z-index:62}
+.sub{position:absolute;left:0;right:0;top:0;text-align:center;font:600 56px Inter;color:rgba(255,255,255,0.55);line-height:1.22;text-shadow:0 3px 16px rgba(0,0,0,0.95)}
+.sw{display:inline-block;position:relative;padding:0 6px;margin:0 1px}
+.key .hl{position:absolute;inset:-4px -2px -2px -2px;border:2px solid #9fdcff;border-radius:6px;background:rgba(159,220,255,0.14);opacity:0}
+</style></head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-duration="%%DUR%%" data-width="1080" data-height="1920">
+  <canvas id="cv" width="1080" height="1920"></canvas>
+  <div id="vineta"></div><div id="bajo"></div><div id="flash"></div>
+  <div id="topsombra"></div><div id="grano"></div>
+  <div id="fxl">%%FXL%%</div>
+  <div id="marca">@mundo.supuesto</div>
+  <div id="subs" data-layout-allow-overlap>%%SUBS%%</div>
+  <audio id="mezcla" class="clip" src="assets/mezcla.wav" data-start="0" data-duration="%%DUR%%" data-track-index="5" data-volume="1"></audio>
+</div>
+<script>
+const fmt = (v, d) => { const s = v.toFixed(d).split("."); return s[0].replace(/\B(?=(\d{3})+(?!\d))/g, ".") + (s[1] ? "," + s[1] : ""); };
+const INI = %%INI%%;
+const S = Object.assign({ t:0, pelo:1, caida:0, scan:0, gotas:0, polvo:0, rojo:0, polen:0, flash:0, brillo:0 }, INI);
+const cv = document.getElementById("cv"), g = cv.getContext("2d");
+function rnd(i) { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
+function piel(x0, x1) { const gr = g.createLinearGradient(x0, 0, x1, 0); gr.addColorStop(0, "#b9805f"); gr.addColorStop(0.3, "#e3ae8b"); gr.addColorStop(0.62, "#efc09d"); gr.addColorStop(1, "#b47958"); return gr; }
+function cabeza() {
+  const P = S.pelo;
+  // torso y cuello
+  g.fillStyle = "#2f3b4a"; g.beginPath(); g.moveTo(-340, 700); g.lineTo(-330, -40); g.quadraticCurveTo(-300, -130, -150, -150); g.lineTo(150, -150); g.quadraticCurveTo(300, -130, 330, -40); g.lineTo(340, 700); g.closePath(); g.fill();
+  g.fillStyle = "#3a4859"; g.beginPath(); g.moveTo(-70, -150); g.lineTo(0, -40); g.lineTo(70, -150); g.closePath(); g.fill();
+  g.fillStyle = piel(-70, 70); g.beginPath(); g.moveTo(-66, -150); g.lineTo(-60, -280); g.lineTo(60, -280); g.lineTo(66, -150); g.quadraticCurveTo(0, -110, -66, -150); g.fill();
+  g.fillStyle = "rgba(0,0,0,0.18)"; g.fillRect(-60, -280, 120, 40);
+  // pelo de detrás (melena)
+  if (P > 0.01) { g.globalAlpha = P; g.fillStyle = "#2a1c15"; g.beginPath(); g.ellipse(0, -470, 182, 230, 0, Math.PI * 0.95, Math.PI * 2.05); g.lineTo(170, -360); g.quadraticCurveTo(0, -330, -170, -360); g.fill(); g.globalAlpha = 1; }
+  // orejas
+  for (const s of [-1, 1]) { g.fillStyle = "#d89d7a"; g.beginPath(); g.ellipse(s * 150, -420, 26, 46, s * 0.15, 0, 7); g.fill(); g.strokeStyle = "rgba(140,80,60,0.5)"; g.lineWidth = 3; g.beginPath(); g.ellipse(s * 152, -420, 12, 28, s * 0.15, -1.2, 1.2); g.stroke(); }
+  // cara
+  g.fillStyle = piel(-155, 155); g.beginPath(); g.moveTo(0, -660); g.bezierCurveTo(105, -660, 158, -590, 156, -470); g.bezierCurveTo(154, -340, 120, -250, 0, -228); g.bezierCurveTo(-120, -250, -154, -340, -156, -470); g.bezierCurveTo(-158, -590, -105, -660, 0, -660); g.fill();
+  // brillo de la calva
+  if (P < 0.99) { const gr = g.createRadialGradient(-40, -610, 5, -40, -610, 90); gr.addColorStop(0, `rgba(255,255,255,${(0.35 * (1 - P) + 0.3 * S.brillo).toFixed(3)})`); gr.addColorStop(1, "rgba(255,255,255,0)"); g.fillStyle = gr; g.beginPath(); g.arc(-40, -610, 90, 0, 7); g.fill(); }
+    // ojos
+  for (const s of [-1, 1]) { const ex = s * 62, ey = -440;
+    g.fillStyle = "#fbf7f2"; g.beginPath(); g.ellipse(ex, ey, 34, 16, 0, 0, 7); g.fill();
+    if (S.rojo > 0.01) { g.strokeStyle = `rgba(220,60,60,${(0.6 * S.rojo).toFixed(3)})`; g.lineWidth = 1.5; for (let k = 0; k < 5; k++) { g.beginPath(); g.moveTo(ex + s * 30, ey + (k - 2) * 4); g.lineTo(ex + s * 14, ey + (k - 2) * 2); g.stroke(); } }
+    g.fillStyle = "#4b6b8a"; g.beginPath(); g.arc(ex, ey, 13, 0, 7); g.fill(); g.fillStyle = "#14181d"; g.beginPath(); g.arc(ex, ey, 6, 0, 7); g.fill(); g.fillStyle = "#fff"; g.beginPath(); g.arc(ex - 4, ey - 5, 3, 0, 7); g.fill();
+    g.strokeStyle = "#7a4a36"; g.lineWidth = 3; g.beginPath(); g.ellipse(ex, ey, 35, 17, 0, Math.PI * 1.05, Math.PI * 1.95); g.stroke();
+    // pestañas
+    if (P > 0.01) { g.strokeStyle = `rgba(30,20,16,${P.toFixed(3)})`; g.lineWidth = 2.5; for (let k = 0; k < 9; k++) { const a = Math.PI * (1.12 + k * 0.095); const x = ex + Math.cos(a) * 35, y = ey + Math.sin(a) * 17; g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * 10, y + Math.sin(a) * 12 - 3); g.stroke(); } }
+    // cejas
+    if (P > 0.01) { g.strokeStyle = `rgba(42,28,21,${P.toFixed(3)})`; g.lineWidth = 11; g.lineCap = "round"; g.beginPath(); g.moveTo(ex - s * 38, ey - 32); g.quadraticCurveTo(ex, ey - 52, ex + s * 40, ey - 38); g.stroke(); }
+  }
+  // nariz y boca
+  g.strokeStyle = "rgba(150,90,65,0.7)"; g.lineWidth = 4; g.beginPath(); g.moveTo(-8, -420); g.quadraticCurveTo(-14, -370, -26, -352); g.quadraticCurveTo(0, -338, 26, -352); g.stroke();
+  g.fillStyle = "rgba(120,60,45,0.55)"; g.beginPath(); g.ellipse(-14, -350, 7, 4, 0, 0, 7); g.ellipse(14, -350, 7, 4, 0, 0, 7); g.fill();
+  g.strokeStyle = "#a5574a"; g.lineWidth = 6; g.beginPath(); g.moveTo(-40, -296); g.quadraticCurveTo(0, -282, 40, -296); g.stroke();
+  // pelo de arriba (flequillo)
+  if (P > 0.01) { g.globalAlpha = P; g.fillStyle = "#2f2018"; g.beginPath(); g.moveTo(-160, -470); g.bezierCurveTo(-170, -640, -80, -700, 10, -698); g.bezierCurveTo(120, -696, 176, -630, 160, -470);
+      g.bezierCurveTo(140, -560, 90, -590, 40, -585); g.quadraticCurveTo(-10, -560, -50, -590); g.quadraticCurveTo(-120, -580, -160, -470); g.fill();
+      g.strokeStyle = "rgba(90,60,45,0.6)"; g.lineWidth = 3; for (let k = 0; k < 8; k++) { g.beginPath(); g.moveTo(-110 + k * 30, -680 + Math.abs(k - 4) * 6); g.quadraticCurveTo(-120 + k * 32, -630, -100 + k * 28, -590); g.stroke(); } g.globalAlpha = 1; }
+  // pelos cayendo
+  if (S.caida > 0.01 && S.caida < 0.999) { g.strokeStyle = "rgba(47,32,24,0.9)"; g.lineWidth = 3; for (let k = 0; k < 90; k++) { const x0 = -150 + rnd(k) * 300, y0 = -700 + rnd(k + 9) * 110, f = S.caida;
+      const y = y0 + f * f * (900 + rnd(k + 3) * 500), x = x0 + Math.sin(k + f * 8) * 30 * f; g.globalAlpha = Math.pow(1 - f, 2) * (y < -560 || Math.abs(x) > 160 ? 1 : 0.15); g.beginPath(); g.moveTo(x, y); g.quadraticCurveTo(x + 8, y + 10, x + 4 * Math.sin(k), y + 22); g.stroke(); } g.globalAlpha = 1; }
+}
+function frame() {
+  const t = S.t;
+  g.clearRect(0, 0, 1080, 1920);
+  g.save(); g.translate(540, 1100); g.scale(S.z, S.z); g.translate(-S.cx, -S.cy);
+  g.save(); g.translate(20, 30); g.filter = "blur(30px)"; g.globalAlpha = 0.4; g.fillStyle = "#000"; g.beginPath(); g.ellipse(0, -420, 200, 270, 0, 0, 7); g.fill(); g.restore();
+  cabeza();
+  // escáner de reconocimiento facial
+  if (S.scan > 0.01) { g.strokeStyle = `rgba(159,220,255,${S.scan})`; g.lineWidth = 4 / S.z * 1.6;
+    const x0 = -200, y0 = -720, x1 = 200, y1 = -200, c = 50; for (const [x, y, dx, dy] of [[x0, y0, 1, 1], [x1, y0, -1, 1], [x0, y1, 1, -1], [x1, y1, -1, -1]]) { g.beginPath(); g.moveTo(x + dx * c, y); g.lineTo(x, y); g.lineTo(x, y + dy * c); g.stroke(); }
+    const yy = y0 + ((t * 300) % (y1 - y0)); g.fillStyle = `rgba(159,220,255,${(0.25 * S.scan).toFixed(3)})`; g.fillRect(x0, yy, x1 - x0, 6);
+    g.fillStyle = `rgba(159,220,255,${S.scan})`; for (const [x, y] of [[-62, -440], [62, -440], [0, -360], [-40, -296], [40, -296], [0, -600], [-120, -470], [120, -470], [0, -240]]) { g.beginPath(); g.arc(x, y, 5, 0, 7); g.fill(); } }
+  // gotas de sudor / lluvia hacia los ojos
+  if (S.gotas > 0.01) for (let k = 0; k < 10; k++) { const s = k % 2 ? 1 : -1, u = ((t * 0.55 + k * 0.19) % 1); const x = s * (40 + (k % 5) * 12) + Math.sin(k) * 6, y = -640 + u * 210;
+      g.globalAlpha = S.gotas * Math.min(1, (1 - u) * 4); g.fillStyle = "rgba(180,225,255,0.95)"; g.beginPath(); g.moveTo(x, y - 14); g.quadraticCurveTo(x + 9, y + 2, x, y + 8); g.quadraticCurveTo(x - 9, y + 2, x, y - 14); g.fill(); g.globalAlpha = 1; }
+  // polvo hacia el ojo
+  if (S.polvo > 0.01) for (let k = 0; k < 70; k++) { const u = ((t * 0.4 + k / 70) % 1); const x = -62 + (1 - u) * (160 * Math.cos(k * 2.4)) , y = -440 + (1 - u) * (110 * Math.sin(k * 2.4));
+      g.fillStyle = `rgba(210,190,150,${(0.85 * S.polvo * u).toFixed(3)})`; g.beginPath(); g.arc(x, y, 2 + (k % 3), 0, 7); g.fill(); }
+  // polen hacia la nariz
+  if (S.polen > 0.01) for (let k = 0; k < 80; k++) { const u = ((t * 0.35 + k / 80) % 1); const s = k % 2 ? 1 : -1; const x = s * 14 + (1 - u) * (s * 60 + 140 * Math.cos(k * 1.7)), y = -350 + (1 - u) * (260 * Math.sin(k * 1.3) + 120);
+      g.fillStyle = `rgba(255,214,90,${(0.9 * S.polen * u).toFixed(3)})`; g.beginPath(); g.arc(x, y, 3 + (k % 3), 0, 7); g.fill(); }
+  g.restore();
+  document.getElementById("flash").style.opacity = S.flash * 0.7;
+}
+const tl = gsap.timeline({ paused: true, onUpdate: frame });
+tl.to(S, {t:%%DURX%%, duration:%%DURX%%, ease:"none"}, 0);
+%%TL%%
+tl.to({}, {duration:0.01}, %%DUREND%%);
+window.__timelines["main"] = tl;
+tl.seek(0); frame();
+</script>
+</body></html>

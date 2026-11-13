@@ -13,9 +13,9 @@ const path = require('path');
     const sh = 'text-shadow:0 6px 30px rgba(0,0,0,0.9)';
     d.innerHTML = `
       <div style="position:absolute;left:0;right:0;top:220px">
-        <div style="font:600 54px Inter;color:#fff;${sh}">¿Y si todo el mundo fuese</div>
-        <div style="margin-top:4px;font:800 200px/0.95 Inter;letter-spacing:-6px;color:#fff;${sh}">CALVO?</div>
-        <div style="margin-top:18px;font:600 30px Inter;letter-spacing:6px;color:#9fdcff;${sh}">NI CEJAS · NI PESTAÑAS</div></div>`;
+        <div style="font:600 54px Inter;color:#fff;${sh}">¿Y si mañana despertaras</div>
+        <div style="margin-top:4px;font:800 200px/0.95 Inter;letter-spacing:-6px;color:#fff;${sh}">SIN PELO?</div>
+        <div style="margin-top:18px;font:600 30px Inter;letter-spacing:6px;color:#9fdcff;${sh}">NI TÚ NI NADIE · NUNCA MÁS</div></div>`;
     document.querySelector('#root').appendChild(d);
   });
   await p.waitForTimeout(500);

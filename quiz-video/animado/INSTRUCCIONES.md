@@ -248,3 +248,6 @@ Haz SIEMPRE `git pull` antes de empezar y `git commit` + `git push` al acabar.
   primer plano realista (canvas) con ESCENAS DEL MUÑECO (_rig.py) viviendo cada problema (sofá con el móvil, espejo,
   moneda, cama, zapato), alternando con un fundido (S.vista). Uñas del muñeco = trazos con stroke-dashoffset (pathLength
   100) dentro de P_manoN/P_manoF. Al sentar/tumbar: ocultar P_sombra y colocar la cadera a la altura del asiento.
+- (13-11-2026, calvos) PROHIBIDO empezar con «¿Qué pasaría si…?» → gancho directo en 2.ª persona («¿Y si mañana te
+  despertaras sin…? Ni tú, ni nadie. Nunca más.»). PROHIBIDO el final tipo «Así que, aunque no lo parezca… Ahora imagina…»
+  o preguntas de cierre: acabar con el DATO MÁS SORPRENDENTE dicho con pausa («…que ni los ves.»).
