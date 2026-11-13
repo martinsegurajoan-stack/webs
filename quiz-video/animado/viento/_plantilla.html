@@ -12,10 +12,10 @@ canvas{position:absolute;left:0;top:0}
 #bajo{position:absolute;left:0;right:0;bottom:0;height:760px;pointer-events:none;background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.82))}
 #fxl{position:absolute;inset:0;z-index:58;pointer-events:none}
 .lab{position:absolute;left:0;top:0;opacity:0;white-space:nowrap;text-shadow:0 2px 12px rgba(0,0,0,1)}
-.lab small{display:block;font:600 16px Inter;letter-spacing:5px;color:#9fdcff;margin-bottom:4px} .lab b{display:block;font:400 32px Inter;letter-spacing:0.2px}
+.lab small{display:block;font:600 18px Inter;letter-spacing:5px;color:#9fdcff;margin-bottom:4px} .lab b{display:block;font:500 36px Inter;letter-spacing:0.2px}
 .dato{position:absolute;left:70px;top:1470px;opacity:0;max-width:900px;text-shadow:0 2px 18px rgba(0,0,0,0.9)}
 .dato small{display:flex;align-items:center;gap:16px;font:600 19px Inter;letter-spacing:6px;color:#9fdcff;margin-bottom:12px} .dato small::before{content:"";width:46px;height:1px;background:#9fdcff}
-.dato b{display:block;font:200 76px/1.04 Inter;letter-spacing:-2px} .dato em{display:block;font-style:normal;font:300 27px Inter;color:rgba(255,255,255,0.72);margin-top:12px;letter-spacing:0.3px}
+.dato b{display:block;font:300 84px/1.04 Inter;letter-spacing:-2px} .dato em{display:block;font-style:normal;font:300 27px Inter;color:rgba(255,255,255,0.72);margin-top:12px;letter-spacing:0.3px}
 #kmh{position:absolute;left:70px;top:1470px;text-shadow:0 2px 18px rgba(0,0,0,0.9)} #kmh small{display:flex;align-items:center;gap:16px;font:600 19px Inter;letter-spacing:6px;color:#9fdcff;margin-bottom:12px} #kmh small::before{content:"";width:46px;height:1px;background:#9fdcff}
 #kmh b{display:block;font:100 130px/1 Inter;letter-spacing:-5px;font-variant-numeric:tabular-nums}
 #grano{position:absolute;inset:0;z-index:56;pointer-events:none;opacity:0.05;background:url(assets/grano.png);mix-blend-mode:overlay}
@@ -65,15 +65,15 @@ const tierra = new THREE.Mesh(new THREE.SphereGeometry(1, 160, 160), new THREE.S
     vec3 c = texture2D(dia, vUv).rgb; float oc = texture2D(mar, vUv).r;
     float g = c.g - max(c.r, c.b); vec3 arena = vec3(0.80, 0.63, 0.40) * (0.55 + 0.7 * dot(c, vec3(0.333)));
     c = mix(c, arena, seco * (1.0 - oc) * (0.55 + 0.4 * smoothstep(-0.05, 0.08, g + 0.06)));
-    vec3 lit = c * (0.035 + 1.08 * max(d, 0.0));
-    vec3 luces = texture2D(noche, vUv).rgb * vec3(1.0, 0.82, 0.55) * 1.7 * (1.0 - day);
+    vec3 lit = c * (0.30 + 0.85 * max(d, 0.0));
+    vec3 luces = texture2D(noche, vUv).rgb * vec3(1.0, 0.82, 0.55) * 0.9 * (1.0 - day);
     float h = humo * smoothstep(0.12, 0.0, distance(normalize(vP), humoP)); luces *= (1.0 - 0.85 * h); lit = mix(lit, vec3(0.32, 0.27, 0.2) * (0.25 + max(d, 0.0)), h * 0.6);
     vec3 H = normalize(L + V); float sh = mix(30.0, 900.0, espejo); float sp = pow(max(dot(N, H), 0.0), sh) * oc * mix(0.4, 1.15, espejo) * step(0.0, d);
     float fr = pow(1.0 - max(dot(N, V), 0.0), 2.6);
     vec3 atm = vec3(0.32, 0.58, 1.0) * fr * (0.15 + 0.95 * day);
     gl_FragColor = vec4(lit + luces + vec3(1.0, 0.97, 0.9) * sp + atm, 1.0); }` }));
 inner.add(tierra);
-const UN = { nubes:{value:TX.nubes}, sol:U.sol, off:{value:0}, op:{value:0.95} };
+const UN = { nubes:{value:TX.nubes}, sol:U.sol, off:{value:0}, op:{value:0.0} };
 const nubes = new THREE.Mesh(new THREE.SphereGeometry(1.007, 160, 160), new THREE.ShaderMaterial({ uniforms: UN, transparent: true, depthWrite: false, vertexShader: VS, fragmentShader: `
   uniform sampler2D nubes; uniform vec3 sol; uniform float off, op; varying vec2 vUv; varying vec3 vN; varying vec3 vP;
   void main(){ float a = texture2D(nubes, vec2(vUv.x + off, vUv.y)).r; float d = dot(normalize(vN), normalize(sol));
@@ -95,7 +95,7 @@ function glow(x, y, r, col, a) { if (a <= 0.001) return; const gr = g.createRadi
 function trazo(coords, alt, col, w, dash) { g.strokeStyle = col; g.lineWidth = w; if (dash) g.setLineDash(dash); g.beginPath(); let ok = 0; for (const c of coords) { const p = P3(c[0], c[1], alt); if (!p[2]) { ok = 0; continue; } if (ok) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); ok = 1; } g.stroke(); g.setLineDash([]); }
 function relleno(coords, alt, col) { g.fillStyle = col; g.beginPath(); let n = 0; for (const c of coords) { const p = P3(c[0], c[1], alt); if (n) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); n++; } g.closePath(); g.fill(); }
 function rnd(i) { const x = Math.sin(i * 12.9898) * 43758.5453; return x - Math.floor(x); }
-const N = 2400, SEED = [];
+const N = 1100, SEED = [];
 for (let i = 0; i < N; i++) { const u = rnd(i + 1), v = rnd(i + 7.3); SEED.push([u * 360 - 180, Math.asin(2 * v - 1) * 180 / Math.PI, rnd(i + 3.1) * %%LV%%]); }
 function campo(lon, lat) { const p = lat * Math.PI / 180, l = lon * Math.PI / 180;
   const u = -7.5 * Math.cos(6 * p) * (0.75 + 0.25 * Math.cos(p)) + 2.6 * Math.sin(3 * l + 2 * p) + 1.6 * Math.cos(5 * l - 3 * p);
@@ -106,7 +106,7 @@ function particulas() { const dt = 0.1; g.lineCap = "round"; g.globalCompositeOp
     for (let k = 0; k < n; k++) { const f = campo(lon, lat); lon += f[0] * dt; lat = Math.max(-85, Math.min(85, lat + f[1] * dt)); if (k >= n - 7) tr.push([lon, lat]); }
     if (tr.length < 2) continue; const vida = Math.sin(Math.PI * age / %%LV%%);
     g.beginPath(); let ok = 0; for (const q of tr) { const p = P3(q[0], q[1], 0.012); if (!p[2]) { ok = 0; continue; } if (ok) g.lineTo(p[0], p[1]); else g.moveTo(p[0], p[1]); ok = 1; }
-    g.strokeStyle = `rgba(200,235,255,${(0.42 * vida * S.va).toFixed(3)})`; g.lineWidth = 1.4; g.stroke(); }
+    g.strokeStyle = `rgba(235,248,255,${(0.6 * vida * S.va).toFixed(3)})`; g.lineWidth = 2.4; g.stroke(); }
   g.globalCompositeOperation = "source-over"; }
 function poli(c) { return c; }
 const NY = [-74, 40.7], LON = [-0.1, 51.5], BOD = [18, 17], AMA = [-62, -3], STORM = [-165, -55], BIO = [-110.85, 32.58], MAD = [-3.7, 40.4];

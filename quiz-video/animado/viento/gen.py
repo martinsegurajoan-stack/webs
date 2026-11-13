@@ -180,7 +180,7 @@ import base64
 def b64(f): return "data:image/jpeg;base64," + base64.b64encode(open(os.path.join(BASE, "assets", "tierra", f), "rb").read()).decode()
 html = open(os.path.join(BASE, "_plantilla.html"), encoding="utf-8").read()
 for k, v in (("%%DURX%%", f"{DUR:.3f}"), ("%%DUREND%%", f"{DUR - 0.01:.3f}"), ("%%DUR%%", f"{DUR}"), ("%%FXL%%", "".join(FXL)), ("%%SUBS%%", "".join(SUBS)),
-             ("%%TL%%", chr(10).join(tl)), ("%%TDIA%%", b64("dia_q.jpg")), ("%%TNOCHE%%", b64("noche.jpg")), ("%%TNUBES%%", b64("nubes2k.jpg")), ("%%TMAR%%", b64("mar.jpg")), ("%%LV%%", f"{L_VIDA}"), ("%%HOJA%%", f"{P('moviendose'):.2f}")):
+             ("%%TL%%", chr(10).join(tl)), ("%%TDIA%%", b64("simple.jpg")), ("%%TNOCHE%%", b64("noche.jpg")), ("%%TNUBES%%", b64("nubes2k.jpg")), ("%%TMAR%%", b64("mar.jpg")), ("%%LV%%", f"{L_VIDA}"), ("%%HOJA%%", f"{P('moviendose'):.2f}")):
     html = html.replace(k, v)
 open(os.path.join(BASE, "index.html"), "w", encoding="utf-8").write(html)
 json.dump([], open(os.path.join(BASE, "efectos.json"), "w"))
