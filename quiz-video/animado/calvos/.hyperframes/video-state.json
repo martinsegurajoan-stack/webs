@@ -621,5 +621,16 @@
         "attribution": "unversioned"
       }
     ]
-  }
+  },
+  "renders": {
+    "latest": {
+      "id": "310722f1-35f8-42e9-b433-d92be227de9c",
+      "completedAt": 1794603767304,
+      "output": "/home/user/webs/quiz-video/animado/calvos/salida/video-bruto.mp4",
+      "status": "completed",
+      "revision": null
+    },
+    "retainedRevisions": []
+  },
+  "pendingArtifactCleanup": []
 }
