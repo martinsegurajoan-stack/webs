@@ -34,6 +34,7 @@ def FE(n): return FR[n - 1]["fin"]
 tl, SC = [], []
 def J(s): tl.append(s)
 rr = random.Random(4)
+import _sets
 
 # ------------------------------------------------------------------ censura (pitido + «#@%!» en subtítulos)
 CENS = ["gilipollas", "puto", "mierda"]
@@ -86,7 +87,7 @@ CENSOR = '<div class="cens"><span>#@%!</span></div>'
 # ================================================================== 1) GANCHO (frame 0 ya con texto)
 h = ('<div class="mega" id="h1">TÚ.</div>'
      '<div class="stamp red" id="h2">VAGO</div>'
-     '<div class="dedo" id="h3">👉</div>'
+     '<div class="dedo" id="h3">👉</div><div class="tag" id="hueco">↓ TU HUECO EN EL SOFÁ</div>'
      '<div class="card glass" id="h4"><small>TIEMPO EN EL SOFÁ DE TUS PADRES</small><b><span id="n25">0</span> años</b>'
      '<div class="bar"><i id="barra"></i></div><em><span id="nh">0</span> horas</em></div>')
 escena("s1", h, 0, F(2) + 0.1, "n")
@@ -95,7 +96,8 @@ at("#h1", 0.0, 0.6, "expo.out", desde="scale:1.35, opacity:1", scale=1)
 at("#h1", P("vago") - 0.2, 0.3, y=-260, scale=0.55)
 slam("#h2", P("vago") - 0.05); punch(P("vago") - 0.05, 1.1, 0.7)
 pop("#h3", P("tu") - 0.1); at("#h3", P("tu"), 0.5, "expo.out", x=-40, yoyo="true", repeat=3)
-J(f'tl.to(["#h2", "#h3"], {{autoAlpha:0, duration:0.25}}, {P("veinticinco") - 0.4:.2f});')
+pop("#hueco", P("sofa") - 0.2)
+J(f'tl.to(["#h1", "#h2", "#h3", "#hueco"], {{autoAlpha:0, duration:0.25}}, {P("veinticinco") - 0.4:.2f});')
 pop("#h4", P("veinticinco") - 0.3)
 contador("#n25", 0, 25, P("veinticinco") - 0.2, 1.2)
 contador("#nh", 0, 219000, P("veinticinco"), 2.0)
@@ -130,7 +132,7 @@ pop("#mail", F(3) - 0.05)
 J(f'tl.fromTo(".cf", {{y:-200, rotation:0}}, {{y:2200, rotation:720, duration:2.6, ease:"power1.in", stagger:{{each:0.01, from:"random"}}, immediateRender:false}}, {F(3):.2f});')
 J(f'tl.to("#mail", {{autoAlpha:0, scale:0.8, duration:0.25}}, {P("ti") - 0.4:.2f});')
 slam("#cog", F(3) + 0.1)
-J(f'tl.to("#cog", {{y:-380, scale:0.6, duration:0.4, ease:"expo.inOut"}}, {P("ti") - 0.3:.2f});')
+J(f'tl.to("#cog", {{y:-40, scale:0.72, duration:0.4, ease:"expo.inOut"}}, {P("ti") - 0.3:.2f});')
 slam("#ati", P("ti") - 0.15)
 J(f'tl.to("#ati", {{autoAlpha:0, duration:0.2}}, {P("lavadora") - 0.6:.2f});')
 pop("#lav", P("lavadora") - 0.5)
@@ -155,7 +157,7 @@ fondo(F(4), "#5c4b16", "#2a2410")
 COCHES = "".join(f'<div class="coche" style="top:{k * 70}px;left:{(k * 137) % 300}px;background:{c}"><i></i><i></i></div>'
                  for k, c in enumerate(["#e63946", "#457b9d", "#f1faee", "#ffb703", "#8d99ae", "#e76f51"]))
 s5 = ('<div class="alarma" id="alarma"><b>06:30</b><small>Despertador</small></div>'
-      f'<div class="atasco" id="atasco"><div class="carril">{COCHES}</div><div class="cap">Atasco · +45 min</div></div>'
+      '<div class="tag" id="atasco">🚗 ATASCO · +45 MIN</div>'
       '<div class="chat" id="jefe"><small>Jefe</small><p>¿Otra vez tarde? 🙄</p></div>'
       '<div class="cal" id="cal"><small>NOVIEMBRE</small><b>1</b></div>'
       '<div class="nomina" id="nom"><small>NÓMINA</small><b><span id="nsal">0</span> €</b><em>Líquido a percibir</em><div class="st">INGRESADO</div></div>'
@@ -165,7 +167,7 @@ at("#k5", F(5), 0.4, desde="opacity:0, y:30", opacity=1, y=0)
 pop("#alarma", P("madrugar") - 0.3)
 J(f'tl.to("#alarma", {{rotation:6, duration:0.04, yoyo:true, repeat:15, ease:"none"}}, {P("madrugar"):.2f}); tl.to("#alarma", {{autoAlpha:0, y:-60, duration:0.25}}, {P("trafico") - 0.3:.2f});')
 pop("#atasco", P("trafico") - 0.3)
-J(f'tl.to(".coche", {{x:"+=18", duration:0.9, ease:"power1.inOut", stagger:0.05}}, {P("trafico"):.2f}); tl.to("#atasco", {{autoAlpha:0, y:-60, duration:0.25}}, {P("jefe") - 0.3:.2f});')
+J(f'tl.to("#set_calle .auto", {{x:"+=26", duration:0.9, ease:"power1.inOut", stagger:0.05}}, {P("trafico"):.2f}); tl.to("#atasco", {{autoAlpha:0, y:-60, duration:0.25}}, {P("jefe") - 0.3:.2f});')
 pop("#jefe", P("jefe") - 0.25)
 J(f'tl.to(["#jefe", "#k5"], {{autoAlpha:0, duration:0.25}}, {P("uno", 2) - 0.6:.2f});')
 J(f'tl.set("#cal", {{autoAlpha:0}}, 0); tl.fromTo("#cal", {{autoAlpha:1, rotationX:-90, transformPerspective:800}}, {{rotationX:0, duration:0.5, ease:"expo.out", immediateRender:false}}, {P("uno", 2) - 0.5:.2f});')
@@ -215,7 +217,7 @@ fondo(F(8), "#7f1d1d", "#2b0a0a")
 # ================================================================== 9) Y entonces… sale el GTA 6  (apagón + neón)
 s9 = ('<div class="neon" id="gta"><small>YA DISPONIBLE</small><b>GTA VI</b><div class="sol"></div><div class="palmeras"></div></div>'
       '<div class="glitch" id="gl"></div>')
-J(f'tl.to("#negro", {{autoAlpha:1, duration:0.15}}, {F(9) + 0.05:.2f}); tl.to("#negro", {{autoAlpha:0, duration:0.05}}, {P("gta") - 0.08:.2f});')
+J(f'tl.to("#negro", {{autoAlpha:1, duration:0.15}}, {P("entonces") + 0.35:.2f}); tl.to("#negro", {{autoAlpha:0, duration:0.05}}, {P("gta") - 0.08:.2f});')
 escena("s9", s9, P("gta") - 0.08, F(10) + 0.05, "f", "x", "noir")
 slam("#gta", P("gta") - 0.08, 0.4); shake(P("gta") + 0.05, 34); punch(P("gta"), 1.14, 1.4)
 J(f'tl.fromTo("#gl", {{opacity:0.9, x:-40}}, {{opacity:0, x:40, duration:0.12, repeat:4, yoyo:true, immediateRender:false}}, {P("gta") - 0.08:.2f});')
@@ -282,6 +284,43 @@ J(f'tl.set("#dec", {{autoAlpha:0}}, 0); tl.fromTo("#dec", {{autoAlpha:1, opacity
 slam("#muert", P("muertazo") - 0.05, 0.3); punch(P("muertazo"), 1.08, 3.0)
 fondo(F(14), "#111827", "#030712"); fondo(P("muertazo") - 0.1, "#7f1d1d", "#000000", 0.2)
 
+# ------------------------------------------------------------------ escenarios ilustrados (sin personajes)
+SETS = _sets.salon() + _sets.oficina() + _sets.calle() + _sets.piso() + _sets.guarida() + _sets.ciudad()
+def set_on(sid, t0, t1, z0=1.0, z1=1.07):
+    J(f'tl.set("#{sid}", {{autoAlpha:0}}, 0); tl.set("#{sid}", {{autoAlpha:1}}, {t0:.2f}); tl.set("#{sid}", {{autoAlpha:0}}, {t1:.2f});')
+    J(f'tl.fromTo("#{sid}", {{scale:{z0}}}, {{scale:{z1}, duration:{t1 - t0:.2f}, ease:"none", immediateRender:false}}, {t0:.2f});')
+def parpadeo(sel, t0, t1, a=0.15, b=0.5, paso=0.13, seed=1):
+    r = random.Random(seed); t = t0
+    while t < t1:
+        J(f'tl.set("{sel}", {{opacity:{r.uniform(a, b):.2f}}}, {t:.2f});'); t += paso * r.uniform(0.6, 1.6)
+T_OF, T_CA, T_PI, T_GU, T_CI = F(3) - 0.05, F(5) - 0.05, F(6) - 0.05, P("gta") - 0.08, F(14) - 0.05
+set_on("set_salon", 0, T_OF, 1.0, 1.08)
+set_on("set_oficina", T_OF, T_CA); set_on("set_calle", T_CA, T_PI, 1.0, 1.05); set_on("set_piso", T_PI, F(9) + 0.25)
+set_on("set_guarida", T_GU, T_CI, 1.0, 1.06); set_on("set_ciudad", T_CI, F(15) - 0.05, 1.08, 1.0)
+J(f'tl.set("#set_salon", {{autoAlpha:1}}, {F(15) - 0.05:.2f}); tl.fromTo("#set_salon", {{scale:1.12}}, {{scale:1.0, duration:{DUR - F(15):.2f}, ease:"expo.out", immediateRender:false}}, {F(15) - 0.05:.2f});')
+J(f'tl.set("#rojo", {{autoAlpha:0}}, 0); tl.to("#rojo", {{autoAlpha:1, duration:0.2}}, {P("muertazo") - 0.1:.2f});')
+# salón: reloj que vuela (25 años pasando), telaraña, polvo, luz de la tele
+J(f'tl.to("#set_salon_aguja1", {{rotation:360 * 14, transformOrigin:"50% 100%", duration:2.4, ease:"power2.inOut"}}, {P("veinticinco") - 0.3:.2f});')
+J(f'tl.to("#set_salon_aguja2", {{rotation:360 * 2, transformOrigin:"50% 100%", duration:2.4, ease:"power2.inOut"}}, {P("veinticinco") - 0.3:.2f});')
+J(f'tl.to("#set_salon_telarana path", {{strokeDashoffset:0, duration:1.0, stagger:0.08, ease:"power2.out"}}, {P("veinticinco"):.2f});')
+J('tl.fromTo("#set_salon .polvo", {y:0}, {y:-90, x:"+=20", duration:7, ease:"sine.inOut", stagger:{each:0.2, from:"random"}, immediateRender:false}, 0);')
+J(f'tl.fromTo("#set_salon_hueco", {{opacity:0.85}}, {{opacity:0.4, duration:0.35, yoyo:true, repeat:5, ease:"sine.inOut", immediateRender:false}}, {P("sofa") - 0.2:.2f});')
+parpadeo("#set_salon_tvluz", 0, T_OF, 0.15, 0.55, 0.16, 2); parpadeo("#set_salon_tvluz", F(15), DUR, 0.1, 0.4, 0.18, 3)
+J('tl.fromTo("#set_salon .estrella", {opacity:0.3}, {opacity:1, duration:0.6, yoyo:true, repeat:7, stagger:{each:0.1, from:"random"}, immediateRender:false}, 0);')
+# oficina: globos de bienvenida suben, vapor del café, nubes
+J(f'tl.fromTo("#set_oficina_globos g", {{y:900}}, {{y:0, duration:1.4, ease:"expo.out", stagger:0.12, immediateRender:false}}, {T_OF:.2f}); tl.to("#set_oficina_globos g", {{y:-30, duration:1.2, yoyo:true, repeat:3, ease:"sine.inOut", stagger:0.2}}, {T_OF + 1.4:.2f});')
+J(f'tl.fromTo("#set_oficina .vapor", {{y:0, opacity:0.6}}, {{y:-40, opacity:0, duration:1.6, repeat:6, stagger:0.5, ease:"none", immediateRender:false}}, {T_OF:.2f});')
+J(f'tl.to("#set_oficina .nube", {{x:"+=60", duration:{T_CA - T_OF:.2f}, ease:"none"}}, {T_OF:.2f});')
+# calle: frenos parpadeando
+J(f'tl.fromTo("#set_calle .freno", {{opacity:0.3}}, {{opacity:1, duration:0.4, yoyo:true, repeat:15, stagger:{{each:0.07, from:"random"}}, immediateRender:false}}, {T_CA:.2f});')
+# guarida: tele parpadea, pizzas y latas se acumulan, el plato de mamá entra por la derecha
+parpadeo("#set_guarida_brillo", T_GU, T_CI, 0.0, 0.18, 0.14, 4)
+J(f'tl.set("#set_guarida .caja", {{autoAlpha:0}}, 0); tl.fromTo("#set_guarida .caja", {{autoAlpha:1, y:-300}}, {{y:0, duration:0.4, ease:"bounce.out", stagger:2.6, immediateRender:false}}, {F(10):.2f});')
+J(f'tl.set("#set_guarida .lata", {{autoAlpha:0}}, 0); tl.fromTo("#set_guarida .lata", {{autoAlpha:1, scale:0, transformOrigin:"50% 100%"}}, {{scale:1, duration:0.3, ease:"back.out(3)", stagger:1.8, immediateRender:false}}, {T_GU + 0.5:.2f});')
+J(f'tl.to("#set_guarida_plato", {{x:-330, duration:0.6, ease:"expo.out"}}, {P("comida") - 0.4:.2f});')
+J(f'tl.fromTo("#set_ciudad .ven", {{opacity:0.3}}, {{opacity:1, duration:0.5, yoyo:true, repeat:5, stagger:{{each:0.003, from:"random"}}, immediateRender:false}}, {T_CI:.2f});')
+
+J(f'tl.fromTo("#start", {{opacity:0.25}}, {{opacity:1, duration:0.3, yoyo:true, repeat:7, ease:"sine.inOut", immediateRender:false}}, {P("entonces") + 0.4:.2f});')
 # ------------------------------------------------------------------ montaje
 _S = open(os.path.join(BASE, "_subs.py"), encoding="utf-8").read()
 exec(re.sub(r"CLAVE = set\(.*?\]\)", lambda m: 'CLAVE = set(norm(w) for w in ["vago", "tu", "veinticinco", "linkedin", "llaman", "cogido", "dieciocho", "campeon", "nomina", "magia", "zapatillas", "alquiler", "veinte", "adulto", "gta", "6", "dejarlo", "trabajo", "gimnasio", "ducha", "whatsapp", "veinticuatro", "millones", "cuatro", "hermano", "juego", "vida", "decides", "muertazo"])', _S, count=1, flags=re.S))
@@ -294,8 +333,8 @@ html = f"""<!doctype html>
 <body>
 <div id="root" data-composition-id="main" data-start="0" data-duration="{DUR}" data-width="1080" data-height="1920">
   <div id="bg"><i id="b1"></i><i id="b2"></i></div>
-  <div id="shake"><div id="cam">{"".join(SC)}</div></div>
-  <div id="negro"></div>
+  <div id="shake"><div id="cam"><div id="sets">{SETS}<div id="rojo"></div></div><div id="topsombra"></div>{"".join(SC)}</div></div>
+  <div id="negro"><div id="start">▶ PRESS START</div></div>
   <div id="vineta"></div><div id="grano"></div>
   <div id="marca">@mundo.supuesto</div>
   <div id="subs" data-layout-allow-overlap>{"".join(SUBS)}</div>
