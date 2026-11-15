@@ -1,0 +1,1555 @@
+{
+ "duracion": 83.319,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Y si un día dejaras de hacer el vago y te pusieras a trabajar? Sí, tú. El que lleva veinticinco años tirado en el sofá de sus padres.",
+   "ini": 0.5,
+   "fin": 8.05
+  },
+  {
+   "n": 2,
+   "texto": "Un martes cualquiera, entre vídeo y vídeo, abres LinkedIn. Mandas un currículum. Uno. Y de repente… te llaman.",
+   "ini": 8.19,
+   "fin": 14.054
+  },
+  {
+   "n": 3,
+   "texto": "Te han cogido. A ti. Al que no sabe ni poner una lavadora, gilipollas.",
+   "ini": 14.194,
+   "fin": 19.142
+  },
+  {
+   "n": 4,
+   "texto": "Veinticinco años para conseguir lo que otros hacen a los dieciocho. Pero oye, enhorabuena, campeón.",
+   "ini": 19.282,
+   "fin": 24.991
+  },
+  {
+   "n": 5,
+   "texto": "El primer mes duele. Madrugar, el tráfico, tu jefe… pero llega el día uno y ves tu primera nómina.",
+   "ini": 25.131,
+   "fin": 31.864
+  },
+  {
+   "n": 6,
+   "texto": "Y descubres algo increíble: el dinero no aparece en la cuenta de tus padres por arte de magia.",
+   "ini": 32.004,
+   "fin": 37.226
+  },
+  {
+   "n": 7,
+   "texto": "Te compras unas zapatillas, cenas fuera, te pagas tu propio alquiler. Ya no le pides veinte euros a tu madre.",
+   "ini": 37.366,
+   "fin": 43.391
+  },
+  {
+   "n": 8,
+   "texto": "Por primera vez en tu vida no eres un puto parásito. Eres un adulto. Casi.",
+   "ini": 43.531,
+   "fin": 48.481
+  },
+  {
+   "n": 9,
+   "texto": "Y entonces… sale el GTA 6.",
+   "ini": 48.871,
+   "fin": 51.516
+  },
+  {
+   "n": 10,
+   "texto": "Y tú, que no has aprendido nada, haces lo único que se te da bien: dejarlo todo. El trabajo, el gimnasio, la ducha.",
+   "ini": 52.006,
+   "fin": 59.561
+  },
+  {
+   "n": 11,
+   "texto": "Mandas la dimisión por WhatsApp, como el trozo de mierda que eres.",
+   "ini": 59.701,
+   "fin": 63.251
+  },
+  {
+   "n": 12,
+   "texto": "Vuelves al sofá de tus padres. Veinticuatro horas jugando, con tu madre dejándote la comida en la puerta.",
+   "ini": 63.391,
+   "fin": 69.21
+  },
+  {
+   "n": 13,
+   "texto": "En el juego tienes mansiones, coches y millones. En la vida real, cuatro euros y una deuda con tu hermano.",
+   "ini": 69.35,
+   "fin": 75.71
+  },
+  {
+   "n": 14,
+   "texto": "Unos se hacen ricos en el juego. Otros, en la vida.",
+   "ini": 76.05,
+   "fin": 79.24
+  },
+  {
+   "n": 15,
+   "texto": "Tú decides lo que eres, muertazo.",
+   "ini": 79.73,
+   "fin": 81.719
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Y",
+   "ini": 0.5,
+   "fin": 0.63,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.63,
+   "fin": 0.76,
+   "frase": 1
+  },
+  {
+   "w": "un",
+   "ini": 0.76,
+   "fin": 0.89,
+   "frase": 1
+  },
+  {
+   "w": "día",
+   "ini": 0.89,
+   "fin": 1.063,
+   "frase": 1
+  },
+  {
+   "w": "dejaras",
+   "ini": 1.063,
+   "fin": 1.41,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 1.41,
+   "fin": 1.54,
+   "frase": 1
+  },
+  {
+   "w": "hacer",
+   "ini": 1.54,
+   "fin": 1.8,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 1.8,
+   "fin": 1.93,
+   "frase": 1
+  },
+  {
+   "w": "vago",
+   "ini": 1.93,
+   "fin": 2.147,
+   "frase": 1
+  },
+  {
+   "w": "y",
+   "ini": 2.147,
+   "fin": 2.233,
+   "frase": 1
+  },
+  {
+   "w": "te",
+   "ini": 2.233,
+   "fin": 2.363,
+   "frase": 1
+  },
+  {
+   "w": "pusieras",
+   "ini": 2.363,
+   "fin": 2.753,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 2.753,
+   "fin": 2.84,
+   "frase": 1
+  },
+  {
+   "w": "trabajar?",
+   "ini": 2.84,
+   "fin": 3.273,
+   "frase": 1
+  },
+  {
+   "w": "Sí,",
+   "ini": 3.273,
+   "fin": 3.447,
+   "frase": 1
+  },
+  {
+   "w": "tú.",
+   "ini": 3.447,
+   "fin": 3.62,
+   "frase": 1
+  },
+  {
+   "w": "El",
+   "ini": 3.83,
+   "fin": 4.031,
+   "frase": 1
+  },
+  {
+   "w": "que",
+   "ini": 4.031,
+   "fin": 4.299,
+   "frase": 1
+  },
+  {
+   "w": "lleva",
+   "ini": 4.299,
+   "fin": 4.701,
+   "frase": 1
+  },
+  {
+   "w": "veinticinco",
+   "ini": 4.701,
+   "fin": 5.505,
+   "frase": 1
+  },
+  {
+   "w": "años",
+   "ini": 5.505,
+   "fin": 5.84,
+   "frase": 1
+  },
+  {
+   "w": "tirado",
+   "ini": 5.84,
+   "fin": 6.308,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 6.308,
+   "fin": 6.509,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 6.509,
+   "fin": 6.71,
+   "frase": 1
+  },
+  {
+   "w": "sofá",
+   "ini": 6.71,
+   "fin": 7.045,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 7.045,
+   "fin": 7.246,
+   "frase": 1
+  },
+  {
+   "w": "sus",
+   "ini": 7.246,
+   "fin": 7.514,
+   "frase": 1
+  },
+  {
+   "w": "padres.",
+   "ini": 7.514,
+   "fin": 8.05,
+   "frase": 1
+  },
+  {
+   "w": "Un",
+   "ini": 8.19,
+   "fin": 8.332,
+   "frase": 2
+  },
+  {
+   "w": "martes",
+   "ini": 8.332,
+   "fin": 8.663,
+   "frase": 2
+  },
+  {
+   "w": "cualquiera,",
+   "ini": 8.663,
+   "fin": 9.23,
+   "frase": 2
+  },
+  {
+   "w": "entre",
+   "ini": 9.4,
+   "fin": 9.703,
+   "frase": 2
+  },
+  {
+   "w": "vídeo",
+   "ini": 9.703,
+   "fin": 10.006,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 10.006,
+   "fin": 10.107,
+   "frase": 2
+  },
+  {
+   "w": "vídeo,",
+   "ini": 10.107,
+   "fin": 10.46,
+   "frase": 2
+  },
+  {
+   "w": "abres",
+   "ini": 10.74,
+   "fin": 10.939,
+   "frase": 2
+  },
+  {
+   "w": "LinkedIn.",
+   "ini": 10.939,
+   "fin": 11.27,
+   "frase": 2
+  },
+  {
+   "w": "Mandas",
+   "ini": 11.34,
+   "fin": 11.69,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 11.69,
+   "fin": 11.84,
+   "frase": 2
+  },
+  {
+   "w": "currículum.",
+   "ini": 11.84,
+   "fin": 12.44,
+   "frase": 2
+  },
+  {
+   "w": "Uno.",
+   "ini": 12.53,
+   "fin": 12.67,
+   "frase": 2
+  },
+  {
+   "w": "Y",
+   "ini": 12.89,
+   "fin": 12.907,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 12.907,
+   "fin": 12.933,
+   "frase": 2
+  },
+  {
+   "w": "repente…",
+   "ini": 12.933,
+   "fin": 13.01,
+   "frase": 2
+  },
+  {
+   "w": "te",
+   "ini": 13.23,
+   "fin": 13.455,
+   "frase": 2
+  },
+  {
+   "w": "llaman.",
+   "ini": 13.455,
+   "fin": 14.054,
+   "frase": 2
+  },
+  {
+   "w": "Te",
+   "ini": 14.194,
+   "fin": 14.276,
+   "frase": 3
+  },
+  {
+   "w": "han",
+   "ini": 14.276,
+   "fin": 14.385,
+   "frase": 3
+  },
+  {
+   "w": "cogido.",
+   "ini": 14.385,
+   "fin": 14.604,
+   "frase": 3
+  },
+  {
+   "w": "A",
+   "ini": 14.884,
+   "fin": 15.137,
+   "frase": 3
+  },
+  {
+   "w": "ti.",
+   "ini": 15.137,
+   "fin": 15.644,
+   "frase": 3
+  },
+  {
+   "w": "Al",
+   "ini": 15.884,
+   "fin": 16.079,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 16.079,
+   "fin": 16.34,
+   "frase": 3
+  },
+  {
+   "w": "no",
+   "ini": 16.34,
+   "fin": 16.536,
+   "frase": 3
+  },
+  {
+   "w": "sabe",
+   "ini": 16.536,
+   "fin": 16.861,
+   "frase": 3
+  },
+  {
+   "w": "ni",
+   "ini": 16.861,
+   "fin": 17.057,
+   "frase": 3
+  },
+  {
+   "w": "poner",
+   "ini": 17.057,
+   "fin": 17.448,
+   "frase": 3
+  },
+  {
+   "w": "una",
+   "ini": 17.448,
+   "fin": 17.709,
+   "frase": 3
+  },
+  {
+   "w": "lavadora,",
+   "ini": 17.709,
+   "fin": 18.36,
+   "frase": 3
+  },
+  {
+   "w": "gilipollas.",
+   "ini": 18.36,
+   "fin": 19.142,
+   "frase": 3
+  },
+  {
+   "w": "Veinticinco",
+   "ini": 19.282,
+   "fin": 19.918,
+   "frase": 4
+  },
+  {
+   "w": "años",
+   "ini": 19.918,
+   "fin": 20.182,
+   "frase": 4
+  },
+  {
+   "w": "para",
+   "ini": 20.182,
+   "fin": 20.447,
+   "frase": 4
+  },
+  {
+   "w": "conseguir",
+   "ini": 20.447,
+   "fin": 20.976,
+   "frase": 4
+  },
+  {
+   "w": "lo",
+   "ini": 20.976,
+   "fin": 21.135,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 21.135,
+   "fin": 21.347,
+   "frase": 4
+  },
+  {
+   "w": "otros",
+   "ini": 21.347,
+   "fin": 21.665,
+   "frase": 4
+  },
+  {
+   "w": "hacen",
+   "ini": 21.665,
+   "fin": 21.982,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 21.982,
+   "fin": 22.088,
+   "frase": 4
+  },
+  {
+   "w": "los",
+   "ini": 22.088,
+   "fin": 22.3,
+   "frase": 4
+  },
+  {
+   "w": "dieciocho.",
+   "ini": 22.3,
+   "fin": 22.882,
+   "frase": 4
+  },
+  {
+   "w": "Pero",
+   "ini": 23.102,
+   "fin": 23.312,
+   "frase": 4
+  },
+  {
+   "w": "oye,",
+   "ini": 23.312,
+   "fin": 23.522,
+   "frase": 4
+  },
+  {
+   "w": "enhorabuena,",
+   "ini": 23.812,
+   "fin": 24.509,
+   "frase": 4
+  },
+  {
+   "w": "campeón.",
+   "ini": 24.509,
+   "fin": 24.991,
+   "frase": 4
+  },
+  {
+   "w": "El",
+   "ini": 25.131,
+   "fin": 25.305,
+   "frase": 5
+  },
+  {
+   "w": "primer",
+   "ini": 25.305,
+   "fin": 25.712,
+   "frase": 5
+  },
+  {
+   "w": "mes",
+   "ini": 25.712,
+   "fin": 25.944,
+   "frase": 5
+  },
+  {
+   "w": "duele.",
+   "ini": 25.944,
+   "fin": 26.351,
+   "frase": 5
+  },
+  {
+   "w": "Madrugar,",
+   "ini": 26.531,
+   "fin": 27.231,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 27.361,
+   "fin": 27.571,
+   "frase": 5
+  },
+  {
+   "w": "tráfico,",
+   "ini": 27.571,
+   "fin": 28.201,
+   "frase": 5
+  },
+  {
+   "w": "tu",
+   "ini": 28.321,
+   "fin": 28.421,
+   "frase": 5
+  },
+  {
+   "w": "jefe…",
+   "ini": 28.421,
+   "fin": 28.621,
+   "frase": 5
+  },
+  {
+   "w": "pero",
+   "ini": 28.701,
+   "fin": 29.037,
+   "frase": 5
+  },
+  {
+   "w": "llega",
+   "ini": 29.037,
+   "fin": 29.441,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 29.441,
+   "fin": 29.643,
+   "frase": 5
+  },
+  {
+   "w": "día",
+   "ini": 29.643,
+   "fin": 29.912,
+   "frase": 5
+  },
+  {
+   "w": "uno",
+   "ini": 29.912,
+   "fin": 30.182,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 30.182,
+   "fin": 30.316,
+   "frase": 5
+  },
+  {
+   "w": "ves",
+   "ini": 30.316,
+   "fin": 30.585,
+   "frase": 5
+  },
+  {
+   "w": "tu",
+   "ini": 30.585,
+   "fin": 30.787,
+   "frase": 5
+  },
+  {
+   "w": "primera",
+   "ini": 30.787,
+   "fin": 31.326,
+   "frase": 5
+  },
+  {
+   "w": "nómina.",
+   "ini": 31.326,
+   "fin": 31.864,
+   "frase": 5
+  },
+  {
+   "w": "Y",
+   "ini": 32.004,
+   "fin": 32.12,
+   "frase": 6
+  },
+  {
+   "w": "descubres",
+   "ini": 32.12,
+   "fin": 32.699,
+   "frase": 6
+  },
+  {
+   "w": "algo",
+   "ini": 32.699,
+   "fin": 32.988,
+   "frase": 6
+  },
+  {
+   "w": "increíble:",
+   "ini": 32.988,
+   "fin": 33.624,
+   "frase": 6
+  },
+  {
+   "w": "el",
+   "ini": 33.834,
+   "fin": 33.986,
+   "frase": 6
+  },
+  {
+   "w": "dinero",
+   "ini": 33.986,
+   "fin": 34.341,
+   "frase": 6
+  },
+  {
+   "w": "no",
+   "ini": 34.341,
+   "fin": 34.492,
+   "frase": 6
+  },
+  {
+   "w": "aparece",
+   "ini": 34.492,
+   "fin": 34.897,
+   "frase": 6
+  },
+  {
+   "w": "en",
+   "ini": 34.897,
+   "fin": 35.049,
+   "frase": 6
+  },
+  {
+   "w": "la",
+   "ini": 35.049,
+   "fin": 35.201,
+   "frase": 6
+  },
+  {
+   "w": "cuenta",
+   "ini": 35.201,
+   "fin": 35.556,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 35.556,
+   "fin": 35.707,
+   "frase": 6
+  },
+  {
+   "w": "tus",
+   "ini": 35.707,
+   "fin": 35.91,
+   "frase": 6
+  },
+  {
+   "w": "padres",
+   "ini": 35.91,
+   "fin": 36.264,
+   "frase": 6
+  },
+  {
+   "w": "por",
+   "ini": 36.264,
+   "fin": 36.467,
+   "frase": 6
+  },
+  {
+   "w": "arte",
+   "ini": 36.467,
+   "fin": 36.72,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 36.72,
+   "fin": 36.872,
+   "frase": 6
+  },
+  {
+   "w": "magia.",
+   "ini": 36.872,
+   "fin": 37.226,
+   "frase": 6
+  },
+  {
+   "w": "Te",
+   "ini": 37.366,
+   "fin": 37.505,
+   "frase": 7
+  },
+  {
+   "w": "compras",
+   "ini": 37.505,
+   "fin": 37.877,
+   "frase": 7
+  },
+  {
+   "w": "unas",
+   "ini": 37.877,
+   "fin": 38.109,
+   "frase": 7
+  },
+  {
+   "w": "zapatillas,",
+   "ini": 38.109,
+   "fin": 38.666,
+   "frase": 7
+  },
+  {
+   "w": "cenas",
+   "ini": 38.946,
+   "fin": 39.246,
+   "frase": 7
+  },
+  {
+   "w": "fuera,",
+   "ini": 39.246,
+   "fin": 39.596,
+   "frase": 7
+  },
+  {
+   "w": "te",
+   "ini": 39.876,
+   "fin": 40.02,
+   "frase": 7
+  },
+  {
+   "w": "pagas",
+   "ini": 40.02,
+   "fin": 40.308,
+   "frase": 7
+  },
+  {
+   "w": "tu",
+   "ini": 40.308,
+   "fin": 40.451,
+   "frase": 7
+  },
+  {
+   "w": "propio",
+   "ini": 40.451,
+   "fin": 40.787,
+   "frase": 7
+  },
+  {
+   "w": "alquiler.",
+   "ini": 40.787,
+   "fin": 41.266,
+   "frase": 7
+  },
+  {
+   "w": "Ya",
+   "ini": 41.446,
+   "fin": 41.592,
+   "frase": 7
+  },
+  {
+   "w": "no",
+   "ini": 41.592,
+   "fin": 41.738,
+   "frase": 7
+  },
+  {
+   "w": "le",
+   "ini": 41.738,
+   "fin": 41.884,
+   "frase": 7
+  },
+  {
+   "w": "pides",
+   "ini": 41.884,
+   "fin": 42.175,
+   "frase": 7
+  },
+  {
+   "w": "veinte",
+   "ini": 42.175,
+   "fin": 42.516,
+   "frase": 7
+  },
+  {
+   "w": "euros",
+   "ini": 42.516,
+   "fin": 42.807,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 42.807,
+   "fin": 42.904,
+   "frase": 7
+  },
+  {
+   "w": "tu",
+   "ini": 42.904,
+   "fin": 43.05,
+   "frase": 7
+  },
+  {
+   "w": "madre.",
+   "ini": 43.05,
+   "fin": 43.391,
+   "frase": 7
+  },
+  {
+   "w": "Por",
+   "ini": 43.531,
+   "fin": 43.805,
+   "frase": 8
+  },
+  {
+   "w": "primera",
+   "ini": 43.805,
+   "fin": 44.352,
+   "frase": 8
+  },
+  {
+   "w": "vez",
+   "ini": 44.352,
+   "fin": 44.626,
+   "frase": 8
+  },
+  {
+   "w": "en",
+   "ini": 44.626,
+   "fin": 44.832,
+   "frase": 8
+  },
+  {
+   "w": "tu",
+   "ini": 44.832,
+   "fin": 45.037,
+   "frase": 8
+  },
+  {
+   "w": "vida",
+   "ini": 45.037,
+   "fin": 45.38,
+   "frase": 8
+  },
+  {
+   "w": "no",
+   "ini": 45.38,
+   "fin": 45.585,
+   "frase": 8
+  },
+  {
+   "w": "eres",
+   "ini": 45.585,
+   "fin": 45.928,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 45.928,
+   "fin": 46.133,
+   "frase": 8
+  },
+  {
+   "w": "puto",
+   "ini": 46.133,
+   "fin": 46.476,
+   "frase": 8
+  },
+  {
+   "w": "parásito.",
+   "ini": 46.476,
+   "fin": 47.161,
+   "frase": 8
+  },
+  {
+   "w": "Eres",
+   "ini": 47.281,
+   "fin": 47.487,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 47.487,
+   "fin": 47.611,
+   "frase": 8
+  },
+  {
+   "w": "adulto.",
+   "ini": 47.611,
+   "fin": 47.941,
+   "frase": 8
+  },
+  {
+   "w": "Casi.",
+   "ini": 48.131,
+   "fin": 48.481,
+   "frase": 8
+  },
+  {
+   "w": "Y",
+   "ini": 48.871,
+   "fin": 49.091,
+   "frase": 9
+  },
+  {
+   "w": "entonces…",
+   "ini": 49.091,
+   "fin": 50.191,
+   "frase": 9
+  },
+  {
+   "w": "sale",
+   "ini": 50.301,
+   "fin": 50.706,
+   "frase": 9
+  },
+  {
+   "w": "el",
+   "ini": 50.706,
+   "fin": 50.949,
+   "frase": 9
+  },
+  {
+   "w": "GTA",
+   "ini": 50.949,
+   "fin": 51.273,
+   "frase": 9
+  },
+  {
+   "w": "6.",
+   "ini": 51.273,
+   "fin": 51.516,
+   "frase": 9
+  },
+  {
+   "w": "Y",
+   "ini": 52.006,
+   "fin": 52.132,
+   "frase": 10
+  },
+  {
+   "w": "tú,",
+   "ini": 52.132,
+   "fin": 52.386,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 52.656,
+   "fin": 52.869,
+   "frase": 10
+  },
+  {
+   "w": "no",
+   "ini": 52.869,
+   "fin": 53.029,
+   "frase": 10
+  },
+  {
+   "w": "has",
+   "ini": 53.029,
+   "fin": 53.242,
+   "frase": 10
+  },
+  {
+   "w": "aprendido",
+   "ini": 53.242,
+   "fin": 53.776,
+   "frase": 10
+  },
+  {
+   "w": "nada,",
+   "ini": 53.776,
+   "fin": 54.096,
+   "frase": 10
+  },
+  {
+   "w": "haces",
+   "ini": 54.176,
+   "fin": 54.578,
+   "frase": 10
+  },
+  {
+   "w": "lo",
+   "ini": 54.578,
+   "fin": 54.779,
+   "frase": 10
+  },
+  {
+   "w": "único",
+   "ini": 54.779,
+   "fin": 55.182,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 55.182,
+   "fin": 55.45,
+   "frase": 10
+  },
+  {
+   "w": "se",
+   "ini": 55.45,
+   "fin": 55.651,
+   "frase": 10
+  },
+  {
+   "w": "te",
+   "ini": 55.651,
+   "fin": 55.852,
+   "frase": 10
+  },
+  {
+   "w": "da",
+   "ini": 55.852,
+   "fin": 56.053,
+   "frase": 10
+  },
+  {
+   "w": "bien:",
+   "ini": 56.053,
+   "fin": 56.456,
+   "frase": 10
+  },
+  {
+   "w": "dejarlo",
+   "ini": 56.596,
+   "fin": 56.916,
+   "frase": 10
+  },
+  {
+   "w": "todo.",
+   "ini": 56.916,
+   "fin": 57.156,
+   "frase": 10
+  },
+  {
+   "w": "El",
+   "ini": 57.246,
+   "fin": 57.451,
+   "frase": 10
+  },
+  {
+   "w": "trabajo,",
+   "ini": 57.451,
+   "fin": 58.066,
+   "frase": 10
+  },
+  {
+   "w": "el",
+   "ini": 58.176,
+   "fin": 58.319,
+   "frase": 10
+  },
+  {
+   "w": "gimnasio,",
+   "ini": 58.319,
+   "fin": 58.796,
+   "frase": 10
+  },
+  {
+   "w": "la",
+   "ini": 58.896,
+   "fin": 59.095,
+   "frase": 10
+  },
+  {
+   "w": "ducha.",
+   "ini": 59.095,
+   "fin": 59.561,
+   "frase": 10
+  },
+  {
+   "w": "Mandas",
+   "ini": 59.701,
+   "fin": 60.019,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 60.019,
+   "fin": 60.155,
+   "frase": 11
+  },
+  {
+   "w": "dimisión",
+   "ini": 60.155,
+   "fin": 60.564,
+   "frase": 11
+  },
+  {
+   "w": "por",
+   "ini": 60.564,
+   "fin": 60.746,
+   "frase": 11
+  },
+  {
+   "w": "WhatsApp,",
+   "ini": 60.746,
+   "fin": 61.201,
+   "frase": 11
+  },
+  {
+   "w": "como",
+   "ini": 61.431,
+   "fin": 61.698,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 61.698,
+   "fin": 61.859,
+   "frase": 11
+  },
+  {
+   "w": "trozo",
+   "ini": 61.859,
+   "fin": 62.18,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 62.18,
+   "fin": 62.341,
+   "frase": 11
+  },
+  {
+   "w": "mierda",
+   "ini": 62.341,
+   "fin": 62.715,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 62.715,
+   "fin": 62.93,
+   "frase": 11
+  },
+  {
+   "w": "eres.",
+   "ini": 62.93,
+   "fin": 63.251,
+   "frase": 11
+  },
+  {
+   "w": "Vuelves",
+   "ini": 63.391,
+   "fin": 63.793,
+   "frase": 12
+  },
+  {
+   "w": "al",
+   "ini": 63.793,
+   "fin": 63.944,
+   "frase": 12
+  },
+  {
+   "w": "sofá",
+   "ini": 63.944,
+   "fin": 64.196,
+   "frase": 12
+  },
+  {
+   "w": "de",
+   "ini": 64.196,
+   "fin": 64.347,
+   "frase": 12
+  },
+  {
+   "w": "tus",
+   "ini": 64.347,
+   "fin": 64.548,
+   "frase": 12
+  },
+  {
+   "w": "padres.",
+   "ini": 64.548,
+   "fin": 64.951,
+   "frase": 12
+  },
+  {
+   "w": "Veinticuatro",
+   "ini": 65.121,
+   "fin": 65.738,
+   "frase": 12
+  },
+  {
+   "w": "horas",
+   "ini": 65.738,
+   "fin": 66.023,
+   "frase": 12
+  },
+  {
+   "w": "jugando,",
+   "ini": 66.023,
+   "fin": 66.451,
+   "frase": 12
+  },
+  {
+   "w": "con",
+   "ini": 66.541,
+   "fin": 66.768,
+   "frase": 12
+  },
+  {
+   "w": "tu",
+   "ini": 66.768,
+   "fin": 66.938,
+   "frase": 12
+  },
+  {
+   "w": "madre",
+   "ini": 66.938,
+   "fin": 67.279,
+   "frase": 12
+  },
+  {
+   "w": "dejándote",
+   "ini": 67.279,
+   "fin": 67.847,
+   "frase": 12
+  },
+  {
+   "w": "la",
+   "ini": 67.847,
+   "fin": 68.017,
+   "frase": 12
+  },
+  {
+   "w": "comida",
+   "ini": 68.017,
+   "fin": 68.415,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 68.415,
+   "fin": 68.585,
+   "frase": 12
+  },
+  {
+   "w": "la",
+   "ini": 68.585,
+   "fin": 68.756,
+   "frase": 12
+  },
+  {
+   "w": "puerta.",
+   "ini": 68.756,
+   "fin": 69.21,
+   "frase": 12
+  },
+  {
+   "w": "En",
+   "ini": 69.35,
+   "fin": 69.516,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 69.516,
+   "fin": 69.682,
+   "frase": 13
+  },
+  {
+   "w": "juego",
+   "ini": 69.682,
+   "fin": 70.014,
+   "frase": 13
+  },
+  {
+   "w": "tienes",
+   "ini": 70.014,
+   "fin": 70.401,
+   "frase": 13
+  },
+  {
+   "w": "mansiones,",
+   "ini": 70.401,
+   "fin": 71.01,
+   "frase": 13
+  },
+  {
+   "w": "coches",
+   "ini": 71.12,
+   "fin": 71.569,
+   "frase": 13
+  },
+  {
+   "w": "y",
+   "ini": 71.569,
+   "fin": 71.698,
+   "frase": 13
+  },
+  {
+   "w": "millones.",
+   "ini": 71.698,
+   "fin": 72.34,
+   "frase": 13
+  },
+  {
+   "w": "En",
+   "ini": 72.55,
+   "fin": 72.688,
+   "frase": 13
+  },
+  {
+   "w": "la",
+   "ini": 72.688,
+   "fin": 72.825,
+   "frase": 13
+  },
+  {
+   "w": "vida",
+   "ini": 72.825,
+   "fin": 73.055,
+   "frase": 13
+  },
+  {
+   "w": "real,",
+   "ini": 73.055,
+   "fin": 73.33,
+   "frase": 13
+  },
+  {
+   "w": "cuatro",
+   "ini": 73.54,
+   "fin": 73.91,
+   "frase": 13
+  },
+  {
+   "w": "euros",
+   "ini": 73.91,
+   "fin": 74.228,
+   "frase": 13
+  },
+  {
+   "w": "y",
+   "ini": 74.228,
+   "fin": 74.334,
+   "frase": 13
+  },
+  {
+   "w": "una",
+   "ini": 74.334,
+   "fin": 74.545,
+   "frase": 13
+  },
+  {
+   "w": "deuda",
+   "ini": 74.545,
+   "fin": 74.863,
+   "frase": 13
+  },
+  {
+   "w": "con",
+   "ini": 74.863,
+   "fin": 75.075,
+   "frase": 13
+  },
+  {
+   "w": "tu",
+   "ini": 75.075,
+   "fin": 75.233,
+   "frase": 13
+  },
+  {
+   "w": "hermano.",
+   "ini": 75.233,
+   "fin": 75.71,
+   "frase": 13
+  },
+  {
+   "w": "Unos",
+   "ini": 76.05,
+   "fin": 76.319,
+   "frase": 14
+  },
+  {
+   "w": "se",
+   "ini": 76.319,
+   "fin": 76.481,
+   "frase": 14
+  },
+  {
+   "w": "hacen",
+   "ini": 76.481,
+   "fin": 76.805,
+   "frase": 14
+  },
+  {
+   "w": "ricos",
+   "ini": 76.805,
+   "fin": 77.128,
+   "frase": 14
+  },
+  {
+   "w": "en",
+   "ini": 77.128,
+   "fin": 77.29,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 77.29,
+   "fin": 77.452,
+   "frase": 14
+  },
+  {
+   "w": "juego.",
+   "ini": 77.452,
+   "fin": 77.83,
+   "frase": 14
+  },
+  {
+   "w": "Otros,",
+   "ini": 78.02,
+   "fin": 78.39,
+   "frase": 14
+  },
+  {
+   "w": "en",
+   "ini": 78.59,
+   "fin": 78.752,
+   "frase": 14
+  },
+  {
+   "w": "la",
+   "ini": 78.752,
+   "fin": 78.915,
+   "frase": 14
+  },
+  {
+   "w": "vida.",
+   "ini": 78.915,
+   "fin": 79.24,
+   "frase": 14
+  },
+  {
+   "w": "Tú",
+   "ini": 79.73,
+   "fin": 79.918,
+   "frase": 15
+  },
+  {
+   "w": "decides",
+   "ini": 79.918,
+   "fin": 80.422,
+   "frase": 15
+  },
+  {
+   "w": "lo",
+   "ini": 80.422,
+   "fin": 80.611,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 80.611,
+   "fin": 80.862,
+   "frase": 15
+  },
+  {
+   "w": "eres,",
+   "ini": 80.862,
+   "fin": 81.24,
+   "frase": 15
+  },
+  {
+   "w": "muertazo.",
+   "ini": 81.36,
+   "fin": 81.719,
+   "frase": 15
+  }
+ ]
+}
