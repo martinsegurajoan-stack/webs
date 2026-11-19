@@ -1,0 +1,1039 @@
+{
+ "duracion": 57.47,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si no te cortas el pelo en diez años?",
+   "ini": 0.0,
+   "fin": 3.132
+  },
+  {
+   "n": 2,
+   "texto": "Empiezas con un pelo.",
+   "ini": 3.352,
+   "fin": 4.768
+  },
+  {
+   "n": 3,
+   "texto": "Bueno… con cien mil.",
+   "ini": 4.988,
+   "fin": 7.076
+  },
+  {
+   "n": 4,
+   "texto": "Y cada uno crece algo más de un centímetro al mes.",
+   "ini": 7.596,
+   "fin": 10.756
+  },
+  {
+   "n": 5,
+   "texto": "Al primer año, ya tienes quince centímetros.",
+   "ini": 10.976,
+   "fin": 13.894
+  },
+  {
+   "n": 6,
+   "texto": "El flequillo te tapa los ojos.",
+   "ini": 14.114,
+   "fin": 16.165
+  },
+  {
+   "n": 7,
+   "texto": "A los tres años, ¡cuarenta y cinco centímetros!",
+   "ini": 16.385,
+   "fin": 19.554
+  },
+  {
+   "n": 8,
+   "texto": "Se te engancha en las puertas.",
+   "ini": 19.774,
+   "fin": 21.486
+  },
+  {
+   "n": 9,
+   "texto": "Y acaba dentro de la sopa.",
+   "ini": 21.706,
+   "fin": 23.526
+  },
+  {
+   "n": 10,
+   "texto": "A los cinco años, ya te llega casi a la cintura.",
+   "ini": 24.246,
+   "fin": 27.432
+  },
+  {
+   "n": 11,
+   "texto": "Y aquí viene lo que casi nadie sabe.",
+   "ini": 27.652,
+   "fin": 29.89
+  },
+  {
+   "n": 12,
+   "texto": "Tu pelo no crece para siempre.",
+   "ini": 30.11,
+   "fin": 32.42
+  },
+  {
+   "n": 13,
+   "texto": "Cada pelo vive solo de dos a siete años.",
+   "ini": 32.64,
+   "fin": 35.605
+  },
+  {
+   "n": 14,
+   "texto": "Después se cae… y nace otro nuevo.",
+   "ini": 35.825,
+   "fin": 38.462
+  },
+  {
+   "n": 15,
+   "texto": "Así que a los diez años, tu melena se queda en un metro, como mucho.",
+   "ini": 38.982,
+   "fin": 43.528
+  },
+  {
+   "n": 16,
+   "texto": "Salvo que tengas unos genes únicos…",
+   "ini": 43.748,
+   "fin": 46.187
+  },
+  {
+   "n": 17,
+   "texto": "como Xie Qiuping, ¡que lo tiene de más de cinco metros!",
+   "ini": 46.407,
+   "fin": 50.142
+  },
+  {
+   "n": 18,
+   "texto": "Y por el camino habrás perdido unos trescientos mil pelos.",
+   "ini": 50.762,
+   "fin": 54.425
+  },
+  {
+   "n": 19,
+   "texto": "Porque todo empezó… con un solo pelo.",
+   "ini": 54.645,
+   "fin": 57.47
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.307,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.307,
+   "fin": 0.798,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.798,
+   "fin": 0.983,
+   "frase": 1
+  },
+  {
+   "w": "no",
+   "ini": 0.983,
+   "fin": 1.167,
+   "frase": 1
+  },
+  {
+   "w": "te",
+   "ini": 1.167,
+   "fin": 1.351,
+   "frase": 1
+  },
+  {
+   "w": "cortas",
+   "ini": 1.351,
+   "fin": 1.781,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 1.781,
+   "fin": 1.965,
+   "frase": 1
+  },
+  {
+   "w": "pelo",
+   "ini": 1.965,
+   "fin": 2.272,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 2.272,
+   "fin": 2.457,
+   "frase": 1
+  },
+  {
+   "w": "diez",
+   "ini": 2.457,
+   "fin": 2.764,
+   "frase": 1
+  },
+  {
+   "w": "años?",
+   "ini": 2.764,
+   "fin": 3.132,
+   "frase": 1
+  },
+  {
+   "w": "Empiezas",
+   "ini": 3.352,
+   "fin": 3.931,
+   "frase": 2
+  },
+  {
+   "w": "con",
+   "ini": 3.931,
+   "fin": 4.189,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 4.189,
+   "fin": 4.382,
+   "frase": 2
+  },
+  {
+   "w": "pelo.",
+   "ini": 4.382,
+   "fin": 4.768,
+   "frase": 2
+  },
+  {
+   "w": "Bueno…",
+   "ini": 4.988,
+   "fin": 5.608,
+   "frase": 3
+  },
+  {
+   "w": "con",
+   "ini": 5.938,
+   "fin": 6.263,
+   "frase": 3
+  },
+  {
+   "w": "cien",
+   "ini": 6.263,
+   "fin": 6.67,
+   "frase": 3
+  },
+  {
+   "w": "mil.",
+   "ini": 6.67,
+   "fin": 7.076,
+   "frase": 3
+  },
+  {
+   "w": "Y",
+   "ini": 7.596,
+   "fin": 7.72,
+   "frase": 4
+  },
+  {
+   "w": "cada",
+   "ini": 7.72,
+   "fin": 8.03,
+   "frase": 4
+  },
+  {
+   "w": "uno",
+   "ini": 8.03,
+   "fin": 8.277,
+   "frase": 4
+  },
+  {
+   "w": "crece",
+   "ini": 8.277,
+   "fin": 8.649,
+   "frase": 4
+  },
+  {
+   "w": "algo",
+   "ini": 8.649,
+   "fin": 8.959,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 8.959,
+   "fin": 9.207,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 9.207,
+   "fin": 9.393,
+   "frase": 4
+  },
+  {
+   "w": "un",
+   "ini": 9.393,
+   "fin": 9.579,
+   "frase": 4
+  },
+  {
+   "w": "centímetro",
+   "ini": 9.579,
+   "fin": 10.26,
+   "frase": 4
+  },
+  {
+   "w": "al",
+   "ini": 10.26,
+   "fin": 10.446,
+   "frase": 4
+  },
+  {
+   "w": "mes.",
+   "ini": 10.446,
+   "fin": 10.756,
+   "frase": 4
+  },
+  {
+   "w": "Al",
+   "ini": 10.976,
+   "fin": 11.166,
+   "frase": 5
+  },
+  {
+   "w": "primer",
+   "ini": 11.166,
+   "fin": 11.609,
+   "frase": 5
+  },
+  {
+   "w": "año,",
+   "ini": 11.609,
+   "fin": 11.926,
+   "frase": 5
+  },
+  {
+   "w": "ya",
+   "ini": 12.006,
+   "fin": 12.195,
+   "frase": 5
+  },
+  {
+   "w": "tienes",
+   "ini": 12.195,
+   "fin": 12.635,
+   "frase": 5
+  },
+  {
+   "w": "quince",
+   "ini": 12.635,
+   "fin": 13.076,
+   "frase": 5
+  },
+  {
+   "w": "centímetros.",
+   "ini": 13.076,
+   "fin": 13.894,
+   "frase": 5
+  },
+  {
+   "w": "El",
+   "ini": 14.114,
+   "fin": 14.313,
+   "frase": 6
+  },
+  {
+   "w": "flequillo",
+   "ini": 14.313,
+   "fin": 14.974,
+   "frase": 6
+  },
+  {
+   "w": "te",
+   "ini": 14.974,
+   "fin": 15.173,
+   "frase": 6
+  },
+  {
+   "w": "tapa",
+   "ini": 15.173,
+   "fin": 15.504,
+   "frase": 6
+  },
+  {
+   "w": "los",
+   "ini": 15.504,
+   "fin": 15.768,
+   "frase": 6
+  },
+  {
+   "w": "ojos.",
+   "ini": 15.768,
+   "fin": 16.165,
+   "frase": 6
+  },
+  {
+   "w": "A",
+   "ini": 16.385,
+   "fin": 16.502,
+   "frase": 7
+  },
+  {
+   "w": "los",
+   "ini": 16.502,
+   "fin": 16.735,
+   "frase": 7
+  },
+  {
+   "w": "tres",
+   "ini": 16.735,
+   "fin": 17.026,
+   "frase": 7
+  },
+  {
+   "w": "años,",
+   "ini": 17.026,
+   "fin": 17.375,
+   "frase": 7
+  },
+  {
+   "w": "¡cuarenta",
+   "ini": 17.525,
+   "fin": 18.18,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 18.18,
+   "fin": 18.311,
+   "frase": 7
+  },
+  {
+   "w": "cinco",
+   "ini": 18.311,
+   "fin": 18.703,
+   "frase": 7
+  },
+  {
+   "w": "centímetros!",
+   "ini": 18.703,
+   "fin": 19.554,
+   "frase": 7
+  },
+  {
+   "w": "Se",
+   "ini": 19.774,
+   "fin": 19.94,
+   "frase": 8
+  },
+  {
+   "w": "te",
+   "ini": 19.94,
+   "fin": 20.105,
+   "frase": 8
+  },
+  {
+   "w": "engancha",
+   "ini": 20.105,
+   "fin": 20.602,
+   "frase": 8
+  },
+  {
+   "w": "en",
+   "ini": 20.602,
+   "fin": 20.768,
+   "frase": 8
+  },
+  {
+   "w": "las",
+   "ini": 20.768,
+   "fin": 20.989,
+   "frase": 8
+  },
+  {
+   "w": "puertas.",
+   "ini": 20.989,
+   "fin": 21.486,
+   "frase": 8
+  },
+  {
+   "w": "Y",
+   "ini": 21.706,
+   "fin": 21.841,
+   "frase": 9
+  },
+  {
+   "w": "acaba",
+   "ini": 21.841,
+   "fin": 22.245,
+   "frase": 9
+  },
+  {
+   "w": "dentro",
+   "ini": 22.245,
+   "fin": 22.717,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 22.717,
+   "fin": 22.919,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 22.919,
+   "fin": 23.121,
+   "frase": 9
+  },
+  {
+   "w": "sopa.",
+   "ini": 23.121,
+   "fin": 23.526,
+   "frase": 9
+  },
+  {
+   "w": "A",
+   "ini": 24.246,
+   "fin": 24.362,
+   "frase": 10
+  },
+  {
+   "w": "los",
+   "ini": 24.362,
+   "fin": 24.596,
+   "frase": 10
+  },
+  {
+   "w": "cinco",
+   "ini": 24.596,
+   "fin": 24.946,
+   "frase": 10
+  },
+  {
+   "w": "años,",
+   "ini": 24.946,
+   "fin": 25.296,
+   "frase": 10
+  },
+  {
+   "w": "ya",
+   "ini": 25.386,
+   "fin": 25.584,
+   "frase": 10
+  },
+  {
+   "w": "te",
+   "ini": 25.584,
+   "fin": 25.782,
+   "frase": 10
+  },
+  {
+   "w": "llega",
+   "ini": 25.782,
+   "fin": 26.178,
+   "frase": 10
+  },
+  {
+   "w": "casi",
+   "ini": 26.178,
+   "fin": 26.508,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 26.508,
+   "fin": 26.64,
+   "frase": 10
+  },
+  {
+   "w": "la",
+   "ini": 26.64,
+   "fin": 26.838,
+   "frase": 10
+  },
+  {
+   "w": "cintura.",
+   "ini": 26.838,
+   "fin": 27.432,
+   "frase": 10
+  },
+  {
+   "w": "Y",
+   "ini": 27.652,
+   "fin": 27.773,
+   "frase": 11
+  },
+  {
+   "w": "aquí",
+   "ini": 27.773,
+   "fin": 28.076,
+   "frase": 11
+  },
+  {
+   "w": "viene",
+   "ini": 28.076,
+   "fin": 28.438,
+   "frase": 11
+  },
+  {
+   "w": "lo",
+   "ini": 28.438,
+   "fin": 28.62,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 28.62,
+   "fin": 28.862,
+   "frase": 11
+  },
+  {
+   "w": "casi",
+   "ini": 28.862,
+   "fin": 29.164,
+   "frase": 11
+  },
+  {
+   "w": "nadie",
+   "ini": 29.164,
+   "fin": 29.527,
+   "frase": 11
+  },
+  {
+   "w": "sabe.",
+   "ini": 29.527,
+   "fin": 29.89,
+   "frase": 11
+  },
+  {
+   "w": "Tu",
+   "ini": 30.11,
+   "fin": 30.333,
+   "frase": 12
+  },
+  {
+   "w": "pelo",
+   "ini": 30.333,
+   "fin": 30.706,
+   "frase": 12
+  },
+  {
+   "w": "no",
+   "ini": 30.706,
+   "fin": 30.929,
+   "frase": 12
+  },
+  {
+   "w": "crece",
+   "ini": 30.929,
+   "fin": 31.377,
+   "frase": 12
+  },
+  {
+   "w": "para",
+   "ini": 31.377,
+   "fin": 31.749,
+   "frase": 12
+  },
+  {
+   "w": "siempre.",
+   "ini": 31.749,
+   "fin": 32.42,
+   "frase": 12
+  },
+  {
+   "w": "Cada",
+   "ini": 32.64,
+   "fin": 33.002,
+   "frase": 13
+  },
+  {
+   "w": "pelo",
+   "ini": 33.002,
+   "fin": 33.363,
+   "frase": 13
+  },
+  {
+   "w": "vive",
+   "ini": 33.363,
+   "fin": 33.725,
+   "frase": 13
+  },
+  {
+   "w": "solo",
+   "ini": 33.725,
+   "fin": 34.086,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 34.086,
+   "fin": 34.303,
+   "frase": 13
+  },
+  {
+   "w": "dos",
+   "ini": 34.303,
+   "fin": 34.593,
+   "frase": 13
+  },
+  {
+   "w": "a",
+   "ini": 34.593,
+   "fin": 34.737,
+   "frase": 13
+  },
+  {
+   "w": "siete",
+   "ini": 34.737,
+   "fin": 35.171,
+   "frase": 13
+  },
+  {
+   "w": "años.",
+   "ini": 35.171,
+   "fin": 35.605,
+   "frase": 13
+  },
+  {
+   "w": "Después",
+   "ini": 35.825,
+   "fin": 36.35,
+   "frase": 14
+  },
+  {
+   "w": "se",
+   "ini": 36.35,
+   "fin": 36.547,
+   "frase": 14
+  },
+  {
+   "w": "cae…",
+   "ini": 36.547,
+   "fin": 36.875,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 37.255,
+   "fin": 37.382,
+   "frase": 14
+  },
+  {
+   "w": "nace",
+   "ini": 37.382,
+   "fin": 37.7,
+   "frase": 14
+  },
+  {
+   "w": "otro",
+   "ini": 37.7,
+   "fin": 38.018,
+   "frase": 14
+  },
+  {
+   "w": "nuevo.",
+   "ini": 38.018,
+   "fin": 38.462,
+   "frase": 14
+  },
+  {
+   "w": "Así",
+   "ini": 38.982,
+   "fin": 39.249,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 39.249,
+   "fin": 39.517,
+   "frase": 15
+  },
+  {
+   "w": "a",
+   "ini": 39.517,
+   "fin": 39.65,
+   "frase": 15
+  },
+  {
+   "w": "los",
+   "ini": 39.65,
+   "fin": 39.917,
+   "frase": 15
+  },
+  {
+   "w": "diez",
+   "ini": 39.917,
+   "fin": 40.251,
+   "frase": 15
+  },
+  {
+   "w": "años,",
+   "ini": 40.251,
+   "fin": 40.652,
+   "frase": 15
+  },
+  {
+   "w": "tu",
+   "ini": 40.942,
+   "fin": 41.099,
+   "frase": 15
+  },
+  {
+   "w": "melena",
+   "ini": 41.099,
+   "fin": 41.464,
+   "frase": 15
+  },
+  {
+   "w": "se",
+   "ini": 41.464,
+   "fin": 41.621,
+   "frase": 15
+  },
+  {
+   "w": "queda",
+   "ini": 41.621,
+   "fin": 41.934,
+   "frase": 15
+  },
+  {
+   "w": "en",
+   "ini": 41.934,
+   "fin": 42.09,
+   "frase": 15
+  },
+  {
+   "w": "un",
+   "ini": 42.09,
+   "fin": 42.247,
+   "frase": 15
+  },
+  {
+   "w": "metro,",
+   "ini": 42.247,
+   "fin": 42.612,
+   "frase": 15
+  },
+  {
+   "w": "como",
+   "ini": 42.822,
+   "fin": 43.116,
+   "frase": 15
+  },
+  {
+   "w": "mucho.",
+   "ini": 43.116,
+   "fin": 43.528,
+   "frase": 15
+  },
+  {
+   "w": "Salvo",
+   "ini": 43.748,
+   "fin": 44.154,
+   "frase": 16
+  },
+  {
+   "w": "que",
+   "ini": 44.154,
+   "fin": 44.425,
+   "frase": 16
+  },
+  {
+   "w": "tengas",
+   "ini": 44.425,
+   "fin": 44.9,
+   "frase": 16
+  },
+  {
+   "w": "unos",
+   "ini": 44.9,
+   "fin": 45.238,
+   "frase": 16
+  },
+  {
+   "w": "genes",
+   "ini": 45.238,
+   "fin": 45.645,
+   "frase": 16
+  },
+  {
+   "w": "únicos…",
+   "ini": 45.645,
+   "fin": 46.187,
+   "frase": 16
+  },
+  {
+   "w": "como",
+   "ini": 46.407,
+   "fin": 46.712,
+   "frase": 17
+  },
+  {
+   "w": "Xie",
+   "ini": 46.712,
+   "fin": 46.957,
+   "frase": 17
+  },
+  {
+   "w": "Qiuping,",
+   "ini": 46.957,
+   "fin": 47.507,
+   "frase": 17
+  },
+  {
+   "w": "¡que",
+   "ini": 47.787,
+   "fin": 48.097,
+   "frase": 17
+  },
+  {
+   "w": "lo",
+   "ini": 48.097,
+   "fin": 48.282,
+   "frase": 17
+  },
+  {
+   "w": "tiene",
+   "ini": 48.282,
+   "fin": 48.654,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 48.654,
+   "fin": 48.84,
+   "frase": 17
+  },
+  {
+   "w": "más",
+   "ini": 48.84,
+   "fin": 49.088,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 49.088,
+   "fin": 49.274,
+   "frase": 17
+  },
+  {
+   "w": "cinco",
+   "ini": 49.274,
+   "fin": 49.646,
+   "frase": 17
+  },
+  {
+   "w": "metros!",
+   "ini": 49.646,
+   "fin": 50.142,
+   "frase": 17
+  },
+  {
+   "w": "Y",
+   "ini": 50.762,
+   "fin": 50.886,
+   "frase": 18
+  },
+  {
+   "w": "por",
+   "ini": 50.886,
+   "fin": 51.134,
+   "frase": 18
+  },
+  {
+   "w": "el",
+   "ini": 51.134,
+   "fin": 51.32,
+   "frase": 18
+  },
+  {
+   "w": "camino",
+   "ini": 51.32,
+   "fin": 51.755,
+   "frase": 18
+  },
+  {
+   "w": "habrás",
+   "ini": 51.755,
+   "fin": 52.19,
+   "frase": 18
+  },
+  {
+   "w": "perdido",
+   "ini": 52.19,
+   "fin": 52.687,
+   "frase": 18
+  },
+  {
+   "w": "unos",
+   "ini": 52.687,
+   "fin": 52.997,
+   "frase": 18
+  },
+  {
+   "w": "trescientos",
+   "ini": 52.997,
+   "fin": 53.742,
+   "frase": 18
+  },
+  {
+   "w": "mil",
+   "ini": 53.742,
+   "fin": 53.991,
+   "frase": 18
+  },
+  {
+   "w": "pelos.",
+   "ini": 53.991,
+   "fin": 54.425,
+   "frase": 18
+  },
+  {
+   "w": "Porque",
+   "ini": 54.645,
+   "fin": 55.111,
+   "frase": 19
+  },
+  {
+   "w": "todo",
+   "ini": 55.111,
+   "fin": 55.443,
+   "frase": 19
+  },
+  {
+   "w": "empezó…",
+   "ini": 55.443,
+   "fin": 55.975,
+   "frase": 19
+  },
+  {
+   "w": "con",
+   "ini": 56.265,
+   "fin": 56.533,
+   "frase": 19
+  },
+  {
+   "w": "un",
+   "ini": 56.533,
+   "fin": 56.734,
+   "frase": 19
+  },
+  {
+   "w": "solo",
+   "ini": 56.734,
+   "fin": 57.069,
+   "frase": 19
+  },
+  {
+   "w": "pelo.",
+   "ini": 57.069,
+   "fin": 57.47,
+   "frase": 19
+  }
+ ]
+}

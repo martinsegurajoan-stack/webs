@@ -1,0 +1,513 @@
+{
+ "modo": "misterio",
+ "video": "misterio_01",
+ "titulo": "Caso imposible: El asesinato en la mansión",
+ "voz": {
+  "voice_id": "30jLfQdV8RTduXvosh02",
+  "nombre": "Juanjo TikTok (castellano, enérgico)",
+  "estilo": ""
+ },
+ "imagenes": "assets/misterio_01",
+ "focos": {
+  "biblioteca": [
+   1216,
+   720
+  ],
+  "mansion": [
+   1248,
+   640
+  ],
+  "pasillo": [
+   1312,
+   704
+  ],
+  "escena_cuerpo": [
+   1216,
+   1000
+  ],
+  "clara": [
+   1307,
+   520
+  ],
+  "clara_lectura": [
+   1200,
+   520
+  ],
+  "clara_interrogatorio": [
+   1413,
+   560
+  ],
+  "roberto": [
+   1280,
+   560
+  ],
+  "roberto_jardin": [
+   1290,
+   600
+  ],
+  "sofia": [
+   827,
+   520
+  ],
+  "sofia_cocina": [
+   960,
+   600
+  ],
+  "alfombra": [
+   1280,
+   900
+  ],
+  "vaso": [
+   1350,
+   1000
+  ],
+  "detective": [
+   1250,
+   700
+  ]
+ },
+ "clips": [
+  {
+   "texto": "[suspenseful] Un hombre ha sido asesinado en su propia mansión.",
+   "pausa": 0.1,
+   "sfx": "golpe",
+   "planos": [
+    {
+     "img": "biblioteca",
+     "de": [
+      1600,
+      760,
+      1.0
+     ],
+     "a": [
+      1500,
+      1150,
+      1.55
+     ]
+    }
+   ]
+  },
+  {
+   "texto": "[intrigued] Tres personas estaban allí.",
+   "pausa": 0.1,
+   "planos": [
+    {
+     "img": "mansion",
+     "de": [
+      1100,
+      640,
+      1.15
+     ],
+     "a": [
+      1300,
+      620,
+      1.0
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "caso",
+    "texto": "CASO IMPOSIBLE",
+    "sub": "El asesinato en la mansión"
+   }
+  },
+  {
+   "texto": "[whispers] Una acaba de cometer un error… [suspenseful] y la pista que la delata estaba delante de todos.",
+   "pausa": 0.35,
+   "planos": [
+    {
+     "img": "pasillo",
+     "de": [
+      1312,
+      704,
+      1.0
+     ],
+     "a": [
+      1312,
+      720,
+      1.45
+     ]
+    },
+    {
+     "img": "vaso",
+     "desde": 0.62,
+     "de": [
+      1380,
+      980,
+      1.15
+     ],
+     "a": [
+      1400,
+      1060,
+      1.6
+     ]
+    }
+   ]
+  },
+  {
+   "texto": "[suspenseful] La víctima, el señor Valdés, apareció junto a su escritorio.",
+   "pausa": 0.15,
+   "sfx": "suave",
+   "planos": [
+    {
+     "img": "escena_cuerpo",
+     "de": [
+      1000,
+      900,
+      1.05
+     ],
+     "a": [
+      1250,
+      1000,
+      1.25
+     ]
+    }
+   ]
+  },
+  {
+   "texto": "[suspenseful] La policía interrogó a tres sospechosos.",
+   "pausa": 0.15,
+   "planos": [
+    {
+     "img": "triptico",
+     "de": [
+      0,
+      0,
+      1.0
+     ],
+     "a": [
+      0,
+      0,
+      1.06
+     ]
+    }
+   ]
+  },
+  {
+   "texto": "[intrigued] Clara, su esposa, aseguró que estaba leyendo en el salón… y que no había oído absolutamente nada.",
+   "pausa": 0.2,
+   "planos": [
+    {
+     "img": "clara",
+     "de": [
+      1307,
+      560,
+      1.05
+     ],
+     "a": [
+      1307,
+      520,
+      1.3
+     ]
+    },
+    {
+     "img": "clara_lectura",
+     "desde": 0.38,
+     "de": [
+      1150,
+      600,
+      1.0
+     ],
+     "a": [
+      1220,
+      520,
+      1.25
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "sospechoso",
+    "num": "SOSPECHOSA 01",
+    "nombre": "CLARA",
+    "rol": "La esposa"
+   }
+  },
+  {
+   "texto": "[intrigued] Roberto, su abogado, dijo que estaba en el jardín, haciendo una llamada.",
+   "pausa": 0.2,
+   "planos": [
+    {
+     "img": "roberto",
+     "de": [
+      1280,
+      600,
+      1.05
+     ],
+     "a": [
+      1280,
+      540,
+      1.3
+     ]
+    },
+    {
+     "img": "roberto_jardin",
+     "desde": 0.4,
+     "de": [
+      1350,
+      640,
+      1.0
+     ],
+     "a": [
+      1250,
+      580,
+      1.2
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "sospechoso",
+    "num": "SOSPECHOSO 02",
+    "nombre": "ROBERTO",
+    "rol": "El abogado"
+   }
+  },
+  {
+   "texto": "[intrigued] Y Sofía, la cocinera, afirmó que preparaba la cena… y que oyó un fuerte golpe en la biblioteca.",
+   "pausa": 0.3,
+   "planos": [
+    {
+     "img": "sofia",
+     "de": [
+      827,
+      560,
+      1.05
+     ],
+     "a": [
+      827,
+      520,
+      1.3
+     ]
+    },
+    {
+     "img": "sofia_cocina",
+     "desde": 0.36,
+     "de": [
+      1050,
+      640,
+      1.0
+     ],
+     "a": [
+      930,
+      560,
+      1.25
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "sospechoso",
+    "num": "SOSPECHOSA 03",
+    "nombre": "SOFÍA",
+    "rol": "La cocinera"
+   }
+  },
+  {
+   "texto": "[intrigued] Pero los investigadores descubrieron tres cosas.",
+   "pausa": 0.15,
+   "sfx": "suave",
+   "planos": [
+    {
+     "img": "detective",
+     "de": [
+      1500,
+      700,
+      1.0
+     ],
+     "a": [
+      1150,
+      640,
+      1.3
+     ]
+    }
+   ]
+  },
+  {
+   "texto": "[suspenseful] Uno: la biblioteca estaba alfombrada de pared a pared.",
+   "pausa": 0.15,
+   "sfx": "pista",
+   "planos": [
+    {
+     "img": "alfombra",
+     "de": [
+      900,
+      800,
+      1.0
+     ],
+     "a": [
+      1600,
+      900,
+      1.15
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "pista",
+    "num": "PISTA 01",
+    "texto": "Alfombra de pared a pared"
+   }
+  },
+  {
+   "texto": "[suspenseful] Dos: junto al cuerpo había un vaso roto… y todos los fragmentos estaban sobre la alfombra.",
+   "pausa": 0.15,
+   "sfx": "pista",
+   "planos": [
+    {
+     "img": "vaso",
+     "de": [
+      1300,
+      900,
+      1.0
+     ],
+     "a": [
+      1400,
+      1060,
+      1.5
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "pista",
+    "num": "PISTA 02",
+    "texto": "Fragmentos sobre la alfombra"
+   }
+  },
+  {
+   "texto": "[suspenseful] Y tres: cuando la policía volvió a preguntar por el ruido, Clara dijo que había oído un cristal romperse.",
+   "pausa": 0.35,
+   "sfx": "pista",
+   "planos": [
+    {
+     "img": "clara_interrogatorio",
+     "de": [
+      1413,
+      640,
+      1.0
+     ],
+     "a": [
+      1413,
+      560,
+      1.3
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "pista",
+    "num": "PISTA 03",
+    "texto": "El ruido"
+   },
+   "tarjetas": [
+    {
+     "en": 0.6,
+     "titulo": "NUEVA DECLARACIÓN",
+     "texto": "«Oí un cristal romperse»"
+    }
+   ]
+  },
+  {
+   "texto": "[intrigued] Así que… ¿quién está mintiendo? ¿Clara, Roberto o Sofía?",
+   "pausa": 0.15,
+   "sfx": "golpe",
+   "planos": [
+    {
+     "img": "triptico",
+     "de": [
+      0,
+      0,
+      1.0
+     ],
+     "a": [
+      0,
+      0,
+      1.08
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "titular",
+    "texto": "¿QUIÉN MIENTE?"
+   }
+  },
+  {
+   "texto": "[suspenseful] Tienes cinco segundos.",
+   "pausa": 0.1,
+   "cuenta_atras": 5,
+   "planos": [
+    {
+     "img": "triptico",
+     "de": [
+      0,
+      0,
+      1.0
+     ],
+     "a": [
+      0,
+      0,
+      1.0
+     ]
+    }
+   ]
+  },
+  {
+   "texto": "[excited] ¿Lo tienes? Escríbelo en los comentarios… y vamos a ver cuántos detectives hay por aquí. ¡Síguenos, que el próximo caso es todavía más difícil!",
+   "pausa": 1.2,
+   "sfx": "golpe",
+   "final": true,
+   "planos": [
+    {
+     "img": "triptico",
+     "de": [
+      0,
+      0,
+      1.0
+     ],
+     "a": [
+      0,
+      0,
+      1.05
+     ]
+    }
+   ],
+   "rotulo": {
+    "tipo": "final",
+    "texto": "¿QUIÉN MIENTE?",
+    "sub": "Escríbelo en los comentarios"
+   }
+  }
+ ],
+ "destacar": {
+  "amarillo": [
+   "tres personas",
+   "tres sospechosos",
+   "no había oído absolutamente nada",
+   "un cristal romperse",
+   "romperse un cristal",
+   "cinco segundos",
+   "error",
+   "pista",
+   "alfombrada",
+   "pared a pared",
+   "vaso roto",
+   "todos los fragmentos",
+   "asesinado",
+   "asesinato",
+   "comentarios",
+   "mintiendo",
+   "detectives",
+   "comentarios",
+   "cinco segundos"
+  ],
+  "turquesa": [
+   "clara",
+   "roberto",
+   "sofía",
+   "valdés"
+  ]
+ },
+ "portada": {
+  "titulo": [
+   "CASO",
+   "IMPOSIBLE"
+  ],
+  "sub": "¿Quién miente?",
+  "fondo": "biblioteca"
+ }
+}

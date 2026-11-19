@@ -1,0 +1,1249 @@
+{
+ "duracion": 70.892,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Te meten en una burbuja gigante, la cuelgan de un helicóptero… y a mil metros, cortan la cuerda.",
+   "ini": 0.5,
+   "fin": 6.844
+  },
+  {
+   "n": 2,
+   "texto": "Primero te meten entero y te atan con correas, como a un astronauta de oferta.",
+   "ini": 7.144,
+   "fin": 11.647
+  },
+  {
+   "n": 3,
+   "texto": "El helicóptero despega y tú saludas como si fuera buena idea.",
+   "ini": 11.747,
+   "fin": 15.199
+  },
+  {
+   "n": 4,
+   "texto": "A cien metros, la burbuja empieza a girar como una lavadora.",
+   "ini": 15.299,
+   "fin": 19.094
+  },
+  {
+   "n": 5,
+   "texto": "A quinientos, te entra hipo, y el piloto está viendo vídeos de gatos.",
+   "ini": 19.194,
+   "fin": 23.263
+  },
+  {
+   "n": 6,
+   "texto": "A mil metros, silencio. Alguien saca unas tijeras.",
+   "ini": 23.363,
+   "fin": 27.38
+  },
+  {
+   "n": 7,
+   "texto": "Y cortan.",
+   "ini": 27.68,
+   "fin": 28.353
+  },
+  {
+   "n": 8,
+   "texto": "El primer segundo, tu estómago se queda arriba.",
+   "ini": 28.653,
+   "fin": 31.32
+  },
+  {
+   "n": 9,
+   "texto": "Al tercero, ya vas a casi cien kilómetros por hora.",
+   "ini": 31.42,
+   "fin": 34.547
+  },
+  {
+   "n": 10,
+   "texto": "El aire frena la burbuja, pero mucho menos de lo que crees.",
+   "ini": 34.647,
+   "fin": 38.029
+  },
+  {
+   "n": 11,
+   "texto": "Llegas a unos ciento cuarenta, y de ahí ya no pasas.",
+   "ini": 38.129,
+   "fin": 41.64
+  },
+  {
+   "n": 12,
+   "texto": "Caes casi medio minuto, dando vueltas y gritando, como en una atracción sin cola.",
+   "ini": 41.74,
+   "fin": 46.84
+  },
+  {
+   "n": 13,
+   "texto": "Un pájaro te mira raro. Una avioneta te esquiva. Abajo, un estadio se hace enorme.",
+   "ini": 46.94,
+   "fin": 53.13
+  },
+  {
+   "n": 14,
+   "texto": "La burbuja solo te salva de caídas pequeñas, como un segundo piso.",
+   "ini": 53.23,
+   "fin": 57.041
+  },
+  {
+   "n": 15,
+   "texto": "Desde mil metros, es como estamparte contra un muro.",
+   "ini": 57.141,
+   "fin": 60.505
+  },
+  {
+   "n": 16,
+   "texto": "Quedan cien metros. Todo el estadio levanta la cabeza.",
+   "ini": 60.605,
+   "fin": 64.109
+  },
+  {
+   "n": 17,
+   "texto": "Cincuenta. El portero sale corriendo.",
+   "ini": 64.209,
+   "fin": 66.749
+  },
+  {
+   "n": 18,
+   "texto": "Diez…",
+   "ini": 67.149,
+   "fin": 67.736
+  },
+  {
+   "n": 19,
+   "texto": "Y la burbuja… explota.",
+   "ini": 68.236,
+   "fin": 70.292
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Te",
+   "ini": 0.5,
+   "fin": 0.664,
+   "frase": 1
+  },
+  {
+   "w": "meten",
+   "ini": 0.664,
+   "fin": 0.991,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 0.991,
+   "fin": 1.155,
+   "frase": 1
+  },
+  {
+   "w": "una",
+   "ini": 1.155,
+   "fin": 1.373,
+   "frase": 1
+  },
+  {
+   "w": "burbuja",
+   "ini": 1.373,
+   "fin": 1.809,
+   "frase": 1
+  },
+  {
+   "w": "gigante,",
+   "ini": 1.809,
+   "fin": 2.3,
+   "frase": 1
+  },
+  {
+   "w": "la",
+   "ini": 2.75,
+   "fin": 2.901,
+   "frase": 1
+  },
+  {
+   "w": "cuelgan",
+   "ini": 2.901,
+   "fin": 3.304,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 3.304,
+   "fin": 3.455,
+   "frase": 1
+  },
+  {
+   "w": "un",
+   "ini": 3.455,
+   "fin": 3.606,
+   "frase": 1
+  },
+  {
+   "w": "helicóptero…",
+   "ini": 3.606,
+   "fin": 4.26,
+   "frase": 1
+  },
+  {
+   "w": "y",
+   "ini": 4.64,
+   "fin": 4.752,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 4.752,
+   "fin": 4.865,
+   "frase": 1
+  },
+  {
+   "w": "mil",
+   "ini": 4.865,
+   "fin": 5.09,
+   "frase": 1
+  },
+  {
+   "w": "metros,",
+   "ini": 5.09,
+   "fin": 5.54,
+   "frase": 1
+  },
+  {
+   "w": "cortan",
+   "ini": 5.91,
+   "fin": 6.273,
+   "frase": 1
+  },
+  {
+   "w": "la",
+   "ini": 6.273,
+   "fin": 6.429,
+   "frase": 1
+  },
+  {
+   "w": "cuerda.",
+   "ini": 6.429,
+   "fin": 6.844,
+   "frase": 1
+  },
+  {
+   "w": "Primero",
+   "ini": 7.144,
+   "fin": 7.59,
+   "frase": 2
+  },
+  {
+   "w": "te",
+   "ini": 7.59,
+   "fin": 7.757,
+   "frase": 2
+  },
+  {
+   "w": "meten",
+   "ini": 7.757,
+   "fin": 8.091,
+   "frase": 2
+  },
+  {
+   "w": "entero",
+   "ini": 8.091,
+   "fin": 8.482,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 8.482,
+   "fin": 8.593,
+   "frase": 2
+  },
+  {
+   "w": "te",
+   "ini": 8.593,
+   "fin": 8.76,
+   "frase": 2
+  },
+  {
+   "w": "atan",
+   "ini": 8.76,
+   "fin": 9.039,
+   "frase": 2
+  },
+  {
+   "w": "con",
+   "ini": 9.039,
+   "fin": 9.262,
+   "frase": 2
+  },
+  {
+   "w": "correas,",
+   "ini": 9.262,
+   "fin": 9.764,
+   "frase": 2
+  },
+  {
+   "w": "como",
+   "ini": 9.974,
+   "fin": 10.235,
+   "frase": 2
+  },
+  {
+   "w": "a",
+   "ini": 10.235,
+   "fin": 10.34,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 10.34,
+   "fin": 10.497,
+   "frase": 2
+  },
+  {
+   "w": "astronauta",
+   "ini": 10.497,
+   "fin": 11.072,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 11.072,
+   "fin": 11.229,
+   "frase": 2
+  },
+  {
+   "w": "oferta.",
+   "ini": 11.229,
+   "fin": 11.647,
+   "frase": 2
+  },
+  {
+   "w": "El",
+   "ini": 11.747,
+   "fin": 11.914,
+   "frase": 3
+  },
+  {
+   "w": "helicóptero",
+   "ini": 11.914,
+   "fin": 12.582,
+   "frase": 3
+  },
+  {
+   "w": "despega",
+   "ini": 12.582,
+   "fin": 13.028,
+   "frase": 3
+  },
+  {
+   "w": "y",
+   "ini": 13.028,
+   "fin": 13.139,
+   "frase": 3
+  },
+  {
+   "w": "tú",
+   "ini": 13.139,
+   "fin": 13.306,
+   "frase": 3
+  },
+  {
+   "w": "saludas",
+   "ini": 13.306,
+   "fin": 13.752,
+   "frase": 3
+  },
+  {
+   "w": "como",
+   "ini": 13.752,
+   "fin": 14.03,
+   "frase": 3
+  },
+  {
+   "w": "si",
+   "ini": 14.03,
+   "fin": 14.197,
+   "frase": 3
+  },
+  {
+   "w": "fuera",
+   "ini": 14.197,
+   "fin": 14.531,
+   "frase": 3
+  },
+  {
+   "w": "buena",
+   "ini": 14.531,
+   "fin": 14.865,
+   "frase": 3
+  },
+  {
+   "w": "idea.",
+   "ini": 14.865,
+   "fin": 15.199,
+   "frase": 3
+  },
+  {
+   "w": "A",
+   "ini": 15.299,
+   "fin": 15.425,
+   "frase": 4
+  },
+  {
+   "w": "cien",
+   "ini": 15.425,
+   "fin": 15.738,
+   "frase": 4
+  },
+  {
+   "w": "metros,",
+   "ini": 15.738,
+   "fin": 16.239,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 16.459,
+   "fin": 16.631,
+   "frase": 4
+  },
+  {
+   "w": "burbuja",
+   "ini": 16.631,
+   "fin": 17.089,
+   "frase": 4
+  },
+  {
+   "w": "empieza",
+   "ini": 17.089,
+   "fin": 17.548,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 17.548,
+   "fin": 17.662,
+   "frase": 4
+  },
+  {
+   "w": "girar",
+   "ini": 17.662,
+   "fin": 18.006,
+   "frase": 4
+  },
+  {
+   "w": "como",
+   "ini": 18.006,
+   "fin": 18.292,
+   "frase": 4
+  },
+  {
+   "w": "una",
+   "ini": 18.292,
+   "fin": 18.521,
+   "frase": 4
+  },
+  {
+   "w": "lavadora.",
+   "ini": 18.521,
+   "fin": 19.094,
+   "frase": 4
+  },
+  {
+   "w": "A",
+   "ini": 19.194,
+   "fin": 19.293,
+   "frase": 5
+  },
+  {
+   "w": "quinientos,",
+   "ini": 19.293,
+   "fin": 19.884,
+   "frase": 5
+  },
+  {
+   "w": "te",
+   "ini": 20.114,
+   "fin": 20.262,
+   "frase": 5
+  },
+  {
+   "w": "entra",
+   "ini": 20.262,
+   "fin": 20.558,
+   "frase": 5
+  },
+  {
+   "w": "hipo,",
+   "ini": 20.558,
+   "fin": 20.854,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 21.094,
+   "fin": 21.2,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 21.2,
+   "fin": 21.358,
+   "frase": 5
+  },
+  {
+   "w": "piloto",
+   "ini": 21.358,
+   "fin": 21.729,
+   "frase": 5
+  },
+  {
+   "w": "está",
+   "ini": 21.729,
+   "fin": 21.993,
+   "frase": 5
+  },
+  {
+   "w": "viendo",
+   "ini": 21.993,
+   "fin": 22.363,
+   "frase": 5
+  },
+  {
+   "w": "vídeos",
+   "ini": 22.363,
+   "fin": 22.734,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 22.734,
+   "fin": 22.892,
+   "frase": 5
+  },
+  {
+   "w": "gatos.",
+   "ini": 22.892,
+   "fin": 23.263,
+   "frase": 5
+  },
+  {
+   "w": "A",
+   "ini": 23.363,
+   "fin": 23.485,
+   "frase": 6
+  },
+  {
+   "w": "mil",
+   "ini": 23.485,
+   "fin": 23.731,
+   "frase": 6
+  },
+  {
+   "w": "metros,",
+   "ini": 23.731,
+   "fin": 24.223,
+   "frase": 6
+  },
+  {
+   "w": "silencio.",
+   "ini": 24.563,
+   "fin": 25.163,
+   "frase": 6
+  },
+  {
+   "w": "Alguien",
+   "ini": 25.793,
+   "fin": 26.263,
+   "frase": 6
+  },
+  {
+   "w": "saca",
+   "ini": 26.263,
+   "fin": 26.557,
+   "frase": 6
+  },
+  {
+   "w": "unas",
+   "ini": 26.557,
+   "fin": 26.851,
+   "frase": 6
+  },
+  {
+   "w": "tijeras.",
+   "ini": 26.851,
+   "fin": 27.38,
+   "frase": 6
+  },
+  {
+   "w": "Y",
+   "ini": 27.68,
+   "fin": 27.815,
+   "frase": 7
+  },
+  {
+   "w": "cortan.",
+   "ini": 27.815,
+   "fin": 28.353,
+   "frase": 7
+  },
+  {
+   "w": "El",
+   "ini": 28.653,
+   "fin": 28.804,
+   "frase": 8
+  },
+  {
+   "w": "primer",
+   "ini": 28.804,
+   "fin": 29.158,
+   "frase": 8
+  },
+  {
+   "w": "segundo,",
+   "ini": 29.158,
+   "fin": 29.613,
+   "frase": 8
+  },
+  {
+   "w": "tu",
+   "ini": 29.743,
+   "fin": 29.906,
+   "frase": 8
+  },
+  {
+   "w": "estómago",
+   "ini": 29.906,
+   "fin": 30.395,
+   "frase": 8
+  },
+  {
+   "w": "se",
+   "ini": 30.395,
+   "fin": 30.558,
+   "frase": 8
+  },
+  {
+   "w": "queda",
+   "ini": 30.558,
+   "fin": 30.885,
+   "frase": 8
+  },
+  {
+   "w": "arriba.",
+   "ini": 30.885,
+   "fin": 31.32,
+   "frase": 8
+  },
+  {
+   "w": "Al",
+   "ini": 31.42,
+   "fin": 31.597,
+   "frase": 9
+  },
+  {
+   "w": "tercero,",
+   "ini": 31.597,
+   "fin": 32.13,
+   "frase": 9
+  },
+  {
+   "w": "ya",
+   "ini": 32.34,
+   "fin": 32.505,
+   "frase": 9
+  },
+  {
+   "w": "vas",
+   "ini": 32.505,
+   "fin": 32.726,
+   "frase": 9
+  },
+  {
+   "w": "a",
+   "ini": 32.726,
+   "fin": 32.836,
+   "frase": 9
+  },
+  {
+   "w": "casi",
+   "ini": 32.836,
+   "fin": 33.112,
+   "frase": 9
+  },
+  {
+   "w": "cien",
+   "ini": 33.112,
+   "fin": 33.388,
+   "frase": 9
+  },
+  {
+   "w": "kilómetros",
+   "ini": 33.388,
+   "fin": 33.995,
+   "frase": 9
+  },
+  {
+   "w": "por",
+   "ini": 33.995,
+   "fin": 34.216,
+   "frase": 9
+  },
+  {
+   "w": "hora.",
+   "ini": 34.216,
+   "fin": 34.547,
+   "frase": 9
+  },
+  {
+   "w": "El",
+   "ini": 34.647,
+   "fin": 34.825,
+   "frase": 10
+  },
+  {
+   "w": "aire",
+   "ini": 34.825,
+   "fin": 35.124,
+   "frase": 10
+  },
+  {
+   "w": "frena",
+   "ini": 35.124,
+   "fin": 35.481,
+   "frase": 10
+  },
+  {
+   "w": "la",
+   "ini": 35.481,
+   "fin": 35.66,
+   "frase": 10
+  },
+  {
+   "w": "burbuja,",
+   "ini": 35.66,
+   "fin": 36.197,
+   "frase": 10
+  },
+  {
+   "w": "pero",
+   "ini": 36.357,
+   "fin": 36.603,
+   "frase": 10
+  },
+  {
+   "w": "mucho",
+   "ini": 36.603,
+   "fin": 36.898,
+   "frase": 10
+  },
+  {
+   "w": "menos",
+   "ini": 36.898,
+   "fin": 37.193,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 37.193,
+   "fin": 37.34,
+   "frase": 10
+  },
+  {
+   "w": "lo",
+   "ini": 37.34,
+   "fin": 37.488,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 37.488,
+   "fin": 37.684,
+   "frase": 10
+  },
+  {
+   "w": "crees.",
+   "ini": 37.684,
+   "fin": 38.029,
+   "frase": 10
+  },
+  {
+   "w": "Llegas",
+   "ini": 38.129,
+   "fin": 38.54,
+   "frase": 11
+  },
+  {
+   "w": "a",
+   "ini": 38.54,
+   "fin": 38.657,
+   "frase": 11
+  },
+  {
+   "w": "unos",
+   "ini": 38.657,
+   "fin": 38.951,
+   "frase": 11
+  },
+  {
+   "w": "ciento",
+   "ini": 38.951,
+   "fin": 39.362,
+   "frase": 11
+  },
+  {
+   "w": "cuarenta,",
+   "ini": 39.362,
+   "fin": 39.949,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 40.129,
+   "fin": 40.266,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 40.266,
+   "fin": 40.472,
+   "frase": 11
+  },
+  {
+   "w": "ahí",
+   "ini": 40.472,
+   "fin": 40.747,
+   "frase": 11
+  },
+  {
+   "w": "ya",
+   "ini": 40.747,
+   "fin": 40.953,
+   "frase": 11
+  },
+  {
+   "w": "no",
+   "ini": 40.953,
+   "fin": 41.159,
+   "frase": 11
+  },
+  {
+   "w": "pasas.",
+   "ini": 41.159,
+   "fin": 41.64,
+   "frase": 11
+  },
+  {
+   "w": "Caes",
+   "ini": 41.74,
+   "fin": 42.04,
+   "frase": 12
+  },
+  {
+   "w": "casi",
+   "ini": 42.04,
+   "fin": 42.34,
+   "frase": 12
+  },
+  {
+   "w": "medio",
+   "ini": 42.34,
+   "fin": 42.7,
+   "frase": 12
+  },
+  {
+   "w": "minuto,",
+   "ini": 42.7,
+   "fin": 43.18,
+   "frase": 12
+  },
+  {
+   "w": "dando",
+   "ini": 43.25,
+   "fin": 43.689,
+   "frase": 12
+  },
+  {
+   "w": "vueltas",
+   "ini": 43.689,
+   "fin": 44.273,
+   "frase": 12
+  },
+  {
+   "w": "y",
+   "ini": 44.273,
+   "fin": 44.419,
+   "frase": 12
+  },
+  {
+   "w": "gritando,",
+   "ini": 44.419,
+   "fin": 45.15,
+   "frase": 12
+  },
+  {
+   "w": "como",
+   "ini": 45.29,
+   "fin": 45.532,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 45.532,
+   "fin": 45.678,
+   "frase": 12
+  },
+  {
+   "w": "una",
+   "ini": 45.678,
+   "fin": 45.871,
+   "frase": 12
+  },
+  {
+   "w": "atracción",
+   "ini": 45.871,
+   "fin": 46.356,
+   "frase": 12
+  },
+  {
+   "w": "sin",
+   "ini": 46.356,
+   "fin": 46.55,
+   "frase": 12
+  },
+  {
+   "w": "cola.",
+   "ini": 46.55,
+   "fin": 46.84,
+   "frase": 12
+  },
+  {
+   "w": "Un",
+   "ini": 46.94,
+   "fin": 47.115,
+   "frase": 13
+  },
+  {
+   "w": "pájaro",
+   "ini": 47.115,
+   "fin": 47.524,
+   "frase": 13
+  },
+  {
+   "w": "te",
+   "ini": 47.524,
+   "fin": 47.699,
+   "frase": 13
+  },
+  {
+   "w": "mira",
+   "ini": 47.699,
+   "fin": 47.99,
+   "frase": 13
+  },
+  {
+   "w": "raro.",
+   "ini": 47.99,
+   "fin": 48.34,
+   "frase": 13
+  },
+  {
+   "w": "Una",
+   "ini": 48.76,
+   "fin": 48.97,
+   "frase": 13
+  },
+  {
+   "w": "avioneta",
+   "ini": 48.97,
+   "fin": 49.442,
+   "frase": 13
+  },
+  {
+   "w": "te",
+   "ini": 49.442,
+   "fin": 49.599,
+   "frase": 13
+  },
+  {
+   "w": "esquiva.",
+   "ini": 49.599,
+   "fin": 50.07,
+   "frase": 13
+  },
+  {
+   "w": "Abajo,",
+   "ini": 50.65,
+   "fin": 51.09,
+   "frase": 13
+  },
+  {
+   "w": "un",
+   "ini": 51.26,
+   "fin": 51.468,
+   "frase": 13
+  },
+  {
+   "w": "estadio",
+   "ini": 51.468,
+   "fin": 52.022,
+   "frase": 13
+  },
+  {
+   "w": "se",
+   "ini": 52.022,
+   "fin": 52.23,
+   "frase": 13
+  },
+  {
+   "w": "hace",
+   "ini": 52.23,
+   "fin": 52.576,
+   "frase": 13
+  },
+  {
+   "w": "enorme.",
+   "ini": 52.576,
+   "fin": 53.13,
+   "frase": 13
+  },
+  {
+   "w": "La",
+   "ini": 53.23,
+   "fin": 53.386,
+   "frase": 14
+  },
+  {
+   "w": "burbuja",
+   "ini": 53.386,
+   "fin": 53.804,
+   "frase": 14
+  },
+  {
+   "w": "solo",
+   "ini": 53.804,
+   "fin": 54.065,
+   "frase": 14
+  },
+  {
+   "w": "te",
+   "ini": 54.065,
+   "fin": 54.222,
+   "frase": 14
+  },
+  {
+   "w": "salva",
+   "ini": 54.222,
+   "fin": 54.535,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 54.535,
+   "fin": 54.692,
+   "frase": 14
+  },
+  {
+   "w": "caídas",
+   "ini": 54.692,
+   "fin": 55.057,
+   "frase": 14
+  },
+  {
+   "w": "pequeñas,",
+   "ini": 55.057,
+   "fin": 55.58,
+   "frase": 14
+  },
+  {
+   "w": "como",
+   "ini": 55.81,
+   "fin": 56.089,
+   "frase": 14
+  },
+  {
+   "w": "un",
+   "ini": 56.089,
+   "fin": 56.257,
+   "frase": 14
+  },
+  {
+   "w": "segundo",
+   "ini": 56.257,
+   "fin": 56.705,
+   "frase": 14
+  },
+  {
+   "w": "piso.",
+   "ini": 56.705,
+   "fin": 57.041,
+   "frase": 14
+  },
+  {
+   "w": "Desde",
+   "ini": 57.141,
+   "fin": 57.497,
+   "frase": 15
+  },
+  {
+   "w": "mil",
+   "ini": 57.497,
+   "fin": 57.735,
+   "frase": 15
+  },
+  {
+   "w": "metros,",
+   "ini": 57.735,
+   "fin": 58.211,
+   "frase": 15
+  },
+  {
+   "w": "es",
+   "ini": 58.451,
+   "fin": 58.627,
+   "frase": 15
+  },
+  {
+   "w": "como",
+   "ini": 58.627,
+   "fin": 58.92,
+   "frase": 15
+  },
+  {
+   "w": "estamparte",
+   "ini": 58.92,
+   "fin": 59.566,
+   "frase": 15
+  },
+  {
+   "w": "contra",
+   "ini": 59.566,
+   "fin": 59.977,
+   "frase": 15
+  },
+  {
+   "w": "un",
+   "ini": 59.977,
+   "fin": 60.153,
+   "frase": 15
+  },
+  {
+   "w": "muro.",
+   "ini": 60.153,
+   "fin": 60.505,
+   "frase": 15
+  },
+  {
+   "w": "Quedan",
+   "ini": 60.605,
+   "fin": 60.99,
+   "frase": 16
+  },
+  {
+   "w": "cien",
+   "ini": 60.99,
+   "fin": 61.265,
+   "frase": 16
+  },
+  {
+   "w": "metros.",
+   "ini": 61.265,
+   "fin": 61.705,
+   "frase": 16
+  },
+  {
+   "w": "Todo",
+   "ini": 62.255,
+   "fin": 62.52,
+   "frase": 16
+  },
+  {
+   "w": "el",
+   "ini": 62.52,
+   "fin": 62.679,
+   "frase": 16
+  },
+  {
+   "w": "estadio",
+   "ini": 62.679,
+   "fin": 63.103,
+   "frase": 16
+  },
+  {
+   "w": "levanta",
+   "ini": 63.103,
+   "fin": 63.526,
+   "frase": 16
+  },
+  {
+   "w": "la",
+   "ini": 63.526,
+   "fin": 63.685,
+   "frase": 16
+  },
+  {
+   "w": "cabeza.",
+   "ini": 63.685,
+   "fin": 64.109,
+   "frase": 16
+  },
+  {
+   "w": "Cincuenta.",
+   "ini": 64.209,
+   "fin": 64.909,
+   "frase": 17
+  },
+  {
+   "w": "El",
+   "ini": 65.269,
+   "fin": 65.433,
+   "frase": 17
+  },
+  {
+   "w": "portero",
+   "ini": 65.433,
+   "fin": 65.872,
+   "frase": 17
+  },
+  {
+   "w": "sale",
+   "ini": 65.872,
+   "fin": 66.146,
+   "frase": 17
+  },
+  {
+   "w": "corriendo.",
+   "ini": 66.146,
+   "fin": 66.749,
+   "frase": 17
+  },
+  {
+   "w": "Diez…",
+   "ini": 67.149,
+   "fin": 67.736,
+   "frase": 18
+  },
+  {
+   "w": "Y",
+   "ini": 68.236,
+   "fin": 68.351,
+   "frase": 19
+  },
+  {
+   "w": "la",
+   "ini": 68.351,
+   "fin": 68.525,
+   "frase": 19
+  },
+  {
+   "w": "burbuja…",
+   "ini": 68.525,
+   "fin": 69.046,
+   "frase": 19
+  },
+  {
+   "w": "explota.",
+   "ini": 69.506,
+   "fin": 70.292,
+   "frase": 19
+  }
+ ]
+}

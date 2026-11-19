@@ -1,0 +1,1183 @@
+{
+ "duracion": 69.997,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Si pulsas este botón, ganas un millón de euros. Pero alguien del planeta lo pierde todo.",
+   "ini": 0.5,
+   "fin": 6.881
+  },
+  {
+   "n": 2,
+   "texto": "Y no eres el único: todo el mundo tiene uno igual.",
+   "ini": 7.181,
+   "fin": 10.478
+  },
+  {
+   "n": 3,
+   "texto": "Y se puede pulsar todas las veces que quieras.",
+   "ini": 10.578,
+   "fin": 13.179
+  },
+  {
+   "n": 4,
+   "texto": "Clic: un millón. Clic: dos millones. Clic: tres.",
+   "ini": 13.279,
+   "fin": 17.677
+  },
+  {
+   "n": 5,
+   "texto": "Y nunca sabes a quién le estás vaciando la cuenta.",
+   "ini": 17.777,
+   "fin": 20.733
+  },
+  {
+   "n": 6,
+   "texto": "El primer día, medio planeta pulsa sin pensarlo.",
+   "ini": 20.833,
+   "fin": 23.876
+  },
+  {
+   "n": 7,
+   "texto": "La gente se compra casas, coches, viajes…",
+   "ini": 23.976,
+   "fin": 27.147
+  },
+  {
+   "n": 8,
+   "texto": "Y a la vez, millones de cajeros dicen lo mismo: cero euros.",
+   "ini": 27.247,
+   "fin": 31.46
+  },
+  {
+   "n": 9,
+   "texto": "Los bancos se vuelven locos.",
+   "ini": 31.56,
+   "fin": 33.355
+  },
+  {
+   "n": 10,
+   "texto": "Familias sin ahorros. Tiendas que no pueden cobrar.",
+   "ini": 33.455,
+   "fin": 36.56
+  },
+  {
+   "n": 11,
+   "texto": "Cada clic enciende una ventana… y apaga otra.",
+   "ini": 36.86,
+   "fin": 40.212
+  },
+  {
+   "n": 12,
+   "texto": "La gente ya no duerme: pulsa en el baño, en el coche, en el trabajo.",
+   "ini": 40.312,
+   "fin": 44.585
+  },
+  {
+   "n": 13,
+   "texto": "Hay quien pulsa con la nariz. Con el codo. Con las dos manos.",
+   "ini": 44.685,
+   "fin": 48.435
+  },
+  {
+   "n": 14,
+   "texto": "Porque todos piensan lo mismo: si no lo pulso yo, lo pulsará otro.",
+   "ini": 48.535,
+   "fin": 52.936
+  },
+  {
+   "n": 15,
+   "texto": "Hasta que una noche, tu móvil vibra.",
+   "ini": 53.536,
+   "fin": 55.77
+  },
+  {
+   "n": 16,
+   "texto": "Tu cuenta: cero euros.",
+   "ini": 55.87,
+   "fin": 57.774
+  },
+  {
+   "n": 17,
+   "texto": "Miras el botón. Pones el dedo encima.",
+   "ini": 58.274,
+   "fin": 60.813
+  },
+  {
+   "n": 18,
+   "texto": "Lo recuperarías todo en un segundo. Y alguien, en algún sitio, lo perdería.",
+   "ini": 60.913,
+   "fin": 66.226
+  },
+  {
+   "n": 19,
+   "texto": "Tres. Dos. Uno…",
+   "ini": 66.726,
+   "fin": 69.097
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Si",
+   "ini": 0.5,
+   "fin": 0.699,
+   "frase": 1
+  },
+  {
+   "w": "pulsas",
+   "ini": 0.699,
+   "fin": 1.164,
+   "frase": 1
+  },
+  {
+   "w": "este",
+   "ini": 1.164,
+   "fin": 1.495,
+   "frase": 1
+  },
+  {
+   "w": "botón,",
+   "ini": 1.495,
+   "fin": 1.96,
+   "frase": 1
+  },
+  {
+   "w": "ganas",
+   "ini": 2.16,
+   "fin": 2.555,
+   "frase": 1
+  },
+  {
+   "w": "un",
+   "ini": 2.555,
+   "fin": 2.752,
+   "frase": 1
+  },
+  {
+   "w": "millón",
+   "ini": 2.752,
+   "fin": 3.212,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 3.212,
+   "fin": 3.41,
+   "frase": 1
+  },
+  {
+   "w": "euros.",
+   "ini": 3.41,
+   "fin": 3.87,
+   "frase": 1
+  },
+  {
+   "w": "Pero",
+   "ini": 4.38,
+   "fin": 4.685,
+   "frase": 1
+  },
+  {
+   "w": "alguien",
+   "ini": 4.685,
+   "fin": 5.173,
+   "frase": 1
+  },
+  {
+   "w": "del",
+   "ini": 5.173,
+   "fin": 5.417,
+   "frase": 1
+  },
+  {
+   "w": "planeta",
+   "ini": 5.417,
+   "fin": 5.905,
+   "frase": 1
+  },
+  {
+   "w": "lo",
+   "ini": 5.905,
+   "fin": 6.088,
+   "frase": 1
+  },
+  {
+   "w": "pierde",
+   "ini": 6.088,
+   "fin": 6.515,
+   "frase": 1
+  },
+  {
+   "w": "todo.",
+   "ini": 6.515,
+   "fin": 6.881,
+   "frase": 1
+  },
+  {
+   "w": "Y",
+   "ini": 7.181,
+   "fin": 7.288,
+   "frase": 2
+  },
+  {
+   "w": "no",
+   "ini": 7.288,
+   "fin": 7.449,
+   "frase": 2
+  },
+  {
+   "w": "eres",
+   "ini": 7.449,
+   "fin": 7.716,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 7.716,
+   "fin": 7.877,
+   "frase": 2
+  },
+  {
+   "w": "único:",
+   "ini": 7.877,
+   "fin": 8.251,
+   "frase": 2
+  },
+  {
+   "w": "todo",
+   "ini": 8.581,
+   "fin": 8.887,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 8.887,
+   "fin": 9.071,
+   "frase": 2
+  },
+  {
+   "w": "mundo",
+   "ini": 9.071,
+   "fin": 9.438,
+   "frase": 2
+  },
+  {
+   "w": "tiene",
+   "ini": 9.438,
+   "fin": 9.805,
+   "frase": 2
+  },
+  {
+   "w": "uno",
+   "ini": 9.805,
+   "fin": 10.05,
+   "frase": 2
+  },
+  {
+   "w": "igual.",
+   "ini": 10.05,
+   "fin": 10.478,
+   "frase": 2
+  },
+  {
+   "w": "Y",
+   "ini": 10.578,
+   "fin": 10.689,
+   "frase": 3
+  },
+  {
+   "w": "se",
+   "ini": 10.689,
+   "fin": 10.855,
+   "frase": 3
+  },
+  {
+   "w": "puede",
+   "ini": 10.855,
+   "fin": 11.187,
+   "frase": 3
+  },
+  {
+   "w": "pulsar",
+   "ini": 11.187,
+   "fin": 11.574,
+   "frase": 3
+  },
+  {
+   "w": "todas",
+   "ini": 11.574,
+   "fin": 11.906,
+   "frase": 3
+  },
+  {
+   "w": "las",
+   "ini": 11.906,
+   "fin": 12.127,
+   "frase": 3
+  },
+  {
+   "w": "veces",
+   "ini": 12.127,
+   "fin": 12.459,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 12.459,
+   "fin": 12.681,
+   "frase": 3
+  },
+  {
+   "w": "quieras.",
+   "ini": 12.681,
+   "fin": 13.179,
+   "frase": 3
+  },
+  {
+   "w": "Clic:",
+   "ini": 13.279,
+   "fin": 13.439,
+   "frase": 4
+  },
+  {
+   "w": "un",
+   "ini": 13.929,
+   "fin": 14.054,
+   "frase": 4
+  },
+  {
+   "w": "millón.",
+   "ini": 14.054,
+   "fin": 14.389,
+   "frase": 4
+  },
+  {
+   "w": "Clic:",
+   "ini": 14.879,
+   "fin": 15.039,
+   "frase": 4
+  },
+  {
+   "w": "dos",
+   "ini": 15.479,
+   "fin": 15.639,
+   "frase": 4
+  },
+  {
+   "w": "millones.",
+   "ini": 15.639,
+   "fin": 16.039,
+   "frase": 4
+  },
+  {
+   "w": "Clic:",
+   "ini": 16.579,
+   "fin": 16.749,
+   "frase": 4
+  },
+  {
+   "w": "tres.",
+   "ini": 17.179,
+   "fin": 17.677,
+   "frase": 4
+  },
+  {
+   "w": "Y",
+   "ini": 17.777,
+   "fin": 17.892,
+   "frase": 5
+  },
+  {
+   "w": "nunca",
+   "ini": 17.892,
+   "fin": 18.24,
+   "frase": 5
+  },
+  {
+   "w": "sabes",
+   "ini": 18.24,
+   "fin": 18.588,
+   "frase": 5
+  },
+  {
+   "w": "a",
+   "ini": 18.588,
+   "fin": 18.704,
+   "frase": 5
+  },
+  {
+   "w": "quién",
+   "ini": 18.704,
+   "fin": 19.052,
+   "frase": 5
+  },
+  {
+   "w": "le",
+   "ini": 19.052,
+   "fin": 19.226,
+   "frase": 5
+  },
+  {
+   "w": "estás",
+   "ini": 19.226,
+   "fin": 19.574,
+   "frase": 5
+  },
+  {
+   "w": "vaciando",
+   "ini": 19.574,
+   "fin": 20.095,
+   "frase": 5
+  },
+  {
+   "w": "la",
+   "ini": 20.095,
+   "fin": 20.269,
+   "frase": 5
+  },
+  {
+   "w": "cuenta.",
+   "ini": 20.269,
+   "fin": 20.733,
+   "frase": 5
+  },
+  {
+   "w": "El",
+   "ini": 20.833,
+   "fin": 20.991,
+   "frase": 6
+  },
+  {
+   "w": "primer",
+   "ini": 20.991,
+   "fin": 21.36,
+   "frase": 6
+  },
+  {
+   "w": "día,",
+   "ini": 21.36,
+   "fin": 21.623,
+   "frase": 6
+  },
+  {
+   "w": "medio",
+   "ini": 21.773,
+   "fin": 22.144,
+   "frase": 6
+  },
+  {
+   "w": "planeta",
+   "ini": 22.144,
+   "fin": 22.639,
+   "frase": 6
+  },
+  {
+   "w": "pulsa",
+   "ini": 22.639,
+   "fin": 23.01,
+   "frase": 6
+  },
+  {
+   "w": "sin",
+   "ini": 23.01,
+   "fin": 23.257,
+   "frase": 6
+  },
+  {
+   "w": "pensarlo.",
+   "ini": 23.257,
+   "fin": 23.876,
+   "frase": 6
+  },
+  {
+   "w": "La",
+   "ini": 23.976,
+   "fin": 24.204,
+   "frase": 7
+  },
+  {
+   "w": "gente",
+   "ini": 24.204,
+   "fin": 24.661,
+   "frase": 7
+  },
+  {
+   "w": "se",
+   "ini": 24.661,
+   "fin": 24.89,
+   "frase": 7
+  },
+  {
+   "w": "compra",
+   "ini": 24.89,
+   "fin": 25.423,
+   "frase": 7
+  },
+  {
+   "w": "casas,",
+   "ini": 25.423,
+   "fin": 25.956,
+   "frase": 7
+  },
+  {
+   "w": "coches,",
+   "ini": 26.026,
+   "fin": 26.366,
+   "frase": 7
+  },
+  {
+   "w": "viajes…",
+   "ini": 26.496,
+   "fin": 27.147,
+   "frase": 7
+  },
+  {
+   "w": "Y",
+   "ini": 27.247,
+   "fin": 27.332,
+   "frase": 8
+  },
+  {
+   "w": "a",
+   "ini": 27.332,
+   "fin": 27.417,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 27.417,
+   "fin": 27.545,
+   "frase": 8
+  },
+  {
+   "w": "vez,",
+   "ini": 27.545,
+   "fin": 27.757,
+   "frase": 8
+  },
+  {
+   "w": "millones",
+   "ini": 27.947,
+   "fin": 28.637,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 28.637,
+   "fin": 28.867,
+   "frase": 8
+  },
+  {
+   "w": "cajeros",
+   "ini": 28.867,
+   "fin": 29.481,
+   "frase": 8
+  },
+  {
+   "w": "dicen",
+   "ini": 29.481,
+   "fin": 29.941,
+   "frase": 8
+  },
+  {
+   "w": "lo",
+   "ini": 29.941,
+   "fin": 30.171,
+   "frase": 8
+  },
+  {
+   "w": "mismo:",
+   "ini": 30.171,
+   "fin": 30.707,
+   "frase": 8
+  },
+  {
+   "w": "cero",
+   "ini": 30.817,
+   "fin": 31.085,
+   "frase": 8
+  },
+  {
+   "w": "euros.",
+   "ini": 31.085,
+   "fin": 31.46,
+   "frase": 8
+  },
+  {
+   "w": "Los",
+   "ini": 31.56,
+   "fin": 31.807,
+   "frase": 9
+  },
+  {
+   "w": "bancos",
+   "ini": 31.807,
+   "fin": 32.24,
+   "frase": 9
+  },
+  {
+   "w": "se",
+   "ini": 32.24,
+   "fin": 32.426,
+   "frase": 9
+  },
+  {
+   "w": "vuelven",
+   "ini": 32.426,
+   "fin": 32.921,
+   "frase": 9
+  },
+  {
+   "w": "locos.",
+   "ini": 32.921,
+   "fin": 33.355,
+   "frase": 9
+  },
+  {
+   "w": "Familias",
+   "ini": 33.455,
+   "fin": 33.974,
+   "frase": 10
+  },
+  {
+   "w": "sin",
+   "ini": 33.974,
+   "fin": 34.205,
+   "frase": 10
+  },
+  {
+   "w": "ahorros.",
+   "ini": 34.205,
+   "fin": 34.725,
+   "frase": 10
+  },
+  {
+   "w": "Tiendas",
+   "ini": 34.975,
+   "fin": 35.397,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 35.397,
+   "fin": 35.609,
+   "frase": 10
+  },
+  {
+   "w": "no",
+   "ini": 35.609,
+   "fin": 35.767,
+   "frase": 10
+  },
+  {
+   "w": "pueden",
+   "ini": 35.767,
+   "fin": 36.137,
+   "frase": 10
+  },
+  {
+   "w": "cobrar.",
+   "ini": 36.137,
+   "fin": 36.56,
+   "frase": 10
+  },
+  {
+   "w": "Cada",
+   "ini": 36.86,
+   "fin": 37.182,
+   "frase": 11
+  },
+  {
+   "w": "clic",
+   "ini": 37.182,
+   "fin": 37.503,
+   "frase": 11
+  },
+  {
+   "w": "enciende",
+   "ini": 37.503,
+   "fin": 38.083,
+   "frase": 11
+  },
+  {
+   "w": "una",
+   "ini": 38.083,
+   "fin": 38.34,
+   "frase": 11
+  },
+  {
+   "w": "ventana…",
+   "ini": 38.34,
+   "fin": 38.92,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 39.2,
+   "fin": 39.344,
+   "frase": 11
+  },
+  {
+   "w": "apaga",
+   "ini": 39.344,
+   "fin": 39.778,
+   "frase": 11
+  },
+  {
+   "w": "otra.",
+   "ini": 39.778,
+   "fin": 40.212,
+   "frase": 11
+  },
+  {
+   "w": "La",
+   "ini": 40.312,
+   "fin": 40.483,
+   "frase": 12
+  },
+  {
+   "w": "gente",
+   "ini": 40.483,
+   "fin": 40.825,
+   "frase": 12
+  },
+  {
+   "w": "ya",
+   "ini": 40.825,
+   "fin": 40.996,
+   "frase": 12
+  },
+  {
+   "w": "no",
+   "ini": 40.996,
+   "fin": 41.167,
+   "frase": 12
+  },
+  {
+   "w": "duerme:",
+   "ini": 41.167,
+   "fin": 41.622,
+   "frase": 12
+  },
+  {
+   "w": "pulsa",
+   "ini": 41.902,
+   "fin": 42.312,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 42.312,
+   "fin": 42.517,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 42.517,
+   "fin": 42.722,
+   "frase": 12
+  },
+  {
+   "w": "baño,",
+   "ini": 42.722,
+   "fin": 43.132,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 43.222,
+   "fin": 43.386,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 43.386,
+   "fin": 43.55,
+   "frase": 12
+  },
+  {
+   "w": "coche,",
+   "ini": 43.55,
+   "fin": 43.932,
+   "frase": 12
+  },
+  {
+   "w": "en",
+   "ini": 44.022,
+   "fin": 44.135,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 44.135,
+   "fin": 44.247,
+   "frase": 12
+  },
+  {
+   "w": "trabajo.",
+   "ini": 44.247,
+   "fin": 44.585,
+   "frase": 12
+  },
+  {
+   "w": "Hay",
+   "ini": 44.685,
+   "fin": 44.938,
+   "frase": 13
+  },
+  {
+   "w": "quien",
+   "ini": 44.938,
+   "fin": 45.318,
+   "frase": 13
+  },
+  {
+   "w": "pulsa",
+   "ini": 45.318,
+   "fin": 45.698,
+   "frase": 13
+  },
+  {
+   "w": "con",
+   "ini": 45.698,
+   "fin": 45.951,
+   "frase": 13
+  },
+  {
+   "w": "la",
+   "ini": 45.951,
+   "fin": 46.141,
+   "frase": 13
+  },
+  {
+   "w": "nariz.",
+   "ini": 46.141,
+   "fin": 46.585,
+   "frase": 13
+  },
+  {
+   "w": "Con",
+   "ini": 46.675,
+   "fin": 46.764,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 46.764,
+   "fin": 46.831,
+   "frase": 13
+  },
+  {
+   "w": "codo.",
+   "ini": 46.831,
+   "fin": 46.965,
+   "frase": 13
+  },
+  {
+   "w": "Con",
+   "ini": 47.215,
+   "fin": 47.472,
+   "frase": 13
+  },
+  {
+   "w": "las",
+   "ini": 47.472,
+   "fin": 47.729,
+   "frase": 13
+  },
+  {
+   "w": "dos",
+   "ini": 47.729,
+   "fin": 47.986,
+   "frase": 13
+  },
+  {
+   "w": "manos.",
+   "ini": 47.986,
+   "fin": 48.435,
+   "frase": 13
+  },
+  {
+   "w": "Porque",
+   "ini": 48.535,
+   "fin": 48.939,
+   "frase": 14
+  },
+  {
+   "w": "todos",
+   "ini": 48.939,
+   "fin": 49.286,
+   "frase": 14
+  },
+  {
+   "w": "piensan",
+   "ini": 49.286,
+   "fin": 49.748,
+   "frase": 14
+  },
+  {
+   "w": "lo",
+   "ini": 49.748,
+   "fin": 49.921,
+   "frase": 14
+  },
+  {
+   "w": "mismo:",
+   "ini": 49.921,
+   "fin": 50.325,
+   "frase": 14
+  },
+  {
+   "w": "si",
+   "ini": 50.645,
+   "fin": 50.806,
+   "frase": 14
+  },
+  {
+   "w": "no",
+   "ini": 50.806,
+   "fin": 50.967,
+   "frase": 14
+  },
+  {
+   "w": "lo",
+   "ini": 50.967,
+   "fin": 51.128,
+   "frase": 14
+  },
+  {
+   "w": "pulso",
+   "ini": 51.128,
+   "fin": 51.45,
+   "frase": 14
+  },
+  {
+   "w": "yo,",
+   "ini": 51.45,
+   "fin": 51.665,
+   "frase": 14
+  },
+  {
+   "w": "lo",
+   "ini": 51.835,
+   "fin": 52.029,
+   "frase": 14
+  },
+  {
+   "w": "pulsará",
+   "ini": 52.029,
+   "fin": 52.547,
+   "frase": 14
+  },
+  {
+   "w": "otro.",
+   "ini": 52.547,
+   "fin": 52.936,
+   "frase": 14
+  },
+  {
+   "w": "Hasta",
+   "ini": 53.536,
+   "fin": 53.827,
+   "frase": 15
+  },
+  {
+   "w": "que",
+   "ini": 53.827,
+   "fin": 54.021,
+   "frase": 15
+  },
+  {
+   "w": "una",
+   "ini": 54.021,
+   "fin": 54.216,
+   "frase": 15
+  },
+  {
+   "w": "noche,",
+   "ini": 54.216,
+   "fin": 54.556,
+   "frase": 15
+  },
+  {
+   "w": "tu",
+   "ini": 54.826,
+   "fin": 55.003,
+   "frase": 15
+  },
+  {
+   "w": "móvil",
+   "ini": 55.003,
+   "fin": 55.357,
+   "frase": 15
+  },
+  {
+   "w": "vibra.",
+   "ini": 55.357,
+   "fin": 55.77,
+   "frase": 15
+  },
+  {
+   "w": "Tu",
+   "ini": 55.87,
+   "fin": 56.026,
+   "frase": 16
+  },
+  {
+   "w": "cuenta:",
+   "ini": 56.026,
+   "fin": 56.44,
+   "frase": 16
+  },
+  {
+   "w": "cero",
+   "ini": 56.88,
+   "fin": 57.253,
+   "frase": 16
+  },
+  {
+   "w": "euros.",
+   "ini": 57.253,
+   "fin": 57.774,
+   "frase": 16
+  },
+  {
+   "w": "Miras",
+   "ini": 58.274,
+   "fin": 58.608,
+   "frase": 17
+  },
+  {
+   "w": "el",
+   "ini": 58.608,
+   "fin": 58.775,
+   "frase": 17
+  },
+  {
+   "w": "botón.",
+   "ini": 58.775,
+   "fin": 59.164,
+   "frase": 17
+  },
+  {
+   "w": "Pones",
+   "ini": 59.514,
+   "fin": 59.868,
+   "frase": 17
+  },
+  {
+   "w": "el",
+   "ini": 59.868,
+   "fin": 60.045,
+   "frase": 17
+  },
+  {
+   "w": "dedo",
+   "ini": 60.045,
+   "fin": 60.341,
+   "frase": 17
+  },
+  {
+   "w": "encima.",
+   "ini": 60.341,
+   "fin": 60.813,
+   "frase": 17
+  },
+  {
+   "w": "Lo",
+   "ini": 60.913,
+   "fin": 61.085,
+   "frase": 18
+  },
+  {
+   "w": "recuperarías",
+   "ini": 61.085,
+   "fin": 61.829,
+   "frase": 18
+  },
+  {
+   "w": "todo",
+   "ini": 61.829,
+   "fin": 62.115,
+   "frase": 18
+  },
+  {
+   "w": "en",
+   "ini": 62.115,
+   "fin": 62.286,
+   "frase": 18
+  },
+  {
+   "w": "un",
+   "ini": 62.286,
+   "fin": 62.458,
+   "frase": 18
+  },
+  {
+   "w": "segundo.",
+   "ini": 62.458,
+   "fin": 62.973,
+   "frase": 18
+  },
+  {
+   "w": "Y",
+   "ini": 63.293,
+   "fin": 63.395,
+   "frase": 18
+  },
+  {
+   "w": "alguien,",
+   "ini": 63.395,
+   "fin": 63.853,
+   "frase": 18
+  },
+  {
+   "w": "en",
+   "ini": 64.133,
+   "fin": 64.306,
+   "frase": 18
+  },
+  {
+   "w": "algún",
+   "ini": 64.306,
+   "fin": 64.651,
+   "frase": 18
+  },
+  {
+   "w": "sitio,",
+   "ini": 64.651,
+   "fin": 65.053,
+   "frase": 18
+  },
+  {
+   "w": "lo",
+   "ini": 65.373,
+   "fin": 65.57,
+   "frase": 18
+  },
+  {
+   "w": "perdería.",
+   "ini": 65.57,
+   "fin": 66.226,
+   "frase": 18
+  },
+  {
+   "w": "Tres.",
+   "ini": 66.726,
+   "fin": 67.176,
+   "frase": 19
+  },
+  {
+   "w": "Dos.",
+   "ini": 67.606,
+   "fin": 68.106,
+   "frase": 19
+  },
+  {
+   "w": "Uno…",
+   "ini": 68.636,
+   "fin": 69.097,
+   "frase": 19
+  }
+ ]
+}

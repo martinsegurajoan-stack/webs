@@ -1,0 +1,254 @@
+{
+ "partido": "ERC",
+ "color": "#d8473c",
+ "color_claro": "#fbe4df",
+ "logo": "assets/logo_partido.png",
+ "escanos_encuestas": 7,
+ "puzle": [
+  "ERC",
+  "RESTO"
+ ],
+ "portada": {
+  "linea1": "¿Y SI GANA",
+  "linea2": "ERC?",
+  "fecha": "29-N",
+  "sub": "te lo cuento en 60 segundos"
+ },
+ "paginas": [
+  {
+   "lineas": [
+    1
+   ],
+   "tipo": "portada"
+  },
+  {
+   "lineas": [
+    2,
+    3
+   ],
+   "titulo": "Un dato",
+   "notas": [
+    {
+     "cuando": "cataluna",
+     "txt": "Solo se presenta en Cataluña",
+     "marca": "subraya"
+    },
+    {
+     "cuando": "cuarenta",
+     "txt": "48 de 350 escaños"
+    },
+    {
+     "cuando": "2023",
+     "txt": "En 2023 sacó 7"
+    },
+    {
+     "cuando": "decidir",
+     "txt": "Puede decidir quién gobierna",
+     "color": "partido",
+     "grande": true
+    }
+   ],
+   "boceto": "mapa_cat",
+   "boceto_cuando": "cataluna",
+   "posit": {
+    "txt": "7",
+    "sub": "diputados en 2023",
+    "cuando": "siete"
+   },
+   "sello": "DATOS",
+   "papel": "cuadricula",
+   "fuente": "Fuente: resultados oficiales 23-J (2023) · Mapa: svg-maps (CC BY 4.0)"
+  },
+  {
+   "lineas": [
+    4
+   ],
+   "titulo": "Financiación",
+   "notas": [
+    {
+     "cuando": "irpf",
+     "txt": "Cataluña recauda su IRPF",
+     "marca": "resalta"
+    },
+    {
+     "cuando": "vasco",
+     "txt": "Como País Vasco y Navarra"
+    }
+   ],
+   "boceto": "cartera",
+   "boceto_cuando": "financiacion",
+   "sello": "PROPUESTA",
+   "recorte": {
+    "tipo": "periodico",
+    "cuando": "vasco",
+    "dur": 1.8,
+    "seccion": "ECONOMÍA",
+    "titular": "Concierto económico",
+    "texto": "País Vasco y Navarra ya recaudan sus impuestos y pagan al Estado un cupo.",
+    "pie": "Dato: Constitución, disposición adicional 1.ª"
+   },
+   "fuente": "Fuente: propuestas de ERC (financiación singular)"
+  },
+  {
+   "lineas": [
+    5
+   ],
+   "titulo": "Deuda",
+   "notas": [
+    {
+     "cuando": "perdonar",
+     "txt": "Perdonar parte de la deuda",
+     "signo": "si"
+    },
+    {
+     "cuando": "generalitat",
+     "txt": "de la Generalitat con el Estado"
+    }
+   ],
+   "boceto": "hucha",
+   "boceto_cuando": "deuda",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: propuestas de ERC (deuda del FLA)",
+   "etiqueta": "− DEUDA"
+  },
+  {
+   "lineas": [
+    6
+   ],
+   "titulo": "Trenes",
+   "notas": [
+    {
+     "cuando": "rodalies",
+     "txt": "Rodalies para Cataluña",
+     "marca": "subraya"
+    }
+   ],
+   "boceto": "tren",
+   "boceto_cuando": "trenes",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: propuestas de ERC (traspaso de Rodalies)"
+  },
+  {
+   "lineas": [
+    7
+   ],
+   "titulo": "Vivienda",
+   "notas": [
+    {
+     "cuando": "mil",
+     "txt": "≥ 1.000 M€ al año",
+     "marca": "rodea"
+    }
+   ],
+   "boceto": "casa",
+   "boceto_cuando": "vivienda",
+   "etiqueta": "1.000 M€",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: resúmenes del programa de ERC (2026)"
+  },
+  {
+   "lineas": [
+    8
+   ],
+   "titulo": "Referéndum",
+   "notas": [
+    {
+     "cuando": "referendum",
+     "txt": "Referéndum pactado",
+     "marca": "subraya"
+    },
+    {
+     "cuando": "independencia",
+     "txt": "sobre la independencia"
+    }
+   ],
+   "boceto": "urna",
+   "boceto_cuando": "referendum",
+   "etiqueta": "SÍ · NO",
+   "sello": "PROPUESTA",
+   "fuente": "Fuente: propuestas de ERC"
+  },
+  {
+   "lineas": [
+    9
+   ],
+   "titulo": "Lo malo",
+   "notas": [
+    {
+     "cuando": "privilegio",
+     "txt": "Otras comunidades: «privilegio»",
+     "signo": "no"
+    },
+    {
+     "cuando": "bloquear",
+     "txt": "Puede bloquear presupuestos",
+     "signo": "no"
+    }
+   ],
+   "boceto": "puzle",
+   "boceto_cuando": "comunidades",
+   "sello": "OPINIONES",
+   "fuente": "Escenario hipotético basado en propuestas públicas"
+  },
+  {
+   "lineas": [
+    10
+   ],
+   "titulo": "¿Bueno o malo?",
+   "notas": [
+    {
+     "cuando": "votantes",
+     "txt": "Votantes: más autogobierno",
+     "signo": "si"
+    },
+    {
+     "cuando": "criticos",
+     "txt": "Críticos: desigualdad territorial",
+     "signo": "no"
+    }
+   ],
+   "boceto": "balanza",
+   "boceto_cuando": "votantes",
+   "sello": "OPINIONES",
+   "fuente": "Escenario hipotético basado en propuestas públicas"
+  },
+  {
+   "lineas": [
+    11
+   ],
+   "titulo": "29 de noviembre",
+   "notas": [
+    {
+     "cuando": "deciden",
+     "txt": "Deciden las urnas",
+     "color": "partido",
+     "grande": true,
+     "marca": "rodea"
+    }
+   ],
+   "boceto": "urna",
+   "boceto_cuando": "noviembre",
+   "fuente": "Elecciones generales · 29 de noviembre de 2026"
+  }
+ ],
+ "clave": [
+  "esquerra",
+  "republicana",
+  "noviembre",
+  "segundos",
+  "cataluna",
+  "siete",
+  "decidir",
+  "irpf",
+  "deuda",
+  "rodalies",
+  "vivienda",
+  "referendum",
+  "independencia",
+  "privilegio",
+  "presupuestos",
+  "autogobierno",
+  "desigualdad",
+  "urnas"
+ ]
+}

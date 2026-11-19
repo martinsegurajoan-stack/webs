@@ -1,0 +1,6 @@
+.hyperframes/
+salida/work-*
+render*.log
+check.json
+render_todo.log
+salida/.*

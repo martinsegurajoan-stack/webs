@@ -1,0 +1,2119 @@
+{
+ "duracion": 122.757,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Dos amigos. Uno se fuma dos cachimbas al día. El otro, un paquete de tabaco. Durante diez años. ¿Quién acaba peor?",
+   "ini": 0.5,
+   "fin": 7.98
+  },
+  {
+   "n": 2,
+   "texto": "Casi todos dirían que el del tabaco. «La cachimba es más suave». «El agua lo filtra». Spoiler: no.",
+   "ini": 8.46,
+   "fin": 14.063
+  },
+  {
+   "n": 3,
+   "texto": "Según la OMS, en una sola sesión de cachimba puedes inhalar tanto humo como con cien cigarrillos o más.",
+   "ini": 14.543,
+   "fin": 21.602
+  },
+  {
+   "n": 4,
+   "texto": "El agua enfría el humo, pero no se queda los tóxicos. Solo hace que entre más suave… y más hondo.",
+   "ini": 21.782,
+   "fin": 27.797
+  },
+  {
+   "n": 5,
+   "texto": "Y el carbón suma monóxido de carbono. Hay gente que ha acabado en urgencias intoxicada por una cachimba.",
+   "ini": 27.977,
+   "fin": 34.122
+  },
+  {
+   "n": 6,
+   "texto": "Año tres. Los dos tosen al despertarse y se ahogan subiendo escaleras.",
+   "ini": 34.302,
+   "fin": 38.783
+  },
+  {
+   "n": 7,
+   "texto": "Año cinco. Dientes y dedos amarillos en uno. Encías que sangran en los dos.",
+   "ini": 38.963,
+   "fin": 44.311
+  },
+  {
+   "n": 8,
+   "texto": "Año diez. Hagamos cuentas.",
+   "ini": 44.691,
+   "fin": 46.412
+  },
+  {
+   "n": 9,
+   "texto": "El del tabaco: setenta y tres mil cigarrillos. Tres mil seiscientos cincuenta paquetes. A cinco euros y medio, unos veinte mil euros.",
+   "ini": 46.892,
+   "fin": 54.549
+  },
+  {
+   "n": 10,
+   "texto": "El de la cachimba: siete mil trescientas sesiones. En un local, a unos doce euros, más de ochenta y siete mil euros. Más de cuatro veces lo que gasta su amigo.",
+   "ini": 54.729,
+   "fin": 64.334
+  },
+  {
+   "n": 11,
+   "texto": "Y el tiempo: dos horas al día son más de siete mil horas. Casi diez meses enteros fumando sin parar.",
+   "ini": 64.514,
+   "fin": 70.863
+  },
+  {
+   "n": 12,
+   "texto": "En volumen de humo, todas esas sesiones equivalen a más de setecientos mil cigarrillos.",
+   "ini": 71.043,
+   "fin": 76.254
+  },
+  {
+   "n": 13,
+   "texto": "Según un estudio de 2024, cada cigarrillo quita de media unos veinte minutos de vida. Al del tabaco, más de dos años y medio.",
+   "ini": 76.434,
+   "fin": 84.58
+  },
+  {
+   "n": 14,
+   "texto": "Y la cachimba no se queda atrás: se relaciona con cáncer de pulmón, de boca y enfermedades del corazón.",
+   "ini": 84.76,
+   "fin": 90.795
+  },
+  {
+   "n": 15,
+   "texto": "Lo peor del tabaco: muchos más cigarrillos, dientes amarillos y los riesgos de cáncer más estudiados.",
+   "ini": 91.275,
+   "fin": 97.495
+  },
+  {
+   "n": 16,
+   "texto": "Lo peor de la cachimba: muchísimo más humo, monóxido, boquillas compartidas… y la cartera vacía.",
+   "ini": 97.675,
+   "fin": 103.944
+  },
+  {
+   "n": 17,
+   "texto": "Y lo peor de los dos: la nicotina. Los dos son adictos.",
+   "ini": 104.124,
+   "fin": 108.208
+  },
+  {
+   "n": 18,
+   "texto": "¿Quién acaba peor? Ninguno gana. La cachimba no es la opción suave. Es otra forma de fumar.",
+   "ini": 108.688,
+   "fin": 114.572
+  },
+  {
+   "n": 19,
+   "texto": "Así que la próxima vez que alguien diga «solo es una cachimba»… acuérdate de estos dos amigos.",
+   "ini": 115.052,
+   "fin": 120.757
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Dos",
+   "ini": 0.5,
+   "fin": 0.73,
+   "frase": 1
+  },
+  {
+   "w": "amigos.",
+   "ini": 0.73,
+   "fin": 1.19,
+   "frase": 1
+  },
+  {
+   "w": "Uno",
+   "ini": 1.4,
+   "fin": 1.632,
+   "frase": 1
+  },
+  {
+   "w": "se",
+   "ini": 1.632,
+   "fin": 1.806,
+   "frase": 1
+  },
+  {
+   "w": "fuma",
+   "ini": 1.806,
+   "fin": 2.095,
+   "frase": 1
+  },
+  {
+   "w": "dos",
+   "ini": 2.095,
+   "fin": 2.327,
+   "frase": 1
+  },
+  {
+   "w": "cachimbas",
+   "ini": 2.327,
+   "fin": 2.906,
+   "frase": 1
+  },
+  {
+   "w": "al",
+   "ini": 2.906,
+   "fin": 3.08,
+   "frase": 1
+  },
+  {
+   "w": "día.",
+   "ini": 3.08,
+   "fin": 3.37,
+   "frase": 1
+  },
+  {
+   "w": "El",
+   "ini": 3.58,
+   "fin": 3.737,
+   "frase": 1
+  },
+  {
+   "w": "otro,",
+   "ini": 3.737,
+   "fin": 4.05,
+   "frase": 1
+  },
+  {
+   "w": "un",
+   "ini": 4.21,
+   "fin": 4.355,
+   "frase": 1
+  },
+  {
+   "w": "paquete",
+   "ini": 4.355,
+   "fin": 4.74,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 4.74,
+   "fin": 4.885,
+   "frase": 1
+  },
+  {
+   "w": "tabaco.",
+   "ini": 4.885,
+   "fin": 5.27,
+   "frase": 1
+  },
+  {
+   "w": "Durante",
+   "ini": 5.5,
+   "fin": 6.043,
+   "frase": 1
+  },
+  {
+   "w": "diez",
+   "ini": 6.043,
+   "fin": 6.383,
+   "frase": 1
+  },
+  {
+   "w": "años.",
+   "ini": 6.383,
+   "fin": 6.79,
+   "frase": 1
+  },
+  {
+   "w": "¿Quién",
+   "ini": 6.86,
+   "fin": 7.272,
+   "frase": 1
+  },
+  {
+   "w": "acaba",
+   "ini": 7.272,
+   "fin": 7.626,
+   "frase": 1
+  },
+  {
+   "w": "peor?",
+   "ini": 7.626,
+   "fin": 7.98,
+   "frase": 1
+  },
+  {
+   "w": "Casi",
+   "ini": 8.46,
+   "fin": 8.704,
+   "frase": 2
+  },
+  {
+   "w": "todos",
+   "ini": 8.704,
+   "fin": 8.998,
+   "frase": 2
+  },
+  {
+   "w": "dirían",
+   "ini": 8.998,
+   "fin": 9.34,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 9.34,
+   "fin": 9.536,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 9.536,
+   "fin": 9.683,
+   "frase": 2
+  },
+  {
+   "w": "del",
+   "ini": 9.683,
+   "fin": 9.878,
+   "frase": 2
+  },
+  {
+   "w": "tabaco.",
+   "ini": 9.878,
+   "fin": 10.27,
+   "frase": 2
+  },
+  {
+   "w": "«La",
+   "ini": 10.46,
+   "fin": 10.641,
+   "frase": 2
+  },
+  {
+   "w": "cachimba",
+   "ini": 10.641,
+   "fin": 11.049,
+   "frase": 2
+  },
+  {
+   "w": "es",
+   "ini": 11.049,
+   "fin": 11.185,
+   "frase": 2
+  },
+  {
+   "w": "más",
+   "ini": 11.185,
+   "fin": 11.367,
+   "frase": 2
+  },
+  {
+   "w": "suave».",
+   "ini": 11.367,
+   "fin": 11.73,
+   "frase": 2
+  },
+  {
+   "w": "«El",
+   "ini": 11.95,
+   "fin": 12.066,
+   "frase": 2
+  },
+  {
+   "w": "agua",
+   "ini": 12.066,
+   "fin": 12.211,
+   "frase": 2
+  },
+  {
+   "w": "lo",
+   "ini": 12.211,
+   "fin": 12.298,
+   "frase": 2
+  },
+  {
+   "w": "filtra».",
+   "ini": 12.298,
+   "fin": 12.559,
+   "frase": 2
+  },
+  {
+   "w": "Spoiler:",
+   "ini": 12.559,
+   "fin": 12.82,
+   "frase": 2
+  },
+  {
+   "w": "no.",
+   "ini": 13.05,
+   "fin": 14.063,
+   "frase": 2
+  },
+  {
+   "w": "Según",
+   "ini": 14.543,
+   "fin": 14.783,
+   "frase": 3
+  },
+  {
+   "w": "la",
+   "ini": 14.783,
+   "fin": 14.903,
+   "frase": 3
+  },
+  {
+   "w": "OMS,",
+   "ini": 14.903,
+   "fin": 15.103,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 15.183,
+   "fin": 15.397,
+   "frase": 3
+  },
+  {
+   "w": "una",
+   "ini": 15.397,
+   "fin": 15.683,
+   "frase": 3
+  },
+  {
+   "w": "sola",
+   "ini": 15.683,
+   "fin": 16.039,
+   "frase": 3
+  },
+  {
+   "w": "sesión",
+   "ini": 16.039,
+   "fin": 16.538,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 16.538,
+   "fin": 16.752,
+   "frase": 3
+  },
+  {
+   "w": "cachimba",
+   "ini": 16.752,
+   "fin": 17.394,
+   "frase": 3
+  },
+  {
+   "w": "puedes",
+   "ini": 17.394,
+   "fin": 17.894,
+   "frase": 3
+  },
+  {
+   "w": "inhalar",
+   "ini": 17.894,
+   "fin": 18.464,
+   "frase": 3
+  },
+  {
+   "w": "tanto",
+   "ini": 18.464,
+   "fin": 18.892,
+   "frase": 3
+  },
+  {
+   "w": "humo",
+   "ini": 18.892,
+   "fin": 19.249,
+   "frase": 3
+  },
+  {
+   "w": "como",
+   "ini": 19.249,
+   "fin": 19.605,
+   "frase": 3
+  },
+  {
+   "w": "con",
+   "ini": 19.605,
+   "fin": 19.891,
+   "frase": 3
+  },
+  {
+   "w": "cien",
+   "ini": 19.891,
+   "fin": 20.247,
+   "frase": 3
+  },
+  {
+   "w": "cigarrillos",
+   "ini": 20.247,
+   "fin": 21.103,
+   "frase": 3
+  },
+  {
+   "w": "o",
+   "ini": 21.103,
+   "fin": 21.246,
+   "frase": 3
+  },
+  {
+   "w": "más.",
+   "ini": 21.246,
+   "fin": 21.602,
+   "frase": 3
+  },
+  {
+   "w": "El",
+   "ini": 21.782,
+   "fin": 21.939,
+   "frase": 4
+  },
+  {
+   "w": "agua",
+   "ini": 21.939,
+   "fin": 22.199,
+   "frase": 4
+  },
+  {
+   "w": "enfría",
+   "ini": 22.199,
+   "fin": 22.564,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 22.564,
+   "fin": 22.72,
+   "frase": 4
+  },
+  {
+   "w": "humo,",
+   "ini": 22.72,
+   "fin": 23.032,
+   "frase": 4
+  },
+  {
+   "w": "pero",
+   "ini": 23.192,
+   "fin": 23.456,
+   "frase": 4
+  },
+  {
+   "w": "no",
+   "ini": 23.456,
+   "fin": 23.614,
+   "frase": 4
+  },
+  {
+   "w": "se",
+   "ini": 23.614,
+   "fin": 23.772,
+   "frase": 4
+  },
+  {
+   "w": "queda",
+   "ini": 23.772,
+   "fin": 24.088,
+   "frase": 4
+  },
+  {
+   "w": "los",
+   "ini": 24.088,
+   "fin": 24.298,
+   "frase": 4
+  },
+  {
+   "w": "tóxicos.",
+   "ini": 24.298,
+   "fin": 24.772,
+   "frase": 4
+  },
+  {
+   "w": "Solo",
+   "ini": 24.982,
+   "fin": 25.258,
+   "frase": 4
+  },
+  {
+   "w": "hace",
+   "ini": 25.258,
+   "fin": 25.534,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 25.534,
+   "fin": 25.755,
+   "frase": 4
+  },
+  {
+   "w": "entre",
+   "ini": 25.755,
+   "fin": 26.086,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 26.086,
+   "fin": 26.306,
+   "frase": 4
+  },
+  {
+   "w": "suave…",
+   "ini": 26.306,
+   "fin": 26.692,
+   "frase": 4
+  },
+  {
+   "w": "y",
+   "ini": 26.982,
+   "fin": 27.108,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 27.108,
+   "fin": 27.359,
+   "frase": 4
+  },
+  {
+   "w": "hondo.",
+   "ini": 27.359,
+   "fin": 27.797,
+   "frase": 4
+  },
+  {
+   "w": "Y",
+   "ini": 27.977,
+   "fin": 28.088,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 28.088,
+   "fin": 28.254,
+   "frase": 5
+  },
+  {
+   "w": "carbón",
+   "ini": 28.254,
+   "fin": 28.641,
+   "frase": 5
+  },
+  {
+   "w": "suma",
+   "ini": 28.641,
+   "fin": 28.917,
+   "frase": 5
+  },
+  {
+   "w": "monóxido",
+   "ini": 28.917,
+   "fin": 29.414,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 29.414,
+   "fin": 29.58,
+   "frase": 5
+  },
+  {
+   "w": "carbono.",
+   "ini": 29.58,
+   "fin": 30.077,
+   "frase": 5
+  },
+  {
+   "w": "Hay",
+   "ini": 30.327,
+   "fin": 30.554,
+   "frase": 5
+  },
+  {
+   "w": "gente",
+   "ini": 30.554,
+   "fin": 30.894,
+   "frase": 5
+  },
+  {
+   "w": "que",
+   "ini": 30.894,
+   "fin": 31.12,
+   "frase": 5
+  },
+  {
+   "w": "ha",
+   "ini": 31.12,
+   "fin": 31.29,
+   "frase": 5
+  },
+  {
+   "w": "acabado",
+   "ini": 31.29,
+   "fin": 31.743,
+   "frase": 5
+  },
+  {
+   "w": "en",
+   "ini": 31.743,
+   "fin": 31.913,
+   "frase": 5
+  },
+  {
+   "w": "urgencias",
+   "ini": 31.913,
+   "fin": 32.48,
+   "frase": 5
+  },
+  {
+   "w": "intoxicada",
+   "ini": 32.48,
+   "fin": 33.103,
+   "frase": 5
+  },
+  {
+   "w": "por",
+   "ini": 33.103,
+   "fin": 33.329,
+   "frase": 5
+  },
+  {
+   "w": "una",
+   "ini": 33.329,
+   "fin": 33.556,
+   "frase": 5
+  },
+  {
+   "w": "cachimba.",
+   "ini": 33.556,
+   "fin": 34.122,
+   "frase": 5
+  },
+  {
+   "w": "Año",
+   "ini": 34.302,
+   "fin": 34.518,
+   "frase": 6
+  },
+  {
+   "w": "tres.",
+   "ini": 34.518,
+   "fin": 34.842,
+   "frase": 6
+  },
+  {
+   "w": "Los",
+   "ini": 34.912,
+   "fin": 35.166,
+   "frase": 6
+  },
+  {
+   "w": "dos",
+   "ini": 35.166,
+   "fin": 35.42,
+   "frase": 6
+  },
+  {
+   "w": "tosen",
+   "ini": 35.42,
+   "fin": 35.801,
+   "frase": 6
+  },
+  {
+   "w": "al",
+   "ini": 35.801,
+   "fin": 35.991,
+   "frase": 6
+  },
+  {
+   "w": "despertarse",
+   "ini": 35.991,
+   "fin": 36.753,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 36.753,
+   "fin": 36.879,
+   "frase": 6
+  },
+  {
+   "w": "se",
+   "ini": 36.879,
+   "fin": 37.07,
+   "frase": 6
+  },
+  {
+   "w": "ahogan",
+   "ini": 37.07,
+   "fin": 37.514,
+   "frase": 6
+  },
+  {
+   "w": "subiendo",
+   "ini": 37.514,
+   "fin": 38.085,
+   "frase": 6
+  },
+  {
+   "w": "escaleras.",
+   "ini": 38.085,
+   "fin": 38.783,
+   "frase": 6
+  },
+  {
+   "w": "Año",
+   "ini": 38.963,
+   "fin": 39.247,
+   "frase": 7
+  },
+  {
+   "w": "cinco.",
+   "ini": 39.247,
+   "fin": 39.743,
+   "frase": 7
+  },
+  {
+   "w": "Dientes",
+   "ini": 39.923,
+   "fin": 40.438,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 40.438,
+   "fin": 40.567,
+   "frase": 7
+  },
+  {
+   "w": "dedos",
+   "ini": 40.567,
+   "fin": 40.954,
+   "frase": 7
+  },
+  {
+   "w": "amarillos",
+   "ini": 40.954,
+   "fin": 41.598,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 41.598,
+   "fin": 41.791,
+   "frase": 7
+  },
+  {
+   "w": "uno.",
+   "ini": 41.791,
+   "fin": 42.113,
+   "frase": 7
+  },
+  {
+   "w": "Encías",
+   "ini": 42.293,
+   "fin": 42.749,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 42.749,
+   "fin": 43.009,
+   "frase": 7
+  },
+  {
+   "w": "sangran",
+   "ini": 43.009,
+   "fin": 43.53,
+   "frase": 7
+  },
+  {
+   "w": "en",
+   "ini": 43.53,
+   "fin": 43.725,
+   "frase": 7
+  },
+  {
+   "w": "los",
+   "ini": 43.725,
+   "fin": 43.985,
+   "frase": 7
+  },
+  {
+   "w": "dos.",
+   "ini": 43.985,
+   "fin": 44.311,
+   "frase": 7
+  },
+  {
+   "w": "Año",
+   "ini": 44.691,
+   "fin": 44.907,
+   "frase": 8
+  },
+  {
+   "w": "diez.",
+   "ini": 44.907,
+   "fin": 45.231,
+   "frase": 8
+  },
+  {
+   "w": "Hagamos",
+   "ini": 45.461,
+   "fin": 45.908,
+   "frase": 8
+  },
+  {
+   "w": "cuentas.",
+   "ini": 45.908,
+   "fin": 46.412,
+   "frase": 8
+  },
+  {
+   "w": "El",
+   "ini": 46.892,
+   "fin": 47.042,
+   "frase": 9
+  },
+  {
+   "w": "del",
+   "ini": 47.042,
+   "fin": 47.242,
+   "frase": 9
+  },
+  {
+   "w": "tabaco:",
+   "ini": 47.242,
+   "fin": 47.642,
+   "frase": 9
+  },
+  {
+   "w": "setenta",
+   "ini": 47.802,
+   "fin": 48.244,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 48.244,
+   "fin": 48.355,
+   "frase": 9
+  },
+  {
+   "w": "tres",
+   "ini": 48.355,
+   "fin": 48.631,
+   "frase": 9
+  },
+  {
+   "w": "mil",
+   "ini": 48.631,
+   "fin": 48.853,
+   "frase": 9
+  },
+  {
+   "w": "cigarrillos.",
+   "ini": 48.853,
+   "fin": 49.572,
+   "frase": 9
+  },
+  {
+   "w": "Tres",
+   "ini": 49.712,
+   "fin": 49.984,
+   "frase": 9
+  },
+  {
+   "w": "mil",
+   "ini": 49.984,
+   "fin": 50.201,
+   "frase": 9
+  },
+  {
+   "w": "seiscientos",
+   "ini": 50.201,
+   "fin": 50.854,
+   "frase": 9
+  },
+  {
+   "w": "cincuenta",
+   "ini": 50.854,
+   "fin": 51.398,
+   "frase": 9
+  },
+  {
+   "w": "paquetes.",
+   "ini": 51.398,
+   "fin": 51.942,
+   "frase": 9
+  },
+  {
+   "w": "A",
+   "ini": 52.032,
+   "fin": 52.12,
+   "frase": 9
+  },
+  {
+   "w": "cinco",
+   "ini": 52.12,
+   "fin": 52.383,
+   "frase": 9
+  },
+  {
+   "w": "euros",
+   "ini": 52.383,
+   "fin": 52.647,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 52.647,
+   "fin": 52.734,
+   "frase": 9
+  },
+  {
+   "w": "medio,",
+   "ini": 52.734,
+   "fin": 53.042,
+   "frase": 9
+  },
+  {
+   "w": "unos",
+   "ini": 53.152,
+   "fin": 53.455,
+   "frase": 9
+  },
+  {
+   "w": "veinte",
+   "ini": 53.455,
+   "fin": 53.881,
+   "frase": 9
+  },
+  {
+   "w": "mil",
+   "ini": 53.881,
+   "fin": 54.124,
+   "frase": 9
+  },
+  {
+   "w": "euros.",
+   "ini": 54.124,
+   "fin": 54.549,
+   "frase": 9
+  },
+  {
+   "w": "El",
+   "ini": 54.729,
+   "fin": 54.874,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 54.874,
+   "fin": 55.019,
+   "frase": 10
+  },
+  {
+   "w": "la",
+   "ini": 55.019,
+   "fin": 55.165,
+   "frase": 10
+  },
+  {
+   "w": "cachimba:",
+   "ini": 55.165,
+   "fin": 55.649,
+   "frase": 10
+  },
+  {
+   "w": "siete",
+   "ini": 55.839,
+   "fin": 56.184,
+   "frase": 10
+  },
+  {
+   "w": "mil",
+   "ini": 56.184,
+   "fin": 56.414,
+   "frase": 10
+  },
+  {
+   "w": "trescientas",
+   "ini": 56.414,
+   "fin": 57.104,
+   "frase": 10
+  },
+  {
+   "w": "sesiones.",
+   "ini": 57.104,
+   "fin": 57.679,
+   "frase": 10
+  },
+  {
+   "w": "En",
+   "ini": 57.889,
+   "fin": 58.177,
+   "frase": 10
+  },
+  {
+   "w": "un",
+   "ini": 58.177,
+   "fin": 58.466,
+   "frase": 10
+  },
+  {
+   "w": "local,",
+   "ini": 58.466,
+   "fin": 59.139,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 59.209,
+   "fin": 59.254,
+   "frase": 10
+  },
+  {
+   "w": "unos",
+   "ini": 59.254,
+   "fin": 59.367,
+   "frase": 10
+  },
+  {
+   "w": "doce",
+   "ini": 59.367,
+   "fin": 59.48,
+   "frase": 10
+  },
+  {
+   "w": "euros,",
+   "ini": 59.48,
+   "fin": 59.639,
+   "frase": 10
+  },
+  {
+   "w": "más",
+   "ini": 59.869,
+   "fin": 60.091,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 60.091,
+   "fin": 60.258,
+   "frase": 10
+  },
+  {
+   "w": "ochenta",
+   "ini": 60.258,
+   "fin": 60.703,
+   "frase": 10
+  },
+  {
+   "w": "y",
+   "ini": 60.703,
+   "fin": 60.814,
+   "frase": 10
+  },
+  {
+   "w": "siete",
+   "ini": 60.814,
+   "fin": 61.147,
+   "frase": 10
+  },
+  {
+   "w": "mil",
+   "ini": 61.147,
+   "fin": 61.37,
+   "frase": 10
+  },
+  {
+   "w": "euros.",
+   "ini": 61.37,
+   "fin": 61.759,
+   "frase": 10
+  },
+  {
+   "w": "Más",
+   "ini": 61.919,
+   "fin": 62.143,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 62.143,
+   "fin": 62.312,
+   "frase": 10
+  },
+  {
+   "w": "cuatro",
+   "ini": 62.312,
+   "fin": 62.705,
+   "frase": 10
+  },
+  {
+   "w": "veces",
+   "ini": 62.705,
+   "fin": 63.042,
+   "frase": 10
+  },
+  {
+   "w": "lo",
+   "ini": 63.042,
+   "fin": 63.211,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 63.211,
+   "fin": 63.435,
+   "frase": 10
+  },
+  {
+   "w": "gasta",
+   "ini": 63.435,
+   "fin": 63.772,
+   "frase": 10
+  },
+  {
+   "w": "su",
+   "ini": 63.772,
+   "fin": 63.941,
+   "frase": 10
+  },
+  {
+   "w": "amigo.",
+   "ini": 63.941,
+   "fin": 64.334,
+   "frase": 10
+  },
+  {
+   "w": "Y",
+   "ini": 64.514,
+   "fin": 64.617,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 64.617,
+   "fin": 64.772,
+   "frase": 11
+  },
+  {
+   "w": "tiempo:",
+   "ini": 64.772,
+   "fin": 65.184,
+   "frase": 11
+  },
+  {
+   "w": "dos",
+   "ini": 65.424,
+   "fin": 65.646,
+   "frase": 11
+  },
+  {
+   "w": "horas",
+   "ini": 65.646,
+   "fin": 65.98,
+   "frase": 11
+  },
+  {
+   "w": "al",
+   "ini": 65.98,
+   "fin": 66.146,
+   "frase": 11
+  },
+  {
+   "w": "día",
+   "ini": 66.146,
+   "fin": 66.369,
+   "frase": 11
+  },
+  {
+   "w": "son",
+   "ini": 66.369,
+   "fin": 66.591,
+   "frase": 11
+  },
+  {
+   "w": "más",
+   "ini": 66.591,
+   "fin": 66.813,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 66.813,
+   "fin": 66.98,
+   "frase": 11
+  },
+  {
+   "w": "siete",
+   "ini": 66.98,
+   "fin": 67.313,
+   "frase": 11
+  },
+  {
+   "w": "mil",
+   "ini": 67.313,
+   "fin": 67.535,
+   "frase": 11
+  },
+  {
+   "w": "horas.",
+   "ini": 67.535,
+   "fin": 67.924,
+   "frase": 11
+  },
+  {
+   "w": "Casi",
+   "ini": 68.274,
+   "fin": 68.575,
+   "frase": 11
+  },
+  {
+   "w": "diez",
+   "ini": 68.575,
+   "fin": 68.876,
+   "frase": 11
+  },
+  {
+   "w": "meses",
+   "ini": 68.876,
+   "fin": 69.237,
+   "frase": 11
+  },
+  {
+   "w": "enteros",
+   "ini": 69.237,
+   "fin": 69.719,
+   "frase": 11
+  },
+  {
+   "w": "fumando",
+   "ini": 69.719,
+   "fin": 70.2,
+   "frase": 11
+  },
+  {
+   "w": "sin",
+   "ini": 70.2,
+   "fin": 70.441,
+   "frase": 11
+  },
+  {
+   "w": "parar.",
+   "ini": 70.441,
+   "fin": 70.863,
+   "frase": 11
+  },
+  {
+   "w": "En",
+   "ini": 71.043,
+   "fin": 71.193,
+   "frase": 12
+  },
+  {
+   "w": "volumen",
+   "ini": 71.193,
+   "fin": 71.593,
+   "frase": 12
+  },
+  {
+   "w": "de",
+   "ini": 71.593,
+   "fin": 71.743,
+   "frase": 12
+  },
+  {
+   "w": "humo,",
+   "ini": 71.743,
+   "fin": 72.043,
+   "frase": 12
+  },
+  {
+   "w": "todas",
+   "ini": 72.223,
+   "fin": 72.578,
+   "frase": 12
+  },
+  {
+   "w": "esas",
+   "ini": 72.578,
+   "fin": 72.875,
+   "frase": 12
+  },
+  {
+   "w": "sesiones",
+   "ini": 72.875,
+   "fin": 73.408,
+   "frase": 12
+  },
+  {
+   "w": "equivalen",
+   "ini": 73.408,
+   "fin": 74.001,
+   "frase": 12
+  },
+  {
+   "w": "a",
+   "ini": 74.001,
+   "fin": 74.12,
+   "frase": 12
+  },
+  {
+   "w": "más",
+   "ini": 74.12,
+   "fin": 74.357,
+   "frase": 12
+  },
+  {
+   "w": "de",
+   "ini": 74.357,
+   "fin": 74.535,
+   "frase": 12
+  },
+  {
+   "w": "setecientos",
+   "ini": 74.535,
+   "fin": 75.246,
+   "frase": 12
+  },
+  {
+   "w": "mil",
+   "ini": 75.246,
+   "fin": 75.483,
+   "frase": 12
+  },
+  {
+   "w": "cigarrillos.",
+   "ini": 75.483,
+   "fin": 76.254,
+   "frase": 12
+  },
+  {
+   "w": "Según",
+   "ini": 76.434,
+   "fin": 76.808,
+   "frase": 13
+  },
+  {
+   "w": "un",
+   "ini": 76.808,
+   "fin": 76.995,
+   "frase": 13
+  },
+  {
+   "w": "estudio",
+   "ini": 76.995,
+   "fin": 77.493,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 77.493,
+   "fin": 77.68,
+   "frase": 13
+  },
+  {
+   "w": "2024,",
+   "ini": 77.68,
+   "fin": 78.054,
+   "frase": 13
+  },
+  {
+   "w": "cada",
+   "ini": 78.134,
+   "fin": 78.436,
+   "frase": 13
+  },
+  {
+   "w": "cigarrillo",
+   "ini": 78.436,
+   "fin": 79.099,
+   "frase": 13
+  },
+  {
+   "w": "quita",
+   "ini": 79.099,
+   "fin": 79.461,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 79.461,
+   "fin": 79.642,
+   "frase": 13
+  },
+  {
+   "w": "media",
+   "ini": 79.642,
+   "fin": 80.004,
+   "frase": 13
+  },
+  {
+   "w": "unos",
+   "ini": 80.004,
+   "fin": 80.306,
+   "frase": 13
+  },
+  {
+   "w": "veinte",
+   "ini": 80.306,
+   "fin": 80.728,
+   "frase": 13
+  },
+  {
+   "w": "minutos",
+   "ini": 80.728,
+   "fin": 81.211,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 81.211,
+   "fin": 81.392,
+   "frase": 13
+  },
+  {
+   "w": "vida.",
+   "ini": 81.392,
+   "fin": 81.754,
+   "frase": 13
+  },
+  {
+   "w": "Al",
+   "ini": 82.064,
+   "fin": 82.214,
+   "frase": 13
+  },
+  {
+   "w": "del",
+   "ini": 82.214,
+   "fin": 82.414,
+   "frase": 13
+  },
+  {
+   "w": "tabaco,",
+   "ini": 82.414,
+   "fin": 82.814,
+   "frase": 13
+  },
+  {
+   "w": "más",
+   "ini": 82.914,
+   "fin": 83.181,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 83.181,
+   "fin": 83.381,
+   "frase": 13
+  },
+  {
+   "w": "dos",
+   "ini": 83.381,
+   "fin": 83.647,
+   "frase": 13
+  },
+  {
+   "w": "años",
+   "ini": 83.647,
+   "fin": 83.98,
+   "frase": 13
+  },
+  {
+   "w": "y",
+   "ini": 83.98,
+   "fin": 84.114,
+   "frase": 13
+  },
+  {
+   "w": "medio.",
+   "ini": 84.114,
+   "fin": 84.58,
+   "frase": 13
+  },
+  {
+   "w": "Y",
+   "ini": 84.76,
+   "fin": 84.867,
+   "frase": 14
+  },
+  {
+   "w": "la",
+   "ini": 84.867,
+   "fin": 85.027,
+   "frase": 14
+  },
+  {
+   "w": "cachimba",
+   "ini": 85.027,
+   "fin": 85.507,
+   "frase": 14
+  },
+  {
+   "w": "no",
+   "ini": 85.507,
+   "fin": 85.667,
+   "frase": 14
+  },
+  {
+   "w": "se",
+   "ini": 85.667,
+   "fin": 85.827,
+   "frase": 14
+  },
+  {
+   "w": "queda",
+   "ini": 85.827,
+   "fin": 86.147,
+   "frase": 14
+  },
+  {
+   "w": "atrás:",
+   "ini": 86.147,
+   "fin": 86.52,
+   "frase": 14
+  },
+  {
+   "w": "se",
+   "ini": 86.74,
+   "fin": 86.896,
+   "frase": 14
+  },
+  {
+   "w": "relaciona",
+   "ini": 86.896,
+   "fin": 87.416,
+   "frase": 14
+  },
+  {
+   "w": "con",
+   "ini": 87.416,
+   "fin": 87.624,
+   "frase": 14
+  },
+  {
+   "w": "cáncer",
+   "ini": 87.624,
+   "fin": 87.988,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 87.988,
+   "fin": 88.144,
+   "frase": 14
+  },
+  {
+   "w": "pulmón,",
+   "ini": 88.144,
+   "fin": 88.56,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 88.68,
+   "fin": 88.856,
+   "frase": 14
+  },
+  {
+   "w": "boca",
+   "ini": 88.856,
+   "fin": 89.15,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 89.15,
+   "fin": 89.268,
+   "frase": 14
+  },
+  {
+   "w": "enfermedades",
+   "ini": 89.268,
+   "fin": 90.031,
+   "frase": 14
+  },
+  {
+   "w": "del",
+   "ini": 90.031,
+   "fin": 90.266,
+   "frase": 14
+  },
+  {
+   "w": "corazón.",
+   "ini": 90.266,
+   "fin": 90.795,
+   "frase": 14
+  },
+  {
+   "w": "Lo",
+   "ini": 91.275,
+   "fin": 91.443,
+   "frase": 15
+  },
+  {
+   "w": "peor",
+   "ini": 91.443,
+   "fin": 91.723,
+   "frase": 15
+  },
+  {
+   "w": "del",
+   "ini": 91.723,
+   "fin": 91.947,
+   "frase": 15
+  },
+  {
+   "w": "tabaco:",
+   "ini": 91.947,
+   "fin": 92.395,
+   "frase": 15
+  },
+  {
+   "w": "muchos",
+   "ini": 92.645,
+   "fin": 93.042,
+   "frase": 15
+  },
+  {
+   "w": "más",
+   "ini": 93.042,
+   "fin": 93.268,
+   "frase": 15
+  },
+  {
+   "w": "cigarrillos,",
+   "ini": 93.268,
+   "fin": 94.005,
+   "frase": 15
+  },
+  {
+   "w": "dientes",
+   "ini": 94.195,
+   "fin": 94.65,
+   "frase": 15
+  },
+  {
+   "w": "amarillos",
+   "ini": 94.65,
+   "fin": 95.219,
+   "frase": 15
+  },
+  {
+   "w": "y",
+   "ini": 95.219,
+   "fin": 95.333,
+   "frase": 15
+  },
+  {
+   "w": "los",
+   "ini": 95.333,
+   "fin": 95.561,
+   "frase": 15
+  },
+  {
+   "w": "riesgos",
+   "ini": 95.561,
+   "fin": 96.016,
+   "frase": 15
+  },
+  {
+   "w": "de",
+   "ini": 96.016,
+   "fin": 96.186,
+   "frase": 15
+  },
+  {
+   "w": "cáncer",
+   "ini": 96.186,
+   "fin": 96.585,
+   "frase": 15
+  },
+  {
+   "w": "más",
+   "ini": 96.585,
+   "fin": 96.812,
+   "frase": 15
+  },
+  {
+   "w": "estudiados.",
+   "ini": 96.812,
+   "fin": 97.495,
+   "frase": 15
+  },
+  {
+   "w": "Lo",
+   "ini": 97.675,
+   "fin": 97.876,
+   "frase": 16
+  },
+  {
+   "w": "peor",
+   "ini": 97.876,
+   "fin": 98.212,
+   "frase": 16
+  },
+  {
+   "w": "de",
+   "ini": 98.212,
+   "fin": 98.413,
+   "frase": 16
+  },
+  {
+   "w": "la",
+   "ini": 98.413,
+   "fin": 98.614,
+   "frase": 16
+  },
+  {
+   "w": "cachimba:",
+   "ini": 98.614,
+   "fin": 99.285,
+   "frase": 16
+  },
+  {
+   "w": "muchísimo",
+   "ini": 99.365,
+   "fin": 99.855,
+   "frase": 16
+  },
+  {
+   "w": "más",
+   "ini": 99.855,
+   "fin": 100.051,
+   "frase": 16
+  },
+  {
+   "w": "humo,",
+   "ini": 100.051,
+   "fin": 100.345,
+   "frase": 16
+  },
+  {
+   "w": "monóxido,",
+   "ini": 100.485,
+   "fin": 102.065,
+   "frase": 16
+  },
+  {
+   "w": "boquillas",
+   "ini": 102.135,
+   "fin": 102.3,
+   "frase": 16
+  },
+  {
+   "w": "compartidas…",
+   "ini": 102.3,
+   "fin": 102.515,
+   "frase": 16
+  },
+  {
+   "w": "y",
+   "ini": 102.735,
+   "fin": 102.856,
+   "frase": 16
+  },
+  {
+   "w": "la",
+   "ini": 102.856,
+   "fin": 103.037,
+   "frase": 16
+  },
+  {
+   "w": "cartera",
+   "ini": 103.037,
+   "fin": 103.521,
+   "frase": 16
+  },
+  {
+   "w": "vacía.",
+   "ini": 103.521,
+   "fin": 103.944,
+   "frase": 16
+  },
+  {
+   "w": "Y",
+   "ini": 104.124,
+   "fin": 104.222,
+   "frase": 17
+  },
+  {
+   "w": "lo",
+   "ini": 104.222,
+   "fin": 104.369,
+   "frase": 17
+  },
+  {
+   "w": "peor",
+   "ini": 104.369,
+   "fin": 104.615,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 104.615,
+   "fin": 104.762,
+   "frase": 17
+  },
+  {
+   "w": "los",
+   "ini": 104.762,
+   "fin": 104.958,
+   "frase": 17
+  },
+  {
+   "w": "dos:",
+   "ini": 104.958,
+   "fin": 105.204,
+   "frase": 17
+  },
+  {
+   "w": "la",
+   "ini": 105.464,
+   "fin": 105.651,
+   "frase": 17
+  },
+  {
+   "w": "nicotina.",
+   "ini": 105.651,
+   "fin": 106.274,
+   "frase": 17
+  },
+  {
+   "w": "Los",
+   "ini": 106.574,
+   "fin": 106.885,
+   "frase": 17
+  },
+  {
+   "w": "dos",
+   "ini": 106.885,
+   "fin": 107.196,
+   "frase": 17
+  },
+  {
+   "w": "son",
+   "ini": 107.196,
+   "fin": 107.507,
+   "frase": 17
+  },
+  {
+   "w": "adictos.",
+   "ini": 107.507,
+   "fin": 108.208,
+   "frase": 17
+  },
+  {
+   "w": "¿Quién",
+   "ini": 108.688,
+   "fin": 108.997,
+   "frase": 18
+  },
+  {
+   "w": "acaba",
+   "ini": 108.997,
+   "fin": 109.262,
+   "frase": 18
+  },
+  {
+   "w": "peor?",
+   "ini": 109.262,
+   "fin": 109.528,
+   "frase": 18
+  },
+  {
+   "w": "Ninguno",
+   "ini": 109.748,
+   "fin": 110.222,
+   "frase": 18
+  },
+  {
+   "w": "gana.",
+   "ini": 110.222,
+   "fin": 110.578,
+   "frase": 18
+  },
+  {
+   "w": "La",
+   "ini": 110.768,
+   "fin": 110.94,
+   "frase": 18
+  },
+  {
+   "w": "cachimba",
+   "ini": 110.94,
+   "fin": 111.457,
+   "frase": 18
+  },
+  {
+   "w": "no",
+   "ini": 111.457,
+   "fin": 111.629,
+   "frase": 18
+  },
+  {
+   "w": "es",
+   "ini": 111.629,
+   "fin": 111.801,
+   "frase": 18
+  },
+  {
+   "w": "la",
+   "ini": 111.801,
+   "fin": 111.974,
+   "frase": 18
+  },
+  {
+   "w": "opción",
+   "ini": 111.974,
+   "fin": 112.376,
+   "frase": 18
+  },
+  {
+   "w": "suave.",
+   "ini": 112.376,
+   "fin": 112.778,
+   "frase": 18
+  },
+  {
+   "w": "Es",
+   "ini": 113.048,
+   "fin": 113.238,
+   "frase": 18
+  },
+  {
+   "w": "otra",
+   "ini": 113.238,
+   "fin": 113.556,
+   "frase": 18
+  },
+  {
+   "w": "forma",
+   "ini": 113.556,
+   "fin": 113.937,
+   "frase": 18
+  },
+  {
+   "w": "de",
+   "ini": 113.937,
+   "fin": 114.127,
+   "frase": 18
+  },
+  {
+   "w": "fumar.",
+   "ini": 114.127,
+   "fin": 114.572,
+   "frase": 18
+  },
+  {
+   "w": "Así",
+   "ini": 115.052,
+   "fin": 115.292,
+   "frase": 19
+  },
+  {
+   "w": "que",
+   "ini": 115.292,
+   "fin": 115.532,
+   "frase": 19
+  },
+  {
+   "w": "la",
+   "ini": 115.532,
+   "fin": 115.712,
+   "frase": 19
+  },
+  {
+   "w": "próxima",
+   "ini": 115.712,
+   "fin": 116.192,
+   "frase": 19
+  },
+  {
+   "w": "vez",
+   "ini": 116.192,
+   "fin": 116.432,
+   "frase": 19
+  },
+  {
+   "w": "que",
+   "ini": 116.432,
+   "fin": 116.672,
+   "frase": 19
+  },
+  {
+   "w": "alguien",
+   "ini": 116.672,
+   "fin": 117.152,
+   "frase": 19
+  },
+  {
+   "w": "diga",
+   "ini": 117.152,
+   "fin": 117.452,
+   "frase": 19
+  },
+  {
+   "w": "«solo",
+   "ini": 117.452,
+   "fin": 117.812,
+   "frase": 19
+  },
+  {
+   "w": "es",
+   "ini": 117.812,
+   "fin": 117.992,
+   "frase": 19
+  },
+  {
+   "w": "una",
+   "ini": 117.992,
+   "fin": 118.232,
+   "frase": 19
+  },
+  {
+   "w": "cachimba»…",
+   "ini": 118.232,
+   "fin": 118.892,
+   "frase": 19
+  },
+  {
+   "w": "acuérdate",
+   "ini": 118.962,
+   "fin": 119.541,
+   "frase": 19
+  },
+  {
+   "w": "de",
+   "ini": 119.541,
+   "fin": 119.715,
+   "frase": 19
+  },
+  {
+   "w": "estos",
+   "ini": 119.715,
+   "fin": 120.062,
+   "frase": 19
+  },
+  {
+   "w": "dos",
+   "ini": 120.062,
+   "fin": 120.294,
+   "frase": 19
+  },
+  {
+   "w": "amigos.",
+   "ini": 120.294,
+   "fin": 120.757,
+   "frase": 19
+  }
+ ]
+}

@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><style>html,body{margin:0;background:#000}canvas{display:block}</style></head><body>
+<script type="module">
+import * as THREE from './three.module.min.js';
+import { RoomEnvironment } from './RoomEnvironment.js';
+import { crearPersonaje, poser } from './personaje3.js';
+const W = 720, H = 1280;
+const R = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true });
+R.setPixelRatio(1); R.setSize(W, H); R.outputColorSpace = THREE.SRGBColorSpace;
+R.toneMapping = THREE.ACESFilmicToneMapping; R.toneMappingExposure = 0.9;
+R.shadowMap.enabled = true; R.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(R.domElement);
+const scene = new THREE.Scene();
+scene.environment = new THREE.PMREMGenerator(R).fromScene(new RoomEnvironment(R), 0.04).texture;
+scene.environmentIntensity = 0.45;
+scene.background = new THREE.Color(0x4a4553);
+const key = new THREE.DirectionalLight(0xffe6d0, 2.2); key.position.set(3, 4, 5); key.castShadow = true;
+key.shadow.mapSize.set(2048, 2048); key.shadow.radius = 5; Object.assign(key.shadow.camera, { left: -4, right: 4, top: 4, bottom: -5 });
+scene.add(key);
+const rim = new THREE.DirectionalLight(0xc9b8ff, 1.6); rim.position.set(-3, 3, -4); scene.add(rim);
+scene.add(new THREE.HemisphereLight(0xcfd6ff, 0x5a4a44, 0.6));
+const wall = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.MeshStandardMaterial({ color: 0x6e6676, roughness: 1 }));
+wall.position.z = -3; wall.receiveShadow = true; scene.add(wall);
+const pj = crearPersonaje(); scene.add(pj);
+const cam = new THREE.PerspectiveCamera(30, W / H, 0.1, 100);
+window.DUR = 1;
+window.prueba = (cm, ang, close) => {
+  poser(pj, { cm, t: 1.0, cara: cm > 60 ? 'pensativo' : 'normal', puntas: 1 });
+  pj.rotation.y = ang;
+  if (close) { cam.position.set(0, 0.2, 4.4); cam.lookAt(0, 0.0, 0); }
+  else { cam.position.set(0, -0.4, 8.5); cam.lookAt(0, -0.9, 0); }
+  R.render(scene, cam);
+};
+window.ok = true;
+</script></body></html>

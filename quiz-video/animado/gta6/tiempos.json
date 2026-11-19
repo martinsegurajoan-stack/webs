@@ -1,0 +1,1477 @@
+{
+ "duracion": 80.331,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Si vas a jugar a GTA 6 el día que salga, no cometas estos errores.",
+   "ini": 0.5,
+   "fin": 5.149
+  },
+  {
+   "n": 2,
+   "texto": "Primero, lo que no haría ni loco.",
+   "ini": 5.499,
+   "fin": 8.07
+  },
+  {
+   "n": 3,
+   "texto": "Ir directo al online.",
+   "ini": 8.17,
+   "fin": 9.637
+  },
+  {
+   "n": 4,
+   "texto": "Has esperado trece años… para que un niño te reviente en la primera esquina.",
+   "ini": 9.737,
+   "fin": 14.238
+  },
+  {
+   "n": 5,
+   "texto": "Ver vídeos en TikTok o YouTube.",
+   "ini": 14.338,
+   "fin": 16.433
+  },
+  {
+   "n": 6,
+   "texto": "Más de una década de espera, para que un clip de treinta segundos te cuente el final.",
+   "ini": 16.533,
+   "fin": 21.299
+  },
+  {
+   "n": 7,
+   "texto": "Ahora, lo que me pensaría.",
+   "ini": 21.399,
+   "fin": 23.129
+  },
+  {
+   "n": 8,
+   "texto": "Comprar la edición más cara.",
+   "ini": 23.229,
+   "fin": 25.011
+  },
+  {
+   "n": 9,
+   "texto": "Pagas de más por un coche dorado que consigues jugando en una semana.",
+   "ini": 25.111,
+   "fin": 28.679
+  },
+  {
+   "n": 10,
+   "texto": "Pedir vacaciones para jugarlo.",
+   "ini": 28.779,
+   "fin": 30.527
+  },
+  {
+   "n": 11,
+   "texto": "Tres días de gloria… y vuelves al trabajo con ojeras y sin un euro.",
+   "ini": 30.627,
+   "fin": 34.795
+  },
+  {
+   "n": 12,
+   "texto": "Y ahora, lo que sí haría.",
+   "ini": 35.195,
+   "fin": 37.156
+  },
+  {
+   "n": 13,
+   "texto": "Uno: jugar la historia sin prisa. La primera vez que la vives no se repite.",
+   "ini": 37.256,
+   "fin": 42.479
+  },
+  {
+   "n": 14,
+   "texto": "Dos: perderme en Vice City sin misiones. De noche, con la radio puesta y sin mirar el mapa.",
+   "ini": 42.579,
+   "fin": 48.843
+  },
+  {
+   "n": 15,
+   "texto": "Ahí es donde GTA se vuelve GTA.",
+   "ini": 48.943,
+   "fin": 51.827
+  },
+  {
+   "n": 16,
+   "texto": "Tres: silenciar las redes. Mutear GTA, Lucía y Jason en todas partes.",
+   "ini": 51.927,
+   "fin": 57.796
+  },
+  {
+   "n": 17,
+   "texto": "Cuatro: liberar espacio en la consola antes. Nadie quiere borrar juegos a las doce de la noche.",
+   "ini": 57.896,
+   "fin": 63.566
+  },
+  {
+   "n": 18,
+   "texto": "Y cinco, la sorpresa: darle una vuelta al Vice City de 2002.",
+   "ini": 63.866,
+   "fin": 68.453
+  },
+  {
+   "n": 19,
+   "texto": "Ver de dónde venimos hace que el primer paseo por la nueva ciudad pegue el doble.",
+   "ini": 68.553,
+   "fin": 73.022
+  },
+  {
+   "n": 20,
+   "texto": "Porque la primera semana de GTA 6 no vuelve. Y el que la desperdicia… ya no la recupera.",
+   "ini": 73.122,
+   "fin": 79.131
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Si",
+   "ini": 0.5,
+   "fin": 0.686,
+   "frase": 1
+  },
+  {
+   "w": "vas",
+   "ini": 0.686,
+   "fin": 0.934,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 0.934,
+   "fin": 1.058,
+   "frase": 1
+  },
+  {
+   "w": "jugar",
+   "ini": 1.058,
+   "fin": 1.429,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 1.429,
+   "fin": 1.553,
+   "frase": 1
+  },
+  {
+   "w": "GTA",
+   "ini": 1.553,
+   "fin": 1.801,
+   "frase": 1
+  },
+  {
+   "w": "6",
+   "ini": 1.801,
+   "fin": 1.925,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 1.925,
+   "fin": 2.111,
+   "frase": 1
+  },
+  {
+   "w": "día",
+   "ini": 2.111,
+   "fin": 2.359,
+   "frase": 1
+  },
+  {
+   "w": "que",
+   "ini": 2.359,
+   "fin": 2.606,
+   "frase": 1
+  },
+  {
+   "w": "salga,",
+   "ini": 2.606,
+   "fin": 3.04,
+   "frase": 1
+  },
+  {
+   "w": "no",
+   "ini": 3.31,
+   "fin": 3.522,
+   "frase": 1
+  },
+  {
+   "w": "cometas",
+   "ini": 3.522,
+   "fin": 4.088,
+   "frase": 1
+  },
+  {
+   "w": "estos",
+   "ini": 4.088,
+   "fin": 4.512,
+   "frase": 1
+  },
+  {
+   "w": "errores.",
+   "ini": 4.512,
+   "fin": 5.149,
+   "frase": 1
+  },
+  {
+   "w": "Primero,",
+   "ini": 5.499,
+   "fin": 5.919,
+   "frase": 2
+  },
+  {
+   "w": "lo",
+   "ini": 6.249,
+   "fin": 6.467,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 6.467,
+   "fin": 6.759,
+   "frase": 2
+  },
+  {
+   "w": "no",
+   "ini": 6.759,
+   "fin": 6.977,
+   "frase": 2
+  },
+  {
+   "w": "haría",
+   "ini": 6.977,
+   "fin": 7.414,
+   "frase": 2
+  },
+  {
+   "w": "ni",
+   "ini": 7.414,
+   "fin": 7.633,
+   "frase": 2
+  },
+  {
+   "w": "loco.",
+   "ini": 7.633,
+   "fin": 8.07,
+   "frase": 2
+  },
+  {
+   "w": "Ir",
+   "ini": 8.17,
+   "fin": 8.37,
+   "frase": 3
+  },
+  {
+   "w": "directo",
+   "ini": 8.37,
+   "fin": 8.903,
+   "frase": 3
+  },
+  {
+   "w": "al",
+   "ini": 8.903,
+   "fin": 9.103,
+   "frase": 3
+  },
+  {
+   "w": "online.",
+   "ini": 9.103,
+   "fin": 9.637,
+   "frase": 3
+  },
+  {
+   "w": "Has",
+   "ini": 9.737,
+   "fin": 9.896,
+   "frase": 4
+  },
+  {
+   "w": "esperado",
+   "ini": 9.896,
+   "fin": 10.252,
+   "frase": 4
+  },
+  {
+   "w": "trece",
+   "ini": 10.252,
+   "fin": 10.49,
+   "frase": 4
+  },
+  {
+   "w": "años…",
+   "ini": 10.49,
+   "fin": 10.727,
+   "frase": 4
+  },
+  {
+   "w": "para",
+   "ini": 10.837,
+   "fin": 11.164,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 11.164,
+   "fin": 11.426,
+   "frase": 4
+  },
+  {
+   "w": "un",
+   "ini": 11.426,
+   "fin": 11.622,
+   "frase": 4
+  },
+  {
+   "w": "niño",
+   "ini": 11.622,
+   "fin": 11.949,
+   "frase": 4
+  },
+  {
+   "w": "te",
+   "ini": 11.949,
+   "fin": 12.145,
+   "frase": 4
+  },
+  {
+   "w": "reviente",
+   "ini": 12.145,
+   "fin": 12.734,
+   "frase": 4
+  },
+  {
+   "w": "en",
+   "ini": 12.734,
+   "fin": 12.93,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 12.93,
+   "fin": 13.126,
+   "frase": 4
+  },
+  {
+   "w": "primera",
+   "ini": 13.126,
+   "fin": 13.649,
+   "frase": 4
+  },
+  {
+   "w": "esquina.",
+   "ini": 13.649,
+   "fin": 14.238,
+   "frase": 4
+  },
+  {
+   "w": "Ver",
+   "ini": 14.338,
+   "fin": 14.6,
+   "frase": 5
+  },
+  {
+   "w": "vídeos",
+   "ini": 14.6,
+   "fin": 15.058,
+   "frase": 5
+  },
+  {
+   "w": "en",
+   "ini": 15.058,
+   "fin": 15.255,
+   "frase": 5
+  },
+  {
+   "w": "TikTok",
+   "ini": 15.255,
+   "fin": 15.713,
+   "frase": 5
+  },
+  {
+   "w": "o",
+   "ini": 15.713,
+   "fin": 15.844,
+   "frase": 5
+  },
+  {
+   "w": "YouTube.",
+   "ini": 15.844,
+   "fin": 16.433,
+   "frase": 5
+  },
+  {
+   "w": "Más",
+   "ini": 16.533,
+   "fin": 16.758,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 16.758,
+   "fin": 16.927,
+   "frase": 6
+  },
+  {
+   "w": "una",
+   "ini": 16.927,
+   "fin": 17.151,
+   "frase": 6
+  },
+  {
+   "w": "década",
+   "ini": 17.151,
+   "fin": 17.545,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 17.545,
+   "fin": 17.713,
+   "frase": 6
+  },
+  {
+   "w": "espera,",
+   "ini": 17.713,
+   "fin": 18.163,
+   "frase": 6
+  },
+  {
+   "w": "para",
+   "ini": 18.433,
+   "fin": 18.684,
+   "frase": 6
+  },
+  {
+   "w": "que",
+   "ini": 18.684,
+   "fin": 18.886,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 18.886,
+   "fin": 19.036,
+   "frase": 6
+  },
+  {
+   "w": "clip",
+   "ini": 19.036,
+   "fin": 19.288,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 19.288,
+   "fin": 19.439,
+   "frase": 6
+  },
+  {
+   "w": "treinta",
+   "ini": 19.439,
+   "fin": 19.841,
+   "frase": 6
+  },
+  {
+   "w": "segundos",
+   "ini": 19.841,
+   "fin": 20.293,
+   "frase": 6
+  },
+  {
+   "w": "te",
+   "ini": 20.293,
+   "fin": 20.444,
+   "frase": 6
+  },
+  {
+   "w": "cuente",
+   "ini": 20.444,
+   "fin": 20.796,
+   "frase": 6
+  },
+  {
+   "w": "el",
+   "ini": 20.796,
+   "fin": 20.947,
+   "frase": 6
+  },
+  {
+   "w": "final.",
+   "ini": 20.947,
+   "fin": 21.299,
+   "frase": 6
+  },
+  {
+   "w": "Ahora,",
+   "ini": 21.399,
+   "fin": 21.819,
+   "frase": 7
+  },
+  {
+   "w": "lo",
+   "ini": 21.999,
+   "fin": 22.168,
+   "frase": 7
+  },
+  {
+   "w": "que",
+   "ini": 22.168,
+   "fin": 22.394,
+   "frase": 7
+  },
+  {
+   "w": "me",
+   "ini": 22.394,
+   "fin": 22.564,
+   "frase": 7
+  },
+  {
+   "w": "pensaría.",
+   "ini": 22.564,
+   "fin": 23.129,
+   "frase": 7
+  },
+  {
+   "w": "Comprar",
+   "ini": 23.229,
+   "fin": 23.721,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 23.721,
+   "fin": 23.905,
+   "frase": 8
+  },
+  {
+   "w": "edición",
+   "ini": 23.905,
+   "fin": 24.396,
+   "frase": 8
+  },
+  {
+   "w": "más",
+   "ini": 24.396,
+   "fin": 24.642,
+   "frase": 8
+  },
+  {
+   "w": "cara.",
+   "ini": 24.642,
+   "fin": 25.011,
+   "frase": 8
+  },
+  {
+   "w": "Pagas",
+   "ini": 25.111,
+   "fin": 25.417,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 25.417,
+   "fin": 25.57,
+   "frase": 9
+  },
+  {
+   "w": "más",
+   "ini": 25.57,
+   "fin": 25.774,
+   "frase": 9
+  },
+  {
+   "w": "por",
+   "ini": 25.774,
+   "fin": 25.977,
+   "frase": 9
+  },
+  {
+   "w": "un",
+   "ini": 25.977,
+   "fin": 26.13,
+   "frase": 9
+  },
+  {
+   "w": "coche",
+   "ini": 26.13,
+   "fin": 26.436,
+   "frase": 9
+  },
+  {
+   "w": "dorado",
+   "ini": 26.436,
+   "fin": 26.793,
+   "frase": 9
+  },
+  {
+   "w": "que",
+   "ini": 26.793,
+   "fin": 26.997,
+   "frase": 9
+  },
+  {
+   "w": "consigues",
+   "ini": 26.997,
+   "fin": 27.506,
+   "frase": 9
+  },
+  {
+   "w": "jugando",
+   "ini": 27.506,
+   "fin": 27.914,
+   "frase": 9
+  },
+  {
+   "w": "en",
+   "ini": 27.914,
+   "fin": 28.067,
+   "frase": 9
+  },
+  {
+   "w": "una",
+   "ini": 28.067,
+   "fin": 28.271,
+   "frase": 9
+  },
+  {
+   "w": "semana.",
+   "ini": 28.271,
+   "fin": 28.679,
+   "frase": 9
+  },
+  {
+   "w": "Pedir",
+   "ini": 28.779,
+   "fin": 29.117,
+   "frase": 10
+  },
+  {
+   "w": "vacaciones",
+   "ini": 29.117,
+   "fin": 29.737,
+   "frase": 10
+  },
+  {
+   "w": "para",
+   "ini": 29.737,
+   "fin": 30.019,
+   "frase": 10
+  },
+  {
+   "w": "jugarlo.",
+   "ini": 30.019,
+   "fin": 30.527,
+   "frase": 10
+  },
+  {
+   "w": "Tres",
+   "ini": 30.627,
+   "fin": 30.912,
+   "frase": 11
+  },
+  {
+   "w": "días",
+   "ini": 30.912,
+   "fin": 31.198,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 31.198,
+   "fin": 31.369,
+   "frase": 11
+  },
+  {
+   "w": "gloria…",
+   "ini": 31.369,
+   "fin": 31.827,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 32.097,
+   "fin": 32.211,
+   "frase": 11
+  },
+  {
+   "w": "vuelves",
+   "ini": 32.211,
+   "fin": 32.671,
+   "frase": 11
+  },
+  {
+   "w": "al",
+   "ini": 32.671,
+   "fin": 32.843,
+   "frase": 11
+  },
+  {
+   "w": "trabajo",
+   "ini": 32.843,
+   "fin": 33.302,
+   "frase": 11
+  },
+  {
+   "w": "con",
+   "ini": 33.302,
+   "fin": 33.532,
+   "frase": 11
+  },
+  {
+   "w": "ojeras",
+   "ini": 33.532,
+   "fin": 33.934,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 33.934,
+   "fin": 34.049,
+   "frase": 11
+  },
+  {
+   "w": "sin",
+   "ini": 34.049,
+   "fin": 34.278,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 34.278,
+   "fin": 34.451,
+   "frase": 11
+  },
+  {
+   "w": "euro.",
+   "ini": 34.451,
+   "fin": 34.795,
+   "frase": 11
+  },
+  {
+   "w": "Y",
+   "ini": 35.195,
+   "fin": 35.317,
+   "frase": 12
+  },
+  {
+   "w": "ahora,",
+   "ini": 35.317,
+   "fin": 35.745,
+   "frase": 12
+  },
+  {
+   "w": "lo",
+   "ini": 35.935,
+   "fin": 36.151,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 36.151,
+   "fin": 36.438,
+   "frase": 12
+  },
+  {
+   "w": "sí",
+   "ini": 36.438,
+   "fin": 36.654,
+   "frase": 12
+  },
+  {
+   "w": "haría.",
+   "ini": 36.654,
+   "fin": 37.156,
+   "frase": 12
+  },
+  {
+   "w": "Uno:",
+   "ini": 37.256,
+   "fin": 37.556,
+   "frase": 13
+  },
+  {
+   "w": "jugar",
+   "ini": 38.016,
+   "fin": 38.362,
+   "frase": 13
+  },
+  {
+   "w": "la",
+   "ini": 38.362,
+   "fin": 38.535,
+   "frase": 13
+  },
+  {
+   "w": "historia",
+   "ini": 38.535,
+   "fin": 39.053,
+   "frase": 13
+  },
+  {
+   "w": "sin",
+   "ini": 39.053,
+   "fin": 39.283,
+   "frase": 13
+  },
+  {
+   "w": "prisa.",
+   "ini": 39.283,
+   "fin": 39.686,
+   "frase": 13
+  },
+  {
+   "w": "La",
+   "ini": 40.076,
+   "fin": 40.248,
+   "frase": 13
+  },
+  {
+   "w": "primera",
+   "ini": 40.248,
+   "fin": 40.706,
+   "frase": 13
+  },
+  {
+   "w": "vez",
+   "ini": 40.706,
+   "fin": 40.934,
+   "frase": 13
+  },
+  {
+   "w": "que",
+   "ini": 40.934,
+   "fin": 41.163,
+   "frase": 13
+  },
+  {
+   "w": "la",
+   "ini": 41.163,
+   "fin": 41.335,
+   "frase": 13
+  },
+  {
+   "w": "vives",
+   "ini": 41.335,
+   "fin": 41.678,
+   "frase": 13
+  },
+  {
+   "w": "no",
+   "ini": 41.678,
+   "fin": 41.85,
+   "frase": 13
+  },
+  {
+   "w": "se",
+   "ini": 41.85,
+   "fin": 42.021,
+   "frase": 13
+  },
+  {
+   "w": "repite.",
+   "ini": 42.021,
+   "fin": 42.479,
+   "frase": 13
+  },
+  {
+   "w": "Dos:",
+   "ini": 42.579,
+   "fin": 42.849,
+   "frase": 14
+  },
+  {
+   "w": "perderme",
+   "ini": 43.359,
+   "fin": 43.816,
+   "frase": 14
+  },
+  {
+   "w": "en",
+   "ini": 43.816,
+   "fin": 43.969,
+   "frase": 14
+  },
+  {
+   "w": "Vice",
+   "ini": 43.969,
+   "fin": 44.223,
+   "frase": 14
+  },
+  {
+   "w": "City",
+   "ini": 44.223,
+   "fin": 44.477,
+   "frase": 14
+  },
+  {
+   "w": "sin",
+   "ini": 44.477,
+   "fin": 44.68,
+   "frase": 14
+  },
+  {
+   "w": "misiones.",
+   "ini": 44.68,
+   "fin": 45.189,
+   "frase": 14
+  },
+  {
+   "w": "De",
+   "ini": 45.849,
+   "fin": 45.918,
+   "frase": 14
+  },
+  {
+   "w": "noche,",
+   "ini": 45.918,
+   "fin": 46.079,
+   "frase": 14
+  },
+  {
+   "w": "con",
+   "ini": 46.169,
+   "fin": 46.43,
+   "frase": 14
+  },
+  {
+   "w": "la",
+   "ini": 46.43,
+   "fin": 46.625,
+   "frase": 14
+  },
+  {
+   "w": "radio",
+   "ini": 46.625,
+   "fin": 47.017,
+   "frase": 14
+  },
+  {
+   "w": "puesta",
+   "ini": 47.017,
+   "fin": 47.473,
+   "frase": 14
+  },
+  {
+   "w": "y",
+   "ini": 47.473,
+   "fin": 47.604,
+   "frase": 14
+  },
+  {
+   "w": "sin",
+   "ini": 47.604,
+   "fin": 47.864,
+   "frase": 14
+  },
+  {
+   "w": "mirar",
+   "ini": 47.864,
+   "fin": 48.256,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 48.256,
+   "fin": 48.451,
+   "frase": 14
+  },
+  {
+   "w": "mapa.",
+   "ini": 48.451,
+   "fin": 48.843,
+   "frase": 14
+  },
+  {
+   "w": "Ahí",
+   "ini": 48.943,
+   "fin": 49.303,
+   "frase": 15
+  },
+  {
+   "w": "es",
+   "ini": 49.303,
+   "fin": 49.574,
+   "frase": 15
+  },
+  {
+   "w": "donde",
+   "ini": 49.574,
+   "fin": 50.114,
+   "frase": 15
+  },
+  {
+   "w": "GTA",
+   "ini": 50.114,
+   "fin": 50.475,
+   "frase": 15
+  },
+  {
+   "w": "se",
+   "ini": 50.475,
+   "fin": 50.745,
+   "frase": 15
+  },
+  {
+   "w": "vuelve",
+   "ini": 50.745,
+   "fin": 51.376,
+   "frase": 15
+  },
+  {
+   "w": "GTA.",
+   "ini": 51.376,
+   "fin": 51.827,
+   "frase": 15
+  },
+  {
+   "w": "Tres:",
+   "ini": 51.927,
+   "fin": 52.267,
+   "frase": 16
+  },
+  {
+   "w": "silenciar",
+   "ini": 52.647,
+   "fin": 53.204,
+   "frase": 16
+  },
+  {
+   "w": "las",
+   "ini": 53.204,
+   "fin": 53.427,
+   "frase": 16
+  },
+  {
+   "w": "redes.",
+   "ini": 53.427,
+   "fin": 53.817,
+   "frase": 16
+  },
+  {
+   "w": "Mutear",
+   "ini": 54.277,
+   "fin": 54.872,
+   "frase": 16
+  },
+  {
+   "w": "GTA,",
+   "ini": 54.872,
+   "fin": 55.297,
+   "frase": 16
+  },
+  {
+   "w": "Lucía",
+   "ini": 55.437,
+   "fin": 55.894,
+   "frase": 16
+  },
+  {
+   "w": "y",
+   "ini": 55.894,
+   "fin": 56.046,
+   "frase": 16
+  },
+  {
+   "w": "Jason",
+   "ini": 56.046,
+   "fin": 56.502,
+   "frase": 16
+  },
+  {
+   "w": "en",
+   "ini": 56.502,
+   "fin": 56.731,
+   "frase": 16
+  },
+  {
+   "w": "todas",
+   "ini": 56.731,
+   "fin": 57.187,
+   "frase": 16
+  },
+  {
+   "w": "partes.",
+   "ini": 57.187,
+   "fin": 57.796,
+   "frase": 16
+  },
+  {
+   "w": "Cuatro:",
+   "ini": 57.896,
+   "fin": 58.276,
+   "frase": 17
+  },
+  {
+   "w": "liberar",
+   "ini": 58.626,
+   "fin": 59.026,
+   "frase": 17
+  },
+  {
+   "w": "espacio",
+   "ini": 59.026,
+   "fin": 59.426,
+   "frase": 17
+  },
+  {
+   "w": "en",
+   "ini": 59.426,
+   "fin": 59.576,
+   "frase": 17
+  },
+  {
+   "w": "la",
+   "ini": 59.576,
+   "fin": 59.726,
+   "frase": 17
+  },
+  {
+   "w": "consola",
+   "ini": 59.726,
+   "fin": 60.126,
+   "frase": 17
+  },
+  {
+   "w": "antes.",
+   "ini": 60.126,
+   "fin": 60.476,
+   "frase": 17
+  },
+  {
+   "w": "Nadie",
+   "ini": 60.576,
+   "fin": 60.928,
+   "frase": 17
+  },
+  {
+   "w": "quiere",
+   "ini": 60.928,
+   "fin": 61.338,
+   "frase": 17
+  },
+  {
+   "w": "borrar",
+   "ini": 61.338,
+   "fin": 61.749,
+   "frase": 17
+  },
+  {
+   "w": "juegos",
+   "ini": 61.749,
+   "fin": 62.159,
+   "frase": 17
+  },
+  {
+   "w": "a",
+   "ini": 62.159,
+   "fin": 62.276,
+   "frase": 17
+  },
+  {
+   "w": "las",
+   "ini": 62.276,
+   "fin": 62.511,
+   "frase": 17
+  },
+  {
+   "w": "doce",
+   "ini": 62.511,
+   "fin": 62.804,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 62.804,
+   "fin": 62.98,
+   "frase": 17
+  },
+  {
+   "w": "la",
+   "ini": 62.98,
+   "fin": 63.156,
+   "frase": 17
+  },
+  {
+   "w": "noche.",
+   "ini": 63.156,
+   "fin": 63.566,
+   "frase": 17
+  },
+  {
+   "w": "Y",
+   "ini": 63.866,
+   "fin": 64.008,
+   "frase": 18
+  },
+  {
+   "w": "cinco,",
+   "ini": 64.008,
+   "fin": 64.506,
+   "frase": 18
+  },
+  {
+   "w": "la",
+   "ini": 64.696,
+   "fin": 64.911,
+   "frase": 18
+  },
+  {
+   "w": "sorpresa:",
+   "ini": 64.911,
+   "fin": 65.626,
+   "frase": 18
+  },
+  {
+   "w": "darle",
+   "ini": 65.916,
+   "fin": 66.306,
+   "frase": 18
+  },
+  {
+   "w": "una",
+   "ini": 66.306,
+   "fin": 66.567,
+   "frase": 18
+  },
+  {
+   "w": "vuelta",
+   "ini": 66.567,
+   "fin": 67.022,
+   "frase": 18
+  },
+  {
+   "w": "al",
+   "ini": 67.022,
+   "fin": 67.217,
+   "frase": 18
+  },
+  {
+   "w": "Vice",
+   "ini": 67.217,
+   "fin": 67.542,
+   "frase": 18
+  },
+  {
+   "w": "City",
+   "ini": 67.542,
+   "fin": 67.867,
+   "frase": 18
+  },
+  {
+   "w": "de",
+   "ini": 67.867,
+   "fin": 68.062,
+   "frase": 18
+  },
+  {
+   "w": "2002.",
+   "ini": 68.062,
+   "fin": 68.453,
+   "frase": 18
+  },
+  {
+   "w": "Ver",
+   "ini": 68.553,
+   "fin": 68.771,
+   "frase": 19
+  },
+  {
+   "w": "de",
+   "ini": 68.771,
+   "fin": 68.934,
+   "frase": 19
+  },
+  {
+   "w": "dónde",
+   "ini": 68.934,
+   "fin": 69.261,
+   "frase": 19
+  },
+  {
+   "w": "venimos",
+   "ini": 69.261,
+   "fin": 69.697,
+   "frase": 19
+  },
+  {
+   "w": "hace",
+   "ini": 69.697,
+   "fin": 69.97,
+   "frase": 19
+  },
+  {
+   "w": "que",
+   "ini": 69.97,
+   "fin": 70.188,
+   "frase": 19
+  },
+  {
+   "w": "el",
+   "ini": 70.188,
+   "fin": 70.351,
+   "frase": 19
+  },
+  {
+   "w": "primer",
+   "ini": 70.351,
+   "fin": 70.733,
+   "frase": 19
+  },
+  {
+   "w": "paseo",
+   "ini": 70.733,
+   "fin": 71.06,
+   "frase": 19
+  },
+  {
+   "w": "por",
+   "ini": 71.06,
+   "fin": 71.278,
+   "frase": 19
+  },
+  {
+   "w": "la",
+   "ini": 71.278,
+   "fin": 71.442,
+   "frase": 19
+  },
+  {
+   "w": "nueva",
+   "ini": 71.442,
+   "fin": 71.769,
+   "frase": 19
+  },
+  {
+   "w": "ciudad",
+   "ini": 71.769,
+   "fin": 72.15,
+   "frase": 19
+  },
+  {
+   "w": "pegue",
+   "ini": 72.15,
+   "fin": 72.477,
+   "frase": 19
+  },
+  {
+   "w": "el",
+   "ini": 72.477,
+   "fin": 72.641,
+   "frase": 19
+  },
+  {
+   "w": "doble.",
+   "ini": 72.641,
+   "fin": 73.022,
+   "frase": 19
+  },
+  {
+   "w": "Porque",
+   "ini": 73.122,
+   "fin": 73.58,
+   "frase": 20
+  },
+  {
+   "w": "la",
+   "ini": 73.58,
+   "fin": 73.776,
+   "frase": 20
+  },
+  {
+   "w": "primera",
+   "ini": 73.776,
+   "fin": 74.298,
+   "frase": 20
+  },
+  {
+   "w": "semana",
+   "ini": 74.298,
+   "fin": 74.756,
+   "frase": 20
+  },
+  {
+   "w": "de",
+   "ini": 74.756,
+   "fin": 74.952,
+   "frase": 20
+  },
+  {
+   "w": "GTA",
+   "ini": 74.952,
+   "fin": 75.213,
+   "frase": 20
+  },
+  {
+   "w": "6",
+   "ini": 75.213,
+   "fin": 75.344,
+   "frase": 20
+  },
+  {
+   "w": "no",
+   "ini": 75.344,
+   "fin": 75.54,
+   "frase": 20
+  },
+  {
+   "w": "vuelve.",
+   "ini": 75.54,
+   "fin": 76.062,
+   "frase": 20
+  },
+  {
+   "w": "Y",
+   "ini": 76.422,
+   "fin": 76.523,
+   "frase": 20
+  },
+  {
+   "w": "el",
+   "ini": 76.523,
+   "fin": 76.674,
+   "frase": 20
+  },
+  {
+   "w": "que",
+   "ini": 76.674,
+   "fin": 76.876,
+   "frase": 20
+  },
+  {
+   "w": "la",
+   "ini": 76.876,
+   "fin": 77.027,
+   "frase": 20
+  },
+  {
+   "w": "desperdicia…",
+   "ini": 77.027,
+   "fin": 77.682,
+   "frase": 20
+  },
+  {
+   "w": "ya",
+   "ini": 78.002,
+   "fin": 78.181,
+   "frase": 20
+  },
+  {
+   "w": "no",
+   "ini": 78.181,
+   "fin": 78.359,
+   "frase": 20
+  },
+  {
+   "w": "la",
+   "ini": 78.359,
+   "fin": 78.537,
+   "frase": 20
+  },
+  {
+   "w": "recupera.",
+   "ini": 78.537,
+   "fin": 79.131,
+   "frase": 20
+  }
+ ]
+}

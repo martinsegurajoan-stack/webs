@@ -1,0 +1,1903 @@
+{
+ "duracion": 98.428,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Mañana, a las nueve de la mañana, aparecerá una puerta delante de cada persona del planeta.",
+   "ini": 0.0,
+   "fin": 5.145
+  },
+  {
+   "n": 2,
+   "texto": "No importa dónde estés.",
+   "ini": 5.235,
+   "fin": 6.403
+  },
+  {
+   "n": 3,
+   "texto": "En tu casa, en el trabajo o en mitad de la calle.",
+   "ini": 6.493,
+   "fin": 9.359
+  },
+  {
+   "n": 4,
+   "texto": "Y detrás de ella encontrarás exactamente lo que más deseas en el mundo.",
+   "ini": 9.449,
+   "fin": 13.613
+  },
+  {
+   "n": 5,
+   "texto": "Al principio, nadie entiende qué está pasando.",
+   "ini": 14.153,
+   "fin": 16.473
+  },
+  {
+   "n": 6,
+   "texto": "Algunos intentan abrirla.",
+   "ini": 16.563,
+   "fin": 17.881
+  },
+  {
+   "n": 7,
+   "texto": "Otros llaman a la policía.",
+   "ini": 17.971,
+   "fin": 19.463
+  },
+  {
+   "n": 8,
+   "texto": "Pero pronto descubren algo increíble: cada puerta es diferente.",
+   "ini": 19.553,
+   "fin": 23.609
+  },
+  {
+   "n": 9,
+   "texto": "Un hombre entra y encuentra una habitación llena de dinero.",
+   "ini": 23.699,
+   "fin": 26.56
+  },
+  {
+   "n": 10,
+   "texto": "Una mujer vuelve a ver a alguien que había perdido.",
+   "ini": 26.65,
+   "fin": 29.015
+  },
+  {
+   "n": 11,
+   "texto": "Y un joven descubre que tiene delante la vida con la que siempre había soñado.",
+   "ini": 29.105,
+   "fin": 32.948
+  },
+  {
+   "n": 12,
+   "texto": "Pero todas las puertas tienen una misma condición: puedes conseguir lo que deseas, pero tendrás que entregar algo a cambio.",
+   "ini": 33.388,
+   "fin": 39.761
+  },
+  {
+   "n": 13,
+   "texto": "No puedes elegir qué perderás.",
+   "ini": 39.851,
+   "fin": 41.342
+  },
+  {
+   "n": 14,
+   "texto": "Y no hay forma de saberlo hasta que cruzas.",
+   "ini": 41.432,
+   "fin": 43.58
+  },
+  {
+   "n": 15,
+   "texto": "En pocas horas, millones de personas empiezan a cruzar.",
+   "ini": 44.17,
+   "fin": 47.024
+  },
+  {
+   "n": 16,
+   "texto": "Algunos consiguen hacerse millonarios.",
+   "ini": 47.114,
+   "fin": 49.008
+  },
+  {
+   "n": 17,
+   "texto": "Otros recuperan a sus seres queridos.",
+   "ini": 49.098,
+   "fin": 51.167
+  },
+  {
+   "n": 18,
+   "texto": "Pero también empiezan a aparecer las primeras consecuencias.",
+   "ini": 51.257,
+   "fin": 54.215
+  },
+  {
+   "n": 19,
+   "texto": "Un hombre consigue todo el dinero que quería, pero pierde la capacidad de reconocer a su familia.",
+   "ini": 54.305,
+   "fin": 58.796
+  },
+  {
+   "n": 20,
+   "texto": "Una mujer recupera a su pareja, pero olvida todos los recuerdos que compartieron.",
+   "ini": 58.886,
+   "fin": 62.869
+  },
+  {
+   "n": 21,
+   "texto": "Los gobiernos intentan prohibir las puertas.",
+   "ini": 63.309,
+   "fin": 65.57
+  },
+  {
+   "n": 22,
+   "texto": "Pero es inútil.",
+   "ini": 65.66,
+   "fin": 66.441
+  },
+  {
+   "n": 23,
+   "texto": "No pueden destruirlas.",
+   "ini": 66.531,
+   "fin": 67.827
+  },
+  {
+   "n": 24,
+   "texto": "Y lo peor todavía está por llegar: descubren que algunas personas han cruzado varias veces.",
+   "ini": 67.917,
+   "fin": 73.043
+  },
+  {
+   "n": 25,
+   "texto": "Cada deseo cumplido tiene un precio mayor que el anterior.",
+   "ini": 73.133,
+   "fin": 76.211
+  },
+  {
+   "n": 26,
+   "texto": "Al día siguiente, las puertas desaparecen.",
+   "ini": 77.201,
+   "fin": 79.343
+  },
+  {
+   "n": 27,
+   "texto": "Todas menos una.",
+   "ini": 79.433,
+   "fin": 80.545
+  },
+  {
+   "n": 28,
+   "texto": "La tuya.",
+   "ini": 81.185,
+   "fin": 81.783
+  },
+  {
+   "n": 29,
+   "texto": "Sigue ahí, delante de ti.",
+   "ini": 82.273,
+   "fin": 83.768
+  },
+  {
+   "n": 30,
+   "texto": "Y ahora aparece un mensaje escrito en ella: «Puedes recuperar todo lo que has perdido… pero tendrás que entregar algo que todavía conservas».",
+   "ini": 83.858,
+   "fin": 91.774
+  },
+  {
+   "n": 31,
+   "texto": "La puerta se abre lentamente.",
+   "ini": 91.864,
+   "fin": 93.672
+  },
+  {
+   "n": 32,
+   "texto": "Y esta vez, nadie sabe qué hay detrás.",
+   "ini": 94.362,
+   "fin": 96.828
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Mañana,",
+   "ini": 0.0,
+   "fin": 0.56,
+   "frase": 1
+  },
+  {
+   "w": "a",
+   "ini": 0.86,
+   "fin": 0.948,
+   "frase": 1
+  },
+  {
+   "w": "las",
+   "ini": 0.948,
+   "fin": 1.123,
+   "frase": 1
+  },
+  {
+   "w": "nueve",
+   "ini": 1.123,
+   "fin": 1.386,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 1.386,
+   "fin": 1.518,
+   "frase": 1
+  },
+  {
+   "w": "la",
+   "ini": 1.518,
+   "fin": 1.649,
+   "frase": 1
+  },
+  {
+   "w": "mañana,",
+   "ini": 1.649,
+   "fin": 2.0,
+   "frase": 1
+  },
+  {
+   "w": "aparecerá",
+   "ini": 2.29,
+   "fin": 2.782,
+   "frase": 1
+  },
+  {
+   "w": "una",
+   "ini": 2.782,
+   "fin": 2.979,
+   "frase": 1
+  },
+  {
+   "w": "puerta",
+   "ini": 2.979,
+   "fin": 3.324,
+   "frase": 1
+  },
+  {
+   "w": "delante",
+   "ini": 3.324,
+   "fin": 3.718,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 3.718,
+   "fin": 3.865,
+   "frase": 1
+  },
+  {
+   "w": "cada",
+   "ini": 3.865,
+   "fin": 4.112,
+   "frase": 1
+  },
+  {
+   "w": "persona",
+   "ini": 4.112,
+   "fin": 4.505,
+   "frase": 1
+  },
+  {
+   "w": "del",
+   "ini": 4.505,
+   "fin": 4.702,
+   "frase": 1
+  },
+  {
+   "w": "planeta.",
+   "ini": 4.702,
+   "fin": 5.145,
+   "frase": 1
+  },
+  {
+   "w": "No",
+   "ini": 5.235,
+   "fin": 5.381,
+   "frase": 2
+  },
+  {
+   "w": "importa",
+   "ini": 5.381,
+   "fin": 5.77,
+   "frase": 2
+  },
+  {
+   "w": "dónde",
+   "ini": 5.77,
+   "fin": 6.062,
+   "frase": 2
+  },
+  {
+   "w": "estés.",
+   "ini": 6.062,
+   "fin": 6.403,
+   "frase": 2
+  },
+  {
+   "w": "En",
+   "ini": 6.493,
+   "fin": 6.648,
+   "frase": 3
+  },
+  {
+   "w": "tu",
+   "ini": 6.648,
+   "fin": 6.803,
+   "frase": 3
+  },
+  {
+   "w": "casa,",
+   "ini": 6.803,
+   "fin": 7.113,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 7.383,
+   "fin": 7.539,
+   "frase": 3
+  },
+  {
+   "w": "el",
+   "ini": 7.539,
+   "fin": 7.695,
+   "frase": 3
+  },
+  {
+   "w": "trabajo",
+   "ini": 7.695,
+   "fin": 8.111,
+   "frase": 3
+  },
+  {
+   "w": "o",
+   "ini": 8.111,
+   "fin": 8.215,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 8.215,
+   "fin": 8.371,
+   "frase": 3
+  },
+  {
+   "w": "mitad",
+   "ini": 8.371,
+   "fin": 8.683,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 8.683,
+   "fin": 8.839,
+   "frase": 3
+  },
+  {
+   "w": "la",
+   "ini": 8.839,
+   "fin": 8.995,
+   "frase": 3
+  },
+  {
+   "w": "calle.",
+   "ini": 8.995,
+   "fin": 9.359,
+   "frase": 3
+  },
+  {
+   "w": "Y",
+   "ini": 9.449,
+   "fin": 9.565,
+   "frase": 4
+  },
+  {
+   "w": "detrás",
+   "ini": 9.565,
+   "fin": 9.97,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 9.97,
+   "fin": 10.143,
+   "frase": 4
+  },
+  {
+   "w": "ella",
+   "ini": 10.143,
+   "fin": 10.432,
+   "frase": 4
+  },
+  {
+   "w": "encontrarás",
+   "ini": 10.432,
+   "fin": 11.126,
+   "frase": 4
+  },
+  {
+   "w": "exactamente",
+   "ini": 11.126,
+   "fin": 11.82,
+   "frase": 4
+  },
+  {
+   "w": "lo",
+   "ini": 11.82,
+   "fin": 11.994,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 11.994,
+   "fin": 12.225,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 12.225,
+   "fin": 12.456,
+   "frase": 4
+  },
+  {
+   "w": "deseas",
+   "ini": 12.456,
+   "fin": 12.861,
+   "frase": 4
+  },
+  {
+   "w": "en",
+   "ini": 12.861,
+   "fin": 13.035,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 13.035,
+   "fin": 13.208,
+   "frase": 4
+  },
+  {
+   "w": "mundo.",
+   "ini": 13.208,
+   "fin": 13.613,
+   "frase": 4
+  },
+  {
+   "w": "Al",
+   "ini": 14.153,
+   "fin": 14.296,
+   "frase": 5
+  },
+  {
+   "w": "principio,",
+   "ini": 14.296,
+   "fin": 14.823,
+   "frase": 5
+  },
+  {
+   "w": "nadie",
+   "ini": 14.893,
+   "fin": 15.18,
+   "frase": 5
+  },
+  {
+   "w": "entiende",
+   "ini": 15.18,
+   "fin": 15.611,
+   "frase": 5
+  },
+  {
+   "w": "qué",
+   "ini": 15.611,
+   "fin": 15.803,
+   "frase": 5
+  },
+  {
+   "w": "está",
+   "ini": 15.803,
+   "fin": 16.042,
+   "frase": 5
+  },
+  {
+   "w": "pasando.",
+   "ini": 16.042,
+   "fin": 16.473,
+   "frase": 5
+  },
+  {
+   "w": "Algunos",
+   "ini": 16.563,
+   "fin": 16.969,
+   "frase": 6
+  },
+  {
+   "w": "intentan",
+   "ini": 16.969,
+   "fin": 17.425,
+   "frase": 6
+  },
+  {
+   "w": "abrirla.",
+   "ini": 17.425,
+   "fin": 17.881,
+   "frase": 6
+  },
+  {
+   "w": "Otros",
+   "ini": 17.971,
+   "fin": 18.303,
+   "frase": 7
+  },
+  {
+   "w": "llaman",
+   "ini": 18.303,
+   "fin": 18.689,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 18.689,
+   "fin": 18.8,
+   "frase": 7
+  },
+  {
+   "w": "la",
+   "ini": 18.8,
+   "fin": 18.966,
+   "frase": 7
+  },
+  {
+   "w": "policía.",
+   "ini": 18.966,
+   "fin": 19.463,
+   "frase": 7
+  },
+  {
+   "w": "Pero",
+   "ini": 19.553,
+   "fin": 19.817,
+   "frase": 8
+  },
+  {
+   "w": "pronto",
+   "ini": 19.817,
+   "fin": 20.187,
+   "frase": 8
+  },
+  {
+   "w": "descubren",
+   "ini": 20.187,
+   "fin": 20.716,
+   "frase": 8
+  },
+  {
+   "w": "algo",
+   "ini": 20.716,
+   "fin": 20.981,
+   "frase": 8
+  },
+  {
+   "w": "increíble:",
+   "ini": 20.981,
+   "fin": 21.563,
+   "frase": 8
+  },
+  {
+   "w": "cada",
+   "ini": 22.043,
+   "fin": 22.344,
+   "frase": 8
+  },
+  {
+   "w": "puerta",
+   "ini": 22.344,
+   "fin": 22.766,
+   "frase": 8
+  },
+  {
+   "w": "es",
+   "ini": 22.766,
+   "fin": 22.946,
+   "frase": 8
+  },
+  {
+   "w": "diferente.",
+   "ini": 22.946,
+   "fin": 23.609,
+   "frase": 8
+  },
+  {
+   "w": "Un",
+   "ini": 23.699,
+   "fin": 23.842,
+   "frase": 9
+  },
+  {
+   "w": "hombre",
+   "ini": 23.842,
+   "fin": 24.176,
+   "frase": 9
+  },
+  {
+   "w": "entra",
+   "ini": 24.176,
+   "fin": 24.462,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 24.462,
+   "fin": 24.557,
+   "frase": 9
+  },
+  {
+   "w": "encuentra",
+   "ini": 24.557,
+   "fin": 25.034,
+   "frase": 9
+  },
+  {
+   "w": "una",
+   "ini": 25.034,
+   "fin": 25.225,
+   "frase": 9
+  },
+  {
+   "w": "habitación",
+   "ini": 25.225,
+   "fin": 25.75,
+   "frase": 9
+  },
+  {
+   "w": "llena",
+   "ini": 25.75,
+   "fin": 26.036,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 26.036,
+   "fin": 26.179,
+   "frase": 9
+  },
+  {
+   "w": "dinero.",
+   "ini": 26.179,
+   "fin": 26.56,
+   "frase": 9
+  },
+  {
+   "w": "Una",
+   "ini": 26.65,
+   "fin": 26.832,
+   "frase": 10
+  },
+  {
+   "w": "mujer",
+   "ini": 26.832,
+   "fin": 27.105,
+   "frase": 10
+  },
+  {
+   "w": "vuelve",
+   "ini": 27.105,
+   "fin": 27.423,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 27.423,
+   "fin": 27.514,
+   "frase": 10
+  },
+  {
+   "w": "ver",
+   "ini": 27.514,
+   "fin": 27.696,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 27.696,
+   "fin": 27.787,
+   "frase": 10
+  },
+  {
+   "w": "alguien",
+   "ini": 27.787,
+   "fin": 28.151,
+   "frase": 10
+  },
+  {
+   "w": "que",
+   "ini": 28.151,
+   "fin": 28.333,
+   "frase": 10
+  },
+  {
+   "w": "había",
+   "ini": 28.333,
+   "fin": 28.605,
+   "frase": 10
+  },
+  {
+   "w": "perdido.",
+   "ini": 28.605,
+   "fin": 29.015,
+   "frase": 10
+  },
+  {
+   "w": "Y",
+   "ini": 29.105,
+   "fin": 29.202,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 29.202,
+   "fin": 29.348,
+   "frase": 11
+  },
+  {
+   "w": "joven",
+   "ini": 29.348,
+   "fin": 29.64,
+   "frase": 11
+  },
+  {
+   "w": "descubre",
+   "ini": 29.64,
+   "fin": 30.078,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 30.078,
+   "fin": 30.272,
+   "frase": 11
+  },
+  {
+   "w": "tiene",
+   "ini": 30.272,
+   "fin": 30.564,
+   "frase": 11
+  },
+  {
+   "w": "delante",
+   "ini": 30.564,
+   "fin": 30.953,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 30.953,
+   "fin": 31.099,
+   "frase": 11
+  },
+  {
+   "w": "vida",
+   "ini": 31.099,
+   "fin": 31.342,
+   "frase": 11
+  },
+  {
+   "w": "con",
+   "ini": 31.342,
+   "fin": 31.537,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 31.537,
+   "fin": 31.683,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 31.683,
+   "fin": 31.877,
+   "frase": 11
+  },
+  {
+   "w": "siempre",
+   "ini": 31.877,
+   "fin": 32.267,
+   "frase": 11
+  },
+  {
+   "w": "había",
+   "ini": 32.267,
+   "fin": 32.558,
+   "frase": 11
+  },
+  {
+   "w": "soñado.",
+   "ini": 32.558,
+   "fin": 32.948,
+   "frase": 11
+  },
+  {
+   "w": "Pero",
+   "ini": 33.388,
+   "fin": 33.614,
+   "frase": 12
+  },
+  {
+   "w": "todas",
+   "ini": 33.614,
+   "fin": 33.886,
+   "frase": 12
+  },
+  {
+   "w": "las",
+   "ini": 33.886,
+   "fin": 34.067,
+   "frase": 12
+  },
+  {
+   "w": "puertas",
+   "ini": 34.067,
+   "fin": 34.429,
+   "frase": 12
+  },
+  {
+   "w": "tienen",
+   "ini": 34.429,
+   "fin": 34.746,
+   "frase": 12
+  },
+  {
+   "w": "una",
+   "ini": 34.746,
+   "fin": 34.928,
+   "frase": 12
+  },
+  {
+   "w": "misma",
+   "ini": 34.928,
+   "fin": 35.199,
+   "frase": 12
+  },
+  {
+   "w": "condición:",
+   "ini": 35.199,
+   "fin": 35.698,
+   "frase": 12
+  },
+  {
+   "w": "puedes",
+   "ini": 36.238,
+   "fin": 36.537,
+   "frase": 12
+  },
+  {
+   "w": "conseguir",
+   "ini": 36.537,
+   "fin": 36.965,
+   "frase": 12
+  },
+  {
+   "w": "lo",
+   "ini": 36.965,
+   "fin": 37.094,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 37.094,
+   "fin": 37.265,
+   "frase": 12
+  },
+  {
+   "w": "deseas,",
+   "ini": 37.265,
+   "fin": 37.608,
+   "frase": 12
+  },
+  {
+   "w": "pero",
+   "ini": 37.928,
+   "fin": 38.151,
+   "frase": 12
+  },
+  {
+   "w": "tendrás",
+   "ini": 38.151,
+   "fin": 38.509,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 38.509,
+   "fin": 38.688,
+   "frase": 12
+  },
+  {
+   "w": "entregar",
+   "ini": 38.688,
+   "fin": 39.09,
+   "frase": 12
+  },
+  {
+   "w": "algo",
+   "ini": 39.09,
+   "fin": 39.314,
+   "frase": 12
+  },
+  {
+   "w": "a",
+   "ini": 39.314,
+   "fin": 39.403,
+   "frase": 12
+  },
+  {
+   "w": "cambio.",
+   "ini": 39.403,
+   "fin": 39.761,
+   "frase": 12
+  },
+  {
+   "w": "No",
+   "ini": 39.851,
+   "fin": 39.995,
+   "frase": 13
+  },
+  {
+   "w": "puedes",
+   "ini": 39.995,
+   "fin": 40.332,
+   "frase": 13
+  },
+  {
+   "w": "elegir",
+   "ini": 40.332,
+   "fin": 40.669,
+   "frase": 13
+  },
+  {
+   "w": "qué",
+   "ini": 40.669,
+   "fin": 40.861,
+   "frase": 13
+  },
+  {
+   "w": "perderás.",
+   "ini": 40.861,
+   "fin": 41.342,
+   "frase": 13
+  },
+  {
+   "w": "Y",
+   "ini": 41.432,
+   "fin": 41.529,
+   "frase": 14
+  },
+  {
+   "w": "no",
+   "ini": 41.529,
+   "fin": 41.676,
+   "frase": 14
+  },
+  {
+   "w": "hay",
+   "ini": 41.676,
+   "fin": 41.871,
+   "frase": 14
+  },
+  {
+   "w": "forma",
+   "ini": 41.871,
+   "fin": 42.164,
+   "frase": 14
+  },
+  {
+   "w": "de",
+   "ini": 42.164,
+   "fin": 42.311,
+   "frase": 14
+  },
+  {
+   "w": "saberlo",
+   "ini": 42.311,
+   "fin": 42.701,
+   "frase": 14
+  },
+  {
+   "w": "hasta",
+   "ini": 42.701,
+   "fin": 42.994,
+   "frase": 14
+  },
+  {
+   "w": "que",
+   "ini": 42.994,
+   "fin": 43.19,
+   "frase": 14
+  },
+  {
+   "w": "cruzas.",
+   "ini": 43.19,
+   "fin": 43.58,
+   "frase": 14
+  },
+  {
+   "w": "En",
+   "ini": 44.17,
+   "fin": 44.307,
+   "frase": 15
+  },
+  {
+   "w": "pocas",
+   "ini": 44.307,
+   "fin": 44.581,
+   "frase": 15
+  },
+  {
+   "w": "horas,",
+   "ini": 44.581,
+   "fin": 44.9,
+   "frase": 15
+  },
+  {
+   "w": "millones",
+   "ini": 45.09,
+   "fin": 45.526,
+   "frase": 15
+  },
+  {
+   "w": "de",
+   "ini": 45.526,
+   "fin": 45.671,
+   "frase": 15
+  },
+  {
+   "w": "personas",
+   "ini": 45.671,
+   "fin": 46.106,
+   "frase": 15
+  },
+  {
+   "w": "empiezan",
+   "ini": 46.106,
+   "fin": 46.541,
+   "frase": 15
+  },
+  {
+   "w": "a",
+   "ini": 46.541,
+   "fin": 46.638,
+   "frase": 15
+  },
+  {
+   "w": "cruzar.",
+   "ini": 46.638,
+   "fin": 47.024,
+   "frase": 15
+  },
+  {
+   "w": "Algunos",
+   "ini": 47.114,
+   "fin": 47.503,
+   "frase": 16
+  },
+  {
+   "w": "consiguen",
+   "ini": 47.503,
+   "fin": 47.988,
+   "frase": 16
+  },
+  {
+   "w": "hacerse",
+   "ini": 47.988,
+   "fin": 48.377,
+   "frase": 16
+  },
+  {
+   "w": "millonarios.",
+   "ini": 48.377,
+   "fin": 49.008,
+   "frase": 16
+  },
+  {
+   "w": "Otros",
+   "ini": 49.098,
+   "fin": 49.424,
+   "frase": 17
+  },
+  {
+   "w": "recuperan",
+   "ini": 49.424,
+   "fin": 49.969,
+   "frase": 17
+  },
+  {
+   "w": "a",
+   "ini": 49.969,
+   "fin": 50.078,
+   "frase": 17
+  },
+  {
+   "w": "sus",
+   "ini": 50.078,
+   "fin": 50.296,
+   "frase": 17
+  },
+  {
+   "w": "seres",
+   "ini": 50.296,
+   "fin": 50.622,
+   "frase": 17
+  },
+  {
+   "w": "queridos.",
+   "ini": 50.622,
+   "fin": 51.167,
+   "frase": 17
+  },
+  {
+   "w": "Pero",
+   "ini": 51.257,
+   "fin": 51.499,
+   "frase": 18
+  },
+  {
+   "w": "también",
+   "ini": 51.499,
+   "fin": 51.887,
+   "frase": 18
+  },
+  {
+   "w": "empiezan",
+   "ini": 51.887,
+   "fin": 52.324,
+   "frase": 18
+  },
+  {
+   "w": "a",
+   "ini": 52.324,
+   "fin": 52.421,
+   "frase": 18
+  },
+  {
+   "w": "aparecer",
+   "ini": 52.421,
+   "fin": 52.857,
+   "frase": 18
+  },
+  {
+   "w": "las",
+   "ini": 52.857,
+   "fin": 53.051,
+   "frase": 18
+  },
+  {
+   "w": "primeras",
+   "ini": 53.051,
+   "fin": 53.487,
+   "frase": 18
+  },
+  {
+   "w": "consecuencias.",
+   "ini": 53.487,
+   "fin": 54.215,
+   "frase": 18
+  },
+  {
+   "w": "Un",
+   "ini": 54.305,
+   "fin": 54.432,
+   "frase": 19
+  },
+  {
+   "w": "hombre",
+   "ini": 54.432,
+   "fin": 54.729,
+   "frase": 19
+  },
+  {
+   "w": "consigue",
+   "ini": 54.729,
+   "fin": 55.11,
+   "frase": 19
+  },
+  {
+   "w": "todo",
+   "ini": 55.11,
+   "fin": 55.322,
+   "frase": 19
+  },
+  {
+   "w": "el",
+   "ini": 55.322,
+   "fin": 55.449,
+   "frase": 19
+  },
+  {
+   "w": "dinero",
+   "ini": 55.449,
+   "fin": 55.746,
+   "frase": 19
+  },
+  {
+   "w": "que",
+   "ini": 55.746,
+   "fin": 55.916,
+   "frase": 19
+  },
+  {
+   "w": "quería,",
+   "ini": 55.916,
+   "fin": 56.255,
+   "frase": 19
+  },
+  {
+   "w": "pero",
+   "ini": 56.495,
+   "fin": 56.716,
+   "frase": 19
+  },
+  {
+   "w": "pierde",
+   "ini": 56.716,
+   "fin": 57.026,
+   "frase": 19
+  },
+  {
+   "w": "la",
+   "ini": 57.026,
+   "fin": 57.159,
+   "frase": 19
+  },
+  {
+   "w": "capacidad",
+   "ini": 57.159,
+   "fin": 57.601,
+   "frase": 19
+  },
+  {
+   "w": "de",
+   "ini": 57.601,
+   "fin": 57.734,
+   "frase": 19
+  },
+  {
+   "w": "reconocer",
+   "ini": 57.734,
+   "fin": 58.176,
+   "frase": 19
+  },
+  {
+   "w": "a",
+   "ini": 58.176,
+   "fin": 58.265,
+   "frase": 19
+  },
+  {
+   "w": "su",
+   "ini": 58.265,
+   "fin": 58.398,
+   "frase": 19
+  },
+  {
+   "w": "familia.",
+   "ini": 58.398,
+   "fin": 58.796,
+   "frase": 19
+  },
+  {
+   "w": "Una",
+   "ini": 58.886,
+   "fin": 59.071,
+   "frase": 20
+  },
+  {
+   "w": "mujer",
+   "ini": 59.071,
+   "fin": 59.348,
+   "frase": 20
+  },
+  {
+   "w": "recupera",
+   "ini": 59.348,
+   "fin": 59.765,
+   "frase": 20
+  },
+  {
+   "w": "a",
+   "ini": 59.765,
+   "fin": 59.857,
+   "frase": 20
+  },
+  {
+   "w": "su",
+   "ini": 59.857,
+   "fin": 59.996,
+   "frase": 20
+  },
+  {
+   "w": "pareja,",
+   "ini": 59.996,
+   "fin": 60.366,
+   "frase": 20
+  },
+  {
+   "w": "pero",
+   "ini": 60.586,
+   "fin": 60.814,
+   "frase": 20
+  },
+  {
+   "w": "olvida",
+   "ini": 60.814,
+   "fin": 61.134,
+   "frase": 20
+  },
+  {
+   "w": "todos",
+   "ini": 61.134,
+   "fin": 61.408,
+   "frase": 20
+  },
+  {
+   "w": "los",
+   "ini": 61.408,
+   "fin": 61.59,
+   "frase": 20
+  },
+  {
+   "w": "recuerdos",
+   "ini": 61.59,
+   "fin": 62.047,
+   "frase": 20
+  },
+  {
+   "w": "que",
+   "ini": 62.047,
+   "fin": 62.229,
+   "frase": 20
+  },
+  {
+   "w": "compartieron.",
+   "ini": 62.229,
+   "fin": 62.869,
+   "frase": 20
+  },
+  {
+   "w": "Los",
+   "ini": 63.309,
+   "fin": 63.51,
+   "frase": 21
+  },
+  {
+   "w": "gobiernos",
+   "ini": 63.51,
+   "fin": 64.012,
+   "frase": 21
+  },
+  {
+   "w": "intentan",
+   "ini": 64.012,
+   "fin": 64.464,
+   "frase": 21
+  },
+  {
+   "w": "prohibir",
+   "ini": 64.464,
+   "fin": 64.916,
+   "frase": 21
+  },
+  {
+   "w": "las",
+   "ini": 64.916,
+   "fin": 65.117,
+   "frase": 21
+  },
+  {
+   "w": "puertas.",
+   "ini": 65.117,
+   "fin": 65.57,
+   "frase": 21
+  },
+  {
+   "w": "Pero",
+   "ini": 65.66,
+   "fin": 65.904,
+   "frase": 22
+  },
+  {
+   "w": "es",
+   "ini": 65.904,
+   "fin": 66.05,
+   "frase": 22
+  },
+  {
+   "w": "inútil.",
+   "ini": 66.05,
+   "fin": 66.441,
+   "frase": 22
+  },
+  {
+   "w": "No",
+   "ini": 66.531,
+   "fin": 66.7,
+   "frase": 23
+  },
+  {
+   "w": "pueden",
+   "ini": 66.7,
+   "fin": 67.094,
+   "frase": 23
+  },
+  {
+   "w": "destruirlas.",
+   "ini": 67.094,
+   "fin": 67.827,
+   "frase": 23
+  },
+  {
+   "w": "Y",
+   "ini": 67.917,
+   "fin": 68.015,
+   "frase": 24
+  },
+  {
+   "w": "lo",
+   "ini": 68.015,
+   "fin": 68.161,
+   "frase": 24
+  },
+  {
+   "w": "peor",
+   "ini": 68.161,
+   "fin": 68.405,
+   "frase": 24
+  },
+  {
+   "w": "todavía",
+   "ini": 68.405,
+   "fin": 68.796,
+   "frase": 24
+  },
+  {
+   "w": "está",
+   "ini": 68.796,
+   "fin": 69.041,
+   "frase": 24
+  },
+  {
+   "w": "por",
+   "ini": 69.041,
+   "fin": 69.236,
+   "frase": 24
+  },
+  {
+   "w": "llegar:",
+   "ini": 69.236,
+   "fin": 69.627,
+   "frase": 24
+  },
+  {
+   "w": "descubren",
+   "ini": 70.097,
+   "fin": 70.614,
+   "frase": 24
+  },
+  {
+   "w": "que",
+   "ini": 70.614,
+   "fin": 70.82,
+   "frase": 24
+  },
+  {
+   "w": "algunas",
+   "ini": 70.82,
+   "fin": 71.234,
+   "frase": 24
+  },
+  {
+   "w": "personas",
+   "ini": 71.234,
+   "fin": 71.699,
+   "frase": 24
+  },
+  {
+   "w": "han",
+   "ini": 71.699,
+   "fin": 71.906,
+   "frase": 24
+  },
+  {
+   "w": "cruzado",
+   "ini": 71.906,
+   "fin": 72.319,
+   "frase": 24
+  },
+  {
+   "w": "varias",
+   "ini": 72.319,
+   "fin": 72.681,
+   "frase": 24
+  },
+  {
+   "w": "veces.",
+   "ini": 72.681,
+   "fin": 73.043,
+   "frase": 24
+  },
+  {
+   "w": "Cada",
+   "ini": 73.133,
+   "fin": 73.394,
+   "frase": 25
+  },
+  {
+   "w": "deseo",
+   "ini": 73.394,
+   "fin": 73.707,
+   "frase": 25
+  },
+  {
+   "w": "cumplido",
+   "ini": 73.707,
+   "fin": 74.176,
+   "frase": 25
+  },
+  {
+   "w": "tiene",
+   "ini": 74.176,
+   "fin": 74.489,
+   "frase": 25
+  },
+  {
+   "w": "un",
+   "ini": 74.489,
+   "fin": 74.646,
+   "frase": 25
+  },
+  {
+   "w": "precio",
+   "ini": 74.646,
+   "fin": 75.011,
+   "frase": 25
+  },
+  {
+   "w": "mayor",
+   "ini": 75.011,
+   "fin": 75.324,
+   "frase": 25
+  },
+  {
+   "w": "que",
+   "ini": 75.324,
+   "fin": 75.532,
+   "frase": 25
+  },
+  {
+   "w": "el",
+   "ini": 75.532,
+   "fin": 75.689,
+   "frase": 25
+  },
+  {
+   "w": "anterior.",
+   "ini": 75.689,
+   "fin": 76.211,
+   "frase": 25
+  },
+  {
+   "w": "Al",
+   "ini": 77.201,
+   "fin": 77.337,
+   "frase": 26
+  },
+  {
+   "w": "día",
+   "ini": 77.337,
+   "fin": 77.52,
+   "frase": 26
+  },
+  {
+   "w": "siguiente,",
+   "ini": 77.52,
+   "fin": 78.021,
+   "frase": 26
+  },
+  {
+   "w": "las",
+   "ini": 78.101,
+   "fin": 78.299,
+   "frase": 26
+  },
+  {
+   "w": "puertas",
+   "ini": 78.299,
+   "fin": 78.697,
+   "frase": 26
+  },
+  {
+   "w": "desaparecen.",
+   "ini": 78.697,
+   "fin": 79.343,
+   "frase": 26
+  },
+  {
+   "w": "Todas",
+   "ini": 79.433,
+   "fin": 79.825,
+   "frase": 27
+  },
+  {
+   "w": "menos",
+   "ini": 79.825,
+   "fin": 80.218,
+   "frase": 27
+  },
+  {
+   "w": "una.",
+   "ini": 80.218,
+   "fin": 80.545,
+   "frase": 27
+  },
+  {
+   "w": "La",
+   "ini": 81.185,
+   "fin": 81.384,
+   "frase": 28
+  },
+  {
+   "w": "tuya.",
+   "ini": 81.384,
+   "fin": 81.783,
+   "frase": 28
+  },
+  {
+   "w": "Sigue",
+   "ini": 82.273,
+   "fin": 82.529,
+   "frase": 29
+  },
+  {
+   "w": "ahí,",
+   "ini": 82.529,
+   "fin": 82.743,
+   "frase": 29
+  },
+  {
+   "w": "delante",
+   "ini": 82.993,
+   "fin": 83.406,
+   "frase": 29
+  },
+  {
+   "w": "de",
+   "ini": 83.406,
+   "fin": 83.561,
+   "frase": 29
+  },
+  {
+   "w": "ti.",
+   "ini": 83.561,
+   "fin": 83.768,
+   "frase": 29
+  },
+  {
+   "w": "Y",
+   "ini": 83.858,
+   "fin": 83.961,
+   "frase": 30
+  },
+  {
+   "w": "ahora",
+   "ini": 83.961,
+   "fin": 84.272,
+   "frase": 30
+  },
+  {
+   "w": "aparece",
+   "ini": 84.272,
+   "fin": 84.687,
+   "frase": 30
+  },
+  {
+   "w": "un",
+   "ini": 84.687,
+   "fin": 84.842,
+   "frase": 30
+  },
+  {
+   "w": "mensaje",
+   "ini": 84.842,
+   "fin": 85.257,
+   "frase": 30
+  },
+  {
+   "w": "escrito",
+   "ini": 85.257,
+   "fin": 85.671,
+   "frase": 30
+  },
+  {
+   "w": "en",
+   "ini": 85.671,
+   "fin": 85.827,
+   "frase": 30
+  },
+  {
+   "w": "ella:",
+   "ini": 85.827,
+   "fin": 86.138,
+   "frase": 30
+  },
+  {
+   "w": "«Puedes",
+   "ini": 86.678,
+   "fin": 87.05,
+   "frase": 30
+  },
+  {
+   "w": "recuperar",
+   "ini": 87.05,
+   "fin": 87.515,
+   "frase": 30
+  },
+  {
+   "w": "todo",
+   "ini": 87.515,
+   "fin": 87.748,
+   "frase": 30
+  },
+  {
+   "w": "lo",
+   "ini": 87.748,
+   "fin": 87.887,
+   "frase": 30
+  },
+  {
+   "w": "que",
+   "ini": 87.887,
+   "fin": 88.073,
+   "frase": 30
+  },
+  {
+   "w": "has",
+   "ini": 88.073,
+   "fin": 88.259,
+   "frase": 30
+  },
+  {
+   "w": "perdido…",
+   "ini": 88.259,
+   "fin": 88.678,
+   "frase": 30
+  },
+  {
+   "w": "pero",
+   "ini": 89.178,
+   "fin": 89.414,
+   "frase": 30
+  },
+  {
+   "w": "tendrás",
+   "ini": 89.414,
+   "fin": 89.791,
+   "frase": 30
+  },
+  {
+   "w": "que",
+   "ini": 89.791,
+   "fin": 89.98,
+   "frase": 30
+  },
+  {
+   "w": "entregar",
+   "ini": 89.98,
+   "fin": 90.405,
+   "frase": 30
+  },
+  {
+   "w": "algo",
+   "ini": 90.405,
+   "fin": 90.641,
+   "frase": 30
+  },
+  {
+   "w": "que",
+   "ini": 90.641,
+   "fin": 90.83,
+   "frase": 30
+  },
+  {
+   "w": "todavía",
+   "ini": 90.83,
+   "fin": 91.208,
+   "frase": 30
+  },
+  {
+   "w": "conservas».",
+   "ini": 91.208,
+   "fin": 91.774,
+   "frase": 30
+  },
+  {
+   "w": "La",
+   "ini": 91.864,
+   "fin": 92.045,
+   "frase": 31
+  },
+  {
+   "w": "puerta",
+   "ini": 92.045,
+   "fin": 92.467,
+   "frase": 31
+  },
+  {
+   "w": "se",
+   "ini": 92.467,
+   "fin": 92.647,
+   "frase": 31
+  },
+  {
+   "w": "abre",
+   "ini": 92.647,
+   "fin": 92.949,
+   "frase": 31
+  },
+  {
+   "w": "lentamente.",
+   "ini": 92.949,
+   "fin": 93.672,
+   "frase": 31
+  },
+  {
+   "w": "Y",
+   "ini": 94.362,
+   "fin": 94.45,
+   "frase": 32
+  },
+  {
+   "w": "esta",
+   "ini": 94.45,
+   "fin": 94.671,
+   "frase": 32
+  },
+  {
+   "w": "vez,",
+   "ini": 94.671,
+   "fin": 94.892,
+   "frase": 32
+  },
+  {
+   "w": "nadie",
+   "ini": 95.252,
+   "fin": 95.602,
+   "frase": 32
+  },
+  {
+   "w": "sabe",
+   "ini": 95.602,
+   "fin": 95.894,
+   "frase": 32
+  },
+  {
+   "w": "qué",
+   "ini": 95.894,
+   "fin": 96.128,
+   "frase": 32
+  },
+  {
+   "w": "hay",
+   "ini": 96.128,
+   "fin": 96.361,
+   "frase": 32
+  },
+  {
+   "w": "detrás.",
+   "ini": 96.361,
+   "fin": 96.828,
+   "frase": 32
+  }
+ ]
+}

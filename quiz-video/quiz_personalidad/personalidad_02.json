@@ -1,0 +1,182 @@
+{
+  "modo": "personalidad",
+  "tema": "personalidad",
+  "video": "personalidad_02",
+  "titulo": "¿Qué tipo de amigo eres?",
+  "rango_tono": [
+    190,
+    245
+  ],
+  "intro": {
+    "v0": 0.05,
+    "titulo": [
+      [
+        "¿QUÉ TIPO DE",
+        "w"
+      ],
+      [
+        "AMIGO",
+        "y"
+      ],
+      [
+        "ERES",
+        "w"
+      ],
+      [
+        "DE VERDAD?",
+        "t"
+      ]
+    ],
+    "voz": "En todo grupo hay cuatro tipos de amigo… ¿Cuál eres tú? ¡Elige una letra y sin trampas!"
+  },
+  "preguntas": [
+    {
+      "pregunta": "Quedáis a las 8. ¿A qué hora llegas?",
+      "opciones": [
+        "Cinco minutos antes",
+        "Llego con altavoz",
+        "A las 8 justas",
+        "¿Qué día era?"
+      ],
+      "imagen": "reloj.png",
+      "reaccion": "¡Sé sincero!",
+      "reaccion_emoji": "risita"
+    },
+    {
+      "pregunta": "Nadie se decide dónde cenar. ¿Qué haces?",
+      "opciones": [
+        "Reservo yo",
+        "¡Propongo karaoke!",
+        "Lo que digáis",
+        "Desaparezco del chat"
+      ],
+      "imagen": "comida.png",
+      "reaccion": "¡Clásico!",
+      "reaccion_emoji": "risa"
+    },
+    {
+      "pregunta": "Tu amigo te cuenta un secreto. ¿Qué pasa?",
+      "opciones": [
+        "Le doy soluciones",
+        "Lo convierto en broma",
+        "Me lo llevo a la tumba",
+        "Se me escapa sin querer"
+      ],
+      "imagen": "bocadillo.png",
+      "reaccion": "¡Uy, peligro!",
+      "reaccion_emoji": "grito"
+    },
+    {
+      "pregunta": "¿Quién eres en el grupo de WhatsApp?",
+      "opciones": [
+        "El que pone fechas",
+        "El de los memes",
+        "El que lee y no habla",
+        "El de los audios eternos"
+      ],
+      "imagen": "movil.png",
+      "reaccion": "¡Te he pillado!",
+      "reaccion_emoji": "ojos"
+    },
+    {
+      "pregunta": "Un amigo está de bajón un viernes. ¿Qué haces?",
+      "opciones": [
+        "Le organizo un plan",
+        "Me lo llevo de fiesta",
+        "Le escucho toda la noche",
+        "Le mando un sticker"
+      ],
+      "imagen": "abrazo.png",
+      "reaccion": "¡Qué bonito!",
+      "reaccion_emoji": "sonrojado"
+    },
+    {
+      "pregunta": "De viaje con amigos, tú eres…",
+      "opciones": [
+        "El de la agenda",
+        "El alma de la fiesta",
+        "El que cuida de todos",
+        "El que pierde el DNI"
+      ],
+      "imagen": "avion.png",
+      "reaccion": "¡Madre mía!",
+      "reaccion_emoji": "mente_explota"
+    }
+  ],
+  "resultado": {
+    "titulo": [
+      [
+        "TU",
+        "w"
+      ],
+      [
+        "RESULTADO",
+        "y"
+      ]
+    ],
+    "perfiles": [
+      {
+        "letra": "A",
+        "nombre": "EL ORGANIZADOR",
+        "imagen": "agenda.png",
+        "voz": "¿Mayoría de A? El organizador: sin ti, el grupo no queda nunca."
+      },
+      {
+        "letra": "B",
+        "nombre": "EL ALMA DE LA FIESTA",
+        "imagen": "confeti.png",
+        "voz": "¿Mayoría de B? El alma de la fiesta: contigo nadie se aburre."
+      },
+      {
+        "letra": "C",
+        "nombre": "EL CONFIDENTE",
+        "imagen": "secreto.png",
+        "voz": "¿Mayoría de C? El confidente: todos te cuentan sus cosas."
+      },
+      {
+        "letra": "D",
+        "nombre": "EL CAOS ANDANTE",
+        "imagen": "rayo.png",
+        "voz": "¿Mayoría de D? El caos andante: imposible no quererte."
+      }
+    ],
+    "empate": "¿EMPATE? ¡ERES UNA MEZCLA!",
+    "aviso": "Resultado orientativo · Test de entretenimiento, no es una evaluación psicológica"
+  },
+  "cierre": {
+    "titulo": [
+      [
+        "¿QUÉ LETRA",
+        "w"
+      ],
+      [
+        "TE HA SALIDO?",
+        "y"
+      ]
+    ],
+    "voz": "¡Confiesa tu letra en comentarios, etiqueta a tu grupo… y dime de qué quieres el próximo test! ¡Síguenos para más!"
+  },
+  "portada": {
+    "arriba": "TEST DE PERSONALIDAD",
+    "titulo": [
+      [
+        "¿QUÉ TIPO DE",
+        "w"
+      ],
+      [
+        "AMIGO",
+        "a"
+      ],
+      [
+        "ERES?",
+        "w"
+      ]
+    ],
+    "pregunta": 3,
+    "emoji": "ojos",
+    "emoji2": "mascaras",
+    "estilo": "sello",
+    "pegatina": "¿QUÉ LETRA ERES?",
+    "sub": "Elige A, B, C o D… y etiqueta a tu grupo"
+  }
+}

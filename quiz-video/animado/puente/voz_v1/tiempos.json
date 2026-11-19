@@ -1,0 +1,2077 @@
+{
+ "duracion": 115.823,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Mil metros de mar. Ni una sola columna en el agua. Y aun así, por aquí pasan miles de coches cada día. ¿Cómo se aguanta?",
+   "ini": 0.5,
+   "fin": 8.046
+  },
+  {
+   "n": 2,
+   "texto": "Aquí el mar es profundo, las corrientes son fuertes… y por debajo tienen que pasar barcos enormes.",
+   "ini": 8.386,
+   "fin": 14.596
+  },
+  {
+   "n": 3,
+   "texto": "Un pilar en mitad del mar sería carísimo y un estorbo. Así que los ingenieros no apoyan el puente. Lo cuelgan.",
+   "ini": 14.736,
+   "fin": 22.054
+  },
+  {
+   "n": 4,
+   "texto": "Todo empieza bajo el agua. En cada orilla se hunde un cajón gigante de hormigón, hasta llegar a la roca firme.",
+   "ini": 22.444,
+   "fin": 28.908
+  },
+  {
+   "n": 5,
+   "texto": "Encima se levantan las torres, de más de doscientos metros. Y fíjate arriba: no son bloques macizos, son arcos huecos. Pesan menos y el viento pasa a través.",
+   "ini": 29.048,
+   "fin": 39.257
+  },
+  {
+   "n": 6,
+   "texto": "Ahora lo más difícil: cruzar el primer cable de un lado al otro. Se lleva con un helicóptero, o incluso con un dron.",
+   "ini": 39.397,
+   "fin": 46.388
+  },
+  {
+   "n": 7,
+   "texto": "Con ese hilo se tiende una pasarela, y empieza el hilado. Una rueda va y viene, llevando alambres de acero de cinco milímetros.",
+   "ini": 46.528,
+   "fin": 54.53
+  },
+  {
+   "n": 8,
+   "texto": "Uno tras otro, hasta juntar decenas de miles. Apretados, forman un cable de más de un metro de grosor.",
+   "ini": 54.67,
+   "fin": 61.24
+  },
+  {
+   "n": 9,
+   "texto": "Sus extremos se atan a tierra, en los anclajes: bloques de hormigón tan pesados que ningún tirón los mueve.",
+   "ini": 61.38,
+   "fin": 67.754
+  },
+  {
+   "n": 10,
+   "texto": "Después cuelgan las péndolas, cables verticales cada pocos metros.",
+   "ini": 67.894,
+   "fin": 71.919
+  },
+  {
+   "n": 11,
+   "texto": "Y llega el tablero. Las barcazas traen los tramos ya fabricados. Una grúa los sube… y los engancha.",
+   "ini": 72.059,
+   "fin": 78.193
+  },
+  {
+   "n": 12,
+   "texto": "Se suele empezar por el centro, avanzando a la vez hacia las dos torres para que el cable no se descompense.",
+   "ini": 78.333,
+   "fin": 84.332
+  },
+  {
+   "n": 13,
+   "texto": "Y este es el truco: el tablero tira de las péndolas, las péndolas del cable, y el cable descarga el peso en las torres y en los anclajes.",
+   "ini": 84.472,
+   "fin": 93.048
+  },
+  {
+   "n": 14,
+   "texto": "Ni un solo kilo cae sobre el mar.",
+   "ini": 93.388,
+   "fin": 95.651
+  },
+  {
+   "n": 15,
+   "texto": "Último tramo. Se cierra el hueco, se asfalta… y se encienden las luces.",
+   "ini": 96.041,
+   "fin": 101.038
+  },
+  {
+   "n": 16,
+   "texto": "Con viento fuerte, el tablero se mueve varios metros. Está hecho para eso: si fuera rígido, se rompería.",
+   "ini": 101.178,
+   "fin": 107.541
+  },
+  {
+   "n": 17,
+   "texto": "Así que cuando cruces uno, recuerda: no vas por encima del mar. Vas colgado de dos cables.",
+   "ini": 107.681,
+   "fin": 114.023
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Mil",
+   "ini": 0.5,
+   "fin": 0.748,
+   "frase": 1
+  },
+  {
+   "w": "metros",
+   "ini": 0.748,
+   "fin": 1.183,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 1.183,
+   "fin": 1.369,
+   "frase": 1
+  },
+  {
+   "w": "mar.",
+   "ini": 1.369,
+   "fin": 1.68,
+   "frase": 1
+  },
+  {
+   "w": "Ni",
+   "ini": 1.88,
+   "fin": 2.044,
+   "frase": 1
+  },
+  {
+   "w": "una",
+   "ini": 2.044,
+   "fin": 2.263,
+   "frase": 1
+  },
+  {
+   "w": "sola",
+   "ini": 2.263,
+   "fin": 2.536,
+   "frase": 1
+  },
+  {
+   "w": "columna",
+   "ini": 2.536,
+   "fin": 2.974,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 2.974,
+   "fin": 3.138,
+   "frase": 1
+  },
+  {
+   "w": "el",
+   "ini": 3.138,
+   "fin": 3.302,
+   "frase": 1
+  },
+  {
+   "w": "agua.",
+   "ini": 3.302,
+   "fin": 3.63,
+   "frase": 1
+  },
+  {
+   "w": "Y",
+   "ini": 3.83,
+   "fin": 3.946,
+   "frase": 1
+  },
+  {
+   "w": "aun",
+   "ini": 3.946,
+   "fin": 4.179,
+   "frase": 1
+  },
+  {
+   "w": "así,",
+   "ini": 4.179,
+   "fin": 4.47,
+   "frase": 1
+  },
+  {
+   "w": "por",
+   "ini": 4.68,
+   "fin": 4.896,
+   "frase": 1
+  },
+  {
+   "w": "aquí",
+   "ini": 4.896,
+   "fin": 5.165,
+   "frase": 1
+  },
+  {
+   "w": "pasan",
+   "ini": 5.165,
+   "fin": 5.489,
+   "frase": 1
+  },
+  {
+   "w": "miles",
+   "ini": 5.489,
+   "fin": 5.812,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 5.812,
+   "fin": 5.974,
+   "frase": 1
+  },
+  {
+   "w": "coches",
+   "ini": 5.974,
+   "fin": 6.351,
+   "frase": 1
+  },
+  {
+   "w": "cada",
+   "ini": 6.351,
+   "fin": 6.62,
+   "frase": 1
+  },
+  {
+   "w": "día.",
+   "ini": 6.62,
+   "fin": 6.89,
+   "frase": 1
+  },
+  {
+   "w": "¿Cómo",
+   "ini": 7.1,
+   "fin": 7.415,
+   "frase": 1
+  },
+  {
+   "w": "se",
+   "ini": 7.415,
+   "fin": 7.573,
+   "frase": 1
+  },
+  {
+   "w": "aguanta?",
+   "ini": 7.573,
+   "fin": 8.046,
+   "frase": 1
+  },
+  {
+   "w": "Aquí",
+   "ini": 8.386,
+   "fin": 8.638,
+   "frase": 2
+  },
+  {
+   "w": "el",
+   "ini": 8.638,
+   "fin": 8.789,
+   "frase": 2
+  },
+  {
+   "w": "mar",
+   "ini": 8.789,
+   "fin": 8.991,
+   "frase": 2
+  },
+  {
+   "w": "es",
+   "ini": 8.991,
+   "fin": 9.142,
+   "frase": 2
+  },
+  {
+   "w": "profundo,",
+   "ini": 9.142,
+   "fin": 9.646,
+   "frase": 2
+  },
+  {
+   "w": "las",
+   "ini": 9.756,
+   "fin": 10.039,
+   "frase": 2
+  },
+  {
+   "w": "corrientes",
+   "ini": 10.039,
+   "fin": 10.817,
+   "frase": 2
+  },
+  {
+   "w": "son",
+   "ini": 10.817,
+   "fin": 11.099,
+   "frase": 2
+  },
+  {
+   "w": "fuertes…",
+   "ini": 11.099,
+   "fin": 11.736,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 11.916,
+   "fin": 12.032,
+   "frase": 2
+  },
+  {
+   "w": "por",
+   "ini": 12.032,
+   "fin": 12.265,
+   "frase": 2
+  },
+  {
+   "w": "debajo",
+   "ini": 12.265,
+   "fin": 12.673,
+   "frase": 2
+  },
+  {
+   "w": "tienen",
+   "ini": 12.673,
+   "fin": 13.081,
+   "frase": 2
+  },
+  {
+   "w": "que",
+   "ini": 13.081,
+   "fin": 13.314,
+   "frase": 2
+  },
+  {
+   "w": "pasar",
+   "ini": 13.314,
+   "fin": 13.664,
+   "frase": 2
+  },
+  {
+   "w": "barcos",
+   "ini": 13.664,
+   "fin": 14.072,
+   "frase": 2
+  },
+  {
+   "w": "enormes.",
+   "ini": 14.072,
+   "fin": 14.596,
+   "frase": 2
+  },
+  {
+   "w": "Un",
+   "ini": 14.736,
+   "fin": 14.92,
+   "frase": 3
+  },
+  {
+   "w": "pilar",
+   "ini": 14.92,
+   "fin": 15.288,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 15.288,
+   "fin": 15.472,
+   "frase": 3
+  },
+  {
+   "w": "mitad",
+   "ini": 15.472,
+   "fin": 15.839,
+   "frase": 3
+  },
+  {
+   "w": "del",
+   "ini": 15.839,
+   "fin": 16.084,
+   "frase": 3
+  },
+  {
+   "w": "mar",
+   "ini": 16.084,
+   "fin": 16.33,
+   "frase": 3
+  },
+  {
+   "w": "sería",
+   "ini": 16.33,
+   "fin": 16.697,
+   "frase": 3
+  },
+  {
+   "w": "carísimo",
+   "ini": 16.697,
+   "fin": 17.249,
+   "frase": 3
+  },
+  {
+   "w": "y",
+   "ini": 17.249,
+   "fin": 17.371,
+   "frase": 3
+  },
+  {
+   "w": "un",
+   "ini": 17.371,
+   "fin": 17.555,
+   "frase": 3
+  },
+  {
+   "w": "estorbo.",
+   "ini": 17.555,
+   "fin": 18.106,
+   "frase": 3
+  },
+  {
+   "w": "Así",
+   "ini": 18.316,
+   "fin": 18.596,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 18.596,
+   "fin": 18.876,
+   "frase": 3
+  },
+  {
+   "w": "los",
+   "ini": 18.876,
+   "fin": 19.156,
+   "frase": 3
+  },
+  {
+   "w": "ingenieros",
+   "ini": 19.156,
+   "fin": 19.926,
+   "frase": 3
+  },
+  {
+   "w": "no",
+   "ini": 19.926,
+   "fin": 20.136,
+   "frase": 3
+  },
+  {
+   "w": "apoyan",
+   "ini": 20.136,
+   "fin": 20.626,
+   "frase": 3
+  },
+  {
+   "w": "el",
+   "ini": 20.626,
+   "fin": 20.836,
+   "frase": 3
+  },
+  {
+   "w": "puente.",
+   "ini": 20.836,
+   "fin": 21.396,
+   "frase": 3
+  },
+  {
+   "w": "Lo",
+   "ini": 21.516,
+   "fin": 21.651,
+   "frase": 3
+  },
+  {
+   "w": "cuelgan.",
+   "ini": 21.651,
+   "fin": 22.054,
+   "frase": 3
+  },
+  {
+   "w": "Todo",
+   "ini": 22.444,
+   "fin": 22.718,
+   "frase": 4
+  },
+  {
+   "w": "empieza",
+   "ini": 22.718,
+   "fin": 23.157,
+   "frase": 4
+  },
+  {
+   "w": "bajo",
+   "ini": 23.157,
+   "fin": 23.431,
+   "frase": 4
+  },
+  {
+   "w": "el",
+   "ini": 23.431,
+   "fin": 23.595,
+   "frase": 4
+  },
+  {
+   "w": "agua.",
+   "ini": 23.595,
+   "fin": 23.924,
+   "frase": 4
+  },
+  {
+   "w": "En",
+   "ini": 24.154,
+   "fin": 24.317,
+   "frase": 4
+  },
+  {
+   "w": "cada",
+   "ini": 24.317,
+   "fin": 24.587,
+   "frase": 4
+  },
+  {
+   "w": "orilla",
+   "ini": 24.587,
+   "fin": 24.965,
+   "frase": 4
+  },
+  {
+   "w": "se",
+   "ini": 24.965,
+   "fin": 25.128,
+   "frase": 4
+  },
+  {
+   "w": "hunde",
+   "ini": 25.128,
+   "fin": 25.452,
+   "frase": 4
+  },
+  {
+   "w": "un",
+   "ini": 25.452,
+   "fin": 25.614,
+   "frase": 4
+  },
+  {
+   "w": "cajón",
+   "ini": 25.614,
+   "fin": 25.939,
+   "frase": 4
+  },
+  {
+   "w": "gigante",
+   "ini": 25.939,
+   "fin": 26.371,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 26.371,
+   "fin": 26.534,
+   "frase": 4
+  },
+  {
+   "w": "hormigón,",
+   "ini": 26.534,
+   "fin": 27.074,
+   "frase": 4
+  },
+  {
+   "w": "hasta",
+   "ini": 27.304,
+   "fin": 27.625,
+   "frase": 4
+  },
+  {
+   "w": "llegar",
+   "ini": 27.625,
+   "fin": 27.999,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 27.999,
+   "fin": 28.106,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 28.106,
+   "fin": 28.266,
+   "frase": 4
+  },
+  {
+   "w": "roca",
+   "ini": 28.266,
+   "fin": 28.533,
+   "frase": 4
+  },
+  {
+   "w": "firme.",
+   "ini": 28.533,
+   "fin": 28.908,
+   "frase": 4
+  },
+  {
+   "w": "Encima",
+   "ini": 29.048,
+   "fin": 29.427,
+   "frase": 5
+  },
+  {
+   "w": "se",
+   "ini": 29.427,
+   "fin": 29.59,
+   "frase": 5
+  },
+  {
+   "w": "levantan",
+   "ini": 29.59,
+   "fin": 30.077,
+   "frase": 5
+  },
+  {
+   "w": "las",
+   "ini": 30.077,
+   "fin": 30.294,
+   "frase": 5
+  },
+  {
+   "w": "torres,",
+   "ini": 30.294,
+   "fin": 30.728,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 30.988,
+   "fin": 31.174,
+   "frase": 5
+  },
+  {
+   "w": "más",
+   "ini": 31.174,
+   "fin": 31.422,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 31.422,
+   "fin": 31.608,
+   "frase": 5
+  },
+  {
+   "w": "doscientos",
+   "ini": 31.608,
+   "fin": 32.291,
+   "frase": 5
+  },
+  {
+   "w": "metros.",
+   "ini": 32.291,
+   "fin": 32.788,
+   "frase": 5
+  },
+  {
+   "w": "Y",
+   "ini": 33.018,
+   "fin": 33.111,
+   "frase": 5
+  },
+  {
+   "w": "fíjate",
+   "ini": 33.111,
+   "fin": 33.436,
+   "frase": 5
+  },
+  {
+   "w": "arriba:",
+   "ini": 33.436,
+   "fin": 33.808,
+   "frase": 5
+  },
+  {
+   "w": "no",
+   "ini": 34.028,
+   "fin": 34.226,
+   "frase": 5
+  },
+  {
+   "w": "son",
+   "ini": 34.226,
+   "fin": 34.491,
+   "frase": 5
+  },
+  {
+   "w": "bloques",
+   "ini": 34.491,
+   "fin": 35.021,
+   "frase": 5
+  },
+  {
+   "w": "macizos,",
+   "ini": 35.021,
+   "fin": 35.618,
+   "frase": 5
+  },
+  {
+   "w": "son",
+   "ini": 35.758,
+   "fin": 35.953,
+   "frase": 5
+  },
+  {
+   "w": "arcos",
+   "ini": 35.953,
+   "fin": 36.246,
+   "frase": 5
+  },
+  {
+   "w": "huecos.",
+   "ini": 36.246,
+   "fin": 36.638,
+   "frase": 5
+  },
+  {
+   "w": "Pesan",
+   "ini": 36.858,
+   "fin": 37.227,
+   "frase": 5
+  },
+  {
+   "w": "menos",
+   "ini": 37.227,
+   "fin": 37.596,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 37.596,
+   "fin": 37.719,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 37.719,
+   "fin": 37.904,
+   "frase": 5
+  },
+  {
+   "w": "viento",
+   "ini": 37.904,
+   "fin": 38.334,
+   "frase": 5
+  },
+  {
+   "w": "pasa",
+   "ini": 38.334,
+   "fin": 38.642,
+   "frase": 5
+  },
+  {
+   "w": "a",
+   "ini": 38.642,
+   "fin": 38.765,
+   "frase": 5
+  },
+  {
+   "w": "través.",
+   "ini": 38.765,
+   "fin": 39.257,
+   "frase": 5
+  },
+  {
+   "w": "Ahora",
+   "ini": 39.397,
+   "fin": 39.708,
+   "frase": 6
+  },
+  {
+   "w": "lo",
+   "ini": 39.708,
+   "fin": 39.863,
+   "frase": 6
+  },
+  {
+   "w": "más",
+   "ini": 39.863,
+   "fin": 40.071,
+   "frase": 6
+  },
+  {
+   "w": "difícil:",
+   "ini": 40.071,
+   "fin": 40.537,
+   "frase": 6
+  },
+  {
+   "w": "cruzar",
+   "ini": 40.647,
+   "fin": 41.082,
+   "frase": 6
+  },
+  {
+   "w": "el",
+   "ini": 41.082,
+   "fin": 41.268,
+   "frase": 6
+  },
+  {
+   "w": "primer",
+   "ini": 41.268,
+   "fin": 41.703,
+   "frase": 6
+  },
+  {
+   "w": "cable",
+   "ini": 41.703,
+   "fin": 42.075,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 42.075,
+   "fin": 42.261,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 42.261,
+   "fin": 42.448,
+   "frase": 6
+  },
+  {
+   "w": "lado",
+   "ini": 42.448,
+   "fin": 42.758,
+   "frase": 6
+  },
+  {
+   "w": "al",
+   "ini": 42.758,
+   "fin": 42.944,
+   "frase": 6
+  },
+  {
+   "w": "otro.",
+   "ini": 42.944,
+   "fin": 43.317,
+   "frase": 6
+  },
+  {
+   "w": "Se",
+   "ini": 43.527,
+   "fin": 43.664,
+   "frase": 6
+  },
+  {
+   "w": "lleva",
+   "ini": 43.664,
+   "fin": 43.937,
+   "frase": 6
+  },
+  {
+   "w": "con",
+   "ini": 43.937,
+   "fin": 44.119,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 44.119,
+   "fin": 44.255,
+   "frase": 6
+  },
+  {
+   "w": "helicóptero,",
+   "ini": 44.255,
+   "fin": 44.847,
+   "frase": 6
+  },
+  {
+   "w": "o",
+   "ini": 44.997,
+   "fin": 45.118,
+   "frase": 6
+  },
+  {
+   "w": "incluso",
+   "ini": 45.118,
+   "fin": 45.602,
+   "frase": 6
+  },
+  {
+   "w": "con",
+   "ini": 45.602,
+   "fin": 45.843,
+   "frase": 6
+  },
+  {
+   "w": "un",
+   "ini": 45.843,
+   "fin": 46.025,
+   "frase": 6
+  },
+  {
+   "w": "dron.",
+   "ini": 46.025,
+   "fin": 46.388,
+   "frase": 6
+  },
+  {
+   "w": "Con",
+   "ini": 46.528,
+   "fin": 46.75,
+   "frase": 7
+  },
+  {
+   "w": "ese",
+   "ini": 46.75,
+   "fin": 46.973,
+   "frase": 7
+  },
+  {
+   "w": "hilo",
+   "ini": 46.973,
+   "fin": 47.251,
+   "frase": 7
+  },
+  {
+   "w": "se",
+   "ini": 47.251,
+   "fin": 47.418,
+   "frase": 7
+  },
+  {
+   "w": "tiende",
+   "ini": 47.418,
+   "fin": 47.808,
+   "frase": 7
+  },
+  {
+   "w": "una",
+   "ini": 47.808,
+   "fin": 48.031,
+   "frase": 7
+  },
+  {
+   "w": "pasarela,",
+   "ini": 48.031,
+   "fin": 48.588,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 48.758,
+   "fin": 48.881,
+   "frase": 7
+  },
+  {
+   "w": "empieza",
+   "ini": 48.881,
+   "fin": 49.377,
+   "frase": 7
+  },
+  {
+   "w": "el",
+   "ini": 49.377,
+   "fin": 49.562,
+   "frase": 7
+  },
+  {
+   "w": "hilado.",
+   "ini": 49.562,
+   "fin": 50.058,
+   "frase": 7
+  },
+  {
+   "w": "Una",
+   "ini": 50.228,
+   "fin": 50.5,
+   "frase": 7
+  },
+  {
+   "w": "rueda",
+   "ini": 50.5,
+   "fin": 50.909,
+   "frase": 7
+  },
+  {
+   "w": "va",
+   "ini": 50.909,
+   "fin": 51.114,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 51.114,
+   "fin": 51.25,
+   "frase": 7
+  },
+  {
+   "w": "viene,",
+   "ini": 51.25,
+   "fin": 51.728,
+   "frase": 7
+  },
+  {
+   "w": "llevando",
+   "ini": 51.828,
+   "fin": 52.334,
+   "frase": 7
+  },
+  {
+   "w": "alambres",
+   "ini": 52.334,
+   "fin": 52.841,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 52.841,
+   "fin": 53.01,
+   "frase": 7
+  },
+  {
+   "w": "acero",
+   "ini": 53.01,
+   "fin": 53.348,
+   "frase": 7
+  },
+  {
+   "w": "de",
+   "ini": 53.348,
+   "fin": 53.517,
+   "frase": 7
+  },
+  {
+   "w": "cinco",
+   "ini": 53.517,
+   "fin": 53.855,
+   "frase": 7
+  },
+  {
+   "w": "milímetros.",
+   "ini": 53.855,
+   "fin": 54.53,
+   "frase": 7
+  },
+  {
+   "w": "Uno",
+   "ini": 54.67,
+   "fin": 54.913,
+   "frase": 8
+  },
+  {
+   "w": "tras",
+   "ini": 54.913,
+   "fin": 55.216,
+   "frase": 8
+  },
+  {
+   "w": "otro,",
+   "ini": 55.216,
+   "fin": 55.58,
+   "frase": 8
+  },
+  {
+   "w": "hasta",
+   "ini": 55.81,
+   "fin": 56.188,
+   "frase": 8
+  },
+  {
+   "w": "juntar",
+   "ini": 56.188,
+   "fin": 56.628,
+   "frase": 8
+  },
+  {
+   "w": "decenas",
+   "ini": 56.628,
+   "fin": 57.131,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 57.131,
+   "fin": 57.32,
+   "frase": 8
+  },
+  {
+   "w": "miles.",
+   "ini": 57.32,
+   "fin": 57.76,
+   "frase": 8
+  },
+  {
+   "w": "Apretados,",
+   "ini": 57.88,
+   "fin": 58.51,
+   "frase": 8
+  },
+  {
+   "w": "forman",
+   "ini": 58.79,
+   "fin": 59.163,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 59.163,
+   "fin": 59.323,
+   "frase": 8
+  },
+  {
+   "w": "cable",
+   "ini": 59.323,
+   "fin": 59.642,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 59.642,
+   "fin": 59.802,
+   "frase": 8
+  },
+  {
+   "w": "más",
+   "ini": 59.802,
+   "fin": 60.015,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 60.015,
+   "fin": 60.175,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 60.175,
+   "fin": 60.334,
+   "frase": 8
+  },
+  {
+   "w": "metro",
+   "ini": 60.334,
+   "fin": 60.654,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 60.654,
+   "fin": 60.814,
+   "frase": 8
+  },
+  {
+   "w": "grosor.",
+   "ini": 60.814,
+   "fin": 61.24,
+   "frase": 8
+  },
+  {
+   "w": "Sus",
+   "ini": 61.38,
+   "fin": 61.602,
+   "frase": 9
+  },
+  {
+   "w": "extremos",
+   "ini": 61.602,
+   "fin": 62.101,
+   "frase": 9
+  },
+  {
+   "w": "se",
+   "ini": 62.101,
+   "fin": 62.267,
+   "frase": 9
+  },
+  {
+   "w": "atan",
+   "ini": 62.267,
+   "fin": 62.545,
+   "frase": 9
+  },
+  {
+   "w": "a",
+   "ini": 62.545,
+   "fin": 62.656,
+   "frase": 9
+  },
+  {
+   "w": "tierra,",
+   "ini": 62.656,
+   "fin": 63.1,
+   "frase": 9
+  },
+  {
+   "w": "en",
+   "ini": 63.26,
+   "fin": 63.413,
+   "frase": 9
+  },
+  {
+   "w": "los",
+   "ini": 63.413,
+   "fin": 63.618,
+   "frase": 9
+  },
+  {
+   "w": "anclajes:",
+   "ini": 63.618,
+   "fin": 64.13,
+   "frase": 9
+  },
+  {
+   "w": "bloques",
+   "ini": 64.33,
+   "fin": 64.786,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 64.786,
+   "fin": 64.957,
+   "frase": 9
+  },
+  {
+   "w": "hormigón",
+   "ini": 64.957,
+   "fin": 65.471,
+   "frase": 9
+  },
+  {
+   "w": "tan",
+   "ini": 65.471,
+   "fin": 65.699,
+   "frase": 9
+  },
+  {
+   "w": "pesados",
+   "ini": 65.699,
+   "fin": 66.156,
+   "frase": 9
+  },
+  {
+   "w": "que",
+   "ini": 66.156,
+   "fin": 66.384,
+   "frase": 9
+  },
+  {
+   "w": "ningún",
+   "ini": 66.384,
+   "fin": 66.784,
+   "frase": 9
+  },
+  {
+   "w": "tirón",
+   "ini": 66.784,
+   "fin": 67.126,
+   "frase": 9
+  },
+  {
+   "w": "los",
+   "ini": 67.126,
+   "fin": 67.355,
+   "frase": 9
+  },
+  {
+   "w": "mueve.",
+   "ini": 67.355,
+   "fin": 67.754,
+   "frase": 9
+  },
+  {
+   "w": "Después",
+   "ini": 67.894,
+   "fin": 68.356,
+   "frase": 10
+  },
+  {
+   "w": "cuelgan",
+   "ini": 68.356,
+   "fin": 68.817,
+   "frase": 10
+  },
+  {
+   "w": "las",
+   "ini": 68.817,
+   "fin": 69.048,
+   "frase": 10
+  },
+  {
+   "w": "péndolas,",
+   "ini": 69.048,
+   "fin": 69.624,
+   "frase": 10
+  },
+  {
+   "w": "cables",
+   "ini": 69.824,
+   "fin": 70.22,
+   "frase": 10
+  },
+  {
+   "w": "verticales",
+   "ini": 70.22,
+   "fin": 70.843,
+   "frase": 10
+  },
+  {
+   "w": "cada",
+   "ini": 70.843,
+   "fin": 71.126,
+   "frase": 10
+  },
+  {
+   "w": "pocos",
+   "ini": 71.126,
+   "fin": 71.466,
+   "frase": 10
+  },
+  {
+   "w": "metros.",
+   "ini": 71.466,
+   "fin": 71.919,
+   "frase": 10
+  },
+  {
+   "w": "Y",
+   "ini": 72.059,
+   "fin": 72.169,
+   "frase": 11
+  },
+  {
+   "w": "llega",
+   "ini": 72.169,
+   "fin": 72.499,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 72.499,
+   "fin": 72.664,
+   "frase": 11
+  },
+  {
+   "w": "tablero.",
+   "ini": 72.664,
+   "fin": 73.159,
+   "frase": 11
+  },
+  {
+   "w": "Las",
+   "ini": 73.349,
+   "fin": 73.562,
+   "frase": 11
+  },
+  {
+   "w": "barcazas",
+   "ini": 73.562,
+   "fin": 74.042,
+   "frase": 11
+  },
+  {
+   "w": "traen",
+   "ini": 74.042,
+   "fin": 74.362,
+   "frase": 11
+  },
+  {
+   "w": "los",
+   "ini": 74.362,
+   "fin": 74.575,
+   "frase": 11
+  },
+  {
+   "w": "tramos",
+   "ini": 74.575,
+   "fin": 74.949,
+   "frase": 11
+  },
+  {
+   "w": "ya",
+   "ini": 74.949,
+   "fin": 75.109,
+   "frase": 11
+  },
+  {
+   "w": "fabricados.",
+   "ini": 75.109,
+   "fin": 75.749,
+   "frase": 11
+  },
+  {
+   "w": "Una",
+   "ini": 75.949,
+   "fin": 76.182,
+   "frase": 11
+  },
+  {
+   "w": "grúa",
+   "ini": 76.182,
+   "fin": 76.474,
+   "frase": 11
+  },
+  {
+   "w": "los",
+   "ini": 76.474,
+   "fin": 76.708,
+   "frase": 11
+  },
+  {
+   "w": "sube…",
+   "ini": 76.708,
+   "fin": 77.059,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 77.279,
+   "fin": 77.393,
+   "frase": 11
+  },
+  {
+   "w": "los",
+   "ini": 77.393,
+   "fin": 77.622,
+   "frase": 11
+  },
+  {
+   "w": "engancha.",
+   "ini": 77.622,
+   "fin": 78.193,
+   "frase": 11
+  },
+  {
+   "w": "Se",
+   "ini": 78.333,
+   "fin": 78.492,
+   "frase": 12
+  },
+  {
+   "w": "suele",
+   "ini": 78.492,
+   "fin": 78.809,
+   "frase": 12
+  },
+  {
+   "w": "empezar",
+   "ini": 78.809,
+   "fin": 79.231,
+   "frase": 12
+  },
+  {
+   "w": "por",
+   "ini": 79.231,
+   "fin": 79.443,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 79.443,
+   "fin": 79.601,
+   "frase": 12
+  },
+  {
+   "w": "centro,",
+   "ini": 79.601,
+   "fin": 80.023,
+   "frase": 12
+  },
+  {
+   "w": "avanzando",
+   "ini": 80.253,
+   "fin": 80.783,
+   "frase": 12
+  },
+  {
+   "w": "a",
+   "ini": 80.783,
+   "fin": 80.889,
+   "frase": 12
+  },
+  {
+   "w": "la",
+   "ini": 80.889,
+   "fin": 81.048,
+   "frase": 12
+  },
+  {
+   "w": "vez",
+   "ini": 81.048,
+   "fin": 81.26,
+   "frase": 12
+  },
+  {
+   "w": "hacia",
+   "ini": 81.26,
+   "fin": 81.578,
+   "frase": 12
+  },
+  {
+   "w": "las",
+   "ini": 81.578,
+   "fin": 81.79,
+   "frase": 12
+  },
+  {
+   "w": "dos",
+   "ini": 81.79,
+   "fin": 82.002,
+   "frase": 12
+  },
+  {
+   "w": "torres",
+   "ini": 82.002,
+   "fin": 82.372,
+   "frase": 12
+  },
+  {
+   "w": "para",
+   "ini": 82.372,
+   "fin": 82.637,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 82.637,
+   "fin": 82.849,
+   "frase": 12
+  },
+  {
+   "w": "el",
+   "ini": 82.849,
+   "fin": 83.008,
+   "frase": 12
+  },
+  {
+   "w": "cable",
+   "ini": 83.008,
+   "fin": 83.326,
+   "frase": 12
+  },
+  {
+   "w": "no",
+   "ini": 83.326,
+   "fin": 83.485,
+   "frase": 12
+  },
+  {
+   "w": "se",
+   "ini": 83.485,
+   "fin": 83.644,
+   "frase": 12
+  },
+  {
+   "w": "descompense.",
+   "ini": 83.644,
+   "fin": 84.332,
+   "frase": 12
+  },
+  {
+   "w": "Y",
+   "ini": 84.472,
+   "fin": 84.593,
+   "frase": 13
+  },
+  {
+   "w": "este",
+   "ini": 84.593,
+   "fin": 84.896,
+   "frase": 13
+  },
+  {
+   "w": "es",
+   "ini": 84.896,
+   "fin": 85.077,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 85.077,
+   "fin": 85.259,
+   "frase": 13
+  },
+  {
+   "w": "truco:",
+   "ini": 85.259,
+   "fin": 85.682,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 85.892,
+   "fin": 86.052,
+   "frase": 13
+  },
+  {
+   "w": "tablero",
+   "ini": 86.052,
+   "fin": 86.479,
+   "frase": 13
+  },
+  {
+   "w": "tira",
+   "ini": 86.479,
+   "fin": 86.746,
+   "frase": 13
+  },
+  {
+   "w": "de",
+   "ini": 86.746,
+   "fin": 86.906,
+   "frase": 13
+  },
+  {
+   "w": "las",
+   "ini": 86.906,
+   "fin": 87.119,
+   "frase": 13
+  },
+  {
+   "w": "péndolas,",
+   "ini": 87.119,
+   "fin": 87.652,
+   "frase": 13
+  },
+  {
+   "w": "las",
+   "ini": 87.882,
+   "fin": 88.092,
+   "frase": 13
+  },
+  {
+   "w": "péndolas",
+   "ini": 88.092,
+   "fin": 88.565,
+   "frase": 13
+  },
+  {
+   "w": "del",
+   "ini": 88.565,
+   "fin": 88.775,
+   "frase": 13
+  },
+  {
+   "w": "cable,",
+   "ini": 88.775,
+   "fin": 89.142,
+   "frase": 13
+  },
+  {
+   "w": "y",
+   "ini": 89.412,
+   "fin": 89.532,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 89.532,
+   "fin": 89.71,
+   "frase": 13
+  },
+  {
+   "w": "cable",
+   "ini": 89.71,
+   "fin": 90.068,
+   "frase": 13
+  },
+  {
+   "w": "descarga",
+   "ini": 90.068,
+   "fin": 90.604,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 90.604,
+   "fin": 90.783,
+   "frase": 13
+  },
+  {
+   "w": "peso",
+   "ini": 90.783,
+   "fin": 91.081,
+   "frase": 13
+  },
+  {
+   "w": "en",
+   "ini": 91.081,
+   "fin": 91.26,
+   "frase": 13
+  },
+  {
+   "w": "las",
+   "ini": 91.26,
+   "fin": 91.498,
+   "frase": 13
+  },
+  {
+   "w": "torres",
+   "ini": 91.498,
+   "fin": 91.916,
+   "frase": 13
+  },
+  {
+   "w": "y",
+   "ini": 91.916,
+   "fin": 92.035,
+   "frase": 13
+  },
+  {
+   "w": "en",
+   "ini": 92.035,
+   "fin": 92.214,
+   "frase": 13
+  },
+  {
+   "w": "los",
+   "ini": 92.214,
+   "fin": 92.452,
+   "frase": 13
+  },
+  {
+   "w": "anclajes.",
+   "ini": 92.452,
+   "fin": 93.048,
+   "frase": 13
+  },
+  {
+   "w": "Ni",
+   "ini": 93.388,
+   "fin": 93.588,
+   "frase": 14
+  },
+  {
+   "w": "un",
+   "ini": 93.588,
+   "fin": 93.787,
+   "frase": 14
+  },
+  {
+   "w": "solo",
+   "ini": 93.787,
+   "fin": 94.12,
+   "frase": 14
+  },
+  {
+   "w": "kilo",
+   "ini": 94.12,
+   "fin": 94.453,
+   "frase": 14
+  },
+  {
+   "w": "cae",
+   "ini": 94.453,
+   "fin": 94.719,
+   "frase": 14
+  },
+  {
+   "w": "sobre",
+   "ini": 94.719,
+   "fin": 95.118,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 95.118,
+   "fin": 95.318,
+   "frase": 14
+  },
+  {
+   "w": "mar.",
+   "ini": 95.318,
+   "fin": 95.651,
+   "frase": 14
+  },
+  {
+   "w": "Último",
+   "ini": 96.041,
+   "fin": 96.436,
+   "frase": 15
+  },
+  {
+   "w": "tramo.",
+   "ini": 96.436,
+   "fin": 96.831,
+   "frase": 15
+  },
+  {
+   "w": "Se",
+   "ini": 97.061,
+   "fin": 97.28,
+   "frase": 15
+  },
+  {
+   "w": "cierra",
+   "ini": 97.28,
+   "fin": 97.791,
+   "frase": 15
+  },
+  {
+   "w": "el",
+   "ini": 97.791,
+   "fin": 98.01,
+   "frase": 15
+  },
+  {
+   "w": "hueco,",
+   "ini": 98.01,
+   "fin": 98.521,
+   "frase": 15
+  },
+  {
+   "w": "se",
+   "ini": 98.591,
+   "fin": 98.716,
+   "frase": 15
+  },
+  {
+   "w": "asfalta…",
+   "ini": 98.716,
+   "fin": 99.091,
+   "frase": 15
+  },
+  {
+   "w": "y",
+   "ini": 99.351,
+   "fin": 99.481,
+   "frase": 15
+  },
+  {
+   "w": "se",
+   "ini": 99.481,
+   "fin": 99.675,
+   "frase": 15
+  },
+  {
+   "w": "encienden",
+   "ini": 99.675,
+   "fin": 100.324,
+   "frase": 15
+  },
+  {
+   "w": "las",
+   "ini": 100.324,
+   "fin": 100.584,
+   "frase": 15
+  },
+  {
+   "w": "luces.",
+   "ini": 100.584,
+   "fin": 101.038,
+   "frase": 15
+  },
+  {
+   "w": "Con",
+   "ini": 101.178,
+   "fin": 101.405,
+   "frase": 16
+  },
+  {
+   "w": "viento",
+   "ini": 101.405,
+   "fin": 101.803,
+   "frase": 16
+  },
+  {
+   "w": "fuerte,",
+   "ini": 101.803,
+   "fin": 102.258,
+   "frase": 16
+  },
+  {
+   "w": "el",
+   "ini": 102.378,
+   "fin": 102.538,
+   "frase": 16
+  },
+  {
+   "w": "tablero",
+   "ini": 102.538,
+   "fin": 102.966,
+   "frase": 16
+  },
+  {
+   "w": "se",
+   "ini": 102.966,
+   "fin": 103.126,
+   "frase": 16
+  },
+  {
+   "w": "mueve",
+   "ini": 103.126,
+   "fin": 103.446,
+   "frase": 16
+  },
+  {
+   "w": "varios",
+   "ini": 103.446,
+   "fin": 103.82,
+   "frase": 16
+  },
+  {
+   "w": "metros.",
+   "ini": 103.82,
+   "fin": 104.248,
+   "frase": 16
+  },
+  {
+   "w": "Está",
+   "ini": 104.468,
+   "fin": 104.716,
+   "frase": 16
+  },
+  {
+   "w": "hecho",
+   "ini": 104.716,
+   "fin": 105.013,
+   "frase": 16
+  },
+  {
+   "w": "para",
+   "ini": 105.013,
+   "fin": 105.26,
+   "frase": 16
+  },
+  {
+   "w": "eso:",
+   "ini": 105.26,
+   "fin": 105.508,
+   "frase": 16
+  },
+  {
+   "w": "si",
+   "ini": 105.728,
+   "fin": 105.876,
+   "frase": 16
+  },
+  {
+   "w": "fuera",
+   "ini": 105.876,
+   "fin": 106.173,
+   "frase": 16
+  },
+  {
+   "w": "rígido,",
+   "ini": 106.173,
+   "fin": 106.568,
+   "frase": 16
+  },
+  {
+   "w": "se",
+   "ini": 106.708,
+   "fin": 106.9,
+   "frase": 16
+  },
+  {
+   "w": "rompería.",
+   "ini": 106.9,
+   "fin": 107.541,
+   "frase": 16
+  },
+  {
+   "w": "Así",
+   "ini": 107.681,
+   "fin": 107.974,
+   "frase": 17
+  },
+  {
+   "w": "que",
+   "ini": 107.974,
+   "fin": 108.267,
+   "frase": 17
+  },
+  {
+   "w": "cuando",
+   "ini": 108.267,
+   "fin": 108.781,
+   "frase": 17
+  },
+  {
+   "w": "cruces",
+   "ini": 108.781,
+   "fin": 109.294,
+   "frase": 17
+  },
+  {
+   "w": "uno,",
+   "ini": 109.294,
+   "fin": 109.661,
+   "frase": 17
+  },
+  {
+   "w": "recuerda:",
+   "ini": 109.731,
+   "fin": 110.101,
+   "frase": 17
+  },
+  {
+   "w": "no",
+   "ini": 110.311,
+   "fin": 110.529,
+   "frase": 17
+  },
+  {
+   "w": "vas",
+   "ini": 110.529,
+   "fin": 110.821,
+   "frase": 17
+  },
+  {
+   "w": "por",
+   "ini": 110.821,
+   "fin": 111.113,
+   "frase": 17
+  },
+  {
+   "w": "encima",
+   "ini": 111.113,
+   "fin": 111.624,
+   "frase": 17
+  },
+  {
+   "w": "del",
+   "ini": 111.624,
+   "fin": 111.916,
+   "frase": 17
+  },
+  {
+   "w": "mar.",
+   "ini": 111.916,
+   "fin": 112.281,
+   "frase": 17
+  },
+  {
+   "w": "Vas",
+   "ini": 112.351,
+   "fin": 112.598,
+   "frase": 17
+  },
+  {
+   "w": "colgado",
+   "ini": 112.598,
+   "fin": 113.094,
+   "frase": 17
+  },
+  {
+   "w": "de",
+   "ini": 113.094,
+   "fin": 113.28,
+   "frase": 17
+  },
+  {
+   "w": "dos",
+   "ini": 113.28,
+   "fin": 113.528,
+   "frase": 17
+  },
+  {
+   "w": "cables.",
+   "ini": 113.528,
+   "fin": 114.023,
+   "frase": 17
+  }
+ ]
+}

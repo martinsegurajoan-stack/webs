@@ -1,0 +1,1249 @@
+{
+ "duracion": 71.472,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si te despertaras del tamaño de una hormiga… en tu propia casa?",
+   "ini": 0.0,
+   "fin": 4.959
+  },
+  {
+   "n": 2,
+   "texto": "Mides tres milímetros.",
+   "ini": 5.159,
+   "fin": 6.869
+  },
+  {
+   "n": 3,
+   "texto": "Tu cama es ahora un desierto de sábanas.",
+   "ini": 7.369,
+   "fin": 9.812
+  },
+  {
+   "n": 4,
+   "texto": "Para llegar a la cocina tienes que cruzar diez metros… que para ti son casi seis kilómetros.",
+   "ini": 10.012,
+   "fin": 15.705
+  },
+  {
+   "n": 5,
+   "texto": "Por el camino, el polvo se mueve.",
+   "ini": 15.905,
+   "fin": 18.19
+  },
+  {
+   "n": 6,
+   "texto": "Son ácaros… y ahora son como hámsteres.",
+   "ini": 18.39,
+   "fin": 21.412
+  },
+  {
+   "n": 7,
+   "texto": "Pero hay una buena noticia: ahora eres fortísimo.",
+   "ini": 21.912,
+   "fin": 25.519
+  },
+  {
+   "n": 8,
+   "texto": "Puedes levantar muchas veces tu propio peso.",
+   "ini": 25.719,
+   "fin": 28.29
+  },
+  {
+   "n": 9,
+   "texto": "Y si te caes de la mesa… no te pasa nada. El aire te frena.",
+   "ini": 28.49,
+   "fin": 32.477
+  },
+  {
+   "n": 10,
+   "texto": "En la cocina, una miga de pan es una roca de tres metros.",
+   "ini": 32.977,
+   "fin": 36.823
+  },
+  {
+   "n": 11,
+   "texto": "Lo malo es que tienes frío todo el rato: un cuerpo tan pequeño pierde calor muy rápido.",
+   "ini": 37.023,
+   "fin": 43.096
+  },
+  {
+   "n": 12,
+   "texto": "Así que tienes que comer casi sin parar.",
+   "ini": 43.296,
+   "fin": 45.633
+  },
+  {
+   "n": 13,
+   "texto": "Y cuidado con el agua: una gota del grifo puede atraparte como si fuera pegamento.",
+   "ini": 45.833,
+   "fin": 50.833
+  },
+  {
+   "n": 14,
+   "texto": "Y entonces… llega el gato.",
+   "ini": 51.033,
+   "fin": 53.23
+  },
+  {
+   "n": 15,
+   "texto": "Para ti, es tan alto como un edificio de cincuenta pisos.",
+   "ini": 53.73,
+   "fin": 57.709
+  },
+  {
+   "n": 16,
+   "texto": "Corres a esconderte debajo del sofá.",
+   "ini": 57.909,
+   "fin": 59.761
+  },
+  {
+   "n": 17,
+   "texto": "A medianoche, el reloj marca las doce… y vuelves a tu tamaño.",
+   "ini": 60.261,
+   "fin": 64.662
+  },
+  {
+   "n": 18,
+   "texto": "Pero desde hoy, miras el suelo de otra manera… porque ahí abajo hay todo un mundo.",
+   "ini": 64.862,
+   "fin": 70.572
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.324,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.324,
+   "fin": 0.843,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.843,
+   "fin": 1.037,
+   "frase": 1
+  },
+  {
+   "w": "te",
+   "ini": 1.037,
+   "fin": 1.232,
+   "frase": 1
+  },
+  {
+   "w": "despertaras",
+   "ini": 1.232,
+   "fin": 2.01,
+   "frase": 1
+  },
+  {
+   "w": "del",
+   "ini": 2.01,
+   "fin": 2.269,
+   "frase": 1
+  },
+  {
+   "w": "tamaño",
+   "ini": 2.269,
+   "fin": 2.723,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 2.723,
+   "fin": 2.917,
+   "frase": 1
+  },
+  {
+   "w": "una",
+   "ini": 2.917,
+   "fin": 3.177,
+   "frase": 1
+  },
+  {
+   "w": "hormiga…",
+   "ini": 3.177,
+   "fin": 3.76,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 3.85,
+   "fin": 4.025,
+   "frase": 1
+  },
+  {
+   "w": "tu",
+   "ini": 4.025,
+   "fin": 4.2,
+   "frase": 1
+  },
+  {
+   "w": "propia",
+   "ini": 4.2,
+   "fin": 4.609,
+   "frase": 1
+  },
+  {
+   "w": "casa?",
+   "ini": 4.609,
+   "fin": 4.959,
+   "frase": 1
+  },
+  {
+   "w": "Mides",
+   "ini": 5.159,
+   "fin": 5.605,
+   "frase": 2
+  },
+  {
+   "w": "tres",
+   "ini": 5.605,
+   "fin": 5.977,
+   "frase": 2
+  },
+  {
+   "w": "milímetros.",
+   "ini": 5.977,
+   "fin": 6.869,
+   "frase": 2
+  },
+  {
+   "w": "Tu",
+   "ini": 7.369,
+   "fin": 7.548,
+   "frase": 3
+  },
+  {
+   "w": "cama",
+   "ini": 7.548,
+   "fin": 7.846,
+   "frase": 3
+  },
+  {
+   "w": "es",
+   "ini": 7.846,
+   "fin": 8.025,
+   "frase": 3
+  },
+  {
+   "w": "ahora",
+   "ini": 8.025,
+   "fin": 8.382,
+   "frase": 3
+  },
+  {
+   "w": "un",
+   "ini": 8.382,
+   "fin": 8.561,
+   "frase": 3
+  },
+  {
+   "w": "desierto",
+   "ini": 8.561,
+   "fin": 9.097,
+   "frase": 3
+  },
+  {
+   "w": "de",
+   "ini": 9.097,
+   "fin": 9.276,
+   "frase": 3
+  },
+  {
+   "w": "sábanas.",
+   "ini": 9.276,
+   "fin": 9.812,
+   "frase": 3
+  },
+  {
+   "w": "Para",
+   "ini": 10.012,
+   "fin": 10.265,
+   "frase": 4
+  },
+  {
+   "w": "llegar",
+   "ini": 10.265,
+   "fin": 10.62,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 10.62,
+   "fin": 10.722,
+   "frase": 4
+  },
+  {
+   "w": "la",
+   "ini": 10.722,
+   "fin": 10.874,
+   "frase": 4
+  },
+  {
+   "w": "cocina",
+   "ini": 10.874,
+   "fin": 11.229,
+   "frase": 4
+  },
+  {
+   "w": "tienes",
+   "ini": 11.229,
+   "fin": 11.584,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 11.584,
+   "fin": 11.787,
+   "frase": 4
+  },
+  {
+   "w": "cruzar",
+   "ini": 11.787,
+   "fin": 12.142,
+   "frase": 4
+  },
+  {
+   "w": "diez",
+   "ini": 12.142,
+   "fin": 12.396,
+   "frase": 4
+  },
+  {
+   "w": "metros…",
+   "ini": 12.396,
+   "fin": 12.802,
+   "frase": 4
+  },
+  {
+   "w": "que",
+   "ini": 13.202,
+   "fin": 13.465,
+   "frase": 4
+  },
+  {
+   "w": "para",
+   "ini": 13.465,
+   "fin": 13.795,
+   "frase": 4
+  },
+  {
+   "w": "ti",
+   "ini": 13.795,
+   "fin": 13.992,
+   "frase": 4
+  },
+  {
+   "w": "son",
+   "ini": 13.992,
+   "fin": 14.256,
+   "frase": 4
+  },
+  {
+   "w": "casi",
+   "ini": 14.256,
+   "fin": 14.585,
+   "frase": 4
+  },
+  {
+   "w": "seis",
+   "ini": 14.585,
+   "fin": 14.914,
+   "frase": 4
+  },
+  {
+   "w": "kilómetros.",
+   "ini": 14.914,
+   "fin": 15.705,
+   "frase": 4
+  },
+  {
+   "w": "Por",
+   "ini": 15.905,
+   "fin": 16.129,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 16.129,
+   "fin": 16.297,
+   "frase": 5
+  },
+  {
+   "w": "camino,",
+   "ini": 16.297,
+   "fin": 16.745,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 16.965,
+   "fin": 17.158,
+   "frase": 5
+  },
+  {
+   "w": "polvo",
+   "ini": 17.158,
+   "fin": 17.545,
+   "frase": 5
+  },
+  {
+   "w": "se",
+   "ini": 17.545,
+   "fin": 17.738,
+   "frase": 5
+  },
+  {
+   "w": "mueve.",
+   "ini": 17.738,
+   "fin": 18.19,
+   "frase": 5
+  },
+  {
+   "w": "Son",
+   "ini": 18.39,
+   "fin": 18.663,
+   "frase": 6
+  },
+  {
+   "w": "ácaros…",
+   "ini": 18.663,
+   "fin": 19.21,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 19.59,
+   "fin": 19.72,
+   "frase": 6
+  },
+  {
+   "w": "ahora",
+   "ini": 19.72,
+   "fin": 20.11,
+   "frase": 6
+  },
+  {
+   "w": "son",
+   "ini": 20.11,
+   "fin": 20.371,
+   "frase": 6
+  },
+  {
+   "w": "como",
+   "ini": 20.371,
+   "fin": 20.696,
+   "frase": 6
+  },
+  {
+   "w": "hámsteres.",
+   "ini": 20.696,
+   "fin": 21.412,
+   "frase": 6
+  },
+  {
+   "w": "Pero",
+   "ini": 21.912,
+   "fin": 22.176,
+   "frase": 7
+  },
+  {
+   "w": "hay",
+   "ini": 22.176,
+   "fin": 22.387,
+   "frase": 7
+  },
+  {
+   "w": "una",
+   "ini": 22.387,
+   "fin": 22.599,
+   "frase": 7
+  },
+  {
+   "w": "buena",
+   "ini": 22.599,
+   "fin": 22.916,
+   "frase": 7
+  },
+  {
+   "w": "noticia:",
+   "ini": 22.916,
+   "fin": 23.392,
+   "frase": 7
+  },
+  {
+   "w": "ahora",
+   "ini": 23.782,
+   "fin": 24.256,
+   "frase": 7
+  },
+  {
+   "w": "eres",
+   "ini": 24.256,
+   "fin": 24.65,
+   "frase": 7
+  },
+  {
+   "w": "fortísimo.",
+   "ini": 24.65,
+   "fin": 25.519,
+   "frase": 7
+  },
+  {
+   "w": "Puedes",
+   "ini": 25.719,
+   "fin": 26.119,
+   "frase": 8
+  },
+  {
+   "w": "levantar",
+   "ini": 26.119,
+   "fin": 26.633,
+   "frase": 8
+  },
+  {
+   "w": "muchas",
+   "ini": 26.633,
+   "fin": 27.033,
+   "frase": 8
+  },
+  {
+   "w": "veces",
+   "ini": 27.033,
+   "fin": 27.376,
+   "frase": 8
+  },
+  {
+   "w": "tu",
+   "ini": 27.376,
+   "fin": 27.547,
+   "frase": 8
+  },
+  {
+   "w": "propio",
+   "ini": 27.547,
+   "fin": 27.947,
+   "frase": 8
+  },
+  {
+   "w": "peso.",
+   "ini": 27.947,
+   "fin": 28.29,
+   "frase": 8
+  },
+  {
+   "w": "Y",
+   "ini": 28.49,
+   "fin": 28.594,
+   "frase": 9
+  },
+  {
+   "w": "si",
+   "ini": 28.594,
+   "fin": 28.75,
+   "frase": 9
+  },
+  {
+   "w": "te",
+   "ini": 28.75,
+   "fin": 28.906,
+   "frase": 9
+  },
+  {
+   "w": "caes",
+   "ini": 28.906,
+   "fin": 29.166,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 29.166,
+   "fin": 29.322,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 29.322,
+   "fin": 29.478,
+   "frase": 9
+  },
+  {
+   "w": "mesa…",
+   "ini": 29.478,
+   "fin": 29.79,
+   "frase": 9
+  },
+  {
+   "w": "no",
+   "ini": 30.03,
+   "fin": 30.201,
+   "frase": 9
+  },
+  {
+   "w": "te",
+   "ini": 30.201,
+   "fin": 30.372,
+   "frase": 9
+  },
+  {
+   "w": "pasa",
+   "ini": 30.372,
+   "fin": 30.658,
+   "frase": 9
+  },
+  {
+   "w": "nada.",
+   "ini": 30.658,
+   "fin": 31.0,
+   "frase": 9
+  },
+  {
+   "w": "El",
+   "ini": 31.29,
+   "fin": 31.488,
+   "frase": 9
+  },
+  {
+   "w": "aire",
+   "ini": 31.488,
+   "fin": 31.818,
+   "frase": 9
+  },
+  {
+   "w": "te",
+   "ini": 31.818,
+   "fin": 32.015,
+   "frase": 9
+  },
+  {
+   "w": "frena.",
+   "ini": 32.015,
+   "fin": 32.477,
+   "frase": 9
+  },
+  {
+   "w": "En",
+   "ini": 32.977,
+   "fin": 33.14,
+   "frase": 10
+  },
+  {
+   "w": "la",
+   "ini": 33.14,
+   "fin": 33.303,
+   "frase": 10
+  },
+  {
+   "w": "cocina,",
+   "ini": 33.303,
+   "fin": 33.737,
+   "frase": 10
+  },
+  {
+   "w": "una",
+   "ini": 33.987,
+   "fin": 34.245,
+   "frase": 10
+  },
+  {
+   "w": "miga",
+   "ini": 34.245,
+   "fin": 34.567,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 34.567,
+   "fin": 34.761,
+   "frase": 10
+  },
+  {
+   "w": "pan",
+   "ini": 34.761,
+   "fin": 35.018,
+   "frase": 10
+  },
+  {
+   "w": "es",
+   "ini": 35.018,
+   "fin": 35.212,
+   "frase": 10
+  },
+  {
+   "w": "una",
+   "ini": 35.212,
+   "fin": 35.47,
+   "frase": 10
+  },
+  {
+   "w": "roca",
+   "ini": 35.47,
+   "fin": 35.792,
+   "frase": 10
+  },
+  {
+   "w": "de",
+   "ini": 35.792,
+   "fin": 35.985,
+   "frase": 10
+  },
+  {
+   "w": "tres",
+   "ini": 35.985,
+   "fin": 36.308,
+   "frase": 10
+  },
+  {
+   "w": "metros.",
+   "ini": 36.308,
+   "fin": 36.823,
+   "frase": 10
+  },
+  {
+   "w": "Lo",
+   "ini": 37.023,
+   "fin": 37.216,
+   "frase": 11
+  },
+  {
+   "w": "malo",
+   "ini": 37.216,
+   "fin": 37.538,
+   "frase": 11
+  },
+  {
+   "w": "es",
+   "ini": 37.538,
+   "fin": 37.731,
+   "frase": 11
+  },
+  {
+   "w": "que",
+   "ini": 37.731,
+   "fin": 37.989,
+   "frase": 11
+  },
+  {
+   "w": "tienes",
+   "ini": 37.989,
+   "fin": 38.44,
+   "frase": 11
+  },
+  {
+   "w": "frío",
+   "ini": 38.44,
+   "fin": 38.762,
+   "frase": 11
+  },
+  {
+   "w": "todo",
+   "ini": 38.762,
+   "fin": 39.084,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 39.084,
+   "fin": 39.277,
+   "frase": 11
+  },
+  {
+   "w": "rato:",
+   "ini": 39.277,
+   "fin": 39.663,
+   "frase": 11
+  },
+  {
+   "w": "un",
+   "ini": 40.133,
+   "fin": 40.322,
+   "frase": 11
+  },
+  {
+   "w": "cuerpo",
+   "ini": 40.322,
+   "fin": 40.764,
+   "frase": 11
+  },
+  {
+   "w": "tan",
+   "ini": 40.764,
+   "fin": 41.016,
+   "frase": 11
+  },
+  {
+   "w": "pequeño",
+   "ini": 41.016,
+   "fin": 41.52,
+   "frase": 11
+  },
+  {
+   "w": "pierde",
+   "ini": 41.52,
+   "fin": 41.961,
+   "frase": 11
+  },
+  {
+   "w": "calor",
+   "ini": 41.961,
+   "fin": 42.339,
+   "frase": 11
+  },
+  {
+   "w": "muy",
+   "ini": 42.339,
+   "fin": 42.592,
+   "frase": 11
+  },
+  {
+   "w": "rápido.",
+   "ini": 42.592,
+   "fin": 43.096,
+   "frase": 11
+  },
+  {
+   "w": "Así",
+   "ini": 43.296,
+   "fin": 43.524,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 43.524,
+   "fin": 43.752,
+   "frase": 12
+  },
+  {
+   "w": "tienes",
+   "ini": 43.752,
+   "fin": 44.151,
+   "frase": 12
+  },
+  {
+   "w": "que",
+   "ini": 44.151,
+   "fin": 44.379,
+   "frase": 12
+  },
+  {
+   "w": "comer",
+   "ini": 44.379,
+   "fin": 44.721,
+   "frase": 12
+  },
+  {
+   "w": "casi",
+   "ini": 44.721,
+   "fin": 45.006,
+   "frase": 12
+  },
+  {
+   "w": "sin",
+   "ini": 45.006,
+   "fin": 45.234,
+   "frase": 12
+  },
+  {
+   "w": "parar.",
+   "ini": 45.234,
+   "fin": 45.633,
+   "frase": 12
+  },
+  {
+   "w": "Y",
+   "ini": 45.833,
+   "fin": 45.937,
+   "frase": 13
+  },
+  {
+   "w": "cuidado",
+   "ini": 45.937,
+   "fin": 46.355,
+   "frase": 13
+  },
+  {
+   "w": "con",
+   "ini": 46.355,
+   "fin": 46.563,
+   "frase": 13
+  },
+  {
+   "w": "el",
+   "ini": 46.563,
+   "fin": 46.72,
+   "frase": 13
+  },
+  {
+   "w": "agua:",
+   "ini": 46.72,
+   "fin": 47.033,
+   "frase": 13
+  },
+  {
+   "w": "una",
+   "ini": 47.403,
+   "fin": 47.632,
+   "frase": 13
+  },
+  {
+   "w": "gota",
+   "ini": 47.632,
+   "fin": 47.917,
+   "frase": 13
+  },
+  {
+   "w": "del",
+   "ini": 47.917,
+   "fin": 48.146,
+   "frase": 13
+  },
+  {
+   "w": "grifo",
+   "ini": 48.146,
+   "fin": 48.489,
+   "frase": 13
+  },
+  {
+   "w": "puede",
+   "ini": 48.489,
+   "fin": 48.832,
+   "frase": 13
+  },
+  {
+   "w": "atraparte",
+   "ini": 48.832,
+   "fin": 49.404,
+   "frase": 13
+  },
+  {
+   "w": "como",
+   "ini": 49.404,
+   "fin": 49.69,
+   "frase": 13
+  },
+  {
+   "w": "si",
+   "ini": 49.69,
+   "fin": 49.861,
+   "frase": 13
+  },
+  {
+   "w": "fuera",
+   "ini": 49.861,
+   "fin": 50.204,
+   "frase": 13
+  },
+  {
+   "w": "pegamento.",
+   "ini": 50.204,
+   "fin": 50.833,
+   "frase": 13
+  },
+  {
+   "w": "Y",
+   "ini": 51.033,
+   "fin": 51.186,
+   "frase": 14
+  },
+  {
+   "w": "entonces…",
+   "ini": 51.186,
+   "fin": 51.953,
+   "frase": 14
+  },
+  {
+   "w": "llega",
+   "ini": 52.253,
+   "fin": 52.644,
+   "frase": 14
+  },
+  {
+   "w": "el",
+   "ini": 52.644,
+   "fin": 52.839,
+   "frase": 14
+  },
+  {
+   "w": "gato.",
+   "ini": 52.839,
+   "fin": 53.23,
+   "frase": 14
+  },
+  {
+   "w": "Para",
+   "ini": 53.73,
+   "fin": 53.996,
+   "frase": 15
+  },
+  {
+   "w": "ti,",
+   "ini": 53.996,
+   "fin": 54.21,
+   "frase": 15
+  },
+  {
+   "w": "es",
+   "ini": 54.48,
+   "fin": 54.677,
+   "frase": 15
+  },
+  {
+   "w": "tan",
+   "ini": 54.677,
+   "fin": 54.941,
+   "frase": 15
+  },
+  {
+   "w": "alto",
+   "ini": 54.941,
+   "fin": 55.271,
+   "frase": 15
+  },
+  {
+   "w": "como",
+   "ini": 55.271,
+   "fin": 55.6,
+   "frase": 15
+  },
+  {
+   "w": "un",
+   "ini": 55.6,
+   "fin": 55.798,
+   "frase": 15
+  },
+  {
+   "w": "edificio",
+   "ini": 55.798,
+   "fin": 56.391,
+   "frase": 15
+  },
+  {
+   "w": "de",
+   "ini": 56.391,
+   "fin": 56.589,
+   "frase": 15
+  },
+  {
+   "w": "cincuenta",
+   "ini": 56.589,
+   "fin": 57.248,
+   "frase": 15
+  },
+  {
+   "w": "pisos.",
+   "ini": 57.248,
+   "fin": 57.709,
+   "frase": 15
+  },
+  {
+   "w": "Corres",
+   "ini": 57.909,
+   "fin": 58.26,
+   "frase": 16
+  },
+  {
+   "w": "a",
+   "ini": 58.26,
+   "fin": 58.36,
+   "frase": 16
+  },
+  {
+   "w": "esconderte",
+   "ini": 58.36,
+   "fin": 58.91,
+   "frase": 16
+  },
+  {
+   "w": "debajo",
+   "ini": 58.91,
+   "fin": 59.261,
+   "frase": 16
+  },
+  {
+   "w": "del",
+   "ini": 59.261,
+   "fin": 59.461,
+   "frase": 16
+  },
+  {
+   "w": "sofá.",
+   "ini": 59.461,
+   "fin": 59.761,
+   "frase": 16
+  },
+  {
+   "w": "A",
+   "ini": 60.261,
+   "fin": 60.381,
+   "frase": 17
+  },
+  {
+   "w": "medianoche,",
+   "ini": 60.381,
+   "fin": 61.101,
+   "frase": 17
+  },
+  {
+   "w": "el",
+   "ini": 61.251,
+   "fin": 61.439,
+   "frase": 17
+  },
+  {
+   "w": "reloj",
+   "ini": 61.439,
+   "fin": 61.816,
+   "frase": 17
+  },
+  {
+   "w": "marca",
+   "ini": 61.816,
+   "fin": 62.193,
+   "frase": 17
+  },
+  {
+   "w": "las",
+   "ini": 62.193,
+   "fin": 62.444,
+   "frase": 17
+  },
+  {
+   "w": "doce…",
+   "ini": 62.444,
+   "fin": 62.821,
+   "frase": 17
+  },
+  {
+   "w": "y",
+   "ini": 63.271,
+   "fin": 63.392,
+   "frase": 17
+  },
+  {
+   "w": "vuelves",
+   "ini": 63.392,
+   "fin": 63.876,
+   "frase": 17
+  },
+  {
+   "w": "a",
+   "ini": 63.876,
+   "fin": 63.997,
+   "frase": 17
+  },
+  {
+   "w": "tu",
+   "ini": 63.997,
+   "fin": 64.178,
+   "frase": 17
+  },
+  {
+   "w": "tamaño.",
+   "ini": 64.178,
+   "fin": 64.662,
+   "frase": 17
+  },
+  {
+   "w": "Pero",
+   "ini": 64.862,
+   "fin": 65.122,
+   "frase": 18
+  },
+  {
+   "w": "desde",
+   "ini": 65.122,
+   "fin": 65.433,
+   "frase": 18
+  },
+  {
+   "w": "hoy,",
+   "ini": 65.433,
+   "fin": 65.692,
+   "frase": 18
+  },
+  {
+   "w": "miras",
+   "ini": 65.812,
+   "fin": 66.269,
+   "frase": 18
+  },
+  {
+   "w": "el",
+   "ini": 66.269,
+   "fin": 66.497,
+   "frase": 18
+  },
+  {
+   "w": "suelo",
+   "ini": 66.497,
+   "fin": 66.954,
+   "frase": 18
+  },
+  {
+   "w": "de",
+   "ini": 66.954,
+   "fin": 67.182,
+   "frase": 18
+  },
+  {
+   "w": "otra",
+   "ini": 67.182,
+   "fin": 67.563,
+   "frase": 18
+  },
+  {
+   "w": "manera…",
+   "ini": 67.563,
+   "fin": 68.172,
+   "frase": 18
+  },
+  {
+   "w": "porque",
+   "ini": 68.292,
+   "fin": 68.735,
+   "frase": 18
+  },
+  {
+   "w": "ahí",
+   "ini": 68.735,
+   "fin": 68.989,
+   "frase": 18
+  },
+  {
+   "w": "abajo",
+   "ini": 68.989,
+   "fin": 69.369,
+   "frase": 18
+  },
+  {
+   "w": "hay",
+   "ini": 69.369,
+   "fin": 69.622,
+   "frase": 18
+  },
+  {
+   "w": "todo",
+   "ini": 69.622,
+   "fin": 69.939,
+   "frase": 18
+  },
+  {
+   "w": "un",
+   "ini": 69.939,
+   "fin": 70.128,
+   "frase": 18
+  },
+  {
+   "w": "mundo.",
+   "ini": 70.128,
+   "fin": 70.572,
+   "frase": 18
+  }
+ ]
+}

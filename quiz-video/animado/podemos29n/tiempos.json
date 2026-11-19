@@ -1,0 +1,1033 @@
+{
+ "duracion": 58.1,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "¿Qué pasaría si Podemos ganara las elecciones del 29 de noviembre? Te lo cuento en sesenta segundos.",
+   "ini": 0.0,
+   "fin": 5.776
+  },
+  {
+   "n": 2,
+   "texto": "Primero, un dato: en 2023 fue dentro de Sumar y sacó cinco diputados. Ahora va por separado, con Irene Montero.",
+   "ini": 6.046,
+   "fin": 13.46
+  },
+  {
+   "n": 3,
+   "texto": "Las encuestas le dan en torno al dos por ciento, uno o dos escaños. Pero imaginemos que gana.",
+   "ini": 13.58,
+   "fin": 18.986
+  },
+  {
+   "n": 4,
+   "texto": "Alquiler: bajarlo un cuarenta por ciento por decreto.",
+   "ini": 19.206,
+   "fin": 22.388
+  },
+  {
+   "n": 5,
+   "texto": "Vivienda: usar seiscientas cincuenta mil casas de grandes propietarios, y prohibir que los fondos compren pisos.",
+   "ini": 22.508,
+   "fin": 28.455
+  },
+  {
+   "n": 6,
+   "texto": "Pisos turísticos: nada de licencias nuevas en las grandes ciudades durante cinco años.",
+   "ini": 28.575,
+   "fin": 33.32
+  },
+  {
+   "n": 7,
+   "texto": "Bancos: una banca pública, y más impuestos a bancos, eléctricas y grandes fortunas.",
+   "ini": 33.44,
+   "fin": 38.652
+  },
+  {
+   "n": 8,
+   "texto": "Defensa: no subir el gasto militar, y un referéndum para salir de la OTAN.",
+   "ini": 38.772,
+   "fin": 43.057
+  },
+  {
+   "n": 9,
+   "texto": "Lo malo: muchos economistas creen que topar el alquiler reduce la oferta, y salir de la OTAN chocaría con los aliados.",
+   "ini": 43.177,
+   "fin": 49.629
+  },
+  {
+   "n": 10,
+   "texto": "Para sus votantes, vivienda para todos. Para sus críticos, demasiada intervención del Estado.",
+   "ini": 49.749,
+   "fin": 54.891
+  },
+  {
+   "n": 11,
+   "texto": "El 29 de noviembre, deciden las urnas.",
+   "ini": 55.011,
+   "fin": 57.5
+  }
+ ],
+ "palabras": [
+  {
+   "w": "¿Qué",
+   "ini": 0.0,
+   "fin": 0.262,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 0.262,
+   "fin": 0.681,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 0.681,
+   "fin": 0.838,
+   "frase": 1
+  },
+  {
+   "w": "Podemos",
+   "ini": 0.838,
+   "fin": 1.257,
+   "frase": 1
+  },
+  {
+   "w": "ganara",
+   "ini": 1.257,
+   "fin": 1.624,
+   "frase": 1
+  },
+  {
+   "w": "las",
+   "ini": 1.624,
+   "fin": 1.834,
+   "frase": 1
+  },
+  {
+   "w": "elecciones",
+   "ini": 1.834,
+   "fin": 2.41,
+   "frase": 1
+  },
+  {
+   "w": "del",
+   "ini": 2.41,
+   "fin": 2.619,
+   "frase": 1
+  },
+  {
+   "w": "29",
+   "ini": 2.619,
+   "fin": 2.777,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 2.777,
+   "fin": 2.934,
+   "frase": 1
+  },
+  {
+   "w": "noviembre?",
+   "ini": 2.934,
+   "fin": 3.51,
+   "frase": 1
+  },
+  {
+   "w": "Te",
+   "ini": 4.03,
+   "fin": 4.184,
+   "frase": 1
+  },
+  {
+   "w": "lo",
+   "ini": 4.184,
+   "fin": 4.338,
+   "frase": 1
+  },
+  {
+   "w": "cuento",
+   "ini": 4.338,
+   "fin": 4.697,
+   "frase": 1
+  },
+  {
+   "w": "en",
+   "ini": 4.697,
+   "fin": 4.851,
+   "frase": 1
+  },
+  {
+   "w": "sesenta",
+   "ini": 4.851,
+   "fin": 5.262,
+   "frase": 1
+  },
+  {
+   "w": "segundos.",
+   "ini": 5.262,
+   "fin": 5.776,
+   "frase": 1
+  },
+  {
+   "w": "Primero,",
+   "ini": 6.046,
+   "fin": 6.436,
+   "frase": 2
+  },
+  {
+   "w": "un",
+   "ini": 6.556,
+   "fin": 6.712,
+   "frase": 2
+  },
+  {
+   "w": "dato:",
+   "ini": 6.712,
+   "fin": 7.026,
+   "frase": 2
+  },
+  {
+   "w": "en",
+   "ini": 7.296,
+   "fin": 7.489,
+   "frase": 2
+  },
+  {
+   "w": "2023",
+   "ini": 7.489,
+   "fin": 7.812,
+   "frase": 2
+  },
+  {
+   "w": "fue",
+   "ini": 7.812,
+   "fin": 8.071,
+   "frase": 2
+  },
+  {
+   "w": "dentro",
+   "ini": 8.071,
+   "fin": 8.523,
+   "frase": 2
+  },
+  {
+   "w": "de",
+   "ini": 8.523,
+   "fin": 8.717,
+   "frase": 2
+  },
+  {
+   "w": "Sumar",
+   "ini": 8.717,
+   "fin": 9.105,
+   "frase": 2
+  },
+  {
+   "w": "y",
+   "ini": 9.105,
+   "fin": 9.234,
+   "frase": 2
+  },
+  {
+   "w": "sacó",
+   "ini": 9.234,
+   "fin": 9.557,
+   "frase": 2
+  },
+  {
+   "w": "cinco",
+   "ini": 9.557,
+   "fin": 9.945,
+   "frase": 2
+  },
+  {
+   "w": "diputados.",
+   "ini": 9.945,
+   "fin": 10.656,
+   "frase": 2
+  },
+  {
+   "w": "Ahora",
+   "ini": 11.106,
+   "fin": 11.437,
+   "frase": 2
+  },
+  {
+   "w": "va",
+   "ini": 11.437,
+   "fin": 11.603,
+   "frase": 2
+  },
+  {
+   "w": "por",
+   "ini": 11.603,
+   "fin": 11.823,
+   "frase": 2
+  },
+  {
+   "w": "separado,",
+   "ini": 11.823,
+   "fin": 12.376,
+   "frase": 2
+  },
+  {
+   "w": "con",
+   "ini": 12.526,
+   "fin": 12.722,
+   "frase": 2
+  },
+  {
+   "w": "Irene",
+   "ini": 12.722,
+   "fin": 13.017,
+   "frase": 2
+  },
+  {
+   "w": "Montero.",
+   "ini": 13.017,
+   "fin": 13.46,
+   "frase": 2
+  },
+  {
+   "w": "Las",
+   "ini": 13.58,
+   "fin": 13.758,
+   "frase": 3
+  },
+  {
+   "w": "encuestas",
+   "ini": 13.758,
+   "fin": 14.205,
+   "frase": 3
+  },
+  {
+   "w": "le",
+   "ini": 14.205,
+   "fin": 14.339,
+   "frase": 3
+  },
+  {
+   "w": "dan",
+   "ini": 14.339,
+   "fin": 14.518,
+   "frase": 3
+  },
+  {
+   "w": "en",
+   "ini": 14.518,
+   "fin": 14.652,
+   "frase": 3
+  },
+  {
+   "w": "torno",
+   "ini": 14.652,
+   "fin": 14.92,
+   "frase": 3
+  },
+  {
+   "w": "al",
+   "ini": 14.92,
+   "fin": 15.055,
+   "frase": 3
+  },
+  {
+   "w": "dos",
+   "ini": 15.055,
+   "fin": 15.233,
+   "frase": 3
+  },
+  {
+   "w": "por",
+   "ini": 15.233,
+   "fin": 15.412,
+   "frase": 3
+  },
+  {
+   "w": "ciento,",
+   "ini": 15.412,
+   "fin": 15.77,
+   "frase": 3
+  },
+  {
+   "w": "uno",
+   "ini": 15.99,
+   "fin": 16.223,
+   "frase": 3
+  },
+  {
+   "w": "o",
+   "ini": 16.223,
+   "fin": 16.34,
+   "frase": 3
+  },
+  {
+   "w": "dos",
+   "ini": 16.34,
+   "fin": 16.574,
+   "frase": 3
+  },
+  {
+   "w": "escaños.",
+   "ini": 16.574,
+   "fin": 17.1,
+   "frase": 3
+  },
+  {
+   "w": "Pero",
+   "ini": 17.52,
+   "fin": 17.802,
+   "frase": 3
+  },
+  {
+   "w": "imaginemos",
+   "ini": 17.802,
+   "fin": 18.422,
+   "frase": 3
+  },
+  {
+   "w": "que",
+   "ini": 18.422,
+   "fin": 18.648,
+   "frase": 3
+  },
+  {
+   "w": "gana.",
+   "ini": 18.648,
+   "fin": 18.986,
+   "frase": 3
+  },
+  {
+   "w": "Alquiler:",
+   "ini": 19.206,
+   "fin": 19.676,
+   "frase": 4
+  },
+  {
+   "w": "bajarlo",
+   "ini": 19.986,
+   "fin": 20.423,
+   "frase": 4
+  },
+  {
+   "w": "un",
+   "ini": 20.423,
+   "fin": 20.587,
+   "frase": 4
+  },
+  {
+   "w": "cuarenta",
+   "ini": 20.587,
+   "fin": 21.078,
+   "frase": 4
+  },
+  {
+   "w": "por",
+   "ini": 21.078,
+   "fin": 21.296,
+   "frase": 4
+  },
+  {
+   "w": "ciento",
+   "ini": 21.296,
+   "fin": 21.679,
+   "frase": 4
+  },
+  {
+   "w": "por",
+   "ini": 21.679,
+   "fin": 21.897,
+   "frase": 4
+  },
+  {
+   "w": "decreto.",
+   "ini": 21.897,
+   "fin": 22.388,
+   "frase": 4
+  },
+  {
+   "w": "Vivienda:",
+   "ini": 22.508,
+   "fin": 23.048,
+   "frase": 5
+  },
+  {
+   "w": "usar",
+   "ini": 23.318,
+   "fin": 23.553,
+   "frase": 5
+  },
+  {
+   "w": "seiscientas",
+   "ini": 23.553,
+   "fin": 24.116,
+   "frase": 5
+  },
+  {
+   "w": "cincuenta",
+   "ini": 24.116,
+   "fin": 24.586,
+   "frase": 5
+  },
+  {
+   "w": "mil",
+   "ini": 24.586,
+   "fin": 24.773,
+   "frase": 5
+  },
+  {
+   "w": "casas",
+   "ini": 24.773,
+   "fin": 25.055,
+   "frase": 5
+  },
+  {
+   "w": "de",
+   "ini": 25.055,
+   "fin": 25.196,
+   "frase": 5
+  },
+  {
+   "w": "grandes",
+   "ini": 25.196,
+   "fin": 25.571,
+   "frase": 5
+  },
+  {
+   "w": "propietarios,",
+   "ini": 25.571,
+   "fin": 26.228,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 26.408,
+   "fin": 26.508,
+   "frase": 5
+  },
+  {
+   "w": "prohibir",
+   "ini": 26.508,
+   "fin": 26.957,
+   "frase": 5
+  },
+  {
+   "w": "que",
+   "ini": 26.957,
+   "fin": 27.157,
+   "frase": 5
+  },
+  {
+   "w": "los",
+   "ini": 27.157,
+   "fin": 27.357,
+   "frase": 5
+  },
+  {
+   "w": "fondos",
+   "ini": 27.357,
+   "fin": 27.706,
+   "frase": 5
+  },
+  {
+   "w": "compren",
+   "ini": 27.706,
+   "fin": 28.105,
+   "frase": 5
+  },
+  {
+   "w": "pisos.",
+   "ini": 28.105,
+   "fin": 28.455,
+   "frase": 5
+  },
+  {
+   "w": "Pisos",
+   "ini": 28.575,
+   "fin": 28.861,
+   "frase": 6
+  },
+  {
+   "w": "turísticos:",
+   "ini": 28.861,
+   "fin": 29.435,
+   "frase": 6
+  },
+  {
+   "w": "nada",
+   "ini": 29.735,
+   "fin": 29.995,
+   "frase": 6
+  },
+  {
+   "w": "de",
+   "ini": 29.995,
+   "fin": 30.15,
+   "frase": 6
+  },
+  {
+   "w": "licencias",
+   "ini": 30.15,
+   "fin": 30.67,
+   "frase": 6
+  },
+  {
+   "w": "nuevas",
+   "ini": 30.67,
+   "fin": 31.034,
+   "frase": 6
+  },
+  {
+   "w": "en",
+   "ini": 31.034,
+   "fin": 31.19,
+   "frase": 6
+  },
+  {
+   "w": "las",
+   "ini": 31.19,
+   "fin": 31.398,
+   "frase": 6
+  },
+  {
+   "w": "grandes",
+   "ini": 31.398,
+   "fin": 31.813,
+   "frase": 6
+  },
+  {
+   "w": "ciudades",
+   "ini": 31.813,
+   "fin": 32.281,
+   "frase": 6
+  },
+  {
+   "w": "durante",
+   "ini": 32.281,
+   "fin": 32.697,
+   "frase": 6
+  },
+  {
+   "w": "cinco",
+   "ini": 32.697,
+   "fin": 33.009,
+   "frase": 6
+  },
+  {
+   "w": "años.",
+   "ini": 33.009,
+   "fin": 33.32,
+   "frase": 6
+  },
+  {
+   "w": "Bancos:",
+   "ini": 33.44,
+   "fin": 33.9,
+   "frase": 7
+  },
+  {
+   "w": "una",
+   "ini": 34.25,
+   "fin": 34.421,
+   "frase": 7
+  },
+  {
+   "w": "banca",
+   "ini": 34.421,
+   "fin": 34.677,
+   "frase": 7
+  },
+  {
+   "w": "pública,",
+   "ini": 34.677,
+   "fin": 35.06,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 35.16,
+   "fin": 35.277,
+   "frase": 7
+  },
+  {
+   "w": "más",
+   "ini": 35.277,
+   "fin": 35.511,
+   "frase": 7
+  },
+  {
+   "w": "impuestos",
+   "ini": 35.511,
+   "fin": 36.096,
+   "frase": 7
+  },
+  {
+   "w": "a",
+   "ini": 36.096,
+   "fin": 36.213,
+   "frase": 7
+  },
+  {
+   "w": "bancos,",
+   "ini": 36.213,
+   "fin": 36.68,
+   "frase": 7
+  },
+  {
+   "w": "eléctricas",
+   "ini": 36.85,
+   "fin": 37.49,
+   "frase": 7
+  },
+  {
+   "w": "y",
+   "ini": 37.49,
+   "fin": 37.606,
+   "frase": 7
+  },
+  {
+   "w": "grandes",
+   "ini": 37.606,
+   "fin": 38.071,
+   "frase": 7
+  },
+  {
+   "w": "fortunas.",
+   "ini": 38.071,
+   "fin": 38.652,
+   "frase": 7
+  },
+  {
+   "w": "Defensa:",
+   "ini": 38.772,
+   "fin": 39.162,
+   "frase": 8
+  },
+  {
+   "w": "no",
+   "ini": 39.232,
+   "fin": 39.419,
+   "frase": 8
+  },
+  {
+   "w": "subir",
+   "ini": 39.419,
+   "fin": 39.795,
+   "frase": 8
+  },
+  {
+   "w": "el",
+   "ini": 39.795,
+   "fin": 39.983,
+   "frase": 8
+  },
+  {
+   "w": "gasto",
+   "ini": 39.983,
+   "fin": 40.358,
+   "frase": 8
+  },
+  {
+   "w": "militar,",
+   "ini": 40.358,
+   "fin": 40.922,
+   "frase": 8
+  },
+  {
+   "w": "y",
+   "ini": 41.082,
+   "fin": 41.183,
+   "frase": 8
+  },
+  {
+   "w": "un",
+   "ini": 41.183,
+   "fin": 41.335,
+   "frase": 8
+  },
+  {
+   "w": "referéndum",
+   "ini": 41.335,
+   "fin": 41.892,
+   "frase": 8
+  },
+  {
+   "w": "para",
+   "ini": 41.892,
+   "fin": 42.145,
+   "frase": 8
+  },
+  {
+   "w": "salir",
+   "ini": 42.145,
+   "fin": 42.449,
+   "frase": 8
+  },
+  {
+   "w": "de",
+   "ini": 42.449,
+   "fin": 42.601,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 42.601,
+   "fin": 42.753,
+   "frase": 8
+  },
+  {
+   "w": "OTAN.",
+   "ini": 42.753,
+   "fin": 43.057,
+   "frase": 8
+  },
+  {
+   "w": "Lo",
+   "ini": 43.177,
+   "fin": 43.334,
+   "frase": 9
+  },
+  {
+   "w": "malo:",
+   "ini": 43.334,
+   "fin": 43.647,
+   "frase": 9
+  },
+  {
+   "w": "muchos",
+   "ini": 43.967,
+   "fin": 44.304,
+   "frase": 9
+  },
+  {
+   "w": "economistas",
+   "ini": 44.304,
+   "fin": 44.882,
+   "frase": 9
+  },
+  {
+   "w": "creen",
+   "ini": 44.882,
+   "fin": 45.171,
+   "frase": 9
+  },
+  {
+   "w": "que",
+   "ini": 45.171,
+   "fin": 45.364,
+   "frase": 9
+  },
+  {
+   "w": "topar",
+   "ini": 45.364,
+   "fin": 45.652,
+   "frase": 9
+  },
+  {
+   "w": "el",
+   "ini": 45.652,
+   "fin": 45.797,
+   "frase": 9
+  },
+  {
+   "w": "alquiler",
+   "ini": 45.797,
+   "fin": 46.23,
+   "frase": 9
+  },
+  {
+   "w": "reduce",
+   "ini": 46.23,
+   "fin": 46.567,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 46.567,
+   "fin": 46.712,
+   "frase": 9
+  },
+  {
+   "w": "oferta,",
+   "ini": 46.712,
+   "fin": 47.097,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 47.327,
+   "fin": 47.429,
+   "frase": 9
+  },
+  {
+   "w": "salir",
+   "ini": 47.429,
+   "fin": 47.736,
+   "frase": 9
+  },
+  {
+   "w": "de",
+   "ini": 47.736,
+   "fin": 47.89,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 47.89,
+   "fin": 48.043,
+   "frase": 9
+  },
+  {
+   "w": "OTAN",
+   "ini": 48.043,
+   "fin": 48.299,
+   "frase": 9
+  },
+  {
+   "w": "chocaría",
+   "ini": 48.299,
+   "fin": 48.759,
+   "frase": 9
+  },
+  {
+   "w": "con",
+   "ini": 48.759,
+   "fin": 48.964,
+   "frase": 9
+  },
+  {
+   "w": "los",
+   "ini": 48.964,
+   "fin": 49.168,
+   "frase": 9
+  },
+  {
+   "w": "aliados.",
+   "ini": 49.168,
+   "fin": 49.629,
+   "frase": 9
+  },
+  {
+   "w": "Para",
+   "ini": 49.749,
+   "fin": 49.978,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 49.978,
+   "fin": 50.161,
+   "frase": 10
+  },
+  {
+   "w": "votantes,",
+   "ini": 50.161,
+   "fin": 50.619,
+   "frase": 10
+  },
+  {
+   "w": "vivienda",
+   "ini": 50.729,
+   "fin": 51.204,
+   "frase": 10
+  },
+  {
+   "w": "para",
+   "ini": 51.204,
+   "fin": 51.469,
+   "frase": 10
+  },
+  {
+   "w": "todos.",
+   "ini": 51.469,
+   "fin": 51.839,
+   "frase": 10
+  },
+  {
+   "w": "Para",
+   "ini": 52.139,
+   "fin": 52.354,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 52.354,
+   "fin": 52.527,
+   "frase": 10
+  },
+  {
+   "w": "críticos,",
+   "ini": 52.527,
+   "fin": 52.959,
+   "frase": 10
+  },
+  {
+   "w": "demasiada",
+   "ini": 53.079,
+   "fin": 53.596,
+   "frase": 10
+  },
+  {
+   "w": "intervención",
+   "ini": 53.596,
+   "fin": 54.27,
+   "frase": 10
+  },
+  {
+   "w": "del",
+   "ini": 54.27,
+   "fin": 54.477,
+   "frase": 10
+  },
+  {
+   "w": "Estado.",
+   "ini": 54.477,
+   "fin": 54.891,
+   "frase": 10
+  },
+  {
+   "w": "El",
+   "ini": 55.011,
+   "fin": 55.194,
+   "frase": 11
+  },
+  {
+   "w": "29",
+   "ini": 55.194,
+   "fin": 55.377,
+   "frase": 11
+  },
+  {
+   "w": "de",
+   "ini": 55.377,
+   "fin": 55.56,
+   "frase": 11
+  },
+  {
+   "w": "noviembre,",
+   "ini": 55.56,
+   "fin": 56.231,
+   "frase": 11
+  },
+  {
+   "w": "deciden",
+   "ini": 56.311,
+   "fin": 56.812,
+   "frase": 11
+  },
+  {
+   "w": "las",
+   "ini": 56.812,
+   "fin": 57.062,
+   "frase": 11
+  },
+  {
+   "w": "urnas.",
+   "ini": 57.062,
+   "fin": 57.5,
+   "frase": 11
+  }
+ ]
+}

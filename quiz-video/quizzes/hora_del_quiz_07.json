@@ -1,0 +1,145 @@
+{
+  "modo": "gamer",
+  "tema": "videojuegos",
+  "titulo": "¿Cuánto sabes de videojuegos?",
+  "dificultad": "medio",
+  "tempo": 1.28,
+  "frase_intro": "La última pregunta tiene trampa… ¿llegarás?",
+  "pegatina_gancho": "¿ERES GAMER DE VERDAD?",
+  "preguntas": [
+    {
+      "pregunta": "¿Qué compañía está detrás de Fortnite?",
+      "opciones": [
+        "Activision",
+        "Rockstar Games",
+        "Epic Games",
+        "Electronic Arts"
+      ],
+      "correcta": "C",
+      "imagen": "oficina_3d.png",
+      "pique": "¡FACILITA!",
+      "comentario": "¡Victoria magistral!",
+      "fuente": "Fortnite es de Epic Games."
+    },
+    {
+      "pregunta": "¿Qué juego de lucha y artes marciales llegó a móviles en octubre de 2026?",
+      "opciones": [
+        "Tekken 8",
+        "Street Fighter 6",
+        "Mortal Kombat 1",
+        "Sifu"
+      ],
+      "correcta": "D",
+      "imagen": "guante_boxeo_3d.png",
+      "pique": "¿SEGURO?",
+      "comentario": "¡Hiya!",
+      "fuente": "Sifu salió en iOS y Android el 12-10-2026 (iphoneincanada, pocketgamer; comprobado 30-10-2026).",
+      "pregunta_voz": "¿Qué juego de lucha llegó a móviles en octubre de 2026?"
+    },
+    {
+      "pregunta": "En Brawl Stars, ¿qué moneda se usa para comprar aspectos en la tienda?",
+      "opciones": [
+        "Gemas",
+        "Copas",
+        "Tickets",
+        "Estrellas"
+      ],
+      "correcta": "A",
+      "imagen": "bolsas_3d.png",
+      "pique": "¡OJO!",
+      "comentario": "¡A ahorrar!",
+      "fuente": "Las gemas son la moneda premium de Brawl Stars.",
+      "pregunta_voz": "En Brawl Stars, ¿con qué moneda compras aspectos?"
+    },
+    {
+      "pregunta": "¿Cuál de estos juegos pertenece a la saga Pokémon de Nintendo?",
+      "opciones": [
+        "Palworld",
+        "Temtem",
+        "Pokémon Legends",
+        "Digimon Survive"
+      ],
+      "correcta": "C",
+      "imagen": "mando_3d.png",
+      "pique": "¡NO TE|LÍES!",
+      "comentario": "¡Hazte con todos!",
+      "fuente": "Pokémon Legends (Arceus, Z-A) es de la saga Pokémon.",
+      "pregunta_voz": "¿Cuál es de la saga Pokémon?"
+    },
+    {
+      "pregunta": "¿Qué juego de Roblox se hizo famoso por su terror y supervivencia con monstruos?",
+      "opciones": [
+        "Adopt Me!",
+        "Brookhaven",
+        "DOORS",
+        "Blox Fruits"
+      ],
+      "correcta": "C",
+      "imagen": "linterna_3d.png",
+      "pique": "TIC, TAC…",
+      "comentario": "¡No mires atrás!",
+      "fuente": "DOORS es el juego de terror de Roblox.",
+      "pregunta_voz": "¿Qué juego de Roblox es famoso por su terror con monstruos?"
+    },
+    {
+      "pregunta": "¿Qué videojuego ha vendido más copias de toda la historia?",
+      "opciones": [
+        "GTA V",
+        "Minecraft",
+        "Tetris",
+        "Wii Sports"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "etiqueta": "PREGUNTA TRAMPA",
+      "etiqueta_voz": "¡Pregunta trampa!",
+      "imagen": "trofeo_3d.png",
+      "pique": "¡SOLO|LEYENDAS!",
+      "fuente": "Minecraft (~350 M copias) como juego único; Tetris supera eso si se suman todas sus versiones. No se revela.",
+      "pregunta_voz": "¿Qué videojuego ha vendido más en la historia?"
+    }
+  ],
+  "rangos_rapido": true,
+  "rangos_voz": "¿Cuántas has acertado? ¡Mira tu rango!",
+  "rangos": [
+    {
+      "rango": "0–2",
+      "nombre": "Novato",
+      "imagen": "rango_novato_3d.png"
+    },
+    {
+      "rango": "3–4",
+      "nombre": "Gamer casual",
+      "imagen": "rango_casual_3d.png"
+    },
+    {
+      "rango": "5",
+      "nombre": "Gamer de verdad",
+      "imagen": "rango_gamer_3d.png"
+    },
+    {
+      "rango": "6/6",
+      "nombre": "Leyenda",
+      "imagen": "rango_leyenda_3d.png"
+    }
+  ],
+  "portada": {
+    "arriba": "QUIZ GAMER",
+    "titulo": [
+      [
+        "¿ERES GAMER",
+        "w"
+      ],
+      [
+        "DE VERDAD?",
+        "a"
+      ]
+    ],
+    "pregunta": 4,
+    "emoji": "invasor",
+    "emoji2": "mando",
+    "estilo": "clasica",
+    "pegatina": "LA ÚLTIMA TIENE TRAMPA",
+    "sub": "¿Llegas al 6/6?"
+  }
+}

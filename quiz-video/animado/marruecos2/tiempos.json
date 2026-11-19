@@ -1,0 +1,1099 @@
+{
+ "duracion": 67.734,
+ "frases": [
+  {
+   "n": 1,
+   "texto": "Entre España y Marruecos hay solo catorce kilómetros de mar. ¿Qué pasaría si Marruecos decidiera cruzarlos?",
+   "ini": 0.0,
+   "fin": 6.708
+  },
+  {
+   "n": 2,
+   "texto": "Te lo cuento en sesenta segundos, con datos reales.",
+   "ini": 6.978,
+   "fin": 10.053
+  },
+  {
+   "n": 3,
+   "texto": "Soldados: Marruecos tiene unos doscientos mil. España, unos ciento veinte mil.",
+   "ini": 10.173,
+   "fin": 15.565
+  },
+  {
+   "n": 4,
+   "texto": "Tanques: también gana Marruecos, con más de mil trescientos, frente a menos de trescientos.",
+   "ini": 15.785,
+   "fin": 21.282
+  },
+  {
+   "n": 5,
+   "texto": "Pero para invadir hay que cruzar el mar, y en el mar y en el aire manda España.",
+   "ini": 21.402,
+   "fin": 26.263
+  },
+  {
+   "n": 6,
+   "texto": "Cazas: ciento treinta y seis contra ochenta y cuatro.",
+   "ini": 26.383,
+   "fin": 29.533
+  },
+  {
+   "n": 7,
+   "texto": "Submarinos: España tiene dos; Marruecos, ninguno. Y portaaviones, solo España.",
+   "ini": 29.653,
+   "fin": 35.714
+  },
+  {
+   "n": 8,
+   "texto": "En el ranking mundial, España es la número dieciocho; Marruecos, la cincuenta y seis.",
+   "ini": 35.834,
+   "fin": 41.07
+  },
+  {
+   "n": 9,
+   "texto": "El punto débil: Ceuta y Melilla. Están en África, y la OTAN no las cubre automáticamente.",
+   "ini": 41.19,
+   "fin": 47.181
+  },
+  {
+   "n": 10,
+   "texto": "La Unión Europea, en cambio, sí obliga a sus socios a ayudar.",
+   "ini": 47.301,
+   "fin": 50.85
+  },
+  {
+   "n": 11,
+   "texto": "Los análisis coinciden: cruzar el Estrecho sería casi imposible, y la tensión estaría en Ceuta y Melilla.",
+   "ini": 50.97,
+   "fin": 57.678
+  },
+  {
+   "n": 12,
+   "texto": "Además, una guerra así no la gana nadie: España es su primer socio comercial.",
+   "ini": 57.798,
+   "fin": 63.03
+  },
+  {
+   "n": 13,
+   "texto": "¿Tú qué crees que pasaría? Te leo en comentarios.",
+   "ini": 63.15,
+   "fin": 65.934
+  }
+ ],
+ "palabras": [
+  {
+   "w": "Entre",
+   "ini": 0.0,
+   "fin": 0.347,
+   "frase": 1
+  },
+  {
+   "w": "España",
+   "ini": 0.347,
+   "fin": 0.752,
+   "frase": 1
+  },
+  {
+   "w": "y",
+   "ini": 0.752,
+   "fin": 0.868,
+   "frase": 1
+  },
+  {
+   "w": "Marruecos",
+   "ini": 0.868,
+   "fin": 1.447,
+   "frase": 1
+  },
+  {
+   "w": "hay",
+   "ini": 1.447,
+   "fin": 1.678,
+   "frase": 1
+  },
+  {
+   "w": "solo",
+   "ini": 1.678,
+   "fin": 1.968,
+   "frase": 1
+  },
+  {
+   "w": "catorce",
+   "ini": 1.968,
+   "fin": 2.43,
+   "frase": 1
+  },
+  {
+   "w": "kilómetros",
+   "ini": 2.43,
+   "fin": 3.067,
+   "frase": 1
+  },
+  {
+   "w": "de",
+   "ini": 3.067,
+   "fin": 3.241,
+   "frase": 1
+  },
+  {
+   "w": "mar.",
+   "ini": 3.241,
+   "fin": 3.53,
+   "frase": 1
+  },
+  {
+   "w": "¿Qué",
+   "ini": 4.18,
+   "fin": 4.449,
+   "frase": 1
+  },
+  {
+   "w": "pasaría",
+   "ini": 4.449,
+   "fin": 4.879,
+   "frase": 1
+  },
+  {
+   "w": "si",
+   "ini": 4.879,
+   "fin": 5.04,
+   "frase": 1
+  },
+  {
+   "w": "Marruecos",
+   "ini": 5.04,
+   "fin": 5.578,
+   "frase": 1
+  },
+  {
+   "w": "decidiera",
+   "ini": 5.578,
+   "fin": 6.116,
+   "frase": 1
+  },
+  {
+   "w": "cruzarlos?",
+   "ini": 6.116,
+   "fin": 6.708,
+   "frase": 1
+  },
+  {
+   "w": "Te",
+   "ini": 6.978,
+   "fin": 7.129,
+   "frase": 2
+  },
+  {
+   "w": "lo",
+   "ini": 7.129,
+   "fin": 7.281,
+   "frase": 2
+  },
+  {
+   "w": "cuento",
+   "ini": 7.281,
+   "fin": 7.635,
+   "frase": 2
+  },
+  {
+   "w": "en",
+   "ini": 7.635,
+   "fin": 7.787,
+   "frase": 2
+  },
+  {
+   "w": "sesenta",
+   "ini": 7.787,
+   "fin": 8.192,
+   "frase": 2
+  },
+  {
+   "w": "segundos,",
+   "ini": 8.192,
+   "fin": 8.698,
+   "frase": 2
+  },
+  {
+   "w": "con",
+   "ini": 8.988,
+   "fin": 9.224,
+   "frase": 2
+  },
+  {
+   "w": "datos",
+   "ini": 9.224,
+   "fin": 9.579,
+   "frase": 2
+  },
+  {
+   "w": "reales.",
+   "ini": 9.579,
+   "fin": 10.053,
+   "frase": 2
+  },
+  {
+   "w": "Soldados:",
+   "ini": 10.173,
+   "fin": 10.743,
+   "frase": 3
+  },
+  {
+   "w": "Marruecos",
+   "ini": 11.203,
+   "fin": 11.716,
+   "frase": 3
+  },
+  {
+   "w": "tiene",
+   "ini": 11.716,
+   "fin": 12.024,
+   "frase": 3
+  },
+  {
+   "w": "unos",
+   "ini": 12.024,
+   "fin": 12.281,
+   "frase": 3
+  },
+  {
+   "w": "doscientos",
+   "ini": 12.281,
+   "fin": 12.846,
+   "frase": 3
+  },
+  {
+   "w": "mil.",
+   "ini": 12.846,
+   "fin": 13.103,
+   "frase": 3
+  },
+  {
+   "w": "España,",
+   "ini": 13.543,
+   "fin": 14.063,
+   "frase": 3
+  },
+  {
+   "w": "unos",
+   "ini": 14.173,
+   "fin": 14.463,
+   "frase": 3
+  },
+  {
+   "w": "ciento",
+   "ini": 14.463,
+   "fin": 14.869,
+   "frase": 3
+  },
+  {
+   "w": "veinte",
+   "ini": 14.869,
+   "fin": 15.275,
+   "frase": 3
+  },
+  {
+   "w": "mil.",
+   "ini": 15.275,
+   "fin": 15.565,
+   "frase": 3
+  },
+  {
+   "w": "Tanques:",
+   "ini": 15.785,
+   "fin": 16.205,
+   "frase": 4
+  },
+  {
+   "w": "también",
+   "ini": 16.665,
+   "fin": 16.979,
+   "frase": 4
+  },
+  {
+   "w": "gana",
+   "ini": 16.979,
+   "fin": 17.175,
+   "frase": 4
+  },
+  {
+   "w": "Marruecos,",
+   "ini": 17.175,
+   "fin": 17.605,
+   "frase": 4
+  },
+  {
+   "w": "con",
+   "ini": 17.685,
+   "fin": 17.94,
+   "frase": 4
+  },
+  {
+   "w": "más",
+   "ini": 17.94,
+   "fin": 18.194,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 18.194,
+   "fin": 18.385,
+   "frase": 4
+  },
+  {
+   "w": "mil",
+   "ini": 18.385,
+   "fin": 18.639,
+   "frase": 4
+  },
+  {
+   "w": "trescientos,",
+   "ini": 18.639,
+   "fin": 19.465,
+   "frase": 4
+  },
+  {
+   "w": "frente",
+   "ini": 19.645,
+   "fin": 20.015,
+   "frase": 4
+  },
+  {
+   "w": "a",
+   "ini": 20.015,
+   "fin": 20.121,
+   "frase": 4
+  },
+  {
+   "w": "menos",
+   "ini": 20.121,
+   "fin": 20.437,
+   "frase": 4
+  },
+  {
+   "w": "de",
+   "ini": 20.437,
+   "fin": 20.596,
+   "frase": 4
+  },
+  {
+   "w": "trescientos.",
+   "ini": 20.596,
+   "fin": 21.282,
+   "frase": 4
+  },
+  {
+   "w": "Pero",
+   "ini": 21.402,
+   "fin": 21.652,
+   "frase": 5
+  },
+  {
+   "w": "para",
+   "ini": 21.652,
+   "fin": 21.902,
+   "frase": 5
+  },
+  {
+   "w": "invadir",
+   "ini": 21.902,
+   "fin": 22.302,
+   "frase": 5
+  },
+  {
+   "w": "hay",
+   "ini": 22.302,
+   "fin": 22.502,
+   "frase": 5
+  },
+  {
+   "w": "que",
+   "ini": 22.502,
+   "fin": 22.702,
+   "frase": 5
+  },
+  {
+   "w": "cruzar",
+   "ini": 22.702,
+   "fin": 23.052,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 23.052,
+   "fin": 23.202,
+   "frase": 5
+  },
+  {
+   "w": "mar,",
+   "ini": 23.202,
+   "fin": 23.452,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 23.792,
+   "fin": 23.919,
+   "frase": 5
+  },
+  {
+   "w": "en",
+   "ini": 23.919,
+   "fin": 24.109,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 24.109,
+   "fin": 24.299,
+   "frase": 5
+  },
+  {
+   "w": "mar",
+   "ini": 24.299,
+   "fin": 24.552,
+   "frase": 5
+  },
+  {
+   "w": "y",
+   "ini": 24.552,
+   "fin": 24.679,
+   "frase": 5
+  },
+  {
+   "w": "en",
+   "ini": 24.679,
+   "fin": 24.869,
+   "frase": 5
+  },
+  {
+   "w": "el",
+   "ini": 24.869,
+   "fin": 25.059,
+   "frase": 5
+  },
+  {
+   "w": "aire",
+   "ini": 25.059,
+   "fin": 25.376,
+   "frase": 5
+  },
+  {
+   "w": "manda",
+   "ini": 25.376,
+   "fin": 25.756,
+   "frase": 5
+  },
+  {
+   "w": "España.",
+   "ini": 25.756,
+   "fin": 26.263,
+   "frase": 5
+  },
+  {
+   "w": "Cazas:",
+   "ini": 26.383,
+   "fin": 26.523,
+   "frase": 6
+  },
+  {
+   "w": "ciento",
+   "ini": 26.613,
+   "fin": 27.048,
+   "frase": 6
+  },
+  {
+   "w": "treinta",
+   "ini": 27.048,
+   "fin": 27.545,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 27.545,
+   "fin": 27.669,
+   "frase": 6
+  },
+  {
+   "w": "seis",
+   "ini": 27.669,
+   "fin": 27.98,
+   "frase": 6
+  },
+  {
+   "w": "contra",
+   "ini": 27.98,
+   "fin": 28.414,
+   "frase": 6
+  },
+  {
+   "w": "ochenta",
+   "ini": 28.414,
+   "fin": 28.911,
+   "frase": 6
+  },
+  {
+   "w": "y",
+   "ini": 28.911,
+   "fin": 29.036,
+   "frase": 6
+  },
+  {
+   "w": "cuatro.",
+   "ini": 29.036,
+   "fin": 29.533,
+   "frase": 6
+  },
+  {
+   "w": "Submarinos:",
+   "ini": 29.653,
+   "fin": 30.343,
+   "frase": 7
+  },
+  {
+   "w": "España",
+   "ini": 30.733,
+   "fin": 31.09,
+   "frase": 7
+  },
+  {
+   "w": "tiene",
+   "ini": 31.09,
+   "fin": 31.397,
+   "frase": 7
+  },
+  {
+   "w": "dos;",
+   "ini": 31.397,
+   "fin": 31.653,
+   "frase": 7
+  },
+  {
+   "w": "Marruecos,",
+   "ini": 32.003,
+   "fin": 32.543,
+   "frase": 7
+  },
+  {
+   "w": "ninguno.",
+   "ini": 32.783,
+   "fin": 33.373,
+   "frase": 7
+  },
+  {
+   "w": "Y",
+   "ini": 33.713,
+   "fin": 33.813,
+   "frase": 7
+  },
+  {
+   "w": "portaaviones,",
+   "ini": 33.813,
+   "fin": 34.513,
+   "frase": 7
+  },
+  {
+   "w": "solo",
+   "ini": 34.813,
+   "fin": 35.159,
+   "frase": 7
+  },
+  {
+   "w": "España.",
+   "ini": 35.159,
+   "fin": 35.714,
+   "frase": 7
+  },
+  {
+   "w": "En",
+   "ini": 35.834,
+   "fin": 35.979,
+   "frase": 8
+  },
+  {
+   "w": "el",
+   "ini": 35.979,
+   "fin": 36.124,
+   "frase": 8
+  },
+  {
+   "w": "ranking",
+   "ini": 36.124,
+   "fin": 36.51,
+   "frase": 8
+  },
+  {
+   "w": "mundial,",
+   "ini": 36.51,
+   "fin": 36.944,
+   "frase": 8
+  },
+  {
+   "w": "España",
+   "ini": 37.044,
+   "fin": 37.444,
+   "frase": 8
+  },
+  {
+   "w": "es",
+   "ini": 37.444,
+   "fin": 37.615,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 37.615,
+   "fin": 37.786,
+   "frase": 8
+  },
+  {
+   "w": "número",
+   "ini": 37.786,
+   "fin": 38.186,
+   "frase": 8
+  },
+  {
+   "w": "dieciocho;",
+   "ini": 38.186,
+   "fin": 38.814,
+   "frase": 8
+  },
+  {
+   "w": "Marruecos,",
+   "ini": 39.084,
+   "fin": 39.714,
+   "frase": 8
+  },
+  {
+   "w": "la",
+   "ini": 39.794,
+   "fin": 39.976,
+   "frase": 8
+  },
+  {
+   "w": "cincuenta",
+   "ini": 39.976,
+   "fin": 40.584,
+   "frase": 8
+  },
+  {
+   "w": "y",
+   "ini": 40.584,
+   "fin": 40.705,
+   "frase": 8
+  },
+  {
+   "w": "seis.",
+   "ini": 40.705,
+   "fin": 41.07,
+   "frase": 8
+  },
+  {
+   "w": "El",
+   "ini": 41.19,
+   "fin": 41.357,
+   "frase": 9
+  },
+  {
+   "w": "punto",
+   "ini": 41.357,
+   "fin": 41.691,
+   "frase": 9
+  },
+  {
+   "w": "débil:",
+   "ini": 41.691,
+   "fin": 42.08,
+   "frase": 9
+  },
+  {
+   "w": "Ceuta",
+   "ini": 42.5,
+   "fin": 42.744,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 42.744,
+   "fin": 42.825,
+   "frase": 9
+  },
+  {
+   "w": "Melilla.",
+   "ini": 42.825,
+   "fin": 43.19,
+   "frase": 9
+  },
+  {
+   "w": "Están",
+   "ini": 43.26,
+   "fin": 43.694,
+   "frase": 9
+  },
+  {
+   "w": "en",
+   "ini": 43.694,
+   "fin": 43.911,
+   "frase": 9
+  },
+  {
+   "w": "África,",
+   "ini": 43.911,
+   "fin": 44.49,
+   "frase": 9
+  },
+  {
+   "w": "y",
+   "ini": 44.57,
+   "fin": 44.701,
+   "frase": 9
+  },
+  {
+   "w": "la",
+   "ini": 44.701,
+   "fin": 44.896,
+   "frase": 9
+  },
+  {
+   "w": "OTAN",
+   "ini": 44.896,
+   "fin": 45.223,
+   "frase": 9
+  },
+  {
+   "w": "no",
+   "ini": 45.223,
+   "fin": 45.419,
+   "frase": 9
+  },
+  {
+   "w": "las",
+   "ini": 45.419,
+   "fin": 45.68,
+   "frase": 9
+  },
+  {
+   "w": "cubre",
+   "ini": 45.68,
+   "fin": 46.071,
+   "frase": 9
+  },
+  {
+   "w": "automáticamente.",
+   "ini": 46.071,
+   "fin": 47.181,
+   "frase": 9
+  },
+  {
+   "w": "La",
+   "ini": 47.301,
+   "fin": 47.554,
+   "frase": 10
+  },
+  {
+   "w": "Unión",
+   "ini": 47.554,
+   "fin": 48.061,
+   "frase": 10
+  },
+  {
+   "w": "Europea,",
+   "ini": 48.061,
+   "fin": 48.821,
+   "frase": 10
+  },
+  {
+   "w": "en",
+   "ini": 48.901,
+   "fin": 49.034,
+   "frase": 10
+  },
+  {
+   "w": "cambio,",
+   "ini": 49.034,
+   "fin": 49.388,
+   "frase": 10
+  },
+  {
+   "w": "sí",
+   "ini": 49.388,
+   "fin": 49.521,
+   "frase": 10
+  },
+  {
+   "w": "obliga",
+   "ini": 49.521,
+   "fin": 49.831,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 49.831,
+   "fin": 49.92,
+   "frase": 10
+  },
+  {
+   "w": "sus",
+   "ini": 49.92,
+   "fin": 50.097,
+   "frase": 10
+  },
+  {
+   "w": "socios",
+   "ini": 50.097,
+   "fin": 50.407,
+   "frase": 10
+  },
+  {
+   "w": "a",
+   "ini": 50.407,
+   "fin": 50.495,
+   "frase": 10
+  },
+  {
+   "w": "ayudar.",
+   "ini": 50.495,
+   "fin": 50.85,
+   "frase": 10
+  },
+  {
+   "w": "Los",
+   "ini": 50.97,
+   "fin": 51.176,
+   "frase": 11
+  },
+  {
+   "w": "análisis",
+   "ini": 51.176,
+   "fin": 51.641,
+   "frase": 11
+  },
+  {
+   "w": "coinciden:",
+   "ini": 51.641,
+   "fin": 52.21,
+   "frase": 11
+  },
+  {
+   "w": "cruzar",
+   "ini": 52.61,
+   "fin": 53.023,
+   "frase": 11
+  },
+  {
+   "w": "el",
+   "ini": 53.023,
+   "fin": 53.2,
+   "frase": 11
+  },
+  {
+   "w": "Estrecho",
+   "ini": 53.2,
+   "fin": 53.731,
+   "frase": 11
+  },
+  {
+   "w": "sería",
+   "ini": 53.731,
+   "fin": 54.085,
+   "frase": 11
+  },
+  {
+   "w": "casi",
+   "ini": 54.085,
+   "fin": 54.38,
+   "frase": 11
+  },
+  {
+   "w": "imposible,",
+   "ini": 54.38,
+   "fin": 55.03,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 55.3,
+   "fin": 55.416,
+   "frase": 11
+  },
+  {
+   "w": "la",
+   "ini": 55.416,
+   "fin": 55.59,
+   "frase": 11
+  },
+  {
+   "w": "tensión",
+   "ini": 55.59,
+   "fin": 56.054,
+   "frase": 11
+  },
+  {
+   "w": "estaría",
+   "ini": 56.054,
+   "fin": 56.518,
+   "frase": 11
+  },
+  {
+   "w": "en",
+   "ini": 56.518,
+   "fin": 56.692,
+   "frase": 11
+  },
+  {
+   "w": "Ceuta",
+   "ini": 56.692,
+   "fin": 57.04,
+   "frase": 11
+  },
+  {
+   "w": "y",
+   "ini": 57.04,
+   "fin": 57.156,
+   "frase": 11
+  },
+  {
+   "w": "Melilla.",
+   "ini": 57.156,
+   "fin": 57.678,
+   "frase": 11
+  },
+  {
+   "w": "Además,",
+   "ini": 57.798,
+   "fin": 58.318,
+   "frase": 12
+  },
+  {
+   "w": "una",
+   "ini": 58.398,
+   "fin": 58.641,
+   "frase": 12
+  },
+  {
+   "w": "guerra",
+   "ini": 58.641,
+   "fin": 59.065,
+   "frase": 12
+  },
+  {
+   "w": "así",
+   "ini": 59.065,
+   "fin": 59.307,
+   "frase": 12
+  },
+  {
+   "w": "no",
+   "ini": 59.307,
+   "fin": 59.489,
+   "frase": 12
+  },
+  {
+   "w": "la",
+   "ini": 59.489,
+   "fin": 59.671,
+   "frase": 12
+  },
+  {
+   "w": "gana",
+   "ini": 59.671,
+   "fin": 59.974,
+   "frase": 12
+  },
+  {
+   "w": "nadie:",
+   "ini": 59.974,
+   "fin": 60.398,
+   "frase": 12
+  },
+  {
+   "w": "España",
+   "ini": 60.738,
+   "fin": 61.172,
+   "frase": 12
+  },
+  {
+   "w": "es",
+   "ini": 61.172,
+   "fin": 61.357,
+   "frase": 12
+  },
+  {
+   "w": "su",
+   "ini": 61.357,
+   "fin": 61.543,
+   "frase": 12
+  },
+  {
+   "w": "primer",
+   "ini": 61.543,
+   "fin": 61.977,
+   "frase": 12
+  },
+  {
+   "w": "socio",
+   "ini": 61.977,
+   "fin": 62.348,
+   "frase": 12
+  },
+  {
+   "w": "comercial.",
+   "ini": 62.348,
+   "fin": 63.03,
+   "frase": 12
+  },
+  {
+   "w": "¿Tú",
+   "ini": 63.15,
+   "fin": 63.314,
+   "frase": 13
+  },
+  {
+   "w": "qué",
+   "ini": 63.314,
+   "fin": 63.479,
+   "frase": 13
+  },
+  {
+   "w": "crees",
+   "ini": 63.479,
+   "fin": 63.725,
+   "frase": 13
+  },
+  {
+   "w": "que",
+   "ini": 63.725,
+   "fin": 63.89,
+   "frase": 13
+  },
+  {
+   "w": "pasaría?",
+   "ini": 63.89,
+   "fin": 64.26,
+   "frase": 13
+  },
+  {
+   "w": "Te",
+   "ini": 64.72,
+   "fin": 64.878,
+   "frase": 13
+  },
+  {
+   "w": "leo",
+   "ini": 64.878,
+   "fin": 65.089,
+   "frase": 13
+  },
+  {
+   "w": "en",
+   "ini": 65.089,
+   "fin": 65.248,
+   "frase": 13
+  },
+  {
+   "w": "comentarios.",
+   "ini": 65.248,
+   "fin": 65.934,
+   "frase": 13
+  }
+ ]
+}

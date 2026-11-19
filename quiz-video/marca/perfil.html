@@ -1,0 +1,38 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;width:1080px;height:1080px;overflow:hidden}</style></head><body>
+<svg width="1080" height="1080" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <radialGradient id="bg" cx="0.45" cy="0.38" r="0.75"><stop offset="0" stop-color="#a3a6e0"/><stop offset="0.55" stop-color="#6f73bd"/><stop offset="1" stop-color="#3f4288"/></radialGradient>
+  <radialGradient id="pl" cx="0.36" cy="0.3" r="0.85"><stop offset="0" stop-color="#ffd2b3"/><stop offset="0.5" stop-color="#f09a76"/><stop offset="1" stop-color="#c4614a"/></radialGradient>
+  <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5"><stop offset="0" stop-color="#ffe4d6" stop-opacity="0.45"/><stop offset="1" stop-color="#ffe4d6" stop-opacity="0"/></radialGradient>
+  <clipPath id="planet"><circle cx="540" cy="540" r="250"/></clipPath>
+  <filter id="sh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#1e1c4a" flood-opacity="0.45"/></filter>
+</defs>
+<rect width="1080" height="1080" fill="url(#bg)"/>
+<circle cx="540" cy="540" r="470" fill="url(#glow)"/>
+<g transform="translate(540 540) scale(1.13) translate(-540 -540)">
+<!-- anillo (mitad de atrás) -->
+<g transform="rotate(-18 540 540)">
+  <path d="M130,540 A410,112 0 0 1 950,540" fill="none" stroke="#fbf3e6" stroke-width="24" stroke-linecap="round" opacity="0.9"/>
+</g>
+<!-- planeta -->
+<g filter="url(#sh)"><circle cx="540" cy="540" r="250" fill="url(#pl)"/></g>
+<g clip-path="url(#planet)">
+  <path d="M290,600 C380,560 470,640 560,600 C650,560 720,620 800,590 L800,800 L290,800 Z" fill="#c4614a" opacity="0.35"/>
+  <path d="M290,470 C360,440 430,500 520,470 C600,445 680,490 800,460" stroke="#ffe0cc" stroke-width="16" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <circle cx="640" cy="420" r="30" fill="#c4614a" opacity="0.28"/>
+  <circle cx="470" cy="680" r="22" fill="#a9503c" opacity="0.3"/>
+  <circle cx="690" cy="640" r="14" fill="#a9503c" opacity="0.3"/>
+  <ellipse cx="455" cy="410" rx="70" ry="38" fill="#fff" opacity="0.28" transform="rotate(-30 455 410)"/>
+</g>
+<!-- anillo (mitad de delante) con flecha de bucle -->
+<g transform="rotate(-18 540 540)">
+  <path d="M950,540 A410,112 0 0 1 250,620" fill="none" stroke="#fbf3e6" stroke-width="24" stroke-linecap="round"/>
+  <path d="M286,580 L236,624 L296,652" fill="none" stroke="#fbf3e6" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<!-- luna pequeña y destellos -->
+<circle cx="880" cy="235" r="34" fill="#fbf3e6"/><circle cx="869" cy="225" r="10" fill="#e9dccb"/>
+<path d="M255,255 l10,30 30,10 -30,10 -10,30 -10,-30 -30,-10 30,-10 Z" fill="#fff6e8" opacity="0.9"/>
+<path d="M800,820 l7,20 20,7 -20,7 -7,20 -7,-20 -20,-7 20,-7 Z" fill="#fff6e8" opacity="0.75"/>
+<circle cx="330" cy="800" r="6" fill="#fff6e8" opacity="0.7"/><circle cx="890" cy="470" r="5" fill="#fff6e8" opacity="0.6"/>
+</svg></body></html>

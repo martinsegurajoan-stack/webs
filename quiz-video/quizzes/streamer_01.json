@@ -1,0 +1,103 @@
+{
+  "modo": "streamer",
+  "video": "streamer_01",
+  "nombre": "AuronPlay",
+  "titulo": "¿Cuánto sabes de AuronPlay?",
+  "foto": "assets/streamers/auronplay.jpg",
+  "foco": [
+    175,
+    170
+  ],
+  "zoom_cam": 1.15,
+  "aviso": [
+    "SOLO LOS VERDADEROS FANS DE AURONPLAY",
+    "SABRÁN ESTA. ¿TE ATREVES?"
+  ],
+  "gancho": {
+    "voz": "[excited] ¡Este quiz de AuronPlay es imposible! ¿Te atreves?",
+    "texto": [
+      "QUIZ DE",
+      "AURONPLAY"
+    ],
+    "pegatina": "NIVEL: IMPOSIBLE"
+  },
+  "preguntas": [
+    {
+      "pregunta": "¿Cuál es el nombre real de AuronPlay?",
+      "opciones": [
+        "Adrián Álvarez Genes",
+        "Raúl Álvarez Genes",
+        "Raúl García Álvarez",
+        "Rubén Álvarez Gómez"
+      ],
+      "correcta": "B",
+      "fuente": "Raúl Álvarez Genes (Wikipedia)."
+    },
+    {
+      "pregunta": "¿En qué ciudad nació AuronPlay?",
+      "opciones": [
+        "Barcelona",
+        "Mataró",
+        "Badalona",
+        "Terrassa"
+      ],
+      "correcta": "C",
+      "fuente": "Nació el 5 de noviembre de 1988 en Badalona (Wikipedia)."
+    },
+    {
+      "pregunta": "¿En qué año creó su canal de YouTube?",
+      "opciones": [
+        "2008",
+        "2009",
+        "2007",
+        "2006"
+      ],
+      "correcta": "D",
+      "opcion_voz": "En dos mil seis",
+      "fuente": "Canal creado en 2006 (Wikipedia; primer canal abierto el 28-02-2006)."
+    },
+    {
+      "pregunta": "¿En qué trabajaba antes de dedicarse completamente a YouTube?",
+      "opciones": [
+        "En una empresa de artes gráficas",
+        "En un restaurante",
+        "Como profesor",
+        "En una tienda de videojuegos"
+      ],
+      "correcta": "A",
+      "fuente": "Trabajó 9 años en una empresa de artes gráficas y encuadernación, desde los 16 (Wikipedia)."
+    },
+    {
+      "pregunta": "¿Cuál de estos libros NO es de AuronPlay?",
+      "pregunta_voz": "¿Cuál de estos libros no es de AuronPlay?",
+      "opciones": [
+        "De lo peor, lo mejor",
+        "El juego del hater",
+        "AuronPlay, el libro",
+        "El último superviviente"
+      ],
+      "correcta": "D",
+      "fuente": "Sus libros: De lo peor, lo mejor; AuronPlay, el libro; El juego del Hater (Planeta de Libros)."
+    },
+    {
+      "pregunta": "¿Cómo se llama el canal secundario de AuronPlay en YouTube?",
+      "opciones": [
+        "AuronPlayGames",
+        "Auron",
+        "AuronClips",
+        "AuronPlayVlogs"
+      ],
+      "correcta": "B",
+      "sin_respuesta": true,
+      "fuente": "Su canal secundario se llama «Auron» (no AuronPlayGames). No se revela: va a comentarios."
+    }
+  ],
+  "cierre_voz": "¿Cuántas has acertado?",
+  "portada": {
+    "titulo": [
+      "QUIZ DE",
+      "AURONPLAY"
+    ],
+    "pegatina": "SOLO PARA VERDADEROS FANS"
+  }
+}

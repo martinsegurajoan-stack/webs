@@ -1,0 +1,30 @@
+<!doctype html><html><head><meta charset="UTF-8"><style>
+*{margin:0;padding:0;box-sizing:border-box} body{width:1080px;height:1920px;overflow:hidden;font-family:Inter}
+#root{position:relative;width:1080px;height:1920px;background:#120a1e}
+#gl{position:absolute;inset:0}
+#top{position:absolute;left:0;right:0;top:0;height:520px;background:linear-gradient(rgba(10,6,20,0.8),rgba(10,6,20,0))}
+.sub{position:absolute;left:60px;right:60px;top:270px;text-align:center;font:600 62px/1.2 Inter;color:rgba(255,255,255,0.45);text-shadow:0 3px 12px rgba(0,0,0,0.6)}
+.sub b{color:#fff;font-weight:600} .sub i{font-style:normal;color:#fff;border:3px solid #4ea3ff;border-radius:6px;background:rgba(78,163,255,0.18);padding:0 6px}
+.tag{position:absolute;padding:14px 22px;border-radius:18px;background:rgba(14,10,26,0.82);border:1px solid rgba(255,255,255,0.16);box-shadow:inset 6px 0 0 #ffb060, 0 18px 40px rgba(0,0,0,0.4);color:#fff}
+.tag small{display:block;font:800 17px Inter;letter-spacing:4px;color:#ffb060} .tag b{display:block;font:800 46px/1.1 Inter}
+svg.lin{position:absolute;inset:0}
+.big{position:absolute;left:0;right:0;top:1360px;text-align:center;font:900 120px/1 Inter;letter-spacing:-5px;color:#fff;text-shadow:0 10px 40px rgba(0,0,0,0.6)}
+.big small{display:block;margin-top:10px;font:800 36px Inter;letter-spacing:8px;color:#ffd6a0}
+#marca{position:absolute;left:0;right:0;top:1820px;text-align:center;font:700 28px Inter;color:#fff;opacity:0.32}
+</style></head><body><div id="root"><div id="gl"></div><div id="top"></div>
+<div class="sub"><b>Mil</b> <b>metros</b> <b>de</b> <b>mar…</b> <i>y</i> ni una columna</div>
+<svg class="lin" width="1080" height="1920"><path id="l1" d="" stroke="#ffb060" stroke-width="3" fill="none"/><circle id="c1" r="8" fill="#ffb060"/></svg>
+<div class="tag" id="t1" style="left:520px;top:520px"><small>TORRE · SOLO EN LA ORILLA</small><b>230 m de altura</b></div>
+<div class="big">1.000 m<small>SIN APOYOS EN EL AGUA</small></div>
+<div id="marca">@mundo.supuesto</div></div>
+<script src="assets/three.min.js"></script><script src="escena.js"></script>
+<script>
+const E = window.ESC;
+E.cam.position.set(-980, 300, 520); E.cam.lookAt(260, 110, -120); E.cam.updateProjectionMatrix();
+E.render();
+// línea del rótulo a la cima de la torre izquierda
+const v = new THREE.Vector3(E.TORRE_X, E.TH + 4, 0).project(E.cam);
+const x = (v.x + 1) / 2 * 1080, y = (1 - v.y) / 2 * 1920;
+ const c = document.getElementById('c1'); c.setAttribute('cx', x); c.setAttribute('cy', y); document.getElementById('l1').setAttribute('d', `M${x},${y} L${x},640`);
+window.LISTO = true;
+</script></body></html>
